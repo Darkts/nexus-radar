@@ -1,0 +1,44 @@
+{
+  "max_price": 1200,
+  "location_code": "97150",
+  "location_name": "Saint-Martin",
+  "ntfy_topic": "sxm-immo-alert-97150-x9q4m2",
+  "exclude_keywords": [
+    "saisonnière",
+    "saisonnier",
+    "touristique",
+    "vacances",
+    "court séjour",
+    "nuitée",
+    "par nuit",
+    "par semaine",
+    "semaine",
+    "short term",
+    "holiday",
+    "vacation",
+    "airbnb"
+  ],
+  "exclude_commercial": true,
+  "commercial_keywords": [
+    "bail commercial",
+    "local commercial",
+    "locaux commerciaux",
+    "local professionnel",
+    "locaux professionnels",
+    "bureau",
+    "bureaux",
+    "entrepôt",
+    "entrepot",
+    "hangar",
+    "garage",
+    "stockage",
+    "parking",
+    "fonds de commerce"
+  ],
+  "enabled_sources": {
+    "domimmo": true,
+    "emotion": true,
+    "four_u": true,
+    "leboncoin": true
+  }
+}

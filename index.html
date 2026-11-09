@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SXM Immo Veille | Locations à l'année Saint-Martin (97150)</title>
+  <meta name="description" content="Dashboard mobile de veille des annonces de location longue durée à Saint-Martin sous 1200 €" />
+  
+  <!-- PWA & Apple Web App Tags -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0b0f19" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="SXM Immo" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230ea5e9'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-size='50'>🌴</text></svg>" />
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(22, 29, 47, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #0ea5e9;
+      --primary-hover: #38bdf8;
+      --accent: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --glass: rgba(15, 23, 42, 0.85);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 90px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 45%);
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: var(--glass);
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 18px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-notif {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(14, 165, 233, 0.4);
+      color: #38bdf8;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-notif:hover {
+      background: #0ea5e9;
+      color: #fff;
+    }
+
+    .btn-refresh {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-refresh.spinning svg {
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Stats Banner */
+    .stats-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary-hover);
+    }
+
+    .stat-lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    /* Search & Filters */
+    .filters-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px 16px 12px 42px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border 0.2s ease, background 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Pills Scrollable */
+    .pills-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .pills-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pill-btn {
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(14, 165, 233, 0.4);
+    }
+
+    /* Extra Filters Row */
+    .filters-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .filter-select {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 9px 12px;
+      color: var(--text-main);
+      font-size: 0.8rem;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .filter-select option {
+      background: #111827;
+      color: #fff;
+    }
+
+    /* Listings Grid */
+    .listings-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 640px) {
+      .listings-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Listing Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(14, 165, 233, 0.4);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: #0f172a;
+      overflow: hidden;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.04);
+    }
+
+    .badge-price {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(16, 185, 129, 0.95);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 6px 12px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.01em;
+    }
+
+    .badge-agency {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #38bdf8;
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+    }
+
+    .card-location {
+      font-size: 0.78rem;
+      color: #38bdf8;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #fff;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .meta-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-time {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-share {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-share:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn-view:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      background: var(--card-bg);
+      border: 1px dashed var(--card-border);
+      border-radius: var(--radius);
+      margin-top: 10px;
+    }
+
+    .empty-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .empty-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .empty-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #10b981;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <div class="logo-badge">🌴</div>
+        <div>
+          <div class="brand-title">SXM Immo Veille</div>
+          <div class="brand-sub">
+            <span class="live-dot"></span>
+            <span>Saint-Martin (97150) • Longue Durée</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a id="notifLink" href="https://ntfy.sh/sxm-immo-alert-97150-x9q4m2" target="_blank" rel="noopener" class="btn-notif" title="Recevoir les alertes ntfy sur mon mobile">
+          🔔 Alertes Push
+        </a>
+        <button id="refreshBtn" class="btn-refresh" title="Actualiser les annonces">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+    
+    <!-- Stats Banner -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-val" id="totalCount">0</span>
+        <span class="stat-lbl">Annonces actives</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val" id="maxBudgetLbl">≤ 1 200 €</span>
+        <span class="stat-lbl">Critère budget</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val" id="lastScanTime">Récent</span>
+        <span class="stat-lbl">Dernier scan</span>
+      </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="filters-wrap">
+      <!-- Search Input -->
+      <div class="search-box">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Rechercher (ex: Concordia, studio, meublé, Marigot)..." />
+      </div>
+
+      <!-- Quick Budget Pills -->
+      <div class="pills-scroll" id="budgetPills">
+        <button class="pill-btn active" data-max="99999">Tous les budgets</button>
+        <button class="pill-btn" data-max="800">&lt; 800 €</button>
+        <button class="pill-btn" data-max="1000">&lt; 1 000 €</button>
+        <button class="pill-btn" data-max="1200">≤ 1 200 €</button>
+      </div>
+
+      <!-- Extra Dropdown Filters -->
+      <div class="filters-row">
+        <select id="sectorSelect" class="filter-select">
+          <option value="ALL">📍 Tous les secteurs</option>
+        </select>
+        <select id="sortSelect" class="filter-select">
+          <option value="recent">⏱ Plus récentes</option>
+          <option value="price_asc">💰 Prix croissant</option>
+          <option value="price_desc">💎 Prix décroissant</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Listings Grid -->
+    <div class="listings-grid" id="listingsContainer">
+      <!-- Les cartes d'annonces sont insérées ici en JavaScript -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <div class="empty-icon">🏖️</div>
+      <div class="empty-title">Aucune annonce trouvée</div>
+      <div class="empty-sub">Modifiez vos filtres ou attendez le prochain scan automatique.</div>
+    </div>
+
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span>Lien copié dans le presse-papier !</span>
+  </div>
+
+  <script>
+    // State
+    let allAnnonces = [];
+    let ntfyTopic = 'sxm-immo-alert-97150-x9q4m2';
+    let currentFilter = {
+      search: '',
+      maxPrice: 99999,
+      sector: 'ALL',
+      sort: 'recent'
+    };
+
+    const fallbackImg = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' fill='%231e293b'><rect width='600' height='400'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' fill='%2364748b' font-size='32' font-family='sans-serif'>🌴 Photo à venir</text></svg>";
+
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW failed:', err));
+      });
+    }
+
+    // Load Config and Annonces
+    async function init() {
+      try {
+        const cfgRes = await fetch('./config.json?t=' + Date.now()).catch(() => null);
+        if (cfgRes && cfgRes.ok) {
+          const cfg = await cfgRes.json();
+          if (cfg.ntfy_topic) {
+            ntfyTopic = cfg.ntfy_topic;
+            document.getElementById('notifLink').href = `https://ntfy.sh/${ntfyTopic}`;
+          }
+        }
+      } catch (e) {
+        console.warn('Could not load config.json', e);
+      }
+
+      await loadData();
+      setupEventListeners();
+    }
+
+    async function loadData() {
+      const refreshBtn = document.getElementById('refreshBtn');
+      refreshBtn.classList.add('spinning');
+
+      try {
+        const res = await fetch('./data/annonces.json?t=' + Date.now());
+        if (!res.ok) throw new Error('Impossible de charger data/annonces.json');
+        allAnnonces = await res.json();
+        populateSectors();
+        updateStats();
+        render();
+      } catch (err) {
+        console.error('Erreur chargement données:', err);
+        document.getElementById('listingsContainer').innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">⚠️</div>
+            <div class="empty-title">Erreur de chargement</div>
+            <div class="empty-sub">Vérifiez que le fichier data/annonces.json est accessible.</div>
+          </div>
+        `;
+      } finally {
+        setTimeout(() => refreshBtn.classList.remove('spinning'), 600);
+      }
+    }
+
+    function populateSectors() {
+      const select = document.getElementById('sectorSelect');
+      const sectors = new Set();
+      allAnnonces.forEach(a => {
+        if (a.location) {
+          const clean = a.location.replace(' (Saint-Martin)', '').trim();
+          sectors.add(clean);
+        }
+      });
+
+      const currentVal = select.value;
+      select.innerHTML = '<option value="ALL">📍 Tous les secteurs</option>';
+      Array.from(sectors).sort().forEach(sec => {
+        const opt = document.createElement('option');
+        opt.value = sec;
+        opt.textContent = `📍 ${sec}`;
+        select.appendChild(opt);
+      });
+      select.value = currentVal;
+    }
+
+    function updateStats() {
+      document.getElementById('totalCount').textContent = allAnnonces.length;
+      if (allAnnonces.length > 0 && allAnnonces[0].date_detected) {
+        document.getElementById('lastScanTime').textContent = formatRelativeTime(allAnnonces[0].date_detected);
+      }
+    }
+
+    function formatRelativeTime(dateStr) {
+      if (!dateStr) return 'Récemment';
+      const d = new Date(dateStr);
+      const diffMs = Date.now() - d.getTime();
+      const diffMin = Math.round(diffMs / 60000);
+      if (diffMin < 1) return "À l'instant";
+      if (diffMin < 60) return `Il y a ${diffMin} min`;
+      const diffHours = Math.round(diffMin / 60);
+      if (diffHours < 24) return `Il y a ${diffHours} h`;
+      const diffDays = Math.round(diffHours / 24);
+      return `Il y a ${diffDays} j`;
+    }
+
+    function render() {
+      const container = document.getElementById('listingsContainer');
+      const emptyState = document.getElementById('emptyState');
+
+      let filtered = allAnnonces.filter(a => {
+        // Price filter
+        if (a.price && a.price > currentFilter.maxPrice) return false;
+
+        // Sector filter
+        if (currentFilter.sector !== 'ALL') {
+          if (!a.location || !a.location.includes(currentFilter.sector)) return false;
+        }
+
+        // Search text
+        if (currentFilter.search) {
+          const q = currentFilter.search.toLowerCase();
+          const matchTitle = (a.title || '').toLowerCase().includes(q);
+          const matchDesc = (a.description || '').toLowerCase().includes(q);
+          const matchLoc = (a.location || '').toLowerCase().includes(q);
+          const matchAgency = (a.agency || '').toLowerCase().includes(q);
+          if (!matchTitle && !matchDesc && !matchLoc && !matchAgency) return false;
+        }
+
+        return true;
+      });
+
+      // Sorting
+      if (currentFilter.sort === 'price_asc') {
+        filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+      } else if (currentFilter.sort === 'price_desc') {
+        filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+      } else {
+        // Most recent
+        filtered.sort((a, b) => new Date(b.date_detected || 0) - new Date(a.date_detected || 0));
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      container.innerHTML = filtered.map(a => `
+        <article class="card">
+          <div class="card-img-wrap">
+            <img class="card-img" src="${a.image_url || fallbackImg}" alt="${escapeHtml(a.title)}" loading="lazy" onerror="this.src='${fallbackImg}'" />
+            <div class="badge-price">${a.price ? a.price + ' € / mois' : 'Prix n/c'}</div>
+            <div class="badge-agency">${escapeHtml(a.agency || 'SXM')}</div>
+          </div>
+          <div class="card-body">
+            <div class="card-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>${escapeHtml(a.location || 'Saint-Martin (97150)')}</span>
+            </div>
+            <h2 class="card-title">${escapeHtml(a.title)}</h2>
+            <div class="card-meta">
+              ${a.surface ? `<span class="meta-tag">📐 ${escapeHtml(a.surface)}</span>` : ''}
+              ${a.rooms ? `<span class="meta-tag">🚪 ${a.rooms} pièce(s)</span>` : ''}
+              <span class="meta-tag">📅 ${formatRelativeTime(a.date_detected)}</span>
+            </div>
+            ${a.description ? `<p class="card-desc">${escapeHtml(a.description)}</p>` : ''}
+            <div class="card-footer">
+              <span class="card-time">Détecté le ${new Date(a.date_detected).toLocaleDateString('fr-FR')}</span>
+              <div class="card-actions">
+                <button class="btn-share" onclick="shareAd('${escapeJs(a.title)}', '${escapeJs(a.url)}')" title="Partager">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                  </svg>
+                </button>
+                <a href="${a.url}" target="_blank" rel="noopener" class="btn-view">
+                  Voir ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function setupEventListeners() {
+      // Search
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        currentFilter.search = e.target.value.trim();
+        render();
+      });
+
+      // Budget pills
+      document.querySelectorAll('#budgetPills .pill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#budgetPills .pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter.maxPrice = parseFloat(btn.dataset.max);
+          render();
+        });
+      });
+
+      // Sector select
+      document.getElementById('sectorSelect').addEventListener('change', (e) => {
+        currentFilter.sector = e.target.value;
+        render();
+      });
+
+      // Sort select
+      document.getElementById('sortSelect').addEventListener('change', (e) => {
+        currentFilter.sort = e.target.value;
+        render();
+      });
+
+      // Refresh button
+      document.getElementById('refreshBtn').addEventListener('click', loadData);
+    }
+
+    function shareAd(title, url) {
+      if (navigator.share) {
+        navigator.share({
+          title: `🏠 Location SXM: ${title}`,
+          text: `Découvre cette annonce de location à Saint-Martin : ${title}`,
+          url: url
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('Lien copié dans le presse-papier !');
+        });
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.querySelector('span').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function escapeJs(str) {
+      if (!str) return '';
+      return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"');
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

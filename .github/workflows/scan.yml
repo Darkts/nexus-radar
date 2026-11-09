@@ -1,0 +1,64 @@
+name: SXM Immo Veille Scanner
+
+on:
+  schedule:
+    # Exécution automatique toutes les 15 minutes (H24 / 7j/7)
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    # Déclenchement manuel en 1 clic depuis l'onglet Actions de GitHub
+
+# Autorisation d'écriture nécessaire pour commit et push data/annonces.json
+permissions:
+  contents: write
+
+concurrency:
+  group: sxm-scanner
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    name: Scanner les annonces & notifier
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Cloner le dépôt
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurer Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: 📦 Installer les dépendances Python
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🎭 Mettre en cache Playwright Chromium
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('requirements.txt') }}
+
+      - name: 🌐 Installer Playwright Chromium et dépendances OS
+        run: |
+          playwright install chromium --with-deps
+
+      - name: 🚀 Lancer le scraper SXM Immo
+        run: |
+          python scraper.py
+
+      - name: 💾 Commit & Push des nouvelles annonces
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/annonces.json
+          if git diff --staged --quiet; then
+            echo "Aucune nouvelle annonce détectée lors de ce cycle."
+          else
+            git commit -m "Auto-update: Nouvelles annonces détectées [skip ci]"
+            git push
+            echo "Nouvelles annonces poussées avec succès sur GitHub !"
+          fi

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "domimmo_261029413904681",
+    "source_id": "261029413904681",
+    "title": "T2 duplex à louer sur Concordia",
+    "price": 950,
+    "price_str": "950 € / mois",
+    "location": "Concordia (Saint-Martin)",
+    "agency": "ALLIANCE Immobilière SXM",
+    "url": "https://www.domimmo.com/saint-martin/immobilier/261029413904681",
+    "image_url": "https://keldom.blob.core.windows.net/domimmo/an/photos/400/261181569592123.jpg",
+    "description": "A louer du 8 novembre 2026 au 30 avril 2027, appartement duplex meublé et équipé, box internet TV incluse.\r\n\r\n Loyer 950 €/mois charges comprises avec internet et TV, eau et EDF à la charge du locataire.\r\nHonoraires charge locataire: 484 €TTC dont honoraires d'état des lieux: 132 €TTC | Dépôt de garantie: 950 €",
+    "surface": "44 m²",
+    "rooms": 2,
+    "date_detected": "2026-11-09T23:46:10.745847+00:00"
+  },
+  {
+    "id": "domimmo_261017419567583",
+    "source_id": "261017419567583",
+    "title": "STUDIO A LOUER MARIGOT CENTRE",
+    "price": 990,
+    "price_str": "990 € / mois",
+    "location": "Marigot (Saint-Martin)",
+    "agency": "AGENCE TROPIC IMMO - SAS LODY",
+    "url": "https://www.domimmo.com/saint-martin/immobilier/261017419567583",
+    "image_url": "https://keldom.blob.core.windows.net/domimmo/an/photos/400/261182040530927.jpg",
+    "description": "À louer en plein centre-ville de Marigot, agréable studio entièrement meublé comprenant une grande pièce à vivre lumineuse, une cuisine aménagée et équipée ainsi qu'un spacieux balcon filant.\r\nLe logement conviendra parfaitement à une personne arrivant sur l'île.\r\n Pour plus d'informations ou organiser une visite, contactez-nous.",
+    "surface": "30 m²",
+    "rooms": 1,
+    "date_detected": "2026-11-09T23:46:10.745847+00:00"
+  }
+]
