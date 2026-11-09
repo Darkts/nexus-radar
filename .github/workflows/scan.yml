@@ -59,6 +59,8 @@ jobs:
             echo "Aucune nouvelle annonce détectée lors de ce cycle."
           else
             git commit -m "Auto-update: Nouvelles annonces détectées [skip ci]"
-            git push
+            git pull --rebase origin main || true
+            git push origin main
             echo "Nouvelles annonces poussées avec succès sur GitHub !"
           fi
+
