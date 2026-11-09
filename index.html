@@ -2,36 +2,40 @@
 <html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>SXM Immo Veille | Locations à l'année Saint-Martin (97150)</title>
-  <meta name="description" content="Dashboard mobile de veille des annonces de location longue durée à Saint-Martin sous 1200 €" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Nexus Radar | Hub Personnel Multi-Pépites</title>
+  <meta name="description" content="Hub personnel autonome : Veille Immobilier, Vols flash & Trains TGV" />
   
-  <!-- PWA & Apple Web App Tags -->
+  <!-- PWA & Apple Meta -->
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#0b0f19" />
+  <meta name="theme-color" content="#070a13" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="SXM Immo" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230ea5e9'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-size='50'>🌴</text></svg>" />
+  <meta name="apple-mobile-web-app-title" content="Nexus Radar" />
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+  <link rel="apple-touch-icon" href="assets/icon.svg" />
 
   <!-- Google Font: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(22, 29, 47, 0.75);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --primary: #0ea5e9;
+      --bg: #070a13;
+      --surface: #0e1424;
+      --card-bg: rgba(18, 26, 47, 0.75);
+      --card-border: rgba(0, 242, 254, 0.12);
+      --primary: #00f2fe;
       --primary-hover: #38bdf8;
-      --accent: #10b981;
+      --accent-immo: #10b981;
+      --accent-flight: #00f2fe;
+      --accent-train: #ec4899;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --glass: rgba(15, 23, 42, 0.85);
-      --radius: 16px;
+      --glass: rgba(11, 17, 32, 0.88);
+      --radius: 18px;
     }
 
     * {
@@ -42,80 +46,88 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
       background-color: var(--bg);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-bottom: 90px;
+      padding-bottom: 96px;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 45%);
+        radial-gradient(circle at 10% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(236, 72, 153, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
     }
 
-    /* Header */
+    /* Top Sticky Header */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       background: var(--glass);
       border-bottom: 1px solid var(--card-border);
-      padding: 14px 18px;
+      padding: 12px 18px;
     }
 
-    .header-top {
+    .header-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .logo-badge {
+    .brand-icon {
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #0ea5e9, #0284c7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+      overflow: hidden;
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    }
+
+    .brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .brand-title {
-      font-size: 1.15rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.18rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(to right, #ffffff, #94a3b8);
+      letter-spacing: -0.01em;
+      background: linear-gradient(135deg, #ffffff, #00f2fe);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .brand-sub {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 600;
+      font-size: 0.7rem;
+      color: var(--primary);
+      font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .live-dot {
       width: 7px;
       height: 7px;
-      background: var(--accent);
+      background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent);
+      box-shadow: 0 0 8px #10b981;
       animation: pulse 2s infinite;
     }
 
@@ -130,47 +142,48 @@
       gap: 8px;
     }
 
-    .btn-notif {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(14, 165, 233, 0.15);
-      border: 1px solid rgba(14, 165, 233, 0.4);
-      color: #38bdf8;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 7px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-notif:hover {
-      background: #0ea5e9;
-      color: #fff;
-    }
-
-    .btn-refresh {
+    .btn-action-icon {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--card-border);
       color: var(--text-main);
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      position: relative;
+      transition: all 0.2s ease;
     }
 
-    .btn-refresh.spinning svg {
+    .btn-action-icon:hover {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: var(--primary);
+    }
+
+    .btn-action-icon.spinning svg {
       animation: spin 0.8s linear infinite;
     }
 
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .unread-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: #ec4899;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      min-width: 17px;
+      height: 17px;
+      border-radius: 9px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      box-shadow: 0 0 8px #ec4899;
     }
 
     /* Container */
@@ -179,51 +192,95 @@
       width: 100%;
       margin: 0 auto;
       padding: 16px;
+      flex: 1;
     }
 
-    /* Stats Banner */
-    .stats-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* Tab Panes */
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Stats HUD Bar */
+    .stats-hud {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      padding: 12px 18px;
+      padding: 14px 16px;
       margin-bottom: 18px;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
     }
 
-    .stat-item {
+    .hud-stat {
       display: flex;
       flex-direction: column;
     }
 
-    .stat-val {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--primary-hover);
+    .hud-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
     }
 
-    .stat-lbl {
-      font-size: 0.72rem;
+    .hud-lbl {
+      font-size: 0.68rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    /* Search & Filters */
-    .filters-wrap {
+    /* Category Pill Switcher */
+    .cat-pills {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 14px;
+      scrollbar-width: none;
+    }
+    .cat-pills::-webkit-scrollbar { display: none; }
+
+    .cat-pill {
+      white-space: nowrap;
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
     }
 
+    .cat-pill.active {
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(0, 242, 254, 0.1));
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(0, 242, 254, 0.3);
+    }
+
+    /* Search Box */
     .search-box {
       position: relative;
-      width: 100%;
+      margin-bottom: 14px;
     }
 
     .search-input {
@@ -233,15 +290,15 @@
       border-radius: 14px;
       padding: 12px 16px 12px 42px;
       color: var(--text-main);
-      font-size: 0.9rem;
-      font-family: inherit;
+      font-size: 0.88rem;
       outline: none;
-      transition: border 0.2s ease, background 0.2s ease;
+      transition: border 0.2s ease;
     }
 
     .search-input:focus {
       border-color: var(--primary);
       background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
     }
 
     .search-icon {
@@ -253,43 +310,11 @@
       pointer-events: none;
     }
 
-    /* Pills Scrollable */
-    .pills-scroll {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: none;
-    }
-
-    .pills-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .pill-btn {
-      white-space: nowrap;
-      padding: 7px 14px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .pill-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-      box-shadow: 0 2px 10px rgba(14, 165, 233, 0.4);
-    }
-
-    /* Extra Filters Row */
-    .filters-row {
+    /* Sub Filters Bar */
+    .sub-filters {
       display: flex;
       gap: 10px;
+      margin-bottom: 18px;
     }
 
     .filter-select {
@@ -300,31 +325,30 @@
       padding: 9px 12px;
       color: var(--text-main);
       font-size: 0.8rem;
-      font-family: inherit;
       outline: none;
       cursor: pointer;
     }
 
     .filter-select option {
-      background: #111827;
+      background: #0e1424;
       color: #fff;
     }
 
-    /* Listings Grid */
-    .listings-grid {
+    /* Grid of Cards */
+    .items-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 18px;
     }
 
     @media (min-width: 640px) {
-      .listings-grid {
+      .items-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    /* Listing Card */
-    .card {
+    /* Item Card */
+    .item-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
@@ -333,19 +357,20 @@
       flex-direction: column;
       backdrop-filter: blur(8px);
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
     }
 
-    .card:hover {
+    .item-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(14, 165, 233, 0.4);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      border-color: rgba(0, 242, 254, 0.4);
+      box-shadow: 0 10px 28px -5px rgba(0, 0, 0, 0.5);
     }
 
     .card-img-wrap {
       position: relative;
       width: 100%;
-      height: 200px;
-      background: #0f172a;
+      height: 190px;
+      background: #090e1a;
       overflow: hidden;
     }
 
@@ -356,37 +381,79 @@
       transition: transform 0.4s ease;
     }
 
-    .card:hover .card-img {
+    .item-card:hover .card-img {
       transform: scale(1.04);
+    }
+
+    .badge-category {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.02em;
+    }
+
+    .badge-category.immo {
+      background: rgba(16, 185, 129, 0.9);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    }
+
+    .badge-category.flight {
+      background: rgba(0, 242, 254, 0.9);
+      color: #070a13;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    }
+
+    .badge-category.train {
+      background: rgba(236, 72, 153, 0.9);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
     }
 
     .badge-price {
       position: absolute;
       bottom: 12px;
       left: 12px;
-      background: rgba(16, 185, 129, 0.95);
-      backdrop-filter: blur(6px);
-      color: #ffffff;
+      background: rgba(11, 17, 32, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      color: #00f2fe;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 800;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       padding: 6px 12px;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      letter-spacing: -0.01em;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     }
 
-    .badge-agency {
+    .btn-fav {
       position: absolute;
       top: 12px;
       right: 12px;
-      background: rgba(15, 23, 42, 0.85);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(11, 17, 32, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
       backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #38bdf8;
-      font-weight: 700;
-      font-size: 0.72rem;
-      padding: 5px 10px;
-      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-fav.active {
+      color: #ec4899;
+      border-color: #ec4899;
+      background: rgba(236, 72, 153, 0.25);
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
     }
 
     .card-body {
@@ -397,9 +464,9 @@
       gap: 10px;
     }
 
-    .card-location {
-      font-size: 0.78rem;
-      color: #38bdf8;
+    .card-loc {
+      font-size: 0.76rem;
+      color: var(--primary);
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -407,26 +474,10 @@
     }
 
     .card-title {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 700;
       line-height: 1.35;
       color: #fff;
-    }
-
-    .card-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .meta-tag {
-      font-size: 0.72rem;
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 4px 8px;
-      border-radius: 6px;
     }
 
     .card-desc {
@@ -449,9 +500,10 @@
       gap: 8px;
     }
 
-    .card-time {
-      font-size: 0.72rem;
+    .card-agency {
+      font-size: 0.74rem;
       color: var(--text-muted);
+      font-weight: 600;
     }
 
     .card-actions {
@@ -459,7 +511,7 @@
       gap: 6px;
     }
 
-    .btn-share {
+    .btn-card-action {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--card-border);
       color: var(--text-main);
@@ -470,152 +522,407 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background 0.2s ease;
+      text-decoration: none;
     }
 
-    .btn-share:hover {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .btn-view {
+    .btn-view-deal {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--primary);
-      color: #fff;
+      background: linear-gradient(135deg, #00f2fe, #0284c7);
+      color: #070a13;
       font-size: 0.8rem;
-      font-weight: 700;
+      font-weight: 800;
       padding: 7px 14px;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.2s ease;
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+      transition: transform 0.2s ease;
     }
 
-    .btn-view:hover {
-      background: var(--primary-hover);
+    .btn-view-deal:hover {
+      transform: scale(1.03);
+    }
+
+    /* Radars Config Editor (Tab 3) */
+    .radar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
+    }
+
+    .radar-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .radar-card-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .switch-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .switch-input {
+      display: none;
+    }
+
+    .switch-slider {
+      width: 44px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+
+    .switch-slider::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch-input:checked + .switch-slider {
+      background: #00f2fe;
+    }
+
+    .switch-input:checked + .switch-slider::after {
+      transform: translateX(20px);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag-chip {
+      background: rgba(0, 242, 254, 0.12);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: #38bdf8;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-chip-remove {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    .tag-chip-remove:hover { opacity: 1; }
+
+    .btn-add-tag {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px dashed var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 16px;
+      cursor: pointer;
+    }
+
+    .btn-add-tag:hover {
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Big Action Buttons */
+    .btn-cta-cloud {
+      width: 100%;
+      background: linear-gradient(135deg, #00f2fe, #38bdf8);
+      color: #070a13;
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+      transition: transform 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn-cta-cloud:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-cta-scan {
+      width: 100%;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.35);
+      transition: transform 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn-cta-scan:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Banner Showcase */
+    .banner-showcase {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
+    }
+
+    .banner-showcase img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--glass);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 12px 14px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s ease;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+      background: rgba(0, 242, 254, 0.08);
+    }
+
+    .nav-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .nav-badge {
+      position: absolute;
+      top: 0;
+      right: 6px;
+      background: #ec4899;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      min-width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: rgba(14, 20, 36, 0.95);
+      border: 1px solid var(--primary);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 30px rgba(0, 242, 254, 0.35);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
     }
 
     /* Empty state */
     .empty-state {
       text-align: center;
-      padding: 48px 20px;
+      padding: 50px 20px;
       background: var(--card-bg);
       border: 1px dashed var(--card-border);
       border-radius: var(--radius);
       margin-top: 10px;
     }
 
-    .empty-icon {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .empty-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .empty-sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* Toast notification */
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #10b981;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-    }
+    .empty-icon { font-size: 46px; margin-bottom: 12px; }
+    .empty-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; }
+    .empty-sub { font-size: 0.85rem; color: var(--text-muted); }
   </style>
 </head>
 <body>
 
-  <!-- Top Header -->
+  <!-- Top Sticky Header -->
   <header>
-    <div class="header-top">
+    <div class="header-content">
       <div class="brand">
-        <div class="logo-badge">🌴</div>
+        <div class="brand-icon">
+          <img src="assets/icon.svg" alt="Nexus Logo" />
+        </div>
         <div>
-          <div class="brand-title">SXM Immo Veille</div>
+          <div class="brand-title">NEXUS RADAR</div>
           <div class="brand-sub">
             <span class="live-dot"></span>
-            <span>Saint-Martin (97150) • Longue Durée</span>
+            <span id="headerLiveStatus">Veille Active • H24 Cloud</span>
           </div>
         </div>
       </div>
       <div class="header-actions">
-        <a id="notifLink" href="https://ntfy.sh/sxm-immo-alert-97150-x9q4m2" target="_blank" rel="noopener" class="btn-notif" title="Recevoir les alertes ntfy sur mon mobile">
-          🔔 Alertes Push
-        </a>
-        <button id="refreshBtn" class="btn-refresh" title="Actualiser les annonces">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="refreshBtn" class="btn-action-icon" title="Actualiser les pépites">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
           </svg>
+          <span class="unread-badge" id="unreadBadge">0</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Content Container -->
+  <!-- Main Container -->
   <main class="container">
-    
-    <!-- Stats Banner -->
-    <div class="stats-bar">
-      <div class="stat-item">
-        <span class="stat-val" id="totalCount">0</span>
-        <span class="stat-lbl">Annonces actives</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-val" id="maxBudgetLbl">≤ 1 200 €</span>
-        <span class="stat-lbl">Critère budget</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-val" id="lastScanTime">Récent</span>
-        <span class="stat-lbl">Dernier scan</span>
-      </div>
-    </div>
 
-    <!-- Filters Section -->
-    <div class="filters-wrap">
+    <!-- ========================================================= -->
+    <!-- TAB 1 : 🔥 PÉPITES (TOUTES LES ALERTES IMMO, VOLS, TRAINS) -->
+    <!-- ========================================================= -->
+    <section id="tab-pepites" class="tab-pane active">
+      
+      <!-- Stats HUD -->
+      <div class="stats-hud">
+        <div class="hud-stat">
+          <span class="hud-val" id="hudCount">0</span>
+          <span class="hud-lbl">Pépites actives</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-val" id="hudRadars">3</span>
+          <span class="hud-lbl">Radars actifs</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-val" id="hudLastScan">Récent</span>
+          <span class="hud-lbl">Dernier scan</span>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="cat-pills" id="categoryPills">
+        <button class="cat-pill active" data-cat="ALL">🔥 Toutes les pépites</button>
+        <button class="cat-pill" data-cat="immo">🏠 Immobilier SXM</button>
+        <button class="cat-pill" data-cat="flight">✈️ Vols & Erreurs</button>
+        <button class="cat-pill" data-cat="train">🚄 Trains & TGV</button>
+      </div>
+
       <!-- Search Input -->
       <div class="search-box">
         <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="searchInput" class="search-input" placeholder="Rechercher (ex: Concordia, studio, meublé, Marigot)..." />
+        <input type="text" id="searchInput" class="search-input" placeholder="Rechercher (ex: Concordia, SXM, TGV, Paris, 19€)..." />
       </div>
 
-      <!-- Quick Budget Pills -->
-      <div class="pills-scroll" id="budgetPills">
-        <button class="pill-btn active" data-max="99999">Tous les budgets</button>
-        <button class="pill-btn" data-max="800">&lt; 800 €</button>
-        <button class="pill-btn" data-max="1000">&lt; 1 000 €</button>
-        <button class="pill-btn" data-max="1200">≤ 1 200 €</button>
-      </div>
-
-      <!-- Extra Dropdown Filters -->
-      <div class="filters-row">
-        <select id="sectorSelect" class="filter-select">
-          <option value="ALL">📍 Tous les secteurs</option>
+      <!-- Sub Filters Bar -->
+      <div class="sub-filters">
+        <select id="budgetFilterSelect" class="filter-select">
+          <option value="99999">💰 Tous les budgets</option>
+          <option value="30">🚄 Moins de 30 € (Train)</option>
+          <option value="450">✈️ Moins de 450 € (Vol)</option>
+          <option value="1000">🏠 Moins de 1 000 € (Immo)</option>
+          <option value="1200">🏠 Moins de 1 200 € (Immo)</option>
         </select>
         <select id="sortSelect" class="filter-select">
           <option value="recent">⏱ Plus récentes</option>
@@ -623,259 +930,835 @@
           <option value="price_desc">💎 Prix décroissant</option>
         </select>
       </div>
-    </div>
 
-    <!-- Listings Grid -->
-    <div class="listings-grid" id="listingsContainer">
-      <!-- Les cartes d'annonces sont insérées ici en JavaScript -->
-    </div>
+      <!-- Items Grid -->
+      <div class="items-grid" id="itemsContainer"></div>
 
-    <!-- Empty State -->
-    <div class="empty-state" id="emptyState" style="display: none;">
-      <div class="empty-icon">🏖️</div>
-      <div class="empty-title">Aucune annonce trouvée</div>
-      <div class="empty-sub">Modifiez vos filtres ou attendez le prochain scan automatique.</div>
-    </div>
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">🎯</div>
+        <div class="empty-title">Aucune pépite trouvée</div>
+        <div class="empty-sub">Modifiez vos filtres ou attendez le prochain scan automatique.</div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TAB 2 : ⭐ FAVORIS                                        -->
+    <!-- ========================================================= -->
+    <section id="tab-favoris" class="tab-pane">
+      <div style="margin-bottom: 16px;">
+        <h2 style="font-size: 1.25rem; font-weight: 800;">⭐ Mes Pépites Sauvegardées</h2>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Retrouvez ici les appartements, billets d'avion ou trains gardés de côté.</p>
+      </div>
+
+      <div class="items-grid" id="favoritesContainer"></div>
+
+      <div class="empty-state" id="emptyFavorites" style="display: none;">
+        <div class="empty-icon">⭐</div>
+        <div class="empty-title">Aucun favori pour le moment</div>
+        <div class="empty-sub">Cliquez sur le cœur d'une annonce pour l'épingler ici.</div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TAB 3 : 🎛️ MES RADARS (ÉDITEUR EN DIRECT VIA GITHUB API) -->
+    <!-- ========================================================= -->
+    <section id="tab-radars" class="tab-pane">
+      <div style="margin-bottom: 16px;">
+        <h2 style="font-size: 1.25rem; font-weight: 800;">🎛️ Configuration des Radars</h2>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Ajustez vos critères en direct. La sauvegarde met à jour votre fichier Cloud via l'API GitHub.</p>
+      </div>
+
+      <!-- Radar 1: Immobilier -->
+      <div class="radar-card">
+        <div class="radar-card-header">
+          <div class="radar-card-title">🏠 Radar Immobilier Saint-Martin</div>
+          <label class="switch-wrap">
+            <input type="checkbox" id="immoEnabled" class="switch-input" checked />
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Loyer Mensuel Maximum (€)</label>
+          <input type="number" id="immoMaxPrice" class="form-input" value="1200" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Zone / Code Postal</label>
+          <input type="text" id="immoLocation" class="form-input" value="97150 Saint-Martin" />
+        </div>
+
+        <div class="form-group">
+          <label class="switch-wrap" style="font-size: 0.85rem; font-weight: 600;">
+            <input type="checkbox" id="immoExcludeCommercial" class="switch-input" checked />
+            <span class="switch-slider"></span>
+            <span>Exclure baux commerciaux & bureaux</span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mots-clés d'exclusion (séparés par virgule)</label>
+          <input type="text" id="immoExcludeWords" class="form-input" value="saisonnière, touristique, vacances, nuitée, semaine, holiday" />
+        </div>
+      </div>
+
+      <!-- Radar 2: Vols -->
+      <div class="radar-card">
+        <div class="radar-card-header">
+          <div class="radar-card-title">✈️ Radar Vols & Erreurs de Prix</div>
+          <label class="switch-wrap">
+            <input type="checkbox" id="flightsEnabled" class="switch-input" checked />
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Prix Seuil Billet Aller/Retour (€)</label>
+          <input type="number" id="flightMaxPrice" class="form-input" value="450" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Destinations Favorites Surveillées</label>
+          <div class="tags-container" id="flightDestTags"></div>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <input type="text" id="newDestInput" class="form-input" placeholder="Ajouter destination (ex: SXM, Japon)..." style="flex: 1;" />
+            <button class="btn-add-tag" id="btnAddDest" type="button">+ Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radar 3: Trains -->
+      <div class="radar-card">
+        <div class="radar-card-header">
+          <div class="radar-card-title">🚄 Radar Trains TGV & Ouigo</div>
+          <label class="switch-wrap">
+            <input type="checkbox" id="trainsEnabled" class="switch-input" checked />
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Prix Seuil Billet Train (€)</label>
+          <input type="number" id="trainMaxPrice" class="form-input" value="25" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Trajets Prioritaires (séparés par virgule)</label>
+          <input type="text" id="trainRoutesInput" class="form-input" value="Nancy <-> Paris (20€), Paris <-> Lyon (19€), Paris <-> Marseille (25€)" />
+        </div>
+      </div>
+
+      <!-- Action Button: Save to GitHub Cloud -->
+      <button class="btn-cta-cloud" id="btnSaveConfigCloud">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+          <polyline points="17 21 17 13 7 13 7 21"></polyline>
+          <polyline points="7 3 7 8 15 8"></polyline>
+        </svg>
+        <span>Sauvegarder mes critères dans GitHub (Cloud)</span>
+      </button>
+
+      <!-- Action Button: Trigger Scan -->
+      <button class="btn-cta-scan" id="btnTriggerScanNow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        <span>⚡ Lancer un scan GitHub Actions maintenant</span>
+      </button>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TAB 4 : 🔔 RÉGLAGES (GITHUB API, NOTIFICATIONS, BANNIÈRE) -->
+    <!-- ========================================================= -->
+    <section id="tab-reglages" class="tab-pane">
+      
+      <!-- Custom Cyberpunk Banner Showcase -->
+      <div class="banner-showcase">
+        <img src="assets/banner.svg" alt="Nexus Radar Banner" />
+      </div>
+
+      <!-- GitHub API Integration -->
+      <div class="radar-card">
+        <div class="radar-card-title" style="margin-bottom: 12px;">🔑 Connexion GitHub API (Cloud)</div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">
+          Permet à l'application de mettre à jour <code>config.json</code> et de déclencher vos scans à distance sans jamais toucher au code.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label">Dépôt GitHub (ex: pseudo/sxm-immo-cloud)</label>
+          <input type="text" id="ghRepo" class="form-input" placeholder="VOTRE_PSEUDO/NOM_DU_DEPOT" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Token GitHub Personnel (PAT - Scope 'repo')</label>
+          <input type="password" id="ghToken" class="form-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+        </div>
+
+        <button class="btn-cta-cloud" id="btnSaveGitHubCreds" style="margin-top: 6px;">
+          Enregistrer mes accès GitHub sur ce téléphone
+        </button>
+      </div>
+
+      <!-- Notifications & Audio Test -->
+      <div class="radar-card">
+        <div class="radar-card-title" style="margin-bottom: 12px;">🔔 Notifications & Flux ntfy.sh</div>
+        
+        <div class="form-group">
+          <label class="form-label">Canal ntfy.sh</label>
+          <input type="text" id="ntfyTopicInput" class="form-input" value="sxm-immo-alert-97150-x9q4m2" />
+        </div>
+
+        <button class="btn-cta-cloud" id="btnTestChime" style="background: linear-gradient(135deg, #10b981, #0284c7); margin-bottom: 10px;">
+          🔊 Tester le son & la notification instantanée
+        </button>
+
+        <a id="btnOpenNtfyApp" href="https://ntfy.sh/sxm-immo-alert-97150-x9q4m2" target="_blank" rel="noopener" class="btn-cta-cloud" style="background: rgba(255,255,255,0.08); color: #fff; text-decoration: none; border: 1px solid var(--card-border);">
+          📱 Ouvrir dans l'application ntfy
+        </a>
+      </div>
+
+    </section>
 
   </main>
 
-  <!-- Toast -->
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-tab="tab-pepites">
+      <span class="nav-icon">🔥</span>
+      <span>Pépites</span>
+      <span class="nav-badge" id="navCountBadge">0</span>
+    </div>
+    <div class="nav-item" data-tab="tab-favoris">
+      <span class="nav-icon">⭐</span>
+      <span>Favoris</span>
+      <span class="nav-badge" id="navFavBadge" style="display: none;">0</span>
+    </div>
+    <div class="nav-item" data-tab="tab-radars">
+      <span class="nav-icon">🎛️</span>
+      <span>Radars</span>
+    </div>
+    <div class="nav-item" data-tab="tab-reglages">
+      <span class="nav-icon">🔔</span>
+      <span>Réglages</span>
+    </div>
+  </nav>
+
+  <!-- Toast Element -->
   <div class="toast" id="toast">
-    <span>Lien copié dans le presse-papier !</span>
+    <span id="toastMsg">Action effectuée</span>
   </div>
 
   <script>
-    // State
-    let allAnnonces = [];
-    let ntfyTopic = 'sxm-immo-alert-97150-x9q4m2';
-    let currentFilter = {
+    // Global State
+    let allItems = [];
+    let favorites = JSON.parse(localStorage.getItem('nexus_favorites') || '[]');
+    let currentConfig = null;
+    let sseSource = null;
+    let unreadCount = 0;
+
+    let filters = {
+      category: 'ALL',
       search: '',
-      maxPrice: 99999,
-      sector: 'ALL',
+      maxBudget: 99999,
       sort: 'recent'
     };
 
-    const fallbackImg = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' fill='%231e293b'><rect width='600' height='400'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' fill='%2364748b' font-size='32' font-family='sans-serif'>🌴 Photo à venir</text></svg>";
+    const FALLBACK_IMGS = {
+      immo: "https://keldom.blob.core.windows.net/domimmo/an/photos/400/261181569592123.jpg",
+      flight: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600",
+      train: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600"
+    };
 
-    // PWA Service Worker Registration
+    // PWA Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW failed:', err));
+        navigator.serviceWorker.register('./sw.js').catch(console.warn);
       });
     }
 
-    // Load Config and Annonces
-    async function init() {
+    // Audio Synthesizer (Web Audio API)
+    function playChime() {
       try {
-        const cfgRes = await fetch('./config.json?t=' + Date.now()).catch(() => null);
-        if (cfgRes && cfgRes.ok) {
-          const cfg = await cfgRes.json();
-          if (cfg.ntfy_topic) {
-            ntfyTopic = cfg.ntfy_topic;
-            document.getElementById('notifLink').href = `https://ntfy.sh/${ntfyTopic}`;
-          }
-        }
-      } catch (e) {
-        console.warn('Could not load config.json', e);
-      }
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
 
-      await loadData();
-      setupEventListeners();
+        const playTone = (freq, start, duration) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, start);
+          gain.gain.setValueAtTime(0.2, start);
+          gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(start);
+          osc.stop(start + duration);
+        };
+
+        // Cyberpunk Arpeggio Chime
+        playTone(523.25, now, 0.15);         // C5
+        playTone(659.25, now + 0.1, 0.15);   // E5
+        playTone(783.99, now + 0.2, 0.35);   // G5
+        playTone(1046.50, now + 0.3, 0.5);   // C6
+      } catch (e) {
+        console.warn('Audio chime failed:', e);
+      }
     }
 
+    // Initialize Application
+    async function init() {
+      setupNavigation();
+      loadStoredCredentials();
+      await loadConfig();
+      await loadData();
+      setupEventListeners();
+      connectSSE();
+    }
+
+    // Tab Navigation
+    function setupNavigation() {
+      document.querySelectorAll('.bottom-nav .nav-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.bottom-nav .nav-item').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const tabId = btn.dataset.tab;
+          document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+          document.getElementById(tabId).classList.add('active');
+
+          if (tabId === 'tab-pepites') {
+            unreadCount = 0;
+            updateUnreadBadge();
+          } else if (tabId === 'tab-favoris') {
+            renderFavorites();
+          }
+        });
+      });
+    }
+
+    // Load config.json
+    async function loadConfig() {
+      try {
+        const res = await fetch('./config.json?t=' + Date.now());
+        if (res.ok) {
+          currentConfig = await res.json();
+          populateConfigForm(currentConfig);
+        }
+      } catch (e) {
+        console.warn('Erreur chargement config.json:', e);
+      }
+    }
+
+    // Populate Config Form (Tab 3)
+    function populateConfigForm(cfg) {
+      if (!cfg || !cfg.radars) return;
+
+      // Immo
+      const immo = cfg.radars.immo || {};
+      document.getElementById('immoEnabled').checked = immo.enabled !== false;
+      document.getElementById('immoMaxPrice').value = immo.max_price || 1200;
+      document.getElementById('immoLocation').value = `${immo.location_code || '97150'} ${immo.location_name || 'Saint-Martin'}`;
+      document.getElementById('immoExcludeCommercial').checked = immo.exclude_commercial !== false;
+      document.getElementById('immoExcludeWords').value = (immo.exclude_keywords || []).join(', ');
+
+      // Flights
+      const fl = cfg.radars.flights || {};
+      document.getElementById('flightsEnabled').checked = fl.enabled !== false;
+      document.getElementById('flightMaxPrice').value = fl.max_price || 450;
+      renderFlightDestTags(fl.target_destinations || ['SXM', 'Caraïbes', 'Tokyo']);
+
+      // Trains
+      const tr = cfg.radars.trains || {};
+      document.getElementById('trainsEnabled').checked = tr.enabled !== false;
+      document.getElementById('trainMaxPrice').value = tr.max_price || 25;
+
+      // Ntfy
+      if (cfg.ntfy_topic) {
+        document.getElementById('ntfyTopicInput').value = cfg.ntfy_topic;
+        document.getElementById('btnOpenNtfyApp').href = `https://ntfy.sh/${cfg.ntfy_topic}`;
+      }
+    }
+
+    function renderFlightDestTags(dests) {
+      const container = document.getElementById('flightDestTags');
+      container.innerHTML = dests.map(d => `
+        <span class="tag-chip">
+          <span>${escapeHtml(d)}</span>
+          <span class="tag-chip-remove" onclick="removeDestTag('${escapeJs(d)}')">✕</span>
+        </span>
+      `).join('');
+    }
+
+    function removeDestTag(tag) {
+      if (!currentConfig || !currentConfig.radars.flights) return;
+      const list = currentConfig.radars.flights.target_destinations || [];
+      currentConfig.radars.flights.target_destinations = list.filter(x => x.toLowerCase() !== tag.toLowerCase());
+      renderFlightDestTags(currentConfig.radars.flights.target_destinations);
+    }
+
+    // Load Data
     async function loadData() {
       const refreshBtn = document.getElementById('refreshBtn');
       refreshBtn.classList.add('spinning');
 
       try {
         const res = await fetch('./data/annonces.json?t=' + Date.now());
-        if (!res.ok) throw new Error('Impossible de charger data/annonces.json');
-        allAnnonces = await res.json();
-        populateSectors();
-        updateStats();
+        if (!res.ok) throw new Error('Impossible de charger annonces.json');
+        allItems = await res.json();
+        updateHUD();
         render();
-      } catch (err) {
-        console.error('Erreur chargement données:', err);
-        document.getElementById('listingsContainer').innerHTML = `
-          <div class="empty-state">
-            <div class="empty-icon">⚠️</div>
-            <div class="empty-title">Erreur de chargement</div>
-            <div class="empty-sub">Vérifiez que le fichier data/annonces.json est accessible.</div>
-          </div>
-        `;
+      } catch (e) {
+        console.error('Erreur chargement données:', e);
       } finally {
-        setTimeout(() => refreshBtn.classList.remove('spinning'), 600);
+        setTimeout(() => refreshBtn.classList.remove('spinning'), 500);
       }
     }
 
-    function populateSectors() {
-      const select = document.getElementById('sectorSelect');
-      const sectors = new Set();
-      allAnnonces.forEach(a => {
-        if (a.location) {
-          const clean = a.location.replace(' (Saint-Martin)', '').trim();
-          sectors.add(clean);
-        }
-      });
-
-      const currentVal = select.value;
-      select.innerHTML = '<option value="ALL">📍 Tous les secteurs</option>';
-      Array.from(sectors).sort().forEach(sec => {
-        const opt = document.createElement('option');
-        opt.value = sec;
-        opt.textContent = `📍 ${sec}`;
-        select.appendChild(opt);
-      });
-      select.value = currentVal;
-    }
-
-    function updateStats() {
-      document.getElementById('totalCount').textContent = allAnnonces.length;
-      if (allAnnonces.length > 0 && allAnnonces[0].date_detected) {
-        document.getElementById('lastScanTime').textContent = formatRelativeTime(allAnnonces[0].date_detected);
+    function updateHUD() {
+      document.getElementById('hudCount').textContent = allItems.length;
+      document.getElementById('navCountBadge').textContent = allItems.length;
+      if (allItems.length > 0 && allItems[0].date_detected) {
+        document.getElementById('hudLastScan').textContent = formatRelative(allItems[0].date_detected);
       }
     }
 
-    function formatRelativeTime(dateStr) {
+    function formatRelative(dateStr) {
       if (!dateStr) return 'Récemment';
-      const d = new Date(dateStr);
-      const diffMs = Date.now() - d.getTime();
+      const diffMs = Date.now() - new Date(dateStr).getTime();
       const diffMin = Math.round(diffMs / 60000);
       if (diffMin < 1) return "À l'instant";
-      if (diffMin < 60) return `Il y a ${diffMin} min`;
-      const diffHours = Math.round(diffMin / 60);
-      if (diffHours < 24) return `Il y a ${diffHours} h`;
-      const diffDays = Math.round(diffHours / 24);
-      return `Il y a ${diffDays} j`;
+      if (diffMin < 60) return `${diffMin} min`;
+      const diffH = Math.round(diffMin / 60);
+      if (diffH < 24) return `${diffH} h`;
+      return `${Math.round(diffH / 24)} j`;
     }
 
+    // Render Items Feed
     function render() {
-      const container = document.getElementById('listingsContainer');
+      const container = document.getElementById('itemsContainer');
       const emptyState = document.getElementById('emptyState');
 
-      let filtered = allAnnonces.filter(a => {
-        // Price filter
-        if (a.price && a.price > currentFilter.maxPrice) return false;
+      let list = allItems.filter(item => {
+        // Category filter
+        if (filters.category !== 'ALL' && item.category !== filters.category) return false;
 
-        // Sector filter
-        if (currentFilter.sector !== 'ALL') {
-          if (!a.location || !a.location.includes(currentFilter.sector)) return false;
-        }
+        // Budget filter
+        if (item.price && item.price > filters.maxBudget) return false;
 
         // Search text
-        if (currentFilter.search) {
-          const q = currentFilter.search.toLowerCase();
-          const matchTitle = (a.title || '').toLowerCase().includes(q);
-          const matchDesc = (a.description || '').toLowerCase().includes(q);
-          const matchLoc = (a.location || '').toLowerCase().includes(q);
-          const matchAgency = (a.agency || '').toLowerCase().includes(q);
-          if (!matchTitle && !matchDesc && !matchLoc && !matchAgency) return false;
+        if (filters.search) {
+          const q = filters.search.toLowerCase();
+          const matchTitle = (item.title || '').toLowerCase().includes(q);
+          const matchDesc = (item.description || '').toLowerCase().includes(q);
+          const matchLoc = (item.location || '').toLowerCase().includes(q);
+          const matchAg = (item.agency || '').toLowerCase().includes(q);
+          if (!matchTitle && !matchDesc && !matchLoc && !matchAg) return false;
         }
 
         return true;
       });
 
-      // Sorting
-      if (currentFilter.sort === 'price_asc') {
-        filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
-      } else if (currentFilter.sort === 'price_desc') {
-        filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+      // Sort
+      if (filters.sort === 'price_asc') {
+        list.sort((a, b) => (a.price || 0) - (b.price || 0));
+      } else if (filters.sort === 'price_desc') {
+        list.sort((a, b) => (b.price || 0) - (a.price || 0));
       } else {
-        // Most recent
-        filtered.sort((a, b) => new Date(b.date_detected || 0) - new Date(a.date_detected || 0));
+        list.sort((a, b) => new Date(b.date_detected || 0) - new Date(a.date_detected || 0));
       }
 
-      if (filtered.length === 0) {
+      if (list.length === 0) {
         container.innerHTML = '';
         emptyState.style.display = 'block';
         return;
       }
 
       emptyState.style.display = 'none';
-      container.innerHTML = filtered.map(a => `
-        <article class="card">
+      container.innerHTML = list.map(item => createCardHTML(item)).join('');
+    }
+
+    function createCardHTML(item) {
+      const isFav = favorites.some(f => f.id === item.id);
+      const catClass = item.category || 'immo';
+      const catBadge = item.badge || '🎯 Alerte';
+      const fallback = FALLBACK_IMGS[item.category] || FALLBACK_IMGS.immo;
+
+      return `
+        <article class="item-card">
           <div class="card-img-wrap">
-            <img class="card-img" src="${a.image_url || fallbackImg}" alt="${escapeHtml(a.title)}" loading="lazy" onerror="this.src='${fallbackImg}'" />
-            <div class="badge-price">${a.price ? a.price + ' € / mois' : 'Prix n/c'}</div>
-            <div class="badge-agency">${escapeHtml(a.agency || 'SXM')}</div>
+            <img class="card-img" src="${item.image_url || fallback}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='${fallback}'" />
+            <div class="badge-category ${catClass}">${catBadge}</div>
+            <div class="badge-price">${escapeHtml(item.price_str || (item.price + ' €'))}</div>
+            <button class="btn-fav ${isFav ? 'active' : ''}" onclick="toggleFavorite('${escapeJs(item.id)}')" title="Favori">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
           </div>
           <div class="card-body">
-            <div class="card-location">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <div class="card-loc">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              <span>${escapeHtml(a.location || 'Saint-Martin (97150)')}</span>
+              <span>${escapeHtml(item.location || 'Localisation détectée')}</span>
             </div>
-            <h2 class="card-title">${escapeHtml(a.title)}</h2>
-            <div class="card-meta">
-              ${a.surface ? `<span class="meta-tag">📐 ${escapeHtml(a.surface)}</span>` : ''}
-              ${a.rooms ? `<span class="meta-tag">🚪 ${a.rooms} pièce(s)</span>` : ''}
-              <span class="meta-tag">📅 ${formatRelativeTime(a.date_detected)}</span>
-            </div>
-            ${a.description ? `<p class="card-desc">${escapeHtml(a.description)}</p>` : ''}
+            <h3 class="card-title">${escapeHtml(item.title)}</h3>
+            ${item.description ? `<p class="card-desc">${escapeHtml(item.description)}</p>` : ''}
             <div class="card-footer">
-              <span class="card-time">Détecté le ${new Date(a.date_detected).toLocaleDateString('fr-FR')}</span>
+              <span class="card-agency">${escapeHtml(item.agency || 'Source')} • ${formatRelative(item.date_detected)}</span>
               <div class="card-actions">
-                <button class="btn-share" onclick="shareAd('${escapeJs(a.title)}', '${escapeJs(a.url)}')" title="Partager">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="18" cy="5" r="3"></circle>
-                    <circle cx="6" cy="12" r="3"></circle>
-                    <circle cx="18" cy="19" r="3"></circle>
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                <button class="btn-card-action" onclick="shareDeal('${escapeJs(item.title)}', '${escapeJs(item.url)}')" title="Partager">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                   </svg>
                 </button>
-                <a href="${a.url}" target="_blank" rel="noopener" class="btn-view">
+                <a href="${item.url}" target="_blank" rel="noopener" class="btn-view-deal">
                   Voir ↗
                 </a>
               </div>
             </div>
           </div>
         </article>
-      `).join('');
+      `;
     }
 
+    // Favorites Logic
+    function toggleFavorite(id) {
+      const idx = favorites.findIndex(f => f.id === id);
+      if (idx >= 0) {
+        favorites.splice(idx, 1);
+        showToast('Retiré des favoris');
+      } else {
+        const item = allItems.find(x => x.id === id);
+        if (item) {
+          favorites.push(item);
+          showToast('⭐ Ajouté aux favoris !');
+        }
+      }
+      localStorage.setItem('nexus_favorites', JSON.stringify(favorites));
+      updateFavBadge();
+      render();
+      if (document.getElementById('tab-favoris').classList.contains('active')) {
+        renderFavorites();
+      }
+    }
+
+    function updateFavBadge() {
+      const b = document.getElementById('navFavBadge');
+      b.textContent = favorites.length;
+      b.style.display = favorites.length > 0 ? 'flex' : 'none';
+    }
+
+    function renderFavorites() {
+      const c = document.getElementById('favoritesContainer');
+      const empty = document.getElementById('emptyFavorites');
+      if (favorites.length === 0) {
+        c.innerHTML = '';
+        empty.style.display = 'block';
+      } else {
+        empty.style.display = 'none';
+        c.innerHTML = favorites.map(item => createCardHTML(item)).join('');
+      }
+    }
+
+    // Live SSE (ntfy.sh) Integration
+    function connectSSE() {
+      const topic = (currentConfig && currentConfig.ntfy_topic) || 'sxm-immo-alert-97150-x9q4m2';
+      if (sseSource) sseSource.close();
+
+      try {
+        sseSource = new EventSource(`https://ntfy.sh/${topic}/sse`);
+        sseSource.onmessage = (event) => {
+          const data = JSON.parse(event.data);
+          if (data.event === 'message') {
+            onNewPushNotification(data);
+          }
+        };
+        sseSource.onerror = () => {
+          document.getElementById('headerLiveStatus').textContent = 'Veille Active';
+        };
+        sseSource.onopen = () => {
+          document.getElementById('headerLiveStatus').textContent = 'Live SSE Connecté';
+        };
+      } catch (e) {
+        console.warn('SSE connection failed:', e);
+      }
+    }
+
+    function onNewPushNotification(msg) {
+      playChime();
+      if (navigator.vibrate) navigator.vibrate([150, 80, 150]);
+
+      unreadCount++;
+      updateUnreadBadge();
+
+      showToast(`🔔 ${msg.title || 'Nouvelle alerte détectée !'}`);
+
+      // Web Push notification if allowed
+      if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification(msg.title || '⚡ Nexus Radar', {
+          body: msg.message || 'Nouvelle pépite détectée.',
+          icon: './assets/icon.svg',
+          badge: './assets/icon.svg'
+        });
+      }
+
+      loadData();
+    }
+
+    function updateUnreadBadge() {
+      const b = document.getElementById('unreadBadge');
+      if (unreadCount > 0) {
+        b.textContent = unreadCount;
+        b.style.display = 'flex';
+      } else {
+        b.style.display = 'none';
+      }
+    }
+
+    // GitHub REST API: Save Config in the Cloud
+    async function saveConfigToGitHub() {
+      const token = localStorage.getItem('nexus_gh_token');
+      const repo = localStorage.getItem('nexus_gh_repo');
+
+      if (!token || !repo) {
+        showToast('⚠️ Configurez votre Token GitHub dans "🔔 Réglages" d\'abord !');
+        document.querySelector('.bottom-nav [data-tab="tab-reglages"]').click();
+        return;
+      }
+
+      const saveBtn = document.getElementById('btnSaveConfigCloud');
+      const origText = saveBtn.innerHTML;
+      saveBtn.innerHTML = '<span>⏳ Enregistrement dans GitHub...</span>';
+      saveBtn.disabled = true;
+
+      try {
+        // Collect updated values from form
+        const updatedConfig = {
+          app_name: "Nexus Radar",
+          ntfy_topic: document.getElementById('ntfyTopicInput').value.trim() || "sxm-immo-alert-97150-x9q4m2",
+          github: {
+            owner: repo.split('/')[0] || "",
+            repo: repo.split('/')[1] || "",
+            branch: "main",
+            workflow_file: "scan.yml"
+          },
+          radars: {
+            immo: {
+              enabled: document.getElementById('immoEnabled').checked,
+              title: "Immobilier Saint-Martin & Îles",
+              max_price: parseFloat(document.getElementById('immoMaxPrice').value) || 1200,
+              location_code: "97150",
+              location_name: "Saint-Martin",
+              exclude_commercial: document.getElementById('immoExcludeCommercial').checked,
+              exclude_keywords: document.getElementById('immoExcludeWords').value.split(',').map(s => s.trim()).filter(Boolean),
+              sources: { domimmo: true, emotion: true, four_u: true, leboncoin: true }
+            },
+            flights: {
+              enabled: document.getElementById('flightsEnabled').checked,
+              title: "Vols & Erreurs de Prix",
+              max_price: parseFloat(document.getElementById('flightMaxPrice').value) || 450,
+              target_destinations: (currentConfig?.radars?.flights?.target_destinations) || ["SXM", "Caraïbes", "Tokyo"],
+              sources: { dealabs_flights: true, fly4free: true, secretflying: true }
+            },
+            trains: {
+              enabled: document.getElementById('trainsEnabled').checked,
+              title: "Trains TGV & Ouigo Prix Cassés",
+              max_price: parseFloat(document.getElementById('trainMaxPrice').value) || 25,
+              sources: { dealabs_trains: true, sncf_promos: true }
+            }
+          }
+        };
+
+        // 1. Get current config.json SHA from GitHub
+        const getUrl = `https://api.github.com/repos/${repo}/contents/config.json`;
+        const getRes = await fetch(getUrl, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+
+        if (!getRes.ok) {
+          throw new Error(`Dépôt introuvable ou Token invalide (${getRes.status}). Vérifiez vos réglages.`);
+        }
+
+        const getData = await getRes.json();
+        const currentSha = getData.sha;
+
+        // 2. PUT updated config.json
+        const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(updatedConfig, null, 2))));
+        const putRes = await fetch(getUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: "chore: mise à jour des critères radar depuis Nexus Hub [skip ci]",
+            content: contentBase64,
+            sha: currentSha
+          })
+        });
+
+        if (!putRes.ok) {
+          const errData = await putRes.json().catch(() => ({}));
+          throw new Error(errData.message || 'Échec de la sauvegarde GitHub.');
+        }
+
+        currentConfig = updatedConfig;
+        showToast('✅ Critères sauvegardés dans GitHub Cloud !');
+        playChime();
+      } catch (err) {
+        console.error(err);
+        showToast(`❌ Erreur : ${err.message}`);
+      } finally {
+        saveBtn.innerHTML = origText;
+        saveBtn.disabled = false;
+      }
+    }
+
+    // Trigger GitHub Actions Workflow Dispatch
+    async function triggerScanNow() {
+      const token = localStorage.getItem('nexus_gh_token');
+      const repo = localStorage.getItem('nexus_gh_repo');
+
+      if (!token || !repo) {
+        showToast('⚠️ Entrez votre Token GitHub dans "🔔 Réglages" d\'abord !');
+        document.querySelector('.bottom-nav [data-tab="tab-reglages"]').click();
+        return;
+      }
+
+      const scanBtn = document.getElementById('btnTriggerScanNow');
+      const origText = scanBtn.innerHTML;
+      scanBtn.innerHTML = '<span>⚡ Lancement du workflow...</span>';
+      scanBtn.disabled = true;
+
+      try {
+        const url = `https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`;
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ ref: 'main' })
+        });
+
+        if (res.status === 204 || res.ok) {
+          showToast('🚀 Scan GitHub Actions déclenché avec succès !');
+          playChime();
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.message || `Code erreur ${res.status}`);
+        }
+      } catch (err) {
+        console.error(err);
+        showToast(`❌ Échec déclenchement : ${err.message}`);
+      } finally {
+        scanBtn.innerHTML = origText;
+        scanBtn.disabled = false;
+      }
+    }
+
+    // Stored Credentials Management
+    function loadStoredCredentials() {
+      const t = localStorage.getItem('nexus_gh_token');
+      const r = localStorage.getItem('nexus_gh_repo');
+      if (t) document.getElementById('ghToken').value = t;
+      if (r) document.getElementById('ghRepo').value = r;
+      updateFavBadge();
+    }
+
+    function saveCredentials() {
+      const t = document.getElementById('ghToken').value.trim();
+      const r = document.getElementById('ghRepo').value.trim();
+      if (!t || !r) {
+        showToast('Veuillez remplir le dépôt et le Token');
+        return;
+      }
+      localStorage.setItem('nexus_gh_token', t);
+      localStorage.setItem('nexus_gh_repo', r);
+      showToast('🔑 Accès GitHub enregistrés sur ce téléphone !');
+      playChime();
+    }
+
+    // Event Listeners
     function setupEventListeners() {
+      // Refresh
+      document.getElementById('refreshBtn').addEventListener('click', loadData);
+
       // Search
       document.getElementById('searchInput').addEventListener('input', (e) => {
-        currentFilter.search = e.target.value.trim();
+        filters.search = e.target.value.trim();
         render();
       });
 
-      // Budget pills
-      document.querySelectorAll('#budgetPills .pill-btn').forEach(btn => {
+      // Category Pills
+      document.querySelectorAll('#categoryPills .cat-pill').forEach(btn => {
         btn.addEventListener('click', () => {
-          document.querySelectorAll('#budgetPills .pill-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('#categoryPills .cat-pill').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          currentFilter.maxPrice = parseFloat(btn.dataset.max);
+          filters.category = btn.dataset.cat;
           render();
         });
       });
 
-      // Sector select
-      document.getElementById('sectorSelect').addEventListener('change', (e) => {
-        currentFilter.sector = e.target.value;
+      // Budget Filter
+      document.getElementById('budgetFilterSelect').addEventListener('change', (e) => {
+        filters.maxBudget = parseFloat(e.target.value);
         render();
       });
 
-      // Sort select
+      // Sort Filter
       document.getElementById('sortSelect').addEventListener('change', (e) => {
-        currentFilter.sort = e.target.value;
+        filters.sort = e.target.value;
         render();
       });
 
-      // Refresh button
-      document.getElementById('refreshBtn').addEventListener('click', loadData);
+      // Add Destination Tag
+      document.getElementById('btnAddDest').addEventListener('click', () => {
+        const inp = document.getElementById('newDestInput');
+        const val = inp.value.trim();
+        if (!val) return;
+        if (!currentConfig) currentConfig = { radars: { flights: { target_destinations: [] } } };
+        if (!currentConfig.radars.flights.target_destinations) currentConfig.radars.flights.target_destinations = [];
+        currentConfig.radars.flights.target_destinations.push(val);
+        renderFlightDestTags(currentConfig.radars.flights.target_destinations);
+        inp.value = '';
+      });
+
+      // Save Config Cloud Button
+      document.getElementById('btnSaveConfigCloud').addEventListener('click', saveConfigToGitHub);
+
+      // Trigger Scan Button
+      document.getElementById('btnTriggerScanNow').addEventListener('click', triggerScanNow);
+
+      // Save GitHub Credentials
+      document.getElementById('btnSaveGitHubCreds').addEventListener('click', saveCredentials);
+
+      // Test Chime & Notification
+      document.getElementById('btnTestChime').addEventListener('click', () => {
+        if ('Notification' in window && Notification.permission !== 'granted') {
+          Notification.requestPermission();
+        }
+        playChime();
+        if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+        showToast('🔔 Chime & Vibration testés avec succès !');
+      });
     }
 
-    function shareAd(title, url) {
+    function shareDeal(title, url) {
       if (navigator.share) {
-        navigator.share({
-          title: `🏠 Location SXM: ${title}`,
-          text: `Découvre cette annonce de location à Saint-Martin : ${title}`,
-          url: url
-        }).catch(() => {});
+        navigator.share({ title: `🎯 Pépite Nexus: ${title}`, url: url }).catch(() => {});
       } else {
         navigator.clipboard.writeText(url).then(() => {
           showToast('Lien copié dans le presse-papier !');
@@ -885,19 +1768,14 @@
 
     function showToast(msg) {
       const toast = document.getElementById('toast');
-      toast.querySelector('span').textContent = msg;
+      document.getElementById('toastMsg').textContent = msg;
       toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2500);
+      setTimeout(() => toast.classList.remove('show'), 2600);
     }
 
     function escapeHtml(str) {
       if (!str) return '';
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
     function escapeJs(str) {

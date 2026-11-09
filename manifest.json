@@ -1,20 +1,15 @@
 {
-  "name": "SXM Immo Veille",
-  "short_name": "SXM Immo",
-  "description": "Veille automatisée des locations longue durée à Saint-Martin (97150)",
+  "name": "Nexus Radar - Hub Multi-Pépites",
+  "short_name": "Nexus Radar",
+  "description": "Hub Personnel Multi-Radars : Immobilier (Saint-Martin), Vols Flash & Trains TGV",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0b0f19",
-  "theme_color": "#0ea5e9",
+  "background_color": "#070a13",
+  "theme_color": "#00f2fe",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230ea5e9'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-size='50'>🌴</text></svg>",
-      "sizes": "192x192",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230ea5e9'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-size='50'>🌴</text></svg>",
-      "sizes": "512x512",
+      "src": "./assets/icon.svg",
+      "sizes": "192x192 512x512",
       "type": "image/svg+xml"
     }
   ]
