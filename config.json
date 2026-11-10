@@ -30,22 +30,6 @@
         "vacation",
         "airbnb"
       ],
-      "commercial_keywords": [
-        "bail commercial",
-        "local commercial",
-        "locaux commerciaux",
-        "local professionnel",
-        "locaux professionnels",
-        "bureau",
-        "bureaux",
-        "entrepôt",
-        "entrepot",
-        "hangar",
-        "garage",
-        "stockage",
-        "parking",
-        "fonds de commerce"
-      ],
       "sources": {
         "domimmo": true,
         "emotion": true,
@@ -71,20 +55,6 @@
         "Bangkok",
         "New York"
       ],
-      "routes": [
-        {
-          "from": "PAR",
-          "to": "SXM",
-          "name": "Paris <-> Saint-Martin (SXM)",
-          "max_price": 490
-        },
-        {
-          "from": "PAR",
-          "to": "PTP",
-          "name": "Paris <-> Guadeloupe (PTP)",
-          "max_price": 350
-        }
-      ],
       "sources": {
         "dealabs_flights": true,
         "fly4free": true,
@@ -95,26 +65,6 @@
       "enabled": true,
       "title": "Trains TGV & Ouigo Prix Cassés",
       "max_price": 25,
-      "routes": [
-        {
-          "from": "Nancy",
-          "to": "Paris",
-          "name": "Nancy <-> Paris",
-          "max_price": 20
-        },
-        {
-          "from": "Paris",
-          "to": "Lyon",
-          "name": "Paris <-> Lyon",
-          "max_price": 19
-        },
-        {
-          "from": "Paris",
-          "to": "Marseille",
-          "name": "Paris <-> Marseille",
-          "max_price": 25
-        }
-      ],
       "sources": {
         "dealabs_trains": true,
         "sncf_promos": true
