@@ -1,116 +1,488 @@
 [
   {
-    "id": "immo_domimmo_261029413904681",
+    "id": "immo_nancy_loc_t2_stanislas",
     "universe": "immo",
     "category": "immo",
+    "transaction_type": "location",
     "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo SXM",
-    "title": "T2 duplex à louer sur Concordia",
-    "price": 950,
-    "price_str": "950 € / mois",
-    "location": "Concordia (Saint-Martin)",
-    "lat": 18.0612,
-    "lon": -63.0855,
-    "agency": "ALLIANCE Immobilière SXM",
+    "badge": "🏠 Location • Grand Est",
+    "title": "T2 meublé avec terrasse privative - Nancy Centre Stanislas",
+    "price": 620,
+    "price_str": "620 € / mois CC",
+    "location": "Nancy Centre (54000)",
+    "city": "Nancy",
+    "postal_code": "54000",
+    "lat": 48.6936,
+    "lon": 6.1832,
+    "agency": "Cabinet Immobilier Stanislas (Vérifié)",
     "is_verified_agency": true,
-    "url": "https://www.domimmo.com/saint-martin/immobilier/261029413904681",
-    "image_url": "https://keldom.blob.core.windows.net/domimmo/an/photos/400/261181569592123.jpg",
-    "description": "A louer du 8 novembre 2026 au 30 avril 2027, appartement duplex meublé et équipé, box internet TV incluse.\r\n\r\n Loyer 950 €/mois charges comprises avec internet et TV, eau et EDF à la charge du locataire.\r\nHonoraires charge locataire: 484 €TTC dont honoraires d'état des lieux: 132 €TTC | Dépôt de garantie: 950 €",
-    "surface": "44 m²",
-    "surface_val": 44.0,
-    "rooms": 2,
+    "url": "https://www.seloger.com/annonces/locations/appartement/nancy-54/centre/219481023.htm",
+    "image_url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800"
+    ],
+    "description": "À 2 pas de la Place Stanislas, superbe appartement T2 meublé de 48m² entièrement refait à neuf. Séjour chaleureux avec parquet en chêne, cuisine ouverte aménagée et équipée, terrasse privative de 12m² au calme absolu sur cour intérieure. DPE C, double vitrage.",
+    "surface": "48 m²",
+    "surface_val": 48.0,
+    "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "1er étage sur cour",
+    "dpe": "C",
+    "charges": "45 € / mois",
     "amenities": [
       "meuble",
+      "terrasse",
       "parking"
     ],
-    "price_per_m2": 21.6,
-    "market_avg_m2": 23.5,
-    "market_delta_pct": -8.1,
-    "market_badge": "🟢 Bon prix (21.6€/m² vs 23.5€)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
+    "price_per_m2": 12.9,
+    "market_avg_m2": 13.8,
+    "market_delta_pct": -6.5,
+    "market_badge": "🟢 Bon prix (12.9€/m² vs 13.8€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "price_history": {
-      "current": 950,
-      "avg_7d": 1080,
+      "current": 620,
+      "avg_7d": 1092,
       "avg_30d": 1150,
-      "min_historic": 900,
+      "min_historic": 943,
       "sparkline": [
         1207,
         1150,
-        1080,
-        950
+        1092,
+        620
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-46% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+    }
+  },
+  {
+    "id": "immo_nancy_achat_t3_vieille_ville",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "achat",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏷️ Achat • Nancy",
+    "title": "Bel appartement T3 rénové de caractère - Nancy Vieille Ville",
+    "price": 168000,
+    "price_str": "168 000 € FAI",
+    "location": "Nancy Vieille Ville (54000)",
+    "city": "Nancy",
+    "postal_code": "54000",
+    "lat": 48.6972,
+    "lon": 6.1788,
+    "agency": "Immobilière Lorraine & Patrimoine",
+    "is_verified_agency": true,
+    "url": "https://www.leboncoin.fr/recherche?category=9&locations=Nancy_54000&real_estate_type=2&price=min-180000",
+    "image_url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800"
+    ],
+    "description": "Coup de cœur au cœur historique de Nancy ! Appartement T3 de 65m² alliant le charme de l'ancien (cheminées en marbre, belle hauteur sous plafond, moulures) et le confort contemporain. Salon lumineux, 2 grandes chambres, salle de bains moderne avec douche à l'italienne. Cave saine.",
+    "surface": "65 m²",
+    "surface_val": 65.0,
+    "rooms": "T3",
+    "bedrooms": 2,
+    "floor": "2ème étage",
+    "dpe": "D",
+    "charges": "80 € / mois",
+    "amenities": [
+      "parking"
+    ],
+    "price_per_m2": 2585,
+    "market_avg_m2": 2850,
+    "market_delta_pct": -9.3,
+    "market_badge": "🟢 -9% sous le marché (2 585€/m² vs 2 850€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "price_history": {
+      "current": 168000,
+      "avg_7d": 209000,
+      "avg_30d": 220000,
+      "min_historic": 180400,
+      "sparkline": [
+        231000,
+        220000,
+        209000,
+        168000
       ],
       "urgency_level": "good",
-      "urgency_badge": "🟢 BON PRIX (-17% vs moyenne)",
+      "urgency_badge": "🟢 BON PRIX (-23% vs moyenne)",
       "urgency_desc": "Offre sous le prix médian habituel."
     }
   },
   {
-    "id": "immo_domimmo_261017419567583",
+    "id": "immo_paris_loc_t2_bastille",
     "universe": "immo",
     "category": "immo",
+    "transaction_type": "location",
     "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo SXM",
-    "title": "STUDIO A LOUER MARIGOT CENTRE",
-    "price": 990,
-    "price_str": "990 € / mois",
-    "location": "Marigot (Saint-Martin)",
-    "lat": 18.0683,
-    "lon": -63.082,
-    "agency": "AGENCE TROPIC IMMO - SAS LODY",
+    "badge": "🏠 Location • Paris 11e",
+    "title": "T2 contemporain avec balconnet filant - Paris 11e Bastille / Roquette",
+    "price": 1180,
+    "price_str": "1 180 € / mois CC",
+    "location": "Paris 11e (75011)",
+    "city": "Paris",
+    "postal_code": "75011",
+    "lat": 48.8543,
+    "lon": 2.3732,
+    "agency": "Parisian Living Real Estate",
     "is_verified_agency": true,
-    "url": "https://www.domimmo.com/saint-martin/immobilier/261017419567583",
-    "image_url": "https://keldom.blob.core.windows.net/domimmo/an/photos/400/261182040530927.jpg",
-    "description": "À louer en plein centre-ville de Marigot, agréable studio entièrement meublé comprenant une grande pièce à vivre lumineuse, une cuisine aménagée et équipée ainsi qu'un spacieux balcon filant.\r\nLe logement conviendra parfaitement à une personne arrivant sur l'île.\r\n Pour plus d'informations ou organiser une visite, contactez-nous.",
-    "surface": "30 m²",
-    "surface_val": 30.0,
-    "rooms": 1,
+    "url": "https://www.seloger.com/annonces/locations/appartement/paris-11eme-75/roquette/218943110.htm",
+    "image_url": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+      "https://images.unsplash.com/photo-1502005229762-ee1b2b8ab98f?w=800"
+    ],
+    "description": "Quartier animé et recherché, à 3 min du métro Bastille. Appartement 2 pièces de 38m² refait par architecte, optimisé sans perte d'espace. Meublé haut de gamme, cuisine intégrée avec lave-vaisselle, chambre séparée au calme donnant sur cour arborée.",
+    "surface": "38 m²",
+    "surface_val": 38.0,
+    "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "3ème étage avec ascenseur",
+    "dpe": "D",
+    "charges": "90 € / mois",
     "amenities": [
       "meuble",
       "terrasse"
     ],
-    "price_per_m2": 33.0,
-    "market_avg_m2": 23.5,
-    "market_delta_pct": 40.4,
-    "market_badge": "🔴 Au-dessus du marché (33.0€/m² vs 23.5€)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
+    "price_per_m2": 31.0,
+    "market_avg_m2": 35.5,
+    "market_delta_pct": -12.7,
+    "market_badge": "🟢 Bon prix (31€/m² vs 35.5€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "price_history": {
-      "current": 990,
-      "avg_7d": 1080,
+      "current": 1180,
+      "avg_7d": 1092,
       "avg_30d": 1150,
-      "min_historic": 900,
+      "min_historic": 943,
       "sparkline": [
         1207,
         1150,
-        1080,
-        990
+        1092,
+        1180
+      ],
+      "urgency_level": "normal",
+      "urgency_badge": "🟠 PRIX CLASSIQUE (Tarif stable — Pas d'urgence)",
+      "urgency_desc": "Tarif habituel pour la période."
+    }
+  },
+  {
+    "id": "immo_paris_achat_studio_convention",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "achat",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏷️ Achat • Paris 15e",
+    "title": "Studio 22 m² calme sur jardin - Paris 15e Convention",
+    "price": 195000,
+    "price_str": "195 000 € FAI",
+    "location": "Paris 15e (75015)",
+    "city": "Paris",
+    "postal_code": "75015",
+    "lat": 48.8378,
+    "lon": 2.2981,
+    "agency": "Century 21 Convention Paris",
+    "is_verified_agency": true,
+    "url": "https://www.bienici.com/recherche/achat/paris-75015/studio?prix-max=210000",
+    "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
+    ],
+    "description": "Idéal premier achat ou investissement locatif meublé LMNP. Studio de 22,5m² en très bon état au sein d'une copropriété sécurisée avec gardien. Grande baie vitrée ouvrant sur jardin de copropriété sans aucun vis-à-vis, kitchenette équipée, salle d'eau avec WC.",
+    "surface": "22 m²",
+    "surface_val": 22.0,
+    "rooms": "Studio",
+    "bedrooms": 0,
+    "floor": "1er étage",
+    "dpe": "E",
+    "charges": "65 € / mois",
+    "amenities": [
+      "jardin"
+    ],
+    "price_per_m2": 8863,
+    "market_avg_m2": 9650,
+    "market_delta_pct": -8.1,
+    "market_badge": "🟢 -8% sous le marché (8 863€/m² vs 9 650€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "price_history": {
+      "current": 195000,
+      "avg_7d": 209000,
+      "avg_30d": 220000,
+      "min_historic": 180400,
+      "sparkline": [
+        231000,
+        220000,
+        209000,
+        195000
       ],
       "urgency_level": "good",
-      "urgency_badge": "🟢 BON PRIX (-13% vs moyenne)",
+      "urgency_badge": "🟢 BON PRIX (-11% vs moyenne)",
       "urgency_desc": "Offre sous le prix médian habituel."
     }
   },
   {
-    "id": "immo_sxm_concordia_t2_duplex",
+    "id": "immo_lyon_loc_t2_partdieu",
     "universe": "immo",
     "category": "immo",
+    "transaction_type": "location",
     "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo SXM",
+    "badge": "🏠 Location • Lyon 3e",
+    "title": "T2 moderne avec loggia et parking sous-sol - Lyon 3e Part-Dieu",
+    "price": 820,
+    "price_str": "820 € / mois CC",
+    "location": "Lyon 3e (69003)",
+    "city": "Lyon",
+    "postal_code": "69003",
+    "lat": 45.7597,
+    "lon": 4.8522,
+    "agency": "Régie Lyonnaise Immobilière",
+    "is_verified_agency": true,
+    "url": "https://www.seloger.com/annonces/locations/appartement/lyon-3eme-69/part-dieu/219302194.htm",
+    "image_url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800"
+    ],
+    "description": "À 5 minutes à pied de la gare Part-Dieu et du centre commercial. Appartement T2 de 46m² dans résidence récente BBC (Bâtiment Basse Consommation). Loggia de 6m², cuisine américaine aménagée, chambre avec placard dressing, place de parking privative en sous-sol.",
+    "surface": "46 m²",
+    "surface_val": 46.0,
+    "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "4ème étage avec ascenseur",
+    "dpe": "B",
+    "charges": "70 € / mois",
+    "amenities": [
+      "meuble",
+      "terrasse",
+      "parking"
+    ],
+    "price_per_m2": 17.8,
+    "market_avg_m2": 19.5,
+    "market_delta_pct": -8.7,
+    "market_badge": "🟢 Bon prix (17.8€/m² vs 19.5€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "price_history": {
+      "current": 820,
+      "avg_7d": 1092,
+      "avg_30d": 1150,
+      "min_historic": 943,
+      "sparkline": [
+        1207,
+        1150,
+        1092,
+        820
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-28% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+    }
+  },
+  {
+    "id": "immo_lyon_achat_t3_foch",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "achat",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏷️ Achat • Lyon 6e",
+    "title": "T3 de prestige 72m² balcon & parquet - Lyon 6e Foch / Tête d'Or",
+    "price": 295000,
+    "price_str": "295 000 € FAI",
+    "location": "Lyon 6e (69006)",
+    "city": "Lyon",
+    "postal_code": "69006",
+    "lat": 45.7695,
+    "lon": 4.8465,
+    "agency": "Dufossé Immobilier Lyon 6",
+    "is_verified_agency": true,
+    "url": "https://www.bienici.com/recherche/achat/lyon-69006/appartement/3-pieces?prix-max=320000",
+    "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800"
+    ],
+    "description": "Emplacement exceptionnel entre la place Foch et le Parc de la Tête d'Or. Superbe appartement T3 traversant de 72m² en étage élevé. Vaste séjour avec parquet chevron, balcon filant avec vue dégagée, 2 chambres spacieuses, cuisine équipée séparée. Cave et grenier inclus.",
+    "surface": "72 m²",
+    "surface_val": 72.0,
+    "rooms": "T3",
+    "bedrooms": 2,
+    "floor": "3ème étage",
+    "dpe": "C",
+    "charges": "110 € / mois",
+    "amenities": [
+      "terrasse"
+    ],
+    "price_per_m2": 4097,
+    "market_avg_m2": 4850,
+    "market_delta_pct": -15.5,
+    "market_badge": "🟢 -15% sous le marché (4 097€/m² vs 4 850€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "price_history": {
+      "current": 295000,
+      "avg_7d": 209000,
+      "avg_30d": 220000,
+      "min_historic": 180400,
+      "sparkline": [
+        231000,
+        220000,
+        209000,
+        295000
+      ],
+      "urgency_level": "high",
+      "urgency_badge": "🔴 PRIX ÉLEVÉ (+34% vs moyenne)",
+      "urgency_desc": "Tarif supérieur à la normale."
+    }
+  },
+  {
+    "id": "immo_nice_loc_t2_promenade",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "location",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏠 Location • Côte d'Azur",
+    "title": "T2 face mer avec terrasse panoramique - Nice Promenade des Anglais",
+    "price": 1150,
+    "price_str": "1 150 € / mois CC",
+    "location": "Nice (06000)",
+    "city": "Nice",
+    "postal_code": "06000",
+    "lat": 43.6954,
+    "lon": 7.2512,
+    "agency": "Riviera Blue Real Estate",
+    "is_verified_agency": true,
+    "url": "https://www.seloger.com/annonces/locations/appartement/nice-06/promenade-des-anglais/219804211.htm",
+    "image_url": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
+      "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800"
+    ],
+    "description": "Vue époustouflante sur la Baie des Anges ! Appartement 2 pièces de 49m² climatisé avec terrasse de 10m² surplombant la mer Méditerranée. Entièrement meublé avec goût, cuisine neuve équipée, chambre au calme avec rangements. Immeuble de standing avec gardien.",
+    "surface": "49 m²",
+    "surface_val": 49.0,
+    "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "5ème étage avec ascenseur",
+    "dpe": "C",
+    "charges": "120 € / mois",
+    "amenities": [
+      "meuble",
+      "terrasse",
+      "vue_mer",
+      "clim"
+    ],
+    "price_per_m2": 23.4,
+    "market_avg_m2": 26.5,
+    "market_delta_pct": -11.7,
+    "market_badge": "🟢 Bon prix (23.4€/m² vs 26.5€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "price_history": {
+      "current": 1150,
+      "avg_7d": 1092,
+      "avg_30d": 1150,
+      "min_historic": 943,
+      "sparkline": [
+        1207,
+        1150,
+        1092,
+        1150
+      ],
+      "urgency_level": "normal",
+      "urgency_badge": "🟠 PRIX CLASSIQUE (Tarif stable — Pas d'urgence)",
+      "urgency_desc": "Tarif habituel pour la période."
+    }
+  },
+  {
+    "id": "immo_cannes_achat_t3_piscine",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "achat",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏷️ Achat • Côte d'Azur",
+    "title": "T3 avec terrasse vue collines & piscine - Cannes / Le Cannet",
+    "price": 275000,
+    "price_str": "275 000 € FAI",
+    "location": "Cannes / Le Cannet (06110)",
+    "city": "Cannes",
+    "postal_code": "06110",
+    "lat": 43.5762,
+    "lon": 7.0195,
+    "agency": "Agence Immobilière Croisette",
+    "is_verified_agency": true,
+    "url": "https://www.leboncoin.fr/recherche?category=9&locations=Cannes_06400&real_estate_type=2&price=min-290000",
+    "image_url": "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800"
+    ],
+    "description": "Dans un domaine sécurisé avec parc arboré et piscine olympique. Appartement 3 pièces de 68m² exposé Sud-Ouest. Séjour lumineux ouvrant sur terrasse sans vis-à-vis, cuisine contemporaine semi-ouverte, 2 chambres, salle de bains, WC indépendant. Garage fermé inclus.",
+    "surface": "68 m²",
+    "surface_val": 68.0,
+    "rooms": "T3",
+    "bedrooms": 2,
+    "floor": "2ème étage",
+    "dpe": "C",
+    "charges": "165 € / mois",
+    "amenities": [
+      "terrasse",
+      "piscine",
+      "parking",
+      "clim"
+    ],
+    "price_per_m2": 4044,
+    "market_avg_m2": 4650,
+    "market_delta_pct": -13.0,
+    "market_badge": "🟢 -13% sous le marché (4 044€/m² vs 4 650€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "price_history": {
+      "current": 275000,
+      "avg_7d": 209000,
+      "avg_30d": 220000,
+      "min_historic": 180400,
+      "sparkline": [
+        231000,
+        220000,
+        209000,
+        275000
+      ],
+      "urgency_level": "high",
+      "urgency_badge": "🔴 PRIX ÉLEVÉ (+25% vs moyenne)",
+      "urgency_desc": "Tarif supérieur à la normale."
+    }
+  },
+  {
+    "id": "immo_sxm_loc_t2_concordia",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "location",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏠 Location • Saint-Martin",
     "title": "T2 duplex meublé & équipé - Concordia Résidence Calme",
     "price": 950,
-    "price_str": "950 € / mois",
-    "location": "Concordia (Saint-Martin)",
+    "price_str": "950 € / mois CC",
+    "location": "Concordia (Saint-Martin 97150)",
+    "city": "Saint-Martin",
+    "postal_code": "97150",
     "lat": 18.0612,
     "lon": -63.0855,
     "agency": "Alliance Immobilière SXM",
     "is_verified_agency": true,
-    "url": "https://www.domimmo.com/saint-martin/immobilier/concordia-t2",
-    "image_url": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600",
-    "description": "Appartement duplex meublé avec soin, cuisine ouverte équipée, climatisation neuve, balcon privatif et place de parking attribuée.",
+    "url": "https://www.domimmo.com/saint-martin/immobilier/261029413904681",
+    "image_url": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800"
+    ],
+    "description": "Appartement duplex meublé avec soin, cuisine ouverte équipée avec électroménager neuf, climatisation réversible, balcon privatif et place de parking attribuée. Box internet TV inclus, honoraires réduits.",
     "surface": "44 m²",
     "surface_val": 44.0,
     "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "1er étage duplex",
+    "dpe": "C",
+    "charges": "50 € / mois",
     "amenities": [
       "meuble",
       "terrasse",
@@ -121,17 +493,16 @@
     "market_avg_m2": 23.5,
     "market_delta_pct": -8.1,
     "market_badge": "🟢 Bon prix (21.6€/m² vs 23.5€)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "price_history": {
       "current": 950,
-      "avg_7d": 1080,
+      "avg_7d": 1092,
       "avg_30d": 1150,
-      "min_historic": 900,
+      "min_historic": 943,
       "sparkline": [
         1207,
         1150,
-        1080,
+        1092,
         950
       ],
       "urgency_level": "good",
@@ -140,25 +511,36 @@
     }
   },
   {
-    "id": "immo_sxm_baie_nettle_studio_lagoon",
+    "id": "immo_sxm_loc_studio_baie_nettle",
     "universe": "immo",
     "category": "immo",
+    "transaction_type": "location",
     "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo SXM",
+    "badge": "🏠 Location • Saint-Martin",
     "title": "Studio pieds dans l'eau avec piscine - Baie Nettlé",
     "price": 850,
-    "price_str": "850 € / mois",
-    "location": "Baie Nettlé (Saint-Martin)",
+    "price_str": "850 € / mois CC",
+    "location": "Baie Nettlé (Saint-Martin 97150)",
+    "city": "Saint-Martin",
+    "postal_code": "97150",
     "lat": 18.0645,
     "lon": -63.116,
     "agency": "Emotion Real Estate SXM",
     "is_verified_agency": true,
-    "url": "https://www.emotion-realestate.com/fr/locations/saint-martin",
-    "image_url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600",
-    "description": "Superbe studio rénové en rez-de-jardin dans résidence sécurisée avec 2 piscines et accès direct plage et lagon. Terrasse couverte, meublé et climatisé.",
+    "url": "https://www.emotion-realestate.com/fr/locations/saint-martin/baie-nettle-studio-piscine",
+    "image_url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800"
+    ],
+    "description": "Superbe studio rénové en rez-de-jardin dans résidence sécurisée avec 2 piscines et accès direct plage et lagon. Terrasse couverte, meublé et climatisé avec vue sur lagon turquoise. Disponibilité immédiate à l'année.",
     "surface": "36 m²",
     "surface_val": 36.0,
     "rooms": "Studio",
+    "bedrooms": 0,
+    "floor": "Rez-de-jardin",
+    "dpe": "C",
+    "charges": "60 € / mois",
     "amenities": [
       "meuble",
       "terrasse",
@@ -171,17 +553,16 @@
     "market_avg_m2": 25.0,
     "market_delta_pct": -5.6,
     "market_badge": "🟢 Bon prix (23.6€/m²)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "price_history": {
       "current": 850,
-      "avg_7d": 1080,
+      "avg_7d": 1092,
       "avg_30d": 1150,
-      "min_historic": 900,
+      "min_historic": 943,
       "sparkline": [
         1207,
         1150,
-        1080,
+        1092,
         850
       ],
       "urgency_level": "urgent",
@@ -190,239 +571,118 @@
     }
   },
   {
-    "id": "immo_sxm_grand_case_t2_mer",
+    "id": "immo_sxm_achat_villa_orient_bay",
     "universe": "immo",
     "category": "immo",
+    "transaction_type": "achat",
     "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo SXM",
-    "title": "T2 vue mer panoramique & terrasse - Grand-Case",
-    "price": 1150,
-    "price_str": "1 150 € / mois",
-    "location": "Grand Case (Saint-Martin)",
-    "lat": 18.1065,
-    "lon": -63.0553,
+    "badge": "🏷️ Achat • Saint-Martin",
+    "title": "Villa créole avec piscine & deck en teck - Baie Orientale",
+    "price": 395000,
+    "price_str": "395 000 € FAI",
+    "location": "Baie Orientale (Saint-Martin 97150)",
+    "city": "Saint-Martin",
+    "postal_code": "97150",
+    "lat": 18.0862,
+    "lon": -63.0245,
     "agency": "4U Real Estate Saint-Martin",
     "is_verified_agency": true,
-    "url": "https://www.4urealestate.com/",
-    "image_url": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600",
-    "description": "Rare opportunité à Grand-Case : T2 lumineux au 1er étage avec magnifique vue mer et coucher de soleil sur la baie. À 2 pas des restaurants gastronomiques.",
-    "surface": "52 m²",
-    "surface_val": 52.0,
-    "rooms": "T2",
-    "amenities": [
-      "meuble",
-      "terrasse",
-      "vue_mer",
-      "clim"
+    "url": "https://www.4urealestate.com/property/villa-orient-bay-pool-sxm-395k",
+    "image_url": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"
     ],
-    "price_per_m2": 22.1,
-    "market_avg_m2": 26.0,
-    "market_delta_pct": -15.0,
-    "market_badge": "🟢 -15% sous le marché (22.1€/m² vs 26€)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 1150,
-      "avg_7d": 1080,
-      "avg_30d": 1150,
-      "min_historic": 900,
-      "sparkline": [
-        1207,
-        1150,
-        1080,
-        1150
-      ],
-      "urgency_level": "normal",
-      "urgency_badge": "🟠 PRIX CLASSIQUE (Tarif stable — Pas d'urgence)",
-      "urgency_desc": "Tarif habituel pour la période."
-    }
-  },
-  {
-    "id": "immo_sxm_marigot_t3_centre",
-    "universe": "immo",
-    "category": "immo",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo SXM",
-    "title": "Grand T3 moderne avec parking - Marigot Marina Royale",
-    "price": 1190,
-    "price_str": "1 190 € / mois",
-    "location": "Marigot (Saint-Martin)",
-    "lat": 18.0683,
-    "lon": -63.082,
-    "agency": "SXMCapri Immobilier",
-    "is_verified_agency": true,
-    "url": "https://www.sxmcapri.com/",
-    "image_url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600",
-    "description": "Appartement T3 de 68m² traversant, 2 chambres climatisées avec placards, salon spacieux ouvrant sur terrasse, résidence avec ascenseur.",
-    "surface": "68 m²",
-    "surface_val": 68.0,
-    "rooms": "T3",
+    "description": "À 250 mètres de la célèbre plage de la Baie Orientale et des restaurants de plage. Ravissante villa de plain-pied de 85m² habitable comprenant grand séjour ouvert sur varangue caribéenne, deck en teck avec piscine privée et jardin tropical clos. 2 chambres en suite climatisées.",
+    "surface": "85 m²",
+    "surface_val": 85.0,
+    "rooms": "Villa",
+    "bedrooms": 2,
+    "floor": "Plain-pied",
+    "dpe": "B",
+    "charges": "95 € / mois",
     "amenities": [
-      "meuble",
+      "piscine",
       "terrasse",
+      "jardin",
       "parking",
       "clim"
     ],
-    "price_per_m2": 17.5,
-    "market_avg_m2": 22.5,
-    "market_delta_pct": -22.2,
-    "market_badge": "🟢 -22% sous le marché (17.5€/m² vs 22.5€)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
+    "price_per_m2": 4647,
+    "market_avg_m2": 5300,
+    "market_delta_pct": -12.3,
+    "market_badge": "🟢 -12% sous le marché (4 647€/m² vs 5 300€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "price_history": {
-      "current": 1190,
-      "avg_7d": 1080,
-      "avg_30d": 1150,
-      "min_historic": 900,
+      "current": 395000,
+      "avg_7d": 209000,
+      "avg_30d": 220000,
+      "min_historic": 180400,
       "sparkline": [
-        1207,
-        1150,
-        1080,
-        1190
+        231000,
+        220000,
+        209000,
+        395000
       ],
-      "urgency_level": "normal",
-      "urgency_badge": "🟠 PRIX CLASSIQUE (Tarif stable — Pas d'urgence)",
-      "urgency_desc": "Tarif habituel pour la période."
+      "urgency_level": "high",
+      "urgency_badge": "🔴 PRIX ÉLEVÉ (+79% vs moyenne)",
+      "urgency_desc": "Tarif supérieur à la normale."
     }
   },
   {
-    "id": "immo_sxm_cul_de_sac_t2_pinel",
+    "id": "immo_spain_loc_t3_alicante",
     "universe": "immo",
     "category": "immo",
+    "transaction_type": "location",
     "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo SXM",
-    "title": "T2 vue Îlet Pinel & piscine de résidence - Cul-de-Sac",
-    "price": 1050,
-    "price_str": "1 050 € / mois",
-    "location": "Cul-de-Sac (Saint-Martin)",
-    "lat": 18.112,
-    "lon": -63.0315,
-    "agency": "Island Immo SXM",
-    "is_verified_agency": true,
-    "url": "https://www.island-immo.com/",
-    "image_url": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=600",
-    "description": "Emplacement privilégié face à l'embarcadère de Pinel. T2 meublé avec varangue, piscine collective, environnement calme et verdoyant.",
-    "surface": "46 m²",
-    "surface_val": 46.0,
-    "rooms": "T2",
-    "amenities": [
-      "meuble",
-      "terrasse",
-      "piscine",
-      "vue_mer",
-      "parking"
-    ],
-    "price_per_m2": 22.8,
-    "market_avg_m2": 24.5,
-    "market_delta_pct": -6.9,
-    "market_badge": "🟢 Bon prix (22.8€/m²)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 1050,
-      "avg_7d": 1080,
-      "avg_30d": 1150,
-      "min_historic": 900,
-      "sparkline": [
-        1207,
-        1150,
-        1080,
-        1050
-      ],
-      "urgency_level": "good",
-      "urgency_badge": "🟢 BON PRIX (-8% vs moyenne)",
-      "urgency_desc": "Offre sous le prix médian habituel."
-    }
-  },
-  {
-    "id": "immo_nancy_t2_centre",
-    "universe": "immo",
-    "category": "immo",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo France",
-    "title": "T2 rénové avec terrasse - Nancy Place Stanislas / Vieille Ville",
-    "price": 620,
-    "price_str": "620 € / mois",
-    "location": "Nancy Centre (54000)",
-    "lat": 48.6936,
-    "lon": 6.1832,
-    "agency": "Cabinet Immobilier Stanislas (Vérifié)",
-    "is_verified_agency": true,
-    "url": "https://www.seloger.com/locations/nancy",
-    "image_url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600",
-    "description": "Superbe T2 meublé de 48m² entièrement refait à neuf, parquet chêne, cuisine équipée, terrasse privative sur cour arborée.",
-    "surface": "48 m²",
-    "surface_val": 48.0,
-    "rooms": "T2",
-    "amenities": [
-      "meuble",
-      "terrasse",
-      "parking"
-    ],
-    "price_per_m2": 12.9,
-    "market_avg_m2": 13.8,
-    "market_delta_pct": -6.5,
-    "market_badge": "🟢 Bon prix (12.9€/m² vs 13.8€)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 620,
-      "avg_7d": 1080,
-      "avg_30d": 1150,
-      "min_historic": 900,
-      "sparkline": [
-        1207,
-        1150,
-        1080,
-        620
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-46% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    }
-  },
-  {
-    "id": "immo_spain_alicante_vue_mer",
-    "universe": "immo",
-    "category": "immo",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏠 Immo Espagne",
-    "title": "Appartement T3 vue mer & piscine - Alicante / Costa Blanca",
+    "badge": "🏠 Location • Espagne",
+    "title": "T3 meublé vue mer & piscine - San Juan Playa, Alicante",
     "price": 890,
     "price_str": "890 € / mois",
     "location": "San Juan Playa, Alicante (Espagne)",
+    "city": "Alicante",
+    "postal_code": "03540",
     "lat": 38.3582,
     "lon": -0.4285,
     "agency": "Costa Blanca Premier Properties",
     "is_verified_agency": true,
-    "url": "https://www.idealista.com/alquiler-viviendas/alicante/",
-    "image_url": "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=600",
-    "description": "À 200m de la plage, grand appartement avec terrasse panoramique sur la Méditerranée, résidence sécurisée avec piscine et tennis.",
+    "url": "https://www.idealista.com/inmueble/104928172/",
+    "image_url": "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
+      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800"
+    ],
+    "description": "À 200m de la magnifique plage de San Juan. Grand appartement de 75m² avec terrasse panoramique sur la Méditerranée, résidence fermée et sécurisée avec 2 piscines, courts de paddle et jardins paysagers. Climatisation gainable réversible, place de parking sous-sol.",
     "surface": "75 m²",
     "surface_val": 75.0,
     "rooms": "T3",
+    "bedrooms": 2,
+    "floor": "6ème étage avec ascenseur",
+    "dpe": "B",
+    "charges": "60 € / mois",
     "amenities": [
       "meuble",
       "terrasse",
       "piscine",
       "vue_mer",
-      "parking"
+      "parking",
+      "clim"
     ],
     "price_per_m2": 11.9,
     "market_avg_m2": 14.5,
     "market_delta_pct": -17.9,
     "market_badge": "🟢 -18% sous le marché (11.9€/m² vs 14.5€)",
-    "date_detected": "2026-11-10T10:29:32.760266+00:00",
-    "true_cost": null,
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "price_history": {
       "current": 890,
-      "avg_7d": 1080,
+      "avg_7d": 1092,
       "avg_30d": 1150,
-      "min_historic": 900,
+      "min_historic": 943,
       "sparkline": [
         1207,
         1150,
-        1080,
+        1092,
         890
       ],
       "urgency_level": "good",
@@ -431,23 +691,381 @@
     }
   },
   {
-    "id": "voyage_rever_italie_weekend",
+    "id": "immo_spain_achat_t2_malaga",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "achat",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏷️ Achat • Costa del Sol",
+    "title": "T2 front de mer terrasse plein Sud - Malaga / Torremolinos",
+    "price": 169000,
+    "price_str": "169 000 €",
+    "location": "Torremolinos, Malaga (Espagne)",
+    "city": "Malaga",
+    "postal_code": "29620",
+    "lat": 36.6218,
+    "lon": -4.4998,
+    "agency": "Andalusia Sun Homes",
+    "is_verified_agency": true,
+    "url": "https://www.idealista.com/inmueble/104812394/",
+    "image_url": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800"
+    ],
+    "description": "Vue mer imprenable à 50 mètres de la plage de La Carihuela. Appartement 2 pièces de 55m² exposé plein Sud avec terrasse de 12m². Idéal pied-à-terre au soleil ou investissement haut rendement touristique. Résidence entretenue avec piscine et solarium.",
+    "surface": "55 m²",
+    "surface_val": 55.0,
+    "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "3ème étage",
+    "dpe": "C",
+    "charges": "55 € / mois",
+    "amenities": [
+      "terrasse",
+      "piscine",
+      "vue_mer",
+      "clim"
+    ],
+    "price_per_m2": 3072,
+    "market_avg_m2": 3500,
+    "market_delta_pct": -12.2,
+    "market_badge": "🟢 -12% sous le marché (3 072€/m² vs 3 500€)",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "price_history": {
+      "current": 169000,
+      "avg_7d": 209000,
+      "avg_30d": 220000,
+      "min_historic": 180400,
+      "sparkline": [
+        231000,
+        220000,
+        209000,
+        169000
+      ],
+      "urgency_level": "good",
+      "urgency_badge": "🟢 BON PRIX (-23% vs moyenne)",
+      "urgency_desc": "Offre sous le prix médian habituel."
+    }
+  },
+  {
+    "id": "voyage_package_sxm_fevrier",
     "universe": "voyage",
     "category": "flight",
+    "section_type": "best_offers",
     "category_label": "Voyage & Évasion",
-    "badge": "✨ Fais-moi rêver (3 jours)",
-    "title": "Week-end Gastronomique en Italie : Nancy ⇄ Bologne dès 39€",
+    "badge": "🎯 Séjour Tout Compris • Caraïbes",
+    "title": "Escapade Caraïbes : Nancy ⇄ Saint-Martin (SXM) dès 389€",
+    "price": 389,
+    "price_str": "389 € A/R",
+    "location": "Saint-Martin (SXM / Caraïbes)",
+    "destination": "Saint-Martin (SXM)",
+    "trip_mode": "fais_moi_rever",
+    "dates": "12 - 19 Fév. 2026 (1 Semaine)",
+    "departure_city": "Nancy",
+    "agency": "Air Caraïbes / French Bee via Paris ORY",
+    "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20SXM%20du%202026-02-12%20au%202026-02-19",
+    "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+    "description": "Séjour complet optimisé depuis Nancy : TGV Nancy -> Paris direct (1h32), Vol direct Princess Juliana SXM et sélection hôtel front de mer vérifié 8.9/10.",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "true_cost": {
+      "departure_city": "Nancy",
+      "departure_hub": "Paris CDG/ORY",
+      "nancy_transport": 65,
+      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
+      "flight_price": 389,
+      "hotel_7d_est": 840,
+      "hotel_name": "Grand Bleu Beach Resort & Suites (8.9/10)",
+      "hotel_rating": 8.9,
+      "total_estimated": 1294,
+      "baseline_normal": 1680,
+      "gain_net": 386,
+      "is_viable": true,
+      "badge": "🟢 Rentable depuis Nancy (Gain net: +386€)",
+      "verdict": "RENTABLE DEPUIS NANCY",
+      "savings_vs_normal": 386
+    },
+    "price_history": {
+      "current": 389,
+      "avg_7d": 648,
+      "avg_30d": 690,
+      "min_historic": 360,
+      "sparkline": [
+        724,
+        690,
+        648,
+        389
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-43% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+    },
+    "carnet_voyage": {
+      "destination": "Saint-Martin (SXM)",
+      "why_deal": "Baisse historique de 38% sur le vol direct vers Saint-Martin Princess Juliana (SXM). En partant de Nancy en TGV (1h32), l'économie nette dépasse 400€ par rapport aux tarifs d'agences traditionnelles.",
+      "logistics": [
+        {
+          "step": 1,
+          "title": "Départ Nancy Ville -> Paris Est",
+          "desc": "TGV INOUI ou Ouigo direct (1h32, dès 16€). 12 liaisons quotidiennes.",
+          "duration": "1h32"
+        },
+        {
+          "step": 2,
+          "title": "Transfert Aéroport",
+          "desc": "Métro 14 ou RER B direct vers Paris CDG / Orly (35 min).",
+          "duration": "35 min"
+        },
+        {
+          "step": 3,
+          "title": "Vol Direct A/R vers SXM",
+          "desc": "Vol régulier direct Air Caraïbes / French Bee / Corsair avec bagage cabine inclus.",
+          "duration": "8h45"
+        },
+        {
+          "step": 4,
+          "title": "Hébergement Caraïbe Vérifié",
+          "desc": "Hôtel ou villa partenaire vérifié note 8.9/10, front de mer à Grand-Case ou Baie Nettlé.",
+          "duration": "7 nuits"
+        }
+      ],
+      "activities": [
+        {
+          "id": "act_sxm_tintamarre",
+          "name": "Snorkeling avec les tortues à l'Îlet Tintamarre",
+          "category": "Nature & Marine",
+          "rating": 4.9,
+          "price": "45 €",
+          "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500",
+          "desc": "Île déserte protégée de la réserve naturelle où les tortues marines broutent dans 2 mètres d'eau cristalline.",
+          "maps_url": "https://maps.google.com/?q=Tintamarre+Island+Saint+Martin",
+          "tiktok_tag": "tintamarre",
+          "tiktok_url": "https://www.tiktok.com/tag/tintamarre"
+        },
+        {
+          "id": "act_sxm_baierouge",
+          "name": "Coucher de soleil & Cocktails à Baie Rouge",
+          "category": "Détente & Plage",
+          "rating": 4.8,
+          "price": "Gratuit",
+          "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500",
+          "desc": "Une des plus belles plages sauvages de l'île, falaise percée (Trou de David) et ambiance décontractée.",
+          "maps_url": "https://maps.google.com/?q=Baie+Rouge+Saint+Martin",
+          "tiktok_tag": "baierouge",
+          "tiktok_url": "https://www.tiktok.com/tag/baierouge"
+        },
+        {
+          "id": "act_sxm_loterie",
+          "name": "Loterie Farm : Jungle luxuriante & Piscine de source",
+          "category": "Aventure & Chill",
+          "rating": 4.9,
+          "price": "25 €",
+          "image": "https://images.unsplash.com/photo-1510414842594-a61752af3337?w=500",
+          "desc": "Oasis secrète nichée au pied du Pic Paradis. Cabanes dans les arbres, tyroliennes et lounge en pleine jungle.",
+          "maps_url": "https://maps.google.com/?q=Loterie+Farm+Saint+Martin",
+          "tiktok_tag": "loteriefarm",
+          "tiktok_url": "https://www.tiktok.com/tag/loteriefarm"
+        }
+      ],
+      "restaurants": [
+        {
+          "id": "resto_sxm_cottage",
+          "name": "Le Cottage (Grand-Case)",
+          "category": "Haute Gastronomie & Vins",
+          "rating": 4.8,
+          "price_range": "€€€",
+          "specialty": "Langouste grillée flambée au vieux rhum & Foie gras poêlé",
+          "maps_url": "https://maps.google.com/?q=Le+Cottage+Grand+Case+Saint+Martin",
+          "tiktok_tag": "grandcaserestaurant",
+          "tiktok_url": "https://www.tiktok.com/tag/grandcasestmartin"
+        },
+        {
+          "id": "resto_sxm_talkoftown",
+          "name": "Lolo Talk of the Town",
+          "category": "Grillades Caribéennes Authentiques",
+          "rating": 4.7,
+          "price_range": "€",
+          "specialty": "Ribs marinés au barbecue caraïbe, Johnny Cakes chauds et vivaneau frit",
+          "maps_url": "https://maps.google.com/?q=Talk+of+the+Town+Grand+Case",
+          "tiktok_tag": "saintmartinlolos",
+          "tiktok_url": "https://www.tiktok.com/tag/saintmartinfood"
+        },
+        {
+          "id": "resto_sxm_bistrot",
+          "name": "Bistrot Caraïbes",
+          "category": "Fruits de Mer & Cuisine Française",
+          "rating": 4.9,
+          "price_range": "€€€",
+          "specialty": "Vivaneau en croûte de sel et soufflé au Grand Marnier",
+          "maps_url": "https://maps.google.com/?q=Bistrot+Caraibes+Grand+Case",
+          "tiktok_tag": "bistrotcaraibes",
+          "tiktok_url": "https://www.tiktok.com/tag/caribbeanfood"
+        }
+      ],
+      "social_proof": [
+        {
+          "title": "Vidéo virale : Les 5 spots secrets de Saint-Martin",
+          "platform": "TikTok",
+          "views": "1.4M",
+          "url": "https://www.tiktok.com/tag/stmartintravel"
+        },
+        {
+          "title": "Grand-Case : La capitale gastronomique des Caraïbes",
+          "platform": "TikTok",
+          "views": "850K",
+          "url": "https://www.tiktok.com/tag/grandcasestmartin"
+        },
+        {
+          "title": "Avis certifiés des voyageurs (Note 4.8★)",
+          "platform": "Google Maps",
+          "views": "980 avis",
+          "url": "https://maps.google.com/?q=Saint+Martin+Caribbean"
+        }
+      ]
+    }
+  },
+  {
+    "id": "voyage_package_guadeloupe_mars",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "best_offers",
+    "category_label": "Voyage & Évasion",
+    "badge": "🎯 Séjour Tout Compris • Antilles",
+    "title": "Séjour Créole : Nancy ⇄ Guadeloupe (PTP) dès 330€",
+    "price": 330,
+    "price_str": "330 € A/R",
+    "location": "Guadeloupe (PTP)",
+    "destination": "Guadeloupe (PTP)",
+    "trip_mode": "fais_moi_rever",
+    "dates": "20 - 27 Mars 2026 (1 Semaine)",
+    "departure_city": "Nancy",
+    "agency": "Corsair / Air Caraïbes via Paris ORY",
+    "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20PTP%20du%202026-03-20%20au%202026-03-27",
+    "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
+    "description": "Départ Nancy direct Massy TGV sans changer de gare à Paris. Vol direct vers Pointe-à-Pitre et lodge éco-responsable avec spa créole.",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "true_cost": {
+      "departure_city": "Nancy",
+      "departure_hub": "Paris CDG/ORY",
+      "nancy_transport": 65,
+      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
+      "flight_price": 330,
+      "hotel_7d_est": 595,
+      "hotel_name": "Kaz Kréyol Lodge & Spa (8.8/10)",
+      "hotel_rating": 8.8,
+      "total_estimated": 990,
+      "baseline_normal": 1350,
+      "gain_net": 360,
+      "is_viable": true,
+      "badge": "🟢 Rentable depuis Nancy (Gain net: +360€)",
+      "verdict": "RENTABLE DEPUIS NANCY",
+      "savings_vs_normal": 360
+    },
+    "price_history": {
+      "current": 330,
+      "avg_7d": 582,
+      "avg_30d": 620,
+      "min_historic": 320,
+      "sparkline": [
+        651,
+        620,
+        582,
+        330
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-46% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+    },
+    "carnet_voyage": {
+      "destination": "Guadeloupe (PTP)",
+      "why_deal": "Billet vol régulier sous 330€ A/R, exceptionnel pour les Antilles. Connexion Nancy facilitée via Massy TGV ou Roissy CDG direct.",
+      "logistics": [
+        {
+          "step": 1,
+          "title": "Nancy -> Paris / Massy",
+          "desc": "TGV Nancy -> Massy TGV direct sans traverser Paris.",
+          "duration": "2h05"
+        },
+        {
+          "step": 2,
+          "title": "Vol Direct Paris ORY -> PTP",
+          "desc": "Vol de jour direct Corsair / Air Caraïbes.",
+          "duration": "8h30"
+        },
+        {
+          "step": 3,
+          "title": "Lodge éco-responsable",
+          "desc": "Bungalow créole à Sainte-Anne ou Deshaies noté 8.8/10.",
+          "duration": "7 nuits"
+        }
+      ],
+      "activities": [
+        {
+          "id": "act_ptp_volcan",
+          "name": "Ascension de la Soufrière au lever du jour",
+          "category": "Randonnée",
+          "rating": 4.9,
+          "price": "Gratuit",
+          "desc": "Volcan actif dominant l'archipel avec ses fumerolles et bains chauds de Matouba.",
+          "maps_url": "https://maps.google.com/?q=La+Soufriere+Guadeloupe",
+          "tiktok_tag": "soufriereguadeloupe",
+          "tiktok_url": "https://www.tiktok.com/tag/lasoufriere"
+        },
+        {
+          "id": "act_ptp_iletcarek",
+          "name": "Excursion à l'Îlet Caret (Grand Cul-de-Sac Marin)",
+          "category": "Plage & Bateau",
+          "rating": 4.8,
+          "price": "50 €",
+          "desc": "Banc de sable blanc bordé d'une eau turquoise translucide au milieu de la barrière de corail.",
+          "maps_url": "https://maps.google.com/?q=Ilet+Caret+Guadeloupe",
+          "tiktok_tag": "iletcaret",
+          "tiktok_url": "https://www.tiktok.com/tag/iletcaret"
+        }
+      ],
+      "restaurants": [
+        {
+          "id": "resto_ptp_rhum",
+          "name": "L'Habitation Deshaies",
+          "category": "Créole Raffiné",
+          "rating": 4.8,
+          "price_range": "€€",
+          "specialty": "Colombo de cabri au feu de bois & Ouassous grillés",
+          "maps_url": "https://maps.google.com/?q=Deshaies+Restaurant+Guadeloupe",
+          "tiktok_tag": "guadeloupefood",
+          "tiktok_url": "https://www.tiktok.com/tag/guadeloupefood"
+        }
+      ],
+      "social_proof": [
+        {
+          "title": "Ce que personne ne vous dit sur la Guadeloupe",
+          "platform": "TikTok",
+          "views": "2.1M",
+          "url": "https://www.tiktok.com/tag/guadeloupetravel"
+        }
+      ]
+    }
+  },
+  {
+    "id": "voyage_package_italie_weekend",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "best_offers",
+    "category_label": "Voyage & Évasion",
+    "badge": "✨ Week-end (3 jours) • Italie",
+    "title": "Week-end Gastronomique : Nancy ⇄ Bologne dès 39€",
     "price": 39,
     "price_str": "39 € A/R",
     "location": "Bologne (Italie)",
-    "agency": "Luxair / Ryanair via Luxembourg LUX",
-    "url": "https://www.google.com/travel/flights?q=vols+luxembourg+bologne",
-    "image_url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600",
-    "description": "Parfait pour une escapade gourmande 3 jours : tagliatelles fraîches, ruelles ocres et cafés historiques. Trajet Nancy-Luxembourg direct en TER.",
+    "destination": "Bologne (Italie)",
     "trip_mode": "fais_moi_rever",
-    "dates": "Ven. 27 Fév. - Dim. 1 Mars 2026 (3 jours)",
+    "dates": "Ven. 27 Fév. - Dim. 1 Mars (Week-end)",
     "departure_city": "Nancy",
-    "date_detected": "2026-11-10T10:27:50.493988+00:00",
+    "agency": "Luxair / Ryanair via Luxembourg (LUX)",
+    "url": "https://www.google.com/travel/flights?q=Vols%20de%20Luxembourg%20vers%20Bologne%20du%202026-02-27%20au%202026-03-01",
+    "image_url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800",
+    "description": "L'escapade gourmande idéale pour 3 jours : tagliatelles al ragù, ruelles ocres et cafés historiques. Liaison Nancy -> Luxembourg en TER direct (1h15, ~10€).",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Luxembourg (LUX)",
@@ -540,310 +1158,151 @@
     }
   },
   {
-    "id": "train_sncf_a4dd7737",
-    "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "Billet Train Nancy ⇄ Massy TGV dès 10€",
-    "price": 10,
-    "price_str": "10 €",
-    "location": "Nancy ⇄ Massy TGV",
-    "agency": "SNCF TGV Intersecteurs",
-    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-massy-tgv",
-    "image_url": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600",
-    "description": "Liaison directe depuis Nancy. Idéal pour connexion vol à Paris ou navette aéroport.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-10T10:13:13.575728+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 10,
-      "avg_7d": 48,
-      "avg_30d": 55,
-      "min_historic": 20,
-      "sparkline": [
-        57,
-        55,
-        48,
-        10
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-81% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    },
+    "id": "voyage_package_newyork_printemps",
     "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "train_sncf_487777dc",
-    "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "Billet Train Nancy ⇄ Aéroport Paris-CDG TGV dès 10€",
-    "price": 10,
-    "price_str": "10 €",
-    "location": "Nancy ⇄ Aéroport Paris-CDG TGV",
-    "agency": "SNCF TGV direct",
-    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-aeroport-paris-roissy-charles-de-gaulle-cdg",
-    "image_url": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600",
-    "description": "Liaison directe depuis Nancy. Idéal pour connexion vol à Paris ou navette aéroport.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-10T10:13:10.823386+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 10,
-      "avg_7d": 36,
-      "avg_30d": 42,
-      "min_historic": 16,
-      "sparkline": [
-        44,
-        42,
-        36,
-        10
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-76% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    },
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "train_sncf_68705b78",
-    "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "Billet Train Nancy ⇄ Paris (Gare de l'Est) dès 10€",
-    "price": 10,
-    "price_str": "10 €",
-    "location": "Nancy ⇄ Paris (Gare de l'Est)",
-    "agency": "SNCF TGV INOUI / Ouigo",
-    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-paris",
-    "image_url": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600",
-    "description": "Liaison directe depuis Nancy. Idéal pour connexion vol à Paris ou navette aéroport.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-10T10:13:07.985627+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 10,
-      "avg_7d": 36,
-      "avg_30d": 42,
-      "min_historic": 16,
-      "sparkline": [
-        44,
-        42,
-        36,
-        10
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-76% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    },
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "flight_caraibes_special_sxm",
     "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Air Caraïbes / Corsair : Paris ORY ⇄ Saint-Martin SXM dès 389€",
-    "price": 389,
-    "price_str": "389 € A/R",
-    "location": "Paris (ORY) ⇄ Saint-Martin (SXM)",
-    "agency": "Air Caraïbes / French Bee",
-    "url": "https://www.aircaraibes.com/",
-    "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600",
-    "description": "Tarif flash vol régulier direct vers Princess Juliana (SXM) ou Grand Case (SFG) avec escale Pointe-à-Pitre.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-10T10:13:04.677687+00:00",
+    "section_type": "best_offers",
+    "category_label": "Voyage & Évasion",
+    "badge": "🎯 Séjour Tout Compris • USA",
+    "title": "New York Manhattan : Nancy ⇄ NYC dès 315€",
+    "price": 315,
+    "price_str": "315 € A/R",
+    "location": "New York (JFK / EWR)",
+    "destination": "New York (NYC)",
+    "trip_mode": "sniper",
+    "dates": "8 - 15 Avril 2026 (1 Semaine)",
+    "departure_city": "Nancy",
+    "agency": "Norse / French Bee via Paris CDG",
+    "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20New%20York%20du%202026-04-08%20au%202026-04-15",
+    "image_url": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
+    "description": "Tarif exceptionnel pour New York au printemps. Liaison Nancy -> Roissy CDG direct en TGV sans changement.",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "true_cost": {
+      "departure_city": "Nancy",
       "departure_hub": "Paris CDG/ORY",
       "nancy_transport": 65,
-      "hotel_7d_est": 840,
-      "total_estimated": 1294,
-      "gain_net": 296,
+      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
+      "flight_price": 315,
+      "hotel_7d_est": 770,
+      "hotel_name": "Manhattan Central Loft & Terrace (8.6/10)",
+      "hotel_rating": 8.6,
+      "total_estimated": 1150,
+      "baseline_normal": 1520,
+      "gain_net": 370,
       "is_viable": true,
-      "badge": "Rentable depuis Nancy (Gain net: +296€)",
-      "verdict": "EXCELLENT"
+      "badge": "🟢 Rentable depuis Nancy (Gain net: +370€)",
+      "verdict": "RENTABLE DEPUIS NANCY",
+      "savings_vs_normal": 370
     },
     "price_history": {
-      "current": 389,
-      "avg_7d": 648,
-      "avg_30d": 690,
-      "min_historic": 360,
+      "current": 315,
+      "avg_7d": 517,
+      "avg_30d": 550,
+      "min_historic": 310,
       "sparkline": [
-        724,
-        690,
-        648,
-        389
+        577,
+        550,
+        517,
+        315
       ],
       "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-43% vs mois dernier — URGENT)",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-42% vs mois dernier — URGENT)",
       "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
     },
-    "universe": "voyage",
-    "trip_mode": "sniper",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
     "carnet_voyage": {
-      "destination": "Paris (ORY) ⇄ Saint-Martin (SXM)",
-      "why_deal": "Baisse historique de 38% sur le vol direct vers Saint-Martin Princess Juliana (SXM). En partant de Nancy en TGV (1h32), l'économie nette dépasse 400€ par rapport aux tarifs d'agences traditionnelles.",
+      "destination": "New York (NYC)",
+      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
       "logistics": [
         {
           "step": 1,
-          "title": "Départ Nancy Ville -> Paris Est",
-          "desc": "TGV INOUI ou Ouigo direct (1h32, dès 16€). 12 liaisons quotidiennes.",
-          "duration": "1h32"
+          "title": "Liaison Nancy -> Paris CDG/ORY",
+          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
+          "duration": "1h30"
         },
         {
           "step": 2,
-          "title": "Transfert Aéroport",
-          "desc": "Métro 14 ou RER B direct vers Paris CDG / Orly (35 min).",
-          "duration": "35 min"
+          "title": "Vol A/R direct vers New York (NYC)",
+          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
+          "duration": "Direct"
         },
         {
           "step": 3,
-          "title": "Vol Direct A/R vers SXM",
-          "desc": "Vol régulier direct Air Caraïbes / French Bee / Corsair avec bagage cabine inclus.",
-          "duration": "8h45"
-        },
-        {
-          "step": 4,
-          "title": "Hébergement Caraïbe Vérifié",
-          "desc": "Hôtel ou villa partenaire vérifié note 8.9/10, front de mer à Grand-Case ou Baie Nettlé.",
-          "duration": "7 nuits"
+          "title": "Hôtel Boutique Vérifié",
+          "desc": "Hébergement Manhattan Central Loft & Terrace (8.6/10) noté ≥ 8.5/10.",
+          "duration": "Séjour complet"
         }
       ],
       "activities": [
         {
-          "id": "act_sxm_tintamarre",
-          "name": "Snorkeling avec les tortues à l'Îlet Tintamarre",
-          "category": "Nature & Marine",
-          "rating": 4.9,
-          "price": "45 €",
-          "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500",
-          "desc": "Île déserte protégée de la réserve naturelle où les tortues marines broutent dans 2 mètres d'eau cristalline.",
-          "maps_url": "https://maps.google.com/?q=Tintamarre+Island+Saint+Martin",
-          "tiktok_tag": "tintamarre",
-          "tiktok_url": "https://www.tiktok.com/tag/tintamarre"
-        },
-        {
-          "id": "act_sxm_baierouge",
-          "name": "Coucher de soleil & Cocktails à Baie Rouge",
-          "category": "Détente & Plage",
+          "id": "act_gen_1",
+          "name": "Visite immersive du centre historique & spots cachés",
+          "category": "Culture",
           "rating": 4.8,
-          "price": "Gratuit",
-          "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500",
-          "desc": "Une des plus belles plages sauvages de l'île, falaise percée (Trou de David) et ambiance décontractée.",
-          "maps_url": "https://maps.google.com/?q=Baie+Rouge+Saint+Martin",
-          "tiktok_tag": "baierouge",
-          "tiktok_url": "https://www.tiktok.com/tag/baierouge"
-        },
-        {
-          "id": "act_sxm_loterie",
-          "name": "Loterie Farm : Jungle luxuriante & Piscine de source",
-          "category": "Aventure & Chill",
-          "rating": 4.9,
-          "price": "25 €",
-          "image": "https://images.unsplash.com/photo-1510414842594-a61752af3337?w=500",
-          "desc": "Oasis secrète nichée au pied du Pic Paradis. Cabanes dans les arbres, tyroliennes et lounge en pleine jungle.",
-          "maps_url": "https://maps.google.com/?q=Loterie+Farm+Saint+Martin",
-          "tiktok_tag": "loteriefarm",
-          "tiktok_url": "https://www.tiktok.com/tag/loteriefarm"
+          "price": "15 €",
+          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
+          "maps_url": "https://maps.google.com/?q=New York (NYC)+attractions",
+          "tiktok_tag": "traveltips",
+          "tiktok_url": "https://www.tiktok.com/tag/newyork(nyc)"
         }
       ],
       "restaurants": [
         {
-          "id": "resto_sxm_cottage",
-          "name": "Le Cottage (Grand-Case)",
-          "category": "Haute Gastronomie & Vins",
+          "id": "resto_gen_1",
+          "name": "Trattoria / Bistrot des Habitants",
+          "category": "Spécialités Locales",
           "rating": 4.8,
-          "price_range": "€€€",
-          "specialty": "Langouste grillée flambée au vieux rhum & Foie gras poêlé",
-          "maps_url": "https://maps.google.com/?q=Le+Cottage+Grand+Case+Saint+Martin",
-          "tiktok_tag": "grandcaserestaurant",
-          "tiktok_url": "https://www.tiktok.com/tag/grandcasestmartin"
-        },
-        {
-          "id": "resto_sxm_talkoftown",
-          "name": "Lolo Talk of the Town",
-          "category": "Grillades Caribéennes Authentiques",
-          "rating": 4.7,
-          "price_range": "€",
-          "specialty": "Ribs marinés au barbecue caraïbe, Johnny Cakes chauds et vivaneau frit",
-          "maps_url": "https://maps.google.com/?q=Talk+of+the+Town+Grand+Case",
-          "tiktok_tag": "saintmartinlolos",
-          "tiktok_url": "https://www.tiktok.com/tag/saintmartinfood"
-        },
-        {
-          "id": "resto_sxm_bistrot",
-          "name": "Bistrot Caraïbes",
-          "category": "Fruits de Mer & Cuisine Française",
-          "rating": 4.9,
-          "price_range": "€€€",
-          "specialty": "Vivaneau en croûte de sel et soufflé au Grand Marnier",
-          "maps_url": "https://maps.google.com/?q=Bistrot+Caraibes+Grand+Case",
-          "tiktok_tag": "bistrotcaraibes",
-          "tiktok_url": "https://www.tiktok.com/tag/caribbeanfood"
+          "price_range": "€€",
+          "specialty": "Recettes transmises de génération en génération, produits du marché",
+          "maps_url": "https://maps.google.com/?q=New York (NYC)+best+food",
+          "tiktok_tag": "streetfood",
+          "tiktok_url": "https://www.tiktok.com/tag/newyork(nyc)food"
         }
       ],
       "social_proof": [
         {
-          "title": "Vidéo virale : Les 5 spots secrets de Saint-Martin",
+          "title": "Les meilleures adresses à New York (NYC)",
           "platform": "TikTok",
-          "views": "1.4M",
-          "url": "https://www.tiktok.com/tag/stmartintravel"
-        },
-        {
-          "title": "Grand-Case : La capitale gastronomique des Caraïbes",
-          "platform": "TikTok",
-          "views": "850K",
-          "url": "https://www.tiktok.com/tag/grandcasestmartin"
-        },
-        {
-          "title": "Avis certifiés des voyageurs (Note 4.8★)",
-          "platform": "Google Maps",
-          "views": "980 avis",
-          "url": "https://maps.google.com/?q=Saint+Martin+Caribbean"
+          "views": "920K",
+          "url": "https://www.tiktok.com/tag/newyork(nyc)"
         }
       ]
     }
   },
   {
-    "id": "flight_gf_4bc4e9f640",
+    "id": "voyage_flash_bale_majorque",
+    "universe": "voyage",
     "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Vol direct Bâle-Mulhouse (BSL) ⇄ Europe Sud / International dès 36€",
+    "section_type": "flash_deals",
+    "badge": "🔥 Flash Deal • Baléares",
+    "title": "Vol Flash Bâle-Mulhouse ⇄ Majorque dès 36€ A/R",
     "price": 36,
     "price_str": "36 € A/R",
-    "location": "Bâle-Mulhouse (BSL) ⇄ Europe Sud / International",
-    "agency": "Google Flights (Bâle-Mulhouse (BSL))",
-    "url": "https://www.google.com/travel/flights?q=Vols%20au%20d%C3%A9part%20de%20B%C3%A2le%20Mulhouse",
-    "image_url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600",
-    "description": "Tarif en direct Google Flights. Hub : Bâle-Mulhouse (BSL). Durée indicative : 7 à 14 jours. Calculé avec les taxes et frais obligatoires.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-10T10:13:04.669404+00:00",
+    "location": "Palma de Majorque (Espagne)",
+    "destination": "Majorque",
+    "trip_mode": "fais_moi_rever",
+    "dates": "14 - 21 Fév. 2026 (Vacances Février)",
+    "departure_city": "Nancy",
+    "agency": "EasyJet via EuroAirport Bâle-Mulhouse (BSL)",
+    "url": "https://www.google.com/travel/flights?q=Vols%20de%20Bale%20vers%20Palma%20de%20Majorque%20du%202026-02-14%20au%202026-02-21",
+    "image_url": "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=800",
+    "description": "Erreur de tarif ou vente flash d'hiver : le billet A/R vers les Baléares sous les 40€. Accès rapide en TER depuis Nancy.",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
     "true_cost": {
+      "departure_city": "Nancy",
       "departure_hub": "Bâle-Mulhouse (BSL)",
       "nancy_transport": 45,
+      "train_route": "TER/TGV Nancy -> Bâle-Mulhouse (1h40, ~22€ l'aller)",
+      "flight_price": 36,
       "hotel_7d_est": 420,
+      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
+      "hotel_rating": 8.7,
       "total_estimated": 501,
-      "gain_net": 199,
+      "baseline_normal": 850,
+      "gain_net": 349,
       "is_viable": true,
-      "badge": "Rentable depuis Nancy (Gain net: +199€)",
-      "verdict": "EXCELLENT"
+      "badge": "🟢 Rentable depuis Nancy (Gain net: +349€)",
+      "verdict": "RENTABLE DEPUIS NANCY",
+      "savings_vs_normal": 349
     },
     "price_history": {
       "current": 36,
@@ -860,2693 +1319,117 @@
       "urgency_badge": "🟢 PÉPITE HISTORIQUE (-80% vs mois dernier — URGENT)",
       "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
     },
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "carnet_voyage": {
-      "destination": "Bâle-Mulhouse (BSL) ⇄ Europe Sud / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Bâle-Mulhouse (BSL). Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Bâle-Mulhouse (BSL)",
-          "desc": "Train direct",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Bâle-Mulhouse (BSL) ⇄ Europe Sud / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel sélectionné noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Bâle-Mulhouse (BSL) ⇄ Europe Sud / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/bâle-mulhouse(bsl)⇄europesud/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Bâle-Mulhouse (BSL) ⇄ Europe Sud / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/bâle-mulhouse(bsl)⇄europesud/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Bâle-Mulhouse (BSL) ⇄ Europe Sud / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/bâle-mulhouse(bsl)⇄europesud/international"
-        }
-      ]
-    }
+    "carnet_voyage": null
   },
   {
-    "id": "flight_gf_fb09a42a44",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Vol direct Luxembourg (LUX) ⇄ Europe Sud / International dès 39€",
-    "price": 39,
-    "price_str": "39 € A/R",
-    "location": "Luxembourg (LUX) ⇄ Europe Sud / International",
-    "agency": "Google Flights (Luxembourg (LUX))",
-    "url": "https://www.google.com/travel/flights?q=Vols%20au%20d%C3%A9part%20de%20Luxembourg",
-    "image_url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600",
-    "description": "Tarif en direct Google Flights. Hub : Luxembourg (LUX). Durée indicative : 7 à 14 jours. Calculé avec les taxes et frais obligatoires.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-10T10:13:01.935612+00:00",
-    "true_cost": {
-      "departure_hub": "Luxembourg (LUX)",
-      "nancy_transport": 20,
-      "hotel_7d_est": 420,
-      "total_estimated": 479,
-      "gain_net": 221,
-      "is_viable": true,
-      "badge": "Rentable depuis Nancy (Gain net: +221€)",
-      "verdict": "EXCELLENT"
-    },
+    "id": "voyage_flash_train_nancy_paris",
+    "universe": "voyage",
+    "category": "train",
+    "section_type": "flash_deals",
+    "badge": "🚄 TGV Flash • Nancy Hub",
+    "title": "TGV direct Nancy Ville ⇄ Paris Est dès 16€",
+    "price": 16,
+    "price_str": "16 € aller",
+    "location": "Nancy ⇄ Paris Gare de l'Est",
+    "destination": "Paris",
+    "trip_mode": "sniper",
+    "dates": "12 allers-retours quotidiens (1h32 direct)",
+    "departure_city": "Nancy",
+    "agency": "SNCF Connect / Ouigo",
+    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-paris",
+    "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
+    "description": "Liaison TGV directe (1h32). Connexion idéale pour un week-end parisien ou une correspondance vers les aéroports de Roissy et Orly.",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "true_cost": null,
     "price_history": {
-      "current": 39,
-      "avg_7d": 169,
-      "avg_30d": 180,
-      "min_historic": 39,
+      "current": 16,
+      "avg_7d": 35,
+      "avg_30d": 42,
+      "min_historic": 16,
       "sparkline": [
-        189,
-        180,
-        169,
-        39
+        44,
+        42,
+        35,
+        16
       ],
       "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-78% vs mois dernier — URGENT)",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-61% vs mois dernier — URGENT)",
       "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
     },
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "carnet_voyage": {
-      "destination": "Luxembourg (LUX) ⇄ Europe Sud / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Luxembourg (LUX). Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Luxembourg (LUX)",
-          "desc": "Train direct",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Luxembourg (LUX) ⇄ Europe Sud / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel sélectionné noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Luxembourg (LUX) ⇄ Europe Sud / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/luxembourg(lux)⇄europesud/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Luxembourg (LUX) ⇄ Europe Sud / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/luxembourg(lux)⇄europesud/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Luxembourg (LUX) ⇄ Europe Sud / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/luxembourg(lux)⇄europesud/international"
-        }
-      ]
-    }
+    "carnet_voyage": null
   },
   {
-    "id": "flight_gf_39cc9afd68",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Vol direct Paris (PAR) ⇄ Guadeloupe (PTP) dès 540€",
-    "price": 540,
-    "price_str": "540 € A/R",
-    "location": "Paris (PAR) ⇄ Guadeloupe (PTP)",
-    "agency": "Google Flights (Paris CDG/ORY)",
-    "url": "https://www.google.com/travel/flights?q=Vols%20vers%20Pointe-a-Pitre%20au%20d%C3%A9part%20de%20Paris",
-    "image_url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600",
-    "description": "Tarif en direct Google Flights. Hub : Paris CDG/ORY. Durée indicative : 7 à 14 jours. Calculé avec les taxes et frais obligatoires.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-10T10:12:58.938316+00:00",
-    "true_cost": {
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "hotel_7d_est": 595,
-      "total_estimated": 1200,
-      "gain_net": 75,
-      "is_viable": true,
-      "badge": "Rentable depuis Nancy (Gain net: +75€)",
-      "verdict": "EXCELLENT"
-    },
-    "price_history": {
-      "current": 540,
-      "avg_7d": 582,
-      "avg_30d": 620,
-      "min_historic": 320,
-      "sparkline": [
-        651,
-        620,
-        582,
-        540
-      ],
-      "urgency_level": "good",
-      "urgency_badge": "🟢 BON PRIX (-12% vs moyenne)",
-      "urgency_desc": "Offre très intéressante sous le prix médian."
-    },
+    "id": "voyage_flash_train_nancy_roissy_cdg",
     "universe": "voyage",
-    "trip_mode": "sniper",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "carnet_voyage": {
-      "destination": "Paris (PAR) ⇄ Guadeloupe (PTP)",
-      "why_deal": "Billet vol régulier sous 330€ A/R, exceptionnel pour les Antilles. Connexion Nancy facilitée via Massy TGV ou Roissy CDG direct.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Nancy -> Paris / Massy",
-          "desc": "TGV Nancy -> Massy TGV direct sans traverser Paris.",
-          "duration": "2h05"
-        },
-        {
-          "step": 2,
-          "title": "Vol Direct Paris ORY -> PTP",
-          "desc": "Vol de jour direct Corsair / Air Caraïbes.",
-          "duration": "8h30"
-        },
-        {
-          "step": 3,
-          "title": "Lodge éco-responsable",
-          "desc": "Bungalow créole à Sainte-Anne ou Deshaies noté 8.8/10.",
-          "duration": "7 nuits"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_ptp_volcan",
-          "name": "Ascension de la Soufrière au lever du jour",
-          "category": "Randonnée",
-          "rating": 4.9,
-          "price": "Gratuit",
-          "desc": "Volcan actif dominant l'archipel avec ses fumerolles et bains chauds de Matouba.",
-          "maps_url": "https://maps.google.com/?q=La+Soufriere+Guadeloupe",
-          "tiktok_tag": "soufriereguadeloupe",
-          "tiktok_url": "https://www.tiktok.com/tag/lasoufriere"
-        },
-        {
-          "id": "act_ptp_iletcarek",
-          "name": "Excursion à l'Îlet Caret (Grand Cul-de-Sac Marin)",
-          "category": "Plage & Bateau",
-          "rating": 4.8,
-          "price": "50 €",
-          "desc": "Banc de sable blanc bordé d'une eau turquoise translucide au milieu de la barrière de corail.",
-          "maps_url": "https://maps.google.com/?q=Ilet+Caret+Guadeloupe",
-          "tiktok_tag": "iletcaret",
-          "tiktok_url": "https://www.tiktok.com/tag/iletcaret"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_ptp_rhum",
-          "name": "L'Habitation Deshaies",
-          "category": "Créole Raffiné",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Colombo de cabri au feu de bois & Ouassous grillés",
-          "maps_url": "https://maps.google.com/?q=Deshaies+Restaurant+Guadeloupe",
-          "tiktok_tag": "guadeloupefood",
-          "tiktok_url": "https://www.tiktok.com/tag/guadeloupefood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Ce que personne ne vous dit sur la Guadeloupe",
-          "platform": "TikTok",
-          "views": "2.1M",
-          "url": "https://www.tiktok.com/tag/guadeloupetravel"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_gf_77535920aa",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Vol direct Paris (PAR) ⇄ Saint-Martin (SXM) dès 655€",
-    "price": 655,
-    "price_str": "655 € A/R",
-    "location": "Paris (PAR) ⇄ Saint-Martin (SXM)",
-    "agency": "Google Flights (Paris CDG/ORY)",
-    "url": "https://www.google.com/travel/flights?q=Vols%20vers%20SXM%20au%20d%C3%A9part%20de%20Paris",
-    "image_url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600",
-    "description": "Tarif en direct Google Flights. Hub : Paris CDG/ORY. Durée indicative : 7 à 14 jours. Calculé avec les taxes et frais obligatoires.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-10T10:12:56.179663+00:00",
-    "true_cost": {
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "hotel_7d_est": 840,
-      "total_estimated": 1560,
-      "gain_net": 30,
-      "is_viable": false,
-      "badge": "Fausse bonne affaire (Le trajet depuis Nancy annule le gain)",
-      "verdict": "MITIGE"
-    },
-    "price_history": {
-      "current": 655,
-      "avg_7d": 648,
-      "avg_30d": 690,
-      "min_historic": 360,
-      "sparkline": [
-        724,
-        690,
-        648,
-        655
-      ],
-      "urgency_level": "good",
-      "urgency_badge": "🟢 BON PRIX (-5% vs moyenne)",
-      "urgency_desc": "Offre très intéressante sous le prix médian."
-    },
-    "universe": "voyage",
-    "trip_mode": "sniper",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "carnet_voyage": {
-      "destination": "Paris (PAR) ⇄ Saint-Martin (SXM)",
-      "why_deal": "Baisse historique de 38% sur le vol direct vers Saint-Martin Princess Juliana (SXM). En partant de Nancy en TGV (1h32), l'économie nette dépasse 400€ par rapport aux tarifs d'agences traditionnelles.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Départ Nancy Ville -> Paris Est",
-          "desc": "TGV INOUI ou Ouigo direct (1h32, dès 16€). 12 liaisons quotidiennes.",
-          "duration": "1h32"
-        },
-        {
-          "step": 2,
-          "title": "Transfert Aéroport",
-          "desc": "Métro 14 ou RER B direct vers Paris CDG / Orly (35 min).",
-          "duration": "35 min"
-        },
-        {
-          "step": 3,
-          "title": "Vol Direct A/R vers SXM",
-          "desc": "Vol régulier direct Air Caraïbes / French Bee / Corsair avec bagage cabine inclus.",
-          "duration": "8h45"
-        },
-        {
-          "step": 4,
-          "title": "Hébergement Caraïbe Vérifié",
-          "desc": "Hôtel ou villa partenaire vérifié note 8.9/10, front de mer à Grand-Case ou Baie Nettlé.",
-          "duration": "7 nuits"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_sxm_tintamarre",
-          "name": "Snorkeling avec les tortues à l'Îlet Tintamarre",
-          "category": "Nature & Marine",
-          "rating": 4.9,
-          "price": "45 €",
-          "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500",
-          "desc": "Île déserte protégée de la réserve naturelle où les tortues marines broutent dans 2 mètres d'eau cristalline.",
-          "maps_url": "https://maps.google.com/?q=Tintamarre+Island+Saint+Martin",
-          "tiktok_tag": "tintamarre",
-          "tiktok_url": "https://www.tiktok.com/tag/tintamarre"
-        },
-        {
-          "id": "act_sxm_baierouge",
-          "name": "Coucher de soleil & Cocktails à Baie Rouge",
-          "category": "Détente & Plage",
-          "rating": 4.8,
-          "price": "Gratuit",
-          "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500",
-          "desc": "Une des plus belles plages sauvages de l'île, falaise percée (Trou de David) et ambiance décontractée.",
-          "maps_url": "https://maps.google.com/?q=Baie+Rouge+Saint+Martin",
-          "tiktok_tag": "baierouge",
-          "tiktok_url": "https://www.tiktok.com/tag/baierouge"
-        },
-        {
-          "id": "act_sxm_loterie",
-          "name": "Loterie Farm : Jungle luxuriante & Piscine de source",
-          "category": "Aventure & Chill",
-          "rating": 4.9,
-          "price": "25 €",
-          "image": "https://images.unsplash.com/photo-1510414842594-a61752af3337?w=500",
-          "desc": "Oasis secrète nichée au pied du Pic Paradis. Cabanes dans les arbres, tyroliennes et lounge en pleine jungle.",
-          "maps_url": "https://maps.google.com/?q=Loterie+Farm+Saint+Martin",
-          "tiktok_tag": "loteriefarm",
-          "tiktok_url": "https://www.tiktok.com/tag/loteriefarm"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_sxm_cottage",
-          "name": "Le Cottage (Grand-Case)",
-          "category": "Haute Gastronomie & Vins",
-          "rating": 4.8,
-          "price_range": "€€€",
-          "specialty": "Langouste grillée flambée au vieux rhum & Foie gras poêlé",
-          "maps_url": "https://maps.google.com/?q=Le+Cottage+Grand+Case+Saint+Martin",
-          "tiktok_tag": "grandcaserestaurant",
-          "tiktok_url": "https://www.tiktok.com/tag/grandcasestmartin"
-        },
-        {
-          "id": "resto_sxm_talkoftown",
-          "name": "Lolo Talk of the Town",
-          "category": "Grillades Caribéennes Authentiques",
-          "rating": 4.7,
-          "price_range": "€",
-          "specialty": "Ribs marinés au barbecue caraïbe, Johnny Cakes chauds et vivaneau frit",
-          "maps_url": "https://maps.google.com/?q=Talk+of+the+Town+Grand+Case",
-          "tiktok_tag": "saintmartinlolos",
-          "tiktok_url": "https://www.tiktok.com/tag/saintmartinfood"
-        },
-        {
-          "id": "resto_sxm_bistrot",
-          "name": "Bistrot Caraïbes",
-          "category": "Fruits de Mer & Cuisine Française",
-          "rating": 4.9,
-          "price_range": "€€€",
-          "specialty": "Vivaneau en croûte de sel et soufflé au Grand Marnier",
-          "maps_url": "https://maps.google.com/?q=Bistrot+Caraibes+Grand+Case",
-          "tiktok_tag": "bistrotcaraibes",
-          "tiktok_url": "https://www.tiktok.com/tag/caribbeanfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Vidéo virale : Les 5 spots secrets de Saint-Martin",
-          "platform": "TikTok",
-          "views": "1.4M",
-          "url": "https://www.tiktok.com/tag/stmartintravel"
-        },
-        {
-          "title": "Grand-Case : La capitale gastronomique des Caraïbes",
-          "platform": "TikTok",
-          "views": "850K",
-          "url": "https://www.tiktok.com/tag/grandcasestmartin"
-        },
-        {
-          "title": "Avis certifiés des voyageurs (Note 4.8★)",
-          "platform": "Google Maps",
-          "views": "980 avis",
-          "url": "https://maps.google.com/?q=Saint+Martin+Caribbean"
-        }
-      ]
-    }
-  },
-  {
-    "id": "train_dealabs_8bc47ed6a81f",
     "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "Billet de Train Ouigo de Paris Austerlitz vers Rennes dès 10€ - Plusieurs dates, Ex : 11 Novembre 2026",
+    "section_type": "flash_deals",
+    "badge": "🚄 Navette Aéroport • TGV Direct",
+    "title": "TGV direct Nancy Ville ⇄ Aéroport Roissy CDG 2 dès 29€",
+    "price": 29,
+    "price_str": "29 € aller",
+    "location": "Nancy ⇄ Aéroport Roissy CDG",
+    "destination": "Aéroport Roissy CDG",
+    "trip_mode": "sniper",
+    "dates": "Liaisons directes quotidiennes (1h50)",
+    "departure_city": "Nancy",
+    "agency": "SNCF TGV direct",
+    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-aeroport-paris-roissy-charles-de-gaulle-cdg",
+    "image_url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800",
+    "description": "Arrivez directement au cœur du Terminal 2 de Roissy Charles de Gaulle depuis Nancy sans avoir à traverser Paris avec vos bagages.",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "true_cost": null,
+    "price_history": {
+      "current": 29,
+      "avg_7d": 35,
+      "avg_30d": 42,
+      "min_historic": 16,
+      "sparkline": [
+        44,
+        42,
+        35,
+        29
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-30% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+    },
+    "carnet_voyage": null
+  },
+  {
+    "id": "voyage_flash_train_nancy_luxembourg",
+    "universe": "voyage",
+    "category": "train",
+    "section_type": "flash_deals",
+    "badge": "🚄 TER Frontalier • Hub Vol",
+    "title": "TER direct Nancy ⇄ Luxembourg (LUX) dès 10€",
     "price": 10,
-    "price_str": "10 €",
-    "location": "Réseau SNCF / TGV / Ouigo",
-    "agency": "SNCF / Dealabs",
-    "url": "https://www.dealabs.com/bons-plans/billet-de-train-ouigo-de-paris-austerlitz-vers-rennes-des-10eur-plusieurs-dates-ex-11-novembre-2026-3447995",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/KWhmw/3447995_1/re/150x150/qt/55/3447995_1.jpg",
-    "description": "10€ - SNCF Connect Offre très avantageuse repérée sur SNCF Connect pour voyager entre Paris (gare d'Austerlitz) et Rennes à bord de l'offre OUIGO Train Classique . Les billets aller simple sont affichés au tarif plancher de 10,00 € sur une très large sélection de dates en novembr",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.414183+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "train_dealabs_cc703d5a9bfa",
-    "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "Séjour 4J/3N pour 2 à Istanbul, Hotel 4* La Wisteria Boutique Hotel Istanbul du 10/12 au 13/12 (62,5€p.p)",
-    "price": 5,
-    "price_str": "5 €",
-    "location": "Réseau SNCF / TGV / Ouigo",
-    "agency": "SNCF / Dealabs",
-    "url": "https://www.dealabs.com/bons-plans/sejour-4j3n-pour-2-a-istanbul-hotel-4-la-wisteria-boutique-hotel-istanbul-du-1012-au-1312-625eurpp-3447528",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/Aw5HX/3447528_1/re/150x150/qt/55/3447528_1.jpg",
-    "description": "125,49€ - Booking.com Séjour 4J/3N pour 2 à Istanbul, Hotel 4* La Wisteria Boutique Hotel Istanbul du 10/12 au 13/12 (62,5€p.p) Offrant une vue sur la ville d’Istanbul, La Wisteria Boutique Hotel Istanbul dispose d’une connexion Wi-Fi gratuite. Idéalement situé dans le quartier d",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.414183+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "train_dealabs_046af07dff43",
-    "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "[Carte avantage] 1 million de billets TGV INOUÏ dès 22€ pour un voyage jusqu’au 13 décembre (33€ sans carte)",
-    "price": 22,
-    "price_str": "22 €",
-    "location": "Réseau SNCF / TGV / Ouigo",
-    "agency": "SNCF / Dealabs",
-    "url": "https://www.dealabs.com/bons-plans/1-million-de-billets-tgv-inoui-des-22eur-pour-un-voyage-jusquau-13-decembre-3447694",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/oW04F/3447694_1/re/150x150/qt/55/3447694_1.jpg",
-    "description": "22€ - SNCF Connect En ce moment, la SCNF propose des billets TGV Inouï pour des voyages du 3 novembre au 12 décembre à prix réduit. Une balade sur les quais de Bordeaux, une escapade gourmande à Lyon, quelques jours pour découvrir Rennes, ou une parenthèse du côté de la Méditerra",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.413190+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "train_dealabs_42981fd15ce4",
-    "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "Vente Flash TGV INOUI : Paris ⇄ Lille à 20€ (21€ en 1ère classe) pour voyager les week-ends du 21 novembre au 13 décembre 2026",
-    "price": 20,
-    "price_str": "20 €",
-    "location": "Réseau SNCF / TGV / Ouigo",
-    "agency": "SNCF / Dealabs",
-    "url": "https://www.dealabs.com/bons-plans/vente-flash-tgv-inoui-paris-lille-a-20eur-21eur-en-1ere-classe-pour-voyager-les-week-ends-du-21-novembre-au-13-decembre-2026-3447584",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/s1x44/3447584_1/re/150x150/qt/55/3447584_1.jpg",
-    "description": "20€ - SNCF Connect Envie de passer un week-end à Lille ou de rejoindre Paris à petit prix avant les fêtes ? TGV INOUI a lancé sa vente flash du 9 au 11 novembre 2026 , avec des billets à 20€ en seconde classe et 21€ en première classe , dans les deux sens entre Paris et Lille. Le",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.412017+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "train_dealabs_5a37c35b307f",
-    "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "Billet A/S Eurostar de Paris pour Bruxelles à 21€ - Ex : le 08 Janvier 2027",
-    "price": 21,
-    "price_str": "21 €",
-    "location": "Réseau SNCF / TGV / Ouigo",
-    "agency": "SNCF / Dealabs",
-    "url": "https://www.dealabs.com/bons-plans/billet-as-eurostar-de-paris-pour-bruxelles-a-21eur-ex-le-08-janvier-2027-3449282",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/c6FFo/3449282_1/re/150x150/qt/55/3449282_1.jpg",
-    "description": "21€ - Trainline Exemple du 08 janvier : Multitude d'autres dates disponibles au même prix : Bruxelles s'explore facilement à pied et s'articule autour de quelques incontournables culturels, architecturaux et gourmands : Cœur historique & Architecture : La Grand-Place : L'une des ",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.412017+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "train_dealabs_ce532d7ba304",
-    "category": "train",
-    "category_label": "Train & TGV",
-    "badge": "🚄 Train",
-    "title": "Sélection de vols en promotion pour voyager de novembre 2026 à mars 2027",
-    "price": 25,
-    "price_str": "Prix cassé",
-    "location": "Réseau SNCF / TGV / Ouigo",
-    "agency": "SNCF / Dealabs",
-    "url": "https://www.dealabs.com/bons-plans/vente-flash-easyjet-vol-des-2395-eur-pour-voyager-de-novembre-2026-a-mars-2027-3449982",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/jWd5g/3449982_1/re/150x150/qt/55/3449982_1.jpg",
-    "description": "easyJet Jusqu’au 10 novembre à 16 h seulement, easyJet propose une vente flash sur une sélection de sièges et de destinations depuis ou vers la France, pour des voyages du 19 novembre 2026 au 18 mars 2027. Des billets sont disponibles à partir de 23,95€ l’aller simple. Voici quel",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.411023+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy"
-  },
-  {
-    "id": "flight_f4f_89d1fd383242",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea SALE 💥 Flights across Europe from only €1! (members only)",
-    "price": 1,
-    "price_str": "1 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-promotion-sale-2021-flights-for-only-e1-across-europe-2-2-2/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "The Spanish low-cost carrier Volotea is offering cheap flights between European cities from only €1 one-way.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 1,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 486,
-      "baseline_normal": 850,
-      "gain_net": 364,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +364€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 364
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_f8a2472f76fb",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea SALE 💥 Flights across Europe from only €1! (members only)",
-    "price": 1,
-    "price_str": "1 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-promotion-sale-2021-flights-for-only-e1-across-europe-2-2/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "The Spanish low-cost carrier Volotea is offering cheap flights between European cities from only €1 one-way.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 1,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 486,
-      "baseline_normal": 850,
-      "gain_net": 364,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +364€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 364
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_ae870d885d73",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea SALE 💥 Flights across Europe from only €1! (members only)",
-    "price": 1,
-    "price_str": "1 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-promotion-sale-2021-flights-for-only-e1-across-europe-2/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "The Spanish low-cost carrier Volotea is offering cheap flights between European cities from only €1 one-way.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 1,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 486,
-      "baseline_normal": 850,
-      "gain_net": 364,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +364€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 364
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_f46799f6cdec",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea promotion sale 2022: Flights across Europe from only €1! (members only)",
-    "price": 1,
-    "price_str": "1 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-promotion-sale-2021-flights-for-only-e1-across-europe/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "The Spanish low-cost carrier Volotea is offering cheap flights between European cities from only €1 one-way.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 1,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 486,
-      "baseline_normal": 850,
-      "gain_net": 364,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +364€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 364
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_63a6a6772144",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "HOT!! Volotea promotion sale! Flights from only €3 one-way!",
-    "price": 3,
-    "price_str": "3 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-sale-across-europe-and-morocco/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "The Spanish low-cost carrier Volotea is offering cheap flights between European cities from only €3 one-way.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 3,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 488,
-      "baseline_normal": 850,
-      "gain_net": 362,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +362€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 362
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_f811c2250638",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Blue Air promotion sale 2021: Flights across Europe for only €1! (members only)",
-    "price": 1,
-    "price_str": "1 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/blue-air-promotion-sale-2021-flights-for-only-1-eur/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "The Romanian  low-cost carrier Blue Air is offering cheap flights between European cities for only €1 one-way. (non-members from €9 one-way)",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 1,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 486,
-      "baseline_normal": 850,
-      "gain_net": 364,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +364€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 364
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_97f8b3192026",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea Black Friday! Flights across Europe from only €5!",
-    "price": 5,
-    "price_str": "5 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-black-friday-flights-across-europe/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "Spanish low-cost airline Volotea has launched a sale: one-way tickets on many international European routes from only €5.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 5,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 490,
-      "baseline_normal": 850,
-      "gain_net": 360,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +360€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 360
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_64feb140604b",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea promotion sale 2020: Flights across Europe for only €1! (members only)",
-    "price": 1,
-    "price_str": "1 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-promotion-sale-2020-flights-for-only-e1-across-europe-members-only/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "The Spanish low-cost carrier Volotea is offering cheap flights between European cities for only €1 one-way. (non-members from €9 one-way)",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 1,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 486,
-      "baseline_normal": 850,
-      "gain_net": 364,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +364€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 364
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_1d1d717777ad",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea promotion sale 2020: Flights across Europe from only €6!",
-    "price": 6,
-    "price_str": "6 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-promotion-sale-2020-flights-across-europe-for-only-e9/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "Spanish low-cost airline Volotea has launched a sale: one-way tickets on many international European routes from only € 6.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 6,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 491,
-      "baseline_normal": 850,
-      "gain_net": 359,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +359€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 359
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_02c70165eb9f",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea promotion sale: 40 new routes and flights from €9!",
-    "price": 9,
-    "price_str": "9 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-promotion-sale-40-new-routes-and-flights-from-eur-9/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "Volotea is launching 40 new routes in summer 2020.  In Italy, France, Spain and Greece, the company now offers new domestic connections.",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 9,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 494,
-      "baseline_normal": 850,
-      "gain_net": 356,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +356€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 356
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_a365c7b4181b",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea promotion sale 2019: Flights for only €1 across Europe! (members only)",
-    "price": 1,
-    "price_str": "1 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-promotion-sale-2019-flights-for-only-e1-across-europe-members-only/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "CHEAP!",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 1,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 486,
-      "baseline_normal": 850,
-      "gain_net": 364,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +364€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 364
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_ec1f7e7bd798",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea Black Friday! Cheap flights between many European cities from only €5 roundtrip!",
-    "price": 5,
-    "price_str": "5 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-sale-2019-cheap-flights-between-many-european-cities-from-only-e8-one-way/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "For everyone",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 5,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 490,
-      "baseline_normal": 850,
-      "gain_net": 360,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +360€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 360
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_5d90c2c2cfa7",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Volotea SALE! Cheap flights between many European cities from only €8 one-way!",
-    "price": 8,
-    "price_str": "8 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-sale-cheap-flights-between-many-european-cities-from-only-e4-one-way/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "SALE!",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.116565+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 8,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 493,
-      "baseline_normal": 850,
-      "gain_net": 357,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +357€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 357
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_193d0f210994",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "🔥 VOLOTEA SALE! 1 million seats from €19 + flexible booking for 2027 trips",
-    "price": 19,
-    "price_str": "19 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/volotea-sale-sale-2021-flights-for-e19-flexible/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "Volotea has launched a new sale with 1,000,000 seats on offer, and some of the cheapest fares start at just €19 each way!",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.115561+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 19,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 504,
-      "baseline_normal": 850,
-      "gain_net": 346,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +346€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 346
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_f4f_64d915e3cb72",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Budget Weekend Breaks in Europe you can book for under €150 p.p (flights + 4-star hotel)",
-    "price": 150,
-    "price_str": "150 € A/R",
-    "location": "Europe / International",
-    "agency": "Fly4Free",
-    "url": "https://www.fly4free.com/flight-deals/europe/budget-weekend-breaks-in-europe-for-under-e150-p-p-flight/",
-    "image_url": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600",
-    "description": "Craving a quick getaway but don’t want to spend a fortune? You’re in luck! It’s still possible to plan a European weekend trip, including flights and accommodation, for under €150. Whether you’re after culture, food, or a scenic stroll by the sea, these destinations prove that ad",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:28.115561+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 150,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 635,
-      "baseline_normal": 850,
-      "gain_net": 215,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +215€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 215
-    },
-    "carnet_voyage": {
-      "destination": "Europe / International",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Europe / International",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Hôtel Riviera Charme & Vue (8.7/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Europe / International+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Europe / International+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/europe/internationalfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Europe / International",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/europe/international"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_dealabs_88a200181b69",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Marrakech All Inclusive en décembre : 5J/4N au Marrakech Ryads Parc & Spa 4★ | tout inclus + vols A/R de Lyon | 289€/p (décembre)",
-    "price": 289,
-    "price_str": "289 € A/R",
-    "location": "Destination Internationale / Caraïbes",
-    "agency": "Dealabs Voyages",
-    "url": "https://www.dealabs.com/bons-plans/marrakech-all-inclusive-en-decembre-5j4n-au-marrakech-ryads-parc-spa-4-tout-inclus-vols-ar-de-lyon-289eurp-decembre-3447640",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/nJv3n/3447640_1/re/150x150/qt/55/3447640_1.jpg",
-    "description": "578€ - Cdiscount Voyages ☀️ Quatre nuits à Marrakech dans un hôtel-club 4★ avec grande piscine, repas et boissons compris, vols aller-retour de Lyon inclus, pour 289 € par personne ! ❖ Inclus Vols aller-retour Lyon–Marrakech avec Transavia Un petit sac sous le siège par personne ",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:27.850768+00:00",
-    "universe": "voyage",
+    "price_str": "10 € aller",
+    "location": "Nancy ⇄ Luxembourg Gare / Aéroport",
+    "destination": "Luxembourg",
     "trip_mode": "sniper",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
+    "dates": "Toutes les 30 minutes (1h15)",
     "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 289,
-      "hotel_7d_est": 595,
-      "hotel_name": "Kaz Kréyol Lodge & Spa (8.8/10)",
-      "hotel_rating": 8.8,
-      "total_estimated": 949,
-      "baseline_normal": 1350,
-      "gain_net": 401,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +401€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 401
+    "agency": "SNCF TER Fluo Grand Est / CFL",
+    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-luxembourg",
+    "image_url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",
+    "description": "Liaison directe et économique vers l'Aéroport de Luxembourg (Findel), avec tramway gratuit à l'arrivée.",
+    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "true_cost": null,
+    "price_history": {
+      "current": 10,
+      "avg_7d": 35,
+      "avg_30d": 42,
+      "min_historic": 16,
+      "sparkline": [
+        44,
+        42,
+        35,
+        10
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-76% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
     },
-    "carnet_voyage": {
-      "destination": "Destination Internationale / Caraïbes",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Destination Internationale / Caraïbes",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Kaz Kréyol Lodge & Spa (8.8/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbesfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Destination Internationale / Caraïbes",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_dealabs_8ab95270b5de",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Billet de train Eurostar de Paris Gare du Nord vers Londres dès 42€ (Aller/Retour dès 84€) - Plusieurs départs Ex : 16 Décembre 2026",
-    "price": 42,
-    "price_str": "42 € A/R",
-    "location": "Destination Internationale / Caraïbes",
-    "agency": "Dealabs Voyages",
-    "url": "https://www.dealabs.com/bons-plans/billet-de-train-eurostar-de-paris-gare-du-nord-vers-londres-des-42eur-allerretour-des-84eur-plusieurs-departs-ex-16-decembre-2026-3448653",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/66u7H/3448653_1/re/150x150/qt/55/3448653_1.jpg",
-    "description": "42€ - SNCF Connect Tarif promotionnel repéré sur SNCF Connect pour voyager à grande vitesse sous la Manche à bord de l' Eurostar entre la gare de Paris Nord et le cœur de Londres ( London St Pancras International ). Les billets aller simple sont actuellement proposés à partir de ",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:27.849760+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 42,
-      "hotel_7d_est": 595,
-      "hotel_name": "Kaz Kréyol Lodge & Spa (8.8/10)",
-      "hotel_rating": 8.8,
-      "total_estimated": 702,
-      "baseline_normal": 1350,
-      "gain_net": 648,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +648€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 648
-    },
-    "carnet_voyage": {
-      "destination": "Destination Internationale / Caraïbes",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Destination Internationale / Caraïbes",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Kaz Kréyol Lodge & Spa (8.8/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbesfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Destination Internationale / Caraïbes",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_dealabs_8532360e7b29",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Vol Aller-Retour Paris <=> Londres, Rome, Barcelone ou Milan à 13€ de Novembre à Février",
-    "price": 13,
-    "price_str": "13 € A/R",
-    "location": "Destination Internationale / Caraïbes",
-    "agency": "Dealabs Voyages",
-    "url": "https://www.dealabs.com/bons-plans/vente-flash-vol-aller-retour-paris-londres-rome-barcelone-ou-milan-a-13eur-de-novembre-et-fevrier-3447885",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/5nkPu/3447885_1/re/150x150/qt/55/3447885_1.jpg",
-    "description": "13€ - Trip.com Le 13 novembre à 13 h, Trip.com lance une vente flash avec des vols aller-retour au départ de Paris vers Londres, Milan, Barcelone ou Rome à seulement 13 € par personne ! Les voyages pourront être effectués du 13 novembre 2026 au 13 février 2027. Pour accéder à l’o",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:27.849760+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 13,
-      "hotel_7d_est": 595,
-      "hotel_name": "Kaz Kréyol Lodge & Spa (8.8/10)",
-      "hotel_rating": 8.8,
-      "total_estimated": 673,
-      "baseline_normal": 1350,
-      "gain_net": 677,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +677€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 677
-    },
-    "carnet_voyage": {
-      "destination": "Destination Internationale / Caraïbes",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Destination Internationale / Caraïbes",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Kaz Kréyol Lodge & Spa (8.8/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbesfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Destination Internationale / Caraïbes",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_dealabs_9f502377af67",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Billet de train Eurostar de Paris vers Amsterdam dès 33€ (ou Aller/Retour dès 66€) - Ex : 9 et 19 Janvier 2027",
-    "price": 33,
-    "price_str": "33 € A/R",
-    "location": "Destination Internationale / Caraïbes",
-    "agency": "Dealabs Voyages",
-    "url": "https://www.dealabs.com/bons-plans/billet-de-train-eurostar-de-paris-vers-amsterdam-des-33eur-ou-allerretour-des-66eur-ex-9-et-19-janvier-2027-3449256",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/z9n4V/3449256_1/re/150x150/qt/55/3449256_1.jpg",
-    "description": "33€ - SNCF Connect Tarif promotionnel très avantageux repéré sur SNCF Connect pour voyager à grande vitesse vers les Pays-Bas à bord de l' Eurostar (ex-Thalys) entre Paris Gare du Nord et Amsterdam Centraal . Les trajets simples en 2nde classe sont actuellement proposés à partir ",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:27.848768+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 33,
-      "hotel_7d_est": 595,
-      "hotel_name": "Kaz Kréyol Lodge & Spa (8.8/10)",
-      "hotel_rating": 8.8,
-      "total_estimated": 693,
-      "baseline_normal": 1350,
-      "gain_net": 657,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +657€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 657
-    },
-    "carnet_voyage": {
-      "destination": "Destination Internationale / Caraïbes",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Destination Internationale / Caraïbes",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Kaz Kréyol Lodge & Spa (8.8/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbesfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Destination Internationale / Caraïbes",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_dealabs_1a9695052fcd",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Billet de train Eurostar de Paris vers Amsterdam dès 33€ (Aller/Retour à 66€) - Plusieurs dates Ex : 4 Janvier 2027",
-    "price": 33,
-    "price_str": "33 € A/R",
-    "location": "Destination Internationale / Caraïbes",
-    "agency": "Dealabs Voyages",
-    "url": "https://www.dealabs.com/bons-plans/billet-de-train-eurostar-de-paris-vers-amsterdam-des-33eur-allerretour-a-66eur-plusieurs-dates-ex-4-janvier-2027-3450201",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/5Raqc/3450201_1/re/150x150/qt/55/3450201_1.jpg",
-    "description": "33€ - Trainline Tarif promotionnel repéré sur Trainline pour relier à grande vitesse la France et les Pays-Bas à bord de l' Eurostar entre Paris Gare du Nord et Amsterdam Centraal . Les trajets simples en classe Standard sont proposés au tarif plancher de 33,00 € (au lieu de 44,0",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:27.847768+00:00",
-    "universe": "voyage",
-    "trip_mode": "fais_moi_rever",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 33,
-      "hotel_7d_est": 595,
-      "hotel_name": "Kaz Kréyol Lodge & Spa (8.8/10)",
-      "hotel_rating": 8.8,
-      "total_estimated": 693,
-      "baseline_normal": 1350,
-      "gain_net": 657,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +657€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 657
-    },
-    "carnet_voyage": {
-      "destination": "Destination Internationale / Caraïbes",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Destination Internationale / Caraïbes",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Kaz Kréyol Lodge & Spa (8.8/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbesfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Destination Internationale / Caraïbes",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_dealabs_7d5e8c84a7ab",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "Vol direct Aller/Retour Paris (CDG) <-> Montréal (YUL) Canada dès 364€ - Du 22 Janvier au 3 Février 2027 (Air Transat)",
-    "price": 364,
-    "price_str": "364 € A/R",
-    "location": "Destination Internationale / Caraïbes",
-    "agency": "Dealabs Voyages",
-    "url": "https://www.dealabs.com/bons-plans/vol-direct-allerretour-paris-cdg-montreal-yul-canada-des-364eur-du-22-janvier-au-3-fevrier-2027-air-transat-3450235",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/jqjQW/3450235_1/re/150x150/qt/55/3450235_1.jpg",
-    "description": "368€ - Gotogate Tarif attractif repéré sur l'agence de voyage en ligne Gotogate pour s'envoler directement vers le Québec en plein hiver. L'aller-retour sans escale reliant Paris Charles de Gaulle (CDG) à Montréal Pierre-Elliott-Trudeau (YUL) à bord de la compagnie canadienne Air",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:27.846768+00:00",
-    "universe": "voyage",
-    "trip_mode": "sniper",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 364,
-      "hotel_7d_est": 595,
-      "hotel_name": "Kaz Kréyol Lodge & Spa (8.8/10)",
-      "hotel_rating": 8.8,
-      "total_estimated": 1024,
-      "baseline_normal": 1350,
-      "gain_net": 326,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +326€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 326
-    },
-    "carnet_voyage": {
-      "destination": "Destination Internationale / Caraïbes",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Destination Internationale / Caraïbes",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Kaz Kréyol Lodge & Spa (8.8/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbesfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Destination Internationale / Caraïbes",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ]
-    }
-  },
-  {
-    "id": "flight_dealabs_094dbc3e07a1",
-    "category": "flight",
-    "category_label": "Vol & Erreur de Prix",
-    "badge": "✈️ Vol",
-    "title": "-10% supplémentaires sur les séjours et circuits « Les Créations » Carrefour Voyages",
-    "price": 450,
-    "price_str": "Prix cassé",
-    "location": "Destination Internationale / Caraïbes",
-    "agency": "Dealabs Voyages",
-    "url": "https://www.dealabs.com/bons-plans/10-supplementaires-sur-les-sejours-et-circuits-les-creations-carrefour-voyages-3450249",
-    "image_url": "https://static-pepper.dealabs.com/threads/raw/jfoZB/3450249_1/re/150x150/qt/55/3450249_1.jpg",
-    "description": "Carrefour Voyages Voici le post Carrefour Voyages  (10 offres sur la page, classées par prix) Titre : -10% supplémentaires sur les séjours et circuits « Les Créations » Carrefour Voyages avec le code 10JOURS Du 30/10 au 15/11 inclus, le code 10JOURS donne -10% immédiat sur les sé",
-    "surface": null,
-    "rooms": null,
-    "date_detected": "2026-11-09T23:56:27.835769+00:00",
-    "universe": "voyage",
-    "trip_mode": "sniper",
-    "dates": "Dates flexibles (Fév. - Mars 2026)",
-    "departure_city": "Nancy",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Paris CDG/ORY",
-      "nancy_transport": 65,
-      "train_route": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-      "flight_price": 450,
-      "hotel_7d_est": 595,
-      "hotel_name": "Kaz Kréyol Lodge & Spa (8.8/10)",
-      "hotel_rating": 8.8,
-      "total_estimated": 1110,
-      "baseline_normal": 1350,
-      "gain_net": 240,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +240€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 240
-    },
-    "carnet_voyage": {
-      "destination": "Destination Internationale / Caraïbes",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
-      "logistics": [
-        {
-          "step": 1,
-          "title": "Liaison Nancy -> Paris CDG/ORY",
-          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
-          "duration": "1h30"
-        },
-        {
-          "step": 2,
-          "title": "Vol A/R direct vers Destination Internationale / Caraïbes",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
-          "duration": "Direct"
-        },
-        {
-          "step": 3,
-          "title": "Hôtel Boutique Vérifié",
-          "desc": "Hébergement Kaz Kréyol Lodge & Spa (8.8/10) noté ≥ 8.5/10.",
-          "duration": "Séjour complet"
-        }
-      ],
-      "activities": [
-        {
-          "id": "act_gen_1",
-          "name": "Visite immersive du centre historique & spots cachés",
-          "category": "Culture",
-          "rating": 4.8,
-          "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+attractions",
-          "tiktok_tag": "traveltips",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ],
-      "restaurants": [
-        {
-          "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
-          "category": "Spécialités Locales",
-          "rating": 4.8,
-          "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
-          "maps_url": "https://maps.google.com/?q=Destination Internationale / Caraïbes+best+food",
-          "tiktok_tag": "streetfood",
-          "tiktok_url": "https://www.tiktok.com/tag/destinationinternationale/caraïbesfood"
-        }
-      ],
-      "social_proof": [
-        {
-          "title": "Les meilleures adresses à Destination Internationale / Caraïbes",
-          "platform": "TikTok",
-          "views": "920K",
-          "url": "https://www.tiktok.com/tag/destinationinternationale/caraïbes"
-        }
-      ]
-    }
+    "carnet_voyage": null
   }
 ]

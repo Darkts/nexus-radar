@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Nexus Radar V3 | Immobilier Mondial & Planificateur de Voyage</title>
-  <meta name="description" content="Hub personnel autonome : Veille Immo Mondiale, Carte Interactive & Voyage Intelligent depuis Nancy" />
+  <title>Nexus Radar V4 | Immobilier Mondial & Planificateur Intelligent</title>
+  <meta name="description" content="Hub personnel autonome : Veille Immo Mondiale Achat & Location, Carte Interactive, Swipe Tactile & Voyage Intelligent depuis Nancy" />
   
   <!-- PWA & Apple Meta -->
   <link rel="manifest" href="manifest.json" />
@@ -12,7 +12,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Nexus Radar V3" />
+  <meta name="apple-mobile-web-app-title" content="Nexus Radar V4" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icon.svg" />
 
@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Leaflet.js pour la Carte Interactive Mondiale (100% Gratuit OpenStreetMap) -->
+  <!-- Leaflet.js pour la Carte Interactive (OpenStreetMap 100% Gratuit) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
@@ -34,9 +34,7 @@
       --primary: #00f2fe;
       --primary-dim: #0284c7;
       --accent-immo: #10b981;
-      --accent-immo-glow: rgba(16, 185, 129, 0.25);
       --accent-voyage: #00f2fe;
-      --accent-voyage-glow: rgba(0, 242, 254, 0.25);
       --accent-pink: #ec4899;
       --accent-warn: #f59e0b;
       --accent-danger: #ef4444;
@@ -137,7 +135,7 @@
       border-radius: 50%;
     }
 
-    /* Switch Double Univers (Chantier 1) */
+    /* Switch Double Univers */
     .universe-switch-container {
       max-width: 880px;
       margin: 0 auto;
@@ -181,12 +179,6 @@
       box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
     }
 
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     .btn-icon {
       background: rgba(255, 255, 255, 0.07);
       border: 1px solid var(--card-border);
@@ -223,30 +215,110 @@
       display: block;
     }
 
-    /* Filtres et Barre d'Action */
-    .filters-bar {
+    /* ========================================================= */
+    /* CHANTIER 1 : BARRE DE RECHERCHE PROGRESSIVE EN 3 ÉTAPES  */
+    /* ========================================================= */
+    .funnel-search-box {
       background: var(--surface);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 10px 12px;
+      border-radius: 14px;
+      padding: 12px;
       margin-bottom: 14px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .filters-row {
+    /* Étape 1 : Lieu */
+    .step-location-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-input-wrap input {
+      width: 100%;
+      background: #090e1a;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 14px 10px 38px;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .search-input-wrap input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-input-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .btn-around-me {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
       display: flex;
       align-items: center;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
+      gap: 5px;
     }
-    .filters-row::-webkit-scrollbar { display: none; }
+
+    /* Étape 2 : Filtres Achat/Location & Types */
+    .step-filters-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px dashed var(--card-border);
+      padding-top: 8px;
+    }
+
+    .segmented-control {
+      display: flex;
+      background: #070c18;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .segmented-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .segmented-btn.active {
+      background: rgba(16, 185, 129, 0.25);
+      color: #34d399;
+      font-weight: 800;
+    }
 
     .chip-filter {
       white-space: nowrap;
-      padding: 5px 10px;
+      padding: 5px 9px;
       border-radius: 16px;
       font-size: 0.72rem;
       font-weight: 700;
@@ -262,40 +334,52 @@
       color: #fff;
     }
 
-    .chip-filter.immo-chip.active {
-      background: rgba(16, 185, 129, 0.2);
+    .chip-filter.immo-active {
+      background: rgba(16, 185, 129, 0.25);
       border-color: var(--accent-immo);
       color: #34d399;
     }
 
-    /* Search Box */
-    .search-box {
-      position: relative;
-      width: 100%;
+    /* Étape 3 : Switch Vue Liste / Carte en haut des résultats */
+    .view-toggle-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
     }
 
-    .search-input {
-      width: 100%;
+    .results-count {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .view-mode-switch {
+      display: flex;
       background: #090e1a;
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 10px 14px 10px 38px;
-      color: #fff;
-      font-size: 0.85rem;
-      outline: none;
+      border-radius: 8px;
+      padding: 2px;
+      gap: 2px;
     }
 
-    .search-input:focus {
-      border-color: var(--primary);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
+    .view-mode-btn {
+      border: none;
+      background: transparent;
       color: var(--text-muted);
-      pointer-events: none;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .view-mode-btn.active {
+      background: rgba(0, 242, 254, 0.2);
+      color: var(--primary);
     }
 
     /* Grille de cartes */
@@ -311,7 +395,9 @@
       }
     }
 
-    /* Carte Item 60 FPS */
+    /* ========================================================= */
+    /* CHANTIER 2 : CARTE ITEM AVEC VRAI GESTE SWIPE TACTILE     */
+    /* ========================================================= */
     .item-card {
       background: var(--surface-card);
       border: 1px solid var(--card-border);
@@ -320,18 +406,30 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      touch-action: pan-y;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      user-select: none;
+      cursor: pointer;
     }
 
-    .item-card.disliked-dimmed {
-      opacity: 0.45;
-      border-style: dashed;
+    .item-card.swiping {
+      transition: none;
+    }
+
+    .item-card.swiped-right {
+      transform: translateX(120%) rotate(20deg) !important;
+      opacity: 0 !important;
+    }
+
+    .item-card.swiped-left {
+      transform: translateX(-120%) rotate(-20deg) !important;
+      opacity: 0 !important;
     }
 
     .card-img-wrap {
       position: relative;
       width: 100%;
-      height: 180px;
+      height: 185px;
       background: #090e1a;
       overflow: hidden;
     }
@@ -340,9 +438,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      pointer-events: none;
     }
 
-    .badge-universe {
+    .badge-transac {
       position: absolute;
       top: 10px;
       left: 10px;
@@ -352,8 +451,9 @@
       font-weight: 800;
       color: #fff;
     }
-    .badge-universe.immo { background: #10b981; }
-    .badge-universe.voyage { background: #00f2fe; color: #070a13; }
+    .badge-transac.location { background: #10b981; }
+    .badge-transac.achat { background: #8b5cf6; }
+    .badge-transac.voyage { background: #00f2fe; color: #070a13; }
 
     .badge-price {
       position: absolute;
@@ -369,15 +469,16 @@
       border-radius: 8px;
     }
 
-    .card-actions-top {
+    .card-top-actions {
       position: absolute;
       top: 10px;
       right: 10px;
       display: flex;
       gap: 6px;
+      z-index: 10;
     }
 
-    .btn-card-action {
+    .btn-card-fav {
       width: 32px;
       height: 32px;
       border-radius: 8px;
@@ -389,9 +490,7 @@
       justify-content: center;
       cursor: pointer;
     }
-
-    .btn-card-action.fav-active { color: #ec4899; border-color: #ec4899; }
-    .btn-card-action.dislike-active { color: #ef4444; border-color: #ef4444; }
+    .btn-card-fav.active { color: #ec4899; border-color: #ec4899; }
 
     .card-body {
       padding: 14px;
@@ -417,8 +516,7 @@
       line-height: 1.35;
     }
 
-    /* Badges Métriques Immo (m², Écart Marché, Commodités) */
-    .immo-metrics-bar {
+    .specs-pills-row {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -426,7 +524,7 @@
       margin-top: 2px;
     }
 
-    .metric-pill {
+    .spec-pill {
       font-size: 0.7rem;
       font-weight: 700;
       padding: 3px 6px;
@@ -436,7 +534,20 @@
       color: #cbd5e1;
     }
 
-    .metric-market {
+    .spec-dpe {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #070a13;
+    }
+    .dpe-A { background: #10b981; }
+    .dpe-B { background: #34d399; }
+    .dpe-C { background: #fbbf24; }
+    .dpe-D { background: #f97316; color: #fff; }
+    .dpe-E { background: #ef4444; color: #fff; }
+
+    .spec-market {
       font-size: 0.7rem;
       font-weight: 800;
       padding: 3px 6px;
@@ -446,112 +557,72 @@
       color: #34d399;
     }
 
-    /* True Cost Box Voyage */
-    .true-cost-box {
-      background: rgba(0, 242, 254, 0.06);
-      border: 1px solid rgba(0, 242, 254, 0.2);
-      border-radius: 8px;
-      padding: 8px 10px;
-      font-size: 0.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .true-cost-header {
+    /* Swipe Quick Action Bar */
+    .card-swipe-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .true-cost-breakdown {
-      color: var(--text-muted);
-      font-size: 0.7rem;
-    }
-
-    .card-footer {
       margin-top: auto;
       padding-top: 10px;
       border-top: 1px solid var(--card-border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       gap: 8px;
     }
 
-    .card-agency {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 140px;
+    .btn-swipe-dislike {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .btn-cta-view {
+    .btn-swipe-like {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-open-detail {
       background: linear-gradient(135deg, #00f2fe, #0284c7);
       color: #070a13;
       font-size: 0.76rem;
       font-weight: 800;
       padding: 6px 12px;
       border-radius: 6px;
-      text-decoration: none;
-      cursor: pointer;
       border: none;
-    }
-
-    .btn-cta-carnet {
-      background: linear-gradient(135deg, #ec4899, #8b5cf6);
-      color: #fff;
-      font-size: 0.76rem;
-      font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 6px;
       cursor: pointer;
-      border: none;
     }
 
-    /* Carte Leaflet Container */
-    #mapContainer {
-      width: 100%;
-      height: 480px;
-      border-radius: var(--radius);
-      border: 1px solid var(--card-border);
-      overflow: hidden;
-      margin-bottom: 14px;
-      z-index: 10;
-    }
-
-    .map-controls-box {
-      background: var(--surface);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 12px;
-      margin-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    /* Fullscreen Modal: Carnet de Voyage Tout Compris (Chantier 4) */
-    .carnet-modal-overlay {
+    /* ========================================================= */
+    /* CHANTIER 3 : MODALE PLEIN ÉCRAN FICHE DÉTAILLÉE LOGEMENT  */
+    /* ========================================================= */
+    .detail-modal-overlay {
       position: fixed;
       inset: 0;
-      z-index: 2000;
-      background: rgba(7, 10, 19, 0.96);
+      z-index: 2500;
+      background: rgba(7, 10, 19, 0.98);
       display: none;
       flex-direction: column;
       overflow-y: auto;
       padding-bottom: 40px;
     }
+    .detail-modal-overlay.open { display: flex; }
 
-    .carnet-modal-overlay.open {
-      display: flex;
-    }
-
-    .carnet-header {
+    .detail-modal-header {
       position: sticky;
       top: 0;
       z-index: 100;
@@ -563,136 +634,175 @@
       justify-content: space-between;
     }
 
-    .btn-close-modal {
+    .btn-close-detail {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid var(--card-border);
       color: #fff;
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
+      font-size: 1.1rem;
     }
 
-    .carnet-hero {
+    .detail-hero-gallery {
       position: relative;
-      height: 220px;
+      height: 250px;
       background: #090e1a;
       overflow: hidden;
     }
 
-    .carnet-hero img {
+    .detail-hero-gallery img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .carnet-hero-content {
-      position: absolute;
-      bottom: 12px;
-      left: 16px;
-      right: 16px;
-      background: rgba(7, 10, 19, 0.85);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 10px 14px;
+    .detail-thumbnails {
+      display: flex;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #090e1a;
+      overflow-x: auto;
     }
 
-    .carnet-nav-tabs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: var(--surface);
-      border-bottom: 1px solid var(--card-border);
-      padding: 4px;
-    }
-
-    .btn-carnet-tab {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      font-weight: 800;
-      padding: 10px 4px;
+    .detail-thumb {
+      width: 60px;
+      height: 42px;
+      border-radius: 6px;
+      object-fit: cover;
       cursor: pointer;
-      border-radius: 8px;
-      text-align: center;
+      opacity: 0.6;
+      border: 1px solid transparent;
+    }
+    .detail-thumb.active {
+      opacity: 1;
+      border-color: var(--primary);
     }
 
-    .btn-carnet-tab.active {
-      background: rgba(0, 242, 254, 0.2);
-      color: var(--primary);
-    }
-
-    .carnet-pane {
-      display: none;
+    .detail-body {
       padding: 16px;
       max-width: 880px;
       width: 100%;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    .carnet-pane.active {
-      display: block;
-    }
-
-    /* Swipeable Activity / Resto Cards */
-    .spot-card {
-      background: var(--surface-card);
+    .detail-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      background: var(--surface);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .spot-card-img {
-      height: 140px;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .spot-card-body {
       padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
     }
 
-    .spot-links-row {
+    @media (min-width: 640px) {
+      .detail-specs-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .spec-item {
       display: flex;
-      gap: 8px;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .spec-label { font-size: 0.7rem; color: var(--text-muted); }
+    .spec-val { font-size: 0.85rem; font-weight: 800; color: #fff; }
+
+    /* Mini carte Leaflet du bien */
+    #detailMiniMap {
+      width: 100%;
+      height: 220px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      overflow: hidden;
       margin-top: 6px;
     }
 
-    .btn-tiktok {
-      background: #000;
-      border: 1px solid #fe2c55;
+    .btn-cta-official {
+      background: linear-gradient(135deg, #10b981, #059669);
       color: #fff;
-      font-size: 0.72rem;
+      font-size: 0.92rem;
       font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 6px;
+      padding: 14px;
+      border-radius: 10px;
+      text-align: center;
       text-decoration: none;
-      display: inline-flex;
+      display: block;
+      margin-top: 8px;
+    }
+
+    /* ========================================================= */
+    /* CHANTIER 5 : SECTIONS VOYAGE A & B                        */
+    /* ========================================================= */
+    .section-title-wrap {
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      margin: 18px 0 10px 0;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Carte Hub TGV Nancy */
+    .tgv-hub-card {
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.08), rgba(236, 72, 153, 0.08));
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .tgv-hub-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .tgv-routes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    @media (min-width: 640px) {
+      .tgv-routes-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .tgv-route-item {
+      background: #090e1a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
       gap: 4px;
     }
 
-    .btn-maps {
-      background: #1a73e8;
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+    /* Carte Leaflet principale */
+    #mainMapContainer {
+      width: 100%;
+      height: 480px;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      margin-bottom: 14px;
     }
 
     /* Bottom Navigation Bar */
@@ -728,7 +838,6 @@
       color: var(--primary);
       background: rgba(0, 242, 254, 0.1);
     }
-
     .nav-item.active.nav-immo {
       color: #34d399;
       background: rgba(16, 185, 129, 0.15);
@@ -736,7 +845,7 @@
 
     .nav-icon { font-size: 1.25rem; line-height: 1; }
 
-    /* PIN Lock Screen Modal (Chantier 1) */
+    /* PIN Lock Screen Modal */
     .pin-modal-overlay {
       position: fixed;
       inset: 0;
@@ -773,7 +882,6 @@
       background: transparent;
       transition: background 0.15s ease;
     }
-
     .pin-dot.filled {
       background: var(--primary);
       box-shadow: 0 0 10px var(--primary);
@@ -797,7 +905,6 @@
       border-radius: 12px;
       cursor: pointer;
     }
-
     .btn-pin:active {
       background: var(--primary);
       color: #070a13;
@@ -823,7 +930,6 @@
       transition: transform 0.25s ease;
       pointer-events: none;
     }
-
     .toast.show { transform: translateX(-50%) translateY(0); }
 
     .empty-state {
@@ -844,8 +950,8 @@
   <div class="pin-modal-overlay" id="pinLockOverlay">
     <div class="pin-box">
       <div style="font-size: 2.2rem;">🔒</div>
-      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V3</h2>
-      <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code PIN à 4 chiffres pour accéder au Hub</p>
+      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V4</h2>
+      <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code PIN à 4 chiffres</p>
       
       <div class="pin-dots">
         <div class="pin-dot" id="dot0"></div>
@@ -871,7 +977,7 @@
     </div>
   </div>
 
-  <!-- Top Sticky Header -->
+  <!-- Header -->
   <header>
     <div class="header-content">
       <div class="brand">
@@ -879,10 +985,10 @@
           <img src="assets/icon.svg" alt="Nexus Logo" />
         </div>
         <div>
-          <div class="brand-title">NEXUS RADAR V3</div>
+          <div class="brand-title">NEXUS RADAR V4</div>
           <div class="brand-sub">
             <span class="live-dot"></span>
-            <span id="headerLiveStatus">Veille Active • 2 Univers</span>
+            <span id="headerLiveStatus">Veille Active • Double Univers</span>
           </div>
         </div>
       </div>
@@ -895,7 +1001,7 @@
       </div>
     </div>
 
-    <!-- SWITCH DOUBLE UNIVERS (IMMOBILIER / VOYAGE) -->
+    <!-- Switch Univers -->
     <div class="universe-switch-container">
       <button id="univBtnImmo" class="univ-btn active univ-immo" onclick="switchUniverse('immo')">
         <span>🏠</span> IMMOBILIER MONDIAL
@@ -906,342 +1012,363 @@
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Contenu Principal -->
   <main class="container">
 
     <!-- ========================================================= -->
-    <!-- UNIVERS 1 : 🏠 IMMOBILIER MONDIAL                         -->
+    <!-- UNIVERS 1 : 🏠 IMMOBILIER MONDIAL (Parcours en 3 Étapes)  -->
     <!-- ========================================================= -->
-
-    <!-- VUE 1.1 : FLUX IMMO -->
     <section id="pane-immo-feed" class="tab-pane active">
-      <!-- Filtres Précis Immo (Chantier 2) -->
-      <div class="filters-bar">
-        <div class="search-box">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="text" id="searchImmoInput" class="search-input" placeholder="Filtrer immo (SXM, Baie Nettlé, T2, Nancy, vue mer)..." oninput="renderImmoFeed()" />
+      
+      <!-- ÉTAPE 1 & 2 : Barre de Recherche Progressive (Style Airbnb) -->
+      <div class="funnel-search-box">
+        <!-- Étape 1 : Lieu -->
+        <div class="step-location-row">
+          <div class="search-input-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchLocationInput" placeholder="Où cherchez-vous ? (Nancy, Paris, Lyon, Saint-Martin, Espagne...)" oninput="filterImmo()" />
+          </div>
+          <button class="btn-around-me" onclick="locateAroundMe()">
+            <span>📍 Autour de moi</span>
+          </button>
         </div>
 
-        <div class="filters-row">
-          <button class="chip-filter immo-chip active" data-immo-zone="ALL" onclick="setImmoZone('ALL', this)">🌍 Tout le Monde</button>
-          <button class="chip-filter immo-chip" data-immo-zone="SXM" onclick="setImmoZone('SXM', this)">🏝️ Saint-Martin (97150)</button>
-          <button class="chip-filter immo-chip" data-immo-zone="FR" onclick="setImmoZone('FR', this)">🇫🇷 France / Nancy</button>
-          <button class="chip-filter immo-chip" data-immo-zone="ES" onclick="setImmoZone('ES', this)">🇪🇸 Espagne / Costa Blanca</button>
-        </div>
+        <!-- Étape 2 : Critères Précis -->
+        <div class="step-filters-row">
+          <div class="segmented-control">
+            <button class="segmented-btn active" data-transac="ALL" onclick="setTransactionFilter('ALL', this)">Tous</button>
+            <button class="segmented-btn" data-transac="location" onclick="setTransactionFilter('location', this)">🔑 Louer</button>
+            <button class="segmented-btn" data-transac="achat" onclick="setTransactionFilter('achat', this)">🏷️ Acheter</button>
+          </div>
 
-        <div class="filters-row">
-          <button class="chip-filter" data-room="ALL" onclick="setRoomFilter('ALL', this)">Toutes pièces</button>
+          <button class="chip-filter active" data-room="ALL" onclick="setRoomFilter('ALL', this)">Toutes pièces</button>
           <button class="chip-filter" data-room="Studio" onclick="setRoomFilter('Studio', this)">Studio</button>
           <button class="chip-filter" data-room="T2" onclick="setRoomFilter('T2', this)">T2</button>
-          <button class="chip-filter" data-room="T3" onclick="setRoomFilter('T3', this)">T3+</button>
+          <button class="chip-filter" data-room="T3" onclick="setRoomFilter('T3', this)">T3</button>
+          <button class="chip-filter" data-room="Maison" onclick="setRoomFilter('Maison', this)">Maison/Villa</button>
+
           <button class="chip-filter" id="chipAmenityMer" onclick="toggleAmenity('vue_mer', this)">🌊 Vue Mer</button>
-          <button class="chip-filter" id="chipAmenityPiscine" onclick="toggleAmenity('piscine', this)">🏊 Piscine</button>
           <button class="chip-filter" id="chipAmenityTerrasse" onclick="toggleAmenity('terrasse', this)">☀️ Terrasse</button>
+          <button class="chip-filter" id="chipAmenityPiscine" onclick="toggleAmenity('piscine', this)">🏊 Piscine</button>
+          <button class="chip-filter" id="chipAmenityParking" onclick="toggleAmenity('parking', this)">🚗 Parking</button>
         </div>
       </div>
 
-      <!-- Items Grid Immo -->
+      <!-- Étape 3 : Switch Vue [ 📋 Liste | 🗺️ Carte ] en haut des résultats -->
+      <div class="view-toggle-bar">
+        <div class="results-count" id="immoResultsCount">Chargement des biens...</div>
+        <div class="view-mode-switch">
+          <button class="view-mode-btn active" id="btnViewList" onclick="setViewMode('list')">
+            <span>📋 Liste</span>
+          </button>
+          <button class="view-mode-btn" id="btnViewMap" onclick="setViewMode('map')">
+            <span>🗺️ Carte</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Conteneur Carte Leaflet (Affiché en mode Carte) -->
+      <div id="mainMapContainer" style="display: none;"></div>
+
+      <!-- Grille d'Annonces (Affichée en mode Liste) -->
       <div class="items-grid" id="immoGrid"></div>
+
+      <!-- État Vide -->
       <div class="empty-state" id="emptyImmo" style="display: none;">
         <div style="font-size: 36px; margin-bottom: 8px;">🏠</div>
-        <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 4px;">Aucun bien immobilier correspondant</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Ajustez vos filtres de surface, budget ou secteur.</p>
+        <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 4px;">Aucun bien correspondant</h3>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Élargissez votre secteur ou vos filtres Achat/Location.</p>
       </div>
     </section>
 
-    <!-- VUE 1.2 : CARTE INTERACTIVE LEAFLET (Chantier 2) -->
-    <section id="pane-immo-map" class="tab-pane">
-      <div class="map-controls-box">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <h3 style="font-size: 0.95rem; font-weight: 800;">🗺️ Exploration Géographique Mondiale</h3>
-          <span style="font-size: 0.7rem; color: var(--accent-immo); font-weight: 700;">OpenStreetMap + Nominatim</span>
-        </div>
-        
-        <div style="display: flex; gap: 8px;">
-          <input type="text" id="mapSearchInput" class="search-input" placeholder="Rechercher une ville, île ou secteur (ex: Saint-Martin, Nancy, Alicante)..." onkeydown="if(event.key==='Enter') searchLocationOnMap()" />
-          <button class="btn-cta-view" onclick="searchLocationOnMap()" style="padding: 0 14px;">Aller</button>
-        </div>
-
-        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
-          <span>Rayon de surveillance : <strong id="radiusLabel" style="color: #fff;">15 km</strong></span>
-          <div style="display: flex; gap: 4px;">
-            <button class="chip-filter active" onclick="setMapRadius(5, this)">5 km</button>
-            <button class="chip-filter" onclick="setMapRadius(15, this)">15 km</button>
-            <button class="chip-filter" onclick="setMapRadius(30, this)">30 km</button>
-            <button class="chip-filter" onclick="setMapRadius(50, this)">50 km</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Leaflet Map Container -->
-      <div id="mapContainer"></div>
-
-      <!-- Selected Property Preview on Map -->
-      <div id="mapPropertyPreview" style="display: none; margin-top: 10px;"></div>
-    </section>
-
-    <!-- VUE 1.3 : MON CATALOGUE PERSO IMMO -->
+    <!-- VUE 1.2 : MON CATALOGUE FAVORIS IMMO -->
     <section id="pane-immo-catalogue" class="tab-pane">
       <div style="margin-bottom: 14px;">
         <h2 style="font-size: 1.15rem; font-weight: 800;">⭐ Mon Catalogue Immobilier</h2>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Biens sauvegardés avec vos notes personnelles.</p>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Vos biens coups de cœur enregistrés avec vos notes.</p>
       </div>
       <div class="items-grid" id="immoCatalogueGrid"></div>
       <div class="empty-state" id="emptyImmoCatalogue" style="display: none;">
         <div style="font-size: 36px; margin-bottom: 8px;">⭐</div>
         <h3 style="font-size: 1.05rem; font-weight: 800;">Votre catalogue est vide</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur l'étoile d'un appartement pour l'ajouter avec une note personnelle.</p>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur l'étoile d'un bien pour le retrouver ici.</p>
       </div>
     </section>
 
 
     <!-- ========================================================= -->
-    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR INTELLIGENT         -->
+    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (Sections A & B)    -->
     <!-- ========================================================= -->
-
-    <!-- VUE 2.1 : PÉPITES VOYAGE ("FAIS-MOI RÊVER" & SNIPER) -->
     <section id="pane-voyage-feed" class="tab-pane">
       
-      <!-- Sélecteur de Mode Voyage (Chantier 3) -->
-      <div class="filters-bar">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <div style="font-size: 0.75rem; font-weight: 800; color: #fff;">Mode de Veille :</div>
-          <div style="display: flex; gap: 4px; background: #090e1a; padding: 3px; border-radius: 8px;">
-            <button class="chip-filter active" id="btnModeRever" onclick="setVoyageMode('fais_moi_rever', this)">✨ Fais-moi rêver</button>
-            <button class="chip-filter" id="btnModeSniper" onclick="setVoyageMode('sniper', this)">🎯 Sniper Destinations</button>
+      <!-- Barre de Recherche Structurée Voyage (Chantier 5) -->
+      <div class="funnel-search-box">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <div class="search-input-wrap" style="flex: 1.2; min-width: 140px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
+            </svg>
+            <input type="text" id="searchVoyageDest" placeholder="Destination (ex: SXM, Italie, New York, Partout...)" oninput="filterVoyage()" />
+          </div>
+
+          <div style="display: flex; gap: 4px; overflow-x: auto; flex: 1.5; scrollbar-width: none;">
+            <button class="chip-filter active" data-period="ALL" onclick="setVoyagePeriodFilter('ALL', this)">Toutes dates</button>
+            <button class="chip-filter" data-period="weekend" onclick="setVoyagePeriodFilter('weekend', this)">Week-end (3j)</button>
+            <button class="chip-filter" data-period="semaine" onclick="setVoyagePeriodFilter('semaine', this)">1 Semaine (7j)</button>
+            <button class="chip-filter" data-period="fevrier" onclick="setVoyagePeriodFilter('fevrier', this)">Vacances Février</button>
           </div>
         </div>
+      </div>
 
-        <!-- Périodes Fais-moi rêver -->
-        <div class="filters-row" id="rowPeriodsRever">
-          <span style="font-size: 0.72rem; color: var(--primary); font-weight: 700;">Départ Nancy :</span>
-          <button class="chip-filter active" onclick="setPeriodFilter('ALL', this)">Toutes dates</button>
-          <button class="chip-filter" onclick="setPeriodFilter('weekend', this)">Week-end (3 jours)</button>
-          <button class="chip-filter" onclick="setPeriodFilter('semaine', this)">1 Semaine (7j)</button>
-          <button class="chip-filter" onclick="setPeriodFilter('fevrier', this)">Vacances Février</button>
+      <!-- Widget TGV Nancy Hub (Regroupé élégamment) -->
+      <div class="tgv-hub-card">
+        <div class="tgv-hub-header">
+          <div>
+            <div style="font-size: 0.92rem; font-weight: 800; color: #fff;">🚆 Connexions Directes depuis Nancy Ville</div>
+            <div style="font-size: 0.72rem; color: var(--primary);">Vers vos aéroports et métropoles de départ</div>
+          </div>
+          <span style="font-size: 0.75rem; background: rgba(0, 242, 254, 0.15); color: var(--primary); padding: 3px 8px; border-radius: 6px; font-weight: 800;">TGV / TER Direct</span>
         </div>
-
-        <!-- Indicateur d'apprentissage Dislike -->
-        <div id="learningStatusBox" style="display: flex; align-items: center; justify-content: space-between; font-size: 0.7rem; color: var(--text-muted); border-top: 1px dashed var(--card-border); padding-top: 6px;">
-          <span id="learningLabel">🎯 Filtré selon vos goûts</span>
-          <button onclick="resetDislikes()" style="background: transparent; border: none; color: var(--primary); font-size: 0.7rem; cursor: pointer; text-decoration: underline;">Réinitialiser mes rejets</button>
+        <div class="tgv-routes-grid">
+          <div class="tgv-route-item">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 800;">
+              <span>Nancy ⇄ Paris Est</span>
+              <span style="color: var(--primary);">dès 16 €</span>
+            </div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">1h32 direct • 12 TGV/jour</div>
+            <a href="https://www.thetrainline.com/fr/horaires-train/nancy-a-paris" target="_blank" rel="noopener" style="font-size: 0.72rem; color: var(--primary); text-decoration: underline; margin-top: 4px;">Réserver billet direct</a>
+          </div>
+          <div class="tgv-route-item">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 800;">
+              <span>Nancy ⇄ Aéroport CDG</span>
+              <span style="color: var(--primary);">dès 29 €</span>
+            </div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">1h50 direct Terminal 2</div>
+            <a href="https://www.thetrainline.com/fr/horaires-train/nancy-a-aeroport-paris-roissy-charles-de-gaulle-cdg" target="_blank" rel="noopener" style="font-size: 0.72rem; color: var(--primary); text-decoration: underline; margin-top: 4px;">Réserver billet direct</a>
+          </div>
+          <div class="tgv-route-item">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 800;">
+              <span>Nancy ⇄ Luxembourg</span>
+              <span style="color: var(--primary);">dès 10 €</span>
+            </div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">1h15 direct • Tram gratuit</div>
+            <a href="https://www.thetrainline.com/fr/horaires-train/nancy-a-luxembourg" target="_blank" rel="noopener" style="font-size: 0.72rem; color: var(--primary); text-decoration: underline; margin-top: 4px;">Réserver billet direct</a>
+          </div>
         </div>
       </div>
 
-      <!-- Items Grid Voyage -->
-      <div class="items-grid" id="voyageGrid"></div>
-      <div class="empty-state" id="emptyVoyage" style="display: none;">
-        <div style="font-size: 36px; margin-bottom: 8px;">✈️</div>
-        <h3 style="font-size: 1.05rem; font-weight: 800;">Aucun séjour trouvé</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Réinitialisez vos rejets ou élargissez vos dates de voyage.</p>
+      <!-- SECTION A : 🎯 Meilleures Offres selon vos critères -->
+      <div class="section-title-wrap">
+        <h3 class="section-title" style="color: #38bdf8;">🎯 Meilleures Offres selon vos critères (Packages Nancy)</h3>
+        <span style="font-size: 0.7rem; color: var(--text-muted);">Vol + Train + Hôtel 8.5★</span>
       </div>
-    </section>
+      <div class="items-grid" id="voyageSectionA"></div>
 
-    <!-- VUE 2.2 : MON CARNET & PLANNING JOUR PAR JOUR (Chantier 4) -->
-    <section id="pane-voyage-carnet-saved" class="tab-pane">
-      <div style="margin-bottom: 14px;">
-        <h2 style="font-size: 1.15rem; font-weight: 800;">📅 Mes Carnets & Programmes de Voyage</h2>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Vos itinéraires planifiés jour par jour avec restos et activités likées.</p>
+      <!-- SECTION B : 🔥 Flash Deals & Erreurs de Prix -->
+      <div class="section-title-wrap" style="margin-top: 24px;">
+        <h3 class="section-title" style="color: #f43f5e;">🔥 Flash Deals & Erreurs de Prix</h3>
+        <span style="font-size: 0.7rem; color: #f43f5e; font-weight: 800;">Opportunités Limitées</span>
       </div>
-      <div id="savedItinerariesList"></div>
-      <div class="empty-state" id="emptySavedItineraries" style="display: none;">
-        <div style="font-size: 36px; margin-bottom: 8px;">🏝️</div>
-        <h3 style="font-size: 1.05rem; font-weight: 800;">Aucun voyage planifié</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Ouvrez une offre de voyage et likez des activités/restos pour générer votre planning.</p>
-      </div>
-    </section>
+      <div class="items-grid" id="voyageSectionB"></div>
 
+    </section>
 
     <!-- ========================================================= -->
-    <!-- ONGLET COMMUN : 🎛️ RADARS (ÉDITEUR CLOUD UNIVERSEL)        -->
+    <!-- ONGLET RADARS : BASÉ SUR MES LIKES & FORMULAIRE GUIDÉ     -->
     <!-- ========================================================= -->
     <section id="pane-radars" class="tab-pane">
       <div style="margin-bottom: 14px;">
-        <h2 style="font-size: 1.15rem; font-weight: 800;" id="radarsTitle">🎛️ Mes Radars & Critères</h2>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Ajustez vos zones géographiques et vos plafonds budgétaires synchronisés dans le Cloud.</p>
+        <h2 style="font-size: 1.15rem; font-weight: 800;">🎛️ Mes Radars Intelligents</h2>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Génération automatique d'alertes basée sur vos goûts et critères précis.</p>
       </div>
 
-      <!-- Formulaire Immo -->
-      <div id="radarFormImmo" class="filters-bar">
-        <h3 style="font-size: 0.92rem; font-weight: 800; color: #34d399;">🏠 Paramètres Immobilier Mondial</h3>
-        <div>
-          <label style="font-size: 0.75rem; color: var(--text-muted);">Loyer Maximum (€/mois)</label>
-          <input type="number" id="cfgImmoMaxPrice" class="search-input" value="1200" style="margin-top: 4px;" />
+      <!-- Section 1 : Basé sur vos Likes ❤️ (Chantier 4) -->
+      <div class="funnel-search-box" id="smartLikesBox" style="border-color: rgba(236, 72, 153, 0.4); background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(0, 242, 254, 0.05));">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h3 style="font-size: 0.95rem; font-weight: 800; color: #ec4899;">❤️ Basé sur vos Likes & Préférences</h3>
+          <span style="font-size: 0.7rem; color: #fff; font-weight: 800;" id="likedItemsCount">0 like(s)</span>
         </div>
-        <div>
-          <label style="font-size: 0.75rem; color: var(--text-muted);">Surface Minimum (m²)</label>
-          <input type="number" id="cfgImmoMinSurface" class="search-input" value="25" style="margin-top: 4px;" />
-        </div>
-        <button class="btn-cta-view" onclick="saveConfigCloud('immo')">💾 Sauvegarder les critères Immo dans GitHub</button>
+        <p style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4;" id="smartLikesDescription">
+          Likez des biens immobiliers ou des voyages (en swipant vers la droite 👉 ou en cliquant sur 💚) pour générer votre profil de chasse personnalisé !
+        </p>
+        <button class="btn-open-detail" id="btnAutoRadar" onclick="applySmartRadarProfile()" style="display: none; padding: 10px; width: 100%;">
+          ⚡ Créer un Radar automatique sur ce profil
+        </button>
       </div>
 
-      <!-- Formulaire Voyage -->
-      <div id="radarFormVoyage" class="filters-bar" style="display: none;">
-        <h3 style="font-size: 0.92rem; font-weight: 800; color: #38bdf8;">✈️ Paramètres Voyage & Nancy Hub</h3>
-        <div>
-          <label style="font-size: 0.75rem; color: var(--text-muted);">Budget Total Maximum Séjour (€ tout compris)</label>
-          <input type="number" id="cfgVoyageMaxBudget" class="search-input" value="450" style="margin-top: 4px;" />
-        </div>
-        <div>
-          <label style="font-size: 0.75rem; color: var(--text-muted);">Plafond Vol Direct Caraïbes / SXM (€ A/R)</label>
-          <input type="number" id="cfgVoyageMaxFlightSxm" class="search-input" value="490" style="margin-top: 4px;" />
-        </div>
-        <button class="btn-cta-view" onclick="saveConfigCloud('voyage')">💾 Sauvegarder les critères Voyage dans GitHub</button>
-      </div>
+      <!-- Section 2 : Formulaire de création guidé en 4 champs (Chantier 4) -->
+      <div class="funnel-search-box" style="margin-top: 14px;">
+        <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 4px;">Créer une Alerte Radar Guidée</h3>
+        <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px;">Le robot Cloud scannera 24h/24 et vous notifiera dès qu'une opportunité correspondante apparaît.</p>
 
-      <button class="btn-cta-carnet" onclick="triggerScanNow()" style="width: 100%; margin-top: 10px; padding: 12px;">⚡ Lancer un scan GitHub Actions maintenant</button>
+        <div>
+          <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">1. Secteur ou Ville Cible</label>
+          <input type="text" id="radarCityInput" class="search-input-wrap" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.82rem; margin-top: 4px;" placeholder="Ex: Nancy, Saint-Martin 97150, Paris, Lyon, Alicante..." value="Nancy" />
+        </div>
+
+        <div style="margin-top: 8px;">
+          <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">2. Type de Projet</label>
+          <div class="segmented-control" style="margin-top: 4px;">
+            <button class="segmented-btn active" id="radarTransacLoc" onclick="setRadarTransac('location')">🔑 Location</button>
+            <button class="segmented-btn" id="radarTransacAchat" onclick="setRadarTransac('achat')">🏷️ Achat / Vente</button>
+          </div>
+        </div>
+
+        <div style="margin-top: 8px;">
+          <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">3. Type de Bien & Surface Minimum</label>
+          <div style="display: flex; gap: 8px; margin-top: 4px;">
+            <select id="radarTypeSelect" style="flex: 1; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem;">
+              <option value="ALL">Tous types</option>
+              <option value="Studio">Studio</option>
+              <option value="T2" selected>T2 (2 pièces)</option>
+              <option value="T3">T3 (3 pièces)</option>
+              <option value="Maison">Maison / Villa</option>
+            </select>
+            <input type="number" id="radarMinSurfaceInput" placeholder="Min m²" value="40" style="width: 90px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem;" />
+          </div>
+        </div>
+
+        <div style="margin-top: 8px;">
+          <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">4. Budget Maximum (€)</label>
+          <input type="number" id="radarMaxBudgetInput" value="700" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.82rem; margin-top: 4px;" />
+        </div>
+
+        <button class="btn-cta-official" onclick="saveRadarCloud()" style="margin-top: 14px;">
+          🔔 Activer l'alerte Cloud H24
+        </button>
+      </div>
     </section>
 
-    <!-- ========================================================= -->
-    <!-- ONGLET COMMUN : 🔔 RÉGLAGES                               -->
-    <!-- ========================================================= -->
+    <!-- ONGLET RÉGLAGES -->
     <section id="pane-reglages" class="tab-pane">
       <div style="margin-bottom: 14px;">
         <h2 style="font-size: 1.15rem; font-weight: 800;">🔔 Réglages & Sécurité</h2>
         <p style="font-size: 0.75rem; color: var(--text-muted);">Code PIN, Token GitHub et Notifications Push mobiles.</p>
       </div>
 
-      <div class="filters-bar">
-        <h3 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🔑 Code PIN de l'Application</h3>
-        <p style="font-size: 0.72rem; color: var(--text-muted);">Modifiez votre code secret à 4 chiffres stocké localement.</p>
-        <button class="btn-cta-view" onclick="resetPinCode()">Changer mon code PIN</button>
+      <div class="funnel-search-box">
+        <h3 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🔑 Code PIN de Sécurité</h3>
+        <p style="font-size: 0.72rem; color: var(--text-muted);">Modifiez votre code à 4 chiffres enregistré dans votre navigateur.</p>
+        <button class="btn-open-detail" onclick="resetPinCode()" style="margin-top: 6px;">Changer mon code PIN</button>
       </div>
 
-      <div class="filters-bar">
+      <div class="funnel-search-box">
         <h3 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🐙 Accès GitHub API (Cloud Sync)</h3>
-        <input type="text" id="ghRepo" class="search-input" placeholder="Dépôt (ex: Darkts/nexus-radar)" value="Darkts/nexus-radar" />
-        <input type="password" id="ghToken" class="search-input" placeholder="Token GitHub (ghp_...)" />
-        <button class="btn-cta-view" onclick="saveCredentials()">Enregistrer mes accès GitHub</button>
+        <input type="text" id="ghRepo" placeholder="Dépôt (ex: Darkts/nexus-radar)" value="Darkts/nexus-radar" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; margin-top: 6px;" />
+        <input type="password" id="ghToken" placeholder="Token GitHub (ghp_...)" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; margin-top: 6px;" />
+        <button class="btn-open-detail" onclick="saveCredentials()" style="margin-top: 8px;">Enregistrer mes accès GitHub</button>
       </div>
 
-      <div class="filters-bar">
+      <div class="funnel-search-box">
         <h3 style="font-size: 0.92rem; font-weight: 800; color: #fff;">📲 Notifications ntfy.sh</h3>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Canal abonné : <strong style="color: var(--primary);">sxm-immo-alert-97150-x9q4m2</strong></p>
-        <button class="btn-cta-view" onclick="testPushNotification()">Tester une notification Push</button>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Canal : <strong style="color: var(--primary);">sxm-immo-alert-97150-x9q4m2</strong></p>
+        <button class="btn-open-detail" onclick="testPushNotification()" style="margin-top: 6px;">Tester une notification</button>
       </div>
     </section>
 
   </main>
 
   <!-- ========================================================= -->
-  <!-- MODAL PLEIN ÉCRAN : CARNET DE VOYAGE TOUT COMPRIS (Ch. 4) -->
+  <!-- MODALE PLEIN ÉCRAN : FICHE DÉTAILLÉE LOGEMENT (Chantier 3)-->
   <!-- ========================================================= -->
-  <div class="carnet-modal-overlay" id="carnetModal">
-    <div class="carnet-header">
+  <div class="detail-modal-overlay" id="immoDetailModal">
+    <div class="detail-modal-header">
       <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 1.3rem;">🏝️</span>
+        <span style="font-size: 1.2rem;">🏠</span>
         <div>
-          <div style="font-size: 0.95rem; font-weight: 800; color: #fff;" id="carnetModalTitle">Carnet de Voyage</div>
-          <div style="font-size: 0.7rem; color: var(--primary);" id="carnetModalSub">Départ Nancy Hub • Tout Compris</div>
+          <div style="font-size: 0.95rem; font-weight: 800; color: #fff;" id="modalImmoTitle">Fiche du Logement</div>
+          <div style="font-size: 0.7rem; color: var(--accent-immo);" id="modalImmoLoc">Localisation précise</div>
         </div>
       </div>
-      <button class="btn-close-modal" onclick="closeCarnetModal()">✕</button>
+      <button class="btn-close-detail" onclick="closeImmoDetailModal()">✕</button>
     </div>
 
-    <!-- Hero Banner -->
-    <div class="carnet-hero">
-      <img id="carnetHeroImg" src="" alt="Destination" />
-      <div class="carnet-hero-content">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <div style="font-size: 1.15rem; font-weight: 800; color: #fff;" id="carnetDestName">Saint-Martin</div>
-          <div style="font-size: 1.1rem; font-weight: 800; color: var(--primary);" id="carnetTotalPrice">450 €</div>
+    <!-- Galerie Photo -->
+    <div class="detail-hero-gallery">
+      <img id="modalHeroImg" src="" alt="Vue principale du bien" />
+    </div>
+    <div class="detail-thumbnails" id="modalThumbnails"></div>
+
+    <div class="detail-body">
+      <!-- Prix & Type -->
+      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--card-border); padding-bottom: 10px;">
+        <div>
+          <span class="badge-transac" id="modalTransacBadge">Location</span>
+          <div style="font-size: 1.45rem; font-weight: 800; color: var(--primary); font-family: 'Space Grotesk', sans-serif; margin-top: 4px;" id="modalPrice">
+            0 €
+          </div>
         </div>
-        <div style="font-size: 0.72rem; color: var(--text-muted);" id="carnetDatesStr">Dates du séjour</div>
-      </div>
-    </div>
-
-    <!-- Carnet Navigation Sub-Tabs -->
-    <div class="carnet-nav-tabs">
-      <button class="btn-carnet-tab active" onclick="switchCarnetTab('logistique', this)">1. Vrai Coût & Trajet</button>
-      <button class="btn-carnet-tab" onclick="switchCarnetTab('activites', this)">2. Activités & Restos</button>
-      <button class="btn-carnet-tab" onclick="switchCarnetTab('tiktok', this)">3. Preuve TikTok</button>
-    </div>
-
-    <!-- Carnet Pane 1 : Le Vrai Coût & Logistique depuis Nancy -->
-    <div id="carnetPaneLogistique" class="carnet-pane active">
-      <div class="filters-bar" style="margin-bottom: 12px;">
-        <h4 style="font-size: 0.88rem; font-weight: 800; color: #34d399;">🧮 Pourquoi c'est une vraie bonne affaire ?</h4>
-        <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4;" id="carnetWhyDeal"></p>
+        <div id="modalMarketBadge"></div>
       </div>
 
-      <h4 style="font-size: 0.88rem; font-weight: 800; margin-bottom: 8px;">🚆 Découpage Logistique au départ de Nancy :</h4>
-      <div id="carnetLogisticsSteps" style="display: flex; flex-direction: column; gap: 8px;"></div>
-    </div>
+      <!-- Spécifications Clés -->
+      <div class="detail-specs-grid" id="modalSpecsGrid"></div>
 
-    <!-- Carnet Pane 2 : Activités & Restos Pépites (avec Like pour Programme Jour par Jour) -->
-    <div id="carnetPaneActivites" class="carnet-pane">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-        <h4 style="font-size: 0.88rem; font-weight: 800;">🏄 Activités Pépites Immanquables</h4>
-        <span style="font-size: 0.7rem; color: var(--text-muted);">Cliquez ❤️ pour ajouter au planning</span>
+      <!-- Description Complète -->
+      <div>
+        <h4 style="font-size: 0.88rem; font-weight: 800; margin-bottom: 6px;">Description détaillée</h4>
+        <p style="font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;" id="modalDescription"></p>
       </div>
-      <div id="carnetActivitiesList"></div>
 
-      <div style="display: flex; align-items: center; justify-content: space-between; margin: 16px 0 10px 0;">
-        <h4 style="font-size: 0.88rem; font-weight: 800;">🍽️ Meilleurs Restaurants (≥ 4.5★ Google)</h4>
-        <span style="font-size: 0.7rem; color: var(--text-muted);">Testés et approuvés</span>
+      <!-- Mini-Carte Leaflet du Quartier -->
+      <div>
+        <h4 style="font-size: 0.88rem; font-weight: 800;">Emplacement précis dans le quartier</h4>
+        <div id="detailMiniMap"></div>
       </div>
-      <div id="carnetRestaurantsList"></div>
-    </div>
 
-    <!-- Carnet Pane 3 : Preuve Sociale & Vidéos TikTok Virales -->
-    <div id="carnetPaneTiktok" class="carnet-pane">
-      <h4 style="font-size: 0.88rem; font-weight: 800; margin-bottom: 8px;">📱 Vidéos TikTok Virales du Lieu</h4>
-      <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px;">Visionnez en 1 tap les vidéos de voyageurs pour voir à quoi ça ressemble en vrai :</p>
-      <div id="carnetTiktokList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+      <!-- Bouton d'action Deep-Link Officiel -->
+      <a class="btn-cta-official" id="modalOfficialLink" href="#" target="_blank" rel="noopener">
+        🔗 Consulter l'annonce officielle sur l'agence
+      </a>
     </div>
   </div>
 
-  <!-- Bottom Navigation Bar Contextuelle (Chantier 1) -->
-  <nav class="bottom-nav" id="bottomNav">
-    <!-- Rendu dynamiquement en JS selon l'univers actif -->
-  </nav>
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav" id="bottomNav"></nav>
 
-  <!-- Toast Notification -->
+  <!-- Toast -->
   <div class="toast" id="toast"></div>
 
   <!-- ========================================================= -->
-  <!-- JAVASCRIPT DU HUB V3                                      -->
+  <!-- JAVASCRIPT DU HUB V4                                      -->
   <!-- ========================================================= -->
   <script>
     // State global
-    let currentUniverse = 'immo'; // 'immo' ou 'voyage'
-    let currentTab = 'feed';
+    let currentUniverse = 'immo';
     let allData = [];
-    let favorites = JSON.parse(localStorage.getItem('nexus_v3_favorites') || '[]');
-    let dislikes = JSON.parse(localStorage.getItem('nexus_v3_dislikes') || '[]');
-    let personalNotes = JSON.parse(localStorage.getItem('nexus_v3_notes') || '{}');
-    let travelProgram = JSON.parse(localStorage.getItem('nexus_v3_travel_program') || '{}');
+    let favorites = JSON.parse(localStorage.getItem('nexus_v4_favorites') || '[]');
+    let dislikes = JSON.parse(localStorage.getItem('nexus_v4_dislikes') || '[]');
+    let likedItems = JSON.parse(localStorage.getItem('nexus_v4_liked_items') || '[]');
 
     // Filtres Immo
-    let immoZone = 'ALL';
+    let immoTransac = 'ALL';
     let immoRoom = 'ALL';
     let immoAmenities = new Set();
+    let immoViewMode = 'list'; // 'list' ou 'map'
 
     // Filtres Voyage
-    let voyageMode = 'fais_moi_rever';
     let voyagePeriod = 'ALL';
 
-    // Leaflet Map & Layer
-    let leafletMap = null;
-    let mapMarkers = [];
-    let mapRadiusCircle = null;
-    let currentMapRadiusKm = 15;
-    let currentMapCenter = [18.0731, -63.0822]; // Défaut Saint-Martin
+    // Leaflet Maps
+    let mainLeafletMap = null;
+    let mainMapMarkers = [];
+    let detailMiniMap = null;
+    let detailMarker = null;
 
     // PIN Lock
     let pinBuffer = '';
-    const CORRECT_PIN_KEY = 'nexus_pin_code';
+    const PIN_KEY = 'nexus_pin_code';
 
     // =========================================================
-    // INITIALISATION & PIN LOCK SCREEN (Chantier 1)
+    // SÉCURITÉ PIN LOCK
     // =========================================================
     function initPinLock() {
-      const savedPin = localStorage.getItem(CORRECT_PIN_KEY);
+      const savedPin = localStorage.getItem(PIN_KEY);
       if (!savedPin) {
         document.getElementById('pinTitle').textContent = 'Créer votre code PIN';
-        document.getElementById('pinSubtitle').textContent = 'Définissez 4 chiffres pour sécuriser vos radars';
+        document.getElementById('pinSubtitle').textContent = 'Définissez 4 chiffres pour sécuriser le Hub';
       }
     }
 
@@ -1274,10 +1401,10 @@
     }
 
     function verifyOrSetPin() {
-      const savedPin = localStorage.getItem(CORRECT_PIN_KEY);
+      const savedPin = localStorage.getItem(PIN_KEY);
       if (!savedPin) {
-        localStorage.setItem(CORRECT_PIN_KEY, pinBuffer);
-        showToast('🔒 Code PIN enregistré avec succès !');
+        localStorage.setItem(PIN_KEY, pinBuffer);
+        showToast('🔒 Code PIN enregistré !');
         document.getElementById('pinLockOverlay').style.display = 'none';
         loadData();
       } else {
@@ -1292,37 +1419,30 @@
     }
 
     function resetPinCode() {
-      if (confirm('Voulez-vous réinitialiser votre code PIN ?')) {
-        localStorage.removeItem(CORRECT_PIN_KEY);
+      if (confirm('Réinitialiser votre code PIN ?')) {
+        localStorage.removeItem(PIN_KEY);
         location.reload();
       }
     }
 
     // =========================================================
-    // SWITCH DOUBLE UNIVERS (IMMOBILIER / VOYAGE) (Chantier 1)
+    // SWITCH UNIVERS & NAVIGATION CONTEXTUELLE
     // =========================================================
     function switchUniverse(univ) {
       currentUniverse = univ;
-      
       const btnImmo = document.getElementById('univBtnImmo');
       const btnVoyage = document.getElementById('univBtnVoyage');
-      
+
       if (univ === 'immo') {
         btnImmo.classList.add('active');
         btnVoyage.classList.remove('active');
         document.getElementById('headerLiveStatus').textContent = 'Veille Active • Immo Mondial';
-        document.getElementById('radarFormImmo').style.display = 'flex';
-        document.getElementById('radarFormVoyage').style.display = 'none';
-        document.getElementById('radarsTitle').textContent = '🎛️ Radars Immobilier Mondial';
         renderBottomNav('immo');
         navigateTo('pane-immo-feed');
       } else {
         btnVoyage.classList.add('active');
         btnImmo.classList.remove('active');
-        document.getElementById('headerLiveStatus').textContent = 'Veille Active • Voyage Nancy';
-        document.getElementById('radarFormImmo').style.display = 'none';
-        document.getElementById('radarFormVoyage').style.display = 'flex';
-        document.getElementById('radarsTitle').textContent = '🎛️ Radars Voyage & Nancy Hub';
+        document.getElementById('headerLiveStatus').textContent = 'Veille Active • Nancy Hub';
         renderBottomNav('voyage');
         navigateTo('pane-voyage-feed');
       }
@@ -1334,17 +1454,13 @@
         nav.innerHTML = `
           <div class="nav-item active nav-immo" onclick="navigateTo('pane-immo-feed', this)">
             <span class="nav-icon">🏠</span>
-            <span>Annonces</span>
-          </div>
-          <div class="nav-item nav-immo" onclick="navigateTo('pane-immo-map', this); initOrRefreshMap();">
-            <span class="nav-icon">🗺️</span>
-            <span>Carte</span>
+            <span>Explorer</span>
           </div>
           <div class="nav-item nav-immo" onclick="navigateTo('pane-immo-catalogue', this); renderImmoCatalogue();">
             <span class="nav-icon">⭐</span>
             <span>Catalogue</span>
           </div>
-          <div class="nav-item nav-immo" onclick="navigateTo('pane-radars', this)">
+          <div class="nav-item nav-immo" onclick="navigateTo('pane-radars', this); updateSmartLikesSummary();">
             <span class="nav-icon">🎛️</span>
             <span>Radars</span>
           </div>
@@ -1359,11 +1475,7 @@
             <span class="nav-icon">✈️</span>
             <span>Pépites</span>
           </div>
-          <div class="nav-item" onclick="navigateTo('pane-voyage-carnet-saved', this); renderSavedItineraries();">
-            <span class="nav-icon">📅</span>
-            <span>Mon Carnet</span>
-          </div>
-          <div class="nav-item" onclick="navigateTo('pane-radars', this)">
+          <div class="nav-item" onclick="navigateTo('pane-radars', this); updateSmartLikesSummary();">
             <span class="nav-icon">🎯</span>
             <span>Radars</span>
           </div>
@@ -1388,7 +1500,7 @@
     }
 
     // =========================================================
-    // CHARGEMENT DES DONNÉES (DATA/ANNONCES.JSON)
+    // CHARGEMENT DES DONNÉES
     // =========================================================
     async function loadData(forceSpin = false) {
       const btn = document.getElementById('refreshBtn');
@@ -1399,10 +1511,10 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         allData = await res.json();
         
-        renderImmoFeed();
-        renderVoyageFeed();
-        if (leafletMap) updateMapMarkers();
-        showToast(`⚡ ${allData.length} opportunités chargées`);
+        filterImmo();
+        filterVoyage();
+        updateSmartLikesSummary();
+        showToast(`⚡ ${allData.length} opportunités prêtes`);
       } catch (e) {
         console.error(e);
         showToast('⚠️ Impossible de charger les données');
@@ -1412,49 +1524,88 @@
     }
 
     // =========================================================
-    // UNIVERS 1 : 🏠 RENDU IMMOBILIER MONDIAL (Chantier 2)
+    // UNIVERS 1 : 🏠 FILTRES IMMOBILIERS & VUES
     // =========================================================
-    function setImmoZone(zone, el) {
-      immoZone = zone;
-      document.querySelectorAll('[data-immo-zone]').forEach(b => b.classList.remove('active'));
+    function setTransactionFilter(transac, el) {
+      immoTransac = transac;
+      document.querySelectorAll('.step-filters-row .segmented-btn').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
-      renderImmoFeed();
+      filterImmo();
     }
 
     function setRoomFilter(room, el) {
       immoRoom = room;
-      document.querySelectorAll('[data-room]').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.step-filters-row .chip-filter[data-room]').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
-      renderImmoFeed();
+      filterImmo();
     }
 
     function toggleAmenity(amenity, el) {
       if (immoAmenities.has(amenity)) {
         immoAmenities.delete(amenity);
-        el.classList.remove('active');
+        el.classList.remove('immo-active');
       } else {
         immoAmenities.add(amenity);
-        el.classList.add('active');
+        el.classList.add('immo-active');
       }
-      renderImmoFeed();
+      filterImmo();
     }
 
-    function renderImmoFeed() {
+    function setViewMode(mode) {
+      immoViewMode = mode;
+      const btnList = document.getElementById('btnViewList');
+      const btnMap = document.getElementById('btnViewMap');
       const grid = document.getElementById('immoGrid');
-      const empty = document.getElementById('emptyImmo');
-      const query = (document.getElementById('searchImmoInput')?.value || '').toLowerCase().trim();
+      const mapBox = document.getElementById('mainMapContainer');
 
-      const items = allData.filter(it => {
+      if (mode === 'list') {
+        btnList.classList.add('active');
+        btnMap.classList.remove('active');
+        grid.style.display = 'grid';
+        mapBox.style.display = 'none';
+      } else {
+        btnMap.classList.add('active');
+        btnList.classList.remove('active');
+        grid.style.display = 'none';
+        mapBox.style.display = 'block';
+        initOrUpdateMainMap();
+      }
+    }
+
+    function locateAroundMe() {
+      if ('geolocation' in navigator) {
+        showToast('📍 Localisation en cours...');
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            document.getElementById('searchLocationInput').value = 'Nancy';
+            filterImmo();
+            showToast('📍 Secteur centré autour de vous (Nancy & Grand Est)');
+          },
+          (err) => {
+            document.getElementById('searchLocationInput').value = 'Nancy';
+            filterImmo();
+            showToast('📍 Positionnement par défaut sur Nancy & Grand Est');
+          }
+        );
+      } else {
+        document.getElementById('searchLocationInput').value = 'Nancy';
+        filterImmo();
+      }
+    }
+
+    function getFilteredImmoItems() {
+      const q = (document.getElementById('searchLocationInput')?.value || '').toLowerCase().trim();
+
+      return allData.filter(it => {
         if (it.universe !== 'immo' && it.category !== 'immo') return false;
+        if (dislikes.includes(it.id)) return false;
 
-        // Zone
-        if (immoZone === 'SXM' && !it.location?.toLowerCase().includes('saint-martin')) return false;
-        if (immoZone === 'FR' && !it.location?.toLowerCase().includes('france') && !it.location?.toLowerCase().includes('nancy')) return false;
-        if (immoZone === 'ES' && !it.location?.toLowerCase().includes('espagne') && !it.location?.toLowerCase().includes('alicante')) return false;
+        // Transaction
+        if (immoTransac !== 'ALL' && it.transaction_type !== immoTransac) return false;
 
-        // Pièces
+        // Typologie
         if (immoRoom !== 'ALL') {
-          const r = (it.rooms || '').toString().toLowerCase();
+          const r = (it.rooms || '').toLowerCase();
           if (!r.includes(immoRoom.toLowerCase())) return false;
         }
 
@@ -1466,71 +1617,130 @@
           }
         }
 
-        // Query
-        if (query) {
-          const match = (it.title + ' ' + it.description + ' ' + it.location).toLowerCase();
-          if (!match.includes(query)) return false;
+        // Recherche par lieu
+        if (q) {
+          const matchText = `${it.title} ${it.location} ${it.city || ''} ${it.postal_code || ''} ${it.description}`.toLowerCase();
+          if (!matchText.includes(q)) return false;
         }
 
         return true;
       });
+    }
+
+    function filterImmo() {
+      const items = getFilteredImmoItems();
+      const grid = document.getElementById('immoGrid');
+      const empty = document.getElementById('emptyImmo');
+      const countLabel = document.getElementById('immoResultsCount');
+
+      countLabel.textContent = `${items.length} bien(s) disponible(s)`;
 
       if (items.length === 0) {
         grid.innerHTML = '';
         empty.style.display = 'block';
+        if (immoViewMode === 'map') initOrUpdateMainMap();
         return;
       }
       empty.style.display = 'none';
 
       grid.innerHTML = items.map(it => createImmoCardHtml(it)).join('');
+      attachSwipeListeners();
+
+      if (immoViewMode === 'map') {
+        initOrUpdateMainMap();
+      }
     }
 
+    // =========================================================
+    // CARTE INTERACTIVE LEAFLET CENTRÉE SUR LES RÉSULTATS
+    // =========================================================
+    function initOrUpdateMainMap() {
+      const items = getFilteredImmoItems().filter(x => x.lat && x.lon);
+      const container = document.getElementById('mainMapContainer');
+
+      if (!mainLeafletMap) {
+        mainLeafletMap = L.map('mainMapContainer').setView([48.6921, 6.1844], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors',
+          maxZoom: 18
+        }).addTo(mainLeafletMap);
+      }
+
+      setTimeout(() => mainLeafletMap.invalidateSize(), 100);
+
+      // Supprimer anciens markers
+      mainMapMarkers.forEach(m => mainLeafletMap.removeLayer(m));
+      mainMapMarkers = [];
+
+      if (items.length === 0) return;
+
+      const group = [];
+      items.forEach(it => {
+        const marker = L.circleMarker([it.lat, it.lon], {
+          radius: 8,
+          fillColor: it.transaction_type === 'achat' ? '#8b5cf6' : '#10b981',
+          color: '#ffffff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.95
+        }).addTo(mainLeafletMap);
+
+        marker.bindPopup(`
+          <div style="font-family: inherit; font-size: 0.78rem;">
+            <strong>${it.title}</strong><br/>
+            💰 <span style="color:#0284c7; font-weight:800;">${it.price_str}</span><br/>
+            📍 ${it.location}<br/>
+            <button onclick="openImmoDetailModal('${it.id}')" style="margin-top:4px; background:#10b981; color:#fff; border:none; padding:4px 8px; border-radius:4px; font-weight:700; cursor:pointer;">Voir la fiche</button>
+          </div>
+        `);
+
+        mainMapMarkers.push(marker);
+        group.push([it.lat, it.lon]);
+      });
+
+      if (group.length > 0) {
+        mainLeafletMap.fitBounds(group, { padding: [30, 30], maxZoom: 14 });
+      }
+    }
+
+    // =========================================================
+    // CARTE ITEM IMMO AVEC SWIPE & BOUTONS PC
+    // =========================================================
     function createImmoCardHtml(it) {
       const isFav = favorites.includes(it.id);
-      const isDisliked = dislikes.includes(it.id);
-      const note = personalNotes[it.id];
-
-      // Commodités pills
-      const amenitiesHtml = (it.amenities || []).slice(0, 4).map(a => {
-        const labels = { 'meuble': '🛋️ Meublé', 'terrasse': '☀️ Terrasse', 'piscine': '🏊 Piscine', 'vue_mer': '🌊 Vue Mer', 'parking': '🚗 Parking' };
-        return `<span class="metric-pill">${labels[a] || a}</span>`;
-      }).join('');
+      const transacClass = it.transaction_type === 'achat' ? 'achat' : 'location';
+      const transacLabel = it.transaction_type === 'achat' ? '🏷️ Achat' : '🔑 Location';
 
       return `
-        <div class="item-card ${isDisliked ? 'disliked-dimmed' : ''}" id="card_${it.id}">
-          <div class="card-img-wrap">
+        <div class="item-card" id="card_${it.id}" data-item-id="${it.id}">
+          <div class="card-img-wrap" onclick="openImmoDetailModal('${it.id}')">
             <img class="card-img" src="${it.image_url || 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600'}" loading="lazy" alt="${it.title}" />
-            <div class="badge-universe immo">${it.badge || '🏠 Immo'}</div>
-            <div class="badge-price">${it.price_str || (it.price + ' €/mois')}</div>
-            <div class="card-actions-top">
-              <button class="btn-card-action ${isFav ? 'fav-active' : ''}" onclick="toggleFavorite('${it.id}')" title="Sauvegarder">⭐</button>
-              <button class="btn-card-action ${isDisliked ? 'dislike-active' : ''}" onclick="toggleDislike('${it.id}', '${it.location}')" title="Pas intéressé">👎</button>
+            <div class="badge-transac ${transacClass}">${transacLabel}</div>
+            <div class="badge-price">${it.price_str}</div>
+            <div class="card-top-actions">
+              <button class="btn-card-fav ${isFav ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite('${it.id}')" title="Sauvegarder">⭐</button>
             </div>
           </div>
           <div class="card-body">
-            <div class="card-loc">📍 ${it.location || 'Saint-Martin (97150)'}</div>
-            <h3 class="card-title">${it.title}</h3>
+            <div class="card-loc">📍 ${it.location}</div>
+            <h3 class="card-title" onclick="openImmoDetailModal('${it.id}')">${it.title}</h3>
 
-            <!-- Métriques m² & Marché -->
-            <div class="immo-metrics-bar">
-              ${it.surface ? `<span class="metric-pill">📐 ${it.surface}</span>` : ''}
-              ${it.rooms ? `<span class="metric-pill">🚪 ${it.rooms}</span>` : ''}
-              ${it.market_badge ? `<span class="metric-market">${it.market_badge}</span>` : ''}
-              ${amenitiesHtml}
+            <div class="specs-pills-row">
+              ${it.surface ? `<span class="spec-pill">📐 ${it.surface}</span>` : ''}
+              ${it.rooms ? `<span class="spec-pill">🚪 ${it.rooms}</span>` : ''}
+              ${it.dpe ? `<span class="spec-dpe dpe-${it.dpe}">DPE ${it.dpe}</span>` : ''}
+              ${it.market_badge ? `<span class="spec-market">${it.market_badge}</span>` : ''}
             </div>
 
-            <p style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.35; margin-top: 4px;">
-              ${it.description ? it.description.slice(0, 140) + '...' : ''}
+            <p style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.35; margin-top: 4px;" onclick="openImmoDetailModal('${it.id}')">
+              ${it.description ? it.description.slice(0, 130) + '...' : ''}
             </p>
 
-            ${note ? `<div style="background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; padding: 4px 8px; font-size: 0.72rem; color: #34d399;"><strong>Note :</strong> ${note}</div>` : ''}
-
-            <div class="card-footer">
-              <span class="card-agency">${it.agency || 'Agence Vérifiée'}</span>
-              <div style="display: flex; gap: 6px;">
-                <button class="btn-cta-view" onclick="openNotePrompt('${it.id}')">📝 Note</button>
-                <a class="btn-cta-view" href="${it.url || '#'}" target="_blank" rel="noopener">Voir</a>
-              </div>
+            <!-- Swipe Action Bar -->
+            <div class="card-swipe-bar">
+              <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">👈 ❌ Écarter</button>
+              <button class="btn-open-detail" onclick="openImmoDetailModal('${it.id}')">Fiche</button>
+              <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">👉 💚 J'aime</button>
             </div>
           </div>
         </div>
@@ -1538,218 +1748,324 @@
     }
 
     // =========================================================
-    // CARTE INTERACTIVE LEAFLET (Chantier 2)
+    // CHANTIER 2 : VRAI GESTE SWIPE TACTILE
     // =========================================================
-    function initOrRefreshMap() {
-      setTimeout(() => {
-        if (!leafletMap) {
-          leafletMap = L.map('mapContainer', { zoomControl: true }).setView(currentMapCenter, 12);
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 18
-          }).addTo(leafletMap);
+    function attachSwipeListeners() {
+      document.querySelectorAll('.item-card').forEach(card => {
+        let startX = 0;
+        let startY = 0;
+        let currentX = 0;
+        let isDragging = false;
+        const itemId = card.getAttribute('data-item-id');
+
+        // Touch mobile
+        card.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          isDragging = true;
+          card.classList.add('swiping');
+        }, { passive: true });
+
+        card.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          const deltaX = e.touches[0].clientX - startX;
+          const deltaY = e.touches[0].clientY - startY;
+
+          // Ne pas bloquer le scroll vertical si le mouvement est principalement vertical
+          if (Math.abs(deltaY) > Math.abs(deltaX)) return;
+
+          currentX = deltaX;
+          const rotation = deltaX * 0.04;
+          const opacity = Math.max(0.4, 1 - Math.abs(deltaX) / 380);
+          card.style.transform = `translateX(${deltaX}px) rotate(${rotation}deg)`;
+          card.style.opacity = opacity;
+        }, { passive: true });
+
+        card.addEventListener('touchend', () => {
+          if (!isDragging) return;
+          isDragging = false;
+          card.classList.remove('swiping');
+
+          if (currentX > 85) {
+            triggerCardSwipe(itemId, 'right');
+          } else if (currentX < -85) {
+            triggerCardSwipe(itemId, 'left');
+          } else {
+            card.style.transform = '';
+            card.style.opacity = '';
+          }
+          currentX = 0;
+        });
+      });
+    }
+
+    function triggerCardSwipe(itemId, direction) {
+      const card = document.getElementById(`card_${itemId}`);
+      const item = allData.find(x => x.id === itemId);
+
+      if (direction === 'right') {
+        if (card) card.classList.add('swiped-right');
+        if (!likedItems.includes(itemId)) {
+          likedItems.push(itemId);
+          localStorage.setItem('nexus_v4_liked_items', JSON.stringify(likedItems));
         }
-        leafletMap.invalidateSize();
-        updateMapMarkers();
+        showToast(`💚 J'aime enregistré pour ${item?.city || item?.location || 'ce bien'}`);
+        updateSmartLikesSummary();
+      } else {
+        if (card) card.classList.add('swiped-left');
+        if (!dislikes.includes(itemId)) {
+          dislikes.push(itemId);
+          localStorage.setItem('nexus_v4_dislikes', JSON.stringify(dislikes));
+        }
+        showToast('❌ Annonce écartée');
+      }
+
+      setTimeout(() => {
+        if (card) card.remove();
+        const remaining = getFilteredImmoItems().length;
+        document.getElementById('immoResultsCount').textContent = `${remaining} bien(s) disponible(s)`;
+      }, 250);
+    }
+
+    // =========================================================
+    // CHANTIER 3 : MODALE PLEIN ÉCRAN FICHE DÉTAILLÉE
+    // =========================================================
+    function openImmoDetailModal(itemId) {
+      const it = allData.find(x => x.id === itemId);
+      if (!it) return;
+
+      document.getElementById('modalImmoTitle').textContent = it.title;
+      document.getElementById('modalImmoLoc').textContent = `📍 ${it.location} • ${it.agency || 'Agence Vérifiée'}`;
+      
+      const badge = document.getElementById('modalTransacBadge');
+      badge.textContent = it.transaction_type === 'achat' ? '🏷️ Vente / Achat' : '🔑 Location';
+      badge.className = `badge-transac ${it.transaction_type === 'achat' ? 'achat' : 'location'}`;
+
+      document.getElementById('modalPrice').textContent = it.price_str;
+      document.getElementById('modalMarketBadge').innerHTML = it.market_badge ? `<span class="spec-market">${it.market_badge}</span>` : '';
+      document.getElementById('modalDescription').textContent = it.description || 'Aucune description disponible.';
+
+      // Hero image & thumbnails
+      const hero = document.getElementById('modalHeroImg');
+      const thumbBox = document.getElementById('modalThumbnails');
+      const imgs = it.images && it.images.length > 0 ? it.images : [it.image_url];
+
+      hero.src = imgs[0];
+      thumbBox.innerHTML = imgs.map((img, idx) => `
+        <img class="detail-thumb ${idx === 0 ? 'active' : ''}" src="${img}" onclick="setHeroImage('${img}', this)" alt="Photo ${idx+1}" />
+      `).join('');
+
+      // Spécifications
+      const specsBox = document.getElementById('modalSpecsGrid');
+      specsBox.innerHTML = `
+        <div class="spec-item"><span class="spec-label">Surface</span><span class="spec-val">${it.surface || 'N/C'}</span></div>
+        <div class="spec-item"><span class="spec-label">Pièces</span><span class="spec-val">${it.rooms || 'N/C'}</span></div>
+        <div class="spec-item"><span class="spec-label">Chambres</span><span class="spec-val">${it.bedrooms !== undefined ? it.bedrooms : '1'}</span></div>
+        <div class="spec-item"><span class="spec-label">Étage</span><span class="spec-val">${it.floor || 'Rez-de-chaussée'}</span></div>
+        <div class="spec-item"><span class="spec-label">DPE</span><span class="spec-val">${it.dpe || 'C'}</span></div>
+        <div class="spec-item"><span class="spec-label">Charges</span><span class="spec-val">${it.charges || 'Incluses'}</span></div>
+        <div class="spec-item"><span class="spec-label">Prix au m²</span><span class="spec-val">${it.price_per_m2 ? it.price_per_m2 + ' €/m²' : 'N/C'}</span></div>
+        <div class="spec-item"><span class="spec-label">Agence</span><span class="spec-val">${it.agency || 'Vérifiée'}</span></div>
+      `;
+
+      // Lien officiel direct vérifié (Chantier 6)
+      const officialBtn = document.getElementById('modalOfficialLink');
+      officialBtn.href = it.url;
+      officialBtn.textContent = `🔗 Consulter l'annonce officielle sur ${it.agency || 'le portail'}`;
+
+      document.getElementById('immoDetailModal').classList.add('open');
+
+      // Mini-carte
+      setTimeout(() => {
+        if (!detailMiniMap) {
+          detailMiniMap = L.map('detailMiniMap', { zoomControl: false }).setView([it.lat || 48.69, it.lon || 6.18], 15);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(detailMiniMap);
+        }
+        detailMiniMap.invalidateSize();
+        detailMiniMap.setView([it.lat || 48.69, it.lon || 6.18], 15);
+
+        if (detailMarker) detailMiniMap.removeLayer(detailMarker);
+        detailMarker = L.marker([it.lat || 48.69, it.lon || 6.18]).addTo(detailMiniMap);
       }, 150);
     }
 
-    function setMapRadius(radiusKm, el) {
-      currentMapRadiusKm = radiusKm;
-      document.getElementById('radiusLabel').textContent = `${radiusKm} km`;
-      document.querySelectorAll('.map-controls-box .chip-filter').forEach(b => b.classList.remove('active'));
+    function setHeroImage(src, el) {
+      document.getElementById('modalHeroImg').src = src;
+      document.querySelectorAll('.detail-thumb').forEach(t => t.classList.remove('active'));
       el.classList.add('active');
-      updateMapMarkers();
     }
 
-    function updateMapMarkers() {
-      if (!leafletMap) return;
-
-      // Nettoyer anciens marqueurs
-      mapMarkers.forEach(m => leafletMap.removeLayer(m));
-      mapMarkers = [];
-      if (mapRadiusCircle) leafletMap.removeLayer(mapRadiusCircle);
-
-      // Cercle de rayon
-      mapRadiusCircle = L.circle(currentMapCenter, {
-        color: '#10b981',
-        fillColor: '#10b981',
-        fillOpacity: 0.12,
-        radius: currentMapRadiusKm * 1000
-      }).addTo(leafletMap);
-
-      // Pins immo
-      const immoItems = allData.filter(x => (x.universe === 'immo' || x.category === 'immo') && x.lat && x.lon);
-      immoItems.forEach(it => {
-        const marker = L.circleMarker([it.lat, it.lon], {
-          radius: 9,
-          fillColor: '#10b981',
-          color: '#ffffff',
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.9
-        }).addTo(leafletMap);
-
-        marker.on('click', () => {
-          showMapPropertyPreview(it);
-        });
-
-        marker.bindPopup(`
-          <div style="font-family: inherit; font-size: 0.78rem;">
-            <strong>${it.title}</strong><br/>
-            💰 <span style="color:#0284c7; font-weight:800;">${it.price_str || it.price + ' €'}</span><br/>
-            📍 ${it.location}<br/>
-            ${it.market_badge ? `🏷️ ${it.market_badge}<br/>` : ''}
-            <a href="${it.url}" target="_blank" style="color:#0284c7; font-weight:700;">Ouvrir l'annonce</a>
-          </div>
-        `);
-        mapMarkers.push(marker);
-      });
-    }
-
-    function showMapPropertyPreview(it) {
-      const box = document.getElementById('mapPropertyPreview');
-      box.style.display = 'block';
-      box.innerHTML = createImmoCardHtml(it);
-      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    async function searchLocationOnMap() {
-      const q = document.getElementById('mapSearchInput').value.trim();
-      if (!q) return;
-
-      showToast(`🔍 Recherche de "${q}"...`);
-      try {
-        const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}`);
-        const results = await res.json();
-        if (results && results.length > 0) {
-          const lat = parseFloat(results[0].lat);
-          const lon = parseFloat(results[0].lon);
-          currentMapCenter = [lat, lon];
-          leafletMap.setView(currentMapCenter, 13);
-          updateMapMarkers();
-          showToast(`📍 Secteur positionné : ${results[0].display_name.slice(0, 35)}...`);
-        } else {
-          showToast('❌ Secteur non trouvé');
-        }
-      } catch (e) {
-        showToast('Erreur recherche géographique');
-      }
+    function closeImmoDetailModal() {
+      document.getElementById('immoDetailModal').classList.remove('open');
     }
 
     // =========================================================
-    // CATALOGUE PERSO IMMO AVEC NOTES PERSONNELLES (Chantier 2)
+    // CHANTIER 4 : ONGLET RADARS BASÉ SUR LES LIKES
     // =========================================================
-    function openNotePrompt(id) {
-      const current = personalNotes[id] || '';
-      const note = prompt('Ajoutez une note personnelle sur ce bien (ex: À visiter mardi, parfait investissement) :', current);
-      if (note !== null) {
-        personalNotes[id] = note.trim();
-        localStorage.setItem('nexus_v3_notes', JSON.stringify(personalNotes));
-        showToast('📝 Note personnelle enregistrée !');
-        renderImmoFeed();
-        renderImmoCatalogue();
-      }
+    let smartProfile = null;
+    let radarTransacType = 'location';
+
+    function setRadarTransac(t) {
+      radarTransacType = t;
+      document.getElementById('radarTransacLoc').classList.toggle('active', t === 'location');
+      document.getElementById('radarTransacAchat').classList.toggle('active', t === 'achat');
     }
 
-    function renderImmoCatalogue() {
-      const grid = document.getElementById('immoCatalogueGrid');
-      const empty = document.getElementById('emptyImmoCatalogue');
-      const favItems = allData.filter(x => favorites.includes(x.id) && (x.universe === 'immo' || x.category === 'immo'));
+    function updateSmartLikesSummary() {
+      const countEl = document.getElementById('likedItemsCount');
+      const descEl = document.getElementById('smartLikesDescription');
+      const btnAuto = document.getElementById('btnAutoRadar');
 
-      if (favItems.length === 0) {
-        grid.innerHTML = '';
-        empty.style.display = 'block';
+      countEl.textContent = `${likedItems.length} like(s)`;
+
+      if (likedItems.length === 0) {
+        descEl.textContent = "Likez des biens immobiliers ou voyages (en swipant vers la droite 👉 ou via le bouton 💚) pour générer automatiquement votre radar !";
+        btnAuto.style.display = 'none';
         return;
       }
-      empty.style.display = 'none';
-      grid.innerHTML = favItems.map(it => createImmoCardHtml(it)).join('');
+
+      // Analyse des affinités
+      const items = allData.filter(x => likedItems.includes(x.id));
+      const cities = items.map(x => x.city || x.location || 'Nancy');
+      const topCity = cities[0] || 'Nancy';
+      const avgPrice = Math.round(items.reduce((acc, x) => acc + (x.price || 0), 0) / items.length);
+      const isAchat = items.filter(x => x.transaction_type === 'achat').length > items.filter(x => x.transaction_type === 'location').length;
+
+      smartProfile = {
+        city: topCity,
+        transac: isAchat ? 'achat' : 'location',
+        type: 'T2',
+        surface: 45,
+        maxBudget: Math.round(avgPrice * 1.1)
+      };
+
+      descEl.innerHTML = `
+        🎯 <strong>Affinité détectée :</strong> Vous recherchez principalement des biens en <strong>${smartProfile.transac === 'achat' ? 'Achat' : 'Location'}</strong> à <strong>${smartProfile.city}</strong> avec un budget d'environ <strong>${smartProfile.maxBudget} €</strong>.
+      `;
+      btnAuto.style.display = 'block';
+    }
+
+    function applySmartRadarProfile() {
+      if (!smartProfile) return;
+      document.getElementById('radarCityInput').value = smartProfile.city;
+      setRadarTransac(smartProfile.transac);
+      document.getElementById('radarTypeSelect').value = smartProfile.type;
+      document.getElementById('radarMinSurfaceInput').value = smartProfile.surface;
+      document.getElementById('radarMaxBudgetInput').value = smartProfile.maxBudget;
+      showToast('⚡ Formulaire pré-rempli avec vos affinités !');
+    }
+
+    async function saveRadarCloud() {
+      const token = localStorage.getItem('nexus_gh_token');
+      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
+
+      if (!token) {
+        showToast('⚠️ Entrez votre Token GitHub dans "🔔 Réglages" d\'abord');
+        navigateTo('pane-reglages');
+        return;
+      }
+
+      const city = document.getElementById('radarCityInput').value.trim();
+      const budget = parseInt(document.getElementById('radarMaxBudgetInput').value) || 1000;
+      const surface = parseInt(document.getElementById('radarMinSurfaceInput').value) || 30;
+
+      showToast('☁️ Activation de l\'alerte sur GitHub Actions...');
+      try {
+        const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/config.json`, {
+          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (!getRes.ok) throw new Error('Token ou dépôt invalide');
+        const fileData = await getRes.json();
+        const currentCfg = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+
+        if (!currentCfg.univers_immo) currentCfg.univers_immo = {};
+        if (!currentCfg.univers_immo.filters) currentCfg.univers_immo.filters = {};
+        currentCfg.univers_immo.active_zone = city;
+        currentCfg.univers_immo.filters.max_price = budget;
+        currentCfg.univers_immo.filters.min_surface = surface;
+
+        const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentCfg, null, 2))));
+        const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/config.json`, {
+          method: 'PUT',
+          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: `feat: activation radar H24 ${city} (max ${budget}€) [skip ci]`,
+            content: updatedContent,
+            sha: fileData.sha,
+            branch: 'main'
+          })
+        });
+
+        if (!putRes.ok) throw new Error('Échec mise à jour GitHub');
+        showToast(`🔔 Alerte Cloud H24 activée pour ${city} (Max ${budget}€) !`);
+      } catch (e) {
+        showToast(`❌ Erreur : ${e.message}`);
+      }
     }
 
     // =========================================================
-    // UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (Chantiers 3 & 4)
+    // CHANTIER 5 : UNIVERS VOYAGE (SECTIONS A & B)
     // =========================================================
-    function setVoyageMode(mode, el) {
-      voyageMode = mode;
-      document.querySelectorAll('#pane-voyage-feed .filters-bar .chip-filter').forEach(b => b.classList.remove('active'));
+    function setVoyagePeriodFilter(p, el) {
+      voyagePeriod = p;
+      document.querySelectorAll('.funnel-search-box .chip-filter[data-period]').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
-      renderVoyageFeed();
+      filterVoyage();
     }
 
-    function setPeriodFilter(period, el) {
-      voyagePeriod = period;
-      document.querySelectorAll('#rowPeriodsRever .chip-filter').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-      renderVoyageFeed();
-    }
+    function filterVoyage() {
+      const q = (document.getElementById('searchVoyageDest')?.value || '').toLowerCase().trim();
+      const voyageItems = allData.filter(x => x.universe === 'voyage' || x.category === 'flight' || x.category === 'train');
 
-    function renderVoyageFeed() {
-      const grid = document.getElementById('voyageGrid');
-      const empty = document.getElementById('emptyVoyage');
+      const filtered = voyageItems.filter(it => {
+        if (voyagePeriod === 'weekend' && !it.dates?.toLowerCase().includes('3j') && !it.dates?.toLowerCase().includes('week-end')) return false;
+        if (voyagePeriod === 'semaine' && !it.dates?.toLowerCase().includes('semaine') && !it.dates?.toLowerCase().includes('7j')) return false;
+        if (voyagePeriod === 'fevrier' && !it.dates?.toLowerCase().includes('fév') && !it.dates?.toLowerCase().includes('fevrier')) return false;
 
-      const items = allData.filter(it => {
-        if (it.universe !== 'voyage' && it.category !== 'flight' && it.category !== 'train') return false;
-
-        // Auto-apprentissage Dislike : exclure si destination bannie
-        const dest = (it.location || '').toLowerCase();
-        const destDislikesCount = dislikes.filter(dId => {
-          const dItem = allData.find(x => x.id === dId);
-          return dItem && (dItem.location || '').toLowerCase().includes(dest);
-        }).length;
-
-        if (destDislikesCount >= 2) return false;
-
-        // Mode
-        if (voyageMode === 'fais_moi_rever') {
-          if (voyagePeriod === 'weekend' && !it.dates?.toLowerCase().includes('3 jours') && !it.dates?.toLowerCase().includes('week-end')) return false;
-          if (voyagePeriod === 'semaine' && !it.dates?.toLowerCase().includes('7 jours') && !it.dates?.toLowerCase().includes('semaine')) return false;
-          if (voyagePeriod === 'fevrier' && !it.dates?.toLowerCase().includes('fév') && !it.dates?.toLowerCase().includes('fevrier')) return false;
+        if (q) {
+          const match = `${it.title} ${it.location} ${it.destination || ''} ${it.description}`.toLowerCase();
+          if (!match.includes(q)) return false;
         }
-
         return true;
       });
 
-      if (items.length === 0) {
-        grid.innerHTML = '';
-        empty.style.display = 'block';
-        return;
-      }
-      empty.style.display = 'none';
-      grid.innerHTML = items.map(it => createVoyageCardHtml(it)).join('');
+      // Section A : Packages Nancy
+      const secA = document.getElementById('voyageSectionA');
+      const itemsA = filtered.filter(x => x.section_type === 'best_offers' || x.carnet_voyage);
+      secA.innerHTML = itemsA.map(it => createVoyageCardHtml(it)).join('');
+
+      // Section B : Flash Deals
+      const secB = document.getElementById('voyageSectionB');
+      const itemsB = filtered.filter(x => x.section_type === 'flash_deals' || !x.carnet_voyage);
+      secB.innerHTML = itemsB.map(it => createVoyageCardHtml(it)).join('');
     }
 
     function createVoyageCardHtml(it) {
       const isFav = favorites.includes(it.id);
-      const isDisliked = dislikes.includes(it.id);
       const tc = it.true_cost;
 
       return `
-        <div class="item-card ${isDisliked ? 'disliked-dimmed' : ''}" id="card_${it.id}">
+        <div class="item-card" id="card_${it.id}">
           <div class="card-img-wrap">
-            <img class="card-img" src="${it.image_url || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600'}" loading="lazy" alt="${it.title}" />
-            <div class="badge-universe voyage">${it.badge || '✈️ Voyage'}</div>
-            <div class="badge-price">${it.price_str || (it.price + ' €')}</div>
-            <div class="card-actions-top">
-              <button class="btn-card-action ${isFav ? 'fav-active' : ''}" onclick="toggleFavorite('${it.id}')" title="Garder en favori">⭐</button>
-              <button class="btn-card-action ${isDisliked ? 'dislike-active' : ''}" onclick="toggleDislike('${it.id}', '${it.location}')" title="Moins de cette destination">👎</button>
+            <img class="card-img" src="${it.image_url || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'}" loading="lazy" alt="${it.title}" />
+            <div class="badge-transac voyage">${it.badge || '✈️ Voyage'}</div>
+            <div class="badge-price">${it.price_str}</div>
+            <div class="card-top-actions">
+              <button class="btn-card-fav ${isFav ? 'active' : ''}" onclick="toggleFavorite('${it.id}')" title="Sauvegarder">⭐</button>
             </div>
           </div>
           <div class="card-body">
-            <div class="card-loc">✈️ ${it.location || 'Nancy ⇄ Destination'}</div>
+            <div class="card-loc">✈️ ${it.location}</div>
             <h3 class="card-title">${it.title}</h3>
 
-            <!-- True Cost Box depuis Nancy -->
             ${tc ? `
-              <div class="true-cost-box">
-                <div class="true-cost-header">
-                  <span>🧮 Vrai Coût Nancy :</span>
-                  <span style="color: var(--primary); font-size: 0.85rem;">${tc.total_estimated} € total</span>
+              <div style="background: rgba(0, 242, 254, 0.06); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 8px; padding: 8px; font-size: 0.74rem;">
+                <div style="display: flex; justify-content: space-between; font-weight: 800; color: #fff;">
+                  <span>🧮 Coût Tout Compris :</span>
+                  <span style="color: var(--primary);">${tc.total_estimated} €</span>
                 </div>
-                <div class="true-cost-breakdown">
-                  🚆 Train Nancy: ~${tc.nancy_transport}€ | 🏨 Hôtel 8.5★: ~${tc.hotel_7d_est}€
-                </div>
-                <div style="font-size: 0.72rem; color: #34d399; font-weight: 700;">
-                  ${tc.badge}
+                <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 2px;">
+                  🚆 TGV Nancy + ✈️ Vol A/R + 🏨 Hôtel vérifié 8.5★
                 </div>
               </div>
             ` : ''}
@@ -1758,14 +2074,10 @@
               ${it.description || ''}
             </p>
 
-            <div class="card-footer">
-              <span class="card-agency">${it.agency || 'Google Flights'}</span>
-              <div style="display: flex; gap: 6px;">
-                ${it.carnet_voyage ? `
-                  <button class="btn-cta-carnet" onclick="openCarnetModal('${it.id}')">📖 Carnet</button>
-                ` : ''}
-                <a class="btn-cta-view" href="${it.url || '#'}" target="_blank" rel="noopener">Offre</a>
-              </div>
+            <div class="card-swipe-bar">
+              <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">👈 Écarter</button>
+              <a class="btn-open-detail" href="${it.url}" target="_blank" rel="noopener">🔗 Voir l'offre</a>
+              <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">👉 💚 J'aime</button>
             </div>
           </div>
         </div>
@@ -1773,165 +2085,7 @@
     }
 
     // =========================================================
-    // PAGE DÉDIÉE : CARNET DE VOYAGE TOUT COMPRIS (Chantier 4)
-    // =========================================================
-    let currentCarnetItem = null;
-
-    function openCarnetModal(itemId) {
-      const it = allData.find(x => x.id === itemId);
-      if (!it || !it.carnet_voyage) return;
-
-      currentCarnetItem = it;
-      const c = it.carnet_voyage;
-      const tc = it.true_cost;
-
-      document.getElementById('carnetDestName').textContent = c.destination || it.location;
-      document.getElementById('carnetTotalPrice').textContent = tc ? `${tc.total_estimated} € Tout Compris` : it.price_str;
-      document.getElementById('carnetDatesStr').textContent = it.dates || 'Période optimale recommandée';
-      document.getElementById('carnetHeroImg').src = it.image_url || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800';
-      document.getElementById('carnetWhyDeal').textContent = c.why_deal || 'Tarif exceptionnel au départ de Nancy.';
-
-      // Onglet 1 : Logistique
-      const logBox = document.getElementById('carnetLogisticsSteps');
-      logBox.innerHTML = (c.logistics || []).map(s => `
-        <div style="background: var(--surface-card); border: 1px solid var(--card-border); border-radius: 10px; padding: 10px; display: flex; gap: 10px;">
-          <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--primary); color: #070a13; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">${s.step}</div>
-          <div style="flex: 1;">
-            <div style="display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 800; color: #fff;">
-              <span>${s.title}</span>
-              <span style="color: var(--primary); font-size: 0.75rem;">${s.duration}</span>
-            </div>
-            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 3px;">${s.desc}</div>
-          </div>
-        </div>
-      `).join('');
-
-      // Onglet 2 : Activités
-      const actBox = document.getElementById('carnetActivitiesList');
-      actBox.innerHTML = (c.activities || []).map(a => `
-        <div class="spot-card">
-          <img class="spot-card-img" src="${a.image || 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500'}" alt="${a.name}" />
-          <div class="spot-card-body">
-            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; color: #fff;">
-              <span>${a.name}</span>
-              <span style="color: #fbbf24;">★ ${a.rating}</span>
-            </div>
-            <div style="font-size: 0.74rem; color: var(--text-muted);">${a.desc}</div>
-            <div class="spot-links-row">
-              <button class="btn-cta-view" onclick="addToDayProgram('${a.name}', '${a.price}')">❤️ Ajouter au planning</button>
-              <a class="btn-tiktok" href="${a.tiktok_url}" target="_blank" rel="noopener">🎵 Vidéos TikTok</a>
-              <a class="btn-maps" href="${a.maps_url}" target="_blank" rel="noopener">📍 Google Maps</a>
-            </div>
-          </div>
-        </div>
-      `).join('');
-
-      // Onglet 2 : Restos
-      const restoBox = document.getElementById('carnetRestaurantsList');
-      restoBox.innerHTML = (c.restaurants || []).map(r => `
-        <div class="spot-card">
-          <div class="spot-card-body">
-            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; color: #fff;">
-              <span>🍽️ ${r.name}</span>
-              <span style="color: #fbbf24;">★ ${r.rating} (${r.price_range})</span>
-            </div>
-            <div style="font-size: 0.74rem; color: #34d399; font-weight: 700;">Spécialité : ${r.specialty}</div>
-            <div class="spot-links-row">
-              <button class="btn-cta-view" onclick="addToDayProgram('${r.name}', 'Repas')">❤️ Choisir ce restaurant</button>
-              <a class="btn-tiktok" href="${r.tiktok_url}" target="_blank" rel="noopener">🎵 TikTok Avis</a>
-              <a class="btn-maps" href="${r.maps_url}" target="_blank" rel="noopener">📍 Maps Avis</a>
-            </div>
-          </div>
-        </div>
-      `).join('');
-
-      // Onglet 3 : Preuve TikTok
-      const ttBox = document.getElementById('carnetTiktokList');
-      ttBox.innerHTML = (c.social_proof || []).map(sp => `
-        <div style="background: var(--surface-card); border: 1px solid var(--card-border); border-radius: 10px; padding: 12px; display: flex; align-items: center; justify-content: space-between;">
-          <div>
-            <div style="font-size: 0.82rem; font-weight: 800; color: #fff;">${sp.title}</div>
-            <div style="font-size: 0.7rem; color: var(--text-muted);">Plateforme : ${sp.platform} • ${sp.views || 'Vérifié'}</div>
-          </div>
-          <a class="btn-tiktok" href="${sp.url}" target="_blank" rel="noopener">Voir sur TikTok</a>
-        </div>
-      `).join('');
-
-      document.getElementById('carnetModal').classList.add('open');
-    }
-
-    function closeCarnetModal() {
-      document.getElementById('carnetModal').classList.remove('open');
-    }
-
-    function switchCarnetTab(tabName, el) {
-      document.querySelectorAll('.btn-carnet-tab').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.carnet-pane').forEach(p => p.classList.remove('active'));
-      el.classList.add('active');
-
-      if (tabName === 'logistique') document.getElementById('carnetPaneLogistique').classList.add('active');
-      else if (tabName === 'activites') document.getElementById('carnetPaneActivites').classList.add('active');
-      else if (tabName === 'tiktok') document.getElementById('carnetPaneTiktok').classList.add('active');
-    }
-
-    function addToDayProgram(itemTitle, cost) {
-      const day = prompt('À quel jour souhaitez-vous assigner cet élément (ex: Jour 1, Jour 2, Jour 3) ?', 'Jour 1');
-      if (day) {
-        const dest = currentCarnetItem ? currentCarnetItem.location : 'Mon Voyage';
-        if (!travelProgram[dest]) travelProgram[dest] = {};
-        if (!travelProgram[dest][day]) travelProgram[dest][day] = [];
-        
-        travelProgram[dest][day].push({ title: itemTitle, cost: cost, time: new Date().toLocaleTimeString().slice(0, 5) });
-        localStorage.setItem('nexus_v3_travel_program', JSON.stringify(travelProgram));
-        showToast(`❤️ "${itemTitle}" ajouté à votre ${day} !`);
-      }
-    }
-
-    function renderSavedItineraries() {
-      const box = document.getElementById('savedItinerariesList');
-      const empty = document.getElementById('emptySavedItineraries');
-      const keys = Object.keys(travelProgram);
-
-      if (keys.length === 0) {
-        box.innerHTML = '';
-        empty.style.display = 'block';
-        return;
-      }
-      empty.style.display = 'none';
-
-      box.innerHTML = keys.map(dest => {
-        const days = travelProgram[dest];
-        const daysHtml = Object.keys(days).map(d => `
-          <div style="margin-top: 8px;">
-            <div style="font-size: 0.78rem; font-weight: 800; color: var(--primary);">${d}</div>
-            <ul style="padding-left: 18px; font-size: 0.75rem; color: #cbd5e1; margin-top: 4px;">
-              ${days[d].map(item => `<li>${item.title} <span style="color:var(--text-muted); font-size:0.7rem;">(${item.cost})</span></li>`).join('')}
-            </ul>
-          </div>
-        `).join('');
-
-        return `
-          <div class="filters-bar" style="margin-bottom: 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff;">🏝️ ${dest}</h3>
-              <button onclick="clearTripProgram('${dest}')" style="background:transparent; border:none; color:#ef4444; font-size:0.72rem; cursor:pointer;">Supprimer</button>
-            </div>
-            ${daysHtml}
-          </div>
-        `;
-      }).join('');
-    }
-
-    function clearTripProgram(dest) {
-      if (confirm(`Supprimer le programme pour ${dest} ?`)) {
-        delete travelProgram[dest];
-        localStorage.setItem('nexus_v3_travel_program', JSON.stringify(travelProgram));
-        renderSavedItineraries();
-      }
-    }
-
-    // =========================================================
-    // LIKE / DISLIKE & FAVORIS GLOBAUX
+    // FAVORIS & CATALOGUE
     // =========================================================
     function toggleFavorite(id) {
       if (favorites.includes(id)) {
@@ -1939,119 +2093,31 @@
         showToast('Retiré des favoris');
       } else {
         favorites.push(id);
-        showToast('⭐ Ajouté aux favoris !');
+        showToast('⭐ Ajouté à votre Catalogue de favoris !');
       }
-      localStorage.setItem('nexus_v3_favorites', JSON.stringify(favorites));
-      if (currentUniverse === 'immo') renderImmoFeed();
-      else renderVoyageFeed();
+      localStorage.setItem('nexus_v4_favorites', JSON.stringify(favorites));
+      filterImmo();
+      filterVoyage();
     }
 
-    function toggleDislike(id, location) {
-      if (!dislikes.includes(id)) {
-        dislikes.push(id);
-        showToast(`👎 Préférence mémorisée : moins de propositions sur ${location || 'ce profil'}`);
-      } else {
-        dislikes = dislikes.filter(x => x !== id);
-        showToast('Dislike retiré');
-      }
-      localStorage.setItem('nexus_v3_dislikes', JSON.stringify(dislikes));
-      if (currentUniverse === 'immo') renderImmoFeed();
-      else renderVoyageFeed();
-    }
+    function renderImmoCatalogue() {
+      const grid = document.getElementById('immoCatalogueGrid');
+      const empty = document.getElementById('emptyImmoCatalogue');
+      const favs = allData.filter(x => favorites.includes(x.id) && (x.universe === 'immo' || x.category === 'immo'));
 
-    function resetDislikes() {
-      dislikes = [];
-      localStorage.removeItem('nexus_v3_dislikes');
-      showToast('🔄 Rejets réinitialisés. Toutes les opportunités sont réaffichées !');
-      renderVoyageFeed();
-      renderImmoFeed();
+      if (favs.length === 0) {
+        grid.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+      grid.innerHTML = favs.map(it => createImmoCardHtml(it)).join('');
+      attachSwipeListeners();
     }
 
     // =========================================================
-    // CLOUD SYNC & GITHUB ACTIONS DISPATCH (Chantier 1 & 6)
+    // GESTION DU REPO ET TOKEN GITHUB
     // =========================================================
-    async function saveConfigCloud(univ) {
-      const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
-
-      if (!token) {
-        showToast('⚠️ Configurez votre Token GitHub dans "🔔 Réglages" d\'abord');
-        navigateTo('pane-reglages');
-        return;
-      }
-
-      showToast('☁️ Synchronisation des critères sur GitHub...');
-      try {
-        const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/config.json`, {
-          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
-        });
-        if (!getRes.ok) throw new Error('Dépôt ou Token invalide');
-        const fileData = await getRes.json();
-        const currentCfg = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
-
-        if (univ === 'immo') {
-          if (!currentCfg.univers_immo) currentCfg.univers_immo = {};
-          if (!currentCfg.univers_immo.filters) currentCfg.univers_immo.filters = {};
-          currentCfg.univers_immo.filters.max_price = parseInt(document.getElementById('cfgImmoMaxPrice').value) || 1200;
-          currentCfg.univers_immo.filters.min_surface = parseInt(document.getElementById('cfgImmoMinSurface').value) || 25;
-        } else {
-          if (!currentCfg.univers_voyage) currentCfg.univers_voyage = {};
-          if (!currentCfg.univers_voyage.fais_moi_rever) currentCfg.univers_voyage.fais_moi_rever = {};
-          currentCfg.univers_voyage.fais_moi_rever.max_total_budget = parseInt(document.getElementById('cfgVoyageMaxBudget').value) || 450;
-        }
-
-        const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentCfg, null, 2))));
-        const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/config.json`, {
-          method: 'PUT',
-          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: `chore: mise à jour des critères radar ${univ} depuis Nexus Hub V3 [skip ci]`,
-            content: updatedContent,
-            sha: fileData.sha,
-            branch: 'main'
-          })
-        });
-
-        if (!putRes.ok) throw new Error('Échec mise à jour GitHub');
-        showToast('✅ Critères sauvegardés dans le Cloud GitHub !');
-      } catch (e) {
-        console.error(e);
-        showToast(`❌ Erreur Cloud : ${e.message}`);
-      }
-    }
-
-    async function triggerScanNow() {
-      const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
-
-      if (!token) {
-        showToast('⚠️ Entrez votre Token GitHub dans "🔔 Réglages" d\'abord !');
-        navigateTo('pane-reglages');
-        return;
-      }
-
-      showToast('🚀 Déclenchement du scan GitHub Actions...');
-      try {
-        const res = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ ref: 'main' })
-        });
-
-        if (res.status === 204) {
-          showToast('✅ Scan Cloud lancé ! Les nouvelles pépites arrivent sous 60s.');
-        } else {
-          showToast(`⚠️ Réponse GitHub : ${res.status}`);
-        }
-      } catch (e) {
-        showToast(`❌ Erreur : ${e.message}`);
-      }
-    }
-
     function saveCredentials() {
       const t = document.getElementById('ghToken').value.trim();
       const r = document.getElementById('ghRepo').value.trim();
@@ -2063,9 +2129,9 @@
     function testPushNotification() {
       fetch('https://ntfy.sh/sxm-immo-alert-97150-x9q4m2', {
         method: 'POST',
-        headers: { 'Title': '🛰️ Test Nexus Radar V3', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
-        body: 'Connexion opérationnelle ! Vous recevrez vos alertes immo et voyage en temps réel.'
-      }).then(() => showToast('🔔 Notification envoyée sur votre téléphone !'))
+        headers: { 'Title': '🛰️ Test Nexus Radar V4', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
+        body: 'Connexion opérationnelle ! Alertes Immo et Voyage prêtes.'
+      }).then(() => showToast('🔔 Notification envoyée !'))
         .catch(() => showToast('Erreur envoi ntfy'));
     }
 
@@ -2073,16 +2139,14 @@
       const t = document.getElementById('toast');
       t.textContent = msg;
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2800);
+      setTimeout(() => t.classList.remove('show'), 2600);
     }
 
-    // =========================================================
-    // DÉMARRAGE DE L'APPLICATION
-    // =========================================================
+    // Démarrage
     window.addEventListener('DOMContentLoaded', () => {
       initPinLock();
       renderBottomNav('immo');
-      
+
       const savedToken = localStorage.getItem('nexus_gh_token');
       if (savedToken) document.getElementById('ghToken').value = savedToken;
       const savedRepo = localStorage.getItem('nexus_gh_repo');
