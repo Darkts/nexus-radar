@@ -1,6 +1,6 @@
 {
-  "app_name": "Nexus Radar V5.1",
-  "version": "5.1.0",
+  "app_name": "Nexus Radar V6",
+  "version": "6.0.0",
   "ntfy_topic": "sxm-immo-alert-97150-x9q4m2",
   "github": {
     "owner": "Darkts",
