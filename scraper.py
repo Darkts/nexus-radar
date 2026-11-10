@@ -39,6 +39,26 @@ DEAD_OR_PARKED_DOMAINS = [
     "afternic.com",
 ]
 
+# Mots-clés commerciaux / non résidentiels strictement bannis des résultats Immo
+NON_RESIDENTIAL_KEYWORDS = [
+    "immobilier professionnel",
+    "local commercial",
+    "locaux professionnels",
+    "local professionnel",
+    "fonds de commerce",
+    "entrepôt",
+    "stockage ou garage",
+    "box de stockage",
+    "bureau à",
+    "bureaux à",
+    "bureaux ",
+    "plateau de bureaux",
+    "local d'activité",
+    "murs commerciaux",
+    "droit au bail",
+    "pas de porte",
+]
+
 HTTP_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "application/json, text/plain, */*",
@@ -54,6 +74,40 @@ def is_url_safe(url):
         if dead in u_lower:
             return False
     return True
+
+def is_residential_immo(title="", description="", ad_type_id=None, postal_code="", location=""):
+    """Bannit les locaux commerciaux/professionnels, garages isolés et faux Saint-Martin (38400)."""
+    if ad_type_id == 4:
+        return False
+    combined = f"{title} {description}".lower()
+    for kw in NON_RESIDENTIAL_KEYWORDS:
+        if kw in combined:
+            return False
+    if "38400" in str(postal_code) or "saint-martin-d'hères" in f"{location} {title}".lower() or "saint-martin-d'heres" in f"{location} {title}".lower():
+        if "97150" not in f"{postal_code} {location}":
+            return False
+    return True
+
+def extract_amenities(text_blob="", flags=None):
+    """Extrait les commodités réelles depuis la description ou les attributs JSON."""
+    res = set()
+    t = (text_blob or "").lower()
+    if flags:
+        if flags.get("hasTerrace") or flags.get("hasBalcony"):
+            res.add("terrasse")
+        if flags.get("hasPool"):
+            res.add("piscine")
+        if flags.get("hasParking"):
+            res.add("parking")
+    if "vue mer" in t or "sea view" in t or "ocean view" in t or "face à la mer" in t:
+        res.add("vue_mer")
+    if "terrasse" in t or "balcon" in t or "varangue" in t or "deck" in t:
+        res.add("terrasse")
+    if "piscine" in t or "pool" in t:
+        res.add("piscine")
+    if "parking" in t or "stationnement" in t or "garage" in t or "place de parc" in t:
+        res.add("parking")
+    return sorted(list(res))
 
 def verify_real_url_alive(url):
     """Vérifie via HTTP qu'une URL est active et ne redirige pas vers du parking."""
@@ -88,8 +142,21 @@ def load_annonces():
 
 def save_annonces(annonces):
     os.makedirs(os.path.dirname(DATA_PATH), exist_ok=True)
-    # Filtre de sécurité strict : supprimer tout domaine mort
-    clean_items = [it for it in annonces if is_url_safe(it.get("url"))]
+    # Filtre de sécurité strict : supprimer tout domaine mort et tout local pro/38400
+    clean_items = []
+    for it in annonces:
+        if not is_url_safe(it.get("url")):
+            continue
+        if it.get("universe") == "immo":
+            if not is_residential_immo(
+                it.get("title", ""),
+                it.get("description", ""),
+                None,
+                it.get("postal_code", ""),
+                it.get("location", "")
+            ):
+                continue
+        clean_items.append(it)
     
     # Dédoublonnage par ID ou URL
     seen = set()
@@ -128,7 +195,7 @@ def send_ntfy_push(topic, title, message, click_url=None):
 def scrape_saint_martin_real(transaction_type="location", max_price=None, min_surface=None, rooms=None):
     logger.info("🏝️ Scraping réel de Saint-Martin (97150) sur DOMimmo...")
     cat_code = 6 if transaction_type == "location" else 1 # 6 = loc, 1 = vente
-    url = f"https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat={cat_code}&limit=40"
+    url = f"https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat={cat_code}&limit=60"
     
     now = datetime.now(timezone.utc).isoformat()
     results = []
@@ -144,6 +211,14 @@ def scrape_saint_martin_real(transaction_type="location", max_price=None, min_su
             return []
 
         for it in items:
+            title = it.get("title") or ""
+            desc = it.get("description") or ""
+            ad_type = it.get("id_di_ad_type")
+
+            # Bannir locaux commerciaux, professionnels, entrepôts, garages isolés
+            if not is_residential_immo(title, desc, ad_type, "97150", "Saint-Martin"):
+                continue
+
             p = it.get("price") or 0
             s = float(it.get("surface_habitable") or 0)
             
@@ -153,19 +228,30 @@ def scrape_saint_martin_real(transaction_type="location", max_price=None, min_su
             if min_surface and s > 0 and s < float(min_surface):
                 continue
             
+            pcs = it.get("pieces")
+            if rooms and rooms.lower() not in ("all", ""):
+                rl = rooms.lower()
+                if rl in ("studio", "t1") and pcs and pcs > 1:
+                    continue
+                if rl == "t2" and pcs and pcs != 2:
+                    continue
+                if rl == "t3" and pcs and pcs != 3:
+                    continue
+                if rl in ("t4", "maison") and pcs and pcs < 4:
+                    continue
+
             ad_id = str(it.get("id"))
             ad_url = f"https://www.domimmo.com/saint-martin/immobilier/{ad_id}"
             
-            # Vérifier l'URL
             if not is_url_safe(ad_url):
                 continue
 
-            pcs = it.get("pieces")
             rooms_str = f"T{pcs}" if pcs and pcs > 1 else ("Studio" if pcs == 1 else "Appartement")
-            
-            title = it.get("title") or f"{rooms_str} Saint-Martin"
-            photos = it.get("photos") or []
-            hero_img = it.get("imageSrc") or (photos[0] if photos else "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800")
+            title_final = title or f"{rooms_str} Saint-Martin"
+            photos = [p_u for p_u in (it.get("photos") or []) if p_u]
+            hero_img = it.get("imageSrc") or (photos[0] if photos else "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800")
+            if hero_img and hero_img not in photos:
+                photos.insert(0, hero_img)
             
             price_str = f"{p:,} € / mois".replace(",", " ") if transaction_type == "location" else f"{p:,} €".replace(",", " ")
             
@@ -176,7 +262,7 @@ def scrape_saint_martin_real(transaction_type="location", max_price=None, min_su
                 "transaction_type": transaction_type,
                 "category_label": "Immobilier Saint-Martin",
                 "badge": f"🏝️ {transaction_type.capitalize()} • Saint-Martin",
-                "title": title,
+                "title": title_final,
                 "price": p,
                 "price_str": price_str,
                 "location": "Saint-Martin (97150)",
@@ -188,8 +274,8 @@ def scrape_saint_martin_real(transaction_type="location", max_price=None, min_su
                 "is_verified_agency": True,
                 "url": ad_url,
                 "image_url": hero_img,
-                "images": photos[:6] if photos else [hero_img],
-                "description": it.get("description") or "Annonce réelle extraite en direct de DOMimmo Saint-Martin.",
+                "images": photos[:8] if photos else [hero_img],
+                "description": desc or "Annonce résidentielle réelle extraite en direct de DOMimmo Saint-Martin.",
                 "surface": f"{int(s)} m²" if s > 0 else "N/C",
                 "surface_val": s,
                 "rooms": rooms_str,
@@ -197,7 +283,7 @@ def scrape_saint_martin_real(transaction_type="location", max_price=None, min_su
                 "floor": "Étage " + str(it.get("etage")) if it.get("etage") else "RDC",
                 "dpe": "C",
                 "charges": f"{it.get('quote_part_charges')} €/an" if it.get("quote_part_charges") else "N/C",
-                "amenities": ["terrasse"] if "terrasse" in (it.get("description") or "").lower() else [],
+                "amenities": extract_amenities(f"{title_final} {desc}"),
                 "price_per_m2": round(p / s, 1) if s > 0 else 25,
                 "market_avg_m2": 24.5,
                 "market_delta_pct": 0,
@@ -205,7 +291,7 @@ def scrape_saint_martin_real(transaction_type="location", max_price=None, min_su
                 "date_detected": now
             })
             
-        logger.info(f"✅ {len(results)} annonces réelles scrapées à Saint-Martin sur DOMimmo")
+        logger.info(f"✅ {len(results)} logements réels scrapés à Saint-Martin (97150) sur DOMimmo")
         return results
 
     except Exception as e:
@@ -216,6 +302,11 @@ def scrape_saint_martin_real(transaction_type="location", max_price=None, min_su
 # SCRAPER RÉEL 2 : FRANCE (NANCY, METZ, LYON...) VIA BIEN'ICI
 # =========================================================
 def scrape_france_real(city="Nancy", transaction_type="location", max_price=None, min_surface=None, rooms=None):
+    # Garde-fou strict : Saint-Martin -> DOMimmo 97150, JAMAIS Bien'ici 38400
+    c_low = city.lower()
+    if ("saint-martin" in c_low or "sxm" in c_low or "97150" in c_low) and "38400" not in c_low and "hères" not in c_low and "heres" not in c_low:
+        return scrape_saint_martin_real(transaction_type=transaction_type, max_price=max_price, min_surface=min_surface, rooms=rooms)
+
     logger.info(f"🇫🇷 Scraping réel pour '{city}' ({transaction_type}) sur Bien'ici...")
     now = datetime.now(timezone.utc).isoformat()
     
@@ -279,6 +370,12 @@ def scrape_france_real(city="Nancy", transaction_type="location", max_price=None
             ad_url = f"https://www.bienici.com/annonce/{ad_id}"
             if not is_url_safe(ad_url):
                 continue
+
+            title = a.get("title") or ""
+            desc = a.get("description") or ""
+            ad_postal = a.get("postalCode") or postal
+            if not is_residential_immo(title, desc, None, ad_postal, city_name):
+                continue
                 
             p = a.get("price") or 0
             s = float(a.get("surfaceArea") or 0)
@@ -289,7 +386,7 @@ def scrape_france_real(city="Nancy", transaction_type="location", max_price=None
             photo_urls = [p_obj.get("url_photo") for p_obj in photos_data if p_obj.get("url_photo")]
             hero_img = photo_urls[0] if photo_urls else "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
             
-            title = a.get("title") or f"{r_str} {int(s)} m² {city_name}"
+            title_final = title or f"{r_str} {int(s)} m² {city_name}"
             price_str = f"{p:,} € / mois CC".replace(",", " ") if transaction_type == "location" else f"{p:,} € FAI".replace(",", " ")
             
             agency_name = "Bien'ici / " + (a.get("accountType") or "Agence")
@@ -301,20 +398,20 @@ def scrape_france_real(city="Nancy", transaction_type="location", max_price=None
                 "transaction_type": transaction_type,
                 "category_label": f"Immobilier {city_name}",
                 "badge": f"🏢 {transaction_type.capitalize()} • {city_name}",
-                "title": title,
+                "title": title_final,
                 "price": p,
                 "price_str": price_str,
-                "location": f"{city_name} ({a.get('postalCode') or postal})",
+                "location": f"{city_name} ({ad_postal})",
                 "city": city_name,
-                "postal_code": a.get("postalCode") or postal,
+                "postal_code": ad_postal,
                 "lat": lat,
                 "lon": lon,
                 "agency": agency_name,
                 "is_verified_agency": True,
                 "url": ad_url,
                 "image_url": hero_img,
-                "images": photo_urls[:6] if photo_urls else [hero_img],
-                "description": a.get("description") or "Annonce réelle extraite en direct de Bien'ici.",
+                "images": photo_urls[:8] if photo_urls else [hero_img],
+                "description": desc or "Annonce réelle extraite en direct de Bien'ici.",
                 "surface": f"{int(s)} m²" if s > 0 else "N/C",
                 "surface_val": s,
                 "rooms": r_str,
@@ -322,7 +419,7 @@ def scrape_france_real(city="Nancy", transaction_type="location", max_price=None
                 "floor": "RDC" if not a.get("floor") else f"Étage {a.get('floor')}",
                 "dpe": a.get("energyClassification") or "D",
                 "charges": "Charges comprises",
-                "amenities": ["terrasse"] if a.get("hasTerrace") or a.get("hasBalcony") else [],
+                "amenities": extract_amenities(f"{title_final} {desc}", a),
                 "price_per_m2": round(p / s, 1) if s > 0 else 14.0,
                 "market_avg_m2": 13.8,
                 "market_delta_pct": 0,
@@ -338,20 +435,23 @@ def scrape_france_real(city="Nancy", transaction_type="location", max_price=None
         return []
 
 # =========================================================
-# SCRAPER RÉEL 3 : OFFRES VOYAGE RÉELLES (NANCY HUB)
+# SCRAPER RÉEL 3 : OFFRES VOYAGE RÉELLES (DEEP LINKS MOTEURS)
 # =========================================================
 def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None):
     logger.info(f"✈️ Scraping des vraies liaisons et vols depuis {departure}...")
     now = datetime.now(timezone.utc).isoformat()
+    from datetime import timedelta
+    d_dep = (datetime.now() + timedelta(days=14)).strftime("%Y-%m-%d")
+    d_ret = (datetime.now() + timedelta(days=17)).strftime("%Y-%m-%d")
     
-    # Vraies routes ferroviaires et aériennes vérifiées
+    # Vraies routes ferroviaires et aériennes vérifiées avec deep links de recherche directe
     routes = [
         {
             "id": "real_train_nancy_paris",
             "universe": "voyage",
             "category": "train",
             "section_type": "flash_deals",
-            "badge": "🚄 TGV Direct • Nancy Hub",
+            "badge": "🚄 TGV Direct • Nancy ⇄ Paris",
             "title": "TGV Direct Nancy ⇄ Paris Gare de l'Est dès 16€",
             "price": 16,
             "price_str": "16 € aller",
@@ -362,7 +462,7 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "dates": "Tous les jours",
             "departure_city": "Nancy",
             "agency": "SNCF Ouigo / Inoui",
-            "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-paris",
+            "url": f"https://www.thetrainline.com/book/results?origin=urn%3Atrainline%3Ageneric%3Aloc%3A2312&destination=urn%3Atrainline%3Ageneric%3Aloc%3A4916&outwardDate={d_dep}T08%3A00%3A00&outwardDateType=departAfter&journeySearchType=return&inwardDate={d_ret}T18%3A00%3A00&inwardDateType=departAfter&lang=fr",
             "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
             "description": "Liaison directe en 1h32 entre la gare de Nancy et Paris Est.",
             "date_detected": now,
@@ -373,7 +473,7 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "universe": "voyage",
             "category": "train",
             "section_type": "flash_deals",
-            "badge": "🚄 TER Direct • Hub Vol",
+            "badge": "🚄 TER Direct • Luxembourg",
             "title": "TER direct Nancy ⇄ Luxembourg (Findel LUX) dès 10€",
             "price": 10,
             "price_str": "10 € aller",
@@ -384,7 +484,7 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "dates": "Toutes les 30 min",
             "departure_city": "Nancy",
             "agency": "SNCF TER Fluo",
-            "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-luxembourg",
+            "url": f"https://www.thetrainline.com/book/results?origin=urn%3Atrainline%3Ageneric%3Aloc%3A2312&destination=urn%3Atrainline%3Ageneric%3Aloc%3A8604&outwardDate={d_dep}T08%3A00%3A00&outwardDateType=departAfter&journeySearchType=return&inwardDate={d_ret}T18%3A00%3A00&inwardDateType=departAfter&lang=fr",
             "image_url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",
             "description": "TER direct vers l'aéroport Findel de Luxembourg (tramway gratuit).",
             "date_detected": now,
@@ -403,10 +503,10 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "destination": "Palma de Majorque",
             "departure_hub": "Bâle-Mulhouse (BSL)",
             "trip_mode": "sniper",
-            "dates": "Février - Mars 2026",
+            "dates": f"{d_dep} → {d_ret}",
             "departure_city": "Nancy",
-            "agency": "EasyJet",
-            "url": "https://www.google.com/travel/flights?q=Vols%20de%20Bale%20vers%20Palma%20de%20Majorque",
+            "agency": "EasyJet / Google Flights",
+            "url": f"https://www.google.com/travel/flights?q=Flights%20to%20PMI%20from%20BSL%20on%20{d_dep}%20through%20{d_ret}&curr=EUR&hl=fr",
             "image_url": "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800",
             "description": "Vol direct pas cher via EuroAirport Bâle-Mulhouse.",
             "date_detected": now,
@@ -425,10 +525,10 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "destination": "Saint-Martin (SXM)",
             "departure_hub": "Paris CDG/ORY",
             "trip_mode": "fais_moi_rever",
-            "dates": "Saison 2026",
+            "dates": f"{d_dep} → {d_ret}",
             "departure_city": "Nancy",
-            "agency": "Air Caraïbes via Paris ORY",
-            "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20SXM",
+            "agency": "Air Caraïbes / Google Flights",
+            "url": f"https://www.google.com/travel/flights?q=Flights%20to%20SXM%20from%20PAR%20on%20{d_dep}%20through%20{d_ret}&curr=EUR&hl=fr",
             "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
             "description": "Liaison optimisée depuis Nancy : TGV Nancy -> Paris direct (1h32) + vol Princess Juliana SXM.",
             "date_detected": now,
@@ -458,30 +558,40 @@ def run_dynamic_scan(city=None, transac=None, max_price=None, min_surface=None, 
         category = os.getenv("SCAN_CATEGORY", "all").strip().lower()
     
     logger.info("═════════════════════════════════════════════════════════")
-    logger.info(f"🛰️  NEXUS RADAR V6 - Scan Dynamique 100% Réel")
+    logger.info(f"🛰️  NEXUS RADAR V7 - Scan Dynamique 100% Réel")
     logger.info(f"   • Ville ciblée : '{city or 'Toutes'}' | Transac : '{transac}'")
     logger.info(f"   • Budget Max : {max_price or 'Non plafonné'} € | Surface min : {min_surface or '0'} m²")
     logger.info("═════════════════════════════════════════════════════════")
     
     existing = load_annonces()
-    # Nettoyer les fausses annonces historiques
-    existing = [it for it in existing if is_url_safe(it.get("url")) and not it.get("id", "").startswith("immo_nancy_loc_t1")]
+    # Purge absolue de toute donnée non issue d'un vrai scraping réel
+    existing = [
+        it for it in existing
+        if it.get("id", "").startswith("real_")
+        and is_url_safe(it.get("url"))
+        and (
+            it.get("universe") != "immo"
+            or is_residential_immo(it.get("title", ""), it.get("description", ""), None, it.get("postal_code", ""), it.get("location", ""))
+        )
+    ]
     
     new_scraped = []
     
     if category in ["immo", "all"]:
         if not city:
-            # Scrape par défaut : Nancy + Saint-Martin
-            sxm_ads = scrape_saint_martin_real(transaction_type="location", max_price=1200)
-            nancy_ads = scrape_france_real(city="Nancy", transaction_type="location", max_price=800)
-            new_scraped.extend(sxm_ads)
-            new_scraped.extend(nancy_ads)
-        elif "saint-martin" in city.lower() or "sxm" in city.lower() or "97150" in city:
-            sxm_ads = scrape_saint_martin_real(transaction_type=transac, max_price=max_price, min_surface=min_surface, rooms=rooms)
-            new_scraped.extend(sxm_ads)
+            # Scrape par défaut : Saint-Martin 97150 + Nancy (Loc + Achat réels)
+            new_scraped.extend(scrape_saint_martin_real(transaction_type="location", max_price=1500))
+            new_scraped.extend(scrape_saint_martin_real(transaction_type="achat"))
+            new_scraped.extend(scrape_france_real(city="Nancy", transaction_type="location", max_price=950))
+            new_scraped.extend(scrape_france_real(city="Nancy", transaction_type="achat", max_price=250000))
+        elif ("saint-martin" in city.lower() or "sxm" in city.lower() or "97150" in city) and "38400" not in city.lower():
+            t_list = ["location", "achat"] if transac == "all" else [transac]
+            for t_mode in t_list:
+                new_scraped.extend(scrape_saint_martin_real(transaction_type=t_mode, max_price=max_price, min_surface=min_surface, rooms=rooms))
         else:
-            france_ads = scrape_france_real(city=city, transaction_type=transac, max_price=max_price, min_surface=min_surface, rooms=rooms)
-            new_scraped.extend(france_ads)
+            t_list = ["location", "achat"] if transac == "all" else [transac]
+            for t_mode in t_list:
+                new_scraped.extend(scrape_france_real(city=city, transaction_type=t_mode, max_price=max_price, min_surface=min_surface, rooms=rooms))
             
     if category in ["voyage", "all"]:
         voyage_deals = scrape_travel_real(departure="Nancy", max_budget=max_price if category == "voyage" else None)

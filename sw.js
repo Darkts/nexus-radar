@@ -1,32 +1,42 @@
-const CACHE_NAME = 'nexus-radar-v6.0';
+const CACHE_NAME = 'nexus-v7-clean';
 const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
   './manifest.json',
   './assets/icon.svg'
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE)).catch(() => {})
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
-    )
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  // Always fetch fresh data/annonces.json and config.json
-  if (event.request.url.includes('annonces.json') || event.request.url.includes('config.json')) {
+  const reqUrl = event.request.url;
+  // Network-First pour HTML, JSON et données dynamiques afin d'éviter tout cache figé
+  if (
+    event.request.mode === 'navigate' ||
+    reqUrl.endsWith('.html') ||
+    reqUrl.endsWith('/') ||
+    reqUrl.includes('annonces.json') ||
+    reqUrl.includes('config.json')
+  ) {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match(event.request))
+      fetch(event.request, { cache: 'no-store' })
+        .then((res) => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then((c) => c.put(event.request, clone)).catch(() => {});
+          return res;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }
@@ -36,10 +46,9 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Handle push notification events
 self.addEventListener('push', (event) => {
   const data = event.data ? event.data.json() : {};
-  const title = data.title || '⚡ Nexus Radar : Nouvelle Pépite !';
+  const title = data.title || '⚡ Nexus Radar V7 : Nouvelle Pépite !';
   const options = {
     body: data.message || "Une nouvelle offre vient d'être détectée.",
     icon: './assets/icon.svg',

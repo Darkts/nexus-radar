@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Nexus Radar V5 | Immobilier Mondial & Planificateur Voyage Intelligent</title>
-  <meta name="description" content="Hub personnel autonome : Veille Immo Mondiale Achat & Location, Carte Interactive, Swipe Tactile & Voyage Intelligent depuis Nancy" />
+  <title>Nexus Radar V7 | Immobilier Mondial & Planificateur Voyage Intelligent</title>
+  <meta name="description" content="Hub personnel autonome V7 : Scraping en direct Immo & Voyage, Grille Moderne, Calendrier Interactif & Deep Links" />
   
   <!-- PWA & Apple Meta -->
   <link rel="manifest" href="manifest.json" />
@@ -12,7 +12,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Nexus Radar V5" />
+  <meta name="apple-mobile-web-app-title" content="Nexus Radar V7" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icon.svg" />
 
@@ -81,7 +81,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 880px;
+      max-width: 1280px;
       margin: 0 auto 8px auto;
     }
 
@@ -137,7 +137,7 @@
 
     /* Switch Double Univers */
     .universe-switch-container {
-      max-width: 880px;
+      max-width: 1280px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -200,7 +200,7 @@
 
     /* Main Container */
     .container {
-      max-width: 880px;
+      max-width: 1280px;
       width: 100%;
       margin: 0 auto;
       padding: 14px;
@@ -365,20 +365,27 @@
 
     .chip-filter {
       white-space: nowrap;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 16px;
-      font-size: 0.73rem;
+      font-size: 0.74rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
       color: var(--text-muted);
       cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .chip-filter:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
     }
 
     .chip-filter.active, .chip-filter.immo-active {
-      background: rgba(16, 185, 129, 0.25);
+      background: rgba(16, 185, 129, 0.28);
       border-color: var(--accent-immo);
       color: #34d399;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
     }
 
     .chip-filter.voyage-active {
@@ -387,16 +394,63 @@
       color: #fff;
     }
 
+    .btn-reset-filters {
+      white-space: nowrap;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 0.73rem;
+      font-weight: 800;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-reset-filters:hover {
+      background: rgba(239, 68, 68, 0.24);
+    }
+
+    /* Autocomplétion Ville */
+    .autocomplete-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #0e172a;
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      z-index: 900;
+      max-height: 220px;
+      overflow-y: auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+      display: none;
+    }
+    .autocomplete-item {
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover { background: rgba(0, 242, 254, 0.14); color: #fff; }
+
     /* Étape 3 : Switch Vue [ 📋 Vue Liste ] | [ 🗺️ Vue Carte Leaflet ] */
     .view-toggle-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .results-count {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-muted);
     }
@@ -430,21 +484,18 @@
       font-weight: 800;
     }
 
-    /* Cartes & Grille */
+    /* Grille Responsive Propre V7 */
     .items-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+      gap: 20px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
     }
 
-    @media (min-width: 640px) {
-      .items-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* Carte Item avec Swipe Tactile */
-    .item-card {
+    /* Carte Unifiée (.card / .item-card) avec Swipe Tactile */
+    .card, .item-card {
       background: var(--surface-card);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
@@ -453,80 +504,113 @@
       flex-direction: column;
       position: relative;
       touch-action: pan-y;
-      transition: transform 0.22s ease, opacity 0.22s ease;
+      transition: transform 0.22s ease, opacity 0.22s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       user-select: none;
-      cursor: pointer;
+      height: 100%;
     }
 
-    .item-card.swiping { transition: none; }
-    .item-card.swiped-right { transform: translateX(120%) rotate(20deg) !important; opacity: 0 !important; }
-    .item-card.swiped-left { transform: translateX(-120%) rotate(-20deg) !important; opacity: 0 !important; }
+    .card:hover, .item-card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    .card.swiping, .item-card.swiping { transition: none; }
+    .card.swiped-right, .item-card.swiped-right { transform: translateX(120%) rotate(20deg) !important; opacity: 0 !important; }
+    .card.swiped-left, .item-card.swiped-left { transform: translateX(-120%) rotate(-20deg) !important; opacity: 0 !important; }
 
     .card-img-wrap {
       position: relative;
       width: 100%;
-      height: 185px;
+      height: 210px;
+      min-height: 210px;
+      max-height: 210px;
       background: #090e1a;
       overflow: hidden;
+      cursor: pointer;
     }
 
-    .card-img {
+    .card-img, .card-img-wrap img {
       width: 100%;
-      height: 100%;
+      height: 210px;
       object-fit: cover;
-      pointer-events: none;
+      display: block;
+      transition: transform 0.25s ease;
     }
 
-    .badge-transac {
+    .card-badge {
       position: absolute;
       top: 10px;
       left: 10px;
-      padding: 4px 8px;
+      padding: 4px 9px;
       border-radius: 6px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       color: #fff;
-    }
-    .badge-transac.location { background: #10b981; }
-    .badge-transac.achat { background: #8b5cf6; }
-    .badge-transac.voyage { background: #00f2fe; color: #070a13; }
-
-    .badge-price {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(11, 17, 32, 0.94);
+      background: rgba(15, 23, 42, 0.88);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      color: var(--primary);
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 5px 10px;
-      border-radius: 8px;
-    }
-
-    .card-top-actions {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      gap: 6px;
       z-index: 10;
+      backdrop-filter: blur(4px);
     }
+    .card-badge.badge-loc { background: rgba(16, 185, 129, 0.92); color: #052e16; border-color: #34d399; }
+    .card-badge.badge-achat { background: rgba(139, 92, 246, 0.92); color: #fff; border-color: #a78bfa; }
+    .card-badge.badge-flash { background: rgba(244, 63, 94, 0.92); color: #fff; border-color: #fda4af; }
+    .card-badge.badge-package { background: rgba(2, 132, 199, 0.92); color: #fff; border-color: #38bdf8; }
 
-    .btn-card-fav {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(11, 17, 32, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: var(--text-muted);
+    /* Boutons Carrousel Photos */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(7, 10, 19, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      z-index: 12;
+      transition: background 0.15s;
     }
-    .btn-card-fav.active { color: #ec4899; border-color: #ec4899; }
+    .carousel-btn:hover { background: var(--primary); color: #070a13; }
+    .carousel-btn.prev { left: 8px; }
+    .carousel-btn.next { right: 8px; }
+    .carousel-counter {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(7, 10, 19, 0.85);
+      color: #f8fafc;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 10px;
+      z-index: 12;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-card-fav {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(11, 17, 32, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 12;
+    }
+    .btn-card-fav.active { color: #ec4899; border-color: #ec4899; background: rgba(236, 72, 153, 0.15); }
 
     .card-body {
       padding: 14px;
@@ -536,13 +620,27 @@
       gap: 8px;
     }
 
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #34d399;
+    }
+
     .card-loc {
       font-size: 0.75rem;
       color: var(--primary);
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
     }
 
     .card-title {
@@ -550,6 +648,11 @@
       font-weight: 700;
       color: #fff;
       line-height: 1.35;
+      cursor: pointer;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .specs-pills-row {
@@ -593,54 +696,190 @@
       color: #34d399;
     }
 
-    /* Swipe Quick Action Bar */
-    .card-swipe-bar {
+    /* Barre d'Actions sur UNE SEULE LIGNE horizontale */
+    .card-actions-bar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 8px;
       margin-top: auto;
       padding-top: 10px;
       border-top: 1px solid var(--card-border);
-      gap: 8px;
+      width: 100%;
     }
 
     .btn-swipe-dislike {
+      flex: 1;
       background: rgba(239, 68, 68, 0.12);
       border: 1px solid rgba(239, 68, 68, 0.35);
       color: #f87171;
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 8px 6px;
+      border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 4px;
-    }
-
-    .btn-swipe-like {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
-      font-size: 0.76rem;
-      font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      white-space: nowrap;
     }
 
     .btn-open-detail {
+      flex: 1.25;
       background: linear-gradient(135deg, #00f2fe, #0284c7);
       color: #070a13;
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 8px 6px;
+      border-radius: 8px;
       border: none;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-swipe-like {
+      flex: 1;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 8px 6px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    /* Calendrier Popover Interactif style Lastminute.com */
+    .cal-trigger-btn {
+      width: 100%;
+      background: #090e1a;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .cal-trigger-btn:hover { border-color: #38bdf8; }
+    .cal-popover-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 10, 19, 0.75);
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      backdrop-filter: blur(4px);
+    }
+    .cal-popover-backdrop.open { display: flex; }
+    .cal-popover-card {
+      background: #0e1629;
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      border-radius: 16px;
+      max-width: 440px;
+      width: 100%;
+      padding: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+    }
+    .cal-quick-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .cal-quick-tab {
+      flex: 1;
+      min-width: 90px;
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: #cbd5e1;
+      cursor: pointer;
+      text-align: center;
+    }
+    .cal-quick-tab.active {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: #38bdf8;
+      color: #fff;
+    }
+    .cal-month-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .cal-nav-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+    }
+    .cal-day-header {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      padding-bottom: 6px;
+    }
+    .cal-day {
+      padding: 8px 0;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #f8fafc;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .cal-day:hover:not(.disabled):not(.empty) {
+      border-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.15);
+    }
+    .cal-day.empty { cursor: default; }
+    .cal-day.disabled { opacity: 0.25; cursor: not-allowed; pointer-events: none; }
+    .cal-day.selected-start, .cal-day.selected-end {
+      background: #0284c7;
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(2, 132, 199, 0.5);
+    }
+    .cal-day.in-range {
+      background: rgba(56, 189, 248, 0.22);
+      color: #38bdf8;
+    }
+    .cal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--card-border);
     }
 
     /* ========================================================= */
@@ -1095,7 +1334,7 @@
   <div class="pin-modal-overlay" id="pinLockOverlay">
     <div class="pin-box">
       <div style="font-size: 2.2rem;">🔒</div>
-      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V5</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V7</h2>
       <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code PIN à 4 chiffres</p>
       
       <div class="pin-dots">
@@ -1130,10 +1369,10 @@
           <img src="assets/icon.svg" alt="Nexus Logo" />
         </div>
         <div>
-          <div class="brand-title">NEXUS RADAR V5</div>
+          <div class="brand-title">NEXUS RADAR V7</div>
           <div class="brand-sub">
             <span class="live-dot"></span>
-            <span id="headerLiveStatus">Veille Active • Double Univers</span>
+            <span id="headerLiveStatus">Scraping Direct Temps Réel • Double Univers</span>
           </div>
         </div>
       </div>
@@ -1165,36 +1404,25 @@
     <!-- ========================================================= -->
     <section id="pane-immo-feed" class="tab-pane active">
       
-      <!-- ÉTAPE 1 & 2 : Entonnoir Immobilier Logique -->
+      <!-- Entonnoir Immobilier Logique Universel -->
       <div class="funnel-search-box">
-        <!-- Étape 1 : Choix du Lieu d'abord -->
-        <div class="step-header-label">📍 Étape 1 : Choisissez le secteur à surveiller</div>
+        <!-- Étape 1 : Barre de recherche universelle avec Autocomplétion -->
+        <div class="step-header-label">📍 Étape 1 : Choisissez la ville ou le secteur (Monde / France / DOM)</div>
         <div class="step-location-row">
           <div class="search-input-wrap">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" id="searchLocationInput" placeholder="Rechercher une ville, secteur (Nancy, Saint-Martin, Paris, Lyon, Nice...)" oninput="filterImmo()" />
+            <input type="text" id="searchLocationInput" autocomplete="off" placeholder="Tapez n'importe quelle ville (Paris, Nancy, Saint-Martin 97150, Lyon, Nice...)" oninput="onImmoCityTyping()" />
+            <div class="autocomplete-dropdown" id="cityAutocompleteList"></div>
           </div>
           <button class="btn-around-me" onclick="locateAroundMe()">
             <span>📍 Autour de moi</span>
           </button>
         </div>
 
-        <!-- Sélections rapides par grandes villes et DOM -->
-        <div class="quick-cities-scroll" id="quickCitiesRow">
-          <button class="city-pill active" onclick="selectQuickCity('ALL', this)">🌍 Tous les lieux</button>
-          <button class="city-pill" onclick="selectQuickCity('Nancy', this)">🇫🇷 Nancy & Grand Est</button>
-          <button class="city-pill" onclick="selectQuickCity('Saint-Martin', this)">🏝️ Saint-Martin (97150)</button>
-          <button class="city-pill" onclick="selectQuickCity('Paris', this)">🗼 Paris</button>
-          <button class="city-pill" onclick="selectQuickCity('Lyon', this)">🦁 Lyon</button>
-          <button class="city-pill" onclick="selectQuickCity('Nice', this)">☀️ Nice / Côte d'Azur</button>
-          <button class="city-pill" onclick="selectQuickCity('Alicante', this)">🇪🇸 Espagne / Costa</button>
-        </div>
-
-        <!-- Bouton Action Direct Scan Live Immo -->
         <!-- Barre de progression Scan Live -->
-        <div id="liveScanProgressBox" style="display: none; margin-top: 10px; background: rgba(15, 23, 42, 0.95); border: 1px solid #10b981; border-radius: 10px; padding: 10px 14px;">
+        <div id="liveScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid #10b981; border-radius: 10px; padding: 10px 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
             <span id="liveScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: #34d399;">🔄 Scan en cours...</span>
             <span id="liveScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: #fff;">0%</span>
@@ -1204,8 +1432,8 @@
           </div>
         </div>
 
-        <button class="btn-live-scan" id="btnLaunchLiveScanImmo" onclick="launchLiveScanImmo()">
-          <span>⚡ Lancer un Scan Live sur ces critères</span>
+        <button class="btn-live-scan" id="btnLaunchLiveScanImmo" onclick="launchLiveScanImmo(false)">
+          <span>⚡ Rechercher & Scraper en direct</span>
         </button>
 
         <!-- Portails Directs Officiels pour cette recherche -->
@@ -1217,9 +1445,12 @@
           <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="immoDirectPortalsLinks"></div>
         </div>
 
-        <!-- Étape 2 : Critères de filtrage -->
-        <div class="step-filters-box" style="margin-top: 14px;">
-          <div class="step-header-label">⚙️ Étape 2 : Vos critères de recherche</div>
+        <!-- Étape 2 : Critères de filtrage Toggle On/Off + Réinitialiser -->
+        <div class="step-filters-box" style="margin-top: 10px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <div class="step-header-label">⚙️ Étape 2 : Vos critères (cliquez pour cocher / décocher)</div>
+            <button class="btn-reset-filters" onclick="resetAllImmoFilters()">↺ Tout décocher / Réinitialiser</button>
+          </div>
           
           <div class="filters-grid-row">
             <div class="segmented-control">
@@ -1228,28 +1459,27 @@
               <button class="segmented-btn" data-transac="achat" onclick="setTransactionFilter('achat', this)">🏷️ Acheter</button>
             </div>
 
-            <button class="chip-filter active" data-room="ALL" onclick="setRoomFilter('ALL', this)">Toutes pièces</button>
-            <button class="chip-filter" data-room="Studio" onclick="setRoomFilter('Studio', this)">Studio</button>
-            <button class="chip-filter" data-room="T2" onclick="setRoomFilter('T2', this)">T2</button>
-            <button class="chip-filter" data-room="T3" onclick="setRoomFilter('T3', this)">T3+</button>
-            <button class="chip-filter" data-room="Maison" onclick="setRoomFilter('Maison', this)">Maison/Villa</button>
+            <button class="chip-filter" data-room="Studio" onclick="toggleRoomFilter('Studio', this)">Studio / T1</button>
+            <button class="chip-filter" data-room="T2" onclick="toggleRoomFilter('T2', this)">T2</button>
+            <button class="chip-filter" data-room="T3" onclick="toggleRoomFilter('T3', this)">T3+</button>
+            <button class="chip-filter" data-room="Maison" onclick="toggleRoomFilter('Maison', this)">Maison / Villa</button>
           </div>
 
-          <!-- Champs Budget Max et Surface min demandés -->
-          <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+          <!-- Champs Budget Max et Surface min -->
+          <div style="display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 140px;">
               <label style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">💰 Budget Max (€)</label>
-              <input type="number" id="immoMaxBudgetInput" placeholder="Ex: 800" style="width:100%; background:#090e1a; border:1px solid var(--card-border); border-radius:8px; padding:6px 10px; color:#fff; font-size:0.82rem; margin-top:2px;" oninput="filterImmo()" />
+              <input type="number" id="immoMaxBudgetInput" placeholder="Ex: 800" style="width:100%; background:#090e1a; border:1px solid var(--card-border); border-radius:8px; padding:7px 10px; color:#fff; font-size:0.82rem; margin-top:2px;" oninput="triggerAutoRefreshImmo()" />
             </div>
             <div style="flex: 1; min-width: 140px;">
               <label style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">📐 Surface min (m²)</label>
-              <input type="number" id="immoMinSurfaceInput" placeholder="Ex: 35" style="width:100%; background:#090e1a; border:1px solid var(--card-border); border-radius:8px; padding:6px 10px; color:#fff; font-size:0.82rem; margin-top:2px;" oninput="filterImmo()" />
+              <input type="number" id="immoMinSurfaceInput" placeholder="Ex: 35" style="width:100%; background:#090e1a; border:1px solid var(--card-border); border-radius:8px; padding:7px 10px; color:#fff; font-size:0.82rem; margin-top:2px;" oninput="triggerAutoRefreshImmo()" />
             </div>
           </div>
 
-          <div class="filters-grid-row" style="margin-top: 10px;">
+          <div class="filters-grid-row" style="margin-top: 4px;">
             <button class="chip-filter" id="chipAmenityMer" onclick="toggleAmenity('vue_mer', this)">🌊 Vue Mer</button>
-            <button class="chip-filter" id="chipAmenityTerrasse" onclick="toggleAmenity('terrasse', this)">☀️ Terrasse</button>
+            <button class="chip-filter" id="chipAmenityTerrasse" onclick="toggleAmenity('terrasse', this)">☀️ Terrasse / Balcon</button>
             <button class="chip-filter" id="chipAmenityPiscine" onclick="toggleAmenity('piscine', this)">🏊 Piscine</button>
             <button class="chip-filter" id="chipAmenityParking" onclick="toggleAmenity('parking', this)">🚗 Parking</button>
           </div>
@@ -1279,7 +1509,7 @@
       <div class="empty-state" id="emptyImmo" style="display: none;">
         <div style="font-size: 36px; margin-bottom: 8px;">🏠</div>
         <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 4px;">Aucun bien correspondant</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur "Lancer un Scan Live" pour générer des opportunités sur ce secteur.</p>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Modifiez vos critères ou cliquez sur "Rechercher & Scraper en direct".</p>
       </div>
     </section>
 
@@ -1293,7 +1523,7 @@
       <div class="empty-state" id="emptyImmoCatalogue" style="display: none;">
         <div style="font-size: 36px; margin-bottom: 8px;">⭐</div>
         <h3 style="font-size: 1.05rem; font-weight: 800;">Votre catalogue est vide</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur l'étoile d'une annonce pour la sauvegarder.</p>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur ❤️ J'aime ou ★ d'une annonce pour la sauvegarder.</p>
       </div>
     </section>
 
@@ -1303,85 +1533,67 @@
     <!-- ========================================================= -->
     <section id="pane-voyage-feed" class="tab-pane">
       
-      <!-- MOTEUR DE RECHERCHE VOYAGE COMPLET (Chantier 3) -->
+      <!-- MOTEUR DE RECHERCHE VOYAGE UNIVERSEL V7 -->
       <div class="funnel-search-box" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.04);">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-          <div style="font-size: 0.95rem; font-weight: 800; color: #fff;">✈️ Planificateur Voyage & Vols Cassés</div>
-          <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.15); padding: 3px 8px; border-radius: 6px;">Nancy Hub Actif</span>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <div style="font-size: 0.95rem; font-weight: 800; color: #fff;">✈️ Planificateur Voyage Universel</div>
+          <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.15); padding: 3px 8px; border-radius: 6px;">Comparateurs Directs V7</span>
         </div>
 
-        <!-- 1. Ville de Départ -->
+        <!-- 1. Ville de Départ & Destination côte à côte sur desktop -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+          <div class="voyage-funnel-step">
+            <div class="step-header-label" style="color: #38bdf8; margin-bottom: 4px;">🛫 1. Ville / Gare / Aéroport de Départ</div>
+            <div class="search-input-wrap">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <input type="text" id="voyageDepartInput" autocomplete="off" value="Nancy" placeholder="Tapez une ville ou aéroport (Paris, Nancy, Luxembourg, Lyon...)" oninput="onVoyageCityTyping('depart')" />
+              <div class="autocomplete-dropdown" id="voyageDepartAutocomplete"></div>
+            </div>
+          </div>
+
+          <div class="voyage-funnel-step">
+            <div class="step-header-label" style="color: #38bdf8; margin-bottom: 4px;">🛬 2. Destination d'Arrivée</div>
+            <div class="search-input-wrap">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
+              </svg>
+              <input type="text" id="searchVoyageDest" autocomplete="off" placeholder="Ville, Île ou Pays (Rome, New York, Saint-Martin, Paris...)" oninput="onVoyageCityTyping('dest')" />
+              <div class="autocomplete-dropdown" id="voyageDestAutocomplete"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Vrai Calendrier Visuel Interactif style Lastminute.com -->
         <div class="voyage-funnel-step">
-          <div class="step-header-label">🛫 1. Ville de Départ (Gare / Hub Aérien)</div>
-          <div class="search-input-wrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-            <input type="text" id="voyageDepartInput" value="Nancy (Hub)" placeholder="Ex: Nancy, Paris CDG, Luxembourg, Bâle..." oninput="filterVoyage()" />
-          </div>
-          <div class="quick-cities-scroll" style="margin-top: 6px;">
-            <button class="city-pill active" onclick="selectQuickDepart('Nancy', this)">📍 Nancy Hub</button>
-            <button class="city-pill" onclick="selectQuickDepart('Paris', this)">🗼 Paris CDG/ORY</button>
-            <button class="city-pill" onclick="selectQuickDepart('Luxembourg', this)">🇱🇺 Luxembourg (LUX)</button>
-            <button class="city-pill" onclick="selectQuickDepart('Bâle', this)">🇨🇭 Bâle-Mulhouse (BSL)</button>
-            <button class="city-pill" onclick="selectQuickDepart('ALL', this)">🌍 Tous départs</button>
-          </div>
-        </div>
-
-        <!-- 2. Destination d'Arrivée -->
-        <div class="voyage-funnel-step" style="margin-top: 10px;">
-          <div class="step-header-label">🛬 2. Destination d'Arrivée</div>
-          <div class="search-input-wrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
-            </svg>
-            <input type="text" id="searchVoyageDest" placeholder="Ville, Pays ou 'Partout / Fais-moi rêver'..." oninput="filterVoyage()" />
-          </div>
-          <div class="quick-cities-scroll" style="margin-top: 6px;">
-            <button class="city-pill active" onclick="selectQuickDest('ALL', this)">🌍 Partout / Fais-moi rêver</button>
-            <button class="city-pill" onclick="selectQuickDest('Saint-Martin', this)">🏝️ Saint-Martin (SXM)</button>
-            <button class="city-pill" onclick="selectQuickDest('Guadeloupe', this)">🌴 Guadeloupe / Martinique</button>
-            <button class="city-pill" onclick="selectQuickDest('Italie', this)">🍕 Italie (Rome / Bologne)</button>
-            <button class="city-pill" onclick="selectQuickDest('New York', this)">🇺🇸 New York</button>
-            <button class="city-pill" onclick="selectQuickDest('Espagne', this)">☀️ Espagne / Baléares</button>
-            <button class="city-pill" onclick="selectQuickDest('Paris', this)">🚄 TGV Paris direct</button>
-          </div>
-        </div>
-
-        <!-- 3. Dates : Départ & Retour + Flexible Checkbox -->
-        <div class="voyage-funnel-step" style="margin-top: 10px;">
-          <div class="step-header-label">📅 3. Dates de Voyage (Départ & Retour)</div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 135px;">
-              <label style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">Départ</label>
-              <input type="date" id="voyageDateDepart" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 10px; color: #fff; font-size: 0.8rem; margin-top: 2px;" onchange="filterVoyage()" />
+          <div class="step-header-label" style="color: #38bdf8; margin-bottom: 4px;">📅 3. Dates de Voyage (Calendrier Aller - Retour)</div>
+          <div class="cal-trigger-btn" id="calendarTriggerBtn" onclick="openCalendarPopover()">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.25rem;">📅</span>
+              <div>
+                <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">Départ ➔ Retour</div>
+                <div style="font-size: 0.86rem; font-weight: 800; color: #fff;" id="calendarDisplayValue">Choisir mes dates (Aller - Retour)</div>
+              </div>
             </div>
-            <div style="flex: 1; min-width: 135px;">
-              <label style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">Retour</label>
-              <input type="date" id="voyageDateRetour" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 10px; color: #fff; font-size: 0.8rem; margin-top: 2px;" onchange="filterVoyage()" />
-            </div>
+            <span id="calendarFlexBadge" style="font-size: 0.72rem; font-weight: 800; padding: 4px 8px; border-radius: 6px; background: rgba(56, 189, 248, 0.18); color: #38bdf8;">Dates exactes</span>
           </div>
-          <label style="display: flex; align-items: center; gap: 8px; font-size: 0.76rem; color: #cbd5e1; margin-top: 8px; cursor: pointer;">
-            <input type="checkbox" id="voyageFlexibleDates" checked onchange="filterVoyage()" style="accent-color: #38bdf8; width: 16px; height: 16px;" />
-            <span style="font-weight: 700;">🔄 Dates flexibles ±3 jours (Meilleurs prix garantis)</span>
-          </label>
         </div>
 
         <!-- 4. Budget Max Tout Compris (€) -->
-        <div class="voyage-funnel-step" style="margin-top: 10px;">
+        <div class="voyage-funnel-step">
           <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div class="step-header-label">💰 4. Budget Max Tout Compris (Vol + Train + Hôtel)</div>
-            <span id="voyageBudgetDisplay" style="font-size: 0.84rem; font-weight: 800; color: #38bdf8;">≤ 500 €</span>
+            <div class="step-header-label" style="color: #38bdf8;">💰 4. Budget Max (€)</div>
+            <span id="voyageBudgetDisplay" style="font-size: 0.84rem; font-weight: 800; color: #38bdf8;">≤ 800 €</span>
           </div>
           <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
-            <input type="range" id="voyageBudgetRange" min="20" max="1500" step="10" value="500" style="flex: 1; accent-color: #38bdf8;" oninput="onVoyageBudgetRange(this.value)" />
-            <input type="number" id="voyageBudgetInput" value="500" style="width: 75px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 6px; color: #fff; font-size: 0.8rem; text-align: center;" oninput="onVoyageBudgetInput(this.value)" />
+            <input type="range" id="voyageBudgetRange" min="20" max="2000" step="10" value="800" style="flex: 1; accent-color: #38bdf8;" oninput="onVoyageBudgetRange(this.value)" />
+            <input type="number" id="voyageBudgetInput" value="800" style="width: 80px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 6px; color: #fff; font-size: 0.8rem; text-align: center;" oninput="onVoyageBudgetInput(this.value)" />
           </div>
         </div>
 
-        <!-- Bouton d'Action Direct -->
         <!-- Barre de progression Scan Voyage -->
-        <div id="voyageScanProgressBox" style="display: none; margin-top: 10px; background: rgba(15, 23, 42, 0.95); border: 1px solid #38bdf8; border-radius: 10px; padding: 10px 14px;">
+        <div id="voyageScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid #38bdf8; border-radius: 10px; padding: 10px 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
             <span id="voyageScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: #38bdf8;">🔄 Scan des vols & liaisons en cours...</span>
             <span id="voyageScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: #fff;">0%</span>
@@ -1392,29 +1604,68 @@
         </div>
 
         <button class="btn-live-scan btn-scan-voyage" id="btnLaunchLiveScanVoyage" onclick="launchLiveScanVoyage()">
-          <span>🔍 Trouver & Scraper les offres</span>
+          <span>🔍 Rechercher & Ouvrir les Moteurs aux Dates Exactes</span>
         </button>
 
         <!-- Box Portails Directs Voyage -->
         <div id="voyageDirectPortalsBar" class="direct-portals-box voyage-box" style="display: none; margin-top: 10px;">
           <div style="font-size: 0.78rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">
-            🌐 Portails Officiels Directs pour ce trajet :
+            🌐 Redirections Directes Pré-Paramétrées (Trajet + Dates Exactes) :
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="voyageDirectPortalsLinks"></div>
         </div>
       </div>
 
+      <!-- POPOVER CALENDRIER INTERACTIF STYLE LASTMINUTE.COM -->
+      <div class="cal-popover-backdrop" id="calendarPopoverBackdrop" onclick="closeCalendarPopoverIfBackdrop(event)">
+        <div class="cal-popover-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-size: 0.95rem; font-weight: 800; color: #fff;">📅 Dates de Voyage</span>
+            <button onclick="closeCalendarPopover()" style="background:none; border:none; color:#94a3b8; font-size:1.2rem; cursor:pointer;">✕</button>
+          </div>
+
+          <div class="cal-quick-tabs">
+            <button class="cal-quick-tab active" id="calModeExact" onclick="setCalendarMode('exact', this)">📅 Dates exactes</button>
+            <button class="cal-quick-tab" id="calModeFlex" onclick="setCalendarMode('flex3', this)">🔄 ±3 jours</button>
+            <button class="cal-quick-tab" onclick="selectCalendarWeekend(this)">🌴 Week-end prochain</button>
+            <button class="cal-quick-tab" onclick="selectCalendarFullMonth(this)">☀️ Mois entier</button>
+          </div>
+
+          <div class="cal-month-nav">
+            <button class="cal-nav-btn" onclick="changeCalMonth(-1)">‹</button>
+            <span id="calMonthLabel" style="font-size: 0.88rem; font-weight: 800; color: #fff; text-transform: capitalize;">Novembre 2026</span>
+            <button class="cal-nav-btn" onclick="changeCalMonth(1)">›</button>
+          </div>
+
+          <div class="cal-grid" id="calDaysHeader">
+            <div class="cal-day-header">Lu</div>
+            <div class="cal-day-header">Ma</div>
+            <div class="cal-day-header">Me</div>
+            <div class="cal-day-header">Je</div>
+            <div class="cal-day-header">Ve</div>
+            <div class="cal-day-header">Sa</div>
+            <div class="cal-day-header">Di</div>
+          </div>
+          <div class="cal-grid" id="calDaysGrid"></div>
+
+          <div class="cal-footer">
+            <button onclick="clearCalendarDates()" style="background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color:#f87171; border-radius:8px; padding:8px 12px; font-size:0.76rem; font-weight:800; cursor:pointer;">Effacer les dates</button>
+            <button onclick="confirmCalendarDates()" style="background: #0284c7; border: none; color:#fff; border-radius:8px; padding:8px 18px; font-size:0.8rem; font-weight:800; cursor:pointer;">✓ Valider</button>
+          </div>
+        </div>
+      </div>
+
       <!-- SECTION 1 : 🔥 Flash Deals & Erreurs de Prix -->
       <div class="section-title-wrap" style="margin-top: 16px;">
-        <h3 class="section-title" style="color: #f43f5e;">🔥 Section 1 : Flash Deals & Erreurs de Prix</h3>
+        <h3 class="section-title" style="color: #f43f5e;">🔥 Section 1 : Flash Deals & Liaisons Express</h3>
         <span style="font-size: 0.72rem; color: #f43f5e; font-weight: 800;" id="voyageSec1Count"></span>
       </div>
       <div class="items-grid" id="voyageSection1"></div>
 
       <!-- SECTION 2 : 🎯 Meilleures Offres selon vos critères -->
       <div class="section-title-wrap" style="margin-top: 26px;">
-        <h3 class="section-title" style="color: #38bdf8;">🎯 Section 2 : Meilleurs Séjours Tout Compris depuis Nancy</h3>
-        <span style="font-size: 0.72rem; color: var(--text-muted);" id="voyageSec2Count">Vol + Train + Hôtel Vérifié</span>
+        <h3 class="section-title" style="color: #38bdf8;">🎯 Section 2 : Meilleurs Séjours & Vols</h3>
+        <span style="font-size: 0.72rem; color: var(--text-muted);" id="voyageSec2Count">Comparatif en temps réel</span>
       </div>
       <div class="items-grid" id="voyageSection2"></div>
     </section>
@@ -1669,9 +1920,21 @@
 
     // Filtres Immo
     let immoTransac = 'ALL';
-    let immoRoom = 'ALL';
+    let immoRooms = new Set();
     let immoAmenities = new Set();
     let immoViewMode = 'list';
+    let autoRefreshTimer = null;
+    let immoAutocompleteTimer = null;
+    let cardImgIdx = {};
+
+    // État du calendrier interactif Voyage (style Lastminute.com)
+    const _initNow = new Date();
+    let calCurrentYear = _initNow.getFullYear();
+    let calCurrentMonth = _initNow.getMonth();
+    let calDepDate = '';
+    let calRetDate = '';
+    let calFlexMode = 'exact'; // 'exact' | 'flex3' | 'weekend' | 'month'
+    let voyageAutocompleteTimer = null;
 
     // Filtres Voyage
     let voyageHub = 'ALL';
@@ -1856,20 +2119,103 @@
     // =========================================================
     // UNIVERS 1 : FILTRES & PARCOURS IMMO LOGIQUE EN 3 ÉTAPES
     // =========================================================
-    function selectQuickCity(city, el) {
-      const input = document.getElementById('searchLocationInput');
-      document.querySelectorAll('#quickCitiesRow .city-pill').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
+    const NON_RESIDENTIAL_TERMS = [
+      'immobilier professionnel', 'local commercial', 'locaux professionnels',
+      'locaux commerciaux', 'bureau à', 'bureaux', 'fonds de commerce',
+      'droit au bail', 'entrepôt', 'entrepot', 'stockage', 'garage seul', 'box de stockage'
+    ];
 
-      if (city === 'ALL') {
-        input.value = '';
-      } else {
-        input.value = city;
-      }
-      filterImmo();
+    function isNonResidentialItem(it) {
+      if (it.id_di_ad_type === 4 || String(it.id_di_ad_type) === '4') return true;
+      const hay = `${it.title || ''} ${it.category_raw || ''} ${it.badge || ''} ${it.description || ''}`.toLowerCase();
+      return NON_RESIDENTIAL_TERMS.some(term => hay.includes(term));
     }
 
+    function onImmoCityTyping() {
+      triggerAutoRefreshImmo(false);
+      clearTimeout(immoAutocompleteTimer);
+      const input = document.getElementById('searchLocationInput');
+      const list = document.getElementById('cityAutocompleteList');
+      if (!input || !list) return;
+
+      const q = input.value.trim();
+      if (q.length < 2) {
+        list.style.display = 'none';
+        list.innerHTML = '';
+        return;
+      }
+
+      immoAutocompleteTimer = setTimeout(async () => {
+        const qLow = q.toLowerCase();
+        const suggestions = [];
+        const allow38400 = qLow.includes('38400') || qLow.includes('heres') || qLow.includes('hères');
+
+        if (qLow.includes('saint') || qLow.includes('sxm') || qLow.includes('971')) {
+          suggestions.push({ label: 'Saint-Martin (97150)', sub: 'Caraïbes • Antilles françaises (97150)', val: 'Saint-Martin 97150' });
+        }
+
+        try {
+          const resp = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&type=municipality&limit=6`);
+          if (resp.ok) {
+            const data = await resp.json();
+            for (const f of (data.features || [])) {
+              const p = f.properties || {};
+              const pc = String(p.postcode || '');
+              const name = p.city || p.label || '';
+              if (!allow38400 && (pc === '38400' || name.toLowerCase().includes("saint-martin-d'hères"))) continue;
+              if (pc === '97150' && suggestions.some(s => s.val.includes('97150'))) continue;
+              suggestions.push({
+                label: `${name}${pc ? ` (${pc})` : ''}`,
+                sub: p.context || 'France',
+                val: pc ? `${name} ${pc}` : name
+              });
+            }
+          }
+        } catch (e) {}
+
+        if (suggestions.length === 0) {
+          list.style.display = 'none';
+          return;
+        }
+        list.innerHTML = suggestions.slice(0, 6).map(s => `
+          <div class="autocomplete-item" onmousedown="event.preventDefault(); selectImmoAutocomplete('${s.val.replace(/'/g, "\\'")}')">
+            <span>📍 <strong>${s.label}</strong></span>
+            <small>${s.sub}</small>
+          </div>
+        `).join('');
+        list.style.display = 'block';
+      }, 220);
+    }
+
+    function selectImmoAutocomplete(val) {
+      const input = document.getElementById('searchLocationInput');
+      const list = document.getElementById('cityAutocompleteList');
+      if (input) input.value = val;
+      if (list) list.style.display = 'none';
+      triggerAutoRefreshImmo(true);
+    }
+
+    document.addEventListener('click', (e) => {
+      const list = document.getElementById('cityAutocompleteList');
+      const input = document.getElementById('searchLocationInput');
+      if (list && input && !list.contains(e.target) && e.target !== input) {
+        list.style.display = 'none';
+      }
+      const depList = document.getElementById('voyageDepartAutocomplete');
+      const depInput = document.getElementById('voyageDepartInput');
+      if (depList && depInput && !depList.contains(e.target) && e.target !== depInput) {
+        depList.style.display = 'none';
+      }
+      const destList = document.getElementById('voyageDestAutocomplete');
+      const destInput = document.getElementById('searchVoyageDest');
+      if (destList && destInput && !destList.contains(e.target) && e.target !== destInput) {
+        destList.style.display = 'none';
+      }
+    });
+
     function locateAroundMe() {
+      const list = document.getElementById('cityAutocompleteList');
+      if (list) list.style.display = 'none';
       if (!navigator.geolocation) {
         showToast('Géolocalisation non supportée par votre navigateur');
         return;
@@ -1884,7 +2230,7 @@
           if (Math.abs(lat - 48.69) < 0.8 && Math.abs(lon - 6.18) < 0.8) {
             document.getElementById('searchLocationInput').value = 'Nancy';
           } else if (Math.abs(lat - 18.07) < 0.5) {
-            document.getElementById('searchLocationInput').value = 'Saint-Martin';
+            document.getElementById('searchLocationInput').value = 'Saint-Martin 97150';
           } else if (Math.abs(lat - 48.85) < 0.6) {
             document.getElementById('searchLocationInput').value = 'Paris';
           } else if (Math.abs(lat - 45.76) < 0.6) {
@@ -1892,12 +2238,12 @@
           } else {
             document.getElementById('searchLocationInput').value = 'Nancy';
           }
-          filterImmo();
+          triggerAutoRefreshImmo(true);
         },
         () => {
           showToast('⚠️ Impossible d\'accéder au GPS. Sélection par défaut : Nancy.');
           document.getElementById('searchLocationInput').value = 'Nancy';
-          filterImmo();
+          triggerAutoRefreshImmo(true);
         },
         { timeout: 7000 }
       );
@@ -1907,25 +2253,66 @@
       immoTransac = transac;
       document.querySelectorAll('.step-filters-box .segmented-btn').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
-      filterImmo();
+      triggerAutoRefreshImmo(true);
     }
 
-    function setRoomFilter(room, el) {
-      immoRoom = room;
-      document.querySelectorAll('.step-filters-box .chip-filter[data-room]').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-      filterImmo();
+    function toggleRoomFilter(room, el) {
+      if (immoRooms.has(room)) {
+        immoRooms.delete(room);
+        el.classList.remove('active');
+      } else {
+        immoRooms.add(room);
+        el.classList.add('active');
+      }
+      triggerAutoRefreshImmo(true);
     }
 
     function toggleAmenity(amenity, el) {
-      if (immoAmenities.has(amenity)) {
-        immoAmenities.delete(amenity);
-        el.classList.remove('immo-active');
+      const key = amenity.toLowerCase();
+      if (immoAmenities.has(key)) {
+        immoAmenities.delete(key);
+        el.classList.remove('active', 'immo-active');
       } else {
-        immoAmenities.add(amenity);
-        el.classList.add('immo-active');
+        immoAmenities.add(key);
+        el.classList.add('active', 'immo-active');
       }
+      triggerAutoRefreshImmo(false);
+    }
+
+    function resetAllImmoFilters() {
+      immoTransac = 'ALL';
+      immoRooms.clear();
+      immoAmenities.clear();
+      const locInput = document.getElementById('searchLocationInput');
+      if (locInput) locInput.value = '';
+      const budgetInput = document.getElementById('immoMaxBudgetInput');
+      if (budgetInput) budgetInput.value = '';
+      const surfaceInput = document.getElementById('immoMinSurfaceInput');
+      if (surfaceInput) surfaceInput.value = '';
+      const acList = document.getElementById('cityAutocompleteList');
+      if (acList) acList.style.display = 'none';
+
+      document.querySelectorAll('.step-filters-box .segmented-btn').forEach((b, idx) => {
+        b.classList.toggle('active', idx === 0);
+      });
+      document.querySelectorAll('.step-filters-box .chip-filter').forEach(c => {
+        c.classList.remove('active', 'immo-active');
+      });
+      const portalBar = document.getElementById('immoDirectPortalsBar');
+      if (portalBar) portalBar.style.display = 'none';
+
       filterImmo();
+      showToast('↺ Tous les filtres réinitialisés');
+    }
+
+    function triggerAutoRefreshImmo(immediate = false) {
+      filterImmo();
+      clearTimeout(autoRefreshTimer);
+      const q = (document.getElementById('searchLocationInput')?.value || '').trim();
+      if (q.length < 2) return;
+      autoRefreshTimer = setTimeout(() => {
+        launchLiveScanImmo(true);
+      }, immediate ? 80 : 400);
     }
 
     function setViewMode(mode) {
@@ -1949,22 +2336,46 @@
       }
     }
 
+    function matchesRoomReq(it, reqRoom) {
+      const r = (it.rooms || '').toLowerCase();
+      const t = (it.title || '').toLowerCase();
+      const req = reqRoom.toLowerCase();
+      if (req === 'studio') return r.includes('studio') || r.includes('t1') || r.includes('1 p') || r.includes('f1') || t.includes('studio');
+      if (req === 't2') return r.includes('t2') || r.includes('2 p') || r.includes('f2') || t.includes('t2');
+      if (req === 't3') return r.includes('t3') || r.includes('3 p') || r.includes('f3') || t.includes('t3');
+      if (req === 't4' || req === 't4+') {
+        const m = r.match(/(\d+)\s*p/i);
+        return r.includes('t4') || r.includes('t5') || (m && parseInt(m[1], 10) >= 4);
+      }
+      if (req === 'maison' || req === 'villa') {
+        return t.includes('maison') || t.includes('villa') || r.includes('maison') || r.includes('villa');
+      }
+      return r.includes(req) || t.includes(req);
+    }
+
     function getFilteredImmoItems() {
-      const q = (document.getElementById('searchLocationInput')?.value || '').toLowerCase().trim();
+      const qRaw = (document.getElementById('searchLocationInput')?.value || '').trim();
+      const q = qRaw.toLowerCase();
       const budgetMax = parseFloat(document.getElementById('immoMaxBudgetInput')?.value) || 0;
       const surfaceMin = parseFloat(document.getElementById('immoMinSurfaceInput')?.value) || 0;
+      const isSxmQuery = (q.includes('saint-martin') || q.includes('saint martin') || q.includes('sxm') || q.includes('97150'))
+                         && !q.includes('38400') && !q.includes('hères') && !q.includes('heres');
 
       return allData.filter(it => {
         if (it.universe !== 'immo' && it.category !== 'immo') return false;
         if (dislikes.includes(it.id)) return false;
+        if (isNonResidentialItem(it)) return false;
 
         // Transaction
         if (immoTransac !== 'ALL' && it.transaction_type !== immoTransac) return false;
 
-        // Typologie
-        if (immoRoom !== 'ALL') {
-          const r = (it.rooms || '').toLowerCase();
-          if (!r.includes(immoRoom.toLowerCase())) return false;
+        // Typologie (multi-select toggle OR)
+        if (immoRooms.size > 0) {
+          let roomOk = false;
+          for (const req of immoRooms) {
+            if (matchesRoomReq(it, req)) { roomOk = true; break; }
+          }
+          if (!roomOk) return false;
         }
 
         // Budget Max
@@ -1975,16 +2386,32 @@
 
         // Commodités
         if (immoAmenities.size > 0) {
-          const itemAm = (it.amenities || []).map(a => a.toLowerCase());
-          for (let req of immoAmenities) {
-            if (!itemAm.includes(req)) return false;
+          const itemAm = (it.amenities || []).map(a => String(a).toLowerCase());
+          const textAm = `${it.title || ''} ${it.description || ''}`.toLowerCase();
+          for (const req of immoAmenities) {
+            if (!itemAm.includes(req) && !textAm.includes(req)) return false;
           }
         }
 
         // Recherche Lieu
         if (q) {
-          const matchText = `${it.title} ${it.location} ${it.city || ''} ${it.postal_code || ''} ${it.description}`.toLowerCase();
-          if (!matchText.includes(q)) return false;
+          const pc = String(it.postal_code || '').toLowerCase();
+          const matchText = `${it.title || ''} ${it.location || ''} ${it.city || ''} ${pc} ${it.description || ''}`.toLowerCase();
+          if (isSxmQuery) {
+            if (pc.includes('38400') || matchText.includes('38400') || matchText.includes('hères')) return false;
+            const sxmHit = pc.includes('97150') || matchText.includes('saint-martin') || matchText.includes('saint martin')
+              || matchText.includes('marigot') || matchText.includes('grand-case') || matchText.includes('grand case')
+              || matchText.includes('orient') || matchText.includes('cul-de-sac') || matchText.includes('anse marcel')
+              || matchText.includes('hope estate') || matchText.includes('baie nettlé') || matchText.includes('97150');
+            if (!sxmHit) return false;
+          } else {
+            const tokens = q.split(/[\s,()]+/).filter(tk => tk.length >= 2);
+            if (tokens.length > 1) {
+              if (!tokens.every(tk => matchText.includes(tk))) return false;
+            } else if (!matchText.includes(q)) {
+              return false;
+            }
+          }
         }
 
         return true;
@@ -2056,64 +2483,81 @@
       }, delayMs);
     }
 
+    function extractClientAmenities(title, desc) {
+      const txt = `${title || ''} ${desc || ''}`.toLowerCase();
+      const am = [];
+      if (txt.includes('vue mer') || txt.includes('mer ') || txt.includes('lagoon') || txt.includes('ocean')) am.push('vue mer');
+      if (txt.includes('terrasse') || txt.includes('balcon') || txt.includes('varangue')) am.push('terrasse');
+      if (txt.includes('piscine') || txt.includes('pool')) am.push('piscine');
+      if (txt.includes('parking') || txt.includes('garage') || txt.includes('stationnement')) am.push('parking');
+      if (txt.includes('clim') || txt.includes('climatisation')) am.push('clim');
+      if (txt.includes('meublé') || txt.includes('meuble') || txt.includes('equipped')) am.push('meublé');
+      return am;
+    }
+
     // =========================================================
     // SCAN LIVE IMMO 100% RÉEL & DYNAMIQUE (ZÉRO DONNÉE FICTIVE)
     // =========================================================
-    async function launchLiveScanImmo() {
+    async function launchLiveScanImmo(silent = false) {
       const cityInput = (document.getElementById('searchLocationInput')?.value || '').trim();
       const city = cityInput || 'Nancy';
+      const cLow = city.toLowerCase();
       const budget = document.getElementById('immoMaxBudgetInput')?.value || '';
       const surface = document.getElementById('immoMinSurfaceInput')?.value || '';
       const transac = immoTransac === 'ALL' ? 'location' : immoTransac;
-      const room = immoRoom === 'ALL' ? '' : immoRoom;
+      const roomsArr = Array.from(immoRooms);
+      const roomSummary = roomsArr.join(',');
 
-      updateImmoScanProgress(15, `🔄 Résolution & géocodage pour '${city}'...`);
+      if (!silent) {
+        updateImmoScanProgress(15, `🔄 Résolution & géocodage pour '${city}'...`);
+      }
 
       // 1. Générer et afficher les liens directs vers les grands portails officiels
-      renderImmoPortalLinks(city, transac, budget, surface, room);
+      renderImmoPortalLinks(city, transac, budget, surface, roomSummary);
 
-      const isSXM = city.toLowerCase().includes('saint-martin') || city.toLowerCase().includes('sxm') || city.includes('97150');
+      const isSXM = (cLow.includes('saint-martin') || cLow.includes('saint martin') || cLow.includes('sxm') || cLow.includes('97150'))
+                    && !cLow.includes('38400') && !cLow.includes('hères') && !cLow.includes('heres');
       let realScrapedItems = [];
 
       try {
         if (isSXM) {
-          // --- SCRAPER RÉEL CLIENT SAINT-MARTIN VIA DOMIMMO DIRECT REST API ---
-          updateImmoScanProgress(45, `🏝️ Scraping réel en direct sur DOMimmo Saint-Martin...`);
+          // --- SCRAPER RÉEL CLIENT SAINT-MARTIN (97150 ≠ 38400) VIA DOMIMMO DIRECT REST API ---
+          if (!silent) updateImmoScanProgress(45, `🏝️ Scraping réel en direct sur DOMimmo Saint-Martin (97150)...`);
           const catCode = transac === 'achat' ? 1 : 6;
-          const domUrl = `https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat=${catCode}&limit=40`;
-          
+          const domUrl = `https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat=${catCode}&limit=50`;
+
           const resp = await fetch(domUrl);
           if (resp.ok) {
             const items = await resp.json();
             if (Array.isArray(items)) {
               items.forEach(it => {
+                if (it.id_di_ad_type === 4 || String(it.id_di_ad_type) === '4') return;
                 const p = it.price || 0;
                 const s = parseFloat(it.surface_habitable || 0);
                 if (budget && p > Number(budget)) return;
                 if (surface && s > 0 && s < Number(surface)) return;
-                
-                const pcs = it.pieces;
-                if (room) {
-                  if ((room === 'Studio' || room === 'T1') && pcs && pcs > 1) return;
-                  if (room === 'T2' && pcs && pcs !== 2) return;
-                  if (room === 'T3' && pcs && pcs !== 3) return;
-                  if ((room === 'T4' || room === 'Maison') && pcs && pcs < 4) return;
-                }
 
+                const pcs = it.pieces;
                 const adId = String(it.id);
                 const adUrl = `https://www.domimmo.com/saint-martin/immobilier/${adId}`;
-                const photos = it.photos || [];
-                const heroImg = it.imageSrc || (photos.length > 0 ? photos[0] : 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800');
+                const rawPhotos = Array.isArray(it.photos) ? it.photos : [];
+                const cleanPhotos = rawPhotos.filter(u => typeof u === 'string' && u.startsWith('http'));
+                if (it.imageSrc && typeof it.imageSrc === 'string' && it.imageSrc.startsWith('http') && !cleanPhotos.includes(it.imageSrc)) {
+                  cleanPhotos.unshift(it.imageSrc);
+                }
+                const fallbackSxm = 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80';
+                const heroImg = cleanPhotos.length > 0 ? cleanPhotos[0] : fallbackSxm;
                 const roomsStr = pcs && pcs > 1 ? `T${pcs}` : (pcs === 1 ? 'Studio' : 'Appartement');
                 const priceFormatted = transac === 'achat' ? `${p.toLocaleString('fr-FR')} €` : `${p.toLocaleString('fr-FR')} € / mois`;
 
-                realScrapedItems.push({
+                const normalized = {
                   id: `real_live_sxm_${adId}`,
                   universe: 'immo',
                   category: 'immo',
+                  id_di_ad_type: it.id_di_ad_type,
                   transaction_type: transac,
                   category_label: 'Immobilier Saint-Martin',
-                  badge: `🏝️ ${transac === 'achat' ? 'Achat' : 'Location'} • Saint-Martin`,
+                  badge: `🏝️ ${transac === 'achat' ? 'Achat' : 'Location'} • Saint-Martin 97150`,
                   title: it.title || `${roomsStr} Saint-Martin`,
                   price: p,
                   price_str: priceFormatted,
@@ -2126,8 +2570,8 @@
                   is_verified_agency: true,
                   url: adUrl,
                   image_url: heroImg,
-                  images: photos.length > 0 ? photos.slice(0, 6) : [heroImg],
-                  description: it.description || 'Annonce réelle extraite en direct de DOMimmo Saint-Martin.',
+                  images: cleanPhotos.length > 0 ? cleanPhotos.slice(0, 8) : [heroImg],
+                  description: it.description || 'Annonce résidentielle réelle extraite en direct de DOMimmo Saint-Martin.',
                   surface: s > 0 ? `${Math.round(s)} m²` : 'N/C',
                   surface_val: s,
                   rooms: roomsStr,
@@ -2135,104 +2579,126 @@
                   floor: it.etage ? `Étage ${it.etage}` : 'RDC',
                   dpe: 'C',
                   charges: it.quote_part_charges ? `${it.quote_part_charges} €/an` : 'N/C',
-                  amenities: (it.description && it.description.toLowerCase().includes('terrasse')) ? ['terrasse'] : [],
+                  amenities: extractClientAmenities(it.title, it.description),
                   price_per_m2: s > 0 ? Math.round(p / s) : 25,
                   market_avg_m2: 24.5,
                   market_delta_pct: 0,
                   market_badge: '🟢 Vraie annonce vérifiée',
                   date_detected: new Date().toISOString()
-                });
+                };
+
+                if (isNonResidentialItem(normalized)) return;
+                if (roomsArr.length > 0 && !roomsArr.some(rq => matchesRoomReq(normalized, rq))) return;
+                realScrapedItems.push(normalized);
               });
             }
           }
         } else {
           // --- SCRAPER RÉEL CLIENT FRANCE (NANCY, METZ, LYON, PARIS...) VIA BIEN'ICI DIRECT REST API ---
-          updateImmoScanProgress(35, `🔍 Résolution des zones pour '${city}' sur Bien'ici...`);
+          if (!silent) updateImmoScanProgress(35, `🔍 Résolution des zones pour '${city}' sur Bien'ici...`);
           const sugResp = await fetch(`https://res.bienici.com/suggest.json?q=${encodeURIComponent(city)}`);
           if (sugResp.ok) {
             const sugData = await sugResp.json();
             if (Array.isArray(sugData) && sugData.length > 0) {
-              const cityInfo = sugData[0];
-              const zoneIds = cityInfo.zoneIds || [];
-              const cityName = cityInfo.name || city;
-              const postal = (cityInfo.postalCodes && cityInfo.postalCodes[0]) || '54000';
-              const bbox = cityInfo.boundingBox || {};
-              const lat = bbox.south && bbox.north ? (bbox.south + bbox.north) / 2 : 48.6921;
-              const lon = bbox.west && bbox.east ? (bbox.west + bbox.east) / 2 : 6.1844;
+              const allow38400 = cLow.includes('38400') || cLow.includes('hères') || cLow.includes('heres');
+              const cityInfo = sugData.find(s => {
+                if (allow38400) return true;
+                const pcs = (s.postalCodes || []).join(' ');
+                const nm = (s.name || '').toLowerCase();
+                return !pcs.includes('38400') && !nm.includes("saint-martin-d'hères");
+              }) || null;
 
-              updateImmoScanProgress(60, `🏢 Scraping des annonces réelles pour ${cityName} sur Bien'ici...`);
+              if (cityInfo) {
+                const zoneIds = cityInfo.zoneIds || [];
+                const cityName = cityInfo.name || city;
+                const postal = (cityInfo.postalCodes && cityInfo.postalCodes[0]) || '54000';
+                const bbox = cityInfo.boundingBox || {};
+                const lat = bbox.south && bbox.north ? (bbox.south + bbox.north) / 2 : 48.6921;
+                const lon = bbox.west && bbox.east ? (bbox.west + bbox.east) / 2 : 6.1844;
 
-              const filterObj = {
-                size: 30,
-                from: 0,
-                filterType: transac === 'achat' ? 'buy' : 'rent',
-                propertyType: ['flat', 'house'],
-                page: 1,
-                sortBy: 'relevance',
-                sortOrder: 'desc',
-                onTheMarket: [true],
-                zoneIdsByTypes: { zoneIds: zoneIds }
-              };
-              if (budget) filterObj.maxPrice = Number(budget);
-              if (surface) filterObj.minSurfaceArea = Number(surface);
-              if (room) {
-                if (room === 'Studio' || room === 'T1') filterObj.roomsQuantity = [1];
-                else if (room === 'T2') filterObj.roomsQuantity = [2];
-                else if (room === 'T3') filterObj.roomsQuantity = [3];
-                else if (room === 'T4' || room === 'Maison') filterObj.roomsQuantity = [4, 5, 6];
-              }
+                if (!silent) updateImmoScanProgress(60, `🏢 Scraping des annonces réelles pour ${cityName} sur Bien'ici...`);
 
-              const adsResp = await fetch(`https://www.bienici.com/realEstateAds.json?filters=${encodeURIComponent(JSON.stringify(filterObj))}`);
-              if (adsResp.ok) {
-                const adsData = await adsResp.json();
-                const ads = adsData.realEstateAds || [];
-                ads.forEach(a => {
-                  if (!a.id) return;
-                  const p = a.price || 0;
-                  const s = parseFloat(a.surfaceArea || 0);
-                  const pcs = a.roomsQuantity;
-                  const roomsStr = pcs && pcs > 1 ? `T${pcs}` : (pcs === 1 ? 'Studio' : 'Appartement');
-                  const photos = (a.photos || []).map(po => po.url_photo).filter(Boolean);
-                  const heroImg = photos.length > 0 ? photos[0] : 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800';
-                  const title = a.title || `${roomsStr} ${Math.round(s)} m² ${cityName}`;
-                  const priceFormatted = transac === 'achat' ? `${p.toLocaleString('fr-FR')} € FAI` : `${p.toLocaleString('fr-FR')} € / mois CC`;
-
-                  realScrapedItems.push({
-                    id: `real_live_bi_${a.id}`,
-                    universe: 'immo',
-                    category: 'immo',
-                    transaction_type: transac,
-                    category_label: `Immobilier ${cityName}`,
-                    badge: `🏢 ${transac === 'achat' ? 'Achat' : 'Location'} • ${cityName}`,
-                    title: title,
-                    price: p,
-                    price_str: priceFormatted,
-                    location: `${cityName} (${a.postalCode || postal})`,
-                    city: cityName,
-                    postal_code: a.postalCode || postal,
-                    lat: lat,
-                    lon: lon,
-                    agency: `Bien'ici / ${a.accountType || 'Agence'}`,
-                    is_verified_agency: true,
-                    url: `https://www.bienici.com/annonce/${a.id}`,
-                    image_url: heroImg,
-                    images: photos.length > 0 ? photos.slice(0, 6) : [heroImg],
-                    description: a.description || 'Annonce réelle extraite en direct de Bien\'ici.',
-                    surface: s > 0 ? `${Math.round(s)} m²` : 'N/C',
-                    surface_val: s,
-                    rooms: roomsStr,
-                    bedrooms: a.bedroomsQuantity || 1,
-                    floor: a.floor ? `Étage ${a.floor}` : 'RDC',
-                    dpe: a.energyClassification || 'D',
-                    charges: 'Charges comprises',
-                    amenities: (a.hasTerrace || a.hasBalcony) ? ['terrasse'] : [],
-                    price_per_m2: s > 0 ? Math.round(p / s) : 14.0,
-                    market_avg_m2: 13.8,
-                    market_delta_pct: 0,
-                    market_badge: '🟢 Vraie annonce vérifiée',
-                    date_detected: new Date().toISOString()
+                const filterObj = {
+                  size: 35,
+                  from: 0,
+                  filterType: transac === 'achat' ? 'buy' : 'rent',
+                  propertyType: ['flat', 'house'],
+                  page: 1,
+                  sortBy: 'relevance',
+                  sortOrder: 'desc',
+                  onTheMarket: [true],
+                  zoneIdsByTypes: { zoneIds: zoneIds }
+                };
+                if (budget) filterObj.maxPrice = Number(budget);
+                if (surface) filterObj.minSurfaceArea = Number(surface);
+                if (roomsArr.length > 0) {
+                  const rqSet = new Set();
+                  roomsArr.forEach(r => {
+                    if (r === 'Studio' || r === 'T1') rqSet.add(1);
+                    else if (r === 'T2') rqSet.add(2);
+                    else if (r === 'T3') rqSet.add(3);
+                    else if (r === 'T4' || r === 'Maison') { rqSet.add(4); rqSet.add(5); rqSet.add(6); }
                   });
-                });
+                  if (rqSet.size > 0) filterObj.roomsQuantity = Array.from(rqSet);
+                }
+
+                const adsResp = await fetch(`https://www.bienici.com/realEstateAds.json?filters=${encodeURIComponent(JSON.stringify(filterObj))}`);
+                if (adsResp.ok) {
+                  const adsData = await adsResp.json();
+                  const ads = adsData.realEstateAds || [];
+                  ads.forEach(a => {
+                    if (!a.id) return;
+                    const p = a.price || 0;
+                    const s = parseFloat(a.surfaceArea || 0);
+                    const pcs = a.roomsQuantity;
+                    const isHouse = a.propertyType === 'house';
+                    const roomsStr = isHouse ? `Maison ${pcs || 4}P` : (pcs && pcs > 1 ? `T${pcs}` : (pcs === 1 ? 'Studio' : 'Appartement'));
+                    const photos = (a.photos || []).map(po => po.url_photo || po.url).filter(u => typeof u === 'string' && u.startsWith('http'));
+                    const fallbackFr = 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80';
+                    const heroImg = photos.length > 0 ? photos[0] : fallbackFr;
+                    const title = a.title || `${roomsStr} ${Math.round(s)} m² ${cityName}`;
+                    const priceFormatted = transac === 'achat' ? `${p.toLocaleString('fr-FR')} € FAI` : `${p.toLocaleString('fr-FR')} € / mois CC`;
+
+                    const normalized = {
+                      id: `real_live_bi_${a.id}`,
+                      universe: 'immo',
+                      category: 'immo',
+                      transaction_type: transac,
+                      category_label: `Immobilier ${cityName}`,
+                      badge: `🏢 ${transac === 'achat' ? 'Achat' : 'Location'} • ${cityName}`,
+                      title: title,
+                      price: p,
+                      price_str: priceFormatted,
+                      location: `${cityName} (${a.postalCode || postal})`,
+                      city: cityName,
+                      postal_code: a.postalCode || postal,
+                      lat: lat,
+                      lon: lon,
+                      agency: `Bien'ici / ${a.accountType || 'Agence'}`,
+                      is_verified_agency: true,
+                      url: `https://www.bienici.com/annonce/${a.id}`,
+                      image_url: heroImg,
+                      images: photos.length > 0 ? photos.slice(0, 8) : [heroImg],
+                      description: a.description || 'Annonce réelle extraite en direct de Bien\'ici.',
+                      surface: s > 0 ? `${Math.round(s)} m²` : 'N/C',
+                      surface_val: s,
+                      rooms: roomsStr,
+                      bedrooms: a.bedroomsQuantity || 1,
+                      floor: a.floor ? `Étage ${a.floor}` : 'RDC',
+                      dpe: a.energyClassification || 'D',
+                      charges: 'Charges comprises',
+                      amenities: extractClientAmenities(title, `${a.description || ''} ${a.hasTerrace || a.hasBalcony ? 'terrasse' : ''} ${a.hasPool ? 'piscine' : ''}`),
+                      price_per_m2: s > 0 ? Math.round(p / s) : 14.0,
+                      market_avg_m2: 13.8,
+                      market_delta_pct: 0,
+                      market_badge: '🟢 Vraie annonce vérifiée',
+                      date_detected: new Date().toISOString()
+                    };
+
+                    if (isNonResidentialItem(normalized)) return;
+                    realScrapedItems.push(normalized);
+                  });
+                }
               }
             }
           }
@@ -2241,7 +2707,9 @@
         console.warn('Erreur lors du live scraping client:', err);
       }
 
-      updateImmoScanProgress(85, `⚡ Intégration de ${realScrapedItems.length} annonces réelles...`);
+      if (!silent) {
+        updateImmoScanProgress(85, `⚡ Intégration de ${realScrapedItems.length} annonces réelles...`);
+      }
 
       // 2. Fusionner les annonces réelles sans doublons
       if (realScrapedItems.length > 0) {
@@ -2253,49 +2721,54 @@
       // 3. Rafraîchir l'affichage
       filterImmo();
 
-      // 4. Action Cloud GitHub Actions si Token présent
-      const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
+      // 4. Action Cloud GitHub Actions uniquement lors d'un clic manuel (pas en auto-refresh silencieux)
+      if (!silent) {
+        const token = localStorage.getItem('nexus_gh_token');
+        const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
-      if (token) {
-        updateImmoScanProgress(92, `🚀 Lancement du scan Cloud Playwright sur GitHub Actions...`);
-        try {
-          await fetch(`https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`, {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Accept': 'application/vnd.github.v3+json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              ref: 'main',
-              inputs: {
-                category: 'immo',
-                city: city,
-                transaction_type: transac,
-                max_budget: String(budget),
-                rooms: room || 'all',
-                min_surface: String(surface)
-              }
-            })
-          });
-        } catch (e) {
-          console.warn('Erreur dispatch GitHub :', e);
+        if (token) {
+          updateImmoScanProgress(92, `🚀 Lancement du scan Cloud Playwright sur GitHub Actions...`);
+          try {
+            await fetch(`https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                ref: 'main',
+                inputs: {
+                  category: 'immo',
+                  city: city,
+                  transaction_type: transac,
+                  max_budget: String(budget),
+                  rooms: roomSummary || 'all',
+                  min_surface: String(surface)
+                }
+              })
+            });
+          } catch (e) {
+            console.warn('Erreur dispatch GitHub :', e);
+          }
         }
-      }
 
-      const countFound = realScrapedItems.length;
-      updateImmoScanProgress(100, `✅ Scan terminé : ${countFound} annonces réelles trouvées pour ${city} !`);
-      showToast(`✅ ${countFound} annonce(s) réelle(s) récupérée(s) pour ${city} !`);
-      hideImmoScanProgress(2000);
+        const countFound = realScrapedItems.length;
+        updateImmoScanProgress(100, `✅ Scan terminé : ${countFound} annonces réelles trouvées pour ${city} !`);
+        showToast(`✅ ${countFound} annonce(s) réelle(s) récupérée(s) pour ${city} !`);
+        hideImmoScanProgress(2000);
+      }
     }
 
     function renderImmoPortalLinks(city, transac, budget, surface, room) {
       const bar = document.getElementById('immoDirectPortalsBar');
       const container = document.getElementById('immoDirectPortalsLinks');
       const meta = document.getElementById('immoDirectPortalsMeta');
+      if (!bar || !container || !meta) return;
 
-      const isSXM = city.toLowerCase().includes('saint-martin') || city.toLowerCase().includes('sxm') || city.includes('97150');
+      const cLow = city.toLowerCase();
+      const isSXM = (cLow.includes('saint-martin') || cLow.includes('saint martin') || cLow.includes('sxm') || cLow.includes('97150'))
+                    && !cLow.includes('38400') && !cLow.includes('hères') && !cLow.includes('heres');
       const catCode = transac === 'achat' ? '9' : '10';
       const bParam = budget ? `&price=min-${budget}` : '';
       const sParam = surface ? `&square=min-${surface}` : '';
@@ -2315,9 +2788,9 @@
         `;
       } else {
         const lbcUrl = `https://www.leboncoin.fr/recherche?category=${catCode}&locations=${encodeURIComponent(city)}${bParam}${sParam}`;
-        const bieniciUrl = `https://www.bienici.com/recherche/${transac}/${encodeURIComponent(city.toLowerCase())}`;
+        const bieniciUrl = `https://www.bienici.com/recherche/${transac}/${encodeURIComponent(city.toLowerCase().replace(/\s+\d{5}/g, ''))}`;
         const selogerUrl = `https://www.seloger.com/list.htm?projects=${transac === 'achat' ? '2' : '1'}&types=1,2`;
-        const orpiUrl = `https://www.orpi.com/recherche/${transac === 'achat' ? 'acheter' : 'louer'}?locations[0][value]=${encodeURIComponent(city.toLowerCase())}`;
+        const orpiUrl = `https://www.orpi.com/recherche/${transac === 'achat' ? 'acheter' : 'louer'}?locations[0][value]=${encodeURIComponent(city.toLowerCase().replace(/\s+\d{5}/g, ''))}`;
 
         linksHtml = `
           <a class="portal-link-btn" href="${lbcUrl}" target="_blank" rel="noopener">🛒 Leboncoin ${city}</a>
@@ -2382,24 +2855,88 @@
     // =========================================================
     // CARTES IMMO, SWIPE & FAVORIS
     // =========================================================
+    const IMMO_FALLBACK_IMG = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80';
+    const VOYAGE_FALLBACK_IMG = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80';
+
+    function handleImgError(imgEl, universe) {
+      if (!imgEl || imgEl.dataset.fallbackApplied === '1') return;
+      imgEl.dataset.fallbackApplied = '1';
+      imgEl.onerror = null;
+      imgEl.src = universe === 'voyage' ? VOYAGE_FALLBACK_IMG : IMMO_FALLBACK_IMG;
+    }
+
+    function getItemPhotos(it) {
+      const arr = [];
+      if (it.image_url && typeof it.image_url === 'string' && it.image_url.startsWith('http')) {
+        arr.push(it.image_url);
+      }
+      if (Array.isArray(it.images)) {
+        it.images.forEach(u => {
+          if (typeof u === 'string' && u.startsWith('http') && !arr.includes(u)) arr.push(u);
+        });
+      }
+      if (arr.length === 0) {
+        arr.push(it.universe === 'voyage' ? VOYAGE_FALLBACK_IMG : IMMO_FALLBACK_IMG);
+      }
+      return arr;
+    }
+
+    function prevCardImg(ev, id) {
+      if (ev) { ev.stopPropagation(); ev.preventDefault(); }
+      const it = allData.find(x => x.id === id);
+      if (!it) return;
+      const photos = getItemPhotos(it);
+      if (photos.length <= 1) return;
+      const cur = cardImgIdx[id] || 0;
+      const next = (cur - 1 + photos.length) % photos.length;
+      cardImgIdx[id] = next;
+      const imgEl = document.getElementById(`card_img_${id}`);
+      const cntEl = document.getElementById(`card_cnt_${id}`);
+      if (imgEl) { imgEl.dataset.fallbackApplied = ''; imgEl.src = photos[next]; }
+      if (cntEl) cntEl.textContent = `${next + 1} / ${photos.length}`;
+    }
+
+    function nextCardImg(ev, id) {
+      if (ev) { ev.stopPropagation(); ev.preventDefault(); }
+      const it = allData.find(x => x.id === id);
+      if (!it) return;
+      const photos = getItemPhotos(it);
+      if (photos.length <= 1) return;
+      const cur = cardImgIdx[id] || 0;
+      const next = (cur + 1) % photos.length;
+      cardImgIdx[id] = next;
+      const imgEl = document.getElementById(`card_img_${id}`);
+      const cntEl = document.getElementById(`card_cnt_${id}`);
+      if (imgEl) { imgEl.dataset.fallbackApplied = ''; imgEl.src = photos[next]; }
+      if (cntEl) cntEl.textContent = `${next + 1} / ${photos.length}`;
+    }
+
     function createImmoCardHtml(it) {
       const isFav = favorites.includes(it.id);
       const isAchat = it.transaction_type === 'achat';
       const badgeClass = isAchat ? 'badge-achat' : 'badge-loc';
+      const photos = getItemPhotos(it);
+      const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
+      const safeTitle = (it.title || 'Bien immobilier').replace(/"/g, '&quot;');
 
       return `
         <div class="card card-immo" id="card_${it.id}" data-id="${it.id}">
           <div class="card-img-wrap" onclick="openImmoDetailModal('${it.id}')">
-            <img src="${it.image_url}" alt="${it.title}" loading="lazy" />
+            <img id="card_img_${it.id}" class="card-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'immo')" />
             <span class="card-badge ${badgeClass}">${it.badge || (isAchat ? '🏷️ Achat' : '🏠 Location')}</span>
             <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Sauvegarder" onclick="event.stopPropagation(); toggleFavorite('${it.id}')">
               ★
             </button>
+            ${photos.length > 1 ? `
+              <button class="carousel-btn prev" title="Photo précédente" onclick="prevCardImg(event, '${it.id}')">‹</button>
+              <button class="carousel-btn next" title="Photo suivante" onclick="nextCardImg(event, '${it.id}')">›</button>
+              <span class="carousel-counter" id="card_cnt_${it.id}">${curIdx + 1} / ${photos.length}</span>
+            ` : ''}
           </div>
           <div class="card-body">
             <div class="card-meta">
               <span class="card-price">${it.price_str}</span>
-              ${it.market_badge ? `<span style="font-size:0.7rem; color:#34d399; font-weight:700;">${it.market_badge}</span>` : ''}
+              ${it.market_badge ? `<span class="spec-market">${it.market_badge}</span>` : ''}
             </div>
             <h3 class="card-title" onclick="openImmoDetailModal('${it.id}')">${it.title}</h3>
             <div class="card-loc">
@@ -2408,26 +2945,22 @@
               </svg>
               <span>${it.location}</span>
             </div>
-            <div style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 8px;">
-              📐 <strong>${it.surface || 'N/C'}</strong> • 🚪 <strong>${it.rooms || 'N/C'}</strong> • 🏢 <strong>${it.agency || 'Portail vérifié'}</strong>
-            </div>
-            
-            <div style="display: flex; gap: 6px;">
-              <button class="btn-open-detail" style="flex:1;" onclick="openImmoDetailModal('${it.id}')">
-                🔍 Fiche Complète
-              </button>
-              <a class="btn-cta-official" style="width: auto; padding: 8px 12px; font-size: 0.74rem; text-decoration: none;" href="${it.url}" target="_blank" rel="noopener">
-                Ouvrir ↗
-              </a>
+            <div class="specs-pills-row">
+              <span class="spec-pill">📐 ${it.surface || 'N/C'}</span>
+              <span class="spec-pill">🚪 ${it.rooms || 'N/C'}</span>
+              <span class="spec-pill">🏢 ${it.agency || 'Agence vérifiée'}</span>
             </div>
 
-            <!-- Boutons de Swipe Rapides -->
-            <div class="swipe-actions-row">
+            <!-- 3 Actions sur UNE SEULE LIGNE HORIZONTALE -->
+            <div class="card-actions-bar">
               <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
-                ❌ Masquer (Gauche)
+                ❌ Écarter
+              </button>
+              <button class="btn-open-detail" onclick="openImmoDetailModal('${it.id}')">
+                🔍 Voir / Fiche
               </button>
               <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
-                💚 J'aime (Droite)
+                ❤️ J'aime
               </button>
             </div>
           </div>
@@ -2520,19 +3053,25 @@
 
       activeModalItem = it;
       const modal = document.getElementById('immoDetailModal');
-      document.getElementById('modalHeroImg').src = it.image_url;
-      document.getElementById('modalImmoTitle').textContent = it.title;
-      document.getElementById('modalImmoLoc').textContent = it.location;
-      document.getElementById('modalPrice').textContent = it.price_str;
-      document.getElementById('modalMarketBadge').textContent = it.market_badge || 'Prix vérifié';
-      document.getElementById('modalAgencyLabel').textContent = it.agency || 'Portail officiel';
-      document.getElementById('modalDesc').textContent = it.description || 'Pas de description détaillée.';
-      document.getElementById('modalCtaLink').href = it.url;
+      const photos = getItemPhotos(it);
+      const heroImgEl = document.getElementById('modalHeroImg');
+      if (heroImgEl) {
+        heroImgEl.dataset.fallbackApplied = '';
+        heroImgEl.onerror = () => handleImgError(heroImgEl, 'immo');
+        heroImgEl.src = photos[0];
+      }
+      document.getElementById('modalImmoTitle').textContent = it.title || 'Fiche du logement';
+      document.getElementById('modalImmoLoc').textContent = `${it.location || ''} • ${it.agency || 'Agence vérifiée'}`;
+      const badgeEl = document.getElementById('modalTransacBadge');
+      if (badgeEl) badgeEl.textContent = it.transaction_type === 'achat' ? 'Achat' : 'Location';
+      document.getElementById('modalPrice').textContent = it.price_str || 'Prix N/C';
+      document.getElementById('modalMarketBadge').textContent = it.market_badge || 'Annonce réelle vérifiée';
+      document.getElementById('modalDescription').textContent = it.description || 'Pas de description détaillée.';
+      document.getElementById('modalOfficialLink').href = it.url || '#';
 
       // Galerie Miniatures
-      const imgs = it.images && it.images.length > 0 ? it.images : [it.image_url];
-      document.getElementById('modalThumbnails').innerHTML = imgs.map((src, i) => `
-        <img class="detail-thumb ${i === 0 ? 'active' : ''}" src="${src}" onclick="setHeroImage('${src}', this)" />
+      document.getElementById('modalThumbnails').innerHTML = photos.map((src, i) => `
+        <img class="detail-thumb ${i === 0 ? 'active' : ''}" src="${src}" onerror="handleImgError(this, 'immo')" onclick="setHeroImage('${src}', this)" />
       `).join('');
 
       // Grille Caractéristiques
@@ -2902,19 +3441,360 @@
     }
 
     // =========================================================
-    // UNIVERS 2 : PLANIFICATEUR VOYAGE COMPLET (CHANTIER 3)
+    // UNIVERS 2 : PLANIFICATEUR VOYAGE COMPLET + CALENDRIER LASTMINUTE
     // =========================================================
-    function selectQuickDepart(hub, el) {
-      document.querySelectorAll('#pane-voyage-feed .quick-cities-scroll .city-pill').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById('voyageDepartInput').value = hub === 'ALL' ? '' : (hub === 'Nancy' ? 'Nancy (Hub)' : hub);
+    const VOYAGE_HUBS = [
+      { label: 'Nancy (Lorraine Hub)', sub: 'Grand Est • Gare TGV & Aéroport ETZ', val: 'Nancy' },
+      { label: 'Paris (CDG / ORY / Gare de l\'Est)', sub: 'Île-de-France • Hub Principal', val: 'Paris' },
+      { label: 'Luxembourg (LUX)', sub: 'Aéroport International Findel', val: 'Luxembourg' },
+      { label: 'Bâle-Mulhouse (BSL / EAP)', sub: 'EuroAirport • Alsace / Suisse', val: 'Bâle' },
+      { label: 'Metz / Lorraine TGV (ETZ)', sub: 'Moselle • Aéroport & TGV', val: 'Metz' },
+      { label: 'Strasbourg (SXB)', sub: 'Alsace • Gare & Aéroport', val: 'Strasbourg' },
+      { label: 'Lyon (LYS)', sub: 'Auvergne-Rhône-Alpes • Part-Dieu / St-Exupéry', val: 'Lyon' },
+      { label: 'Rome (FCO / CIA)', sub: 'Italie • Capitale', val: 'Rome' },
+      { label: 'Bologne (BLQ)', sub: 'Italie • Émilie-Romagne', val: 'Bologne' },
+      { label: 'Milan (MXP / BGY)', sub: 'Italie • Lombardie', val: 'Milan' },
+      { label: 'Palerme (PMO)', sub: 'Italie • Sicile', val: 'Palerme' },
+      { label: 'Venise (VCE)', sub: 'Italie • Vénétie', val: 'Venise' },
+      { label: 'Barcelone (BCN)', sub: 'Espagne • Catalogne', val: 'Barcelone' },
+      { label: 'Madrid (MAD)', sub: 'Espagne • Capitale', val: 'Madrid' },
+      { label: 'Lisbonne (LIS)', sub: 'Portugal', val: 'Lisbonne' },
+      { label: 'Londres (LON / LHR)', sub: 'Royaume-Uni • Eurostar & Vols', val: 'Londres' },
+      { label: 'Bruxelles (BRU)', sub: 'Belgique • Eurostar', val: 'Bruxelles' },
+      { label: 'Amsterdam (AMS)', sub: 'Pays-Bas • Schiphol', val: 'Amsterdam' },
+      { label: 'Saint-Martin (SXM)', sub: 'Caraïbes • Princess Juliana', val: 'Saint-Martin' },
+      { label: 'New York (NYC / JFK)', sub: 'États-Unis', val: 'New York' },
+      { label: 'Nice (NCE)', sub: 'Côte d\'Azur', val: 'Nice' },
+      { label: 'Marseille (MRS)', sub: 'Provence', val: 'Marseille' }
+    ];
+
+    const TRAINLINE_URNS = {
+      'nancy': 'urn:trainline:generic:loc:2312',
+      'paris': 'urn:trainline:generic:loc:4916',
+      'luxembourg': 'urn:trainline:generic:loc:8604',
+      'bale': 'urn:trainline:generic:loc:5878',
+      'basel': 'urn:trainline:generic:loc:5878',
+      'strasbourg': 'urn:trainline:generic:loc:153',
+      'metz': 'urn:trainline:generic:loc:114',
+      'lyon': 'urn:trainline:generic:loc:4718',
+      'marseille': 'urn:trainline:generic:loc:4791',
+      'nice': 'urn:trainline:generic:loc:4836',
+      'bordeaux': 'urn:trainline:generic:loc:827',
+      'lille': 'urn:trainline:generic:loc:4652',
+      'toulouse': 'urn:trainline:generic:loc:5311',
+      'nantes': 'urn:trainline:generic:loc:4866',
+      'montpellier': 'urn:trainline:generic:loc:22598',
+      'bruxelles': 'urn:trainline:generic:loc:5974',
+      'brussels': 'urn:trainline:generic:loc:5974',
+      'geneve': 'urn:trainline:generic:loc:5335',
+      'londres': 'urn:trainline:generic:loc:182gb',
+      'london': 'urn:trainline:generic:loc:182gb',
+      'milan': 'urn:trainline:generic:loc:8483',
+      'barcelone': 'urn:trainline:generic:loc:6617',
+      'barcelona': 'urn:trainline:generic:loc:6617',
+      'francfort': 'urn:trainline:generic:loc:7602',
+      'frankfurt': 'urn:trainline:generic:loc:7602',
+      'amsterdam': 'urn:trainline:generic:loc:8657',
+      'roissy': 'urn:trainline:generic:loc:1143'
+    };
+
+    const IATA_CODES = {
+      'paris': 'PAR', 'nancy': 'ETZ', 'metz': 'ETZ', 'luxembourg': 'LUX',
+      'bale': 'BSL', 'basel': 'BSL', 'strasbourg': 'SXB', 'lyon': 'LYS',
+      'marseille': 'MRS', 'nice': 'NCE', 'bordeaux': 'BOD', 'toulouse': 'TLS',
+      'lille': 'LIL', 'nantes': 'NTE', 'montpellier': 'MPL', 'bruxelles': 'BRU',
+      'brussels': 'BRU', 'geneve': 'GVA', 'londres': 'LON', 'london': 'LON',
+      'rome': 'ROM', 'roma': 'ROM', 'milan': 'MIL', 'bologne': 'BLQ',
+      'palerme': 'PMO', 'venise': 'VCE', 'naples': 'NAP', 'barcelone': 'BCN',
+      'barcelona': 'BCN', 'madrid': 'MAD', 'palma': 'PMI', 'majorque': 'PMI',
+      'lisbonne': 'LIS', 'porto': 'OPO', 'athenes': 'ATH', 'amsterdam': 'AMS',
+      'francfort': 'FRA', 'marrakech': 'RAK', 'new york': 'NYC',
+      'saint-martin': 'SXM', 'saint martin': 'SXM', 'sxm': 'SXM',
+      'guadeloupe': 'PTP', 'martinique': 'FDF'
+    };
+
+    function normalizeGeoKey(str) {
+      return (str || '').toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/\(.*?\)/g, '').trim();
+    }
+
+    function lookupGeoCode(dict, rawName) {
+      const k = normalizeGeoKey(rawName);
+      if (!k) return null;
+      if (dict[k]) return dict[k];
+      for (const [key, val] of Object.entries(dict)) {
+        if (k.includes(key)) return val;
+      }
+      return null;
+    }
+
+    function onVoyageCityTyping(type) {
+      filterVoyage();
+      clearTimeout(voyageAutocompleteTimer);
+      const inputId = type === 'depart' ? 'voyageDepartInput' : 'searchVoyageDest';
+      const listId = type === 'depart' ? 'voyageDepartAutocomplete' : 'voyageDestAutocomplete';
+      const input = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+      if (!input || !list) return;
+
+      const q = input.value.trim();
+      if (q.length < 2) {
+        list.style.display = 'none';
+        list.innerHTML = '';
+        return;
+      }
+
+      voyageAutocompleteTimer = setTimeout(async () => {
+        const qNorm = normalizeGeoKey(q);
+        const suggestions = VOYAGE_HUBS.filter(h =>
+          normalizeGeoKey(h.label).includes(qNorm) || normalizeGeoKey(h.sub).includes(qNorm)
+        ).slice(0, 4);
+
+        try {
+          const resp = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&type=municipality&limit=4`);
+          if (resp.ok) {
+            const data = await resp.json();
+            for (const f of (data.features || [])) {
+              const p = f.properties || {};
+              const name = p.city || p.label || '';
+              if (!name || suggestions.some(s => normalizeGeoKey(s.val) === normalizeGeoKey(name))) continue;
+              if (name.toLowerCase().includes("saint-martin-d'hères")) continue;
+              suggestions.push({
+                label: `${name}${p.postcode ? ` (${p.postcode})` : ''}`,
+                sub: p.context || 'France',
+                val: name
+              });
+            }
+          }
+        } catch (e) {}
+
+        if (suggestions.length === 0) {
+          list.style.display = 'none';
+          return;
+        }
+
+        list.innerHTML = suggestions.slice(0, 6).map(s => `
+          <div class="autocomplete-item" onmousedown="event.preventDefault(); selectVoyageAutocomplete('${type}', '${s.val.replace(/'/g, "\\'")}')">
+            <span>✈️ <strong>${s.label}</strong></span>
+            <small>${s.sub}</small>
+          </div>
+        `).join('');
+        list.style.display = 'block';
+      }, 200);
+    }
+
+    function selectVoyageAutocomplete(type, val) {
+      const inputId = type === 'depart' ? 'voyageDepartInput' : 'searchVoyageDest';
+      const listId = type === 'depart' ? 'voyageDepartAutocomplete' : 'voyageDestAutocomplete';
+      const input = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+      if (input) input.value = val;
+      if (list) list.style.display = 'none';
       filterVoyage();
     }
 
-    function selectQuickDest(dest, el) {
-      document.querySelectorAll('#pane-voyage-feed .voyage-funnel-step:nth-child(2) .city-pill').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById('searchVoyageDest').value = dest === 'ALL' ? '' : dest;
+    function formatIsoLocal(d) {
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    function addDaysIso(isoStr, days) {
+      const parts = isoStr.split('-').map(Number);
+      const d = new Date(parts[0], parts[1] - 1, parts[2] + days);
+      return formatIsoLocal(d);
+    }
+
+    function formatFrDateShort(isoStr) {
+      if (!isoStr) return '';
+      const parts = isoStr.split('-').map(Number);
+      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      return d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' });
+    }
+
+    function initDefaultCalendarDates() {
+      const dDep = new Date();
+      dDep.setDate(dDep.getDate() + 14);
+      const dRet = new Date(dDep.getTime());
+      dRet.setDate(dRet.getDate() + 4);
+      calDepDate = formatIsoLocal(dDep);
+      calRetDate = formatIsoLocal(dRet);
+      calCurrentYear = dDep.getFullYear();
+      calCurrentMonth = dDep.getMonth();
+      updateCalendarTriggerText();
+    }
+
+    function updateCalendarTriggerText() {
+      const disp = document.getElementById('calendarDisplayValue');
+      const badge = document.getElementById('calendarFlexBadge');
+      if (disp) {
+        if (calDepDate && calRetDate) {
+          disp.textContent = `${formatFrDateShort(calDepDate)} ➔ ${formatFrDateShort(calRetDate)}`;
+        } else if (calDepDate) {
+          disp.textContent = `Départ : ${formatFrDateShort(calDepDate)} (choisir retour)`;
+        } else {
+          disp.textContent = 'Choisir mes dates (Aller - Retour)';
+        }
+      }
+      if (badge) {
+        const modeMap = {
+          'exact': 'Dates exactes',
+          'flex3': '±3 jours',
+          'weekend': 'Week-end',
+          'month': 'Mois entier'
+        };
+        badge.textContent = modeMap[calFlexMode] || 'Dates exactes';
+      }
+    }
+
+    function openCalendarPopover() {
+      const backdrop = document.getElementById('calendarPopoverBackdrop');
+      if (!backdrop) return;
+      if (calDepDate) {
+        const parts = calDepDate.split('-').map(Number);
+        calCurrentYear = parts[0];
+        calCurrentMonth = parts[1] - 1;
+      }
+      renderCalendarGrid();
+      updateCalendarTriggerText();
+      backdrop.classList.add('open');
+      backdrop.style.display = 'flex';
+    }
+
+    function closeCalendarPopover() {
+      const backdrop = document.getElementById('calendarPopoverBackdrop');
+      if (!backdrop) return;
+      backdrop.classList.remove('open');
+      backdrop.style.display = 'none';
+    }
+
+    function closeCalendarPopoverIfBackdrop(ev) {
+      if (ev.target && ev.target.id === 'calendarPopoverBackdrop') {
+        closeCalendarPopover();
+      }
+    }
+
+    function changeCalMonth(delta) {
+      calCurrentMonth += delta;
+      if (calCurrentMonth < 0) {
+        calCurrentMonth = 11;
+        calCurrentYear -= 1;
+      } else if (calCurrentMonth > 11) {
+        calCurrentMonth = 0;
+        calCurrentYear += 1;
+      }
+      renderCalendarGrid();
+    }
+
+    function renderCalendarGrid() {
+      const grid = document.getElementById('calDaysGrid');
+      const label = document.getElementById('calMonthLabel');
+      if (!grid) return;
+
+      const firstOfMonth = new Date(calCurrentYear, calCurrentMonth, 1);
+      if (label) {
+        label.textContent = firstOfMonth.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+      }
+
+      const todayIso = formatIsoLocal(new Date());
+      const startOffset = (firstOfMonth.getDay() + 6) % 7; // Lundi = 0 ... Dimanche = 6
+      const daysInMonth = new Date(calCurrentYear, calCurrentMonth + 1, 0).getDate();
+
+      let html = '';
+      for (let i = 0; i < startOffset; i++) {
+        html += `<div class="cal-day empty"></div>`;
+      }
+      for (let d = 1; d <= daysInMonth; d++) {
+        const iso = `${calCurrentYear}-${String(calCurrentMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const isPast = iso < todayIso;
+        const isStart = iso === calDepDate;
+        const isEnd = iso === calRetDate;
+        const isInRange = calDepDate && calRetDate && iso > calDepDate && iso < calRetDate;
+        const classes = ['cal-day'];
+        if (isPast) classes.push('disabled');
+        if (isStart) classes.push('selected-start');
+        if (isEnd) classes.push('selected-end');
+        if (!isStart && !isEnd && isInRange) classes.push('in-range');
+
+        const clickAttr = isPast ? '' : `onclick="onCalDayClick('${iso}')"`;
+        html += `<div class="${classes.join(' ')}" ${clickAttr}>${d}</div>`;
+      }
+      grid.innerHTML = html;
+    }
+
+    function onCalDayClick(iso) {
+      if (!calDepDate || (calDepDate && calRetDate)) {
+        calDepDate = iso;
+        calRetDate = '';
+      } else if (iso < calDepDate) {
+        calRetDate = calDepDate;
+        calDepDate = iso;
+      } else {
+        calRetDate = iso;
+      }
+      renderCalendarGrid();
+      updateCalendarTriggerText();
+    }
+
+    function setCalendarQuickTabActive(el) {
+      document.querySelectorAll('.cal-quick-tab').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
+    }
+
+    function setCalendarMode(mode, el) {
+      calFlexMode = mode;
+      setCalendarQuickTabActive(el);
+      updateCalendarTriggerText();
+    }
+
+    function selectCalendarWeekend(el) {
+      setCalendarQuickTabActive(el);
+      calFlexMode = 'weekend';
+      const now = new Date();
+      const dow = now.getDay(); // 0=Sun ... 5=Fri
+      let daysToFri = (5 - dow + 7) % 7;
+      if (daysToFri === 0) daysToFri = 7;
+      const fri = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysToFri);
+      const sun = new Date(fri.getFullYear(), fri.getMonth(), fri.getDate() + 2);
+      calDepDate = formatIsoLocal(fri);
+      calRetDate = formatIsoLocal(sun);
+      calCurrentYear = fri.getFullYear();
+      calCurrentMonth = fri.getMonth();
+      renderCalendarGrid();
+      updateCalendarTriggerText();
+    }
+
+    function selectCalendarFullMonth(el) {
+      setCalendarQuickTabActive(el);
+      calFlexMode = 'month';
+      const now = new Date();
+      const todayIso = formatIsoLocal(now);
+      const firstDay = new Date(calCurrentYear, calCurrentMonth, 1);
+      const lastDay = new Date(calCurrentYear, calCurrentMonth + 1, 0);
+      const firstIso = formatIsoLocal(firstDay);
+      calDepDate = firstIso < todayIso ? todayIso : firstIso;
+      calRetDate = formatIsoLocal(lastDay);
+      renderCalendarGrid();
+      updateCalendarTriggerText();
+    }
+
+    function clearCalendarDates() {
+      calDepDate = '';
+      calRetDate = '';
+      calFlexMode = 'exact';
+      setCalendarQuickTabActive(document.getElementById('calModeExact'));
+      renderCalendarGrid();
+      updateCalendarTriggerText();
+    }
+
+    function confirmCalendarDates() {
+      if (calDepDate && !calRetDate) {
+        calRetDate = addDaysIso(calDepDate, 3);
+      }
+      updateCalendarTriggerText();
+      closeCalendarPopover();
       filterVoyage();
     }
 
@@ -2933,29 +3813,22 @@
     function filterVoyage() {
       const departQ = (document.getElementById('voyageDepartInput')?.value || '').toLowerCase().trim();
       const destQ = (document.getElementById('searchVoyageDest')?.value || '').toLowerCase().trim();
-      const budgetMax = parseFloat(document.getElementById('voyageBudgetInput')?.value) || 1500;
+      const budgetMax = parseFloat(document.getElementById('voyageBudgetInput')?.value) || 2000;
 
-      const voyageItems = allData.filter(it => it.universe === 'voyage');
+      const voyageItems = allData.filter(it => it.universe === 'voyage' && !dislikes.includes(it.id));
 
       const matchesQuery = (it) => {
-        // Budget
         if (it.price && it.price > budgetMax) return false;
-
-        // Destination
         if (destQ && destQ !== 'partout') {
-          const matchText = `${it.title} ${it.location} ${it.destination || ''} ${it.description}`.toLowerCase();
+          const matchText = `${it.title || ''} ${it.location || ''} ${it.destination || ''} ${it.description || ''}`.toLowerCase();
           if (!matchText.includes(destQ)) return false;
         }
-
-        // Départ
         if (departQ && !departQ.includes('tous') && !departQ.includes('all')) {
-          const depText = `${it.departure_hub || ''} ${it.departure_city || ''} ${it.location}`.toLowerCase();
-          if (departQ.includes('nancy') && depText.includes('nancy')) return true;
-          if (departQ.includes('paris') && depText.includes('paris')) return true;
-          if (departQ.includes('lux') && depText.includes('luxembourg')) return true;
-          if (departQ.includes('bâle') && (depText.includes('bâle') || depText.includes('bsl'))) return true;
+          const depText = `${it.departure_hub || ''} ${it.departure_city || ''} ${it.location || ''}`.toLowerCase();
+          if (depText && !depText.includes(normalizeGeoKey(departQ).split(' ')[0]) && !departQ.includes('nancy')) {
+            return true;
+          }
         }
-
         return true;
       };
 
@@ -2983,37 +3856,63 @@
           sec2Items.map(it => createVoyageCardHtml(it)).join('') :
           '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun séjour tout compris correspondant. Élargissez le budget.</div>';
       }
+      attachSwipeListeners();
     }
 
     async function launchLiveScanVoyage() {
       const depart = (document.getElementById('voyageDepartInput')?.value || 'Nancy').trim();
-      const dest = (document.getElementById('searchVoyageDest')?.value || 'Partout').trim();
-      const budget = document.getElementById('voyageBudgetInput')?.value || '500';
-      const dateDepart = document.getElementById('voyageDateDepart')?.value || '';
-      const dateRetour = document.getElementById('voyageDateRetour')?.value || '';
-      const isFlexible = document.getElementById('voyageFlexibleDates')?.checked;
+      const destRaw = (document.getElementById('searchVoyageDest')?.value || '').trim();
+      const dest = destRaw || 'Rome';
+      const budget = document.getElementById('voyageBudgetInput')?.value || '800';
 
-      updateVoyageScanProgress(20, `🛫 Analyse des liaisons de départ depuis ${depart}...`);
+      let depIso = calDepDate;
+      let retIso = calRetDate;
+      if (!depIso) {
+        const d = new Date();
+        d.setDate(d.getDate() + 14);
+        depIso = formatIsoLocal(d);
+      }
+      if (!retIso) {
+        retIso = addDaysIso(depIso, 4);
+      }
 
-      // 1. Liens directs officiels avec paramètres réels
+      updateVoyageScanProgress(20, `🛫 Préparation des moteurs de recherche (${depart} ➔ ${dest})...`);
+
+      // 1. Liens directs pré-remplis avec URN Trainline, IATA Kayak, Google Flights & Booking (Note >= 8)
       const bar = document.getElementById('voyageDirectPortalsBar');
       const container = document.getElementById('voyageDirectPortalsLinks');
 
-      let queryFlights = `Vols de ${depart} vers ${dest}`;
-      if (dateDepart) queryFlights += ` le ${dateDepart}`;
-      const flightsUrl = `https://www.google.com/travel/flights?q=${encodeURIComponent(queryFlights)}`;
-      const trainUrl = `https://www.thetrainline.com/fr/horaires-train/${encodeURIComponent(depart.toLowerCase())}-a-${encodeURIComponent(dest.toLowerCase())}`;
+      const depClean = depart.replace(/\(.*?\)/g, '').trim();
+      const destClean = dest.replace(/\(.*?\)/g, '').trim();
 
-      container.innerHTML = `
-        <a class="portal-link-btn" href="${flightsUrl}" target="_blank" rel="noopener">✈️ Google Flights (${depart} ➔ ${dest})</a>
-        <a class="portal-link-btn" href="${trainUrl}" target="_blank" rel="noopener">🚄 TheTrainline (Liaisons directes)</a>
-        <a class="portal-link-btn" href="https://www.sncf-connect.com/" target="_blank" rel="noopener">🚆 SNCF Connect</a>
-        <a class="portal-link-btn" href="https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(dest)}" target="_blank" rel="noopener">🏨 Hôtels & Séjours ${dest}</a>
-      `;
-      bar.style.display = 'block';
+      const flightsUrl = `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights to ${destClean} from ${depClean} on ${depIso} through ${retIso}`)}&curr=EUR&hl=fr`;
 
-      updateVoyageScanProgress(60, `✈️ Scan en direct des billets & hébergements pour ${dest}...`);
+      const origIata = lookupGeoCode(IATA_CODES, depClean);
+      const destIata = lookupGeoCode(IATA_CODES, destClean);
+      const kayakUrl = (origIata && destIata)
+        ? `https://www.kayak.fr/flights/${origIata}-${destIata}/${depIso}/${retIso}?sort=price_a`
+        : `https://www.kayak.fr/flights?fs=origin=${encodeURIComponent(depClean)};destination=${encodeURIComponent(destClean)}`;
 
+      const origUrn = lookupGeoCode(TRAINLINE_URNS, depClean);
+      const destUrn = lookupGeoCode(TRAINLINE_URNS, destClean);
+      const trainUrl = (origUrn && destUrn)
+        ? `https://www.thetrainline.com/book/results?origin=${encodeURIComponent(origUrn)}&destination=${encodeURIComponent(destUrn)}&outwardDate=${depIso}T08%3A00%3A00&outwardDateType=departAfter&journeySearchType=return&inwardDate=${retIso}T18%3A00%3A00&inwardDateType=departAfter&lang=fr`
+        : `https://www.thetrainline.com/fr/resultats?origin=${encodeURIComponent(depClean)}&destination=${encodeURIComponent(destClean)}`;
+
+      const bookingUrl = `https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(destClean)}&checkin=${depIso}&checkout=${retIso}&nflt=review_score%3D80`;
+      const dateSpanLabel = `${depIso} ➔ ${retIso}${calFlexMode === 'flex3' ? ' (±3j)' : ''}`;
+
+      if (container) {
+        container.innerHTML = `
+          <a class="portal-link-btn" href="${flightsUrl}" target="_blank" rel="noopener">✈️ Google Flights (${dateSpanLabel})</a>
+          <a class="portal-link-btn" href="${kayakUrl}" target="_blank" rel="noopener">🛫 Kayak Vols${origIata && destIata ? ` (${origIata}➔${destIata})` : ''}</a>
+          <a class="portal-link-btn" href="${trainUrl}" target="_blank" rel="noopener">🚄 TheTrainline (${depClean} ➔ ${destClean})</a>
+          <a class="portal-link-btn" href="${bookingUrl}" target="_blank" rel="noopener">🏨 Booking ≥ 8/10 (${depIso})</a>
+        `;
+      }
+      if (bar) bar.style.display = 'block';
+
+      updateVoyageScanProgress(60, `✈️ Scan des meilleures liaisons vers ${destClean}...`);
       filterVoyage();
 
       // 2. Déclenchement GitHub Actions si token présent
@@ -3021,7 +3920,7 @@
       const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
       if (token) {
-        updateVoyageScanProgress(85, `🚀 Envoi de la mission de surveillance Cloud H24...`);
+        updateVoyageScanProgress(85, `🚀 Envoi de la mission Cloud H24...`);
         try {
           await fetch(`https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`, {
             method: 'POST',
@@ -3034,8 +3933,8 @@
               ref: 'main',
               inputs: {
                 category: 'voyage',
-                departure_city: depart,
-                destination: dest,
+                departure_city: depClean,
+                destination: destClean,
                 max_budget: String(budget)
               }
             })
@@ -3045,28 +3944,36 @@
         }
       }
 
-      updateVoyageScanProgress(100, `✅ Liaisons et offres vérifiées prêtes pour ${dest} !`);
-      showToast(`✅ Recherche Voyage actualisée pour ${dest} !`);
-      hideVoyageScanProgress(2000);
+      updateVoyageScanProgress(100, `✅ Moteurs directs prêts : ${depClean} ➔ ${destClean} (${dateSpanLabel})`);
+      showToast(`✅ Liens exacts générés pour ${destClean} (${depIso} ➔ ${retIso})`);
+      hideVoyageScanProgress(2200);
     }
 
     function createVoyageCardHtml(it) {
       const isFav = favorites.includes(it.id);
       const isFlash = it.section_type === 'flash_deals';
+      const photos = getItemPhotos(it);
+      const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
+      const safeTitle = (it.title || 'Offre Voyage').replace(/"/g, '&quot;');
 
       return `
-        <div class="card card-voyage">
+        <div class="card card-voyage" id="card_${it.id}" data-id="${it.id}">
           <div class="card-img-wrap">
-            <img src="${it.image_url}" alt="${it.title}" loading="lazy" />
+            <img id="card_img_${it.id}" class="card-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
             <span class="card-badge ${isFlash ? 'badge-flash' : 'badge-package'}">${it.badge || '✈️ Évasion'}</span>
             <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Sauvegarder" onclick="toggleFavorite('${it.id}')">
               ★
             </button>
+            ${photos.length > 1 ? `
+              <button class="carousel-btn prev" title="Photo précédente" onclick="prevCardImg(event, '${it.id}')">‹</button>
+              <button class="carousel-btn next" title="Photo suivante" onclick="nextCardImg(event, '${it.id}')">›</button>
+              <span class="carousel-counter" id="card_cnt_${it.id}">${curIdx + 1} / ${photos.length}</span>
+            ` : ''}
           </div>
           <div class="card-body">
             <div class="card-meta">
               <span class="card-price" style="color: ${isFlash ? '#f43f5e' : '#38bdf8'};">${it.price_str}</span>
-              ${it.true_cost ? `<span style="font-size:0.68rem; color:#cbd5e1; font-weight:700;">Coût Total: ${it.true_cost.total_per_person}€/pers</span>` : ''}
+              ${it.true_cost ? `<span class="spec-pill">Coût Total: ${it.true_cost.total_per_person}€/pers</span>` : ''}
             </div>
             <h3 class="card-title">${it.title}</h3>
             <div class="card-loc">
@@ -3075,18 +3982,24 @@
               </svg>
               <span>${it.location}</span>
             </div>
-            <p style="font-size:0.75rem; color:#94a3b8; line-height:1.35; margin-bottom:8px;">${it.description}</p>
-            
+            <p style="font-size:0.75rem; color:#94a3b8; line-height:1.35; margin-bottom:4px;">${it.description || ''}</p>
+
             ${it.true_cost ? `
-              <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 10px; font-size: 0.72rem; color: #cbd5e1; margin-bottom: 8px;">
+              <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 10px; font-size: 0.72rem; color: #cbd5e1; margin-bottom: 4px;">
                 🔍 <strong>Vrai Coût depuis Nancy :</strong> ${it.true_cost.breakdown}
               </div>
             ` : ''}
 
-            <div style="display: flex; gap: 6px;">
-              <a class="btn-cta-official" style="flex: 1; text-decoration: none;" href="${it.url}" target="_blank" rel="noopener">
-                Voir l'offre officielle ↗
+            <div class="card-actions-bar">
+              <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
+                ❌ Écarter
+              </button>
+              <a class="btn-open-detail" style="text-decoration: none;" href="${it.url}" target="_blank" rel="noopener">
+                🔍 Voir l'offre ↗
               </a>
+              <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
+                ❤️ J'aime
+              </button>
             </div>
           </div>
         </div>
@@ -3137,9 +4050,9 @@
     function testPushNotification() {
       fetch('https://ntfy.sh/sxm-immo-alert-97150-x9q4m2', {
         method: 'POST',
-        headers: { 'Title': '🛰️ Test Nexus Radar V5', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
-        body: 'Veille V5 opérationnelle ! Alertes Immo et Voyage certifiées sans lien mort.'
-      }).then(() => showToast('🔔 Notification envoyée !'))
+        headers: { 'Title': '🛰️ Test Nexus Radar V7', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
+        body: 'Veille V7 opérationnelle ! Alertes Immo et Voyage certifiées temps réel.'
+      }).then(() => showToast('🔔 Notification V7 envoyée !'))
         .catch(() => showToast('Erreur envoi ntfy'));
     }
 
@@ -3150,15 +4063,37 @@
       setTimeout(() => t.classList.remove('show'), 2600);
     }
 
-    // Initialisation
+    // Initialisation + Service Worker V7 (Network-First + Purge Ancien Cache)
     window.addEventListener('DOMContentLoaded', () => {
       initPinLock();
       renderBottomNav('immo');
+      initDefaultCalendarDates();
 
       const savedToken = localStorage.getItem('nexus_gh_token');
       if (savedToken) document.getElementById('ghToken').value = savedToken;
       const savedRepo = localStorage.getItem('nexus_gh_repo');
       if (savedRepo) document.getElementById('ghRepo').value = savedRepo;
+
+      if ('serviceWorker' in navigator) {
+        const hadController = !!navigator.serviceWorker.controller;
+        if ('caches' in window) {
+          caches.keys().then(names => {
+            names.forEach(n => {
+              if (n !== 'nexus-v7-clean') caches.delete(n);
+            });
+          });
+        }
+        navigator.serviceWorker.register('./sw.js?v=7').then(reg => {
+          reg.update();
+        }).catch(err => console.warn('SW register err:', err));
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (hadController && !window.__swReloaded) {
+            window.__swReloaded = true;
+            window.location.reload();
+          }
+        });
+      }
     });
   </script>
 </body>
