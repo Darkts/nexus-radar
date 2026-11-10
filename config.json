@@ -30,10 +30,27 @@
         "vacation",
         "airbnb"
       ],
+      "commercial_keywords": [
+        "bail commercial",
+        "local commercial",
+        "locaux commerciaux",
+        "local professionnel",
+        "locaux professionnels",
+        "bureau",
+        "bureaux",
+        "entrepôt",
+        "entrepot",
+        "hangar",
+        "garage",
+        "stockage",
+        "parking",
+        "fonds de commerce"
+      ],
       "sources": {
         "domimmo": true,
         "emotion": true,
         "four_u": true,
+        "sxmcapri": true,
         "leboncoin": true
       }
     },
@@ -55,19 +72,60 @@
         "Bangkok",
         "New York"
       ],
+      "routes": [
+        {
+          "from": "PAR",
+          "to": "SXM",
+          "name": "Paris <-> Saint-Martin (SXM)",
+          "max_price": 490
+        },
+        {
+          "from": "LUX",
+          "to": "SXM",
+          "name": "Luxembourg <-> Saint-Martin",
+          "max_price": 550
+        },
+        {
+          "from": "PAR",
+          "to": "PTP",
+          "name": "Paris <-> Guadeloupe (PTP)",
+          "max_price": 350
+        }
+      ],
       "sources": {
-        "dealabs_flights": true,
-        "fly4free": true,
-        "secretflying": true
+        "google_flights": true,
+        "secretflying": true,
+        "aircaraibes_direct": true
       }
     },
     "trains": {
       "enabled": true,
       "title": "Trains TGV & Ouigo Prix Cassés",
       "max_price": 25,
+      "routes": [
+        {
+          "from": "Nancy",
+          "to": "Paris",
+          "name": "Nancy <-> Paris Est",
+          "max_price": 20
+        },
+        {
+          "from": "Nancy",
+          "to": "Roissy CDG",
+          "name": "Nancy <-> Aéroport CDG 2",
+          "max_price": 35
+        },
+        {
+          "from": "Nancy",
+          "to": "Massy TGV",
+          "name": "Nancy <-> Massy TGV",
+          "max_price": 30
+        }
+      ],
       "sources": {
-        "dealabs_trains": true,
-        "sncf_promos": true
+        "sncf_connect": true,
+        "ouigo": true,
+        "trainline": true
       }
     }
   }

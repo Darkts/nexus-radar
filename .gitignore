@@ -7,4 +7,7 @@ ENV/
 .env
 .DS_Store
 Thumbs.db
+gh.exe
+*.msi
+
 

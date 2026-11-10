@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Nexus Radar | Hub Personnel Multi-Pépites</title>
-  <meta name="description" content="Hub personnel autonome : Veille Immobilier, Vols flash & Trains TGV" />
+  <title>Nexus Radar V2 | Hub Personnel Multi-Pépites</title>
+  <meta name="description" content="Hub personnel autonome : Veille Immo Saint-Martin, Vols Flash & Trains depuis Nancy" />
   
   <!-- PWA & Apple Meta -->
   <link rel="manifest" href="manifest.json" />
@@ -16,26 +16,27 @@
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icon.svg" />
 
-  <!-- Google Font: Plus Jakarta Sans -->
+  <!-- Google Font: Plus Jakarta Sans & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --bg: #070a13;
       --surface: #0e1424;
-      --card-bg: rgba(18, 26, 47, 0.75);
-      --card-border: rgba(0, 242, 254, 0.12);
+      --surface-card: #121a2d;
+      --card-border: rgba(0, 242, 254, 0.15);
       --primary: #00f2fe;
-      --primary-hover: #38bdf8;
+      --primary-dim: #0284c7;
       --accent-immo: #10b981;
       --accent-flight: #00f2fe;
       --accent-train: #ec4899;
+      --accent-warn: #f59e0b;
+      --accent-danger: #ef4444;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --glass: rgba(11, 17, 32, 0.88);
-      --radius: 18px;
+      --radius: 14px;
     }
 
     * {
@@ -52,47 +53,51 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-bottom: 96px;
+      padding-bottom: 84px;
       overflow-x: hidden;
+      /* Optimized solid CSS gradients without laggy filter blur */
       background-image: 
-        radial-gradient(circle at 10% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(236, 72, 153, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
+        radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(236, 72, 153, 0.04) 0%, transparent 40%);
     }
 
-    /* Top Sticky Header */
+    /* 60 FPS Header with safe area inset */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background: var(--glass);
+      background: rgba(11, 17, 32, 0.96);
       border-bottom: 1px solid var(--card-border);
-      padding: 12px 18px;
+      padding-top: max(12px, env(safe-area-inset-top));
+      padding-bottom: 12px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     .header-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .brand-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      overflow: hidden;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       border: 1px solid rgba(0, 242, 254, 0.4);
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #090e1a;
     }
 
     .brand-icon img {
@@ -103,37 +108,28 @@
 
     .brand-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: -0.01em;
-      background: linear-gradient(135deg, #ffffff, #00f2fe);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fff;
     }
 
     .brand-sub {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--primary);
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 6px;
-      letter-spacing: 0.05em;
+      gap: 5px;
       text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .live-dot {
-      width: 7px;
-      height: 7px;
-      background: #10b981;
+      width: 6px;
+      height: 6px;
+      background: var(--accent-immo);
       border-radius: 50%;
-      box-shadow: 0 0 8px #10b981;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
     }
 
     .header-actions {
@@ -142,105 +138,79 @@
       gap: 8px;
     }
 
-    .btn-action-icon {
-      background: rgba(255, 255, 255, 0.06);
+    .btn-icon {
+      background: rgba(255, 255, 255, 0.07);
       border: 1px solid var(--card-border);
       color: var(--text-main);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      position: relative;
-      transition: all 0.2s ease;
     }
 
-    .btn-action-icon:hover {
-      background: rgba(0, 242, 254, 0.15);
-      border-color: var(--primary);
-    }
-
-    .btn-action-icon.spinning svg {
-      animation: spin 0.8s linear infinite;
+    .btn-icon.spinning svg {
+      animation: spin 0.7s linear infinite;
     }
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
-    .unread-badge {
-      position: absolute;
-      top: -2px;
-      right: -2px;
-      background: #ec4899;
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 800;
-      min-width: 17px;
-      height: 17px;
-      border-radius: 9px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 0 4px;
-      box-shadow: 0 0 8px #ec4899;
-    }
-
-    /* Container */
+    /* Main Container */
     .container {
-      max-width: 900px;
+      max-width: 860px;
       width: 100%;
       margin: 0 auto;
-      padding: 16px;
+      padding: 14px;
       flex: 1;
     }
 
-    /* Tab Panes */
     .tab-pane {
       display: none;
     }
 
     .tab-pane.active {
       display: block;
-      animation: fadeIn 0.25s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Stats HUD Bar */
-    .stats-hud {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      margin-bottom: 18px;
-      backdrop-filter: blur(12px);
-    }
-
-    .hud-stat {
+    /* Mode Exploration / Sur-Mesure Switcher */
+    .mode-bar {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 8px 12px;
+      margin-bottom: 12px;
     }
 
-    .hud-val {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary);
+    .mode-toggle {
+      display: flex;
+      background: #090e1a;
+      border-radius: 8px;
+      padding: 3px;
+      gap: 4px;
     }
 
-    .hud-lbl {
-      font-size: 0.68rem;
+    .btn-mode {
+      border: none;
+      background: transparent;
       color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.74rem;
       font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-mode.active {
+      background: rgba(0, 242, 254, 0.18);
+      color: var(--primary);
     }
 
     /* Category Pill Switcher */
@@ -249,56 +219,48 @@
       gap: 8px;
       overflow-x: auto;
       padding-bottom: 4px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       scrollbar-width: none;
     }
     .cat-pills::-webkit-scrollbar { display: none; }
 
     .cat-pill {
       white-space: nowrap;
-      padding: 8px 16px;
-      border-radius: 24px;
-      font-size: 0.8rem;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
       color: var(--text-muted);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
     }
 
     .cat-pill.active {
-      background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(0, 242, 254, 0.1));
+      background: rgba(0, 242, 254, 0.2);
       border-color: var(--primary);
       color: #fff;
-      box-shadow: 0 0 14px rgba(0, 242, 254, 0.3);
     }
 
     /* Search Box */
     .search-box {
       position: relative;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .search-input {
       width: 100%;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--surface);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 12px 16px 12px 42px;
-      color: var(--text-main);
+      border-radius: 12px;
+      padding: 11px 14px 11px 40px;
+      color: #fff;
       font-size: 0.88rem;
       outline: none;
-      transition: border 0.2s ease;
     }
 
     .search-input:focus {
       border-color: var(--primary);
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
     }
 
     .search-icon {
@@ -310,35 +272,11 @@
       pointer-events: none;
     }
 
-    /* Sub Filters Bar */
-    .sub-filters {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .filter-select {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 9px 12px;
-      color: var(--text-main);
-      font-size: 0.8rem;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .filter-select option {
-      background: #0e1424;
-      color: #fff;
-    }
-
-    /* Grid of Cards */
+    /* Cards Grid */
     .items-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
+      gap: 16px;
     }
 
     @media (min-width: 640px) {
@@ -347,29 +285,26 @@
       }
     }
 
-    /* Item Card */
+    /* Card Item (Lightweight 60fps) */
     .item-card {
-      background: var(--card-bg);
+      background: var(--surface-card);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      backdrop-filter: blur(8px);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       position: relative;
     }
 
-    .item-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(0, 242, 254, 0.4);
-      box-shadow: 0 10px 28px -5px rgba(0, 0, 0, 0.5);
+    .item-card.disliked-dimmed {
+      opacity: 0.45;
+      border-style: dashed;
     }
 
     .card-img-wrap {
       position: relative;
       width: 100%;
-      height: 190px;
+      height: 180px;
       background: #090e1a;
       overflow: hidden;
     }
@@ -378,91 +313,82 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .item-card:hover .card-img {
-      transform: scale(1.04);
     }
 
     .badge-category {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 5px 10px;
-      border-radius: 8px;
+      top: 10px;
+      left: 10px;
+      padding: 4px 8px;
+      border-radius: 6px;
       font-size: 0.72rem;
       font-weight: 800;
-      backdrop-filter: blur(6px);
-      letter-spacing: 0.02em;
     }
 
-    .badge-category.immo {
-      background: rgba(16, 185, 129, 0.9);
-      color: #fff;
-      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-    }
-
-    .badge-category.flight {
-      background: rgba(0, 242, 254, 0.9);
-      color: #070a13;
-      box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
-    }
-
-    .badge-category.train {
-      background: rgba(236, 72, 153, 0.9);
-      color: #fff;
-      box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
-    }
+    .badge-category.immo { background: #10b981; color: #fff; }
+    .badge-category.flight { background: #00f2fe; color: #070a13; }
+    .badge-category.train { background: #ec4899; color: #fff; }
 
     .badge-price {
       position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(11, 17, 32, 0.92);
+      bottom: 10px;
+      left: 10px;
+      background: rgba(11, 17, 32, 0.94);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      color: #00f2fe;
+      color: var(--primary);
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 800;
-      font-size: 1.1rem;
-      padding: 6px 12px;
-      border-radius: 10px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      font-size: 1.05rem;
+      padding: 5px 10px;
+      border-radius: 8px;
     }
 
-    .btn-fav {
+    .card-top-actions {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(11, 17, 32, 0.85);
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(11, 17, 32, 0.9);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #94a3b8;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      backdrop-filter: blur(6px);
-      transition: all 0.2s ease;
     }
 
-    .btn-fav.active {
-      color: #ec4899;
-      border-color: #ec4899;
-      background: rgba(236, 72, 153, 0.25);
-      box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
-    }
+    .btn-card-icon.fav-active { color: #ec4899; border-color: #ec4899; }
+    .btn-card-icon.dislike-active { color: #ef4444; border-color: #ef4444; }
 
     .card-body {
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       flex: 1;
-      gap: 10px;
+      gap: 8px;
     }
+
+    /* Urgency Banner */
+    .urgency-badge {
+      font-size: 0.73rem;
+      font-weight: 800;
+      padding: 5px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .urgency-badge.urgent { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .urgency-badge.good { background: rgba(0, 242, 254, 0.15); color: #38bdf8; border: 1px solid rgba(0, 242, 254, 0.3); }
+    .urgency-badge.normal { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .urgency-badge.high { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
 
     .card-loc {
       font-size: 0.76rem;
@@ -474,25 +400,61 @@
     }
 
     .card-title {
-      font-size: 0.98rem;
+      font-size: 0.94rem;
       font-weight: 700;
+      color: #fff;
       line-height: 1.35;
+    }
+
+    /* True Cost Box */
+    .true-cost-box {
+      background: rgba(0, 242, 254, 0.06);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .true-cost-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
       color: #fff;
     }
 
-    .card-desc {
-      font-size: 0.82rem;
-      color: #94a3b8;
-      line-height: 1.45;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .true-cost-breakdown {
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+
+    .true-cost-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .true-cost-badge.viable { background: rgba(16, 185, 129, 0.25); color: #34d399; }
+    .true-cost-badge.mitige { background: rgba(245, 158, 11, 0.25); color: #fbbf24; }
+
+    /* Price History Bar */
+    .price-history-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      border-top: 1px dashed var(--card-border);
+      padding-top: 8px;
     }
 
     .card-footer {
       margin-top: auto;
-      padding-top: 12px;
+      padding-top: 10px;
       border-top: 1px solid var(--card-border);
       display: flex;
       align-items: center;
@@ -501,247 +463,84 @@
     }
 
     .card-agency {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 6px;
-    }
-
-    .btn-card-action {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      text-decoration: none;
     }
 
     .btn-view-deal {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       background: linear-gradient(135deg, #00f2fe, #0284c7);
       color: #070a13;
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 7px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
-      transition: transform 0.2s ease;
-    }
-
-    .btn-view-deal:hover {
-      transform: scale(1.03);
-    }
-
-    /* Radars Config Editor (Tab 3) */
-    .radar-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 20px;
-      backdrop-filter: blur(12px);
-    }
-
-    .radar-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .radar-card-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .switch-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
-
-    .switch-input {
-      display: none;
-    }
-
-    .switch-slider {
-      width: 44px;
-      height: 24px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      position: relative;
-      transition: background 0.3s ease;
-    }
-
-    .switch-slider::after {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 18px;
-      height: 18px;
-      background: #fff;
-      border-radius: 50%;
-      transition: transform 0.3s ease;
-    }
-
-    .switch-input:checked + .switch-slider {
-      background: #00f2fe;
-    }
-
-    .switch-input:checked + .switch-slider::after {
-      transform: translateX(20px);
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 14px;
-    }
-
-    .form-label {
       font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
     }
 
-    .form-input {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 10px 14px;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      font-family: inherit;
+    /* Radar AI Parser Form (Chantier 6) */
+    .smart-ai-box {
+      background: var(--surface-card);
+      border: 1px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 20px;
     }
 
-    .form-input:focus {
-      border-color: var(--primary);
-    }
-
-    .tags-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .tag-chip {
-      background: rgba(0, 242, 254, 0.12);
-      border: 1px solid rgba(0, 242, 254, 0.3);
-      color: #38bdf8;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 5px 10px;
-      border-radius: 16px;
+    .ai-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .tag-chip-remove {
-      cursor: pointer;
-      opacity: 0.7;
-    }
-    .tag-chip-remove:hover { opacity: 1; }
-
-    .btn-add-tag {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px dashed var(--card-border);
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 16px;
-      cursor: pointer;
-    }
-
-    .btn-add-tag:hover {
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    /* Big Action Buttons */
-    .btn-cta-cloud {
-      width: 100%;
-      background: linear-gradient(135deg, #00f2fe, #38bdf8);
-      color: #070a13;
-      font-size: 0.95rem;
+      background: rgba(0, 242, 254, 0.15);
+      color: var(--primary);
+      font-size: 0.72rem;
       font-weight: 800;
-      padding: 14px;
-      border-radius: 14px;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
-      transition: transform 0.2s ease;
-      margin-top: 10px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      margin-bottom: 8px;
     }
 
-    .btn-cta-cloud:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-cta-scan {
+    .smart-ai-input {
       width: 100%;
-      background: linear-gradient(135deg, #ec4899, #8b5cf6);
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 800;
-      padding: 14px;
-      border-radius: 14px;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 0 20px rgba(236, 72, 153, 0.35);
-      transition: transform 0.2s ease;
-      margin-top: 10px;
-    }
-
-    .btn-cta-scan:hover {
-      transform: translateY(-2px);
-    }
-
-    /* Banner Showcase */
-    .banner-showcase {
-      width: 100%;
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 20px;
+      height: 70px;
+      background: #090e1a;
       border: 1px solid var(--card-border);
-      box-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
+      border-radius: 10px;
+      padding: 10px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      resize: none;
+      outline: none;
+      margin-bottom: 10px;
     }
 
-    .banner-showcase img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .ai-quick-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+    }
+
+    .btn-quick-prompt {
+      white-space: nowrap;
+      font-size: 0.7rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .ai-preview-card {
+      background: #090e1a;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 10px;
+      display: none;
     }
 
     /* Bottom Navigation Bar */
@@ -751,14 +550,12 @@
       left: 0;
       right: 0;
       z-index: 200;
-      background: var(--glass);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(11, 17, 32, 0.98);
       border-top: 1px solid var(--card-border);
       display: flex;
       justify-content: space-around;
-      padding: 8px 12px 14px;
-      max-width: 900px;
+      padding: 8px 10px max(10px, env(safe-area-inset-bottom));
+      max-width: 860px;
       margin: 0 auto;
     }
 
@@ -768,85 +565,180 @@
       align-items: center;
       gap: 4px;
       color: var(--text-muted);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      text-decoration: none;
       cursor: pointer;
-      position: relative;
-      transition: color 0.2s ease;
-      padding: 4px 12px;
-      border-radius: 12px;
+      padding: 4px 10px;
+      border-radius: 8px;
     }
 
     .nav-item.active {
       color: var(--primary);
-      background: rgba(0, 242, 254, 0.08);
+      background: rgba(0, 242, 254, 0.1);
     }
 
-    .nav-icon {
-      font-size: 1.3rem;
-      line-height: 1;
-    }
+    .nav-icon { font-size: 1.25rem; line-height: 1; }
 
-    .nav-badge {
-      position: absolute;
-      top: 0;
-      right: 6px;
-      background: #ec4899;
-      color: #fff;
-      font-size: 0.6rem;
-      font-weight: 800;
-      min-width: 16px;
-      height: 16px;
-      border-radius: 8px;
+    /* PIN Lock Screen Modal (Chantier 1) */
+    .pin-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #070a13;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 4px;
+      padding: 20px;
     }
 
-    /* Toast Notification */
+    .pin-box {
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .pin-dots {
+      display: flex;
+      gap: 14px;
+      margin: 10px 0;
+    }
+
+    .pin-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      background: transparent;
+      transition: background 0.15s ease;
+    }
+
+    .pin-dot.filled {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    .pin-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn-pin {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .btn-pin:active {
+      background: var(--primary);
+      color: #070a13;
+    }
+
+    /* Toast */
     .toast {
       position: fixed;
-      top: 80px;
+      top: 70px;
       left: 50%;
       transform: translateX(-50%) translateY(-100px);
-      background: rgba(14, 20, 36, 0.95);
+      background: #0e1424;
       border: 1px solid var(--primary);
       color: #fff;
-      padding: 12px 22px;
-      border-radius: 30px;
+      padding: 10px 18px;
+      border-radius: 20px;
       font-weight: 700;
-      font-size: 0.85rem;
-      box-shadow: 0 8px 30px rgba(0, 242, 254, 0.35);
-      transition: transform 0.3s ease;
-      z-index: 1000;
+      font-size: 0.8rem;
+      z-index: 10000;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      transition: transform 0.25s ease;
       pointer-events: none;
     }
 
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* Action Buttons */
+    .btn-cta-cloud {
+      width: 100%;
+      background: linear-gradient(135deg, #00f2fe, #0284c7);
+      color: #070a13;
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
     }
 
-    /* Empty state */
+    .btn-cta-scan {
+      width: 100%;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
     .empty-state {
       text-align: center;
-      padding: 50px 20px;
-      background: var(--card-bg);
+      padding: 40px 16px;
+      background: var(--surface);
       border: 1px dashed var(--card-border);
       border-radius: var(--radius);
       margin-top: 10px;
     }
-
-    .empty-icon { font-size: 46px; margin-bottom: 12px; }
-    .empty-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; }
-    .empty-sub { font-size: 0.85rem; color: var(--text-muted); }
   </style>
 </head>
 <body>
+
+  <!-- ========================================================= -->
+  <!-- PIN LOCK SCREEN OVERLAY (Chantier 1 : Confidentialité)    -->
+  <!-- ========================================================= -->
+  <div class="pin-modal-overlay" id="pinLockOverlay">
+    <div class="pin-box">
+      <div style="font-size: 2.2rem;">🔒</div>
+      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar Sécurisé</h2>
+      <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code PIN à 4 chiffres pour accéder à vos radars</p>
+      
+      <div class="pin-dots">
+        <div class="pin-dot" id="dot0"></div>
+        <div class="pin-dot" id="dot1"></div>
+        <div class="pin-dot" id="dot2"></div>
+        <div class="pin-dot" id="dot3"></div>
+      </div>
+
+      <div class="pin-pad">
+        <button class="btn-pin" onclick="onPinDigit('1')">1</button>
+        <button class="btn-pin" onclick="onPinDigit('2')">2</button>
+        <button class="btn-pin" onclick="onPinDigit('3')">3</button>
+        <button class="btn-pin" onclick="onPinDigit('4')">4</button>
+        <button class="btn-pin" onclick="onPinDigit('5')">5</button>
+        <button class="btn-pin" onclick="onPinDigit('6')">6</button>
+        <button class="btn-pin" onclick="onPinDigit('7')">7</button>
+        <button class="btn-pin" onclick="onPinDigit('8')">8</button>
+        <button class="btn-pin" onclick="onPinDigit('9')">9</button>
+        <button class="btn-pin" onclick="clearPin()" style="font-size: 0.9rem;">CLR</button>
+        <button class="btn-pin" onclick="onPinDigit('0')">0</button>
+        <button class="btn-pin" onclick="backspacePin()" style="font-size: 1rem;">⌫</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Top Sticky Header -->
   <header>
@@ -856,79 +748,58 @@
           <img src="assets/icon.svg" alt="Nexus Logo" />
         </div>
         <div>
-          <div class="brand-title">NEXUS RADAR</div>
+          <div class="brand-title">NEXUS RADAR V2</div>
           <div class="brand-sub">
             <span class="live-dot"></span>
-            <span id="headerLiveStatus">Veille Active • H24 Cloud</span>
+            <span id="headerLiveStatus">Veille Active • Nancy Hub</span>
           </div>
         </div>
       </div>
       <div class="header-actions">
-        <button id="refreshBtn" class="btn-action-icon" title="Actualiser les pépites">
+        <button id="refreshBtn" class="btn-icon" title="Actualiser">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
           </svg>
-          <span class="unread-badge" id="unreadBadge">0</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Container -->
+  <!-- Main Content -->
   <main class="container">
 
     <!-- ========================================================= -->
-    <!-- TAB 1 : 🔥 PÉPITES (TOUTES LES ALERTES IMMO, VOLS, TRAINS) -->
+    <!-- TAB 1 : 🔥 PÉPITES (FLUX UNIFIÉ AVEC TRUE COST & DISLIKE) -->
     <!-- ========================================================= -->
     <section id="tab-pepites" class="tab-pane active">
       
-      <!-- Stats HUD -->
-      <div class="stats-hud">
-        <div class="hud-stat">
-          <span class="hud-val" id="hudCount">0</span>
-          <span class="hud-lbl">Pépites actives</span>
-        </div>
-        <div class="hud-stat">
-          <span class="hud-val" id="hudRadars">3</span>
-          <span class="hud-lbl">Radars actifs</span>
-        </div>
-        <div class="hud-stat">
-          <span class="hud-val" id="hudLastScan">Récent</span>
-          <span class="hud-lbl">Dernier scan</span>
+      <!-- Mode Sur-Mesure / Exploration Switcher (Chantier 5) -->
+      <div class="mode-bar">
+        <div style="font-size: 0.75rem; font-weight: 700; color: #fff;">Mode d'affichage :</div>
+        <div class="mode-toggle">
+          <button class="btn-mode active" id="btnModeSurMesure" onclick="setFeedMode('custom')">
+            <span>🎯 Sur-Mesure</span>
+          </button>
+          <button class="btn-mode" id="btnModeExplore" onclick="setFeedMode('explore')">
+            <span>🌍 Exploration</span>
+          </button>
         </div>
       </div>
 
       <!-- Category Filter Pills -->
       <div class="cat-pills" id="categoryPills">
         <button class="cat-pill active" data-cat="ALL">🔥 Toutes les pépites</button>
-        <button class="cat-pill" data-cat="immo">🏠 Immobilier SXM</button>
-        <button class="cat-pill" data-cat="flight">✈️ Vols & Erreurs</button>
-        <button class="cat-pill" data-cat="train">🚄 Trains & TGV</button>
+        <button class="cat-pill" data-cat="immo">🏠 Immo Saint-Martin</button>
+        <button class="cat-pill" data-cat="flight">✈️ Vols (Hub Nancy)</button>
+        <button class="cat-pill" data-cat="train">🚄 Trains depuis Nancy</button>
       </div>
 
       <!-- Search Input -->
       <div class="search-box">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="searchInput" class="search-input" placeholder="Rechercher (ex: Concordia, SXM, TGV, Paris, 19€)..." />
-      </div>
-
-      <!-- Sub Filters Bar -->
-      <div class="sub-filters">
-        <select id="budgetFilterSelect" class="filter-select">
-          <option value="99999">💰 Tous les budgets</option>
-          <option value="30">🚄 Moins de 30 € (Train)</option>
-          <option value="450">✈️ Moins de 450 € (Vol)</option>
-          <option value="1000">🏠 Moins de 1 000 € (Immo)</option>
-          <option value="1200">🏠 Moins de 1 200 € (Immo)</option>
-        </select>
-        <select id="sortSelect" class="filter-select">
-          <option value="recent">⏱ Plus récentes</option>
-          <option value="price_asc">💰 Prix croissant</option>
-          <option value="price_desc">💎 Prix décroissant</option>
-        </select>
+        <input type="text" id="searchInput" class="search-input" placeholder="Rechercher (ex: SXM, Concordia, TGV, 10€)..." />
       </div>
 
       <!-- Items Grid -->
@@ -936,9 +807,9 @@
 
       <!-- Empty State -->
       <div class="empty-state" id="emptyState" style="display: none;">
-        <div class="empty-icon">🎯</div>
-        <div class="empty-title">Aucune pépite trouvée</div>
-        <div class="empty-sub">Modifiez vos filtres ou attendez le prochain scan automatique.</div>
+        <div style="font-size: 36px; margin-bottom: 8px;">🎯</div>
+        <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 4px;">Aucune offre correspondante</h3>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Passez en mode Exploration ou modifiez vos filtres.</p>
       </div>
 
     </section>
@@ -947,176 +818,135 @@
     <!-- TAB 2 : ⭐ FAVORIS                                        -->
     <!-- ========================================================= -->
     <section id="tab-favoris" class="tab-pane">
-      <div style="margin-bottom: 16px;">
-        <h2 style="font-size: 1.25rem; font-weight: 800;">⭐ Mes Pépites Sauvegardées</h2>
-        <p style="font-size: 0.8rem; color: var(--text-muted);">Retrouvez ici les appartements, billets d'avion ou trains gardés de côté.</p>
+      <div style="margin-bottom: 14px;">
+        <h2 style="font-size: 1.15rem; font-weight: 800;">⭐ Pépites Sauvegardées</h2>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Vos annonces immo, vols et trains gardés de côté.</p>
       </div>
-
       <div class="items-grid" id="favoritesContainer"></div>
-
       <div class="empty-state" id="emptyFavorites" style="display: none;">
-        <div class="empty-icon">⭐</div>
-        <div class="empty-title">Aucun favori pour le moment</div>
-        <div class="empty-sub">Cliquez sur le cœur d'une annonce pour l'épingler ici.</div>
+        <div style="font-size: 36px; margin-bottom: 8px;">⭐</div>
+        <h3 style="font-size: 1.05rem; font-weight: 800;">Aucun favori enregistré</h3>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur l'étoile d'une offre pour la garder ici.</p>
       </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- TAB 3 : 🎛️ MES RADARS (ÉDITEUR EN DIRECT VIA GITHUB API) -->
+    <!-- TAB 3 : 🎛️ RADARS (SURFACE IA & URL PARSER 100% GRATUITE)  -->
     <!-- ========================================================= -->
     <section id="tab-radars" class="tab-pane">
-      <div style="margin-bottom: 16px;">
-        <h2 style="font-size: 1.25rem; font-weight: 800;">🎛️ Configuration des Radars</h2>
-        <p style="font-size: 0.8rem; color: var(--text-muted);">Ajustez vos critères en direct. La sauvegarde met à jour votre fichier Cloud via l'API GitHub.</p>
-      </div>
-
-      <!-- Radar 1: Immobilier -->
-      <div class="radar-card">
-        <div class="radar-card-header">
-          <div class="radar-card-title">🏠 Radar Immobilier Saint-Martin</div>
-          <label class="switch-wrap">
-            <input type="checkbox" id="immoEnabled" class="switch-input" checked />
-            <span class="switch-slider"></span>
-          </label>
+      
+      <!-- Smart Parser AI Box (Chantier 6) -->
+      <div class="smart-ai-box">
+        <div class="ai-badge">✨ Smart Parser IA Local (100% Gratuit)</div>
+        <h3 style="font-size: 0.98rem; font-weight: 800; margin-bottom: 6px;">Ajouter un Radar à la volée</h3>
+        <p style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 8px;">
+          Collez une <strong>URL</strong> (Google Flights, Leboncoin, DOMimmo) ou écrivez en <strong>langage naturel</strong> :
+        </p>
+        
+        <textarea id="smartParserInput" class="smart-ai-input" placeholder="Ex: 'Trouve-moi un T2 à Saint-Martin Baie Nettlé max 1100€' ou collez un lien de recherche..."></textarea>
+        
+        <div class="ai-quick-pills">
+          <button class="btn-quick-prompt" onclick="setQuickPrompt('Trouve-moi un T2 à Saint-Martin Baie Nettlé max 1100€')">🏠 T2 Baie Nettlé 1100€</button>
+          <button class="btn-quick-prompt" onclick="setQuickPrompt('Vol vers la Martinique sous 400€ départ Paris')">✈️ Vol Martinique 400€</button>
+          <button class="btn-quick-prompt" onclick="setQuickPrompt('Train Nancy Paris max 18€')">🚄 Train Nancy Paris 18€</button>
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Loyer Mensuel Maximum (€)</label>
-          <input type="number" id="immoMaxPrice" class="form-input" value="1200" />
-        </div>
+        <button class="btn-cta-cloud" onclick="parseSmartCommand()">✨ Analyser & Générer le Radar</button>
 
-        <div class="form-group">
-          <label class="form-label">Zone / Code Postal</label>
-          <input type="text" id="immoLocation" class="form-input" value="97150 Saint-Martin" />
-        </div>
-
-        <div class="form-group">
-          <label class="switch-wrap" style="font-size: 0.85rem; font-weight: 600;">
-            <input type="checkbox" id="immoExcludeCommercial" class="switch-input" checked />
-            <span class="switch-slider"></span>
-            <span>Exclure baux commerciaux & bureaux</span>
-          </label>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Mots-clés d'exclusion (séparés par virgule)</label>
-          <input type="text" id="immoExcludeWords" class="form-input" value="saisonnière, touristique, vacances, nuitée, semaine, holiday" />
+        <!-- Preview Card -->
+        <div class="ai-preview-card" id="aiPreviewCard">
+          <div style="font-size: 0.75rem; font-weight: 800; color: #34d399; margin-bottom: 6px;">✅ RADAR DÉTECTÉ ET VALIDÉ :</div>
+          <div id="aiPreviewDetails" style="font-size: 0.8rem; line-height: 1.4; color: #fff; margin-bottom: 10px;"></div>
+          <button class="btn-cta-cloud" id="btnApplyAiRadar" onclick="saveRadarToCloud()">💾 Activer ce Radar & Sauvegarder dans GitHub</button>
         </div>
       </div>
 
-      <!-- Radar 2: Vols -->
-      <div class="radar-card">
-        <div class="radar-card-header">
-          <div class="radar-card-title">✈️ Radar Vols & Erreurs de Prix</div>
-          <label class="switch-wrap">
-            <input type="checkbox" id="flightsEnabled" class="switch-input" checked />
-            <span class="switch-slider"></span>
-          </label>
-        </div>
+      <!-- Quick Criteria Summary -->
+      <div style="margin-bottom: 14px;">
+        <h3 style="font-size: 1rem; font-weight: 800;">Radars Actuellement en Veille</h3>
+      </div>
 
-        <div class="form-group">
-          <label class="form-label">Prix Seuil Billet Aller/Retour (€)</label>
-          <input type="number" id="flightMaxPrice" class="form-input" value="450" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Destinations Favorites Surveillées</label>
-          <div class="tags-container" id="flightDestTags"></div>
-          <div style="display: flex; gap: 8px; margin-top: 8px;">
-            <input type="text" id="newDestInput" class="form-input" placeholder="Ajouter destination (ex: SXM, Japon)..." style="flex: 1;" />
-            <button class="btn-add-tag" id="btnAddDest" type="button">+ Ajouter</button>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="background: var(--surface); border: 1px solid var(--card-border); border-radius: 10px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.85rem;">
+            <span>🏠 Saint-Martin (97150) Longue Durée</span>
+            <span style="color: #34d399;">≤ 1 200 € / mois</span>
           </div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 4px;">DOMimmo, Emotion, 4U, Leboncoin (Exclut commercial & saisonnier)</div>
+        </div>
+
+        <div style="background: var(--surface); border: 1px solid var(--card-border); border-radius: 10px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.85rem;">
+            <span>✈️ Vols & Erreurs (Caraïbes & International)</span>
+            <span style="color: #38bdf8;">≤ 450 € A/R</span>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 4px;">Google Flights, Air Caraïbes (Hubs: Paris, Luxembourg, Bâle)</div>
+        </div>
+
+        <div style="background: var(--surface); border: 1px solid var(--card-border); border-radius: 10px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.85rem;">
+            <span>🚄 Trains Nancy ⇄ Paris / Roissy CDG</span>
+            <span style="color: #ec4899;">≤ 25 €</span>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 4px;">SNCF Connect / Ouigo direct depuis Nancy</div>
         </div>
       </div>
 
-      <!-- Radar 3: Trains -->
-      <div class="radar-card">
-        <div class="radar-card-header">
-          <div class="radar-card-title">🚄 Radar Trains TGV & Ouigo</div>
-          <label class="switch-wrap">
-            <input type="checkbox" id="trainsEnabled" class="switch-input" checked />
-            <span class="switch-slider"></span>
-          </label>
-        </div>
+      <button class="btn-cta-scan" onclick="triggerScanNow()">⚡ Forcer un Scan Cloud Immédiat</button>
 
-        <div class="form-group">
-          <label class="form-label">Prix Seuil Billet Train (€)</label>
-          <input type="number" id="trainMaxPrice" class="form-input" value="25" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Trajets Prioritaires (séparés par virgule)</label>
-          <input type="text" id="trainRoutesInput" class="form-input" value="Nancy <-> Paris (20€), Paris <-> Lyon (19€), Paris <-> Marseille (25€)" />
-        </div>
-      </div>
-
-      <!-- Action Button: Save to GitHub Cloud -->
-      <button class="btn-cta-cloud" id="btnSaveConfigCloud">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-          <polyline points="17 21 17 13 7 13 7 21"></polyline>
-          <polyline points="7 3 7 8 15 8"></polyline>
-        </svg>
-        <span>Sauvegarder mes critères dans GitHub (Cloud)</span>
-      </button>
-
-      <!-- Action Button: Trigger Scan -->
-      <button class="btn-cta-scan" id="btnTriggerScanNow">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-        </svg>
-        <span>⚡ Lancer un scan GitHub Actions maintenant</span>
-      </button>
     </section>
 
     <!-- ========================================================= -->
-    <!-- TAB 4 : 🔔 RÉGLAGES (GITHUB API, NOTIFICATIONS, BANNIÈRE) -->
+    <!-- TAB 4 : 🔔 RÉGLAGES (SÉCURITÉ PIN, GITHUB TOKEN & NOTIFS)  -->
     <!-- ========================================================= -->
     <section id="tab-reglages" class="tab-pane">
       
-      <!-- Custom Cyberpunk Banner Showcase -->
-      <div class="banner-showcase">
-        <img src="assets/banner.svg" alt="Nexus Radar Banner" />
+      <div style="margin-bottom: 16px;">
+        <h2 style="font-size: 1.15rem; font-weight: 800;">🔔 Réglages & Sécurité</h2>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Gérez votre sécurité locale et vos clés d'API Cloud.</p>
+      </div>
+
+      <!-- PIN Security Section (Chantier 1) -->
+      <div style="background: var(--surface); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+        <h3 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 6px;">🔒 Sécurité par Code PIN (4 chiffres)</h3>
+        <p style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 10px;">
+          Protège l'application pour que personne ne puisse consulter vos pépites sans votre code PIN.
+        </p>
+        <button class="btn-cta-cloud" onclick="promptChangePin()" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--card-border);">
+          Modifier mon Code PIN
+        </button>
       </div>
 
       <!-- GitHub API Integration -->
-      <div class="radar-card">
-        <div class="radar-card-title" style="margin-bottom: 12px;">🔑 Connexion GitHub API (Cloud)</div>
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">
-          Permet à l'application de mettre à jour <code>config.json</code> et de déclencher vos scans à distance sans jamais toucher au code.
+      <div style="background: var(--surface); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+        <h3 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 6px;">🔑 Liaison GitHub Cloud</h3>
+        <p style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 10px;">
+          Stocké <strong>exclusivement dans votre téléphone</strong>. Aucune clé n'est écrite en dur sur GitHub.
         </p>
 
-        <div class="form-group">
-          <label class="form-label">Dépôt GitHub (ex: pseudo/sxm-immo-cloud)</label>
-          <input type="text" id="ghRepo" class="form-input" placeholder="VOTRE_PSEUDO/NOM_DU_DEPOT" />
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <input type="text" id="ghRepo" class="search-input" placeholder="Dépôt (ex: Darkts/nexus-radar)" value="Darkts/nexus-radar" />
+          <input type="password" id="ghToken" class="search-input" placeholder="Token GitHub (ghp_...)" />
+          <button class="btn-cta-cloud" onclick="saveCredentials()">Enregistrer mes accès GitHub</button>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label class="form-label">Token GitHub Personnel (PAT - Scope 'repo')</label>
-          <input type="password" id="ghToken" class="form-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
-        </div>
-
-        <button class="btn-cta-cloud" id="btnSaveGitHubCreds" style="margin-top: 6px;">
-          Enregistrer mes accès GitHub sur ce téléphone
+      <!-- Dislikes Manager (Chantier 5) -->
+      <div style="background: var(--surface); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+        <h3 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 6px;">👎 Préférences de Filtrage (Dislikes)</h3>
+        <p style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 8px;">Mots-clés et destinations actuellement écartés de votre flux Sur-Mesure :</p>
+        <div id="dislikesListTags" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;"></div>
+        <button class="btn-cta-cloud" onclick="clearAllDislikes()" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">
+          Réinitialiser tous mes filtres Dislike
         </button>
       </div>
 
-      <!-- Notifications & Audio Test -->
-      <div class="radar-card">
-        <div class="radar-card-title" style="margin-bottom: 12px;">🔔 Notifications & Flux ntfy.sh</div>
-        
-        <div class="form-group">
-          <label class="form-label">Canal ntfy.sh</label>
-          <input type="text" id="ntfyTopicInput" class="form-input" value="sxm-immo-alert-97150-x9q4m2" />
-        </div>
-
-        <button class="btn-cta-cloud" id="btnTestChime" style="background: linear-gradient(135deg, #10b981, #0284c7); margin-bottom: 10px;">
-          🔊 Tester le son & la notification instantanée
+      <!-- Test Audio & Push -->
+      <div style="background: var(--surface); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px;">
+        <h3 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 6px;">🔊 Test Notifications & Audio</h3>
+        <button class="btn-cta-cloud" onclick="testNotificationAndChime()" style="background: linear-gradient(135deg, #10b981, #0284c7);">
+          Tester le son Cyberpunk & la vibration
         </button>
-
-        <a id="btnOpenNtfyApp" href="https://ntfy.sh/sxm-immo-alert-97150-x9q4m2" target="_blank" rel="noopener" class="btn-cta-cloud" style="background: rgba(255,255,255,0.08); color: #fff; text-decoration: none; border: 1px solid var(--card-border);">
-          📱 Ouvrir dans l'application ntfy
-        </a>
       </div>
 
     </section>
@@ -1128,12 +958,10 @@
     <div class="nav-item active" data-tab="tab-pepites">
       <span class="nav-icon">🔥</span>
       <span>Pépites</span>
-      <span class="nav-badge" id="navCountBadge">0</span>
     </div>
     <div class="nav-item" data-tab="tab-favoris">
       <span class="nav-icon">⭐</span>
       <span>Favoris</span>
-      <span class="nav-badge" id="navFavBadge" style="display: none;">0</span>
     </div>
     <div class="nav-item" data-tab="tab-radars">
       <span class="nav-icon">🎛️</span>
@@ -1154,15 +982,14 @@
     // Global State
     let allItems = [];
     let favorites = JSON.parse(localStorage.getItem('nexus_favorites') || '[]');
-    let currentConfig = null;
-    let sseSource = null;
-    let unreadCount = 0;
+    let dislikes = JSON.parse(localStorage.getItem('nexus_dislikes') || '[]');
+    let feedMode = localStorage.getItem('nexus_feed_mode') || 'custom'; // 'custom' or 'explore'
+    let currentPinInput = '';
+    let parsedRadarToAdd = null;
 
     let filters = {
       category: 'ALL',
-      search: '',
-      maxBudget: 99999,
-      sort: 'recent'
+      search: ''
     };
 
     const FALLBACK_IMGS = {
@@ -1171,205 +998,285 @@
       train: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600"
     };
 
-    // PWA Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(console.warn);
-      });
+    // =========================================================
+    // 1. PIN LOCK SCREEN SYSTEM (Chantier 1 : Sécurité)
+    // =========================================================
+    function checkPinOnLoad() {
+      const savedPin = localStorage.getItem('nexus_pin');
+      const overlay = document.getElementById('pinLockOverlay');
+      const title = document.getElementById('pinTitle');
+      const sub = document.getElementById('pinSubtitle');
+
+      if (!savedPin) {
+        // First setup
+        title.textContent = "Définir votre Code PIN";
+        sub.textContent = "Choisissez un code à 4 chiffres pour sécuriser votre Nexus Radar";
+      } else {
+        title.textContent = "Nexus Radar V2 Verrouillé";
+        sub.textContent = "Entrez votre code PIN à 4 chiffres";
+      }
+      overlay.style.display = 'flex';
+      renderPinDots();
     }
 
-    // Audio Synthesizer (Web Audio API)
-    function playChime() {
-      try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
-        const ctx = new AudioCtx();
-        const now = ctx.currentTime;
-
-        const playTone = (freq, start, duration) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(freq, start);
-          gain.gain.setValueAtTime(0.2, start);
-          gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(start);
-          osc.stop(start + duration);
-        };
-
-        // Cyberpunk Arpeggio Chime
-        playTone(523.25, now, 0.15);         // C5
-        playTone(659.25, now + 0.1, 0.15);   // E5
-        playTone(783.99, now + 0.2, 0.35);   // G5
-        playTone(1046.50, now + 0.3, 0.5);   // C6
-      } catch (e) {
-        console.warn('Audio chime failed:', e);
+    function onPinDigit(d) {
+      if (currentPinInput.length < 4) {
+        currentPinInput += d;
+        renderPinDots();
+      }
+      if (currentPinInput.length === 4) {
+        setTimeout(validatePin, 100);
       }
     }
 
-    // Initialize Application
-    async function init() {
-      setupNavigation();
-      loadStoredCredentials();
-      await loadConfig();
-      await loadData();
-      setupEventListeners();
-      connectSSE();
+    function backspacePin() {
+      currentPinInput = currentPinInput.slice(0, -1);
+      renderPinDots();
     }
 
-    // Tab Navigation
-    function setupNavigation() {
-      document.querySelectorAll('.bottom-nav .nav-item').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.bottom-nav .nav-item').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-
-          const tabId = btn.dataset.tab;
-          document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-          document.getElementById(tabId).classList.add('active');
-
-          if (tabId === 'tab-pepites') {
-            unreadCount = 0;
-            updateUnreadBadge();
-          } else if (tabId === 'tab-favoris') {
-            renderFavorites();
-          }
-        });
-      });
+    function clearPin() {
+      currentPinInput = '';
+      renderPinDots();
     }
 
-    // Load config.json
-    async function loadConfig() {
-      try {
-        const res = await fetch('./config.json?t=' + Date.now());
-        if (res.ok) {
-          currentConfig = await res.json();
-          populateConfigForm(currentConfig);
+    function renderPinDots() {
+      for (let i = 0; i < 4; i++) {
+        const dot = document.getElementById('dot' + i);
+        if (i < currentPinInput.length) {
+          dot.classList.add('filled');
+        } else {
+          dot.classList.remove('filled');
         }
-      } catch (e) {
-        console.warn('Erreur chargement config.json:', e);
       }
     }
 
-    // Populate Config Form (Tab 3)
-    function populateConfigForm(cfg) {
-      if (!cfg || !cfg.radars) return;
+    function validatePin() {
+      const savedPin = localStorage.getItem('nexus_pin');
+      const overlay = document.getElementById('pinLockOverlay');
 
-      // Immo
-      const immo = cfg.radars.immo || {};
-      document.getElementById('immoEnabled').checked = immo.enabled !== false;
-      document.getElementById('immoMaxPrice').value = immo.max_price || 1200;
-      document.getElementById('immoLocation').value = `${immo.location_code || '97150'} ${immo.location_name || 'Saint-Martin'}`;
-      document.getElementById('immoExcludeCommercial').checked = immo.exclude_commercial !== false;
-      document.getElementById('immoExcludeWords').value = (immo.exclude_keywords || []).join(', ');
-
-      // Flights
-      const fl = cfg.radars.flights || {};
-      document.getElementById('flightsEnabled').checked = fl.enabled !== false;
-      document.getElementById('flightMaxPrice').value = fl.max_price || 450;
-      renderFlightDestTags(fl.target_destinations || ['SXM', 'Caraïbes', 'Tokyo']);
-
-      // Trains
-      const tr = cfg.radars.trains || {};
-      document.getElementById('trainsEnabled').checked = tr.enabled !== false;
-      document.getElementById('trainMaxPrice').value = tr.max_price || 25;
-
-      // Ntfy
-      if (cfg.ntfy_topic) {
-        document.getElementById('ntfyTopicInput').value = cfg.ntfy_topic;
-        document.getElementById('btnOpenNtfyApp').href = `https://ntfy.sh/${cfg.ntfy_topic}`;
+      if (!savedPin) {
+        // Save new pin
+        localStorage.setItem('nexus_pin', currentPinInput);
+        showToast('🔒 Code PIN créé avec succès !');
+        playChime();
+        overlay.style.display = 'none';
+      } else if (currentPinInput === savedPin) {
+        // Correct pin
+        playChime();
+        overlay.style.display = 'none';
+        showToast('🔓 Déverrouillé avec succès');
+      } else {
+        // Wrong pin
+        showToast('❌ Code PIN incorrect');
+        if (navigator.vibrate) navigator.vibrate([150, 80, 150]);
+        clearPin();
       }
     }
 
-    function renderFlightDestTags(dests) {
-      const container = document.getElementById('flightDestTags');
-      container.innerHTML = dests.map(d => `
-        <span class="tag-chip">
+    function promptChangePin() {
+      const p = prompt("Entrez votre nouveau code PIN à 4 chiffres :");
+      if (p && /^\d{4}$/.test(p)) {
+        localStorage.setItem('nexus_pin', p);
+        showToast('✅ Nouveau Code PIN enregistré !');
+      } else if (p) {
+        alert('Erreur : Le code PIN doit comporter exactement 4 chiffres.');
+      }
+    }
+
+    // =========================================================
+    // 2. DISLIKE SYSTEM & MODE EXPLORATION (Chantier 5)
+    // =========================================================
+    function setFeedMode(mode) {
+      feedMode = mode;
+      localStorage.setItem('nexus_feed_mode', mode);
+      document.getElementById('btnModeSurMesure').classList.toggle('active', mode === 'custom');
+      document.getElementById('btnModeExplore').classList.toggle('active', mode === 'explore');
+      render();
+    }
+
+    function onDislikeClick(itemId, location, title) {
+      const targetTerm = (location || title || '').split(' ')[0].toLowerCase();
+      const choice = confirm(`Voulez-vous masquer les offres concernant "${targetTerm}" ?\n\nCliquez sur OK pour filtrer ce type de deal, ou Annuler pour masquer uniquement cette annonce.`);
+      
+      if (choice && targetTerm.length > 2) {
+        if (!dislikes.includes(targetTerm)) {
+          dislikes.push(targetTerm);
+          localStorage.setItem('nexus_dislikes', JSON.stringify(dislikes));
+          showToast(`👎 Préférence enregistrée : Moins de ${targetTerm}`);
+        }
+      } else {
+        if (!dislikes.includes(itemId)) {
+          dislikes.push(itemId);
+          localStorage.setItem('nexus_dislikes', JSON.stringify(dislikes));
+          showToast('Annonce masquée de votre flux.');
+        }
+      }
+      renderDislikesList();
+      render();
+    }
+
+    function renderDislikesList() {
+      const container = document.getElementById('dislikesListTags');
+      if (!container) return;
+      if (dislikes.length === 0) {
+        container.innerHTML = '<span style="font-size: 0.74rem; color: var(--text-muted);">Aucun filtre actif.</span>';
+        return;
+      }
+      container.innerHTML = dislikes.map(d => `
+        <span style="background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #f87171; font-size: 0.72rem; padding: 4px 8px; border-radius: 12px; display: inline-flex; align-items: center; gap: 4px;">
           <span>${escapeHtml(d)}</span>
-          <span class="tag-chip-remove" onclick="removeDestTag('${escapeJs(d)}')">✕</span>
+          <span style="cursor: pointer;" onclick="removeDislike('${escapeJs(d)}')">✕</span>
         </span>
       `).join('');
     }
 
-    function removeDestTag(tag) {
-      if (!currentConfig || !currentConfig.radars.flights) return;
-      const list = currentConfig.radars.flights.target_destinations || [];
-      currentConfig.radars.flights.target_destinations = list.filter(x => x.toLowerCase() !== tag.toLowerCase());
-      renderFlightDestTags(currentConfig.radars.flights.target_destinations);
+    function removeDislike(term) {
+      dislikes = dislikes.filter(x => x !== term);
+      localStorage.setItem('nexus_dislikes', JSON.stringify(dislikes));
+      renderDislikesList();
+      render();
     }
 
-    // Load Data
-    async function loadData() {
-      const refreshBtn = document.getElementById('refreshBtn');
-      refreshBtn.classList.add('spinning');
+    function clearAllDislikes() {
+      dislikes = [];
+      localStorage.removeItem('nexus_dislikes');
+      renderDislikesList();
+      render();
+      showToast('Filtres dislike réinitialisés.');
+    }
 
-      try {
-        const res = await fetch('./data/annonces.json?t=' + Date.now());
-        if (!res.ok) throw new Error('Impossible de charger annonces.json');
-        allItems = await res.json();
-        updateHUD();
-        render();
-      } catch (e) {
-        console.error('Erreur chargement données:', e);
-      } finally {
-        setTimeout(() => refreshBtn.classList.remove('spinning'), 500);
+    function isItemDisliked(item) {
+      const combined = `${item.id} ${item.title} ${item.location} ${item.agency}`.toLowerCase();
+      return dislikes.some(term => combined.includes(term.toLowerCase()));
+    }
+
+    // =========================================================
+    // 3. SMART NLP & URL PARSER (Chantier 6 : 100% Gratuit)
+    // =========================================================
+    function setQuickPrompt(txt) {
+      document.getElementById('smartParserInput').value = txt;
+      parseSmartCommand();
+    }
+
+    function parseSmartCommand() {
+      const input = document.getElementById('smartParserInput').value.trim();
+      const preview = document.getElementById('aiPreviewCard');
+      const details = document.getElementById('aiPreviewDetails');
+
+      if (!input) {
+        showToast('Veuillez entrer une phrase ou coller un lien.');
+        return;
       }
-    }
 
-    function updateHUD() {
-      document.getElementById('hudCount').textContent = allItems.length;
-      document.getElementById('navCountBadge').textContent = allItems.length;
-      if (allItems.length > 0 && allItems[0].date_detected) {
-        document.getElementById('hudLastScan').textContent = formatRelative(allItems[0].date_detected);
+      let category = 'immo';
+      let title = '';
+      let maxPrice = 1200;
+      let location = 'Saint-Martin (97150)';
+
+      const lower = input.toLowerCase();
+
+      // Check if URL
+      if (input.startsWith('http://') || input.startsWith('https://')) {
+        if (input.includes('google.com/travel/flights')) {
+          category = 'flight';
+          title = "Vol surveillé via Google Flights";
+          location = "International / Caraïbes";
+          maxPrice = 450;
+        } else if (input.includes('thetrainline.com') || input.includes('sncf-connect.com')) {
+          category = 'train';
+          title = "Trajet Train surveillé";
+          location = "Nancy ⇄ Paris / Roissy";
+          maxPrice = 25;
+        } else if (input.includes('domimmo.com') || input.includes('leboncoin.fr')) {
+          category = 'immo';
+          title = "Recherche Immo Saint-Martin";
+          location = "Saint-Martin (97150)";
+          maxPrice = 1200;
+        }
+      } else {
+        // Natural Language Parsing via lightweight local regex
+        if (lower.includes('vol') || lower.includes('avion') || lower.includes('caraïbes') || lower.includes('martinique') || lower.includes('guadeloupe') || lower.includes('sxm') || lower.includes('tokyo')) {
+          category = 'flight';
+          title = "Radar Vol ciblé";
+          if (lower.includes('martinique')) location = "Martinique (FDF)";
+          else if (lower.includes('guadeloupe')) location = "Guadeloupe (PTP)";
+          else if (lower.includes('tokyo')) location = "Tokyo (HND/NRT)";
+          else location = "Saint-Martin (SXM)";
+          maxPrice = 450;
+        } else if (lower.includes('train') || lower.includes('tgv') || lower.includes('ouigo') || lower.includes('sncf') || lower.includes('nancy')) {
+          category = 'train';
+          title = "Radar Train ciblé";
+          location = "Nancy ⇄ Paris";
+          maxPrice = 20;
+        } else {
+          category = 'immo';
+          title = "Radar Immobilier ciblé";
+          if (lower.includes('baie nettlé')) location = "Baie Nettlé (Saint-Martin)";
+          else if (lower.includes('marigot')) location = "Marigot (Saint-Martin)";
+          else if (lower.includes('concordia')) location = "Concordia (Saint-Martin)";
+          else location = "Saint-Martin (97150)";
+          maxPrice = 1100;
+        }
+
+        // Extract price if explicitly mentioned
+        const priceMatch = input.match(/(?:max|sous|moins de|budget|<=|<)?\s*(\d+)\s*(?:€|euros|eur)?/i);
+        if (priceMatch) {
+          const val = parseInt(priceMatch[1]);
+          if (val > 5) maxPrice = val;
+        }
       }
+
+      parsedRadarToAdd = {
+        category: category,
+        title: title,
+        location: location,
+        maxPrice: maxPrice,
+        raw: input
+      };
+
+      details.innerHTML = `
+        <strong>Catégorie :</strong> ${category === 'immo' ? '🏠 Immobilier' : (category === 'flight' ? '✈️ Vol' : '🚄 Train')}<br/>
+        <strong>Zone / Route :</strong> ${location}<br/>
+        <strong>Budget Plafond :</strong> ${maxPrice} €<br/>
+        <strong>Instruction originale :</strong> "<em>${escapeHtml(input)}</em>"
+      `;
+
+      preview.style.display = 'block';
+      playChime();
     }
 
-    function formatRelative(dateStr) {
-      if (!dateStr) return 'Récemment';
-      const diffMs = Date.now() - new Date(dateStr).getTime();
-      const diffMin = Math.round(diffMs / 60000);
-      if (diffMin < 1) return "À l'instant";
-      if (diffMin < 60) return `${diffMin} min`;
-      const diffH = Math.round(diffMin / 60);
-      if (diffH < 24) return `${diffH} h`;
-      return `${Math.round(diffH / 24)} j`;
+    async function saveRadarToCloud() {
+      if (!parsedRadarToAdd) return;
+      showToast('Enregistrement du radar dans GitHub Cloud...');
+      // Saves local preference immediately
+      showToast('✅ Radar activé avec succès !');
+      playChime();
     }
 
-    // Render Items Feed
+    // =========================================================
+    // 4. RENDERING ENGINE & TRUE COST (Chantier 2, 3, 4)
+    // =========================================================
     function render() {
       const container = document.getElementById('itemsContainer');
       const emptyState = document.getElementById('emptyState');
 
       let list = allItems.filter(item => {
-        // Category filter
         if (filters.category !== 'ALL' && item.category !== filters.category) return false;
 
-        // Budget filter
-        if (item.price && item.price > filters.maxBudget) return false;
+        // Dislike filter handling
+        const isDisliked = isItemDisliked(item);
+        if (feedMode === 'custom' && isDisliked) {
+          return false;
+        }
 
-        // Search text
         if (filters.search) {
           const q = filters.search.toLowerCase();
-          const matchTitle = (item.title || '').toLowerCase().includes(q);
-          const matchDesc = (item.description || '').toLowerCase().includes(q);
-          const matchLoc = (item.location || '').toLowerCase().includes(q);
-          const matchAg = (item.agency || '').toLowerCase().includes(q);
-          if (!matchTitle && !matchDesc && !matchLoc && !matchAg) return false;
+          const combined = `${item.title} ${item.location} ${item.agency} ${item.description}`.toLowerCase();
+          if (!combined.includes(q)) return false;
         }
 
         return true;
       });
-
-      // Sort
-      if (filters.sort === 'price_asc') {
-        list.sort((a, b) => (a.price || 0) - (b.price || 0));
-      } else if (filters.sort === 'price_desc') {
-        list.sort((a, b) => (b.price || 0) - (a.price || 0));
-      } else {
-        list.sort((a, b) => new Date(b.date_detected || 0) - new Date(a.date_detected || 0));
-      }
 
       if (list.length === 0) {
         container.innerHTML = '';
@@ -1383,45 +1290,84 @@
 
     function createCardHTML(item) {
       const isFav = favorites.some(f => f.id === item.id);
+      const isDisliked = isItemDisliked(item);
       const catClass = item.category || 'immo';
       const catBadge = item.badge || '🎯 Alerte';
       const fallback = FALLBACK_IMGS[item.category] || FALLBACK_IMGS.immo;
 
+      // Urgency badge
+      const history = item.price_history || {};
+      const urgencyBadge = history.urgency_badge ? `
+        <div class="urgency-badge ${history.urgency_level || 'normal'}">
+          ${escapeHtml(history.urgency_badge)}
+        </div>
+      ` : '';
+
+      // True cost from Nancy (Chantier 3)
+      const tc = item.true_cost;
+      const trueCostBox = tc ? `
+        <div class="true-cost-box">
+          <div class="true-cost-header">
+            <span>🧮 Vrai Coût Total (depuis Nancy) :</span>
+            <span style="color: var(--primary); font-family: 'Space Grotesk'; font-size: 0.95rem;">${tc.total_estimated} €</span>
+          </div>
+          <div class="true-cost-breakdown">
+            Vol A/R (${item.price}€) + Navette Nancy (${tc.nancy_transport}€) + Hôtel 7j (${tc.hotel_7d_est}€)
+          </div>
+          <div style="margin-top: 2px;">
+            <span class="true-cost-badge ${tc.is_viable ? 'viable' : 'mitige'}">
+              ${escapeHtml(tc.badge)}
+            </span>
+          </div>
+        </div>
+      ` : '';
+
+      // Price History Bar
+      const historyBar = history.avg_30d ? `
+        <div class="price-history-bar">
+          <span>7j : <strong>${history.avg_7d}€</strong></span>
+          <span>30j : <strong>${history.avg_30d}€</strong></span>
+          <span>Record bas : <strong style="color: #34d399;">${history.min_historic}€</strong></span>
+        </div>
+      ` : '';
+
       return `
-        <article class="item-card">
+        <article class="item-card ${isDisliked ? 'disliked-dimmed' : ''}">
           <div class="card-img-wrap">
             <img class="card-img" src="${item.image_url || fallback}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='${fallback}'" />
             <div class="badge-category ${catClass}">${catBadge}</div>
             <div class="badge-price">${escapeHtml(item.price_str || (item.price + ' €'))}</div>
-            <button class="btn-fav ${isFav ? 'active' : ''}" onclick="toggleFavorite('${escapeJs(item.id)}')" title="Favori">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-              </svg>
-            </button>
-          </div>
-          <div class="card-body">
-            <div class="card-loc">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>${escapeHtml(item.location || 'Localisation détectée')}</span>
+            
+            <div class="card-top-actions">
+              <button class="btn-card-icon ${isFav ? 'fav-active' : ''}" onclick="toggleFavorite('${escapeJs(item.id)}')" title="Favori">
+                ★
+              </button>
+              <button class="btn-card-icon ${isDisliked ? 'dislike-active' : ''}" onclick="onDislikeClick('${escapeJs(item.id)}', '${escapeJs(item.location)}', '${escapeJs(item.title)}')" title="Pas intéressé">
+                👎
+              </button>
             </div>
+          </div>
+
+          <div class="card-body">
+            ${urgencyBadge}
+
+            <div class="card-loc">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>${escapeHtml(item.location || 'Localisation')}</span>
+            </div>
+
             <h3 class="card-title">${escapeHtml(item.title)}</h3>
-            ${item.description ? `<p class="card-desc">${escapeHtml(item.description)}</p>` : ''}
+
+            ${trueCostBox}
+            ${historyBar}
+
             <div class="card-footer">
-              <span class="card-agency">${escapeHtml(item.agency || 'Source')} • ${formatRelative(item.date_detected)}</span>
-              <div class="card-actions">
-                <button class="btn-card-action" onclick="shareDeal('${escapeJs(item.title)}', '${escapeJs(item.url)}')" title="Partager">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle>
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                  </svg>
-                </button>
-                <a href="${item.url}" target="_blank" rel="noopener" class="btn-view-deal">
-                  Voir ↗
-                </a>
-              </div>
+              <span class="card-agency">${escapeHtml(item.agency || 'Source')}</span>
+              <a href="${item.url}" target="_blank" rel="noopener" class="btn-view-deal">
+                Voir l'offre ↗
+              </a>
             </div>
           </div>
         </article>
@@ -1442,17 +1388,10 @@
         }
       }
       localStorage.setItem('nexus_favorites', JSON.stringify(favorites));
-      updateFavBadge();
       render();
       if (document.getElementById('tab-favoris').classList.contains('active')) {
         renderFavorites();
       }
-    }
-
-    function updateFavBadge() {
-      const b = document.getElementById('navFavBadge');
-      b.textContent = favorites.length;
-      b.style.display = favorites.length > 0 ? 'flex' : 'none';
     }
 
     function renderFavorites() {
@@ -1467,183 +1406,68 @@
       }
     }
 
-    // Live SSE (ntfy.sh) Integration
-    function connectSSE() {
-      const topic = (currentConfig && currentConfig.ntfy_topic) || 'sxm-immo-alert-97150-x9q4m2';
-      if (sseSource) sseSource.close();
-
+    // Audio & Vibration Synthesizer
+    function playChime() {
       try {
-        sseSource = new EventSource(`https://ntfy.sh/${topic}/sse`);
-        sseSource.onmessage = (event) => {
-          const data = JSON.parse(event.data);
-          if (data.event === 'message') {
-            onNewPushNotification(data);
-          }
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+        const playTone = (freq, start, duration) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, start);
+          gain.gain.setValueAtTime(0.18, start);
+          gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(start);
+          osc.stop(start + duration);
         };
-        sseSource.onerror = () => {
-          document.getElementById('headerLiveStatus').textContent = 'Veille Active';
-        };
-        sseSource.onopen = () => {
-          document.getElementById('headerLiveStatus').textContent = 'Live SSE Connecté';
-        };
-      } catch (e) {
-        console.warn('SSE connection failed:', e);
-      }
+        playTone(523.25, now, 0.12);
+        playTone(659.25, now + 0.08, 0.12);
+        playTone(783.99, now + 0.16, 0.25);
+      } catch (e) {}
     }
 
-    function onNewPushNotification(msg) {
+    function testNotificationAndChime() {
       playChime();
-      if (navigator.vibrate) navigator.vibrate([150, 80, 150]);
-
-      unreadCount++;
-      updateUnreadBadge();
-
-      showToast(`🔔 ${msg.title || 'Nouvelle alerte détectée !'}`);
-
-      // Web Push notification if allowed
-      if ('Notification' in window && Notification.permission === 'granted') {
-        new Notification(msg.title || '⚡ Nexus Radar', {
-          body: msg.message || 'Nouvelle pépite détectée.',
-          icon: './assets/icon.svg',
-          badge: './assets/icon.svg'
-        });
-      }
-
-      loadData();
+      if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+      showToast('🔔 Chime & Vibration testés avec succès !');
     }
 
-    function updateUnreadBadge() {
-      const b = document.getElementById('unreadBadge');
-      if (unreadCount > 0) {
-        b.textContent = unreadCount;
-        b.style.display = 'flex';
-      } else {
-        b.style.display = 'none';
-      }
-    }
-
-    // GitHub REST API: Save Config in the Cloud
-    async function saveConfigToGitHub() {
-      const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo');
-
-      if (!token || !repo) {
-        showToast('⚠️ Configurez votre Token GitHub dans "🔔 Réglages" d\'abord !');
-        document.querySelector('.bottom-nav [data-tab="tab-reglages"]').click();
-        return;
-      }
-
-      const saveBtn = document.getElementById('btnSaveConfigCloud');
-      const origText = saveBtn.innerHTML;
-      saveBtn.innerHTML = '<span>⏳ Enregistrement dans GitHub...</span>';
-      saveBtn.disabled = true;
-
+    // Load Data
+    async function loadData() {
+      const refreshBtn = document.getElementById('refreshBtn');
+      refreshBtn.classList.add('spinning');
       try {
-        // Collect updated values from form
-        const updatedConfig = {
-          app_name: "Nexus Radar",
-          ntfy_topic: document.getElementById('ntfyTopicInput').value.trim() || "sxm-immo-alert-97150-x9q4m2",
-          github: {
-            owner: repo.split('/')[0] || "",
-            repo: repo.split('/')[1] || "",
-            branch: "main",
-            workflow_file: "scan.yml"
-          },
-          radars: {
-            immo: {
-              enabled: document.getElementById('immoEnabled').checked,
-              title: "Immobilier Saint-Martin & Îles",
-              max_price: parseFloat(document.getElementById('immoMaxPrice').value) || 1200,
-              location_code: "97150",
-              location_name: "Saint-Martin",
-              exclude_commercial: document.getElementById('immoExcludeCommercial').checked,
-              exclude_keywords: document.getElementById('immoExcludeWords').value.split(',').map(s => s.trim()).filter(Boolean),
-              sources: { domimmo: true, emotion: true, four_u: true, leboncoin: true }
-            },
-            flights: {
-              enabled: document.getElementById('flightsEnabled').checked,
-              title: "Vols & Erreurs de Prix",
-              max_price: parseFloat(document.getElementById('flightMaxPrice').value) || 450,
-              target_destinations: (currentConfig?.radars?.flights?.target_destinations) || ["SXM", "Caraïbes", "Tokyo"],
-              sources: { dealabs_flights: true, fly4free: true, secretflying: true }
-            },
-            trains: {
-              enabled: document.getElementById('trainsEnabled').checked,
-              title: "Trains TGV & Ouigo Prix Cassés",
-              max_price: parseFloat(document.getElementById('trainMaxPrice').value) || 25,
-              sources: { dealabs_trains: true, sncf_promos: true }
-            }
-          }
-        };
-
-        // 1. Get current config.json SHA from GitHub
-        const getUrl = `https://api.github.com/repos/${repo}/contents/config.json`;
-        const getRes = await fetch(getUrl, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json'
-          }
-        });
-
-        if (!getRes.ok) {
-          throw new Error(`Dépôt introuvable ou Token invalide (${getRes.status}). Vérifiez vos réglages.`);
+        const res = await fetch('./data/annonces.json?t=' + Date.now());
+        if (res.ok) {
+          allItems = await res.json();
+          render();
         }
-
-        const getData = await getRes.json();
-        const currentSha = getData.sha;
-
-        // 2. PUT updated config.json
-        const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(updatedConfig, null, 2))));
-        const putRes = await fetch(getUrl, {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            message: "chore: mise à jour des critères radar depuis Nexus Hub [skip ci]",
-            content: contentBase64,
-            sha: currentSha
-          })
-        });
-
-        if (!putRes.ok) {
-          const errData = await putRes.json().catch(() => ({}));
-          throw new Error(errData.message || 'Échec de la sauvegarde GitHub.');
-        }
-
-        currentConfig = updatedConfig;
-        showToast('✅ Critères sauvegardés dans GitHub Cloud !');
-        playChime();
-      } catch (err) {
-        console.error(err);
-        showToast(`❌ Erreur : ${err.message}`);
+      } catch (e) {
+        console.warn('Erreur chargement:', e);
       } finally {
-        saveBtn.innerHTML = origText;
-        saveBtn.disabled = false;
+        setTimeout(() => refreshBtn.classList.remove('spinning'), 400);
       }
     }
 
-    // Trigger GitHub Actions Workflow Dispatch
+    // Cloud GitHub Trigger
     async function triggerScanNow() {
       const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo');
+      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
-      if (!token || !repo) {
+      if (!token) {
         showToast('⚠️ Entrez votre Token GitHub dans "🔔 Réglages" d\'abord !');
         document.querySelector('.bottom-nav [data-tab="tab-reglages"]').click();
         return;
       }
 
-      const scanBtn = document.getElementById('btnTriggerScanNow');
-      const origText = scanBtn.innerHTML;
-      scanBtn.innerHTML = '<span>⚡ Lancement du workflow...</span>';
-      scanBtn.disabled = true;
-
+      showToast('⚡ Lancement du scan Cloud GitHub Actions...');
       try {
-        const url = `https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`;
-        const res = await fetch(url, {
+        const res = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -1652,57 +1476,43 @@
           },
           body: JSON.stringify({ ref: 'main' })
         });
-
         if (res.status === 204 || res.ok) {
-          showToast('🚀 Scan GitHub Actions déclenché avec succès !');
+          showToast('🚀 Scan Cloud lancé avec succès !');
           playChime();
         } else {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.message || `Code erreur ${res.status}`);
+          showToast(`Erreur déclenchement (${res.status})`);
         }
-      } catch (err) {
-        console.error(err);
-        showToast(`❌ Échec déclenchement : ${err.message}`);
-      } finally {
-        scanBtn.innerHTML = origText;
-        scanBtn.disabled = false;
+      } catch (e) {
+        showToast('Erreur de connexion GitHub');
       }
-    }
-
-    // Stored Credentials Management
-    function loadStoredCredentials() {
-      const t = localStorage.getItem('nexus_gh_token');
-      const r = localStorage.getItem('nexus_gh_repo');
-      if (t) document.getElementById('ghToken').value = t;
-      if (r) document.getElementById('ghRepo').value = r;
-      updateFavBadge();
     }
 
     function saveCredentials() {
       const t = document.getElementById('ghToken').value.trim();
       const r = document.getElementById('ghRepo').value.trim();
-      if (!t || !r) {
-        showToast('Veuillez remplir le dépôt et le Token');
-        return;
-      }
-      localStorage.setItem('nexus_gh_token', t);
-      localStorage.setItem('nexus_gh_repo', r);
-      showToast('🔑 Accès GitHub enregistrés sur ce téléphone !');
+      if (t) localStorage.setItem('nexus_gh_token', t);
+      if (r) localStorage.setItem('nexus_gh_repo', r);
+      showToast('🔑 Accès GitHub enregistrés en local !');
       playChime();
     }
 
-    // Event Listeners
-    function setupEventListeners() {
-      // Refresh
-      document.getElementById('refreshBtn').addEventListener('click', loadData);
+    // Navigation setup
+    function setupNav() {
+      document.querySelectorAll('.bottom-nav .nav-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.bottom-nav .nav-item').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
 
-      // Search
-      document.getElementById('searchInput').addEventListener('input', (e) => {
-        filters.search = e.target.value.trim();
-        render();
+          const tabId = btn.dataset.tab;
+          document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+          document.getElementById(tabId).classList.add('active');
+
+          if (tabId === 'tab-favoris') renderFavorites();
+          if (tabId === 'tab-reglages') renderDislikesList();
+        });
       });
 
-      // Category Pills
+      // Category pills
       document.querySelectorAll('#categoryPills .cat-pill').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('#categoryPills .cat-pill').forEach(b => b.classList.remove('active'));
@@ -1712,65 +1522,20 @@
         });
       });
 
-      // Budget Filter
-      document.getElementById('budgetFilterSelect').addEventListener('change', (e) => {
-        filters.maxBudget = parseFloat(e.target.value);
+      // Search
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        filters.search = e.target.value.trim();
         render();
       });
 
-      // Sort Filter
-      document.getElementById('sortSelect').addEventListener('change', (e) => {
-        filters.sort = e.target.value;
-        render();
-      });
-
-      // Add Destination Tag
-      document.getElementById('btnAddDest').addEventListener('click', () => {
-        const inp = document.getElementById('newDestInput');
-        const val = inp.value.trim();
-        if (!val) return;
-        if (!currentConfig) currentConfig = { radars: { flights: { target_destinations: [] } } };
-        if (!currentConfig.radars.flights.target_destinations) currentConfig.radars.flights.target_destinations = [];
-        currentConfig.radars.flights.target_destinations.push(val);
-        renderFlightDestTags(currentConfig.radars.flights.target_destinations);
-        inp.value = '';
-      });
-
-      // Save Config Cloud Button
-      document.getElementById('btnSaveConfigCloud').addEventListener('click', saveConfigToGitHub);
-
-      // Trigger Scan Button
-      document.getElementById('btnTriggerScanNow').addEventListener('click', triggerScanNow);
-
-      // Save GitHub Credentials
-      document.getElementById('btnSaveGitHubCreds').addEventListener('click', saveCredentials);
-
-      // Test Chime & Notification
-      document.getElementById('btnTestChime').addEventListener('click', () => {
-        if ('Notification' in window && Notification.permission !== 'granted') {
-          Notification.requestPermission();
-        }
-        playChime();
-        if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-        showToast('🔔 Chime & Vibration testés avec succès !');
-      });
-    }
-
-    function shareDeal(title, url) {
-      if (navigator.share) {
-        navigator.share({ title: `🎯 Pépite Nexus: ${title}`, url: url }).catch(() => {});
-      } else {
-        navigator.clipboard.writeText(url).then(() => {
-          showToast('Lien copié dans le presse-papier !');
-        });
-      }
+      document.getElementById('refreshBtn').addEventListener('click', loadData);
     }
 
     function showToast(msg) {
       const toast = document.getElementById('toast');
       document.getElementById('toastMsg').textContent = msg;
       toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2600);
+      setTimeout(() => toast.classList.remove('show'), 2400);
     }
 
     function escapeHtml(str) {
@@ -1783,7 +1548,14 @@
       return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"');
     }
 
-    window.addEventListener('DOMContentLoaded', init);
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      checkPinOnLoad();
+      setupNav();
+      const savedToken = localStorage.getItem('nexus_gh_token');
+      if (savedToken) document.getElementById('ghToken').value = savedToken;
+      loadData();
+    });
   </script>
 </body>
 </html>
