@@ -1,95 +1,70 @@
-# 🛰️ NEXUS RADAR V2 - Autonomous Multi-Category Hunting Hub
+# 🛰️ NEXUS RADAR V3 - Architecture Double Univers
 
-Hub Personnel Multi-Radars **100 % Serverless, gratuit et autonome**, conçu pour surveiller 24h/24 :
-1. 🏠 **Radar Immobilier** : Locations à l'année à **Saint-Martin (97150)** (DOMimmo, 4U Real Estate, Emotion Real Estate, SXMCapri, Leboncoin) sous loyer cible.
-2. ✈️ **Radar Vols Directs & Erreurs de Prix** : Google Flights (CDG, ORY, LUX, BSL, FRA), Secret Flying, Air Caraïbes / Corsair / French Bee vers SXM/SFG avec **Calculateur de Vrai Coût depuis Nancy**.
-3. 🚄 **Radar Trains & TGV** : Lignes prioritaires SNCF / Ouigo (Nancy <-> Paris Est, Nancy <-> Roissy CDG 2, Nancy <-> Massy TGV) dès 10 €.
+Hub Personnel **100 % Serverless, gratuit et autonome**, structuré en **2 Univers Dédiés** au sein de la même application mobile PWA :
 
-L'application mobile PWA vous permet de **tout piloter directement depuis votre smartphone sans toucher au code**, protégée par code PIN et synchronisée via la **GitHub REST API**.
+1. 🏠 **UNIVERS 1 : IMMOBILIER MONDIAL** (Saint-Martin 97150, France, Monde)
+2. ✈️ **UNIVERS 2 : VOYAGE & PLANIFICATEUR INTELLIGENT** (Départ Nancy Hub)
 
 ---
 
-## ⚡ Les Nouveautés Majeures de la V2
+## ⚡ Les Fonctionnalités Majeures de la V3
 
-### 1. 🔒 Sécurité & Écran de Verrouillage PIN
-- **Écran de verrouillage PIN à 4 chiffres** : À la première ouverture de l'application, définissez votre code secret à 4 chiffres (stocké chiffré dans le `localStorage` de votre téléphone). Impossible pour un tiers d'accéder au Hub ou de modifier vos critères sans votre code.
-- **Zéro Token dans le code** : Aucun token ni credential n'est écrit dans le dépôt. Le GitHub Personal Access Token (PAT) reste strictement cantonné au navigateur de votre appareil.
-
-### 2. 🚀 Refonte UI/UX 60 FPS
-- **Header ultra-léger & fluide** : Suppression de la bannière SVG lourde, intégration native avec `safe-area-inset-top` pour les encoches Android/iPhone.
-- **Suppression des filtres CSS lourds** (`backdrop-filter`) : Défilement fluide à 60 images/seconde sur réseau 4G/5G mobile.
-
-### 3. 🎯 True Cost Engine : Vrai Coût depuis Nancy
-Pour chaque offre de vol au départ de Paris, Luxembourg, Bâle ou Francfort, l'application calcule le **coût total réel** pour un départ depuis Nancy :
-$$\text{Budget Total} = \text{Billet d'avion A/R} + \text{Train A/R Nancy}\,(20€-65€) + \text{Hôtel 7 nuits}\,(\ge 8/10)$$
-- 🟢 **Badge "Rentable depuis Nancy"** : L'économie réalisée surpasse largement le trajet de pré-acheminement.
-- 🔴 **Badge "Fausse bonne affaire"** : Le coût du train/navette annule l'intérêt du vol discount.
-
-### 4. 📈 Historique des Prix & Détecteur d'Urgence (J-7 / J-30)
-- Suivi de l'évolution des prix par route aérienne, ligne TGV et type de logement à Saint-Martin.
-- Mini-comparatif : **Prix actuel** vs **Moyenne 7j** vs **Moyenne 30j** vs **Minimum historique**.
-- Badges d'urgence dynamiques :
-  - 🟢 **PÉPITE HISTORIQUE (-XX% vs mois dernier — URGENT)** : Anomalie de prix réelle.
-  - 🟠 **PRIX CLASSIQUE** : Tarif standard sans urgence.
-  - 🔴 **PRIX ÉLEVÉ** : Ne pas acheter maintenant.
-
-### 5. 👎 Dislike Intelligent & Mode Exploration
-- Bouton **👎 Pas intéressé** sur chaque carte : mémorise vos désintérêts (ex: "Moins de : Canada", "Trop cher", "Période inadaptée").
-- Bascule en 1 tap en haut du flux :
-  - 🎯 **Mode Sur-Mesure** : Vos alertes filtrées selon vos critères et préférences.
-  - 🌍 **Mode Exploration** : Réaffiche l'intégralité des opportunités détectées sans exclusion.
-
-### 6. 🧠 Assistant de Configuration IA Local (100% Gratuit)
-Dans l'onglet **🎛️ Radars**, créez ou ajustez vos recherches sans taper de JSON :
-- **Requête en langage naturel** : Entrez simplement *"Trouve-moi un T2 à Saint-Martin Baie Nettlé max 1100€"* ou *"Vol pour New York depuis Paris max 300€"*. Le moteur d'analyse NLP local prépare la configuration instantanément.
-- **Analyseur d'URL** : Collez un lien Google Flights, Leboncoin ou DOMimmo pour en extraire automatiquement les filtres de route et de prix.
-- **Synchronisation Cloud en 1 tap** : Mise à jour immédiate de `config.json` via l'API GitHub.
+### 1. 🔄 Switch Double Univers Instantané (60 FPS)
+- Sélecteur au sommet de l'application : `[ 🏠 IMMOBILIER MONDIAL ]` et `[ ✈️ VOYAGE & ÉVASION ]`.
+- Basculement instantané de l'interface, des filtres, du catalogue de favoris et des radars sans rechargement de page.
 
 ---
 
-## 📱 Utilisation de l'Application
-
-- **Lien Web & PWA** : [https://darkts.github.io/nexus-radar/](https://darkts.github.io/nexus-radar/)
-- **Installation sur Smartphone** :
-  - **Android (Chrome)** : Menu `⋮` > *Installer l'application* ou *Ajouter à l'écran d'accueil*.
-  - **iOS (Safari)** : Bouton *Partager* > *Sur l'écran d'accueil*.
-
----
-
-## 🔔 Notifications Push Mobiles (ntfy.sh)
-
-1. Installez l'application gratuite **ntfy** ([Google Play](https://play.google.com/store/apps/details?id=io.heckel.ntfy) ou [App Store](https://apps.apple.com/app/ntfy/id1625396347)).
-2. Abonnez-vous au canal :
-   ```
-   sxm-immo-alert-97150-x9q4m2
-   ```
-3. Les notifications arrivent avec l'icône de catégorie (🏠, ✈️, 🚄), le prix, la photo et un bouton direct pour ouvrir le deal en 1 tap.
+### 2. 🏠 UNIVERS 1 : IMMOBILIER MONDIAL
+- 🗺️ **Carte Interactive Leaflet.js + OpenStreetMap (100% Gratuite)** :
+  - Exploration géographique fluide sans clé API ni frais.
+  - Recherche par géocodage mondial Nominatim (ex: Saint-Martin, Nancy, Alicante, Bali...).
+  - Rayon de surveillance paramétrable (5, 15, 30, 50 km) avec cercle dynamique.
+  - Marqueurs interactifs avec aperçu photo, loyer, prix au m², commodités et Like / Dislike.
+- 📐 **Filtres Précis & Indicateur Marché** :
+  - Surface minimale (m²), pièces (Studio, T2, T3+), budget max.
+  - Commodités clés : 🛋️ Meublé, ☀️ Terrasse/Balcon, 🏊 Piscine, 🌊 Vue Mer, 🚗 Parking.
+  - Calcul automatique du **prix au m²** vs prix moyen du marché (badge vert : *ex: 🟢 -18% sous le marché*).
+- ⭐ **Catalogue Perso avec Notes Privées** :
+  - Possibilité d'ajouter des notes personnelles sur chaque bien sauvegardé (*"À visiter mardi"*, *"Investissement locatif idéal"*).
+- 👎 **Système de Dislike Intelligent** :
+  - Mémorise vos critères d'exclusion (secteur, surface insuffisante, hors budget) pour affiner les prochaines alertes.
 
 ---
 
-## 🔒 Confidentialité & Passage du Repo en Privé
-
-### Pourquoi le repo est-il public par défaut ?
-Sur GitHub gratuit, **GitHub Pages** (qui héberge l'application web PWA) requiert un dépôt public. Pour héberger GitHub Pages depuis un dépôt privé, un abonnement **GitHub Pro** ($4/mois) ou le pack **GitHub Student Developer** est requis.
-
-### Comment vos données sont-elles protégées en mode public ?
-1. **Écran PIN local** : Toute personne ouvrant votre lien `github.io` tombe sur un cadenas PIN à 4 chiffres bloquant l'affichage.
-2. **Tokens sécurisés** : Votre GitHub Token n'est **JAMAIS** sur GitHub ni dans les commits. Il est stocké uniquement dans le `localStorage` de votre téléphone.
-3. **Annonces publiques** : `data/annonces.json` ne contient que des annonces publiques d'agences et de compagnies de transport.
-
-### Comment passer en Privé si vous avez GitHub Pro ou un hébergement alternatif :
-1. Dans GitHub : **Settings** > tout en bas **Danger Zone** > **Change repository visibility** > **Make private**.
-2. Si vous avez GitHub Pro, Pages continue de fonctionner avec restriction d'accès.
-3. Alternative 100% gratuite et privée : Déployer le dossier front-end sur **Cloudflare Pages** ou **Vercel** relié à votre repo privé en 2 clics.
+### 3. ✈️ UNIVERS 2 : VOYAGE ("FAIS-MOI RÊVER" & NANCY HUB)
+- ✨ **Mode "Fais-moi rêver"** :
+  - Indiquez une période (*Week-end 3 jours*, *1 semaine*, *Vacances d'Hiver*) + votre budget global tout compris.
+  - L'application déniche les meilleures opportunités combinées (TGV au départ de Nancy + Vols réguliers + Hôtels vérifiés ≥ 8.5/10).
+- 🎯 **Mode "Sniper Destination"** :
+  - Surveillance des baisses de prix historiques (J-7 / J-30) sur vos destinations favorites (Saint-Martin SXM, Guadeloupe PTP, Martinique FDF, New York, Tokyo, Italie...).
+- 🧠 **Auto-Apprentissage Like / Dislike** :
+  - Deux dislikes sur une même destination la bannissent automatiquement du flux principal.
+  - Bouton de réinitialisation et switch vers le *Mode Exploration* pour sortir de sa zone de confort.
 
 ---
 
-## 🧪 Tests en Local
+### 4. 📖 PAGE DÉDIÉE : "CARNET DE VOYAGE TOUT COMPRIS"
+En cliquant sur une opportunité de voyage, une vue immersive complète s'ouvre :
+- **Onglet 1 : Le Vrai Coût & Logistique depuis Nancy** :
+  - Trajet étape par étape : TGV Nancy -> Paris/Luxembourg (dès 16€) + Vol direct A/R + Hôtel de charme ≥ 8.5/10.
+  - Explication claire de l'économie réalisée vs prix standard en agence.
+- **Onglet 2 : Activités & Restos Pépites (≥ 4.5★ Google)** :
+  - Liste des meilleures activités sur place (ex: *Snorkeling tortues à Tintamarre*, *Sunset à Baie Rouge*).
+  - Liste des meilleurs restaurants testés et approuvés (ex: *Le Cottage Grand-Case*, *Lolos traditionnels*).
+  - **Bouton ❤️ "Ajouter au planning"** : Intègre l'activité ou le resto dans votre **Programme Jour par Jour** (Jour 1, Jour 2, Jour 3...).
+- **Onglet 3 : Preuve Sociale & Vidéos TikTok Virales** :
+  - Liens et boutons d'ouverture directe vers les vidéos TikTok virales (`https://www.tiktok.com/tag/...`) et Google Maps pour voir la réalité des spots en 1 tap avant d'y aller.
 
-```powershell
-# Exécuter le scan multi-catégories complet (Playwright + APIs)
-python scraper.py
+---
 
-# Envoyer une notification de test sur ntfy.sh
-python scraper.py --test-notify
-```
+### 5. 🔒 Sécurité & Confidentialité
+- **Code PIN à 4 chiffres local** : Verrouillage à l'ouverture de l'application sur smartphone.
+- **Zéro Token dans Git** : Vos accès API restent cantonnés au navigateur de votre téléphone.
+
+---
+
+## 📱 Accès à l'Application
+
+- **Lien Web & PWA :** [https://darkts.github.io/nexus-radar/](https://darkts.github.io/nexus-radar/)
+- **Canal Push ntfy.sh :** `sxm-immo-alert-97150-x9q4m2`

@@ -1,5 +1,6 @@
 {
-  "app_name": "Nexus Radar",
+  "app_name": "Nexus Radar V3",
+  "version": "3.0.0",
   "ntfy_topic": "sxm-immo-alert-97150-x9q4m2",
   "github": {
     "owner": "Darkts",
@@ -7,13 +8,59 @@
     "branch": "main",
     "workflow_file": "scan.yml"
   },
-  "radars": {
-    "immo": {
-      "enabled": true,
-      "title": "Immobilier Saint-Martin & Îles",
+  "univers_immo": {
+    "enabled": true,
+    "title": "Immobilier Mondial & Îles",
+    "active_zone": "Saint-Martin (97150)",
+    "zones": [
+      {
+        "id": "sxm_97150",
+        "name": "Saint-Martin (97150)",
+        "country": "France / Caraïbes",
+        "lat": 18.0731,
+        "lon": -63.0822,
+        "radius_km": 15,
+        "market_avg_m2": 23.5
+      },
+      {
+        "id": "nancy_grand_est",
+        "name": "Nancy & Grand Est",
+        "country": "France",
+        "lat": 48.6921,
+        "lon": 6.1844,
+        "radius_km": 20,
+        "market_avg_m2": 13.2
+      },
+      {
+        "id": "costa_del_sol",
+        "name": "Costa del Sol (Alicante / Malaga)",
+        "country": "Espagne",
+        "lat": 36.5398,
+        "lon": -4.6254,
+        "radius_km": 30,
+        "market_avg_m2": 14.8
+      },
+      {
+        "id": "bali_indonesie",
+        "name": "Bali (Canggu / Ubud)",
+        "country": "Indonésie / Asie",
+        "lat": -8.4095,
+        "lon": 115.1889,
+        "radius_km": 25,
+        "market_avg_m2": 9.5
+      }
+    ],
+    "filters": {
       "max_price": 1200,
-      "location_code": "97150",
-      "location_name": "Saint-Martin",
+      "min_surface": 25,
+      "rooms": "all",
+      "amenities": [
+        "meuble",
+        "terrasse",
+        "piscine",
+        "vue_mer",
+        "parking"
+      ],
       "exclude_commercial": true,
       "exclude_keywords": [
         "saisonnière",
@@ -45,88 +92,138 @@
         "stockage",
         "parking",
         "fonds de commerce"
-      ],
-      "sources": {
-        "domimmo": true,
-        "emotion": true,
-        "four_u": true,
-        "sxmcapri": true,
-        "leboncoin": true
+      ]
+    },
+    "sources": {
+      "domimmo": true,
+      "seloger": true,
+      "bienici": true,
+      "leboncoin": true,
+      "emotion": true,
+      "four_u": true,
+      "sxmcapri": true,
+      "idealista": true
+    }
+  },
+  "univers_voyage": {
+    "enabled": true,
+    "title": "Voyage & Planificateur Intelligent",
+    "departure_city": "Nancy",
+    "departure_hubs": [
+      {
+        "code": "PAR",
+        "name": "Paris CDG/ORY",
+        "train_cost_nancy": 65,
+        "train_time": "1h32"
+      },
+      {
+        "code": "LUX",
+        "name": "Luxembourg (LUX)",
+        "train_cost_nancy": 20,
+        "train_time": "1h15"
+      },
+      {
+        "code": "BSL",
+        "name": "Bâle-Mulhouse (BSL)",
+        "train_cost_nancy": 45,
+        "train_time": "1h40"
+      },
+      {
+        "code": "FRA",
+        "name": "Francfort (FRA)",
+        "train_cost_nancy": 65,
+        "train_time": "2h15"
       }
+    ],
+    "fais_moi_rever": {
+      "enabled": true,
+      "max_total_budget": 450,
+      "periods": [
+        {
+          "id": "weekend_3j",
+          "label": "Week-end (3 jours)",
+          "days": 3
+        },
+        {
+          "id": "semaine_7j",
+          "label": "1 Semaine (7 jours)",
+          "days": 7
+        },
+        {
+          "id": "fevrier_vacances",
+          "label": "Vacances d'Hiver / Février",
+          "days": 7
+        }
+      ]
+    },
+    "sniper_destinations": [
+      {
+        "name": "Saint-Martin (SXM / SFG)",
+        "code": "SXM",
+        "max_flight_price": 450,
+        "hotel_min_rating": 8.5
+      },
+      {
+        "name": "Guadeloupe (PTP)",
+        "code": "PTP",
+        "max_flight_price": 350,
+        "hotel_min_rating": 8.5
+      },
+      {
+        "name": "Martinique (FDF)",
+        "code": "FDF",
+        "max_flight_price": 350,
+        "hotel_min_rating": 8.5
+      },
+      {
+        "name": "New York (JFK/EWR)",
+        "code": "NYC",
+        "max_flight_price": 350,
+        "hotel_min_rating": 8.5
+      },
+      {
+        "name": "Tokyo (HND/NRT)",
+        "code": "TYO",
+        "max_flight_price": 590,
+        "hotel_min_rating": 8.5
+      },
+      {
+        "name": "Italie (Rome / Bologne)",
+        "code": "IT",
+        "max_flight_price": 60,
+        "hotel_min_rating": 8.5
+      }
+    ],
+    "auto_learning": {
+      "disliked_destinations": [],
+      "dislike_threshold_ban": 2,
+      "liked_destinations": []
+    },
+    "sources": {
+      "google_flights": true,
+      "secretflying": true,
+      "aircaraibes_direct": true,
+      "thetrainline": true,
+      "sncf_connect": true
+    }
+  },
+  "radars": {
+    "immo": {
+      "enabled": true,
+      "title": "Immobilier Saint-Martin & Mondial",
+      "max_price": 1200,
+      "location_code": "97150",
+      "location_name": "Saint-Martin"
     },
     "flights": {
       "enabled": true,
       "title": "Vols & Erreurs de Prix",
-      "max_price": 450,
-      "target_destinations": [
-        "SXM",
-        "Saint-Martin",
-        "Sint Maarten",
-        "Guadeloupe",
-        "PTP",
-        "Martinique",
-        "FDF",
-        "Caraïbes",
-        "Antilles",
-        "Tokyo",
-        "Bangkok",
-        "New York"
-      ],
-      "routes": [
-        {
-          "from": "PAR",
-          "to": "SXM",
-          "name": "Paris <-> Saint-Martin (SXM)",
-          "max_price": 490
-        },
-        {
-          "from": "LUX",
-          "to": "SXM",
-          "name": "Luxembourg <-> Saint-Martin",
-          "max_price": 550
-        },
-        {
-          "from": "PAR",
-          "to": "PTP",
-          "name": "Paris <-> Guadeloupe (PTP)",
-          "max_price": 350
-        }
-      ],
-      "sources": {
-        "google_flights": true,
-        "secretflying": true,
-        "aircaraibes_direct": true
-      }
+      "max_price": 450
     },
     "trains": {
       "enabled": true,
       "title": "Trains TGV & Ouigo Prix Cassés",
-      "max_price": 25,
-      "routes": [
-        {
-          "from": "Nancy",
-          "to": "Paris",
-          "name": "Nancy <-> Paris Est",
-          "max_price": 20
-        },
-        {
-          "from": "Nancy",
-          "to": "Roissy CDG",
-          "name": "Nancy <-> Aéroport CDG 2",
-          "max_price": 35
-        },
-        {
-          "from": "Nancy",
-          "to": "Massy TGV",
-          "name": "Nancy <-> Massy TGV",
-          "max_price": 30
-        }
-      ],
-      "sources": {
-        "sncf_connect": true,
-        "ouigo": true,
-        "trainline": true
-      }
+      "max_price": 25
     }
   }
 }
