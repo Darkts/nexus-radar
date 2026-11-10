@@ -2,8 +2,8 @@
   "app_name": "Nexus Radar",
   "ntfy_topic": "sxm-immo-alert-97150-x9q4m2",
   "github": {
-    "owner": "",
-    "repo": "",
+    "owner": "Darkts",
+    "repo": "nexus-radar",
     "branch": "main",
     "workflow_file": "scan.yml"
   },
