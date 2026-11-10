@@ -2342,7 +2342,10 @@
       const req = reqRoom.toLowerCase();
       if (req === 'studio') return r.includes('studio') || r.includes('t1') || r.includes('1 p') || r.includes('f1') || t.includes('studio');
       if (req === 't2') return r.includes('t2') || r.includes('2 p') || r.includes('f2') || t.includes('t2');
-      if (req === 't3') return r.includes('t3') || r.includes('3 p') || r.includes('f3') || t.includes('t3');
+      if (req === 't3' || req === 't3+') {
+        const m = r.match(/(?:t|f)?(\d+)/i);
+        return r.includes('t3') || r.includes('t4') || r.includes('t5') || r.includes('3 p') || r.includes('f3') || t.includes('t3') || (m && parseInt(m[1], 10) >= 3);
+      }
       if (req === 't4' || req === 't4+') {
         const m = r.match(/(\d+)\s*p/i);
         return r.includes('t4') || r.includes('t5') || (m && parseInt(m[1], 10) >= 4);
@@ -2389,7 +2392,8 @@
           const itemAm = (it.amenities || []).map(a => String(a).toLowerCase());
           const textAm = `${it.title || ''} ${it.description || ''}`.toLowerCase();
           for (const req of immoAmenities) {
-            if (!itemAm.includes(req) && !textAm.includes(req)) return false;
+            const reqText = req.replace(/_/g, ' ');
+            if (!itemAm.includes(req) && !itemAm.includes(reqText) && !textAm.includes(reqText)) return false;
           }
         }
 
@@ -2486,7 +2490,7 @@
     function extractClientAmenities(title, desc) {
       const txt = `${title || ''} ${desc || ''}`.toLowerCase();
       const am = [];
-      if (txt.includes('vue mer') || txt.includes('mer ') || txt.includes('lagoon') || txt.includes('ocean')) am.push('vue mer');
+      if (txt.includes('vue mer') || txt.includes('mer ') || txt.includes('lagoon') || txt.includes('ocean')) am.push('vue_mer');
       if (txt.includes('terrasse') || txt.includes('balcon') || txt.includes('varangue')) am.push('terrasse');
       if (txt.includes('piscine') || txt.includes('pool')) am.push('piscine');
       if (txt.includes('parking') || txt.includes('garage') || txt.includes('stationnement')) am.push('parking');
@@ -2636,7 +2640,7 @@
                   roomsArr.forEach(r => {
                     if (r === 'Studio' || r === 'T1') rqSet.add(1);
                     else if (r === 'T2') rqSet.add(2);
-                    else if (r === 'T3') rqSet.add(3);
+                    else if (r === 'T3' || r === 'T3+') { rqSet.add(3); rqSet.add(4); rqSet.add(5); rqSet.add(6); }
                     else if (r === 'T4' || r === 'Maison') { rqSet.add(4); rqSet.add(5); rqSet.add(6); }
                   });
                   if (rqSet.size > 0) filterObj.roomsQuantity = Array.from(rqSet);
