@@ -1,6 +1,6 @@
 {
-  "app_name": "Nexus Radar V5",
-  "version": "5.0.0",
+  "app_name": "Nexus Radar V5.1",
+  "version": "5.1.0",
   "ntfy_topic": "sxm-immo-alert-97150-x9q4m2",
   "github": {
     "owner": "Darkts",
@@ -8,6 +8,61 @@
     "branch": "main",
     "workflow_file": "scan.yml"
   },
+  "radars_immo": [
+    {
+      "id": "r_immo_nancy",
+      "city": "Nancy",
+      "transac": "location",
+      "type": "T2",
+      "minM2": 35,
+      "budget": 700
+    },
+    {
+      "id": "r_immo_sxm",
+      "city": "Saint-Martin (97150)",
+      "transac": "location",
+      "type": "Studio",
+      "minM2": 30,
+      "budget": 950
+    },
+    {
+      "id": "r_immo_nancy_achat",
+      "city": "Nancy Vieille Ville",
+      "transac": "achat",
+      "type": "T3",
+      "minM2": 60,
+      "budget": 180000
+    }
+  ],
+  "radars_voyage": [
+    {
+      "id": "r_voyage_sxm",
+      "depart": "Nancy Hub (Paris/LUX)",
+      "dest": "Saint-Martin SXM",
+      "period": "fevrier",
+      "flexible": true,
+      "budget": 450,
+      "alertType": "package"
+    },
+    {
+      "id": "r_voyage_italie",
+      "depart": "Nancy (Luxembourg LUX)",
+      "dest": "Italie (Bologne / Rome)",
+      "period": "weekend",
+      "flexible": true,
+      "budget": 60,
+      "alertType": "flight"
+    },
+    {
+      "id": "r_voyage_paris",
+      "depart": "Nancy Ville",
+      "dest": "Paris Gare de l'Est",
+      "period": "semaine",
+      "flexible": true,
+      "budget": 20,
+      "alertType": "train"
+    }
+  ],
   "univers_immo": {
     "enabled": true,
     "title": "Immobilier Mondial (Achat & Location)",
@@ -114,32 +169,6 @@
         "name": "Bâle-Mulhouse (BSL)",
         "train_cost_nancy": 45,
         "train_time": "1h40"
-      }
-    ],
-    "fais_moi_rever": {
-      "enabled": true,
-      "max_total_budget": 450
-    },
-    "sniper_destinations": [
-      {
-        "name": "Saint-Martin (SXM / SFG)",
-        "code": "SXM",
-        "max_flight_price": 450
-      },
-      {
-        "name": "Guadeloupe (PTP)",
-        "code": "PTP",
-        "max_flight_price": 350
-      },
-      {
-        "name": "New York (NYC)",
-        "code": "NYC",
-        "max_flight_price": 350
-      },
-      {
-        "name": "Italie (Rome / Bologne)",
-        "code": "IT",
-        "max_flight_price": 60
       }
     ]
   }

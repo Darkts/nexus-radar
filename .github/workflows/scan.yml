@@ -5,7 +5,39 @@ on:
     # Exécution automatique toutes les 15 minutes (H24 / 7j/7)
     - cron: '*/15 * * * *'
   workflow_dispatch:
-    # Déclenchement manuel en 1 clic depuis l'onglet Actions de GitHub
+    inputs:
+      category:
+        description: 'Catégorie à scanner (immo, voyage, all)'
+        required: false
+        default: 'all'
+      city:
+        description: 'Ville ou secteur cible (ex: Nancy, Saint-Martin 97150, Paris...)'
+        required: false
+        default: ''
+      transaction_type:
+        description: 'Type de transaction (location, achat, all)'
+        required: false
+        default: 'all'
+      max_budget:
+        description: 'Budget maximum en €'
+        required: false
+        default: ''
+      rooms:
+        description: 'Nombre de pièces ou typologie (Studio, T2, T3, Maison, all)'
+        required: false
+        default: 'all'
+      min_surface:
+        description: 'Surface minimum en m²'
+        required: false
+        default: ''
+      departure_city:
+        description: 'Ville de départ pour Voyage (ex: Nancy, Luxembourg, Paris)'
+        required: false
+        default: ''
+      destination:
+        description: 'Destination cible pour Voyage (ex: SXM, Italie, New York, Partout)'
+        required: false
+        default: ''
 
 # Autorisation d'écriture nécessaire pour commit et push data/annonces.json
 permissions:
@@ -47,6 +79,15 @@ jobs:
           playwright install chromium --with-deps
 
       - name: 🚀 Lancer le scraper SXM Immo
+        env:
+          SCAN_CATEGORY: ${{ inputs.category || 'all' }}
+          SCAN_CITY: ${{ inputs.city || '' }}
+          SCAN_TRANSACTION: ${{ inputs.transaction_type || 'all' }}
+          SCAN_MAX_BUDGET: ${{ inputs.max_budget || '' }}
+          SCAN_ROOMS: ${{ inputs.rooms || 'all' }}
+          SCAN_MIN_SURFACE: ${{ inputs.min_surface || '' }}
+          SCAN_DEPARTURE: ${{ inputs.departure_city || '' }}
+          SCAN_DESTINATION: ${{ inputs.destination || '' }}
         run: |
           python scraper.py
 
@@ -54,7 +95,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/annonces.json
+          git add data/annonces.json config.json
           if git diff --staged --quiet; then
             echo "Aucune nouvelle annonce détectée lors de ce cycle."
           else
@@ -63,4 +104,3 @@ jobs:
             git push origin main
             echo "Nouvelles annonces poussées avec succès sur GitHub !"
           fi
-

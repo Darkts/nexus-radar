@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nexus-radar-v5';
+const CACHE_NAME = 'nexus-radar-v5.1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
