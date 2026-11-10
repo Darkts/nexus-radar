@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Nexus Radar V4 | Immobilier Mondial & Planificateur Intelligent</title>
+  <title>Nexus Radar V5 | Immobilier Mondial & Planificateur Voyage Intelligent</title>
   <meta name="description" content="Hub personnel autonome : Veille Immo Mondiale Achat & Location, Carte Interactive, Swipe Tactile & Voyage Intelligent depuis Nancy" />
   
   <!-- PWA & Apple Meta -->
@@ -12,7 +12,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Nexus Radar V4" />
+  <meta name="apple-mobile-web-app-title" content="Nexus Radar V5" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icon.svg" />
 
@@ -216,20 +216,31 @@
     }
 
     /* ========================================================= */
-    /* CHANTIER 1 : BARRE DE RECHERCHE PROGRESSIVE EN 3 ÉTAPES  */
+    /* CHANTIER 2 : RECHERCHE PROGRESSIVE IMMO EN 3 ÉTAPES      */
     /* ========================================================= */
     .funnel-search-box {
       background: var(--surface);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 12px;
+      padding: 14px;
       margin-bottom: 14px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
-    /* Étape 1 : Lieu */
+    /* Étape 1 : Localisation Principale */
+    .step-header-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-immo);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
     .step-location-row {
       display: flex;
       gap: 8px;
@@ -248,12 +259,12 @@
       border-radius: 10px;
       padding: 10px 14px 10px 38px;
       color: #fff;
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       outline: none;
     }
 
     .search-input-wrap input:focus {
-      border-color: var(--primary);
+      border-color: var(--accent-immo);
     }
 
     .search-input-wrap svg {
@@ -269,7 +280,7 @@
       background: rgba(16, 185, 129, 0.15);
       border: 1px solid rgba(16, 185, 129, 0.4);
       color: #34d399;
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       font-weight: 700;
       padding: 10px 12px;
       border-radius: 10px;
@@ -280,14 +291,50 @@
       gap: 5px;
     }
 
-    /* Étape 2 : Filtres Achat/Location & Types */
-    .step-filters-row {
+    /* Sélections Rapides Grandes Villes & DOM */
+    .quick-cities-scroll {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .quick-cities-scroll::-webkit-scrollbar { display: none; }
+
+    .city-pill {
+      white-space: nowrap;
+      font-size: 0.73rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .city-pill:hover, .city-pill.active {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: var(--accent-immo);
+      color: #34d399;
+      font-weight: 800;
+    }
+
+    /* Étape 2 : Critères & Filtres */
+    .step-filters-box {
+      border-top: 1px dashed var(--card-border);
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .filters-grid-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 8px;
-      border-top: 1px dashed var(--card-border);
-      padding-top: 8px;
     }
 
     .segmented-control {
@@ -303,9 +350,9 @@
       border: none;
       background: transparent;
       color: var(--text-muted);
-      font-size: 0.72rem;
+      font-size: 0.73rem;
       font-weight: 700;
-      padding: 5px 9px;
+      padding: 6px 10px;
       border-radius: 6px;
       cursor: pointer;
     }
@@ -318,9 +365,9 @@
 
     .chip-filter {
       white-space: nowrap;
-      padding: 5px 9px;
+      padding: 6px 10px;
       border-radius: 16px;
-      font-size: 0.72rem;
+      font-size: 0.73rem;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
@@ -328,19 +375,19 @@
       cursor: pointer;
     }
 
-    .chip-filter.active {
-      background: rgba(0, 242, 254, 0.2);
-      border-color: var(--primary);
-      color: #fff;
-    }
-
-    .chip-filter.immo-active {
+    .chip-filter.active, .chip-filter.immo-active {
       background: rgba(16, 185, 129, 0.25);
       border-color: var(--accent-immo);
       color: #34d399;
     }
 
-    /* Étape 3 : Switch Vue Liste / Carte en haut des résultats */
+    .chip-filter.voyage-active {
+      background: rgba(0, 242, 254, 0.25);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    /* Étape 3 : Switch Vue [ 📋 Vue Liste ] | [ 🗺️ Vue Carte Leaflet ] */
     .view-toggle-bar {
       display: flex;
       align-items: center;
@@ -369,20 +416,21 @@
       color: var(--text-muted);
       font-size: 0.74rem;
       font-weight: 700;
-      padding: 5px 10px;
+      padding: 6px 12px;
       border-radius: 6px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
     }
 
     .view-mode-btn.active {
-      background: rgba(0, 242, 254, 0.2);
-      color: var(--primary);
+      background: rgba(16, 185, 129, 0.25);
+      color: #34d399;
+      font-weight: 800;
     }
 
-    /* Grille de cartes */
+    /* Cartes & Grille */
     .items-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -395,9 +443,7 @@
       }
     }
 
-    /* ========================================================= */
-    /* CHANTIER 2 : CARTE ITEM AVEC VRAI GESTE SWIPE TACTILE     */
-    /* ========================================================= */
+    /* Carte Item avec Swipe Tactile */
     .item-card {
       background: var(--surface-card);
       border: 1px solid var(--card-border);
@@ -407,24 +453,14 @@
       flex-direction: column;
       position: relative;
       touch-action: pan-y;
-      transition: transform 0.25s ease, opacity 0.25s ease;
+      transition: transform 0.22s ease, opacity 0.22s ease;
       user-select: none;
       cursor: pointer;
     }
 
-    .item-card.swiping {
-      transition: none;
-    }
-
-    .item-card.swiped-right {
-      transform: translateX(120%) rotate(20deg) !important;
-      opacity: 0 !important;
-    }
-
-    .item-card.swiped-left {
-      transform: translateX(-120%) rotate(-20deg) !important;
-      opacity: 0 !important;
-    }
+    .item-card.swiping { transition: none; }
+    .item-card.swiped-right { transform: translateX(120%) rotate(20deg) !important; opacity: 0 !important; }
+    .item-card.swiped-left { transform: translateX(-120%) rotate(-20deg) !important; opacity: 0 !important; }
 
     .card-img-wrap {
       position: relative;
@@ -608,8 +644,96 @@
     }
 
     /* ========================================================= */
-    /* CHANTIER 3 : MODALE PLEIN ÉCRAN FICHE DÉTAILLÉE LOGEMENT  */
+    /* CHANTIER 3 : ESPACE RADARS DISTINCT (IMMO vs VOYAGE)      */
     /* ========================================================= */
+    .radar-space-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: #090e1a;
+      border: 1px solid var(--card-border);
+      padding: 4px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .radar-tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .radar-tab-btn.active.tab-immo {
+      background: rgba(16, 185, 129, 0.25);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.5);
+    }
+
+    .radar-tab-btn.active.tab-voyage {
+      background: rgba(0, 242, 254, 0.25);
+      color: #38bdf8;
+      border: 1px solid rgba(0, 242, 254, 0.5);
+    }
+
+    /* ========================================================= */
+    /* CHANTIER 4 : VOYAGE ENTONNOIR & SECTIONS 1 & 2            */
+    /* ========================================================= */
+    .voyage-funnel-box {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .voyage-funnel-step {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .voyage-funnel-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0 10px 0;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Mini-carte Leaflet & Modale */
+    #mainMapContainer {
+      width: 100%;
+      height: 480px;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
     .detail-modal-overlay {
       position: fixed;
       inset: 0;
@@ -646,12 +770,11 @@
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 1.1rem;
     }
 
     .detail-hero-gallery {
       position: relative;
-      height: 250px;
+      height: 240px;
       background: #090e1a;
       overflow: hidden;
     }
@@ -679,10 +802,7 @@
       opacity: 0.6;
       border: 1px solid transparent;
     }
-    .detail-thumb.active {
-      opacity: 1;
-      border-color: var(--primary);
-    }
+    .detail-thumb.active { opacity: 1; border-color: var(--primary); }
 
     .detail-body {
       padding: 16px;
@@ -703,23 +823,14 @@
       border-radius: 12px;
       padding: 12px;
     }
-
     @media (min-width: 640px) {
-      .detail-specs-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      .detail-specs-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
-    .spec-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
+    .spec-item { display: flex; flex-direction: column; gap: 2px; }
     .spec-label { font-size: 0.7rem; color: var(--text-muted); }
     .spec-val { font-size: 0.85rem; font-weight: 800; color: #fff; }
 
-    /* Mini carte Leaflet du bien */
     #detailMiniMap {
       width: 100%;
       height: 220px;
@@ -740,69 +851,6 @@
       text-decoration: none;
       display: block;
       margin-top: 8px;
-    }
-
-    /* ========================================================= */
-    /* CHANTIER 5 : SECTIONS VOYAGE A & B                        */
-    /* ========================================================= */
-    .section-title-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 18px 0 10px 0;
-    }
-
-    .section-title {
-      font-size: 1rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Carte Hub TGV Nancy */
-    .tgv-hub-card {
-      background: linear-gradient(135deg, rgba(0, 242, 254, 0.08), rgba(236, 72, 153, 0.08));
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 14px;
-      margin-bottom: 16px;
-    }
-
-    .tgv-hub-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .tgv-routes-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-    @media (min-width: 640px) {
-      .tgv-routes-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .tgv-route-item {
-      background: #090e1a;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    /* Carte Leaflet principale */
-    #mainMapContainer {
-      width: 100%;
-      height: 480px;
-      border-radius: var(--radius);
-      border: 1px solid var(--card-border);
-      overflow: hidden;
-      margin-bottom: 14px;
     }
 
     /* Bottom Navigation Bar */
@@ -950,7 +998,7 @@
   <div class="pin-modal-overlay" id="pinLockOverlay">
     <div class="pin-box">
       <div style="font-size: 2.2rem;">🔒</div>
-      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V4</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V5</h2>
       <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code PIN à 4 chiffres</p>
       
       <div class="pin-dots">
@@ -985,7 +1033,7 @@
           <img src="assets/icon.svg" alt="Nexus Logo" />
         </div>
         <div>
-          <div class="brand-title">NEXUS RADAR V4</div>
+          <div class="brand-title">NEXUS RADAR V5</div>
           <div class="brand-sub">
             <span class="live-dot"></span>
             <span id="headerLiveStatus">Veille Active • Double Univers</span>
@@ -1001,7 +1049,7 @@
       </div>
     </div>
 
-    <!-- Switch Univers -->
+    <!-- Switch Double Univers -->
     <div class="universe-switch-container">
       <button id="univBtnImmo" class="univ-btn active univ-immo" onclick="switchUniverse('immo')">
         <span>🏠</span> IMMOBILIER MONDIAL
@@ -1016,228 +1064,290 @@
   <main class="container">
 
     <!-- ========================================================= -->
-    <!-- UNIVERS 1 : 🏠 IMMOBILIER MONDIAL (Parcours en 3 Étapes)  -->
+    <!-- UNIVERS 1 : 🏠 IMMOBILIER MONDIAL                         -->
     <!-- ========================================================= -->
     <section id="pane-immo-feed" class="tab-pane active">
       
-      <!-- ÉTAPE 1 & 2 : Barre de Recherche Progressive (Style Airbnb) -->
+      <!-- ÉTAPE 1 & 2 : Entonnoir Immobilier Logique -->
       <div class="funnel-search-box">
-        <!-- Étape 1 : Lieu -->
+        <!-- Étape 1 : Choix du Lieu d'abord -->
+        <div class="step-header-label">📍 Étape 1 : Choisissez le secteur à surveiller</div>
         <div class="step-location-row">
           <div class="search-input-wrap">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" id="searchLocationInput" placeholder="Où cherchez-vous ? (Nancy, Paris, Lyon, Saint-Martin, Espagne...)" oninput="filterImmo()" />
+            <input type="text" id="searchLocationInput" placeholder="Rechercher une ville, secteur (Nancy, Saint-Martin, Paris, Lyon, Nice...)" oninput="filterImmo()" />
           </div>
           <button class="btn-around-me" onclick="locateAroundMe()">
             <span>📍 Autour de moi</span>
           </button>
         </div>
 
-        <!-- Étape 2 : Critères Précis -->
-        <div class="step-filters-row">
-          <div class="segmented-control">
-            <button class="segmented-btn active" data-transac="ALL" onclick="setTransactionFilter('ALL', this)">Tous</button>
-            <button class="segmented-btn" data-transac="location" onclick="setTransactionFilter('location', this)">🔑 Louer</button>
-            <button class="segmented-btn" data-transac="achat" onclick="setTransactionFilter('achat', this)">🏷️ Acheter</button>
+        <!-- Sélections rapides par grandes villes et DOM -->
+        <div class="quick-cities-scroll" id="quickCitiesRow">
+          <button class="city-pill active" onclick="selectQuickCity('ALL', this)">🌍 Tous les lieux</button>
+          <button class="city-pill" onclick="selectQuickCity('Nancy', this)">🇫🇷 Nancy & Grand Est</button>
+          <button class="city-pill" onclick="selectQuickCity('Saint-Martin', this)">🏝️ Saint-Martin (97150)</button>
+          <button class="city-pill" onclick="selectQuickCity('Paris', this)">🗼 Paris</button>
+          <button class="city-pill" onclick="selectQuickCity('Lyon', this)">🦁 Lyon</button>
+          <button class="city-pill" onclick="selectQuickCity('Nice', this)">☀️ Nice / Côte d'Azur</button>
+          <button class="city-pill" onclick="selectQuickCity('Alicante', this)">🇪🇸 Espagne / Costa</button>
+        </div>
+
+        <!-- Étape 2 : Critères de filtrage -->
+        <div class="step-filters-box">
+          <div class="step-header-label">⚙️ Étape 2 : Vos critères de recherche</div>
+          <div class="filters-grid-row">
+            <div class="segmented-control">
+              <button class="segmented-btn active" data-transac="ALL" onclick="setTransactionFilter('ALL', this)">Tous</button>
+              <button class="segmented-btn" data-transac="location" onclick="setTransactionFilter('location', this)">🔑 Louer</button>
+              <button class="segmented-btn" data-transac="achat" onclick="setTransactionFilter('achat', this)">🏷️ Acheter</button>
+            </div>
+
+            <button class="chip-filter active" data-room="ALL" onclick="setRoomFilter('ALL', this)">Toutes pièces</button>
+            <button class="chip-filter" data-room="Studio" onclick="setRoomFilter('Studio', this)">Studio</button>
+            <button class="chip-filter" data-room="T2" onclick="setRoomFilter('T2', this)">T2</button>
+            <button class="chip-filter" data-room="T3" onclick="setRoomFilter('T3', this)">T3+</button>
+            <button class="chip-filter" data-room="Maison" onclick="setRoomFilter('Maison', this)">Maison/Villa</button>
+
+            <button class="chip-filter" id="chipAmenityMer" onclick="toggleAmenity('vue_mer', this)">🌊 Vue Mer</button>
+            <button class="chip-filter" id="chipAmenityTerrasse" onclick="toggleAmenity('terrasse', this)">☀️ Terrasse</button>
+            <button class="chip-filter" id="chipAmenityPiscine" onclick="toggleAmenity('piscine', this)">🏊 Piscine</button>
+            <button class="chip-filter" id="chipAmenityParking" onclick="toggleAmenity('parking', this)">🚗 Parking</button>
           </div>
-
-          <button class="chip-filter active" data-room="ALL" onclick="setRoomFilter('ALL', this)">Toutes pièces</button>
-          <button class="chip-filter" data-room="Studio" onclick="setRoomFilter('Studio', this)">Studio</button>
-          <button class="chip-filter" data-room="T2" onclick="setRoomFilter('T2', this)">T2</button>
-          <button class="chip-filter" data-room="T3" onclick="setRoomFilter('T3', this)">T3</button>
-          <button class="chip-filter" data-room="Maison" onclick="setRoomFilter('Maison', this)">Maison/Villa</button>
-
-          <button class="chip-filter" id="chipAmenityMer" onclick="toggleAmenity('vue_mer', this)">🌊 Vue Mer</button>
-          <button class="chip-filter" id="chipAmenityTerrasse" onclick="toggleAmenity('terrasse', this)">☀️ Terrasse</button>
-          <button class="chip-filter" id="chipAmenityPiscine" onclick="toggleAmenity('piscine', this)">🏊 Piscine</button>
-          <button class="chip-filter" id="chipAmenityParking" onclick="toggleAmenity('parking', this)">🚗 Parking</button>
         </div>
       </div>
 
-      <!-- Étape 3 : Switch Vue [ 📋 Liste | 🗺️ Carte ] en haut des résultats -->
+      <!-- ÉTAPE 3 : Switch immédiat [ 📋 Vue Liste ] | [ 🗺️ Vue Carte Leaflet ] -->
       <div class="view-toggle-bar">
         <div class="results-count" id="immoResultsCount">Chargement des biens...</div>
         <div class="view-mode-switch">
           <button class="view-mode-btn active" id="btnViewList" onclick="setViewMode('list')">
-            <span>📋 Liste</span>
+            <span>📋 Vue Liste</span>
           </button>
           <button class="view-mode-btn" id="btnViewMap" onclick="setViewMode('map')">
-            <span>🗺️ Carte</span>
+            <span>🗺️ Vue Carte Leaflet</span>
           </button>
         </div>
       </div>
 
-      <!-- Conteneur Carte Leaflet (Affiché en mode Carte) -->
+      <!-- Carte Leaflet Principale -->
       <div id="mainMapContainer" style="display: none;"></div>
 
-      <!-- Grille d'Annonces (Affichée en mode Liste) -->
+      <!-- Grille d'Annonces -->
       <div class="items-grid" id="immoGrid"></div>
 
       <!-- État Vide -->
       <div class="empty-state" id="emptyImmo" style="display: none;">
         <div style="font-size: 36px; margin-bottom: 8px;">🏠</div>
         <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 4px;">Aucun bien correspondant</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Élargissez votre secteur ou vos filtres Achat/Location.</p>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Élargissez votre secteur ou vos critères de budget.</p>
       </div>
     </section>
 
-    <!-- VUE 1.2 : MON CATALOGUE FAVORIS IMMO -->
+    <!-- VUE FAVORIS IMMO -->
     <section id="pane-immo-catalogue" class="tab-pane">
       <div style="margin-bottom: 14px;">
         <h2 style="font-size: 1.15rem; font-weight: 800;">⭐ Mon Catalogue Immobilier</h2>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Vos biens coups de cœur enregistrés avec vos notes.</p>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Vos appartements et villas gardés de côté.</p>
       </div>
       <div class="items-grid" id="immoCatalogueGrid"></div>
       <div class="empty-state" id="emptyImmoCatalogue" style="display: none;">
         <div style="font-size: 36px; margin-bottom: 8px;">⭐</div>
         <h3 style="font-size: 1.05rem; font-weight: 800;">Votre catalogue est vide</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur l'étoile d'un bien pour le retrouver ici.</p>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur l'étoile d'une annonce pour la sauvegarder.</p>
       </div>
     </section>
 
 
     <!-- ========================================================= -->
-    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (Sections A & B)    -->
+    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (Sections 1 & 2)    -->
     <!-- ========================================================= -->
     <section id="pane-voyage-feed" class="tab-pane">
       
-      <!-- Barre de Recherche Structurée Voyage (Chantier 5) -->
-      <div class="funnel-search-box">
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <div class="search-input-wrap" style="flex: 1.2; min-width: 140px;">
+      <!-- Entonnoir Voyage en 4 Étapes (Chantier 4) -->
+      <div class="voyage-funnel-box">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="font-size: 0.92rem; font-weight: 800; color: #fff;">✈️ Chasseur d'Évasion & Billets Cassés</div>
+          <span style="font-size: 0.7rem; color: var(--primary); font-weight: 800;">Départ Nancy Hub</span>
+        </div>
+
+        <!-- 1. Départ -->
+        <div class="voyage-funnel-step">
+          <div class="voyage-funnel-label">🛫 1. Hub de Départ</div>
+          <div style="display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;">
+            <button class="chip-filter voyage-active" data-hub="ALL" onclick="setVoyageHub('ALL', this)">Tous les départs</button>
+            <button class="chip-filter" data-hub="Nancy" onclick="setVoyageHub('Nancy', this)">📍 Nancy Ville</button>
+            <button class="chip-filter" data-hub="Luxembourg" onclick="setVoyageHub('Luxembourg', this)">🇱🇺 Luxembourg (LUX)</button>
+            <button class="chip-filter" data-hub="Paris" onclick="setVoyageHub('Paris', this)">🗼 Paris CDG/ORY</button>
+            <button class="chip-filter" data-hub="Bâle" onclick="setVoyageHub('Bâle', this)">🇨🇭 Bâle-Mulhouse (BSL)</button>
+          </div>
+        </div>
+
+        <!-- 2. Destination -->
+        <div class="voyage-funnel-step">
+          <div class="voyage-funnel-label">🛬 2. Destination</div>
+          <div class="search-input-wrap">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
             </svg>
-            <input type="text" id="searchVoyageDest" placeholder="Destination (ex: SXM, Italie, New York, Partout...)" oninput="filterVoyage()" />
+            <input type="text" id="searchVoyageDest" placeholder="Où souhaitez-vous partir ? (ex: SXM, Italie, New York, Partout...)" oninput="filterVoyage()" />
           </div>
+        </div>
 
-          <div style="display: flex; gap: 4px; overflow-x: auto; flex: 1.5; scrollbar-width: none;">
-            <button class="chip-filter active" data-period="ALL" onclick="setVoyagePeriodFilter('ALL', this)">Toutes dates</button>
-            <button class="chip-filter" data-period="weekend" onclick="setVoyagePeriodFilter('weekend', this)">Week-end (3j)</button>
-            <button class="chip-filter" data-period="semaine" onclick="setVoyagePeriodFilter('semaine', this)">1 Semaine (7j)</button>
-            <button class="chip-filter" data-period="fevrier" onclick="setVoyagePeriodFilter('fevrier', this)">Vacances Février</button>
+        <!-- 3. Dates & Période -->
+        <div class="voyage-funnel-step">
+          <div class="voyage-funnel-label">📅 3. Dates & Flexibilité</div>
+          <div style="display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;">
+            <button class="chip-filter voyage-active" data-period="ALL" onclick="setVoyagePeriodFilter('ALL', this)">Toutes dates</button>
+            <button class="chip-filter" data-period="weekend" onclick="setVoyagePeriodFilter('weekend', this)">🏖️ Week-end (3j)</button>
+            <button class="chip-filter" data-period="semaine" onclick="setVoyagePeriodFilter('semaine', this)">☀️ 1 Semaine (7j)</button>
+            <button class="chip-filter" data-period="fevrier" onclick="setVoyagePeriodFilter('fevrier', this)">❄️ Vacances Février</button>
+          </div>
+        </div>
+
+        <!-- 4. Budget Maximum -->
+        <div class="voyage-funnel-step">
+          <div class="voyage-funnel-label">💰 4. Budget Global Maximum</div>
+          <div style="display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;">
+            <button class="chip-filter voyage-active" data-vbudget="ALL" onclick="setVoyageBudget('ALL', this)">Tous budgets</button>
+            <button class="chip-filter" data-vbudget="50" onclick="setVoyageBudget(50, this)">≤ 50 €</button>
+            <button class="chip-filter" data-vbudget="350" onclick="setVoyageBudget(350, this)">≤ 350 €</button>
+            <button class="chip-filter" data-vbudget="500" onclick="setVoyageBudget(500, this)">≤ 500 €</button>
+            <button class="chip-filter" data-vbudget="800" onclick="setVoyageBudget(800, this)">≤ 800 €</button>
           </div>
         </div>
       </div>
 
-      <!-- Widget TGV Nancy Hub (Regroupé élégamment) -->
-      <div class="tgv-hub-card">
-        <div class="tgv-hub-header">
-          <div>
-            <div style="font-size: 0.92rem; font-weight: 800; color: #fff;">🚆 Connexions Directes depuis Nancy Ville</div>
-            <div style="font-size: 0.72rem; color: var(--primary);">Vers vos aéroports et métropoles de départ</div>
-          </div>
-          <span style="font-size: 0.75rem; background: rgba(0, 242, 254, 0.15); color: var(--primary); padding: 3px 8px; border-radius: 6px; font-weight: 800;">TGV / TER Direct</span>
-        </div>
-        <div class="tgv-routes-grid">
-          <div class="tgv-route-item">
-            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 800;">
-              <span>Nancy ⇄ Paris Est</span>
-              <span style="color: var(--primary);">dès 16 €</span>
-            </div>
-            <div style="font-size: 0.7rem; color: var(--text-muted);">1h32 direct • 12 TGV/jour</div>
-            <a href="https://www.thetrainline.com/fr/horaires-train/nancy-a-paris" target="_blank" rel="noopener" style="font-size: 0.72rem; color: var(--primary); text-decoration: underline; margin-top: 4px;">Réserver billet direct</a>
-          </div>
-          <div class="tgv-route-item">
-            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 800;">
-              <span>Nancy ⇄ Aéroport CDG</span>
-              <span style="color: var(--primary);">dès 29 €</span>
-            </div>
-            <div style="font-size: 0.7rem; color: var(--text-muted);">1h50 direct Terminal 2</div>
-            <a href="https://www.thetrainline.com/fr/horaires-train/nancy-a-aeroport-paris-roissy-charles-de-gaulle-cdg" target="_blank" rel="noopener" style="font-size: 0.72rem; color: var(--primary); text-decoration: underline; margin-top: 4px;">Réserver billet direct</a>
-          </div>
-          <div class="tgv-route-item">
-            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 800;">
-              <span>Nancy ⇄ Luxembourg</span>
-              <span style="color: var(--primary);">dès 10 €</span>
-            </div>
-            <div style="font-size: 0.7rem; color: var(--text-muted);">1h15 direct • Tram gratuit</div>
-            <a href="https://www.thetrainline.com/fr/horaires-train/nancy-a-luxembourg" target="_blank" rel="noopener" style="font-size: 0.72rem; color: var(--primary); text-decoration: underline; margin-top: 4px;">Réserver billet direct</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION A : 🎯 Meilleures Offres selon vos critères -->
+      <!-- SECTION 1 : 🔥 Flash Deals & Erreurs de Prix -->
       <div class="section-title-wrap">
-        <h3 class="section-title" style="color: #38bdf8;">🎯 Meilleures Offres selon vos critères (Packages Nancy)</h3>
-        <span style="font-size: 0.7rem; color: var(--text-muted);">Vol + Train + Hôtel 8.5★</span>
+        <h3 class="section-title" style="color: #f43f5e;">🔥 Section 1 : Flash Deals & Erreurs de Prix</h3>
+        <span style="font-size: 0.72rem; color: #f43f5e; font-weight: 800;">Prix Cassés Immédiats</span>
       </div>
-      <div class="items-grid" id="voyageSectionA"></div>
+      <div class="items-grid" id="voyageSection1"></div>
 
-      <!-- SECTION B : 🔥 Flash Deals & Erreurs de Prix -->
-      <div class="section-title-wrap" style="margin-top: 24px;">
-        <h3 class="section-title" style="color: #f43f5e;">🔥 Flash Deals & Erreurs de Prix</h3>
-        <span style="font-size: 0.7rem; color: #f43f5e; font-weight: 800;">Opportunités Limitées</span>
+      <!-- SECTION 2 : 🎯 Meilleures Offres selon vos critères -->
+      <div class="section-title-wrap" style="margin-top: 26px;">
+        <h3 class="section-title" style="color: #38bdf8;">🎯 Section 2 : Meilleurs Séjours Tout Compris depuis Nancy</h3>
+        <span style="font-size: 0.72rem; color: var(--text-muted);">Vol + Train + Hôtel Vérifié</span>
       </div>
-      <div class="items-grid" id="voyageSectionB"></div>
+      <div class="items-grid" id="voyageSection2"></div>
 
     </section>
 
     <!-- ========================================================= -->
-    <!-- ONGLET RADARS : BASÉ SUR MES LIKES & FORMULAIRE GUIDÉ     -->
+    <!-- CHANTIER 3 : ESPACE RADARS DISTINCT (IMMO vs VOYAGE)      -->
     <!-- ========================================================= -->
     <section id="pane-radars" class="tab-pane">
       <div style="margin-bottom: 14px;">
-        <h2 style="font-size: 1.15rem; font-weight: 800;">🎛️ Mes Radars Intelligents</h2>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Génération automatique d'alertes basée sur vos goûts et critères précis.</p>
+        <h2 style="font-size: 1.15rem; font-weight: 800;">🎛️ Espace Radars Cloud H24</h2>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Configurez et activez vos robots de veille automatique dans le Cloud.</p>
       </div>
 
-      <!-- Section 1 : Basé sur vos Likes ❤️ (Chantier 4) -->
-      <div class="funnel-search-box" id="smartLikesBox" style="border-color: rgba(236, 72, 153, 0.4); background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(0, 242, 254, 0.05));">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <h3 style="font-size: 0.95rem; font-weight: 800; color: #ec4899;">❤️ Basé sur vos Likes & Préférences</h3>
-          <span style="font-size: 0.7rem; color: #fff; font-weight: 800;" id="likedItemsCount">0 like(s)</span>
-        </div>
-        <p style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4;" id="smartLikesDescription">
-          Likez des biens immobiliers ou des voyages (en swipant vers la droite 👉 ou en cliquant sur 💚) pour générer votre profil de chasse personnalisé !
-        </p>
-        <button class="btn-open-detail" id="btnAutoRadar" onclick="applySmartRadarProfile()" style="display: none; padding: 10px; width: 100%;">
-          ⚡ Créer un Radar automatique sur ce profil
+      <!-- Sélecteur d'Univers Radars -->
+      <div class="radar-space-switch">
+        <button class="radar-tab-btn active tab-immo" id="radarTabBtnImmo" onclick="switchRadarTab('immo')">
+          🏠 Radar Immobilier
+        </button>
+        <button class="radar-tab-btn tab-voyage" id="radarTabBtnVoyage" onclick="switchRadarTab('voyage')">
+          ✈️ Radar Voyage
         </button>
       </div>
 
-      <!-- Section 2 : Formulaire de création guidé en 4 champs (Chantier 4) -->
-      <div class="funnel-search-box" style="margin-top: 14px;">
-        <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 4px;">Créer une Alerte Radar Guidée</h3>
-        <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px;">Le robot Cloud scannera 24h/24 et vous notifiera dès qu'une opportunité correspondante apparaît.</p>
-
-        <div>
-          <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">1. Secteur ou Ville Cible</label>
-          <input type="text" id="radarCityInput" class="search-input-wrap" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.82rem; margin-top: 4px;" placeholder="Ex: Nancy, Saint-Martin 97150, Paris, Lyon, Alicante..." value="Nancy" />
-        </div>
-
-        <div style="margin-top: 8px;">
-          <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">2. Type de Projet</label>
-          <div class="segmented-control" style="margin-top: 4px;">
-            <button class="segmented-btn active" id="radarTransacLoc" onclick="setRadarTransac('location')">🔑 Location</button>
-            <button class="segmented-btn" id="radarTransacAchat" onclick="setRadarTransac('achat')">🏷️ Achat / Vente</button>
+      <!-- SOUS-ONGLET 1 : RADAR IMMOBILIER -->
+      <div id="radarSectionImmo">
+        <!-- Résumé basé sur les likes -->
+        <div class="funnel-search-box" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05);">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h4 style="font-size: 0.88rem; font-weight: 800; color: #34d399;">❤️ Basé sur vos Likes Immo</h4>
+            <span style="font-size: 0.7rem; color: #fff; font-weight: 800;" id="radarLikedCount">0 like(s)</span>
           </div>
+          <p style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4;" id="radarSmartImmoDesc">
+            Likez des biens pour générer votre profil de veille automatique personnalisé.
+          </p>
+          <button class="btn-open-detail" id="btnAutoPreFill" onclick="applySmartImmoProfile()" style="display: none; padding: 10px; width: 100%;">
+            ⚡ Pré-remplir avec mon profil préféré
+          </button>
         </div>
 
-        <div style="margin-top: 8px;">
-          <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">3. Type de Bien & Surface Minimum</label>
-          <div style="display: flex; gap: 8px; margin-top: 4px;">
-            <select id="radarTypeSelect" style="flex: 1; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem;">
-              <option value="ALL">Tous types</option>
-              <option value="Studio">Studio</option>
-              <option value="T2" selected>T2 (2 pièces)</option>
-              <option value="T3">T3 (3 pièces)</option>
-              <option value="Maison">Maison / Villa</option>
+        <!-- Formulaire Radar Immo -->
+        <div class="funnel-search-box" style="margin-top: 12px;">
+          <h4 style="font-size: 0.92rem; font-weight: 800; color: #fff;">Configurer l'Alerte Immo Cloud H24</h4>
+          
+          <div>
+            <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Secteur / Ville à surveiller</label>
+            <input type="text" id="radarImmoCity" class="search-input-wrap" style="width:100%; background:#090e1a; border:1px solid var(--card-border); border-radius:8px; padding:8px 12px; color:#fff; font-size:0.84rem; margin-top:4px;" value="Nancy" />
+          </div>
+
+          <div style="margin-top: 8px;">
+            <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Type de Projet</label>
+            <div class="segmented-control" style="margin-top: 4px;">
+              <button class="segmented-btn active" id="btnRadarTransacLoc" onclick="setRadarTransacState('location')">🔑 Location</button>
+              <button class="segmented-btn" id="btnRadarTransacAchat" onclick="setRadarTransacState('achat')">🏷️ Achat</button>
+            </div>
+          </div>
+
+          <div style="margin-top: 8px;">
+            <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Typologie & Surface Minimum</label>
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+              <select id="radarImmoTypeSelect" style="flex: 1; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem;">
+                <option value="ALL">Tous types</option>
+                <option value="Studio">Studio</option>
+                <option value="T2" selected>T2 (2 pièces)</option>
+                <option value="T3">T3 (3 pièces)</option>
+                <option value="Maison">Maison / Villa</option>
+              </select>
+              <input type="number" id="radarImmoMinM2" placeholder="Min m²" value="35" style="width: 90px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem;" />
+            </div>
+          </div>
+
+          <div style="margin-top: 8px;">
+            <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Budget Maximum (€)</label>
+            <input type="number" id="radarImmoBudget" value="700" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.84rem; margin-top: 4px;" />
+          </div>
+
+          <button class="btn-cta-official" onclick="saveRadarCloud('immo')" style="margin-top: 14px;">
+            🔔 Activer l'alerte Immo sur GitHub
+          </button>
+        </div>
+      </div>
+
+      <!-- SOUS-ONGLET 2 : RADAR VOYAGE -->
+      <div id="radarSectionVoyage" style="display: none;">
+        <div class="funnel-search-box">
+          <h4 style="font-size: 0.92rem; font-weight: 800; color: #38bdf8;">Configurer l'Alerte Voyage Cloud H24</h4>
+          <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px;">Le robot surveille les baisses de prix d'avions et de TGV et vous envoie un push dès que le tarif chute.</p>
+
+          <div>
+            <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Ville de Départ</label>
+            <input type="text" id="radarVoyageDepart" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.84rem; margin-top: 4px;" value="Nancy (ou Luxembourg / Paris)" />
+          </div>
+
+          <div style="margin-top: 8px;">
+            <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Destination Cible</label>
+            <input type="text" id="radarVoyageDest" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.84rem; margin-top: 4px;" value="Saint-Martin SXM" placeholder="Ex: Saint-Martin SXM, Italie, ou Partout" />
+          </div>
+
+          <div style="margin-top: 8px;">
+            <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Durée ou Période Souhaitée</label>
+            <select id="radarVoyagePeriod" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem; margin-top: 4px;">
+              <option value="semaine" selected>1 Semaine (7 jours)</option>
+              <option value="weekend">Week-end (3 jours)</option>
+              <option value="fevrier">Vacances de Février</option>
+              <option value="flexible">Dates 100% Flexibles</option>
             </select>
-            <input type="number" id="radarMinSurfaceInput" placeholder="Min m²" value="40" style="width: 90px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem;" />
           </div>
-        </div>
 
-        <div style="margin-top: 8px;">
-          <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">4. Budget Maximum (€)</label>
-          <input type="number" id="radarMaxBudgetInput" value="700" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.82rem; margin-top: 4px;" />
-        </div>
+          <div style="margin-top: 8px;">
+            <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Budget Global Maximum (€ Tout Compris)</label>
+            <input type="number" id="radarVoyageBudget" value="450" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.84rem; margin-top: 4px;" />
+          </div>
 
-        <button class="btn-cta-official" onclick="saveRadarCloud()" style="margin-top: 14px;">
-          🔔 Activer l'alerte Cloud H24
-        </button>
+          <button class="btn-cta-official" style="background: linear-gradient(135deg, #00f2fe, #0284c7); margin-top: 14px;" onclick="saveRadarCloud('voyage')">
+            🔔 Activer l'alerte Voyage sur GitHub
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1250,7 +1360,7 @@
 
       <div class="funnel-search-box">
         <h3 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🔑 Code PIN de Sécurité</h3>
-        <p style="font-size: 0.72rem; color: var(--text-muted);">Modifiez votre code à 4 chiffres enregistré dans votre navigateur.</p>
+        <p style="font-size: 0.72rem; color: var(--text-muted);">Votre code secret à 4 chiffres enregistré sur ce smartphone.</p>
         <button class="btn-open-detail" onclick="resetPinCode()" style="margin-top: 6px;">Changer mon code PIN</button>
       </div>
 
@@ -1271,7 +1381,7 @@
   </main>
 
   <!-- ========================================================= -->
-  <!-- MODALE PLEIN ÉCRAN : FICHE DÉTAILLÉE LOGEMENT (Chantier 3)-->
+  <!-- MODALE PLEIN ÉCRAN : FICHE DÉTAILLÉE LOGEMENT             -->
   <!-- ========================================================= -->
   <div class="detail-modal-overlay" id="immoDetailModal">
     <div class="detail-modal-header">
@@ -1296,14 +1406,12 @@
       <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--card-border); padding-bottom: 10px;">
         <div>
           <span class="badge-transac" id="modalTransacBadge">Location</span>
-          <div style="font-size: 1.45rem; font-weight: 800; color: var(--primary); font-family: 'Space Grotesk', sans-serif; margin-top: 4px;" id="modalPrice">
-            0 €
-          </div>
+          <div style="font-size: 1.45rem; font-weight: 800; color: var(--primary); font-family: 'Space Grotesk', sans-serif; margin-top: 4px;" id="modalPrice">0 €</div>
         </div>
         <div id="modalMarketBadge"></div>
       </div>
 
-      <!-- Spécifications Clés -->
+      <!-- Spécifications -->
       <div class="detail-specs-grid" id="modalSpecsGrid"></div>
 
       <!-- Description Complète -->
@@ -1318,7 +1426,7 @@
         <div id="detailMiniMap"></div>
       </div>
 
-      <!-- Bouton d'action Deep-Link Officiel -->
+      <!-- Bouton d'action Deep-Link Officiel Vérifié -->
       <a class="btn-cta-official" id="modalOfficialLink" href="#" target="_blank" rel="noopener">
         🔗 Consulter l'annonce officielle sur l'agence
       </a>
@@ -1332,24 +1440,29 @@
   <div class="toast" id="toast"></div>
 
   <!-- ========================================================= -->
-  <!-- JAVASCRIPT DU HUB V4                                      -->
+  <!-- JAVASCRIPT DU HUB V5                                      -->
   <!-- ========================================================= -->
   <script>
     // State global
     let currentUniverse = 'immo';
     let allData = [];
-    let favorites = JSON.parse(localStorage.getItem('nexus_v4_favorites') || '[]');
-    let dislikes = JSON.parse(localStorage.getItem('nexus_v4_dislikes') || '[]');
-    let likedItems = JSON.parse(localStorage.getItem('nexus_v4_liked_items') || '[]');
+    let favorites = JSON.parse(localStorage.getItem('nexus_v5_favorites') || '[]');
+    let dislikes = JSON.parse(localStorage.getItem('nexus_v5_dislikes') || '[]');
+    let likedItems = JSON.parse(localStorage.getItem('nexus_v5_liked_items') || '[]');
 
     // Filtres Immo
     let immoTransac = 'ALL';
     let immoRoom = 'ALL';
     let immoAmenities = new Set();
-    let immoViewMode = 'list'; // 'list' ou 'map'
+    let immoViewMode = 'list';
 
     // Filtres Voyage
+    let voyageHub = 'ALL';
     let voyagePeriod = 'ALL';
+    let voyageBudget = 'ALL';
+
+    // Radars
+    let radarTransacState = 'location';
 
     // Leaflet Maps
     let mainLeafletMap = null;
@@ -1426,7 +1539,7 @@
     }
 
     // =========================================================
-    // SWITCH UNIVERS & NAVIGATION CONTEXTUELLE
+    // SWITCH UNIVERS & NAVIGATION
     // =========================================================
     function switchUniverse(univ) {
       currentUniverse = univ;
@@ -1460,7 +1573,7 @@
             <span class="nav-icon">⭐</span>
             <span>Catalogue</span>
           </div>
-          <div class="nav-item nav-immo" onclick="navigateTo('pane-radars', this); updateSmartLikesSummary();">
+          <div class="nav-item nav-immo" onclick="navigateTo('pane-radars', this); updateRadarProfile();">
             <span class="nav-icon">🎛️</span>
             <span>Radars</span>
           </div>
@@ -1475,7 +1588,7 @@
             <span class="nav-icon">✈️</span>
             <span>Pépites</span>
           </div>
-          <div class="nav-item" onclick="navigateTo('pane-radars', this); updateSmartLikesSummary();">
+          <div class="nav-item" onclick="navigateTo('pane-radars', this); switchRadarTab('voyage');">
             <span class="nav-icon">🎯</span>
             <span>Radars</span>
           </div>
@@ -1513,8 +1626,8 @@
         
         filterImmo();
         filterVoyage();
-        updateSmartLikesSummary();
-        showToast(`⚡ ${allData.length} opportunités prêtes`);
+        updateRadarProfile();
+        showToast(`⚡ ${allData.length} opportunités certifiées prêtes`);
       } catch (e) {
         console.error(e);
         showToast('⚠️ Impossible de charger les données');
@@ -1524,18 +1637,41 @@
     }
 
     // =========================================================
-    // UNIVERS 1 : 🏠 FILTRES IMMOBILIERS & VUES
+    // UNIVERS 1 : 🏠 RECHERCHE PROGRESSIVE IMMO
     // =========================================================
+    function selectQuickCity(cityName, el) {
+      document.querySelectorAll('#quickCitiesRow .city-pill').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+
+      const input = document.getElementById('searchLocationInput');
+      if (cityName === 'ALL') {
+        input.value = '';
+      } else {
+        input.value = cityName;
+      }
+      filterImmo();
+    }
+
+    function locateAroundMe() {
+      const input = document.getElementById('searchLocationInput');
+      input.value = 'Nancy';
+      document.querySelectorAll('#quickCitiesRow .city-pill').forEach(b => {
+        b.classList.toggle('active', b.textContent.includes('Nancy'));
+      });
+      filterImmo();
+      showToast('📍 Secteur centré autour de vous : Nancy & Grand Est');
+    }
+
     function setTransactionFilter(transac, el) {
       immoTransac = transac;
-      document.querySelectorAll('.step-filters-row .segmented-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.step-filters-box .segmented-btn').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
       filterImmo();
     }
 
     function setRoomFilter(room, el) {
       immoRoom = room;
-      document.querySelectorAll('.step-filters-row .chip-filter[data-room]').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.step-filters-box .chip-filter[data-room]').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
       filterImmo();
     }
@@ -1572,27 +1708,6 @@
       }
     }
 
-    function locateAroundMe() {
-      if ('geolocation' in navigator) {
-        showToast('📍 Localisation en cours...');
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            document.getElementById('searchLocationInput').value = 'Nancy';
-            filterImmo();
-            showToast('📍 Secteur centré autour de vous (Nancy & Grand Est)');
-          },
-          (err) => {
-            document.getElementById('searchLocationInput').value = 'Nancy';
-            filterImmo();
-            showToast('📍 Positionnement par défaut sur Nancy & Grand Est');
-          }
-        );
-      } else {
-        document.getElementById('searchLocationInput').value = 'Nancy';
-        filterImmo();
-      }
-    }
-
     function getFilteredImmoItems() {
       const q = (document.getElementById('searchLocationInput')?.value || '').toLowerCase().trim();
 
@@ -1617,7 +1732,7 @@
           }
         }
 
-        // Recherche par lieu
+        // Recherche Lieu
         if (q) {
           const matchText = `${it.title} ${it.location} ${it.city || ''} ${it.postal_code || ''} ${it.description}`.toLowerCase();
           if (!matchText.includes(q)) return false;
@@ -1633,7 +1748,7 @@
       const empty = document.getElementById('emptyImmo');
       const countLabel = document.getElementById('immoResultsCount');
 
-      countLabel.textContent = `${items.length} bien(s) disponible(s)`;
+      countLabel.textContent = `${items.length} bien(s) vérifié(s) disponible(s)`;
 
       if (items.length === 0) {
         grid.innerHTML = '';
@@ -1652,12 +1767,10 @@
     }
 
     // =========================================================
-    // CARTE INTERACTIVE LEAFLET CENTRÉE SUR LES RÉSULTATS
+    // CARTE LEAFLET PRINCIPALE
     // =========================================================
     function initOrUpdateMainMap() {
       const items = getFilteredImmoItems().filter(x => x.lat && x.lon);
-      const container = document.getElementById('mainMapContainer');
-
       if (!mainLeafletMap) {
         mainLeafletMap = L.map('mainMapContainer').setView([48.6921, 6.1844], 12);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1666,9 +1779,8 @@
         }).addTo(mainLeafletMap);
       }
 
-      setTimeout(() => mainLeafletMap.invalidateSize(), 100);
+      setTimeout(() => mainLeafletMap.invalidateSize(), 120);
 
-      // Supprimer anciens markers
       mainMapMarkers.forEach(m => mainLeafletMap.removeLayer(m));
       mainMapMarkers = [];
 
@@ -1693,7 +1805,6 @@
             <button onclick="openImmoDetailModal('${it.id}')" style="margin-top:4px; background:#10b981; color:#fff; border:none; padding:4px 8px; border-radius:4px; font-weight:700; cursor:pointer;">Voir la fiche</button>
           </div>
         `);
-
         mainMapMarkers.push(marker);
         group.push([it.lat, it.lon]);
       });
@@ -1704,7 +1815,7 @@
     }
 
     // =========================================================
-    // CARTE ITEM IMMO AVEC SWIPE & BOUTONS PC
+    // CARTES IMMO AVEC SWIPE TACTILE FLUIDE
     // =========================================================
     function createImmoCardHtml(it) {
       const isFav = favorites.includes(it.id);
@@ -1714,7 +1825,7 @@
       return `
         <div class="item-card" id="card_${it.id}" data-item-id="${it.id}">
           <div class="card-img-wrap" onclick="openImmoDetailModal('${it.id}')">
-            <img class="card-img" src="${it.image_url || 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600'}" loading="lazy" alt="${it.title}" />
+            <img class="card-img" src="${it.image_url}" loading="lazy" alt="${it.title}" />
             <div class="badge-transac ${transacClass}">${transacLabel}</div>
             <div class="badge-price">${it.price_str}</div>
             <div class="card-top-actions">
@@ -1736,7 +1847,6 @@
               ${it.description ? it.description.slice(0, 130) + '...' : ''}
             </p>
 
-            <!-- Swipe Action Bar -->
             <div class="card-swipe-bar">
               <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">👈 ❌ Écarter</button>
               <button class="btn-open-detail" onclick="openImmoDetailModal('${it.id}')">Fiche</button>
@@ -1747,18 +1857,11 @@
       `;
     }
 
-    // =========================================================
-    // CHANTIER 2 : VRAI GESTE SWIPE TACTILE
-    // =========================================================
     function attachSwipeListeners() {
       document.querySelectorAll('.item-card').forEach(card => {
-        let startX = 0;
-        let startY = 0;
-        let currentX = 0;
-        let isDragging = false;
+        let startX = 0, startY = 0, currentX = 0, isDragging = false;
         const itemId = card.getAttribute('data-item-id');
 
-        // Touch mobile
         card.addEventListener('touchstart', (e) => {
           startX = e.touches[0].clientX;
           startY = e.touches[0].clientY;
@@ -1771,7 +1874,6 @@
           const deltaX = e.touches[0].clientX - startX;
           const deltaY = e.touches[0].clientY - startY;
 
-          // Ne pas bloquer le scroll vertical si le mouvement est principalement vertical
           if (Math.abs(deltaY) > Math.abs(deltaX)) return;
 
           currentX = deltaX;
@@ -1786,11 +1888,9 @@
           isDragging = false;
           card.classList.remove('swiping');
 
-          if (currentX > 85) {
-            triggerCardSwipe(itemId, 'right');
-          } else if (currentX < -85) {
-            triggerCardSwipe(itemId, 'left');
-          } else {
+          if (currentX > 85) triggerCardSwipe(itemId, 'right');
+          else if (currentX < -85) triggerCardSwipe(itemId, 'left');
+          else {
             card.style.transform = '';
             card.style.opacity = '';
           }
@@ -1807,35 +1907,35 @@
         if (card) card.classList.add('swiped-right');
         if (!likedItems.includes(itemId)) {
           likedItems.push(itemId);
-          localStorage.setItem('nexus_v4_liked_items', JSON.stringify(likedItems));
+          localStorage.setItem('nexus_v5_liked_items', JSON.stringify(likedItems));
         }
-        showToast(`💚 J'aime enregistré pour ${item?.city || item?.location || 'ce bien'}`);
-        updateSmartLikesSummary();
+        showToast(`💚 Affinité mémorisée pour ${item?.city || item?.location || 'ce profil'}`);
+        updateRadarProfile();
       } else {
         if (card) card.classList.add('swiped-left');
         if (!dislikes.includes(itemId)) {
           dislikes.push(itemId);
-          localStorage.setItem('nexus_v4_dislikes', JSON.stringify(dislikes));
+          localStorage.setItem('nexus_v5_dislikes', JSON.stringify(dislikes));
         }
         showToast('❌ Annonce écartée');
       }
 
       setTimeout(() => {
         if (card) card.remove();
-        const remaining = getFilteredImmoItems().length;
-        document.getElementById('immoResultsCount').textContent = `${remaining} bien(s) disponible(s)`;
+        const rem = getFilteredImmoItems().length;
+        document.getElementById('immoResultsCount').textContent = `${rem} bien(s) vérifié(s) disponible(s)`;
       }, 250);
     }
 
     // =========================================================
-    // CHANTIER 3 : MODALE PLEIN ÉCRAN FICHE DÉTAILLÉE
+    // MODALE PLEIN ÉCRAN FICHE DÉTAILLÉE DU BIEN
     // =========================================================
     function openImmoDetailModal(itemId) {
       const it = allData.find(x => x.id === itemId);
       if (!it) return;
 
       document.getElementById('modalImmoTitle').textContent = it.title;
-      document.getElementById('modalImmoLoc').textContent = `📍 ${it.location} • ${it.agency || 'Agence Vérifiée'}`;
+      document.getElementById('modalImmoLoc').textContent = `📍 ${it.location} • ${it.agency || 'Portail Officiel'}`;
       
       const badge = document.getElementById('modalTransacBadge');
       badge.textContent = it.transaction_type === 'achat' ? '🏷️ Vente / Achat' : '🔑 Location';
@@ -1843,9 +1943,8 @@
 
       document.getElementById('modalPrice').textContent = it.price_str;
       document.getElementById('modalMarketBadge').innerHTML = it.market_badge ? `<span class="spec-market">${it.market_badge}</span>` : '';
-      document.getElementById('modalDescription').textContent = it.description || 'Aucune description disponible.';
+      document.getElementById('modalDescription').textContent = it.description || 'Description complète sur le portail.';
 
-      // Hero image & thumbnails
       const hero = document.getElementById('modalHeroImg');
       const thumbBox = document.getElementById('modalThumbnails');
       const imgs = it.images && it.images.length > 0 ? it.images : [it.image_url];
@@ -1855,27 +1954,26 @@
         <img class="detail-thumb ${idx === 0 ? 'active' : ''}" src="${img}" onclick="setHeroImage('${img}', this)" alt="Photo ${idx+1}" />
       `).join('');
 
-      // Spécifications
       const specsBox = document.getElementById('modalSpecsGrid');
       specsBox.innerHTML = `
         <div class="spec-item"><span class="spec-label">Surface</span><span class="spec-val">${it.surface || 'N/C'}</span></div>
-        <div class="spec-item"><span class="spec-label">Pièces</span><span class="spec-val">${it.rooms || 'N/C'}</span></div>
+        <div class="spec-item"><span class="spec-label">Typologie</span><span class="spec-val">${it.rooms || 'N/C'}</span></div>
         <div class="spec-item"><span class="spec-label">Chambres</span><span class="spec-val">${it.bedrooms !== undefined ? it.bedrooms : '1'}</span></div>
         <div class="spec-item"><span class="spec-label">Étage</span><span class="spec-val">${it.floor || 'Rez-de-chaussée'}</span></div>
-        <div class="spec-item"><span class="spec-label">DPE</span><span class="spec-val">${it.dpe || 'C'}</span></div>
+        <div class="spec-item"><span class="spec-label">Classe DPE</span><span class="spec-val">${it.dpe || 'C'}</span></div>
         <div class="spec-item"><span class="spec-label">Charges</span><span class="spec-val">${it.charges || 'Incluses'}</span></div>
         <div class="spec-item"><span class="spec-label">Prix au m²</span><span class="spec-val">${it.price_per_m2 ? it.price_per_m2 + ' €/m²' : 'N/C'}</span></div>
-        <div class="spec-item"><span class="spec-label">Agence</span><span class="spec-val">${it.agency || 'Vérifiée'}</span></div>
+        <div class="spec-item"><span class="spec-label">Agence/Source</span><span class="spec-val">${it.agency || 'Vérifié'}</span></div>
       `;
 
-      // Lien officiel direct vérifié (Chantier 6)
+      // Lien Deep-Link Officiel Vérifié (Chantier 1 & 6)
       const officialBtn = document.getElementById('modalOfficialLink');
       officialBtn.href = it.url;
-      officialBtn.textContent = `🔗 Consulter l'annonce officielle sur ${it.agency || 'le portail'}`;
+      officialBtn.textContent = `🔗 Consulter l'annonce officielle sur ${it.agency || 'le portail officiel'}`;
 
       document.getElementById('immoDetailModal').classList.add('open');
 
-      // Mini-carte
+      // Mini-Carte Leaflet
       setTimeout(() => {
         if (!detailMiniMap) {
           detailMiniMap = L.map('detailMiniMap', { zoomControl: false }).setView([it.lat || 48.69, it.lon || 6.18], 15);
@@ -1900,62 +1998,78 @@
     }
 
     // =========================================================
-    // CHANTIER 4 : ONGLET RADARS BASÉ SUR LES LIKES
+    // CHANTIER 3 : ESPACE RADARS DISTINCT (IMMO vs VOYAGE)
     // =========================================================
-    let smartProfile = null;
-    let radarTransacType = 'location';
+    function switchRadarTab(type) {
+      const btnImmo = document.getElementById('radarTabBtnImmo');
+      const btnVoyage = document.getElementById('radarTabBtnVoyage');
+      const secImmo = document.getElementById('radarSectionImmo');
+      const secVoyage = document.getElementById('radarSectionVoyage');
 
-    function setRadarTransac(t) {
-      radarTransacType = t;
-      document.getElementById('radarTransacLoc').classList.toggle('active', t === 'location');
-      document.getElementById('radarTransacAchat').classList.toggle('active', t === 'achat');
+      if (type === 'immo') {
+        btnImmo.classList.add('active');
+        btnVoyage.classList.remove('active');
+        secImmo.style.display = 'block';
+        secVoyage.style.display = 'none';
+      } else {
+        btnVoyage.classList.add('active');
+        btnImmo.classList.remove('active');
+        secImmo.style.display = 'none';
+        secVoyage.style.display = 'block';
+      }
     }
 
-    function updateSmartLikesSummary() {
-      const countEl = document.getElementById('likedItemsCount');
-      const descEl = document.getElementById('smartLikesDescription');
-      const btnAuto = document.getElementById('btnAutoRadar');
+    let smartImmoProfile = null;
+
+    function updateRadarProfile() {
+      const countEl = document.getElementById('radarLikedCount');
+      const descEl = document.getElementById('radarSmartImmoDesc');
+      const btnAuto = document.getElementById('btnAutoPreFill');
 
       countEl.textContent = `${likedItems.length} like(s)`;
 
       if (likedItems.length === 0) {
-        descEl.textContent = "Likez des biens immobiliers ou voyages (en swipant vers la droite 👉 ou via le bouton 💚) pour générer automatiquement votre radar !";
+        descEl.textContent = "Likez des biens en swipant à droite 👉 pour générer votre radar d'alerte personnalisé.";
         btnAuto.style.display = 'none';
         return;
       }
 
-      // Analyse des affinités
       const items = allData.filter(x => likedItems.includes(x.id));
-      const cities = items.map(x => x.city || x.location || 'Nancy');
-      const topCity = cities[0] || 'Nancy';
+      const topCity = items[0]?.city || items[0]?.location || 'Nancy';
       const avgPrice = Math.round(items.reduce((acc, x) => acc + (x.price || 0), 0) / items.length);
       const isAchat = items.filter(x => x.transaction_type === 'achat').length > items.filter(x => x.transaction_type === 'location').length;
 
-      smartProfile = {
+      smartImmoProfile = {
         city: topCity,
         transac: isAchat ? 'achat' : 'location',
         type: 'T2',
-        surface: 45,
+        surface: 40,
         maxBudget: Math.round(avgPrice * 1.1)
       };
 
       descEl.innerHTML = `
-        🎯 <strong>Affinité détectée :</strong> Vous recherchez principalement des biens en <strong>${smartProfile.transac === 'achat' ? 'Achat' : 'Location'}</strong> à <strong>${smartProfile.city}</strong> avec un budget d'environ <strong>${smartProfile.maxBudget} €</strong>.
+        🎯 <strong>Profil Détecté :</strong> Vos likes ciblent des biens en <strong>${smartImmoProfile.transac === 'achat' ? 'Achat' : 'Location'}</strong> à <strong>${smartImmoProfile.city}</strong> (budget ~<strong>${smartImmoProfile.maxBudget} €</strong>).
       `;
       btnAuto.style.display = 'block';
     }
 
-    function applySmartRadarProfile() {
-      if (!smartProfile) return;
-      document.getElementById('radarCityInput').value = smartProfile.city;
-      setRadarTransac(smartProfile.transac);
-      document.getElementById('radarTypeSelect').value = smartProfile.type;
-      document.getElementById('radarMinSurfaceInput').value = smartProfile.surface;
-      document.getElementById('radarMaxBudgetInput').value = smartProfile.maxBudget;
-      showToast('⚡ Formulaire pré-rempli avec vos affinités !');
+    function applySmartImmoProfile() {
+      if (!smartImmoProfile) return;
+      document.getElementById('radarImmoCity').value = smartImmoProfile.city;
+      setRadarTransacState(smartImmoProfile.transac);
+      document.getElementById('radarImmoTypeSelect').value = smartImmoProfile.type;
+      document.getElementById('radarImmoMinM2').value = smartImmoProfile.surface;
+      document.getElementById('radarImmoBudget').value = smartImmoProfile.maxBudget;
+      showToast('⚡ Formulaire Immo pré-rempli !');
     }
 
-    async function saveRadarCloud() {
+    function setRadarTransacState(t) {
+      radarTransacState = t;
+      document.getElementById('btnRadarTransacLoc').classList.toggle('active', t === 'location');
+      document.getElementById('btnRadarTransacAchat').classList.toggle('active', t === 'achat');
+    }
+
+    async function saveRadarCloud(radarType) {
       const token = localStorage.getItem('nexus_gh_token');
       const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
@@ -1965,11 +2079,7 @@
         return;
       }
 
-      const city = document.getElementById('radarCityInput').value.trim();
-      const budget = parseInt(document.getElementById('radarMaxBudgetInput').value) || 1000;
-      const surface = parseInt(document.getElementById('radarMinSurfaceInput').value) || 30;
-
-      showToast('☁️ Activation de l\'alerte sur GitHub Actions...');
+      showToast(`☁️ Activation de l'alerte ${radarType.toUpperCase()} dans le Cloud...`);
       try {
         const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/config.json`, {
           headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
@@ -1978,18 +2088,34 @@
         const fileData = await getRes.json();
         const currentCfg = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
 
-        if (!currentCfg.univers_immo) currentCfg.univers_immo = {};
-        if (!currentCfg.univers_immo.filters) currentCfg.univers_immo.filters = {};
-        currentCfg.univers_immo.active_zone = city;
-        currentCfg.univers_immo.filters.max_price = budget;
-        currentCfg.univers_immo.filters.min_surface = surface;
+        if (radarType === 'immo') {
+          const city = document.getElementById('radarImmoCity').value.trim();
+          const budget = parseInt(document.getElementById('radarImmoBudget').value) || 1000;
+          const minM2 = parseInt(document.getElementById('radarImmoMinM2').value) || 30;
+
+          if (!currentCfg.univers_immo) currentCfg.univers_immo = {};
+          if (!currentCfg.univers_immo.filters) currentCfg.univers_immo.filters = {};
+          currentCfg.univers_immo.active_zone = city;
+          currentCfg.univers_immo.transaction_type = radarTransacState;
+          currentCfg.univers_immo.filters.max_price = budget;
+          currentCfg.univers_immo.filters.min_surface = minM2;
+        } else {
+          const dest = document.getElementById('radarVoyageDest').value.trim();
+          const budget = parseInt(document.getElementById('radarVoyageBudget').value) || 450;
+          const period = document.getElementById('radarVoyagePeriod').value;
+
+          if (!currentCfg.univers_voyage) currentCfg.univers_voyage = {};
+          currentCfg.univers_voyage.target_destination = dest;
+          currentCfg.univers_voyage.target_duration = period;
+          currentCfg.univers_voyage.max_total_budget = budget;
+        }
 
         const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentCfg, null, 2))));
         const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/config.json`, {
           method: 'PUT',
           headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            message: `feat: activation radar H24 ${city} (max ${budget}€) [skip ci]`,
+            message: `feat: activation radar cloud ${radarType} H24 [skip ci]`,
             content: updatedContent,
             sha: fileData.sha,
             branch: 'main'
@@ -1997,19 +2123,33 @@
         });
 
         if (!putRes.ok) throw new Error('Échec mise à jour GitHub');
-        showToast(`🔔 Alerte Cloud H24 activée pour ${city} (Max ${budget}€) !`);
+        showToast(`🔔 Alerte ${radarType.toUpperCase()} Cloud H24 activée sur GitHub !`);
       } catch (e) {
         showToast(`❌ Erreur : ${e.message}`);
       }
     }
 
     // =========================================================
-    // CHANTIER 5 : UNIVERS VOYAGE (SECTIONS A & B)
+    // CHANTIER 4 : REFONTE VOYAGE (SECTIONS 1 & 2)
     // =========================================================
+    function setVoyageHub(hub, el) {
+      voyageHub = hub;
+      document.querySelectorAll('[data-hub]').forEach(b => b.classList.remove('voyage-active'));
+      el.classList.add('voyage-active');
+      filterVoyage();
+    }
+
     function setVoyagePeriodFilter(p, el) {
       voyagePeriod = p;
-      document.querySelectorAll('.funnel-search-box .chip-filter[data-period]').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
+      document.querySelectorAll('[data-period]').forEach(b => b.classList.remove('voyage-active'));
+      el.classList.add('voyage-active');
+      filterVoyage();
+    }
+
+    function setVoyageBudget(b, el) {
+      voyageBudget = b;
+      document.querySelectorAll('[data-vbudget]').forEach(btn => btn.classList.remove('voyage-active'));
+      el.classList.add('voyage-active');
       filterVoyage();
     }
 
@@ -2018,26 +2158,38 @@
       const voyageItems = allData.filter(x => x.universe === 'voyage' || x.category === 'flight' || x.category === 'train');
 
       const filtered = voyageItems.filter(it => {
+        // Hub
+        if (voyageHub !== 'ALL') {
+          const h = (it.departure_hub || it.location || '').toLowerCase();
+          if (!h.includes(voyageHub.toLowerCase())) return false;
+        }
+
+        // Période
         if (voyagePeriod === 'weekend' && !it.dates?.toLowerCase().includes('3j') && !it.dates?.toLowerCase().includes('week-end')) return false;
         if (voyagePeriod === 'semaine' && !it.dates?.toLowerCase().includes('semaine') && !it.dates?.toLowerCase().includes('7j')) return false;
         if (voyagePeriod === 'fevrier' && !it.dates?.toLowerCase().includes('fév') && !it.dates?.toLowerCase().includes('fevrier')) return false;
 
+        // Budget
+        if (voyageBudget !== 'ALL' && it.price > voyageBudget) return false;
+
+        // Destination query
         if (q) {
           const match = `${it.title} ${it.location} ${it.destination || ''} ${it.description}`.toLowerCase();
           if (!match.includes(q)) return false;
         }
+
         return true;
       });
 
-      // Section A : Packages Nancy
-      const secA = document.getElementById('voyageSectionA');
-      const itemsA = filtered.filter(x => x.section_type === 'best_offers' || x.carnet_voyage);
-      secA.innerHTML = itemsA.map(it => createVoyageCardHtml(it)).join('');
+      // Section 1 : Flash Deals & Erreurs de Prix
+      const sec1 = document.getElementById('voyageSection1');
+      const items1 = filtered.filter(x => x.section_type === 'flash_deals' || (!x.carnet_voyage && x.price < 100));
+      sec1.innerHTML = items1.map(it => createVoyageCardHtml(it)).join('');
 
-      // Section B : Flash Deals
-      const secB = document.getElementById('voyageSectionB');
-      const itemsB = filtered.filter(x => x.section_type === 'flash_deals' || !x.carnet_voyage);
-      secB.innerHTML = itemsB.map(it => createVoyageCardHtml(it)).join('');
+      // Section 2 : Packages Complets Nancy
+      const sec2 = document.getElementById('voyageSection2');
+      const items2 = filtered.filter(x => x.section_type === 'best_offers' || x.carnet_voyage);
+      sec2.innerHTML = items2.map(it => createVoyageCardHtml(it)).join('');
     }
 
     function createVoyageCardHtml(it) {
@@ -2047,7 +2199,7 @@
       return `
         <div class="item-card" id="card_${it.id}">
           <div class="card-img-wrap">
-            <img class="card-img" src="${it.image_url || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'}" loading="lazy" alt="${it.title}" />
+            <img class="card-img" src="${it.image_url}" loading="lazy" alt="${it.title}" />
             <div class="badge-transac voyage">${it.badge || '✈️ Voyage'}</div>
             <div class="badge-price">${it.price_str}</div>
             <div class="card-top-actions">
@@ -2062,10 +2214,10 @@
               <div style="background: rgba(0, 242, 254, 0.06); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 8px; padding: 8px; font-size: 0.74rem;">
                 <div style="display: flex; justify-content: space-between; font-weight: 800; color: #fff;">
                   <span>🧮 Coût Tout Compris :</span>
-                  <span style="color: var(--primary);">${tc.total_estimated} €</span>
+                  <span style="color: var(--primary); font-size:0.86rem;">${tc.total_estimated} €</span>
                 </div>
                 <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 2px;">
-                  🚆 TGV Nancy + ✈️ Vol A/R + 🏨 Hôtel vérifié 8.5★
+                  🚆 TGV Nancy + ✈️ Vol Direct A/R + 🏨 Hôtel vérifié 8.5★
                 </div>
               </div>
             ` : ''}
@@ -2076,7 +2228,7 @@
 
             <div class="card-swipe-bar">
               <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">👈 Écarter</button>
-              <a class="btn-open-detail" href="${it.url}" target="_blank" rel="noopener">🔗 Voir l'offre</a>
+              <a class="btn-open-detail" href="${it.url}" target="_blank" rel="noopener">🔗 Consulter l'offre</a>
               <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">👉 💚 J'aime</button>
             </div>
           </div>
@@ -2095,7 +2247,7 @@
         favorites.push(id);
         showToast('⭐ Ajouté à votre Catalogue de favoris !');
       }
-      localStorage.setItem('nexus_v4_favorites', JSON.stringify(favorites));
+      localStorage.setItem('nexus_v5_favorites', JSON.stringify(favorites));
       filterImmo();
       filterVoyage();
     }
@@ -2116,7 +2268,7 @@
     }
 
     // =========================================================
-    // GESTION DU REPO ET TOKEN GITHUB
+    // GITHUB CREDENTIALS & NOTIFS
     // =========================================================
     function saveCredentials() {
       const t = document.getElementById('ghToken').value.trim();
@@ -2129,8 +2281,8 @@
     function testPushNotification() {
       fetch('https://ntfy.sh/sxm-immo-alert-97150-x9q4m2', {
         method: 'POST',
-        headers: { 'Title': '🛰️ Test Nexus Radar V4', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
-        body: 'Connexion opérationnelle ! Alertes Immo et Voyage prêtes.'
+        headers: { 'Title': '🛰️ Test Nexus Radar V5', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
+        body: 'Veille V5 opérationnelle ! Alertes Immo et Voyage certifiées sans lien mort.'
       }).then(() => showToast('🔔 Notification envoyée !'))
         .catch(() => showToast('Erreur envoi ntfy'));
     }
@@ -2142,7 +2294,7 @@
       setTimeout(() => t.classList.remove('show'), 2600);
     }
 
-    // Démarrage
+    // Initialisation
     window.addEventListener('DOMContentLoaded', () => {
       initPinLock();
       renderBottomNav('immo');

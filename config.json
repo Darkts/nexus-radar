@@ -1,6 +1,6 @@
 {
-  "app_name": "Nexus Radar V3",
-  "version": "3.0.0",
+  "app_name": "Nexus Radar V5",
+  "version": "5.0.0",
   "ntfy_topic": "sxm-immo-alert-97150-x9q4m2",
   "github": {
     "owner": "Darkts",
@@ -10,9 +10,19 @@
   },
   "univers_immo": {
     "enabled": true,
-    "title": "Immobilier Mondial & Îles",
-    "active_zone": "Saint-Martin (97150)",
+    "title": "Immobilier Mondial (Achat & Location)",
+    "active_zone": "Nancy",
+    "transaction_type": "location",
     "zones": [
+      {
+        "id": "nancy_grand_est",
+        "name": "Nancy & Grand Est",
+        "country": "France",
+        "lat": 48.6921,
+        "lon": 6.1844,
+        "radius_km": 20,
+        "market_avg_m2": 13.8
+      },
       {
         "id": "sxm_97150",
         "name": "Saint-Martin (97150)",
@@ -23,75 +33,51 @@
         "market_avg_m2": 23.5
       },
       {
-        "id": "nancy_grand_est",
-        "name": "Nancy & Grand Est",
+        "id": "paris_idf",
+        "name": "Paris & Île-de-France",
         "country": "France",
-        "lat": 48.6921,
-        "lon": 6.1844,
-        "radius_km": 20,
-        "market_avg_m2": 13.2
-      },
-      {
-        "id": "costa_del_sol",
-        "name": "Costa del Sol (Alicante / Malaga)",
-        "country": "Espagne",
-        "lat": 36.5398,
-        "lon": -4.6254,
-        "radius_km": 30,
-        "market_avg_m2": 14.8
-      },
-      {
-        "id": "bali_indonesie",
-        "name": "Bali (Canggu / Ubud)",
-        "country": "Indonésie / Asie",
-        "lat": -8.4095,
-        "lon": 115.1889,
+        "lat": 48.8566,
+        "lon": 2.3522,
         "radius_km": 25,
-        "market_avg_m2": 9.5
+        "market_avg_m2": 35.0
+      },
+      {
+        "id": "lyon_rhone",
+        "name": "Lyon & Rhône",
+        "country": "France",
+        "lat": 45.7640,
+        "lon": 4.8357,
+        "radius_km": 20,
+        "market_avg_m2": 19.5
+      },
+      {
+        "id": "nice_cote_azur",
+        "name": "Nice / Côte d'Azur",
+        "country": "France",
+        "lat": 43.7102,
+        "lon": 7.2620,
+        "radius_km": 25,
+        "market_avg_m2": 26.0
+      },
+      {
+        "id": "costa_blanca",
+        "name": "Espagne / Alicante & Malaga",
+        "country": "Espagne",
+        "lat": 38.3452,
+        "lon": -0.4810,
+        "radius_km": 30,
+        "market_avg_m2": 14.5
       }
     ],
     "filters": {
-      "max_price": 1200,
-      "min_surface": 25,
-      "rooms": "all",
+      "transaction_type": "location",
+      "max_price": 750,
+      "min_surface": 30,
+      "rooms": "T2",
       "amenities": [
         "meuble",
         "terrasse",
-        "piscine",
-        "vue_mer",
         "parking"
-      ],
-      "exclude_commercial": true,
-      "exclude_keywords": [
-        "saisonnière",
-        "saisonnier",
-        "touristique",
-        "vacances",
-        "court séjour",
-        "nuitée",
-        "par nuit",
-        "par semaine",
-        "semaine",
-        "short term",
-        "holiday",
-        "vacation",
-        "airbnb"
-      ],
-      "commercial_keywords": [
-        "bail commercial",
-        "local commercial",
-        "locaux commerciaux",
-        "local professionnel",
-        "locaux professionnels",
-        "bureau",
-        "bureaux",
-        "entrepôt",
-        "entrepot",
-        "hangar",
-        "garage",
-        "stockage",
-        "parking",
-        "fonds de commerce"
       ]
     },
     "sources": {
@@ -100,15 +86,16 @@
       "bienici": true,
       "leboncoin": true,
       "emotion": true,
-      "four_u": true,
-      "sxmcapri": true,
       "idealista": true
     }
   },
   "univers_voyage": {
     "enabled": true,
-    "title": "Voyage & Planificateur Intelligent",
+    "title": "Voyage & Planificateur Intelligent (Nancy Hub)",
     "departure_city": "Nancy",
+    "target_destination": "Partout",
+    "target_duration": "semaine",
+    "max_total_budget": 450,
     "departure_hubs": [
       {
         "code": "PAR",
@@ -127,103 +114,33 @@
         "name": "Bâle-Mulhouse (BSL)",
         "train_cost_nancy": 45,
         "train_time": "1h40"
-      },
-      {
-        "code": "FRA",
-        "name": "Francfort (FRA)",
-        "train_cost_nancy": 65,
-        "train_time": "2h15"
       }
     ],
     "fais_moi_rever": {
       "enabled": true,
-      "max_total_budget": 450,
-      "periods": [
-        {
-          "id": "weekend_3j",
-          "label": "Week-end (3 jours)",
-          "days": 3
-        },
-        {
-          "id": "semaine_7j",
-          "label": "1 Semaine (7 jours)",
-          "days": 7
-        },
-        {
-          "id": "fevrier_vacances",
-          "label": "Vacances d'Hiver / Février",
-          "days": 7
-        }
-      ]
+      "max_total_budget": 450
     },
     "sniper_destinations": [
       {
         "name": "Saint-Martin (SXM / SFG)",
         "code": "SXM",
-        "max_flight_price": 450,
-        "hotel_min_rating": 8.5
+        "max_flight_price": 450
       },
       {
         "name": "Guadeloupe (PTP)",
         "code": "PTP",
-        "max_flight_price": 350,
-        "hotel_min_rating": 8.5
+        "max_flight_price": 350
       },
       {
-        "name": "Martinique (FDF)",
-        "code": "FDF",
-        "max_flight_price": 350,
-        "hotel_min_rating": 8.5
-      },
-      {
-        "name": "New York (JFK/EWR)",
+        "name": "New York (NYC)",
         "code": "NYC",
-        "max_flight_price": 350,
-        "hotel_min_rating": 8.5
-      },
-      {
-        "name": "Tokyo (HND/NRT)",
-        "code": "TYO",
-        "max_flight_price": 590,
-        "hotel_min_rating": 8.5
+        "max_flight_price": 350
       },
       {
         "name": "Italie (Rome / Bologne)",
         "code": "IT",
-        "max_flight_price": 60,
-        "hotel_min_rating": 8.5
+        "max_flight_price": 60
       }
-    ],
-    "auto_learning": {
-      "disliked_destinations": [],
-      "dislike_threshold_ban": 2,
-      "liked_destinations": []
-    },
-    "sources": {
-      "google_flights": true,
-      "secretflying": true,
-      "aircaraibes_direct": true,
-      "thetrainline": true,
-      "sncf_connect": true
-    }
-  },
-  "radars": {
-    "immo": {
-      "enabled": true,
-      "title": "Immobilier Saint-Martin & Mondial",
-      "max_price": 1200,
-      "location_code": "97150",
-      "location_name": "Saint-Martin"
-    },
-    "flights": {
-      "enabled": true,
-      "title": "Vols & Erreurs de Prix",
-      "max_price": 450
-    },
-    "trains": {
-      "enabled": true,
-      "title": "Trains TGV & Ouigo Prix Cassés",
-      "max_price": 25
-    }
+    ]
   }
 }

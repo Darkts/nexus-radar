@@ -16,14 +16,14 @@
     "lon": 6.1832,
     "agency": "Cabinet Immobilier Stanislas (Vérifié)",
     "is_verified_agency": true,
-    "url": "https://www.seloger.com/annonces/locations/appartement/nancy-54/centre/219481023.htm",
+    "url": "https://www.leboncoin.fr/recherche?category=10&locations=Nancy_54000&real_estate_type=2&price=min-650",
     "image_url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
     "images": [
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
       "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800"
     ],
-    "description": "À 2 pas de la Place Stanislas, superbe appartement T2 meublé de 48m² entièrement refait à neuf. Séjour chaleureux avec parquet en chêne, cuisine ouverte aménagée et équipée, terrasse privative de 12m² au calme absolu sur cour intérieure. DPE C, double vitrage.",
+    "description": "À 2 pas de la célèbre Place Stanislas, superbe appartement T2 meublé de 48m² refait à neuf. Séjour chaleureux avec parquet en chêne, cuisine ouverte aménagée et équipée, terrasse privative de 12m² au calme absolu sur cour intérieure. DPE C, double vitrage phonique.",
     "surface": "48 m²",
     "surface_val": 48.0,
     "rooms": "T2",
@@ -40,7 +40,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": -6.5,
     "market_badge": "🟢 Bon prix (12.9€/m² vs 13.8€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "price_history": {
       "current": 620,
       "avg_7d": 1092,
@@ -54,7 +54,7 @@
       ],
       "urgency_level": "urgent",
       "urgency_badge": "🟢 PÉPITE HISTORIQUE (-46% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+      "urgency_desc": "Prix anormalement bas !"
     }
   },
   {
@@ -78,10 +78,9 @@
     "image_url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
     "images": [
       "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800"
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"
     ],
-    "description": "Coup de cœur au cœur historique de Nancy ! Appartement T3 de 65m² alliant le charme de l'ancien (cheminées en marbre, belle hauteur sous plafond, moulures) et le confort contemporain. Salon lumineux, 2 grandes chambres, salle de bains moderne avec douche à l'italienne. Cave saine.",
+    "description": "Coup de cœur au cœur historique de Nancy ! Appartement T3 de 65m² alliant le charme de l'ancien (cheminées en marbre, belle hauteur sous plafond, moulures) et le confort contemporain. Salon lumineux, 2 grandes chambres, salle de bains moderne.",
     "surface": "65 m²",
     "surface_val": 65.0,
     "rooms": "T3",
@@ -96,7 +95,7 @@
     "market_avg_m2": 2850,
     "market_delta_pct": -9.3,
     "market_badge": "🟢 -9% sous le marché (2 585€/m² vs 2 850€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "price_history": {
       "current": 168000,
       "avg_7d": 209000,
@@ -111,345 +110,6 @@
       "urgency_level": "good",
       "urgency_badge": "🟢 BON PRIX (-23% vs moyenne)",
       "urgency_desc": "Offre sous le prix médian habituel."
-    }
-  },
-  {
-    "id": "immo_paris_loc_t2_bastille",
-    "universe": "immo",
-    "category": "immo",
-    "transaction_type": "location",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏠 Location • Paris 11e",
-    "title": "T2 contemporain avec balconnet filant - Paris 11e Bastille / Roquette",
-    "price": 1180,
-    "price_str": "1 180 € / mois CC",
-    "location": "Paris 11e (75011)",
-    "city": "Paris",
-    "postal_code": "75011",
-    "lat": 48.8543,
-    "lon": 2.3732,
-    "agency": "Parisian Living Real Estate",
-    "is_verified_agency": true,
-    "url": "https://www.seloger.com/annonces/locations/appartement/paris-11eme-75/roquette/218943110.htm",
-    "image_url": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
-    "images": [
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
-      "https://images.unsplash.com/photo-1502005229762-ee1b2b8ab98f?w=800"
-    ],
-    "description": "Quartier animé et recherché, à 3 min du métro Bastille. Appartement 2 pièces de 38m² refait par architecte, optimisé sans perte d'espace. Meublé haut de gamme, cuisine intégrée avec lave-vaisselle, chambre séparée au calme donnant sur cour arborée.",
-    "surface": "38 m²",
-    "surface_val": 38.0,
-    "rooms": "T2",
-    "bedrooms": 1,
-    "floor": "3ème étage avec ascenseur",
-    "dpe": "D",
-    "charges": "90 € / mois",
-    "amenities": [
-      "meuble",
-      "terrasse"
-    ],
-    "price_per_m2": 31.0,
-    "market_avg_m2": 35.5,
-    "market_delta_pct": -12.7,
-    "market_badge": "🟢 Bon prix (31€/m² vs 35.5€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "price_history": {
-      "current": 1180,
-      "avg_7d": 1092,
-      "avg_30d": 1150,
-      "min_historic": 943,
-      "sparkline": [
-        1207,
-        1150,
-        1092,
-        1180
-      ],
-      "urgency_level": "normal",
-      "urgency_badge": "🟠 PRIX CLASSIQUE (Tarif stable — Pas d'urgence)",
-      "urgency_desc": "Tarif habituel pour la période."
-    }
-  },
-  {
-    "id": "immo_paris_achat_studio_convention",
-    "universe": "immo",
-    "category": "immo",
-    "transaction_type": "achat",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏷️ Achat • Paris 15e",
-    "title": "Studio 22 m² calme sur jardin - Paris 15e Convention",
-    "price": 195000,
-    "price_str": "195 000 € FAI",
-    "location": "Paris 15e (75015)",
-    "city": "Paris",
-    "postal_code": "75015",
-    "lat": 48.8378,
-    "lon": 2.2981,
-    "agency": "Century 21 Convention Paris",
-    "is_verified_agency": true,
-    "url": "https://www.bienici.com/recherche/achat/paris-75015/studio?prix-max=210000",
-    "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800",
-    "images": [
-      "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
-    ],
-    "description": "Idéal premier achat ou investissement locatif meublé LMNP. Studio de 22,5m² en très bon état au sein d'une copropriété sécurisée avec gardien. Grande baie vitrée ouvrant sur jardin de copropriété sans aucun vis-à-vis, kitchenette équipée, salle d'eau avec WC.",
-    "surface": "22 m²",
-    "surface_val": 22.0,
-    "rooms": "Studio",
-    "bedrooms": 0,
-    "floor": "1er étage",
-    "dpe": "E",
-    "charges": "65 € / mois",
-    "amenities": [
-      "jardin"
-    ],
-    "price_per_m2": 8863,
-    "market_avg_m2": 9650,
-    "market_delta_pct": -8.1,
-    "market_badge": "🟢 -8% sous le marché (8 863€/m² vs 9 650€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "price_history": {
-      "current": 195000,
-      "avg_7d": 209000,
-      "avg_30d": 220000,
-      "min_historic": 180400,
-      "sparkline": [
-        231000,
-        220000,
-        209000,
-        195000
-      ],
-      "urgency_level": "good",
-      "urgency_badge": "🟢 BON PRIX (-11% vs moyenne)",
-      "urgency_desc": "Offre sous le prix médian habituel."
-    }
-  },
-  {
-    "id": "immo_lyon_loc_t2_partdieu",
-    "universe": "immo",
-    "category": "immo",
-    "transaction_type": "location",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏠 Location • Lyon 3e",
-    "title": "T2 moderne avec loggia et parking sous-sol - Lyon 3e Part-Dieu",
-    "price": 820,
-    "price_str": "820 € / mois CC",
-    "location": "Lyon 3e (69003)",
-    "city": "Lyon",
-    "postal_code": "69003",
-    "lat": 45.7597,
-    "lon": 4.8522,
-    "agency": "Régie Lyonnaise Immobilière",
-    "is_verified_agency": true,
-    "url": "https://www.seloger.com/annonces/locations/appartement/lyon-3eme-69/part-dieu/219302194.htm",
-    "image_url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
-    "images": [
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800"
-    ],
-    "description": "À 5 minutes à pied de la gare Part-Dieu et du centre commercial. Appartement T2 de 46m² dans résidence récente BBC (Bâtiment Basse Consommation). Loggia de 6m², cuisine américaine aménagée, chambre avec placard dressing, place de parking privative en sous-sol.",
-    "surface": "46 m²",
-    "surface_val": 46.0,
-    "rooms": "T2",
-    "bedrooms": 1,
-    "floor": "4ème étage avec ascenseur",
-    "dpe": "B",
-    "charges": "70 € / mois",
-    "amenities": [
-      "meuble",
-      "terrasse",
-      "parking"
-    ],
-    "price_per_m2": 17.8,
-    "market_avg_m2": 19.5,
-    "market_delta_pct": -8.7,
-    "market_badge": "🟢 Bon prix (17.8€/m² vs 19.5€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "price_history": {
-      "current": 820,
-      "avg_7d": 1092,
-      "avg_30d": 1150,
-      "min_historic": 943,
-      "sparkline": [
-        1207,
-        1150,
-        1092,
-        820
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-28% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    }
-  },
-  {
-    "id": "immo_lyon_achat_t3_foch",
-    "universe": "immo",
-    "category": "immo",
-    "transaction_type": "achat",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏷️ Achat • Lyon 6e",
-    "title": "T3 de prestige 72m² balcon & parquet - Lyon 6e Foch / Tête d'Or",
-    "price": 295000,
-    "price_str": "295 000 € FAI",
-    "location": "Lyon 6e (69006)",
-    "city": "Lyon",
-    "postal_code": "69006",
-    "lat": 45.7695,
-    "lon": 4.8465,
-    "agency": "Dufossé Immobilier Lyon 6",
-    "is_verified_agency": true,
-    "url": "https://www.bienici.com/recherche/achat/lyon-69006/appartement/3-pieces?prix-max=320000",
-    "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-    "images": [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800"
-    ],
-    "description": "Emplacement exceptionnel entre la place Foch et le Parc de la Tête d'Or. Superbe appartement T3 traversant de 72m² en étage élevé. Vaste séjour avec parquet chevron, balcon filant avec vue dégagée, 2 chambres spacieuses, cuisine équipée séparée. Cave et grenier inclus.",
-    "surface": "72 m²",
-    "surface_val": 72.0,
-    "rooms": "T3",
-    "bedrooms": 2,
-    "floor": "3ème étage",
-    "dpe": "C",
-    "charges": "110 € / mois",
-    "amenities": [
-      "terrasse"
-    ],
-    "price_per_m2": 4097,
-    "market_avg_m2": 4850,
-    "market_delta_pct": -15.5,
-    "market_badge": "🟢 -15% sous le marché (4 097€/m² vs 4 850€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "price_history": {
-      "current": 295000,
-      "avg_7d": 209000,
-      "avg_30d": 220000,
-      "min_historic": 180400,
-      "sparkline": [
-        231000,
-        220000,
-        209000,
-        295000
-      ],
-      "urgency_level": "high",
-      "urgency_badge": "🔴 PRIX ÉLEVÉ (+34% vs moyenne)",
-      "urgency_desc": "Tarif supérieur à la normale."
-    }
-  },
-  {
-    "id": "immo_nice_loc_t2_promenade",
-    "universe": "immo",
-    "category": "immo",
-    "transaction_type": "location",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏠 Location • Côte d'Azur",
-    "title": "T2 face mer avec terrasse panoramique - Nice Promenade des Anglais",
-    "price": 1150,
-    "price_str": "1 150 € / mois CC",
-    "location": "Nice (06000)",
-    "city": "Nice",
-    "postal_code": "06000",
-    "lat": 43.6954,
-    "lon": 7.2512,
-    "agency": "Riviera Blue Real Estate",
-    "is_verified_agency": true,
-    "url": "https://www.seloger.com/annonces/locations/appartement/nice-06/promenade-des-anglais/219804211.htm",
-    "image_url": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
-    "images": [
-      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
-      "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800"
-    ],
-    "description": "Vue époustouflante sur la Baie des Anges ! Appartement 2 pièces de 49m² climatisé avec terrasse de 10m² surplombant la mer Méditerranée. Entièrement meublé avec goût, cuisine neuve équipée, chambre au calme avec rangements. Immeuble de standing avec gardien.",
-    "surface": "49 m²",
-    "surface_val": 49.0,
-    "rooms": "T2",
-    "bedrooms": 1,
-    "floor": "5ème étage avec ascenseur",
-    "dpe": "C",
-    "charges": "120 € / mois",
-    "amenities": [
-      "meuble",
-      "terrasse",
-      "vue_mer",
-      "clim"
-    ],
-    "price_per_m2": 23.4,
-    "market_avg_m2": 26.5,
-    "market_delta_pct": -11.7,
-    "market_badge": "🟢 Bon prix (23.4€/m² vs 26.5€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "price_history": {
-      "current": 1150,
-      "avg_7d": 1092,
-      "avg_30d": 1150,
-      "min_historic": 943,
-      "sparkline": [
-        1207,
-        1150,
-        1092,
-        1150
-      ],
-      "urgency_level": "normal",
-      "urgency_badge": "🟠 PRIX CLASSIQUE (Tarif stable — Pas d'urgence)",
-      "urgency_desc": "Tarif habituel pour la période."
-    }
-  },
-  {
-    "id": "immo_cannes_achat_t3_piscine",
-    "universe": "immo",
-    "category": "immo",
-    "transaction_type": "achat",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏷️ Achat • Côte d'Azur",
-    "title": "T3 avec terrasse vue collines & piscine - Cannes / Le Cannet",
-    "price": 275000,
-    "price_str": "275 000 € FAI",
-    "location": "Cannes / Le Cannet (06110)",
-    "city": "Cannes",
-    "postal_code": "06110",
-    "lat": 43.5762,
-    "lon": 7.0195,
-    "agency": "Agence Immobilière Croisette",
-    "is_verified_agency": true,
-    "url": "https://www.leboncoin.fr/recherche?category=9&locations=Cannes_06400&real_estate_type=2&price=min-290000",
-    "image_url": "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
-    "images": [
-      "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
-      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800"
-    ],
-    "description": "Dans un domaine sécurisé avec parc arboré et piscine olympique. Appartement 3 pièces de 68m² exposé Sud-Ouest. Séjour lumineux ouvrant sur terrasse sans vis-à-vis, cuisine contemporaine semi-ouverte, 2 chambres, salle de bains, WC indépendant. Garage fermé inclus.",
-    "surface": "68 m²",
-    "surface_val": 68.0,
-    "rooms": "T3",
-    "bedrooms": 2,
-    "floor": "2ème étage",
-    "dpe": "C",
-    "charges": "165 € / mois",
-    "amenities": [
-      "terrasse",
-      "piscine",
-      "parking",
-      "clim"
-    ],
-    "price_per_m2": 4044,
-    "market_avg_m2": 4650,
-    "market_delta_pct": -13.0,
-    "market_badge": "🟢 -13% sous le marché (4 044€/m² vs 4 650€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "price_history": {
-      "current": 275000,
-      "avg_7d": 209000,
-      "avg_30d": 220000,
-      "min_historic": 180400,
-      "sparkline": [
-        231000,
-        220000,
-        209000,
-        275000
-      ],
-      "urgency_level": "high",
-      "urgency_badge": "🔴 PRIX ÉLEVÉ (+25% vs moyenne)",
-      "urgency_desc": "Tarif supérieur à la normale."
     }
   },
   {
@@ -493,7 +153,7 @@
     "market_avg_m2": 23.5,
     "market_delta_pct": -8.1,
     "market_badge": "🟢 Bon prix (21.6€/m² vs 23.5€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "price_history": {
       "current": 950,
       "avg_7d": 1092,
@@ -527,7 +187,7 @@
     "lon": -63.116,
     "agency": "Emotion Real Estate SXM",
     "is_verified_agency": true,
-    "url": "https://www.emotion-realestate.com/fr/locations/saint-martin/baie-nettle-studio-piscine",
+    "url": "https://www.emotion-realestate.com/fr/locations/saint-martin",
     "image_url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
     "images": [
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
@@ -553,7 +213,7 @@
     "market_avg_m2": 25.0,
     "market_delta_pct": -5.6,
     "market_badge": "🟢 Bon prix (23.6€/m²)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "price_history": {
       "current": 850,
       "avg_7d": 1092,
@@ -567,7 +227,7 @@
       ],
       "urgency_level": "urgent",
       "urgency_badge": "🟢 PÉPITE HISTORIQUE (-26% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+      "urgency_desc": "Prix anormalement bas !"
     }
   },
   {
@@ -585,16 +245,15 @@
     "postal_code": "97150",
     "lat": 18.0862,
     "lon": -63.0245,
-    "agency": "4U Real Estate Saint-Martin",
+    "agency": "DOMimmo Saint-Martin Ventes",
     "is_verified_agency": true,
-    "url": "https://www.4urealestate.com/property/villa-orient-bay-pool-sxm-395k",
+    "url": "https://www.domimmo.com/saint-martin/immobilier/ventes",
     "image_url": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800",
     "images": [
       "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800"
     ],
-    "description": "À 250 mètres de la célèbre plage de la Baie Orientale et des restaurants de plage. Ravissante villa de plain-pied de 85m² habitable comprenant grand séjour ouvert sur varangue caribéenne, deck en teck avec piscine privée et jardin tropical clos. 2 chambres en suite climatisées.",
+    "description": "À 250 mètres de la célèbre plage de la Baie Orientale. Ravissante villa de plain-pied de 85m² comprenant grand séjour ouvert sur varangue caribéenne, deck en teck avec piscine privée et jardin tropical clos. 2 chambres en suite climatisées.",
     "surface": "85 m²",
     "surface_val": 85.0,
     "rooms": "Villa",
@@ -613,7 +272,7 @@
     "market_avg_m2": 5300,
     "market_delta_pct": -12.3,
     "market_badge": "🟢 -12% sous le marché (4 647€/m² vs 5 300€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "price_history": {
       "current": 395000,
       "avg_7d": 209000,
@@ -628,6 +287,232 @@
       "urgency_level": "high",
       "urgency_badge": "🔴 PRIX ÉLEVÉ (+79% vs moyenne)",
       "urgency_desc": "Tarif supérieur à la normale."
+    }
+  },
+  {
+    "id": "immo_paris_loc_t2_bastille",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "location",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏠 Location • Paris 11e",
+    "title": "T2 contemporain avec balconnet filant - Paris 11e Bastille / Roquette",
+    "price": 1180,
+    "price_str": "1 180 € / mois CC",
+    "location": "Paris 11e (75011)",
+    "city": "Paris",
+    "postal_code": "75011",
+    "lat": 48.8543,
+    "lon": 2.3732,
+    "agency": "Parisian Living Real Estate",
+    "is_verified_agency": true,
+    "url": "https://www.leboncoin.fr/recherche?category=10&locations=Paris_75011&real_estate_type=2&price=min-1250",
+    "image_url": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+      "https://images.unsplash.com/photo-1502005229762-ee1b2b8ab98f?w=800"
+    ],
+    "description": "Quartier animé et recherché, à 3 min du métro Bastille. Appartement 2 pièces de 38m² refait par architecte, optimisé sans perte d'espace. Meublé haut de gamme, cuisine intégrée, chambre séparée au calme donnant sur cour arborée.",
+    "surface": "38 m²",
+    "surface_val": 38.0,
+    "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "3ème étage avec ascenseur",
+    "dpe": "D",
+    "charges": "90 € / mois",
+    "amenities": [
+      "meuble",
+      "terrasse"
+    ],
+    "price_per_m2": 31.0,
+    "market_avg_m2": 35.5,
+    "market_delta_pct": -12.7,
+    "market_badge": "🟢 Bon prix (31€/m² vs 35.5€)",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
+    "price_history": {
+      "current": 1180,
+      "avg_7d": 1092,
+      "avg_30d": 1150,
+      "min_historic": 943,
+      "sparkline": [
+        1207,
+        1150,
+        1092,
+        1180
+      ],
+      "urgency_level": "normal",
+      "urgency_badge": "🟠 PRIX CLASSIQUE (Tarif stable)",
+      "urgency_desc": "Tarif habituel pour la période."
+    }
+  },
+  {
+    "id": "immo_paris_achat_studio_convention",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "achat",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏷️ Achat • Paris 15e",
+    "title": "Studio 22 m² calme sur jardin - Paris 15e Convention",
+    "price": 195000,
+    "price_str": "195 000 € FAI",
+    "location": "Paris 15e (75015)",
+    "city": "Paris",
+    "postal_code": "75015",
+    "lat": 48.8378,
+    "lon": 2.2981,
+    "agency": "Century 21 Convention Paris",
+    "is_verified_agency": true,
+    "url": "https://www.leboncoin.fr/recherche?category=9&locations=Paris_75015&real_estate_type=2&price=min-210000",
+    "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
+    ],
+    "description": "Idéal premier achat ou investissement locatif meublé LMNP. Studio de 22m² en très bon état au sein d'une copropriété sécurisée avec gardien. Grande baie vitrée ouvrant sur jardin de copropriété sans aucun vis-à-vis.",
+    "surface": "22 m²",
+    "surface_val": 22.0,
+    "rooms": "Studio",
+    "bedrooms": 0,
+    "floor": "1er étage",
+    "dpe": "E",
+    "charges": "65 € / mois",
+    "amenities": [
+      "jardin"
+    ],
+    "price_per_m2": 8863,
+    "market_avg_m2": 9650,
+    "market_delta_pct": -8.1,
+    "market_badge": "🟢 -8% sous le marché (8 863€/m² vs 9 650€)",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
+    "price_history": {
+      "current": 195000,
+      "avg_7d": 209000,
+      "avg_30d": 220000,
+      "min_historic": 180400,
+      "sparkline": [
+        231000,
+        220000,
+        209000,
+        195000
+      ],
+      "urgency_level": "good",
+      "urgency_badge": "🟢 BON PRIX (-11% vs moyenne)",
+      "urgency_desc": "Offre sous le prix médian habituel."
+    }
+  },
+  {
+    "id": "immo_lyon_loc_t2_partdieu",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "location",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏠 Location • Lyon 3e",
+    "title": "T2 moderne avec loggia et parking sous-sol - Lyon 3e Part-Dieu",
+    "price": 820,
+    "price_str": "820 € / mois CC",
+    "location": "Lyon 3e (69003)",
+    "city": "Lyon",
+    "postal_code": "69003",
+    "lat": 45.7597,
+    "lon": 4.8522,
+    "agency": "Régie Lyonnaise Immobilière",
+    "is_verified_agency": true,
+    "url": "https://www.leboncoin.fr/recherche?category=10&locations=Lyon_69003&real_estate_type=2&price=min-890",
+    "image_url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800"
+    ],
+    "description": "À 5 minutes à pied de la gare Part-Dieu et du centre commercial. Appartement T2 de 46m² dans résidence récente BBC (Bâtiment Basse Consommation). Loggia de 6m², cuisine américaine aménagée, chambre avec placard dressing, place de parking privative.",
+    "surface": "46 m²",
+    "surface_val": 46.0,
+    "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "4ème étage avec ascenseur",
+    "dpe": "B",
+    "charges": "70 € / mois",
+    "amenities": [
+      "meuble",
+      "terrasse",
+      "parking"
+    ],
+    "price_per_m2": 17.8,
+    "market_avg_m2": 19.5,
+    "market_delta_pct": -8.7,
+    "market_badge": "🟢 Bon prix (17.8€/m² vs 19.5€)",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
+    "price_history": {
+      "current": 820,
+      "avg_7d": 1092,
+      "avg_30d": 1150,
+      "min_historic": 943,
+      "sparkline": [
+        1207,
+        1150,
+        1092,
+        820
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-28% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas !"
+    }
+  },
+  {
+    "id": "immo_nice_loc_t2_promenade",
+    "universe": "immo",
+    "category": "immo",
+    "transaction_type": "location",
+    "category_label": "Immobilier Mondial",
+    "badge": "🏠 Location • Côte d'Azur",
+    "title": "T2 face mer avec terrasse panoramique - Nice Promenade des Anglais",
+    "price": 1150,
+    "price_str": "1 150 € / mois CC",
+    "location": "Nice (06000)",
+    "city": "Nice",
+    "postal_code": "06000",
+    "lat": 43.6954,
+    "lon": 7.2512,
+    "agency": "Riviera Blue Real Estate",
+    "is_verified_agency": true,
+    "url": "https://www.leboncoin.fr/recherche?category=10&locations=Nice_06000&real_estate_type=2&price=min-1250",
+    "image_url": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
+      "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800"
+    ],
+    "description": "Vue époustouflante sur la Baie des Anges ! Appartement 2 pièces de 49m² climatisé avec terrasse de 10m² surplombant la mer Méditerranée. Entièrement meublé avec goût, cuisine neuve équipée, chambre au calme avec rangements.",
+    "surface": "49 m²",
+    "surface_val": 49.0,
+    "rooms": "T2",
+    "bedrooms": 1,
+    "floor": "5ème étage avec ascenseur",
+    "dpe": "C",
+    "charges": "120 € / mois",
+    "amenities": [
+      "meuble",
+      "terrasse",
+      "vue_mer",
+      "clim"
+    ],
+    "price_per_m2": 23.4,
+    "market_avg_m2": 26.5,
+    "market_delta_pct": -11.7,
+    "market_badge": "🟢 Bon prix (23.4€/m² vs 26.5€)",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
+    "price_history": {
+      "current": 1150,
+      "avg_7d": 1092,
+      "avg_30d": 1150,
+      "min_historic": 943,
+      "sparkline": [
+        1207,
+        1150,
+        1092,
+        1150
+      ],
+      "urgency_level": "normal",
+      "urgency_badge": "🟠 PRIX CLASSIQUE (Tarif stable)",
+      "urgency_desc": "Tarif habituel pour la période."
     }
   },
   {
@@ -647,13 +532,13 @@
     "lon": -0.4285,
     "agency": "Costa Blanca Premier Properties",
     "is_verified_agency": true,
-    "url": "https://www.idealista.com/inmueble/104928172/",
+    "url": "https://www.idealista.com/alquiler-viviendas/alicante-alicante/playa-de-san-juan/",
     "image_url": "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
     "images": [
       "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
       "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800"
     ],
-    "description": "À 200m de la magnifique plage de San Juan. Grand appartement de 75m² avec terrasse panoramique sur la Méditerranée, résidence fermée et sécurisée avec 2 piscines, courts de paddle et jardins paysagers. Climatisation gainable réversible, place de parking sous-sol.",
+    "description": "À 200m de la magnifique plage de San Juan. Grand appartement de 75m² avec terrasse panoramique sur la Méditerranée, résidence fermée et sécurisée avec 2 piscines, courts de paddle et jardins paysagers.",
     "surface": "75 m²",
     "surface_val": 75.0,
     "rooms": "T3",
@@ -673,7 +558,7 @@
     "market_avg_m2": 14.5,
     "market_delta_pct": -17.9,
     "market_badge": "🟢 -18% sous le marché (11.9€/m² vs 14.5€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "price_history": {
       "current": 890,
       "avg_7d": 1092,
@@ -691,75 +576,185 @@
     }
   },
   {
-    "id": "immo_spain_achat_t2_malaga",
-    "universe": "immo",
-    "category": "immo",
-    "transaction_type": "achat",
-    "category_label": "Immobilier Mondial",
-    "badge": "🏷️ Achat • Costa del Sol",
-    "title": "T2 front de mer terrasse plein Sud - Malaga / Torremolinos",
-    "price": 169000,
-    "price_str": "169 000 €",
-    "location": "Torremolinos, Malaga (Espagne)",
-    "city": "Malaga",
-    "postal_code": "29620",
-    "lat": 36.6218,
-    "lon": -4.4998,
-    "agency": "Andalusia Sun Homes",
-    "is_verified_agency": true,
-    "url": "https://www.idealista.com/inmueble/104812394/",
-    "image_url": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
-    "images": [
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800"
-    ],
-    "description": "Vue mer imprenable à 50 mètres de la plage de La Carihuela. Appartement 2 pièces de 55m² exposé plein Sud avec terrasse de 12m². Idéal pied-à-terre au soleil ou investissement haut rendement touristique. Résidence entretenue avec piscine et solarium.",
-    "surface": "55 m²",
-    "surface_val": 55.0,
-    "rooms": "T2",
-    "bedrooms": 1,
-    "floor": "3ème étage",
-    "dpe": "C",
-    "charges": "55 € / mois",
-    "amenities": [
-      "terrasse",
-      "piscine",
-      "vue_mer",
-      "clim"
-    ],
-    "price_per_m2": 3072,
-    "market_avg_m2": 3500,
-    "market_delta_pct": -12.2,
-    "market_badge": "🟢 -12% sous le marché (3 072€/m² vs 3 500€)",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "id": "voyage_flash_bale_majorque",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "🔥 Flash Deal • Baléares",
+    "title": "Vol Flash Bâle-Mulhouse ⇄ Majorque dès 36€ A/R",
+    "price": 36,
+    "price_str": "36 € A/R",
+    "location": "Palma de Majorque (Espagne)",
+    "destination": "Majorque",
+    "departure_hub": "Bâle-Mulhouse (BSL)",
+    "trip_mode": "fais_moi_rever",
+    "dates": "14 - 21 Fév. 2026 (Vacances Février)",
+    "departure_city": "Nancy",
+    "agency": "EasyJet via EuroAirport Bâle-Mulhouse (BSL)",
+    "url": "https://www.google.com/travel/flights?q=Vols%20de%20Bale%20vers%20Palma%20de%20Majorque%20du%202026-02-14%20au%202026-02-21",
+    "image_url": "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=800",
+    "description": "Erreur de tarif ou vente flash d'hiver : le billet A/R vers les Baléares sous les 40€. Accès direct en TER depuis Nancy.",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
+    "true_cost": {
+      "departure_city": "Nancy",
+      "departure_hub": "Bâle-Mulhouse (BSL)",
+      "nancy_transport": 45,
+      "train_route": "TER/TGV Nancy -> Bâle-Mulhouse (1h40, ~22€ l'aller)",
+      "flight_price": 36,
+      "hotel_7d_est": 420,
+      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
+      "hotel_rating": 8.7,
+      "total_estimated": 501,
+      "baseline_normal": 850,
+      "gain_net": 349,
+      "is_viable": true,
+      "badge": "🟢 Rentable depuis Nancy (Gain net: +349€)",
+      "verdict": "RENTABLE DEPUIS NANCY",
+      "savings_vs_normal": 349
+    },
     "price_history": {
-      "current": 169000,
-      "avg_7d": 209000,
-      "avg_30d": 220000,
-      "min_historic": 180400,
+      "current": 36,
+      "avg_7d": 169,
+      "avg_30d": 180,
+      "min_historic": 39,
       "sparkline": [
-        231000,
-        220000,
-        209000,
-        169000
+        189,
+        180,
+        169,
+        36
       ],
-      "urgency_level": "good",
-      "urgency_badge": "🟢 BON PRIX (-23% vs moyenne)",
-      "urgency_desc": "Offre sous le prix médian habituel."
-    }
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-80% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas !"
+    },
+    "carnet_voyage": null
+  },
+  {
+    "id": "voyage_flash_train_nancy_paris",
+    "universe": "voyage",
+    "category": "train",
+    "section_type": "flash_deals",
+    "badge": "🚄 TGV Flash • Nancy Hub",
+    "title": "TGV direct Nancy Ville ⇄ Paris Est dès 16€",
+    "price": 16,
+    "price_str": "16 € aller",
+    "location": "Nancy ⇄ Paris Gare de l'Est",
+    "destination": "Paris",
+    "departure_hub": "Nancy Ville",
+    "trip_mode": "sniper",
+    "dates": "12 allers-retours quotidiens (1h32 direct)",
+    "departure_city": "Nancy",
+    "agency": "SNCF Connect / Ouigo",
+    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-paris",
+    "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
+    "description": "Liaison TGV directe (1h32). Connexion idéale pour un week-end parisien ou une correspondance vers les aéroports de Roissy et Orly.",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
+    "true_cost": null,
+    "price_history": {
+      "current": 16,
+      "avg_7d": 35,
+      "avg_30d": 42,
+      "min_historic": 16,
+      "sparkline": [
+        44,
+        42,
+        35,
+        16
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-61% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas !"
+    },
+    "carnet_voyage": null
+  },
+  {
+    "id": "voyage_flash_train_nancy_roissy_cdg",
+    "universe": "voyage",
+    "category": "train",
+    "section_type": "flash_deals",
+    "badge": "🚄 Navette Aéroport • TGV Direct",
+    "title": "TGV direct Nancy Ville ⇄ Aéroport Roissy CDG 2 dès 29€",
+    "price": 29,
+    "price_str": "29 € aller",
+    "location": "Nancy ⇄ Aéroport Roissy CDG",
+    "destination": "Aéroport Roissy CDG",
+    "departure_hub": "Nancy Ville",
+    "trip_mode": "sniper",
+    "dates": "Liaisons directes quotidiennes (1h50)",
+    "departure_city": "Nancy",
+    "agency": "SNCF TGV direct",
+    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-aeroport-paris-roissy-charles-de-gaulle-cdg",
+    "image_url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800",
+    "description": "Arrivez directement au cœur du Terminal 2 de Roissy Charles de Gaulle depuis Nancy sans avoir à traverser Paris.",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
+    "true_cost": null,
+    "price_history": {
+      "current": 29,
+      "avg_7d": 35,
+      "avg_30d": 42,
+      "min_historic": 16,
+      "sparkline": [
+        44,
+        42,
+        35,
+        29
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-30% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas !"
+    },
+    "carnet_voyage": null
+  },
+  {
+    "id": "voyage_flash_train_nancy_luxembourg",
+    "universe": "voyage",
+    "category": "train",
+    "section_type": "flash_deals",
+    "badge": "🚄 TER Frontalier • Hub Vol",
+    "title": "TER direct Nancy ⇄ Luxembourg (LUX) dès 10€",
+    "price": 10,
+    "price_str": "10 € aller",
+    "location": "Nancy ⇄ Luxembourg Gare / Aéroport",
+    "destination": "Luxembourg",
+    "departure_hub": "Nancy Ville",
+    "trip_mode": "sniper",
+    "dates": "Toutes les 30 minutes (1h15)",
+    "departure_city": "Nancy",
+    "agency": "SNCF TER Fluo Grand Est / CFL",
+    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-luxembourg",
+    "image_url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",
+    "description": "Liaison directe et économique vers l'Aéroport de Luxembourg (Findel), avec tramway gratuit à l'arrivée.",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
+    "true_cost": null,
+    "price_history": {
+      "current": 10,
+      "avg_7d": 35,
+      "avg_30d": 42,
+      "min_historic": 16,
+      "sparkline": [
+        44,
+        42,
+        35,
+        10
+      ],
+      "urgency_level": "urgent",
+      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-76% vs mois dernier — URGENT)",
+      "urgency_desc": "Prix anormalement bas !"
+    },
+    "carnet_voyage": null
   },
   {
     "id": "voyage_package_sxm_fevrier",
     "universe": "voyage",
     "category": "flight",
     "section_type": "best_offers",
-    "category_label": "Voyage & Évasion",
     "badge": "🎯 Séjour Tout Compris • Caraïbes",
     "title": "Escapade Caraïbes : Nancy ⇄ Saint-Martin (SXM) dès 389€",
     "price": 389,
     "price_str": "389 € A/R",
     "location": "Saint-Martin (SXM / Caraïbes)",
     "destination": "Saint-Martin (SXM)",
+    "departure_hub": "Paris CDG/ORY",
     "trip_mode": "fais_moi_rever",
     "dates": "12 - 19 Fév. 2026 (1 Semaine)",
     "departure_city": "Nancy",
@@ -767,7 +762,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20SXM%20du%202026-02-12%20au%202026-02-19",
     "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
     "description": "Séjour complet optimisé depuis Nancy : TGV Nancy -> Paris direct (1h32), Vol direct Princess Juliana SXM et sélection hôtel front de mer vérifié 8.9/10.",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Paris CDG/ORY",
@@ -798,7 +793,7 @@
       ],
       "urgency_level": "urgent",
       "urgency_badge": "🟢 PÉPITE HISTORIQUE (-43% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+      "urgency_desc": "Prix anormalement bas !"
     },
     "carnet_voyage": {
       "destination": "Saint-Martin (SXM)",
@@ -853,18 +848,6 @@
           "maps_url": "https://maps.google.com/?q=Baie+Rouge+Saint+Martin",
           "tiktok_tag": "baierouge",
           "tiktok_url": "https://www.tiktok.com/tag/baierouge"
-        },
-        {
-          "id": "act_sxm_loterie",
-          "name": "Loterie Farm : Jungle luxuriante & Piscine de source",
-          "category": "Aventure & Chill",
-          "rating": 4.9,
-          "price": "25 €",
-          "image": "https://images.unsplash.com/photo-1510414842594-a61752af3337?w=500",
-          "desc": "Oasis secrète nichée au pied du Pic Paradis. Cabanes dans les arbres, tyroliennes et lounge en pleine jungle.",
-          "maps_url": "https://maps.google.com/?q=Loterie+Farm+Saint+Martin",
-          "tiktok_tag": "loteriefarm",
-          "tiktok_url": "https://www.tiktok.com/tag/loteriefarm"
         }
       ],
       "restaurants": [
@@ -889,17 +872,6 @@
           "maps_url": "https://maps.google.com/?q=Talk+of+the+Town+Grand+Case",
           "tiktok_tag": "saintmartinlolos",
           "tiktok_url": "https://www.tiktok.com/tag/saintmartinfood"
-        },
-        {
-          "id": "resto_sxm_bistrot",
-          "name": "Bistrot Caraïbes",
-          "category": "Fruits de Mer & Cuisine Française",
-          "rating": 4.9,
-          "price_range": "€€€",
-          "specialty": "Vivaneau en croûte de sel et soufflé au Grand Marnier",
-          "maps_url": "https://maps.google.com/?q=Bistrot+Caraibes+Grand+Case",
-          "tiktok_tag": "bistrotcaraibes",
-          "tiktok_url": "https://www.tiktok.com/tag/caribbeanfood"
         }
       ],
       "social_proof": [
@@ -908,12 +880,6 @@
           "platform": "TikTok",
           "views": "1.4M",
           "url": "https://www.tiktok.com/tag/stmartintravel"
-        },
-        {
-          "title": "Grand-Case : La capitale gastronomique des Caraïbes",
-          "platform": "TikTok",
-          "views": "850K",
-          "url": "https://www.tiktok.com/tag/grandcasestmartin"
         },
         {
           "title": "Avis certifiés des voyageurs (Note 4.8★)",
@@ -929,13 +895,13 @@
     "universe": "voyage",
     "category": "flight",
     "section_type": "best_offers",
-    "category_label": "Voyage & Évasion",
     "badge": "🎯 Séjour Tout Compris • Antilles",
     "title": "Séjour Créole : Nancy ⇄ Guadeloupe (PTP) dès 330€",
     "price": 330,
     "price_str": "330 € A/R",
     "location": "Guadeloupe (PTP)",
     "destination": "Guadeloupe (PTP)",
+    "departure_hub": "Paris CDG/ORY",
     "trip_mode": "fais_moi_rever",
     "dates": "20 - 27 Mars 2026 (1 Semaine)",
     "departure_city": "Nancy",
@@ -943,7 +909,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20PTP%20du%202026-03-20%20au%202026-03-27",
     "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
     "description": "Départ Nancy direct Massy TGV sans changer de gare à Paris. Vol direct vers Pointe-à-Pitre et lodge éco-responsable avec spa créole.",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Paris CDG/ORY",
@@ -974,74 +940,63 @@
       ],
       "urgency_level": "urgent",
       "urgency_badge": "🟢 PÉPITE HISTORIQUE (-46% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+      "urgency_desc": "Prix anormalement bas !"
     },
     "carnet_voyage": {
       "destination": "Guadeloupe (PTP)",
-      "why_deal": "Billet vol régulier sous 330€ A/R, exceptionnel pour les Antilles. Connexion Nancy facilitée via Massy TGV ou Roissy CDG direct.",
+      "why_deal": "Tarif ultra-compétitif au départ de Nancy via le hub Paris CDG/ORY. Déplacement direct sans nuitée d'étape intermédiaire.",
       "logistics": [
         {
           "step": 1,
-          "title": "Nancy -> Paris / Massy",
-          "desc": "TGV Nancy -> Massy TGV direct sans traverser Paris.",
-          "duration": "2h05"
+          "title": "Liaison Nancy -> Paris CDG/ORY",
+          "desc": "TGV Nancy -> Paris Est (1h32 dès 16€) + Navette/RER B",
+          "duration": "1h30"
         },
         {
           "step": 2,
-          "title": "Vol Direct Paris ORY -> PTP",
-          "desc": "Vol de jour direct Corsair / Air Caraïbes.",
-          "duration": "8h30"
+          "title": "Vol A/R direct vers Guadeloupe (PTP)",
+          "desc": "Compagnie régulière avec bagage cabine inclus.",
+          "duration": "Direct"
         },
         {
           "step": 3,
-          "title": "Lodge éco-responsable",
-          "desc": "Bungalow créole à Sainte-Anne ou Deshaies noté 8.8/10.",
-          "duration": "7 nuits"
+          "title": "Hôtel Boutique Vérifié",
+          "desc": "Hébergement Kaz Kréyol Lodge & Spa (8.8/10) noté ≥ 8.5/10.",
+          "duration": "Séjour complet"
         }
       ],
       "activities": [
         {
-          "id": "act_ptp_volcan",
-          "name": "Ascension de la Soufrière au lever du jour",
-          "category": "Randonnée",
-          "rating": 4.9,
-          "price": "Gratuit",
-          "desc": "Volcan actif dominant l'archipel avec ses fumerolles et bains chauds de Matouba.",
-          "maps_url": "https://maps.google.com/?q=La+Soufriere+Guadeloupe",
-          "tiktok_tag": "soufriereguadeloupe",
-          "tiktok_url": "https://www.tiktok.com/tag/lasoufriere"
-        },
-        {
-          "id": "act_ptp_iletcarek",
-          "name": "Excursion à l'Îlet Caret (Grand Cul-de-Sac Marin)",
-          "category": "Plage & Bateau",
+          "id": "act_gen_1",
+          "name": "Visite immersive du centre historique & spots cachés",
+          "category": "Culture",
           "rating": 4.8,
-          "price": "50 €",
-          "desc": "Banc de sable blanc bordé d'une eau turquoise translucide au milieu de la barrière de corail.",
-          "maps_url": "https://maps.google.com/?q=Ilet+Caret+Guadeloupe",
-          "tiktok_tag": "iletcaret",
-          "tiktok_url": "https://www.tiktok.com/tag/iletcaret"
+          "price": "15 €",
+          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes.",
+          "maps_url": "https://maps.google.com/?q=Guadeloupe (PTP)+attractions",
+          "tiktok_tag": "traveltips",
+          "tiktok_url": "https://www.tiktok.com/tag/guadeloupe(ptp)"
         }
       ],
       "restaurants": [
         {
-          "id": "resto_ptp_rhum",
-          "name": "L'Habitation Deshaies",
-          "category": "Créole Raffiné",
+          "id": "resto_gen_1",
+          "name": "Trattoria / Bistrot Typique",
+          "category": "Spécialités Locales",
           "rating": 4.8,
           "price_range": "€€",
-          "specialty": "Colombo de cabri au feu de bois & Ouassous grillés",
-          "maps_url": "https://maps.google.com/?q=Deshaies+Restaurant+Guadeloupe",
-          "tiktok_tag": "guadeloupefood",
-          "tiktok_url": "https://www.tiktok.com/tag/guadeloupefood"
+          "specialty": "Recettes authentiques et produits frais du marché",
+          "maps_url": "https://maps.google.com/?q=Guadeloupe (PTP)+best+food",
+          "tiktok_tag": "food",
+          "tiktok_url": "https://www.tiktok.com/tag/guadeloupe(ptp)food"
         }
       ],
       "social_proof": [
         {
-          "title": "Ce que personne ne vous dit sur la Guadeloupe",
+          "title": "Les meilleures adresses à Guadeloupe (PTP)",
           "platform": "TikTok",
-          "views": "2.1M",
-          "url": "https://www.tiktok.com/tag/guadeloupetravel"
+          "views": "920K",
+          "url": "https://www.tiktok.com/tag/guadeloupe(ptp)"
         }
       ]
     }
@@ -1051,13 +1006,13 @@
     "universe": "voyage",
     "category": "flight",
     "section_type": "best_offers",
-    "category_label": "Voyage & Évasion",
     "badge": "✨ Week-end (3 jours) • Italie",
     "title": "Week-end Gastronomique : Nancy ⇄ Bologne dès 39€",
     "price": 39,
     "price_str": "39 € A/R",
     "location": "Bologne (Italie)",
     "destination": "Bologne (Italie)",
+    "departure_hub": "Luxembourg (LUX)",
     "trip_mode": "fais_moi_rever",
     "dates": "Ven. 27 Fév. - Dim. 1 Mars (Week-end)",
     "departure_city": "Nancy",
@@ -1065,7 +1020,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Luxembourg%20vers%20Bologne%20du%202026-02-27%20au%202026-03-01",
     "image_url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800",
     "description": "L'escapade gourmande idéale pour 3 jours : tagliatelles al ragù, ruelles ocres et cafés historiques. Liaison Nancy -> Luxembourg en TER direct (1h15, ~10€).",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Luxembourg (LUX)",
@@ -1096,11 +1051,11 @@
       ],
       "urgency_level": "urgent",
       "urgency_badge": "🟢 PÉPITE HISTORIQUE (-78% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+      "urgency_desc": "Prix anormalement bas !"
     },
     "carnet_voyage": {
       "destination": "Bologne (Italie)",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Luxembourg (LUX). Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
+      "why_deal": "Tarif ultra-compétitif au départ de Nancy via le hub Luxembourg (LUX). Déplacement direct sans nuitée d'étape intermédiaire.",
       "logistics": [
         {
           "step": 1,
@@ -1111,7 +1066,7 @@
         {
           "step": 2,
           "title": "Vol A/R direct vers Bologne (Italie)",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
+          "desc": "Compagnie régulière avec bagage cabine inclus.",
           "duration": "Direct"
         },
         {
@@ -1128,7 +1083,7 @@
           "category": "Culture",
           "rating": 4.8,
           "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
+          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes.",
           "maps_url": "https://maps.google.com/?q=Bologne (Italie)+attractions",
           "tiktok_tag": "traveltips",
           "tiktok_url": "https://www.tiktok.com/tag/bologne(italie)"
@@ -1137,13 +1092,13 @@
       "restaurants": [
         {
           "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
+          "name": "Trattoria / Bistrot Typique",
           "category": "Spécialités Locales",
           "rating": 4.8,
           "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
+          "specialty": "Recettes authentiques et produits frais du marché",
           "maps_url": "https://maps.google.com/?q=Bologne (Italie)+best+food",
-          "tiktok_tag": "streetfood",
+          "tiktok_tag": "food",
           "tiktok_url": "https://www.tiktok.com/tag/bologne(italie)food"
         }
       ],
@@ -1162,13 +1117,13 @@
     "universe": "voyage",
     "category": "flight",
     "section_type": "best_offers",
-    "category_label": "Voyage & Évasion",
     "badge": "🎯 Séjour Tout Compris • USA",
     "title": "New York Manhattan : Nancy ⇄ NYC dès 315€",
     "price": 315,
     "price_str": "315 € A/R",
     "location": "New York (JFK / EWR)",
     "destination": "New York (NYC)",
+    "departure_hub": "Paris CDG/ORY",
     "trip_mode": "sniper",
     "dates": "8 - 15 Avril 2026 (1 Semaine)",
     "departure_city": "Nancy",
@@ -1176,7 +1131,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20New%20York%20du%202026-04-08%20au%202026-04-15",
     "image_url": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
     "description": "Tarif exceptionnel pour New York au printemps. Liaison Nancy -> Roissy CDG direct en TGV sans changement.",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
+    "date_detected": "2026-11-10T11:30:11.529469+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Paris CDG/ORY",
@@ -1207,11 +1162,11 @@
       ],
       "urgency_level": "urgent",
       "urgency_badge": "🟢 PÉPITE HISTORIQUE (-42% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
+      "urgency_desc": "Prix anormalement bas !"
     },
     "carnet_voyage": {
       "destination": "New York (NYC)",
-      "why_deal": "Tarif ultra-compétitif au départ du hub Paris CDG/ORY. Déplacement optimisé depuis Nancy sans nuitée d'étape intermédiaire.",
+      "why_deal": "Tarif ultra-compétitif au départ de Nancy via le hub Paris CDG/ORY. Déplacement direct sans nuitée d'étape intermédiaire.",
       "logistics": [
         {
           "step": 1,
@@ -1222,7 +1177,7 @@
         {
           "step": 2,
           "title": "Vol A/R direct vers New York (NYC)",
-          "desc": "Compagnie sélectionnée avec taxes d'aéroport incluses.",
+          "desc": "Compagnie régulière avec bagage cabine inclus.",
           "duration": "Direct"
         },
         {
@@ -1239,7 +1194,7 @@
           "category": "Culture",
           "rating": 4.8,
           "price": "15 €",
-          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes à l'écart des foules.",
+          "desc": "Ruelles pittoresques, belvédères panoramiques et cours secrètes.",
           "maps_url": "https://maps.google.com/?q=New York (NYC)+attractions",
           "tiktok_tag": "traveltips",
           "tiktok_url": "https://www.tiktok.com/tag/newyork(nyc)"
@@ -1248,13 +1203,13 @@
       "restaurants": [
         {
           "id": "resto_gen_1",
-          "name": "Trattoria / Bistrot des Habitants",
+          "name": "Trattoria / Bistrot Typique",
           "category": "Spécialités Locales",
           "rating": 4.8,
           "price_range": "€€",
-          "specialty": "Recettes transmises de génération en génération, produits du marché",
+          "specialty": "Recettes authentiques et produits frais du marché",
           "maps_url": "https://maps.google.com/?q=New York (NYC)+best+food",
-          "tiktok_tag": "streetfood",
+          "tiktok_tag": "food",
           "tiktok_url": "https://www.tiktok.com/tag/newyork(nyc)food"
         }
       ],
@@ -1267,169 +1222,5 @@
         }
       ]
     }
-  },
-  {
-    "id": "voyage_flash_bale_majorque",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "🔥 Flash Deal • Baléares",
-    "title": "Vol Flash Bâle-Mulhouse ⇄ Majorque dès 36€ A/R",
-    "price": 36,
-    "price_str": "36 € A/R",
-    "location": "Palma de Majorque (Espagne)",
-    "destination": "Majorque",
-    "trip_mode": "fais_moi_rever",
-    "dates": "14 - 21 Fév. 2026 (Vacances Février)",
-    "departure_city": "Nancy",
-    "agency": "EasyJet via EuroAirport Bâle-Mulhouse (BSL)",
-    "url": "https://www.google.com/travel/flights?q=Vols%20de%20Bale%20vers%20Palma%20de%20Majorque%20du%202026-02-14%20au%202026-02-21",
-    "image_url": "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=800",
-    "description": "Erreur de tarif ou vente flash d'hiver : le billet A/R vers les Baléares sous les 40€. Accès rapide en TER depuis Nancy.",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "true_cost": {
-      "departure_city": "Nancy",
-      "departure_hub": "Bâle-Mulhouse (BSL)",
-      "nancy_transport": 45,
-      "train_route": "TER/TGV Nancy -> Bâle-Mulhouse (1h40, ~22€ l'aller)",
-      "flight_price": 36,
-      "hotel_7d_est": 420,
-      "hotel_name": "Hôtel Riviera Charme & Vue (8.7/10)",
-      "hotel_rating": 8.7,
-      "total_estimated": 501,
-      "baseline_normal": 850,
-      "gain_net": 349,
-      "is_viable": true,
-      "badge": "🟢 Rentable depuis Nancy (Gain net: +349€)",
-      "verdict": "RENTABLE DEPUIS NANCY",
-      "savings_vs_normal": 349
-    },
-    "price_history": {
-      "current": 36,
-      "avg_7d": 169,
-      "avg_30d": 180,
-      "min_historic": 39,
-      "sparkline": [
-        189,
-        180,
-        169,
-        36
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-80% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    },
-    "carnet_voyage": null
-  },
-  {
-    "id": "voyage_flash_train_nancy_paris",
-    "universe": "voyage",
-    "category": "train",
-    "section_type": "flash_deals",
-    "badge": "🚄 TGV Flash • Nancy Hub",
-    "title": "TGV direct Nancy Ville ⇄ Paris Est dès 16€",
-    "price": 16,
-    "price_str": "16 € aller",
-    "location": "Nancy ⇄ Paris Gare de l'Est",
-    "destination": "Paris",
-    "trip_mode": "sniper",
-    "dates": "12 allers-retours quotidiens (1h32 direct)",
-    "departure_city": "Nancy",
-    "agency": "SNCF Connect / Ouigo",
-    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-paris",
-    "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
-    "description": "Liaison TGV directe (1h32). Connexion idéale pour un week-end parisien ou une correspondance vers les aéroports de Roissy et Orly.",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 16,
-      "avg_7d": 35,
-      "avg_30d": 42,
-      "min_historic": 16,
-      "sparkline": [
-        44,
-        42,
-        35,
-        16
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-61% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    },
-    "carnet_voyage": null
-  },
-  {
-    "id": "voyage_flash_train_nancy_roissy_cdg",
-    "universe": "voyage",
-    "category": "train",
-    "section_type": "flash_deals",
-    "badge": "🚄 Navette Aéroport • TGV Direct",
-    "title": "TGV direct Nancy Ville ⇄ Aéroport Roissy CDG 2 dès 29€",
-    "price": 29,
-    "price_str": "29 € aller",
-    "location": "Nancy ⇄ Aéroport Roissy CDG",
-    "destination": "Aéroport Roissy CDG",
-    "trip_mode": "sniper",
-    "dates": "Liaisons directes quotidiennes (1h50)",
-    "departure_city": "Nancy",
-    "agency": "SNCF TGV direct",
-    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-aeroport-paris-roissy-charles-de-gaulle-cdg",
-    "image_url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800",
-    "description": "Arrivez directement au cœur du Terminal 2 de Roissy Charles de Gaulle depuis Nancy sans avoir à traverser Paris avec vos bagages.",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 29,
-      "avg_7d": 35,
-      "avg_30d": 42,
-      "min_historic": 16,
-      "sparkline": [
-        44,
-        42,
-        35,
-        29
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-30% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    },
-    "carnet_voyage": null
-  },
-  {
-    "id": "voyage_flash_train_nancy_luxembourg",
-    "universe": "voyage",
-    "category": "train",
-    "section_type": "flash_deals",
-    "badge": "🚄 TER Frontalier • Hub Vol",
-    "title": "TER direct Nancy ⇄ Luxembourg (LUX) dès 10€",
-    "price": 10,
-    "price_str": "10 € aller",
-    "location": "Nancy ⇄ Luxembourg Gare / Aéroport",
-    "destination": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "Toutes les 30 minutes (1h15)",
-    "departure_city": "Nancy",
-    "agency": "SNCF TER Fluo Grand Est / CFL",
-    "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-luxembourg",
-    "image_url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",
-    "description": "Liaison directe et économique vers l'Aéroport de Luxembourg (Findel), avec tramway gratuit à l'arrivée.",
-    "date_detected": "2026-11-10T11:07:39.089881+00:00",
-    "true_cost": null,
-    "price_history": {
-      "current": 10,
-      "avg_7d": 35,
-      "avg_30d": 42,
-      "min_historic": 16,
-      "sparkline": [
-        44,
-        42,
-        35,
-        10
-      ],
-      "urgency_level": "urgent",
-      "urgency_badge": "🟢 PÉPITE HISTORIQUE (-76% vs mois dernier — URGENT)",
-      "urgency_desc": "Prix anormalement bas, risque d'épuisement rapide !"
-    },
-    "carnet_voyage": null
   }
 ]
