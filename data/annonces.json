@@ -18,7 +18,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20New%20York%20du%202026-04-08%20au%202026-04-15",
     "image_url": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
     "description": "Tarif exceptionnel pour New York au printemps. Liaison Nancy -> Roissy CDG direct en TGV sans changement.",
-    "date_detected": "2026-11-10T15:36:04.690460+00:00",
+    "date_detected": "2026-11-10T21:26:07.883620+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Paris CDG/ORY",
@@ -129,7 +129,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Luxembourg%20vers%20Bologne%20du%202026-02-27%20au%202026-03-01",
     "image_url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800",
     "description": "L'escapade gourmande idéale pour 3 jours : tagliatelles al ragù, ruelles ocres et cafés historiques. Liaison Nancy -> Luxembourg en TER direct (1h15, ~10€).",
-    "date_detected": "2026-11-10T15:36:04.690423+00:00",
+    "date_detected": "2026-11-10T21:26:07.883586+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Luxembourg (LUX)",
@@ -240,7 +240,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20PTP%20du%202026-03-20%20au%202026-03-27",
     "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
     "description": "Départ Nancy direct Massy TGV sans changer de gare à Paris. Vol direct vers Pointe-à-Pitre et lodge éco-responsable avec spa créole.",
-    "date_detected": "2026-11-10T15:36:04.690380+00:00",
+    "date_detected": "2026-11-10T21:26:07.883551+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Paris CDG/ORY",
@@ -351,7 +351,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Paris%20vers%20SXM%20du%202026-02-12%20au%202026-02-19",
     "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
     "description": "Séjour complet optimisé depuis Nancy : TGV Nancy -> Paris direct (1h32), Vol direct Princess Juliana SXM et sélection hôtel front de mer vérifié 8.9/10.",
-    "date_detected": "2026-11-10T15:36:04.690332+00:00",
+    "date_detected": "2026-11-10T21:26:07.883510+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Paris CDG/ORY",
@@ -498,7 +498,7 @@
     "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-luxembourg",
     "image_url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",
     "description": "Liaison directe et économique vers l'Aéroport de Luxembourg (Findel), avec tramway gratuit à l'arrivée.",
-    "date_detected": "2026-11-10T15:36:04.690318+00:00",
+    "date_detected": "2026-11-10T21:26:07.883500+00:00",
     "true_cost": null,
     "price_history": {
       "current": 10,
@@ -536,7 +536,7 @@
     "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-aeroport-paris-roissy-charles-de-gaulle-cdg",
     "image_url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800",
     "description": "Arrivez directement au cœur du Terminal 2 de Roissy Charles de Gaulle depuis Nancy sans avoir à traverser Paris.",
-    "date_detected": "2026-11-10T15:36:04.690309+00:00",
+    "date_detected": "2026-11-10T21:26:07.883492+00:00",
     "true_cost": null,
     "price_history": {
       "current": 29,
@@ -574,7 +574,7 @@
     "url": "https://www.thetrainline.com/fr/horaires-train/nancy-a-paris",
     "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
     "description": "Liaison TGV directe (1h32). Connexion idéale pour un week-end parisien ou une correspondance vers les aéroports de Roissy et Orly.",
-    "date_detected": "2026-11-10T15:36:04.690297+00:00",
+    "date_detected": "2026-11-10T21:26:07.883480+00:00",
     "true_cost": null,
     "price_history": {
       "current": 16,
@@ -612,7 +612,7 @@
     "url": "https://www.google.com/travel/flights?q=Vols%20de%20Bale%20vers%20Palma%20de%20Majorque%20du%202026-02-14%20au%202026-02-21",
     "image_url": "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=800",
     "description": "Erreur de tarif ou vente flash d'hiver : le billet A/R vers les Baléares sous les 40€. Accès direct en TER depuis Nancy.",
-    "date_detected": "2026-11-10T15:36:04.690257+00:00",
+    "date_detected": "2026-11-10T21:26:07.883445+00:00",
     "true_cost": {
       "departure_city": "Nancy",
       "departure_hub": "Bâle-Mulhouse (BSL)",
@@ -690,7 +690,7 @@
     "market_avg_m2": 14.5,
     "market_delta_pct": -17.9,
     "market_badge": "🟢 -18% sous le marché (11.9€/m² vs 14.5€)",
-    "date_detected": "2026-11-10T15:36:04.690173+00:00",
+    "date_detected": "2026-11-10T21:26:07.883393+00:00",
     "price_history": {
       "current": 890,
       "avg_7d": 1092,
@@ -748,7 +748,7 @@
     "market_avg_m2": 26.5,
     "market_delta_pct": -11.7,
     "market_badge": "🟢 Bon prix (23.4€/m² vs 26.5€)",
-    "date_detected": "2026-11-10T15:36:04.690163+00:00",
+    "date_detected": "2026-11-10T21:26:07.883383+00:00",
     "price_history": {
       "current": 1150,
       "avg_7d": 1092,
@@ -805,7 +805,7 @@
     "market_avg_m2": 19.5,
     "market_delta_pct": -8.7,
     "market_badge": "🟢 Bon prix (17.8€/m² vs 19.5€)",
-    "date_detected": "2026-11-10T15:36:04.690152+00:00",
+    "date_detected": "2026-11-10T21:26:07.883373+00:00",
     "price_history": {
       "current": 820,
       "avg_7d": 1092,
@@ -860,7 +860,7 @@
     "market_avg_m2": 9650,
     "market_delta_pct": -8.1,
     "market_badge": "🟢 -8% sous le marché (8 863€/m² vs 9 650€)",
-    "date_detected": "2026-11-10T15:36:04.690140+00:00",
+    "date_detected": "2026-11-10T21:26:07.883363+00:00",
     "price_history": {
       "current": 195000,
       "avg_7d": 209000,
@@ -916,7 +916,7 @@
     "market_avg_m2": 35.5,
     "market_delta_pct": -12.7,
     "market_badge": "🟢 Bon prix (31€/m² vs 35.5€)",
-    "date_detected": "2026-11-10T15:36:04.690129+00:00",
+    "date_detected": "2026-11-10T21:26:07.883353+00:00",
     "price_history": {
       "current": 1180,
       "avg_7d": 1092,
@@ -975,7 +975,7 @@
     "market_avg_m2": 5300,
     "market_delta_pct": -12.3,
     "market_badge": "🟢 -12% sous le marché (4 647€/m² vs 5 300€)",
-    "date_detected": "2026-11-10T15:36:04.690117+00:00",
+    "date_detected": "2026-11-10T21:26:07.883341+00:00",
     "price_history": {
       "current": 395000,
       "avg_7d": 209000,
@@ -1035,7 +1035,7 @@
     "market_avg_m2": 25.0,
     "market_delta_pct": -5.6,
     "market_badge": "🟢 Bon prix (23.6€/m²)",
-    "date_detected": "2026-11-10T15:36:04.690105+00:00",
+    "date_detected": "2026-11-10T21:26:07.883330+00:00",
     "price_history": {
       "current": 850,
       "avg_7d": 1092,
@@ -1093,7 +1093,7 @@
     "market_avg_m2": 23.5,
     "market_delta_pct": -8.1,
     "market_badge": "🟢 Bon prix (21.6€/m² vs 23.5€)",
-    "date_detected": "2026-11-10T15:36:04.690086+00:00",
+    "date_detected": "2026-11-10T21:26:07.883314+00:00",
     "price_history": {
       "current": 950,
       "avg_7d": 1092,
@@ -1148,7 +1148,7 @@
     "market_avg_m2": 2850,
     "market_delta_pct": -9.3,
     "market_badge": "🟢 -9% sous le marché (2 585€/m² vs 2 850€)",
-    "date_detected": "2026-11-10T15:36:04.690068+00:00",
+    "date_detected": "2026-11-10T21:26:07.883299+00:00",
     "price_history": {
       "current": 168000,
       "avg_7d": 209000,
@@ -1206,7 +1206,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": -6.5,
     "market_badge": "🟢 Bon prix (12.9€/m² vs 13.8€)",
-    "date_detected": "2026-11-10T15:36:04.690030+00:00",
+    "date_detected": "2026-11-10T21:26:07.883268+00:00",
     "price_history": {
       "current": 620,
       "avg_7d": 1092,
