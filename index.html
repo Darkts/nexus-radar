@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Nexus Radar V7 | Immobilier Mondial & Planificateur Voyage Intelligent</title>
-  <meta name="description" content="Hub personnel autonome V7 : Scraping en direct Immo & Voyage, Grille Moderne, Calendrier Interactif & Deep Links" />
+  <title>Nexus Radar V8 | Immobilier Mondial & Planificateur Voyage Intelligent</title>
+  <meta name="description" content="Hub personnel autonome V8 : Vraies photos, Filtres Anti-Viager, Swipe verrouillé & Moteur Voyage Réactif aux Dates" />
   
   <!-- PWA & Apple Meta -->
   <link rel="manifest" href="manifest.json" />
@@ -12,7 +12,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Nexus Radar V7" />
+  <meta name="apple-mobile-web-app-title" content="Nexus Radar V8" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icon.svg" />
 
@@ -1197,27 +1197,182 @@
       color: #070a13;
     }
 
-    /* Toast */
+    /* Toast en bas au-dessus de la nav (cliquable pour Annuler Missclick) */
     .toast {
       position: fixed;
-      top: 70px;
+      bottom: 82px;
       left: 50%;
-      transform: translateX(-50%) translateY(-100px);
+      transform: translateX(-50%) translateY(140px);
       background: #0e1424;
       border: 1px solid var(--primary);
       color: #fff;
-      padding: 10px 18px;
-      border-radius: 20px;
+      padding: 10px 16px;
+      border-radius: 16px;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       z-index: 10000;
       display: flex;
       align-items: center;
-      gap: 8px;
-      transition: transform 0.25s ease;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: calc(100vw - 24px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      opacity: 0;
       pointer-events: none;
     }
-    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .toast-undo-btn {
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .toast-undo-btn:hover { background: #38bdf8; color: #070a13; }
+
+    /* V8 Raccourci Likes Header, Bouton Reset Dislikes, Case Viager, Sous-onglets & Carrousel Voyage */
+    .btn-liked-shortcut {
+      background: rgba(244, 63, 94, 0.16);
+      border: 1px solid rgba(244, 63, 94, 0.45);
+      color: #fda4af;
+      padding: 6px 11px;
+      border-radius: 10px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-liked-shortcut:hover { background: rgba(244, 63, 94, 0.28); color: #fff; }
+    .btn-reset-dislikes {
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      color: #fcd34d;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .viager-exclude-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-top: 4px;
+    }
+    .viager-exclude-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .viager-exclude-label input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: #10b981;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .catalogue-subtabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: #090e1a;
+      border: 1px solid var(--card-border);
+      padding: 4px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    .catalogue-subtab-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 9px 10px;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+    .catalogue-subtab-btn.active {
+      background: rgba(244, 63, 94, 0.22);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.45);
+    }
+    .catalogue-subtab-btn.active.fav-tab {
+      background: rgba(234, 179, 8, 0.22);
+      color: #fde047;
+      border: 1px solid rgba(234, 179, 8, 0.45);
+    }
+
+    /* Bannière Carrousel Horizontal Offres Spéciales Voyage */
+    .voyage-inspirations-box {
+      background: linear-gradient(135deg, rgba(14, 24, 48, 0.95), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+    .voyage-inspi-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .voyage-inspi-track::-webkit-scrollbar { height: 6px; }
+    .voyage-inspi-track::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.35); border-radius: 6px; }
+    .voyage-inspi-card {
+      flex: 0 0 285px;
+      scroll-snap-align: start;
+      background: #090e1a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .voyage-inspi-card:hover {
+      transform: translateY(-2px);
+      border-color: #38bdf8;
+    }
+    .voyage-inspi-img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      display: block;
+    }
+    .carousel-btn, .btn-card-fav, .card-actions-bar button, .card-actions-bar a {
+      touch-action: manipulation;
+    }
 
     .empty-state {
       text-align: center;
@@ -1334,7 +1489,7 @@
   <div class="pin-modal-overlay" id="pinLockOverlay">
     <div class="pin-box">
       <div style="font-size: 2.2rem;">🔒</div>
-      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V7</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V8</h2>
       <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code PIN à 4 chiffres</p>
       
       <div class="pin-dots">
@@ -1369,14 +1524,17 @@
           <img src="assets/icon.svg" alt="Nexus Logo" />
         </div>
         <div>
-          <div class="brand-title">NEXUS RADAR V7</div>
+          <div class="brand-title">NEXUS RADAR V8</div>
           <div class="brand-sub">
             <span class="live-dot"></span>
             <span id="headerLiveStatus">Scraping Direct Temps Réel • Double Univers</span>
           </div>
         </div>
       </div>
-      <div class="header-actions">
+      <div class="header-actions" style="display:flex; align-items:center; gap:8px;">
+        <button id="headerLikesBtn" class="btn-liked-shortcut" title="Voir mes biens likés & favoris" onclick="openLikesCatalogueTab('likes')">
+          ❤️ Mes Biens Likés (<span id="headerLikedCount">0</span>)
+        </button>
         <button id="refreshBtn" class="btn-icon" title="Actualiser" onclick="loadData(true)">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
@@ -1449,7 +1607,10 @@
         <div class="step-filters-box" style="margin-top: 10px;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
             <div class="step-header-label">⚙️ Étape 2 : Vos critères (cliquez pour cocher / décocher)</div>
-            <button class="btn-reset-filters" onclick="resetAllImmoFilters()">↺ Tout décocher / Réinitialiser</button>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button class="btn-reset-dislikes" id="btnResetDislikesImmo" onclick="resetDislikes()">↺ Réinitialiser mes Dislikes (<span id="immoDislikesCount">0</span>)</button>
+              <button class="btn-reset-filters" onclick="resetAllImmoFilters()">↺ Tout décocher / Réinitialiser</button>
+            </div>
           </div>
           
           <div class="filters-grid-row">
@@ -1483,6 +1644,13 @@
             <button class="chip-filter" id="chipAmenityPiscine" onclick="toggleAmenity('piscine', this)">🏊 Piscine</button>
             <button class="chip-filter" id="chipAmenityParking" onclick="toggleAmenity('parking', this)">🚗 Parking</button>
           </div>
+
+          <div class="viager-exclude-bar">
+            <label class="viager-exclude-label">
+              <input type="checkbox" id="immoExcludeViager" checked onchange="triggerAutoRefreshImmo(true)" />
+              <span>🚫 Exclure Viager / Nue-propriété / Résidences seniors &amp; étudiantes privées</span>
+            </label>
+          </div>
         </div>
       </div>
 
@@ -1513,31 +1681,59 @@
       </div>
     </section>
 
-    <!-- VUE FAVORIS IMMO -->
+    <!-- VUE CATALOGUE : LIKÉS & FAVORIS (IMMO + VOYAGE) -->
     <section id="pane-immo-catalogue" class="tab-pane">
-      <div style="margin-bottom: 14px;">
-        <h2 style="font-size: 1.15rem; font-weight: 800;">⭐ Mon Catalogue Immobilier</h2>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Vos appartements et villas gardés de côté.</p>
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom: 12px;">
+        <div>
+          <h2 style="font-size: 1.15rem; font-weight: 800;">❤️ Mes Biens Likés &amp; Favoris</h2>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Les annonces likées sortent automatiquement du flux de recherche pour faire place à de nouvelles pépites.</p>
+        </div>
+        <button class="btn-reset-dislikes" onclick="resetDislikes()">↺ Réinitialiser Dislikes (<span id="catDislikesCount">0</span>)</button>
       </div>
+
+      <div class="catalogue-subtabs">
+        <button class="catalogue-subtab-btn active" id="catTabLikes" onclick="switchCatalogueSubtab('likes')">
+          ❤️ Biens Likés mis de côté (<span id="catLikesCount">0</span>)
+        </button>
+        <button class="catalogue-subtab-btn fav-tab" id="catTabFavs" onclick="switchCatalogueSubtab('favs')">
+          ⭐ Coups de cœur Favoris (<span id="catFavsCount">0</span>)
+        </button>
+      </div>
+
       <div class="items-grid" id="immoCatalogueGrid"></div>
       <div class="empty-state" id="emptyImmoCatalogue" style="display: none;">
-        <div style="font-size: 36px; margin-bottom: 8px;">⭐</div>
-        <h3 style="font-size: 1.05rem; font-weight: 800;">Votre catalogue est vide</h3>
-        <p style="font-size: 0.78rem; color: var(--text-muted);">Cliquez sur ❤️ J'aime ou ★ d'une annonce pour la sauvegarder.</p>
+        <div style="font-size: 36px; margin-bottom: 8px;">❤️</div>
+        <h3 style="font-size: 1.05rem; font-weight: 800;" id="emptyCatTitle">Aucune annonce dans cet onglet</h3>
+        <p style="font-size: 0.78rem; color: var(--text-muted);" id="emptyCatDesc">Cliquez sur ❤️ J'aime (ou ★) sur une annonce Immo ou Voyage pour la mettre de côté ici.</p>
       </div>
     </section>
 
 
     <!-- ========================================================= -->
-    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (Sections 1 & 2)    -->
+    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (V8 RÉACTIF)        -->
     <!-- ========================================================= -->
     <section id="pane-voyage-feed" class="tab-pane">
-      
-      <!-- MOTEUR DE RECHERCHE VOYAGE UNIVERSEL V7 -->
+
+      <!-- 0. BANNIÈRE HORS FILTRES : OFFRES SPÉCIALES & INSPIRATIONS DU MOMENT -->
+      <div class="voyage-inspirations-box">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+          <div>
+            <div style="font-size: 0.96rem; font-weight: 800; color: #fff;">✨ Offres Spéciales &amp; Inspirations du Moment</div>
+            <div style="font-size: 0.72rem; color: #94a3b8;">Sélection éditoriale indépendante : Ventes Flash compagnies, Idées Week-end Grand Est / LUX / BSL &amp; Séjours Soleil</div>
+          </div>
+          <span style="font-size: 0.68rem; font-weight: 800; color: #fcd34d; background: rgba(251,191,36,0.14); border: 1px solid rgba(251,191,36,0.35); padding: 3px 8px; border-radius: 6px;">Carrousel Indépendant</span>
+        </div>
+        <div class="voyage-inspi-track" id="voyageInspirationsTrack"></div>
+      </div>
+
+      <!-- MOTEUR DE RECHERCHE VOYAGE UNIVERSEL V8 -->
       <div class="funnel-search-box" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.04);">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap:wrap; gap:6px; margin-bottom: 4px;">
           <div style="font-size: 0.95rem; font-weight: 800; color: #fff;">✈️ Planificateur Voyage Universel</div>
-          <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.15); padding: 3px 8px; border-radius: 6px;">Comparateurs Directs V7</span>
+          <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+            <button class="btn-reset-dislikes" onclick="resetDislikes()">↺ Reset Dislikes (<span id="voyageDislikesCount">0</span>)</button>
+            <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.15); padding: 3px 8px; border-radius: 6px;">Comparateurs Directs V8</span>
+          </div>
         </div>
 
         <!-- 1. Ville de Départ & Destination côte à côte sur desktop -->
@@ -1655,17 +1851,23 @@
         </div>
       </div>
 
-      <!-- SECTION 1 : 🔥 Flash Deals & Erreurs de Prix -->
-      <div class="section-title-wrap" style="margin-top: 16px;">
-        <h3 class="section-title" style="color: #f43f5e;">🔥 Section 1 : Flash Deals & Liaisons Express</h3>
+      <!-- RÉSULTATS RECHERCHE PAR CRITÈRES (STRICTEMENT SÉPARÉS DE LA BANNIÈRE) -->
+      <div style="margin-top: 18px; padding: 12px 14px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.28); border-radius: 12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+        <div style="font-size: 0.94rem; font-weight: 800; color: #fff;">🎯 Résultats en direct pour votre recherche (Dates &amp; Budget sélectionnés)</div>
+        <div id="voyageSearchSummaryMeta" style="font-size: 0.74rem; font-weight: 800; color: #38bdf8;"></div>
+      </div>
+
+      <!-- SECTION 1 : 🔥 Billets Express & Trains aux Dates Exactes (OUIGO vs TGV INOUI) -->
+      <div class="section-title-wrap" style="margin-top: 14px;">
+        <h3 class="section-title" style="color: #f43f5e;">🚄 Section 1 : Trains (OUIGO vs INOUI) &amp; Billets Express</h3>
         <span style="font-size: 0.72rem; color: #f43f5e; font-weight: 800;" id="voyageSec1Count"></span>
       </div>
       <div class="items-grid" id="voyageSection1"></div>
 
-      <!-- SECTION 2 : 🎯 Meilleures Offres selon vos critères -->
+      <!-- SECTION 2 : 🎯 Vols & Séjours recalculés sur vos dates exactes -->
       <div class="section-title-wrap" style="margin-top: 26px;">
-        <h3 class="section-title" style="color: #38bdf8;">🎯 Section 2 : Meilleurs Séjours & Vols</h3>
-        <span style="font-size: 0.72rem; color: var(--text-muted);" id="voyageSec2Count">Comparatif en temps réel</span>
+        <h3 class="section-title" style="color: #38bdf8;">🌍 Section 2 : Séjours &amp; Vols adaptés à votre durée</h3>
+        <span style="font-size: 0.72rem; color: var(--text-muted);" id="voyageSec2Count">Recalcul en temps réel</span>
       </div>
       <div class="items-grid" id="voyageSection2"></div>
     </section>
@@ -1911,12 +2113,49 @@
   <!-- JAVASCRIPT DU HUB V5                                      -->
   <!-- ========================================================= -->
   <script>
+    function loadMergedStorageList(keys) {
+      const merged = new Set();
+      keys.forEach(k => {
+        try {
+          const arr = JSON.parse(localStorage.getItem(k) || '[]');
+          if (Array.isArray(arr)) arr.forEach(v => { if (v) merged.add(String(v)); });
+        } catch (e) {}
+      });
+      return Array.from(merged);
+    }
+
     // State global
     let currentUniverse = 'immo';
     let allData = [];
-    let favorites = JSON.parse(localStorage.getItem('nexus_v5_favorites') || '[]');
-    let dislikes = JSON.parse(localStorage.getItem('nexus_v5_dislikes') || '[]');
-    let likedItems = JSON.parse(localStorage.getItem('nexus_v5_liked_items') || '[]');
+    let favorites = loadMergedStorageList(['nexus_favorites', 'nexus_v5_favorites']);
+    let dislikes = loadMergedStorageList(['nexus_dislikes', 'nexus_v5_dislikes']);
+    let likedItems = loadMergedStorageList(['nexus_likes', 'nexus_liked_items', 'nexus_liked_immo', 'nexus_v5_liked_items']);
+    let activeCatalogueSubtab = 'likes'; // 'likes' | 'favs'
+    let toastHideTimer = null;
+
+    function saveUserLists() {
+      localStorage.setItem('nexus_favorites', JSON.stringify(favorites));
+      localStorage.setItem('nexus_dislikes', JSON.stringify(dislikes));
+      localStorage.setItem('nexus_likes', JSON.stringify(likedItems));
+      updateSavedCounters();
+    }
+
+    function updateSavedCounters() {
+      const hCount = document.getElementById('headerLikedCount');
+      if (hCount) hCount.textContent = likedItems.length;
+      const nCount = document.getElementById('navLikedCount');
+      if (nCount) nCount.textContent = likedItems.length;
+      const cLikes = document.getElementById('catLikesCount');
+      if (cLikes) cLikes.textContent = likedItems.length;
+      const cFavs = document.getElementById('catFavsCount');
+      if (cFavs) cFavs.textContent = favorites.length;
+      const iDis = document.getElementById('immoDislikesCount');
+      if (iDis) iDis.textContent = dislikes.length;
+      const vDis = document.getElementById('voyageDislikesCount');
+      if (vDis) vDis.textContent = dislikes.length;
+      const cDis = document.getElementById('catDislikesCount');
+      if (cDis) cDis.textContent = dislikes.length;
+    }
 
     // Filtres Immo
     let immoTransac = 'ALL';
@@ -2049,9 +2288,9 @@
             <span class="nav-icon">🏠</span>
             <span>Explorer</span>
           </div>
-          <div class="nav-item nav-immo" onclick="navigateTo('pane-immo-catalogue', this); renderImmoCatalogue();">
-            <span class="nav-icon">⭐</span>
-            <span>Catalogue</span>
+          <div class="nav-item nav-immo" onclick="openLikesCatalogueTab('likes', this)">
+            <span class="nav-icon">❤️</span>
+            <span>Likés (<span id="navLikedCount">${likedItems.length}</span>)</span>
           </div>
           <div class="nav-item nav-immo" onclick="navigateTo('pane-radars', this); switchRadarTab('immo'); updateRadarProfile();">
             <span class="nav-icon">🎛️</span>
@@ -2068,6 +2307,10 @@
             <span class="nav-icon">✈️</span>
             <span>Pépites</span>
           </div>
+          <div class="nav-item" onclick="openLikesCatalogueTab('likes', this)">
+            <span class="nav-icon">❤️</span>
+            <span>Likés (<span id="navLikedCount">${likedItems.length}</span>)</span>
+          </div>
           <div class="nav-item" onclick="navigateTo('pane-radars', this); switchRadarTab('voyage');">
             <span class="nav-icon">🎯</span>
             <span>Radars</span>
@@ -2078,6 +2321,7 @@
           </div>
         `;
       }
+      updateSavedCounters();
     }
 
     function navigateTo(paneId, clickedNavItem) {
@@ -2111,9 +2355,11 @@
       }
 
       filterImmo();
-      filterVoyage();
+      renderVoyageInspirationsCarousel();
+      applyVoyageCalendar(false);
       updateRadarProfile();
       renderActiveRadars();
+      updateSavedCounters();
     }
 
     // =========================================================
@@ -2124,6 +2370,19 @@
       'locaux commerciaux', 'bureau à', 'bureaux', 'fonds de commerce',
       'droit au bail', 'entrepôt', 'entrepot', 'stockage', 'garage seul', 'box de stockage'
     ];
+
+    const VIAGER_SPECIAL_TERMS = [
+      'viager', 'bouquet', 'rente viagère', 'rente mensuelle',
+      'nue-propriété', 'nue propriété', 'démembrement', 'usufruit',
+      'résidence senior', 'résidence seniors', 'résidence services senior',
+      'résidence étudiante', 'studéa', 'studea', 'domitys', 'senioriales',
+      'ehpad', 'les belles années'
+    ];
+
+    function isExcludedSpecialProduct(it) {
+      const hay = `${it.title || ''} ${it.category_raw || ''} ${it.description || ''}`.toLowerCase();
+      return VIAGER_SPECIAL_TERMS.some(term => hay.includes(term));
+    }
 
     function isNonResidentialItem(it) {
       if (it.id_di_ad_type === 4 || String(it.id_di_ad_type) === '4') return true;
@@ -2300,6 +2559,8 @@
       });
       const portalBar = document.getElementById('immoDirectPortalsBar');
       if (portalBar) portalBar.style.display = 'none';
+      const viagerCb = document.getElementById('immoExcludeViager');
+      if (viagerCb) viagerCb.checked = true;
 
       filterImmo();
       showToast('↺ Tous les filtres réinitialisés');
@@ -2364,10 +2625,14 @@
       const isSxmQuery = (q.includes('saint-martin') || q.includes('saint martin') || q.includes('sxm') || q.includes('97150'))
                          && !q.includes('38400') && !q.includes('hères') && !q.includes('heres');
 
+      const excludeViager = document.getElementById('immoExcludeViager')?.checked !== false;
+
       return allData.filter(it => {
         if (it.universe !== 'immo' && it.category !== 'immo') return false;
         if (dislikes.includes(it.id)) return false;
+        if (likedItems.includes(it.id)) return false;
         if (isNonResidentialItem(it)) return false;
+        if (excludeViager && isExcludedSpecialProduct(it)) return false;
 
         // Transaction
         if (immoTransac !== 'ALL' && it.transaction_type !== immoTransac) return false;
@@ -2511,24 +2776,27 @@
       const transac = immoTransac === 'ALL' ? 'location' : immoTransac;
       const roomsArr = Array.from(immoRooms);
       const roomSummary = roomsArr.join(',');
+      const excludeViager = document.getElementById('immoExcludeViager')?.checked !== false;
 
       if (!silent) {
         updateImmoScanProgress(15, `🔄 Résolution & géocodage pour '${city}'...`);
       }
 
-      // 1. Générer et afficher les liens directs vers les grands portails officiels
+      // 1. Générer et afficher les liens directs vers les 10 portails & agrégateurs officiels
       renderImmoPortalLinks(city, transac, budget, surface, roomSummary);
 
       const isSXM = (cLow.includes('saint-martin') || cLow.includes('saint martin') || cLow.includes('sxm') || cLow.includes('97150'))
                     && !cLow.includes('38400') && !cLow.includes('hères') && !cLow.includes('heres');
       let realScrapedItems = [];
 
+      const firstNum = (v) => Array.isArray(v) ? Number(v[0] || 0) : Number(v || 0);
+
       try {
         if (isSXM) {
           // --- SCRAPER RÉEL CLIENT SAINT-MARTIN (97150 ≠ 38400) VIA DOMIMMO DIRECT REST API ---
           if (!silent) updateImmoScanProgress(45, `🏝️ Scraping réel en direct sur DOMimmo Saint-Martin (97150)...`);
           const catCode = transac === 'achat' ? 1 : 6;
-          const domUrl = `https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat=${catCode}&limit=50`;
+          const domUrl = `https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat=${catCode}&limit=100`;
 
           const resp = await fetch(domUrl);
           if (resp.ok) {
@@ -2549,8 +2817,7 @@
                 if (it.imageSrc && typeof it.imageSrc === 'string' && it.imageSrc.startsWith('http') && !cleanPhotos.includes(it.imageSrc)) {
                   cleanPhotos.unshift(it.imageSrc);
                 }
-                const fallbackSxm = 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80';
-                const heroImg = cleanPhotos.length > 0 ? cleanPhotos[0] : fallbackSxm;
+                const heroImg = cleanPhotos.length > 0 ? cleanPhotos[0] : '';
                 const roomsStr = pcs && pcs > 1 ? `T${pcs}` : (pcs === 1 ? 'Studio' : 'Appartement');
                 const priceFormatted = transac === 'achat' ? `${p.toLocaleString('fr-FR')} €` : `${p.toLocaleString('fr-FR')} € / mois`;
 
@@ -2574,7 +2841,7 @@
                   is_verified_agency: true,
                   url: adUrl,
                   image_url: heroImg,
-                  images: cleanPhotos.length > 0 ? cleanPhotos.slice(0, 8) : [heroImg],
+                  images: cleanPhotos.slice(0, 10),
                   description: it.description || 'Annonce résidentielle réelle extraite en direct de DOMimmo Saint-Martin.',
                   surface: s > 0 ? `${Math.round(s)} m²` : 'N/C',
                   surface_val: s,
@@ -2592,13 +2859,14 @@
                 };
 
                 if (isNonResidentialItem(normalized)) return;
+                if (excludeViager && isExcludedSpecialProduct(normalized)) return;
                 if (roomsArr.length > 0 && !roomsArr.some(rq => matchesRoomReq(normalized, rq))) return;
                 realScrapedItems.push(normalized);
               });
             }
           }
         } else {
-          // --- SCRAPER RÉEL CLIENT FRANCE (NANCY, METZ, LYON, PARIS...) VIA BIEN'ICI DIRECT REST API ---
+          // --- SCRAPER RÉEL CLIENT FRANCE MULTI-PAGES (SIZE=60 x 2 PAGES) VIA BIEN'ICI REST API ---
           if (!silent) updateImmoScanProgress(35, `🔍 Résolution des zones pour '${city}' sur Bien'ici...`);
           const sugResp = await fetch(`https://res.bienici.com/suggest.json?q=${encodeURIComponent(city)}`);
           if (sugResp.ok) {
@@ -2617,49 +2885,56 @@
                 const cityName = cityInfo.name || city;
                 const postal = (cityInfo.postalCodes && cityInfo.postalCodes[0]) || '54000';
                 const bbox = cityInfo.boundingBox || {};
-                const lat = bbox.south && bbox.north ? (bbox.south + bbox.north) / 2 : 48.6921;
-                const lon = bbox.west && bbox.east ? (bbox.west + bbox.east) / 2 : 6.1844;
+                const defaultLat = bbox.south && bbox.north ? (bbox.south + bbox.north) / 2 : 48.6921;
+                const defaultLon = bbox.west && bbox.east ? (bbox.west + bbox.east) / 2 : 6.1844;
 
-                if (!silent) updateImmoScanProgress(60, `🏢 Scraping des annonces réelles pour ${cityName} sur Bien'ici...`);
+                if (!silent) updateImmoScanProgress(55, `🏢 Scraping multi-pages (120 max) pour ${cityName} sur Bien'ici...`);
 
-                const filterObj = {
-                  size: 35,
-                  from: 0,
-                  filterType: transac === 'achat' ? 'buy' : 'rent',
-                  propertyType: ['flat', 'house'],
-                  page: 1,
-                  sortBy: 'relevance',
-                  sortOrder: 'desc',
-                  onTheMarket: [true],
-                  zoneIdsByTypes: { zoneIds: zoneIds }
-                };
-                if (budget) filterObj.maxPrice = Number(budget);
-                if (surface) filterObj.minSurfaceArea = Number(surface);
-                if (roomsArr.length > 0) {
-                  const rqSet = new Set();
-                  roomsArr.forEach(r => {
-                    if (r === 'Studio' || r === 'T1') rqSet.add(1);
-                    else if (r === 'T2') rqSet.add(2);
-                    else if (r === 'T3' || r === 'T3+') { rqSet.add(3); rqSet.add(4); rqSet.add(5); rqSet.add(6); }
-                    else if (r === 'T4' || r === 'Maison') { rqSet.add(4); rqSet.add(5); rqSet.add(6); }
-                  });
-                  if (rqSet.size > 0) filterObj.roomsQuantity = Array.from(rqSet);
-                }
+                for (const pageNum of [1, 2]) {
+                  const filterObj = {
+                    size: 60,
+                    from: (pageNum - 1) * 60,
+                    filterType: transac === 'achat' ? 'buy' : 'rent',
+                    propertyType: ['flat', 'house'],
+                    page: pageNum,
+                    sortBy: 'relevance',
+                    sortOrder: 'desc',
+                    onTheMarket: [true],
+                    zoneIdsByTypes: { zoneIds: zoneIds }
+                  };
+                  if (excludeViager) filterObj.isLifeAnnuitySale = false;
+                  if (budget) filterObj.maxPrice = Number(budget);
+                  if (surface) filterObj.minSurfaceArea = Number(surface);
+                  if (roomsArr.length > 0) {
+                    const rqSet = new Set();
+                    roomsArr.forEach(r => {
+                      if (r === 'Studio' || r === 'T1') rqSet.add(1);
+                      else if (r === 'T2') rqSet.add(2);
+                      else if (r === 'T3' || r === 'T3+') { rqSet.add(3); rqSet.add(4); rqSet.add(5); rqSet.add(6); }
+                      else if (r === 'T4' || r === 'Maison') { rqSet.add(4); rqSet.add(5); rqSet.add(6); }
+                    });
+                    if (rqSet.size > 0) filterObj.roomsQuantity = Array.from(rqSet);
+                  }
 
-                const adsResp = await fetch(`https://www.bienici.com/realEstateAds.json?filters=${encodeURIComponent(JSON.stringify(filterObj))}`);
-                if (adsResp.ok) {
+                  const adsResp = await fetch(`https://www.bienici.com/realEstateAds.json?filters=${encodeURIComponent(JSON.stringify(filterObj))}`);
+                  if (!adsResp.ok) break;
                   const adsData = await adsResp.json();
                   const ads = adsData.realEstateAds || [];
+                  if (ads.length === 0) break;
+
                   ads.forEach(a => {
                     if (!a.id) return;
-                    const p = a.price || 0;
-                    const s = parseFloat(a.surfaceArea || 0);
-                    const pcs = a.roomsQuantity;
+                    const p = firstNum(a.price);
+                    const s = firstNum(a.surfaceArea);
+                    const pcs = firstNum(a.roomsQuantity);
                     const isHouse = a.propertyType === 'house';
                     const roomsStr = isHouse ? `Maison ${pcs || 4}P` : (pcs && pcs > 1 ? `T${pcs}` : (pcs === 1 ? 'Studio' : 'Appartement'));
-                    const photos = (a.photos || []).map(po => po.url_photo || po.url).filter(u => typeof u === 'string' && u.startsWith('http'));
-                    const fallbackFr = 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80';
-                    const heroImg = photos.length > 0 ? photos[0] : fallbackFr;
+                    const photos = (a.photos || [])
+                      .map(po => po.url_photo || po.url || po.photo)
+                      .filter(u => typeof u === 'string' && u.startsWith('http'));
+                    const heroImg = photos.length > 0 ? photos[0] : '';
+                    const adLat = a.blurInfo?.position?.lat || a.blurInfo?.centroid?.lat || defaultLat;
+                    const adLon = a.blurInfo?.position?.lon || a.blurInfo?.centroid?.lon || defaultLon;
                     const title = a.title || `${roomsStr} ${Math.round(s)} m² ${cityName}`;
                     const priceFormatted = transac === 'achat' ? `${p.toLocaleString('fr-FR')} € FAI` : `${p.toLocaleString('fr-FR')} € / mois CC`;
 
@@ -2676,19 +2951,19 @@
                       location: `${cityName} (${a.postalCode || postal})`,
                       city: cityName,
                       postal_code: a.postalCode || postal,
-                      lat: lat,
-                      lon: lon,
+                      lat: adLat,
+                      lon: adLon,
                       agency: `Bien'ici / ${a.accountType || 'Agence'}`,
                       is_verified_agency: true,
                       url: `https://www.bienici.com/annonce/${a.id}`,
                       image_url: heroImg,
-                      images: photos.length > 0 ? photos.slice(0, 8) : [heroImg],
+                      images: photos.slice(0, 10),
                       description: a.description || 'Annonce réelle extraite en direct de Bien\'ici.',
                       surface: s > 0 ? `${Math.round(s)} m²` : 'N/C',
                       surface_val: s,
                       rooms: roomsStr,
-                      bedrooms: a.bedroomsQuantity || 1,
-                      floor: a.floor ? `Étage ${a.floor}` : 'RDC',
+                      bedrooms: firstNum(a.bedroomsQuantity) || 1,
+                      floor: a.floor ? `Étage ${firstNum(a.floor)}` : 'RDC',
                       dpe: a.energyClassification || 'D',
                       charges: 'Charges comprises',
                       amenities: extractClientAmenities(title, `${a.description || ''} ${a.hasTerrace || a.hasBalcony ? 'terrasse' : ''} ${a.hasPool ? 'piscine' : ''}`),
@@ -2700,8 +2975,11 @@
                     };
 
                     if (isNonResidentialItem(normalized)) return;
+                    if (excludeViager && isExcludedSpecialProduct(normalized)) return;
                     realScrapedItems.push(normalized);
                   });
+
+                  if (ads.length < 60) break;
                 }
               }
             }
@@ -2791,16 +3069,28 @@
           <a class="portal-link-btn" href="${lbcUrl}" target="_blank" rel="noopener">🛒 Leboncoin 97150</a>
         `;
       } else {
-        const lbcUrl = `https://www.leboncoin.fr/recherche?category=${catCode}&locations=${encodeURIComponent(city)}${bParam}${sParam}`;
-        const bieniciUrl = `https://www.bienici.com/recherche/${transac}/${encodeURIComponent(city.toLowerCase().replace(/\s+\d{5}/g, ''))}`;
+        const cleanCity = city.replace(/\s+\d{5}/g, '').trim();
+        const citySlug = encodeURIComponent(cleanCity.toLowerCase().replace(/\s+/g, '-'));
+        const lbcUrl = `https://www.leboncoin.fr/recherche?category=${catCode}&locations=${encodeURIComponent(cleanCity)}${bParam}${sParam}`;
+        const bieniciUrl = `https://www.bienici.com/recherche/${transac}/${citySlug}`;
         const selogerUrl = `https://www.seloger.com/list.htm?projects=${transac === 'achat' ? '2' : '1'}&types=1,2`;
-        const orpiUrl = `https://www.orpi.com/recherche/${transac === 'achat' ? 'acheter' : 'louer'}?locations[0][value]=${encodeURIComponent(city.toLowerCase().replace(/\s+\d{5}/g, ''))}`;
+        const papUrl = `https://www.pap.fr/annonce/${transac === 'achat' ? 'vente-appartements' : 'locations-appartement'}`;
+        const paruUrl = `https://www.paruvendu.fr/immobilier/annonceimmofo/liste/listeAnnonces?tt=${transac === 'achat' ? '1' : '5'}&at=APP,MAI&pa=FR&lo=${encodeURIComponent(cleanCity)}`;
+        const figaroUrl = `https://immobilier.lefigaro.fr/annonces/immobilier-${transac === 'achat' ? 'vente' : 'location'}-bien-${citySlug}.html`;
+        const logicUrl = `https://www.logic-immo.com/${transac === 'achat' ? 'vente' : 'location'}-immobilier-${citySlug}/options/groupprptypesids=1,2`;
+        const orpiUrl = `https://www.orpi.com/recherche/${transac === 'achat' ? 'buy' : 'rent'}?locations[0][value]=${encodeURIComponent(cleanCity.toLowerCase())}`;
+        const fonciaUrl = `https://fr.foncia.com/${transac === 'achat' ? 'acheter' : 'louer'}`;
 
         linksHtml = `
-          <a class="portal-link-btn" href="${lbcUrl}" target="_blank" rel="noopener">🛒 Leboncoin ${city}</a>
-          <a class="portal-link-btn" href="${bieniciUrl}" target="_blank" rel="noopener">🏢 Bien'ici ${city}</a>
+          <a class="portal-link-btn" href="${bieniciUrl}" target="_blank" rel="noopener">🏢 Bien'ici ${cleanCity}</a>
+          <a class="portal-link-btn" href="${lbcUrl}" target="_blank" rel="noopener">🛒 Leboncoin ${cleanCity}</a>
           <a class="portal-link-btn" href="${selogerUrl}" target="_blank" rel="noopener">🔍 SeLoger</a>
-          <a class="portal-link-btn" href="${orpiUrl}" target="_blank" rel="noopener">🏡 Orpi ${city}</a>
+          <a class="portal-link-btn" href="${papUrl}" target="_blank" rel="noopener">🤝 PAP.fr</a>
+          <a class="portal-link-btn" href="${paruUrl}" target="_blank" rel="noopener">📰 ParuVendu ${cleanCity}</a>
+          <a class="portal-link-btn" href="${figaroUrl}" target="_blank" rel="noopener">🏛️ Figaro Immo</a>
+          <a class="portal-link-btn" href="${logicUrl}" target="_blank" rel="noopener">📐 Logic-Immo</a>
+          <a class="portal-link-btn" href="${orpiUrl}" target="_blank" rel="noopener">🏡 Orpi ${cleanCity}</a>
+          <a class="portal-link-btn" href="${fonciaUrl}" target="_blank" rel="noopener">🔑 Foncia</a>
         `;
       }
 
@@ -2857,37 +3147,78 @@
     }
 
     // =========================================================
-    // CARTES IMMO, SWIPE & FAVORIS
+    // CARTES IMMO (VRAIES PHOTOS UNIQUEMENT), SWIPE VERROUILLÉ & LIKES/DISLIKES
     // =========================================================
-    const IMMO_FALLBACK_IMG = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80';
     const VOYAGE_FALLBACK_IMG = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80';
+    let dynamicVoyageOffers = [];
+    let likedSnapshots = {};
+    try {
+      likedSnapshots = JSON.parse(localStorage.getItem('nexus_liked_snapshots') || '{}') || {};
+    } catch (e) { likedSnapshots = {}; }
 
-    function handleImgError(imgEl, universe) {
+    function findItemById(id) {
+      return allData.find(x => x.id === id)
+        || dynamicVoyageOffers.find(x => x.id === id)
+        || likedSnapshots[id]
+        || null;
+    }
+
+    function buildImmoPlaceholderSvg(it) {
+      const locText = ((it && (it.location || it.city)) || 'Secteur vérifié').replace(/[<>&"']/g, '').slice(0, 34);
+      const gpsText = (it && it.lat && it.lon)
+        ? `GPS ${Number(it.lat).toFixed(3)}, ${Number(it.lon).toFixed(3)}`
+        : 'Carte & localisation sur fiche';
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0f172a"/>
+            <stop offset="100%" stop-color="#1e293b"/>
+          </linearGradient>
+        </defs>
+        <rect width="640" height="360" fill="url(#bg)"/>
+        <path d="M0 72 H640 M0 144 H640 M0 216 H640 M0 288 H640 M128 0 V360 M256 0 V360 M384 0 V360 M512 0 V360" stroke="#334155" stroke-width="1" opacity="0.45"/>
+        <rect x="242" y="88" width="156" height="122" rx="8" fill="#0b1120" stroke="#38bdf8" stroke-width="2" opacity="0.9"/>
+        <path d="M230 94 L320 44 L410 94" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+        <rect x="272" y="122" width="28" height="28" rx="3" fill="#1e293b" stroke="#64748b"/>
+        <rect x="340" y="122" width="28" height="28" rx="3" fill="#1e293b" stroke="#64748b"/>
+        <rect x="304" y="162" width="32" height="48" rx="3" fill="#0f766e" opacity="0.8"/>
+        <text x="320" y="252" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="16" font-weight="bold">📐 Visuel architectural neutre (Sans photo agence)</text>
+        <text x="320" y="280" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="14" font-weight="bold">📍 ${locText}</text>
+        <text x="320" y="305" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="12">${gpsText}</text>
+      </svg>`;
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    function handleImgError(imgEl, universe, locLabel) {
       if (!imgEl || imgEl.dataset.fallbackApplied === '1') return;
       imgEl.dataset.fallbackApplied = '1';
       imgEl.onerror = null;
-      imgEl.src = universe === 'voyage' ? VOYAGE_FALLBACK_IMG : IMMO_FALLBACK_IMG;
+      imgEl.src = universe === 'voyage'
+        ? VOYAGE_FALLBACK_IMG
+        : buildImmoPlaceholderSvg({ location: locLabel || 'Bien immobilier vérifié' });
     }
 
     function getItemPhotos(it) {
+      const isImmo = it && (it.universe === 'immo' || it.category === 'immo');
       const arr = [];
-      if (it.image_url && typeof it.image_url === 'string' && it.image_url.startsWith('http')) {
-        arr.push(it.image_url);
-      }
-      if (Array.isArray(it.images)) {
-        it.images.forEach(u => {
-          if (typeof u === 'string' && u.startsWith('http') && !arr.includes(u)) arr.push(u);
-        });
+      const addIfValid = (u) => {
+        if (typeof u !== 'string' || !u.startsWith('http')) return;
+        if (isImmo && u.includes('unsplash.com')) return; // Jamais de fausse photo Unsplash sur Immo
+        if (!arr.includes(u)) arr.push(u);
+      };
+      addIfValid(it?.image_url);
+      if (Array.isArray(it?.images)) {
+        it.images.forEach(addIfValid);
       }
       if (arr.length === 0) {
-        arr.push(it.universe === 'voyage' ? VOYAGE_FALLBACK_IMG : IMMO_FALLBACK_IMG);
+        arr.push(isImmo ? buildImmoPlaceholderSvg(it) : VOYAGE_FALLBACK_IMG);
       }
       return arr;
     }
 
     function prevCardImg(ev, id) {
       if (ev) { ev.stopPropagation(); ev.preventDefault(); }
-      const it = allData.find(x => x.id === id);
+      const it = findItemById(id);
       if (!it) return;
       const photos = getItemPhotos(it);
       if (photos.length <= 1) return;
@@ -2902,7 +3233,7 @@
 
     function nextCardImg(ev, id) {
       if (ev) { ev.stopPropagation(); ev.preventDefault(); }
-      const it = allData.find(x => x.id === id);
+      const it = findItemById(id);
       if (!it) return;
       const photos = getItemPhotos(it);
       if (photos.length <= 1) return;
@@ -2915,25 +3246,33 @@
       if (cntEl) cntEl.textContent = `${next + 1} / ${photos.length}`;
     }
 
-    function createImmoCardHtml(it) {
+    function createImmoCardHtml(it, inCatalogue = false) {
       const isFav = favorites.includes(it.id);
+      const isLiked = likedItems.includes(it.id);
       const isAchat = it.transaction_type === 'achat';
       const badgeClass = isAchat ? 'badge-achat' : 'badge-loc';
       const photos = getItemPhotos(it);
       const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
       const safeTitle = (it.title || 'Bien immobilier').replace(/"/g, '&quot;');
+      const safeLoc = (it.location || '').replace(/'/g, "\\'");
 
       return `
-        <div class="card card-immo" id="card_${it.id}" data-id="${it.id}">
+        <div class="card card-immo ${inCatalogue ? 'catalogue-card' : ''}" id="card_${inCatalogue ? 'cat_' : ''}${it.id}" data-id="${it.id}">
           <div class="card-img-wrap" onclick="openImmoDetailModal('${it.id}')">
-            <img id="card_img_${it.id}" class="card-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'immo')" />
+            <img id="card_img_${it.id}" class="card-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'immo', '${safeLoc}')" />
             <span class="card-badge ${badgeClass}">${it.badge || (isAchat ? '🏷️ Achat' : '🏠 Location')}</span>
-            <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Sauvegarder" onclick="event.stopPropagation(); toggleFavorite('${it.id}')">
+            <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Coup de cœur Favori"
+              ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
+              onclick="event.stopPropagation(); toggleFavorite('${it.id}')">
               ★
             </button>
             ${photos.length > 1 ? `
-              <button class="carousel-btn prev" title="Photo précédente" onclick="prevCardImg(event, '${it.id}')">‹</button>
-              <button class="carousel-btn next" title="Photo suivante" onclick="nextCardImg(event, '${it.id}')">›</button>
+              <button class="carousel-btn prev" title="Photo précédente"
+                ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
+                onclick="prevCardImg(event, '${it.id}')">‹</button>
+              <button class="carousel-btn next" title="Photo suivante"
+                ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
+                onclick="nextCardImg(event, '${it.id}')">›</button>
               <span class="carousel-counter" id="card_cnt_${it.id}">${curIdx + 1} / ${photos.length}</span>
             ` : ''}
           </div>
@@ -2956,16 +3295,22 @@
             </div>
 
             <!-- 3 Actions sur UNE SEULE LIGNE HORIZONTALE -->
-            <div class="card-actions-bar">
-              <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
-                ❌ Écarter
-              </button>
-              <button class="btn-open-detail" onclick="openImmoDetailModal('${it.id}')">
-                🔍 Voir / Fiche
-              </button>
-              <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
-                ❤️ J'aime
-              </button>
+            <div class="card-actions-bar" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
+              ${inCatalogue ? `
+                <button class="btn-swipe-dislike" onclick="removeFromSaved('${it.id}')">🗑️ Retirer</button>
+                <button class="btn-open-detail" onclick="openImmoDetailModal('${it.id}')">🔍 Voir / Fiche</button>
+                <button class="btn-swipe-like" onclick="toggleFavorite('${it.id}')">${isFav ? '⭐ Retirer ★' : '⭐ Favori'}</button>
+              ` : `
+                <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
+                  ❌ Écarter
+                </button>
+                <button class="btn-open-detail" onclick="openImmoDetailModal('${it.id}')">
+                  🔍 Voir / Fiche
+                </button>
+                <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
+                  ${isLiked ? '❤️ Liké' : "❤️ J'aime"}
+                </button>
+              `}
             </div>
           </div>
         </div>
@@ -2973,95 +3318,182 @@
     }
 
     // =========================================================
-    // SWIPE TACTILE & GESTES (POUR MOBILE ET SOURIS)
+    // SWIPE TACTILE VERROUILLÉ SUR L'AXE (SCROLL ≠ SWIPE, SEUIL 120PX)
     // =========================================================
     function attachSwipeListeners() {
-      document.querySelectorAll('.card-immo').forEach(card => {
+      document.querySelectorAll('#immoGrid .card, #voyageSection1 .card, #voyageSection2 .card').forEach(card => {
+        if (card.dataset.swipeBound === '1') return;
+        card.dataset.swipeBound = '1';
+
         let startX = 0;
+        let startY = 0;
         let currentX = 0;
+        let startTime = 0;
+        let axisLocked = null; // null | 'vertical' | 'horizontal'
         let isDragging = false;
         const id = card.getAttribute('data-id');
 
         card.addEventListener('touchstart', (e) => {
+          if (e.target.closest('button, a, .carousel-btn, .btn-card-fav, .card-actions-bar, input, select')) {
+            isDragging = false;
+            return;
+          }
           startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          currentX = startX;
+          startTime = Date.now();
+          axisLocked = null;
           isDragging = true;
           card.style.transition = 'none';
         }, { passive: true });
 
         card.addEventListener('touchmove', (e) => {
-          if (!isDragging) return;
-          currentX = e.touches[0].clientX;
-          const diff = currentX - startX;
-          card.style.transform = `translateX(${diff}px) rotate(${diff * 0.05}deg)`;
-          if (diff > 40) {
-            card.style.borderColor = 'rgba(16, 185, 129, 0.8)';
-          } else if (diff < -40) {
-            card.style.borderColor = 'rgba(239, 68, 68, 0.8)';
+          if (!isDragging || axisLocked === 'vertical') return;
+          const t = e.touches[0];
+          const dx = t.clientX - startX;
+          const dy = t.clientY - startY;
+          currentX = t.clientX;
+
+          // Verrouillage d'axe strict dans les 15 premiers pixels
+          if (axisLocked === null) {
+            if (Math.max(Math.abs(dx), Math.abs(dy)) < 6) return;
+            if (Math.abs(dy) > Math.abs(dx) * 0.6) {
+              axisLocked = 'vertical';
+              isDragging = false;
+              card.style.transform = '';
+              card.style.borderColor = '';
+              return;
+            }
+            if (Math.abs(dx) >= 12) {
+              axisLocked = 'horizontal';
+            } else {
+              return;
+            }
+          }
+
+          card.style.transform = `translateX(${dx}px) rotate(${dx * 0.04}deg)`;
+          if (dx > 60) {
+            card.style.borderColor = 'rgba(16, 185, 129, 0.85)';
+          } else if (dx < -60) {
+            card.style.borderColor = 'rgba(239, 68, 68, 0.85)';
           } else {
             card.style.borderColor = 'var(--card-border)';
           }
         }, { passive: true });
 
-        card.addEventListener('touchend', () => {
-          if (!isDragging) return;
+        const resetCard = () => {
           isDragging = false;
-          const diff = currentX - startX;
-          card.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+          axisLocked = null;
+          card.style.transition = 'transform 0.28s ease, opacity 0.28s ease';
+          card.style.transform = 'none';
+          card.style.borderColor = 'var(--card-border)';
+        };
 
-          if (diff > 90) {
-            triggerCardSwipe(id, 'right');
-          } else if (diff < -90) {
-            triggerCardSwipe(id, 'left');
+        card.addEventListener('touchend', () => {
+          if (!isDragging || axisLocked !== 'horizontal') {
+            resetCard();
+            return;
+          }
+          isDragging = false;
+          axisLocked = null;
+          const diff = currentX - startX;
+          const elapsed = Math.max(1, Date.now() - startTime);
+          const velocity = Math.abs(diff) / elapsed;
+          card.style.transition = 'transform 0.28s ease, opacity 0.28s ease';
+
+          if (Math.abs(diff) >= 120 && velocity >= 0.12) {
+            triggerCardSwipe(id, diff > 0 ? 'right' : 'left');
           } else {
             card.style.transform = 'none';
             card.style.borderColor = 'var(--card-border)';
           }
         });
+
+        card.addEventListener('touchcancel', resetCard);
       });
     }
 
     function triggerCardSwipe(id, direction) {
       const card = document.getElementById(`card_${id}`);
+      const itemObj = findItemById(id);
+
       if (direction === 'right') {
         if (!likedItems.includes(id)) {
           likedItems.push(id);
-          localStorage.setItem('nexus_liked_immo', JSON.stringify(likedItems));
         }
+        dislikes = dislikes.filter(x => x !== id);
+        if (itemObj) {
+          likedSnapshots[id] = itemObj;
+          localStorage.setItem('nexus_liked_snapshots', JSON.stringify(likedSnapshots));
+        }
+        saveUserLists();
+
         if (card) {
-          card.style.transform = 'translateX(120%) rotate(15deg)';
+          card.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+          card.style.transform = 'translateX(120%) rotate(14deg)';
           card.style.opacity = '0';
         }
-        showToast('💚 Ajouté à vos préférences d\'affinité !');
+        showToast('❤️ Ajouté à « Mes Biens Likés » — retiré du flux !', 2600);
         updateRadarProfile();
-        setTimeout(() => filterImmo(), 250);
+        setTimeout(() => {
+          filterImmo();
+          applyVoyageCalendar(false);
+          renderImmoCatalogue();
+        }, 230);
       } else {
         if (!dislikes.includes(id)) {
           dislikes.push(id);
-          localStorage.setItem('nexus_dislikes', JSON.stringify(dislikes));
         }
+        saveUserLists();
+
         if (card) {
-          card.style.transform = 'translateX(-120%) rotate(-15deg)';
+          card.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+          card.style.transform = 'translateX(-120%) rotate(-14deg)';
           card.style.opacity = '0';
         }
-        showToast('❌ Annonce masquée');
-        setTimeout(() => filterImmo(), 250);
+        const safeId = id.replace(/'/g, "\\'");
+        showToast(`Annonce écartée — <button class="toast-undo-btn" onclick="undoDislike('${safeId}')">↩️ Annuler (Missclick)</button>`, 4000, true);
+        setTimeout(() => {
+          filterImmo();
+          applyVoyageCalendar(false);
+        }, 230);
       }
+    }
+
+    function undoDislike(id) {
+      dislikes = dislikes.filter(x => x !== id);
+      saveUserLists();
+      filterImmo();
+      applyVoyageCalendar(false);
+      renderImmoCatalogue();
+      showToast('↩️ Annonce restaurée dans le flux !', 2000);
+    }
+
+    function resetDislikes() {
+      const count = dislikes.length;
+      dislikes = [];
+      saveUserLists();
+      filterImmo();
+      applyVoyageCalendar(false);
+      renderImmoCatalogue();
+      showToast(count > 0 ? `↺ ${count} dislike(s) réinitialisé(s) !` : '↺ Aucun dislike à réinitialiser');
     }
 
     // =========================================================
     // FICHE DÉTAILLÉE PLEIN ÉCRAN
     // =========================================================
     function openImmoDetailModal(id) {
-      const it = allData.find(x => x.id === id);
+      const it = findItemById(id);
       if (!it) return;
 
       activeModalItem = it;
       const modal = document.getElementById('immoDetailModal');
       const photos = getItemPhotos(it);
+      const locLabel = (it.location || it.city || 'Bien immobilier').replace(/'/g, '');
       const heroImgEl = document.getElementById('modalHeroImg');
       if (heroImgEl) {
         heroImgEl.dataset.fallbackApplied = '';
-        heroImgEl.onerror = () => handleImgError(heroImgEl, 'immo');
+        heroImgEl.onerror = () => handleImgError(heroImgEl, 'immo', locLabel);
         heroImgEl.src = photos[0];
       }
       document.getElementById('modalImmoTitle').textContent = it.title || 'Fiche du logement';
@@ -3166,15 +3598,18 @@
       const btnAuto = document.getElementById('btnAutoPreFill');
 
       if (!countEl || !descEl || !btnAuto) return;
-      countEl.textContent = `${likedItems.length} like(s)`;
+      const items = likedItems
+        .map(findItemById)
+        .filter(x => x && (x.universe === 'immo' || x.category === 'immo'));
 
-      if (likedItems.length === 0) {
-        descEl.textContent = "Likez des biens en swipant à droite 👉 pour générer votre radar d'alerte personnalisé.";
+      countEl.textContent = `${items.length} like(s) immo`;
+
+      if (items.length === 0) {
+        descEl.textContent = "Likez des biens immobiliers en swipant à droite 👉 pour générer votre radar d'alerte personnalisé.";
         btnAuto.style.display = 'none';
         return;
       }
 
-      const items = allData.filter(x => likedItems.includes(x.id));
       const topCity = items[0]?.city || items[0]?.location || 'Nancy';
       const avgPrice = Math.round(items.reduce((acc, x) => acc + (x.price || 0), 0) / items.length);
       const isAchat = items.filter(x => x.transaction_type === 'achat').length > items.filter(x => x.transaction_type === 'location').length;
@@ -3740,6 +4175,9 @@
       }
       renderCalendarGrid();
       updateCalendarTriggerText();
+      if (calDepDate && calRetDate) {
+        applyVoyageCalendar(false);
+      }
     }
 
     function setCalendarQuickTabActive(el) {
@@ -3751,6 +4189,7 @@
       calFlexMode = mode;
       setCalendarQuickTabActive(el);
       updateCalendarTriggerText();
+      applyVoyageCalendar(false);
     }
 
     function selectCalendarWeekend(el) {
@@ -3768,6 +4207,7 @@
       calCurrentMonth = fri.getMonth();
       renderCalendarGrid();
       updateCalendarTriggerText();
+      applyVoyageCalendar(false);
     }
 
     function selectCalendarFullMonth(el) {
@@ -3782,6 +4222,7 @@
       calRetDate = formatIsoLocal(lastDay);
       renderCalendarGrid();
       updateCalendarTriggerText();
+      applyVoyageCalendar(false);
     }
 
     function clearCalendarDates() {
@@ -3791,6 +4232,7 @@
       setCalendarQuickTabActive(document.getElementById('calModeExact'));
       renderCalendarGrid();
       updateCalendarTriggerText();
+      applyVoyageCalendar(false);
     }
 
     function confirmCalendarDates() {
@@ -3799,76 +4241,137 @@
       }
       updateCalendarTriggerText();
       closeCalendarPopover();
-      filterVoyage();
+      applyVoyageCalendar(false);
     }
 
     function onVoyageBudgetRange(val) {
       document.getElementById('voyageBudgetInput').value = val;
       document.getElementById('voyageBudgetDisplay').textContent = `≤ ${val} €`;
-      filterVoyage();
+      applyVoyageCalendar(false);
     }
 
     function onVoyageBudgetInput(val) {
       document.getElementById('voyageBudgetRange').value = val;
       document.getElementById('voyageBudgetDisplay').textContent = `≤ ${val} €`;
-      filterVoyage();
+      applyVoyageCalendar(false);
     }
 
-    function filterVoyage() {
-      const departQ = (document.getElementById('voyageDepartInput')?.value || '').toLowerCase().trim();
-      const destQ = (document.getElementById('searchVoyageDest')?.value || '').toLowerCase().trim();
-      const budgetMax = parseFloat(document.getElementById('voyageBudgetInput')?.value) || 2000;
-
-      const voyageItems = allData.filter(it => it.universe === 'voyage' && !dislikes.includes(it.id));
-
-      const matchesQuery = (it) => {
-        if (it.price && it.price > budgetMax) return false;
-        if (destQ && destQ !== 'partout') {
-          const matchText = `${it.title || ''} ${it.location || ''} ${it.destination || ''} ${it.description || ''}`.toLowerCase();
-          if (!matchText.includes(destQ)) return false;
-        }
-        if (departQ && !departQ.includes('tous') && !departQ.includes('all')) {
-          const depText = `${it.departure_hub || ''} ${it.departure_city || ''} ${it.location || ''}`.toLowerCase();
-          if (depText && !depText.includes(normalizeGeoKey(departQ).split(' ')[0]) && !departQ.includes('nancy')) {
-            return true;
-          }
-        }
-        return true;
-      };
-
-      const filtered = voyageItems.filter(matchesQuery);
-
-      const sec1Items = filtered.filter(x => x.section_type === 'flash_deals' || x.category === 'train' || (x.category === 'flight' && x.price <= 50));
-      const sec2Items = filtered.filter(x => x.section_type === 'best_offers' || x.true_cost);
-
-      const sec1Container = document.getElementById('voyageSection1');
-      const sec2Container = document.getElementById('voyageSection2');
-      const count1 = document.getElementById('voyageSec1Count');
-      const count2 = document.getElementById('voyageSec2Count');
-
-      if (count1) count1.textContent = `${sec1Items.length} bon(s) plan(s)`;
-      if (count2) count2.textContent = `${sec2Items.length} séjour(s) vérifié(s)`;
-
-      if (sec1Container) {
-        sec1Container.innerHTML = sec1Items.length > 0 ?
-          sec1Items.map(it => createVoyageCardHtml(it)).join('') :
-          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun flash deal correspondant à ce budget.</div>';
+    // =========================================================
+    // BANNIÈRE CARROUSEL INSPIRATIONS VOYAGE (INDÉPENDANTE DES FILTRES)
+    // =========================================================
+    const VOYAGE_INSPIRATIONS_EDITORIAL = [
+      {
+        id: 'inspi_flash_sxm',
+        badge: '🔥 Vente Flash Caraïbes',
+        title: 'Saint-Martin (SXM) • Lagon & Soleil Hiver',
+        meta: 'Air Caraïbes / Corsair depuis Paris ORY • 7+ nuits conseillées',
+        priceHint: 'Dès 449 € A/R',
+        dest: 'Saint-Martin',
+        nights: 7,
+        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80',
+        url: 'https://www.aircaraibes.com/'
+      },
+      {
+        id: 'inspi_rome_lux',
+        badge: '🇮🇹 City-Break Grand Est',
+        title: 'Rome Impériale depuis Luxembourg (LUX) ou Bâle',
+        meta: 'Ryanair / Luxair direct • Idéal 3 à 4 nuits',
+        priceHint: 'Dès 59 € A/R',
+        dest: 'Rome',
+        nights: 3,
+        img: 'https://images.unsplash.com/photo-1552832231-c57dc443043c?auto=format&fit=crop&w=700&q=80',
+        url: 'https://www.google.com/travel/flights?q=Flights+to+Rome+from+LUX&curr=EUR&hl=fr'
+      },
+      {
+        id: 'inspi_bologne_gastro',
+        badge: '🍝 Week-end Dolce Vita',
+        title: 'Bologne & Florence express (LUX / BSL)',
+        meta: 'Escapade gastronomique & trains italiens directs',
+        priceHint: 'Dès 44 € A/R',
+        dest: 'Bologne',
+        nights: 3,
+        img: 'https://images.unsplash.com/photo-1534445867742-43195f401b6c?auto=format&fit=crop&w=700&q=80',
+        url: 'https://www.kayak.fr/flights/LUX-BLQ?sort=price_a'
+      },
+      {
+        id: 'inspi_bcn_bsl',
+        badge: '☀️ Week-end Méditerranée',
+        title: 'Barcelone Plage & Gaudí depuis Bâle-Mulhouse (BSL)',
+        meta: 'EasyJet / Vueling • Climat doux toute l\'année',
+        priceHint: 'Dès 54 € A/R',
+        dest: 'Barcelone',
+        nights: 4,
+        img: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=700&q=80',
+        url: 'https://www.kayak.fr/flights/BSL-BCN?sort=price_a'
+      },
+      {
+        id: 'inspi_ouigo_paris',
+        badge: '🚄 Rail Grand Est',
+        title: 'Paris Express : OUIGO Lorraine TGV vs INOUI Nancy',
+        meta: 'Tarifs anticipés (J+21) dès 16€ OUIGO / 29€ INOUI',
+        priceHint: 'Dès 16 € / trajet',
+        dest: 'Paris',
+        nights: 2,
+        img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80',
+        url: 'https://www.ouigo.com/'
+      },
+      {
+        id: 'inspi_lisbonne_sun',
+        badge: '🌊 Océan & Soleil',
+        title: 'Lisbonne & Côte Atlantique (LUX / Paris ORY)',
+        meta: 'Séjour prolongé 4 à 6 nuits • Transavia & TAP',
+        priceHint: 'Dès 78 € A/R',
+        dest: 'Lisbonne',
+        nights: 5,
+        img: 'https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&fit=crop&w=700&q=80',
+        url: 'https://www.kayak.fr/flights/LUX-LIS?sort=price_a'
       }
+    ];
 
-      if (sec2Container) {
-        sec2Container.innerHTML = sec2Items.length > 0 ?
-          sec2Items.map(it => createVoyageCardHtml(it)).join('') :
-          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun séjour tout compris correspondant. Élargissez le budget.</div>';
-      }
-      attachSwipeListeners();
+    function renderVoyageInspirationsCarousel() {
+      const track = document.getElementById('voyageInspirationsTrack');
+      if (!track) return;
+      track.innerHTML = VOYAGE_INSPIRATIONS_EDITORIAL.map(sp => `
+        <div class="voyage-inspi-card">
+          <img class="voyage-inspi-img" src="${sp.img}" alt="${sp.title}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
+          <div style="padding: 10px 12px; display:flex; flex-direction:column; gap:6px; flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <span style="font-size:0.65rem; font-weight:800; color:#fcd34d; background:rgba(251,191,36,0.12); padding:2px 7px; border-radius:6px;">${sp.badge}</span>
+              <span style="font-size:0.78rem; font-weight:800; color:#38bdf8;">${sp.priceHint}</span>
+            </div>
+            <div style="font-size:0.84rem; font-weight:800; color:#fff; line-height:1.25;">${sp.title}</div>
+            <div style="font-size:0.71rem; color:#94a3b8; line-height:1.3;">${sp.meta}</div>
+            <div style="margin-top:auto; display:flex; gap:6px; padding-top:6px;">
+              <button type="button" onclick="applyVoyageInspiration('${sp.dest}', ${sp.nights})" style="flex:1; background:rgba(56,189,248,0.16); border:1px solid rgba(56,189,248,0.45); color:#38bdf8; border-radius:8px; padding:6px 8px; font-size:0.72rem; font-weight:800; cursor:pointer;">
+                🎯 Tester ce séjour
+              </button>
+              <a href="${sp.url}" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); color:#e2e8f0; border-radius:8px; padding:6px 9px; font-size:0.72rem; font-weight:700; text-decoration:none;">
+                ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
     }
 
-    async function launchLiveScanVoyage() {
-      const depart = (document.getElementById('voyageDepartInput')?.value || 'Nancy').trim();
-      const destRaw = (document.getElementById('searchVoyageDest')?.value || '').trim();
-      const dest = destRaw || 'Rome';
-      const budget = document.getElementById('voyageBudgetInput')?.value || '800';
+    function applyVoyageInspiration(dest, recommendedNights) {
+      const destInput = document.getElementById('searchVoyageDest');
+      if (destInput) destInput.value = dest;
+      if (!calDepDate) {
+        initDefaultCalendarDates();
+      }
+      if (recommendedNights && calDepDate) {
+        calRetDate = addDaysIso(calDepDate, recommendedNights);
+        updateCalendarTriggerText();
+      }
+      applyVoyageCalendar(false);
+      showToast(`✨ Inspiration appliquée : ${dest} (${recommendedNights} nuits)`, 2200);
+    }
 
+    // =========================================================
+    // TARIFS FERROVIAIRES RÉALISTES (OUIGO vs TGV INOUI) & CALCUL DYNAMIQUE
+    // =========================================================
+    function getEffectiveVoyageDates() {
       let depIso = calDepDate;
       let retIso = calRetDate;
       if (!depIso) {
@@ -3876,21 +4379,62 @@
         d.setDate(d.getDate() + 14);
         depIso = formatIsoLocal(d);
       }
-      if (!retIso) {
+      if (!retIso || retIso <= depIso) {
         retIso = addDaysIso(depIso, 4);
       }
+      const pDep = depIso.split('-').map(Number);
+      const pRet = retIso.split('-').map(Number);
+      const dDep = new Date(pDep[0], pDep[1] - 1, pDep[2]);
+      const dRet = new Date(pRet[0], pRet[1] - 1, pRet[2]);
+      const now = new Date();
+      const todayMid = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const nights = Math.max(1, Math.round((dRet - dDep) / 86400000));
+      const daysOut = Math.max(0, Math.round((dDep - todayMid) / 86400000));
+      const depMonth = dDep.getMonth() + 1;
+      return { depIso, retIso, nights, daysOut, depMonth };
+    }
 
-      updateVoyageScanProgress(20, `🛫 Préparation des moteurs de recherche (${depart} ➔ ${dest})...`);
+    function computeClientTrainPricing(daysOut) {
+      // Offre 1 : OUIGO depuis Gare Lorraine TGV (navette Nancy ~9€)
+      let ouigoSingleMin, ouigoSingleMax, ouigoRt, ouigoBadge, ouigoNote;
+      if (daysOut > 24) {
+        ouigoSingleMin = 16; ouigoSingleMax = 25; ouigoRt = 36;
+        ouigoBadge = '🚄 OUIGO • Lorraine TGV (Anticipé)';
+        ouigoNote = `Réservation anticipée (J+${daysOut}) : billets OUIGO dès 16€–25€/trajet depuis Gare Lorraine TGV.`;
+      } else if (daysOut >= 10) {
+        ouigoSingleMin = 19; ouigoSingleMax = 35; ouigoRt = 48;
+        ouigoBadge = `🚄 OUIGO • Lorraine TGV (J+${daysOut})`;
+        ouigoNote = `À J+${daysOut} du départ : ~19€–35€/trajet sur OUIGO (le plancher 16€ est réservé aux achats J+25+).`;
+      } else {
+        ouigoSingleMin = 29; ouigoSingleMax = 55; ouigoRt = 72;
+        ouigoBadge = `🚄 OUIGO • Lorraine TGV (Dernière min)`;
+        ouigoNote = `Départ proche (J+${daysOut}) : ~29€–55€/trajet sur OUIGO. Le tarif d'appel à 16€ s'applique uniquement en anticipé.`;
+      }
 
-      // 1. Liens directs pré-remplis avec URN Trainline, IATA Kayak, Google Flights & Booking (Note >= 8)
-      const bar = document.getElementById('voyageDirectPortalsBar');
-      const container = document.getElementById('voyageDirectPortalsLinks');
+      // Offre 2 : TGV INOUI Direct Nancy Ville Centre ⇄ Paris Est
+      let inouiSingleMin, inouiSingleMax, inouiRt, inouiBadge, inouiNote;
+      if (daysOut >= 21) {
+        inouiSingleMin = 29; inouiSingleMax = 39; inouiRt = 64;
+        inouiBadge = '🚅 TGV INOUI Direct • Nancy Centre (J+21+)';
+        inouiNote = `Réservation J+${daysOut} : direct Nancy Centre ⇄ Paris Est en 1h30 dès 29€–39€/trajet (~25€ Carte Avantage).`;
+      } else if (daysOut >= 8) {
+        inouiSingleMin = 39; inouiSingleMax = 59; inouiRt = 88;
+        inouiBadge = `🚅 TGV INOUI Direct • Nancy Centre (J+${daysOut})`;
+        inouiNote = `Entre J+8 et J+20 (J+${daysOut}) : tarif dynamique TGV INOUI direct estimé 39€–59€/trajet.`;
+      } else {
+        inouiSingleMin = 49; inouiSingleMax = 75; inouiRt = 118;
+        inouiBadge = `🚅 TGV INOUI Direct • Nancy Centre (J+${daysOut})`;
+        inouiNote = `Départ imminent (J+${daysOut}) : plein tarif TGV INOUI direct estimé 49€–75€/trajet (jusqu'à -30% Carte Avantage).`;
+      }
 
-      const depClean = depart.replace(/\(.*?\)/g, '').trim();
-      const destClean = dest.replace(/\(.*?\)/g, '').trim();
+      return {
+        ouigo: { singleMin: ouigoSingleMin, singleMax: ouigoSingleMax, rt: ouigoRt, badge: ouigoBadge, note: ouigoNote },
+        inoui: { singleMin: inouiSingleMin, singleMax: inouiSingleMax, rt: inouiRt, badge: inouiBadge, note: inouiNote }
+      };
+    }
 
+    function buildVoyageBookingLinks(depClean, destClean, depIso, retIso) {
       const flightsUrl = `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights to ${destClean} from ${depClean} on ${depIso} through ${retIso}`)}&curr=EUR&hl=fr`;
-
       const origIata = lookupGeoCode(IATA_CODES, depClean);
       const destIata = lookupGeoCode(IATA_CODES, destClean);
       const kayakUrl = (origIata && destIata)
@@ -3904,22 +4448,306 @@
         : `https://www.thetrainline.com/fr/resultats?origin=${encodeURIComponent(depClean)}&destination=${encodeURIComponent(destClean)}`;
 
       const bookingUrl = `https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(destClean)}&checkin=${depIso}&checkout=${retIso}&nflt=review_score%3D80`;
-      const dateSpanLabel = `${depIso} ➔ ${retIso}${calFlexMode === 'flex3' ? ' (±3j)' : ''}`;
+      const ouigoUrl = 'https://www.ouigo.com/';
+      return { flightsUrl, kayakUrl, trainUrl, bookingUrl, ouigoUrl, origIata, destIata };
+    }
 
-      if (container) {
-        container.innerHTML = `
-          <a class="portal-link-btn" href="${flightsUrl}" target="_blank" rel="noopener">✈️ Google Flights (${dateSpanLabel})</a>
-          <a class="portal-link-btn" href="${kayakUrl}" target="_blank" rel="noopener">🛫 Kayak Vols${origIata && destIata ? ` (${origIata}➔${destIata})` : ''}</a>
-          <a class="portal-link-btn" href="${trainUrl}" target="_blank" rel="noopener">🚄 TheTrainline (${depClean} ➔ ${destClean})</a>
-          <a class="portal-link-btn" href="${bookingUrl}" target="_blank" rel="noopener">🏨 Booking ≥ 8/10 (${depIso})</a>
-        `;
+    function buildDynamicVoyageOffers(depClean, destRaw, depIso, retIso, nights, daysOut, depMonth) {
+      const offers = [];
+      const destTrim = (destRaw || '').trim();
+      const destNorm = normalizeGeoKey(destTrim);
+      const isGenericDest = !destTrim || destNorm === 'partout' || destNorm === 'all';
+      const dateSpanLabel = `${formatFrDateShort(depIso)} ➔ ${formatFrDateShort(retIso)} (${nights}n)`;
+      const trains = computeClientTrainPricing(daysOut);
+
+      // Multiplicateur saison/échéance réaliste sur les vols
+      let urgencyMult = 1.0;
+      if (daysOut <= 5) urgencyMult = 1.38;
+      else if (daysOut <= 12) urgencyMult = 1.18;
+      else if (daysOut >= 28) urgencyMult = 0.88;
+      if (depMonth === 7 || depMonth === 8 || depMonth === 12) urgencyMult += 0.14;
+
+      // 1. Offres Train différenciées (OUIGO Lorraine TGV vs TGV INOUI Nancy Centre)
+      const destHasRail = !isGenericDest && !!lookupGeoCode(TRAINLINE_URNS, destTrim);
+      const railTarget = destHasRail ? destTrim : 'Paris';
+      const parisLinks = buildVoyageBookingLinks(depClean, railTarget, depIso, retIso);
+
+      if (isGenericDest || destNorm.includes('paris')) {
+        offers.push({
+          id: 'dyn_voy_ouigo_lorraine_paris',
+          universe: 'voyage',
+          category: 'train',
+          section_type: 'flash_deals',
+          badge: trains.ouigo.badge,
+          title: `OUIGO Lorraine TGV ⇄ Paris Est (${dateSpanLabel})`,
+          location: 'Gare Lorraine TGV (Louvigny) ➔ Paris Est',
+          destination: 'Paris',
+          departure_hub: 'Nancy / Lorraine TGV',
+          price: trains.ouigo.rt,
+          price_str: `~${trains.ouigo.singleMin}–${trains.ouigo.singleMax}€/trajet (${trains.ouigo.rt}€ A/R)`,
+          description: `${trains.ouigo.note} Navette directe depuis Gare de Nancy possible (~9€).`,
+          url: parisLinks.ouigoUrl,
+          images: ['https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80']
+        });
       }
-      if (bar) bar.style.display = 'block';
 
-      updateVoyageScanProgress(60, `✈️ Scan des meilleures liaisons vers ${destClean}...`);
-      filterVoyage();
+      if (isGenericDest || destHasRail) {
+        const isParisRail = normalizeGeoKey(railTarget).includes('paris');
+        const inouiSingleMin = isParisRail ? trains.inoui.singleMin : Math.round(trains.inoui.singleMin * 1.15);
+        const inouiSingleMax = isParisRail ? trains.inoui.singleMax : Math.round(trains.inoui.singleMax * 1.25);
+        const inouiRt = inouiSingleMin * 2 + 8;
+        offers.push({
+          id: `dyn_voy_inoui_${normalizeGeoKey(railTarget).replace(/\s+/g, '_')}`,
+          universe: 'voyage',
+          category: 'train',
+          section_type: 'flash_deals',
+          badge: isParisRail ? trains.inoui.badge : `🚅 TGV INOUI / Rail Direct (J+${daysOut})`,
+          title: `TGV INOUI Direct ${depClean} ⇄ ${railTarget} (${dateSpanLabel})`,
+          location: `${depClean} Ville Centre ➔ ${railTarget}`,
+          destination: railTarget,
+          departure_hub: depClean,
+          price: inouiRt,
+          price_str: `~${inouiSingleMin}–${inouiSingleMax}€/trajet (${inouiRt}€ A/R)`,
+          description: isParisRail
+            ? trains.inoui.note
+            : `Liaison rail directe pour vos dates (${depIso} ➔ ${retIso}) calculée à J+${daysOut} du départ.`,
+          url: parisLinks.trainUrl,
+          images: ['https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80']
+        });
+      }
 
-      // 2. Déclenchement GitHub Actions si token présent
+      // 2. Catalogue dynamique d'offres vols + séjours adaptés à la durée (nights) & mois (depMonth)
+      const CATALOG = [
+        {
+          slug: 'rome', name: 'Rome (Italie)', dest: 'Rome', idealRange: [2, 5],
+          hub: 'Luxembourg (LUX) / Bâle (BSL)', badge: '🇮🇹 City Break Vol + Hôtel',
+          flightBase: 76, hotelNight: 84, shuttle: 22,
+          img: 'https://images.unsplash.com/photo-1552832231-c57dc443043c?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'bologne', name: 'Bologne & Toscane', dest: 'Bologne', idealRange: [2, 4],
+          hub: 'Luxembourg (LUX) / Bâle (BSL)', badge: '🍝 Escapade Express',
+          flightBase: 48, hotelNight: 74, shuttle: 20,
+          img: 'https://images.unsplash.com/photo-1534445867742-43195f401b6c?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'barcelone', name: 'Barcelone (Espagne)', dest: 'Barcelone', idealRange: [2, 5],
+          hub: 'Bâle-Mulhouse (BSL) / LUX', badge: '☀️ Architecture & Plage',
+          flightBase: 64, hotelNight: 88, shuttle: 24,
+          img: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'lisbonne', name: 'Lisbonne (Portugal)', dest: 'Lisbonne', idealRange: [3, 6],
+          hub: 'Luxembourg (LUX) / Paris ORY', badge: '🌊 City & Océan',
+          flightBase: 86, hotelNight: 80, shuttle: 28,
+          img: 'https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'palerme', name: 'Palerme & Sicile', dest: 'Palerme', idealRange: [4, 10],
+          hub: 'Luxembourg (LUX) / Bâle (BSL)', badge: '🍋 Séjour Soleil Italie',
+          flightBase: 92, hotelNight: 66, shuttle: 24,
+          img: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'marrakech', name: 'Marrakech (Maroc)', dest: 'Marrakech', idealRange: [4, 10],
+          hub: 'Bâle (BSL) / Paris ORY', badge: '🌴 Riad & Soleil Garanti',
+          flightBase: 108, hotelNight: 60, shuttle: 26,
+          img: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'saint_martin', name: 'Saint-Martin (Caraïbes SXM)', dest: 'Saint-Martin', idealRange: [5, 21],
+          hub: 'Paris ORY / CDG (Air Caraïbes / AF)', badge: '🏝️ Long-Courrier Caraïbes',
+          flightBase: 470, hotelNight: 112, shuttle: trains.inoui.rt,
+          img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'new_york', name: 'New York (Manhattan JFK)', dest: 'New York', idealRange: [5, 14],
+          hub: 'Luxembourg (LUX) / Paris CDG', badge: '🗽 Grand Séjour USA',
+          flightBase: 410, hotelNight: 142, shuttle: trains.inoui.rt,
+          img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80'
+        }
+      ];
+
+      let matchedCatalog = CATALOG.filter(c => {
+        if (!isGenericDest) {
+          return normalizeGeoKey(c.dest).includes(destNorm) || normalizeGeoKey(c.name).includes(destNorm);
+        }
+        return nights >= c.idealRange[0] && nights <= c.idealRange[1];
+      });
+
+      // Si l'utilisateur tape une destination hors du catalogue (ex: "Madrid", "Venise", "Tokyo")
+      if (!isGenericDest && matchedCatalog.length === 0) {
+        matchedCatalog = [{
+          slug: destNorm.replace(/[^a-z0-9]+/g, '_'),
+          name: destTrim,
+          dest: destTrim,
+          idealRange: [1, 30],
+          hub: `${depClean} / Hubs Internationaux`,
+          badge: `✈️ Recherche Directe • ${nights} nuits`,
+          flightBase: 145,
+          hotelNight: 82,
+          shuttle: 25,
+          img: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80'
+        }];
+      }
+
+      matchedCatalog.forEach(c => {
+        const flightDyn = Math.round(c.flightBase * urgencyMult);
+        const hotelTotal = Math.round(nights * c.hotelNight);
+        const totalEst = flightDyn + hotelTotal + c.shuttle;
+        const links = buildVoyageBookingLinks(depClean, c.dest, depIso, retIso);
+
+        // Carte Vol Flash ou Liaison Aérienne
+        offers.push({
+          id: `dyn_voy_flight_${c.slug}`,
+          universe: 'voyage',
+          category: 'flight',
+          section_type: 'flash_deals',
+          badge: c.flightBase <= 95 ? `⚡ Vol Direct (${nights}n)` : `✈️ Vol A/R (${daysOut <= 10 ? 'Last-Min' : 'Éco'})`,
+          title: `Vol ${c.name} • ${dateSpanLabel}`,
+          location: `Départ ${c.hub} ➔ ${c.dest}`,
+          destination: c.dest,
+          departure_hub: depClean,
+          price: flightDyn,
+          price_str: `~${flightDyn} € Vol A/R`,
+          description: `Tarif estimé pour vos dates exactes (${depIso} au ${retIso}, J+${daysOut}). Cliquez pour vérifier les prix temps réel.`,
+          url: links.kayakUrl,
+          images: [c.img]
+        });
+
+        // Carte Séjour Tout Compris (Transport + Hôtel ≥ 8/10 recalculé sur exact `nights`)
+        offers.push({
+          id: `dyn_voy_stay_${c.slug}`,
+          universe: 'voyage',
+          category: 'package',
+          section_type: 'best_offers',
+          badge: c.badge,
+          title: `Séjour ${c.name} • ${nights} nuit(s) Tout Calculé`,
+          location: `${depClean} ➔ ${c.dest} (${depIso} au ${retIso})`,
+          destination: c.dest,
+          departure_hub: depClean,
+          price: totalEst,
+          price_str: `~${totalEst} € Tout Compris`,
+          description: `Séjour ${nights} nuits (hébergement note ≥ 8/10 + vol A/R) recalculé selon votre calendrier et pré-acheminement depuis ${depClean}.`,
+          true_cost: {
+            total_per_person: totalEst,
+            breakdown: `Pré-acheminement (~${c.shuttle}€) + Vol A/R (~${flightDyn}€) + ${nights} nuits hôtel (~${hotelTotal}€)`
+          },
+          url: links.bookingUrl,
+          images: [c.img]
+        });
+      });
+
+      return offers;
+    }
+
+    function updateVoyageDirectPortals(depClean, destClean, depIso, retIso, calLabelOnly) {
+      const bar = document.getElementById('voyageDirectPortalsBar');
+      const container = document.getElementById('voyageDirectPortalsLinks');
+      if (!container) return;
+      const links = buildVoyageBookingLinks(depClean, destClean, depIso, retIso);
+      const dateSpanLabel = `${depIso} ➔ ${retIso}${calFlexMode === 'flex3' ? ' (±3j)' : ''}`;
+      container.innerHTML = `
+        <a class="portal-link-btn" href="${links.flightsUrl}" target="_blank" rel="noopener">✈️ Google Flights (${dateSpanLabel})</a>
+        <a class="portal-link-btn" href="${links.kayakUrl}" target="_blank" rel="noopener">🛫 Kayak Vols${links.origIata && links.destIata ? ` (${links.origIata}➔${links.destIata})` : ''}</a>
+        <a class="portal-link-btn" href="${links.trainUrl}" target="_blank" rel="noopener">🚄 TheTrainline (${depClean} ➔ ${destClean})</a>
+        <a class="portal-link-btn" href="${links.ouigoUrl}" target="_blank" rel="noopener">🔴 OUIGO (Lorraine TGV)</a>
+        <a class="portal-link-btn" href="${links.bookingUrl}" target="_blank" rel="noopener">🏨 Booking ≥ 8/10 (${depIso})</a>
+      `;
+      if (bar && !calLabelOnly) bar.style.display = 'block';
+    }
+
+    function applyVoyageCalendar(showLinksBar = false) {
+      const departRaw = (document.getElementById('voyageDepartInput')?.value || 'Nancy').trim();
+      const destRaw = (document.getElementById('searchVoyageDest')?.value || '').trim();
+      const budgetMax = parseFloat(document.getElementById('voyageBudgetInput')?.value) || 2000;
+      const depClean = departRaw.replace(/\(.*?\)/g, '').trim() || 'Nancy';
+      const destClean = (destRaw && destRaw.toLowerCase() !== 'partout') ? destRaw.replace(/\(.*?\)/g, '').trim() : 'Rome';
+
+      const { depIso, retIso, nights, daysOut, depMonth } = getEffectiveVoyageDates();
+      dynamicVoyageOffers = buildDynamicVoyageOffers(depClean, destRaw, depIso, retIso, nights, daysOut, depMonth);
+
+      // Si le bandeau de portails est déjà visible ou demandé, synchroniser ses URLs aux nouvelles dates
+      const bar = document.getElementById('voyageDirectPortalsBar');
+      if (showLinksBar || (bar && bar.style.display === 'block')) {
+        updateVoyageDirectPortals(depClean, destClean, depIso, retIso, !showLinksBar && bar.style.display !== 'block');
+      }
+
+      // En-tête résumé strictement séparé de la bannière Inspirations
+      const summaryMeta = document.getElementById('voyageSearchSummaryMeta');
+      if (summaryMeta) {
+        const destLabel = destRaw && destRaw.toLowerCase() !== 'partout' ? destRaw : (nights <= 4 ? 'City-breaks Europe & Trains (2–4 nuits)' : 'Séjours Soleil & Long-Courriers');
+        summaryMeta.textContent = `${formatFrDateShort(depIso)} ➔ ${formatFrDateShort(retIso)} • ${nights} nuit(s) (J+${daysOut}) • ${depClean} ➔ ${destLabel} • Budget ≤ ${budgetMax} €`;
+      }
+
+      const destQ = destRaw.toLowerCase();
+      // Compléter éventuellement avec des pépites backend non-ferroviaires hors doublon
+      const dynIds = new Set(dynamicVoyageOffers.map(x => x.id));
+      const backendExtras = (allData || []).filter(it =>
+        it.universe === 'voyage' &&
+        !String(it.id || '').startsWith('real_train_') &&
+        !dynIds.has(it.id)
+      );
+
+      const combined = [...dynamicVoyageOffers, ...backendExtras].filter(it => {
+        if (dislikes.includes(it.id) || likedItems.includes(it.id)) return false;
+        if (it.price && it.price > budgetMax) return false;
+        if (destQ && destQ !== 'partout') {
+          const matchText = `${it.title || ''} ${it.location || ''} ${it.destination || ''} ${it.description || ''}`.toLowerCase();
+          if (!matchText.includes(destQ)) return false;
+        }
+        return true;
+      });
+
+      const sec1Items = combined.filter(x => x.section_type === 'flash_deals' || x.category === 'train' || x.category === 'flight');
+      const sec2Items = combined.filter(x => x.section_type === 'best_offers' || x.category === 'package' || !!x.true_cost);
+
+      const sec1Container = document.getElementById('voyageSection1');
+      const sec2Container = document.getElementById('voyageSection2');
+      const count1 = document.getElementById('voyageSec1Count');
+      const count2 = document.getElementById('voyageSec2Count');
+
+      if (count1) count1.textContent = `${sec1Items.length} liaison(s) à J+${daysOut}`;
+      if (count2) count2.textContent = `${sec2Items.length} séjour(s) • ${nights} nuits`;
+
+      if (sec1Container) {
+        sec1Container.innerHTML = sec1Items.length > 0 ?
+          sec1Items.map(it => createVoyageCardHtml(it, false)).join('') :
+          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucune liaison ferroviaire/vol à ce budget. Élargissez le plafond € ou changez les dates.</div>';
+      }
+
+      if (sec2Container) {
+        sec2Container.innerHTML = sec2Items.length > 0 ?
+          sec2Items.map(it => createVoyageCardHtml(it, false)).join('') :
+          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun séjour tout compris correspondant pour cette durée et ce budget.</div>';
+      }
+
+      const track = document.getElementById('voyageInspirationsTrack');
+      if (track && !track.innerHTML.trim()) {
+        renderVoyageInspirationsCarousel();
+      }
+      updateSavedCounters();
+      attachSwipeListeners();
+    }
+
+    function filterVoyage() {
+      applyVoyageCalendar(false);
+    }
+
+    async function launchLiveScanVoyage() {
+      const depart = (document.getElementById('voyageDepartInput')?.value || 'Nancy').trim();
+      const destRaw = (document.getElementById('searchVoyageDest')?.value || '').trim();
+      const destClean = (destRaw && destRaw.toLowerCase() !== 'partout') ? destRaw.replace(/\(.*?\)/g, '').trim() : 'Rome';
+      const depClean = depart.replace(/\(.*?\)/g, '').trim() || 'Nancy';
+      const budget = document.getElementById('voyageBudgetInput')?.value || '800';
+      const { depIso, retIso, nights } = getEffectiveVoyageDates();
+
+      updateVoyageScanProgress(25, `🛫 Calcul dynamique des tarifs (${depClean} ➔ ${destClean} • ${nights} nuits)...`);
+      applyVoyageCalendar(true);
+
+      updateVoyageScanProgress(65, `🔗 Génération des liens exacts Google Flights / Kayak / Trainline / OUIGO / Booking...`);
+
+      // Déclenchement GitHub Actions si token présent
       const token = localStorage.getItem('nexus_gh_token');
       const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
@@ -3948,29 +4776,31 @@
         }
       }
 
-      updateVoyageScanProgress(100, `✅ Moteurs directs prêts : ${depClean} ➔ ${destClean} (${dateSpanLabel})`);
-      showToast(`✅ Liens exacts générés pour ${destClean} (${depIso} ➔ ${retIso})`);
+      const dateSpanLabel = `${depIso} ➔ ${retIso}${calFlexMode === 'flex3' ? ' (±3j)' : ''}`;
+      updateVoyageScanProgress(100, `✅ Résultats et comparateurs actualisés : ${depClean} ➔ ${destClean} (${nights} nuits)`);
+      showToast(`✅ Comparateurs et tarifs calculés pour ${destClean} (${dateSpanLabel}) !`, 2600);
       hideVoyageScanProgress(2200);
     }
 
-    function createVoyageCardHtml(it) {
+    function createVoyageCardHtml(it, inCatalogue = false) {
       const isFav = favorites.includes(it.id);
       const isFlash = it.section_type === 'flash_deals';
       const photos = getItemPhotos(it);
       const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
       const safeTitle = (it.title || 'Offre Voyage').replace(/"/g, '&quot;');
+      const safeHref = (it.url && String(it.url).startsWith('http')) ? it.url : 'https://www.kayak.fr/';
 
       return `
         <div class="card card-voyage" id="card_${it.id}" data-id="${it.id}">
           <div class="card-img-wrap">
             <img id="card_img_${it.id}" class="card-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
             <span class="card-badge ${isFlash ? 'badge-flash' : 'badge-package'}">${it.badge || '✈️ Évasion'}</span>
-            <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Sauvegarder" onclick="toggleFavorite('${it.id}')">
+            <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Sauvegarder en Favori" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="event.stopPropagation(); toggleFavorite('${it.id}')">
               ★
             </button>
             ${photos.length > 1 ? `
-              <button class="carousel-btn prev" title="Photo précédente" onclick="prevCardImg(event, '${it.id}')">‹</button>
-              <button class="carousel-btn next" title="Photo suivante" onclick="nextCardImg(event, '${it.id}')">›</button>
+              <button class="carousel-btn prev" title="Photo précédente" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="prevCardImg(event, '${it.id}')">‹</button>
+              <button class="carousel-btn next" title="Photo suivante" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="nextCardImg(event, '${it.id}')">›</button>
               <span class="carousel-counter" id="card_cnt_${it.id}">${curIdx + 1} / ${photos.length}</span>
             ` : ''}
           </div>
@@ -3990,40 +4820,100 @@
 
             ${it.true_cost ? `
               <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 10px; font-size: 0.72rem; color: #cbd5e1; margin-bottom: 4px;">
-                🔍 <strong>Vrai Coût depuis Nancy :</strong> ${it.true_cost.breakdown}
+                🔍 <strong>Vrai Coût calculé :</strong> ${it.true_cost.breakdown}
               </div>
             ` : ''}
 
-            <div class="card-actions-bar">
-              <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
-                ❌ Écarter
-              </button>
-              <a class="btn-open-detail" style="text-decoration: none;" href="${it.url}" target="_blank" rel="noopener">
-                🔍 Voir l'offre ↗
-              </a>
-              <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
-                ❤️ J'aime
-              </button>
-            </div>
+            ${inCatalogue ? `
+              <div class="card-actions-bar" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
+                <button class="btn-swipe-dislike" onclick="removeFromSaved('${it.id}')">
+                  🗑️ Retirer
+                </button>
+                <a class="btn-open-detail" style="text-decoration: none;" href="${safeHref}" target="_blank" rel="noopener">
+                  🔍 Ouvrir ↗
+                </a>
+                <button class="btn-swipe-like" style="background: rgba(234,179,8,0.16); border-color: rgba(234,179,8,0.45); color: #fde047;" onclick="toggleFavorite('${it.id}')">
+                  ${isFav ? '★ Favori' : '☆ Favori'}
+                </button>
+              </div>
+            ` : `
+              <div class="card-actions-bar" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
+                <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
+                  ❌ Écarter
+                </button>
+                <a class="btn-open-detail" style="text-decoration: none;" href="${safeHref}" target="_blank" rel="noopener">
+                  🔍 Voir l'offre ↗
+                </a>
+                <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
+                  ❤️ J'aime
+                </button>
+              </div>
+            `}
           </div>
         </div>
       `;
     }
 
     // =========================================================
-    // FAVORIS & CATALOGUE PERSO
+    // FAVORIS & CATALOGUE PERSO (LIKÉS MIS DE CÔTÉ + FAVORIS)
     // =========================================================
+    function openLikesCatalogueTab(subtab = 'likes', clickedNavItem = null) {
+      navigateTo('pane-immo-catalogue', clickedNavItem);
+      switchCatalogueSubtab(subtab);
+    }
+
+    function switchCatalogueSubtab(tab) {
+      activeCatalogueSubtab = tab === 'favs' ? 'favs' : 'likes';
+      const btnLikes = document.getElementById('catTabLikes');
+      const btnFavs = document.getElementById('catTabFavs');
+      if (btnLikes) btnLikes.classList.toggle('active', activeCatalogueSubtab === 'likes');
+      if (btnFavs) btnFavs.classList.toggle('active', activeCatalogueSubtab === 'favs');
+
+      const emptyTitle = document.getElementById('emptyCatTitle');
+      const emptyDesc = document.getElementById('emptyCatDesc');
+      if (emptyTitle && emptyDesc) {
+        if (activeCatalogueSubtab === 'favs') {
+          emptyTitle.textContent = 'Aucun favori (★) pour le moment';
+          emptyDesc.textContent = 'Appuyez sur l\'étoile ★ sur une carte pour la classer parmi vos Coups de cœur Favoris.';
+        } else {
+          emptyTitle.textContent = 'Aucun bien liké mis de côté';
+          emptyDesc.textContent = 'Appuyez sur ❤️ J\'aime (ou glissez à droite) : le bien sort du flux pour être conservé ici.';
+        }
+      }
+      renderImmoCatalogue();
+    }
+
+    function removeFromSaved(id) {
+      if (activeCatalogueSubtab === 'favs') {
+        favorites = favorites.filter(x => x !== id);
+        showToast('Retiré des Coups de cœur Favoris', 2200);
+      } else {
+        likedItems = likedItems.filter(x => x !== id);
+        showToast('Annonce retirée des Likés et replacée dans le flux !', 2400);
+      }
+      saveUserLists();
+      filterImmo();
+      applyVoyageCalendar(false);
+      updateRadarProfile();
+      renderImmoCatalogue();
+    }
+
     function toggleFavorite(id) {
+      const itemObj = findItemById(id);
       if (favorites.includes(id)) {
         favorites = favorites.filter(x => x !== id);
-        showToast('Retiré des favoris');
+        showToast('Retiré des favoris (★)', 2000);
       } else {
         favorites.push(id);
-        showToast('⭐ Ajouté à vos favoris !');
+        if (itemObj) {
+          likedSnapshots[id] = itemObj;
+          localStorage.setItem('nexus_liked_snapshots', JSON.stringify(likedSnapshots));
+        }
+        showToast('⭐ Ajouté aux Coups de cœur Favoris !', 2200);
       }
-      localStorage.setItem('nexus_favorites', JSON.stringify(favorites));
+      saveUserLists();
       filterImmo();
-      filterVoyage();
+      applyVoyageCalendar(false);
       renderImmoCatalogue();
     }
 
@@ -4032,14 +4922,19 @@
       const empty = document.getElementById('emptyImmoCatalogue');
       if (!grid || !empty) return;
 
-      const favItems = allData.filter(x => favorites.includes(x.id));
-      if (favItems.length === 0) {
+      updateSavedCounters();
+      const targetIds = activeCatalogueSubtab === 'favs' ? favorites : likedItems;
+      const savedItems = targetIds.map(findItemById).filter(Boolean);
+
+      if (savedItems.length === 0) {
         grid.innerHTML = '';
         empty.style.display = 'block';
         return;
       }
       empty.style.display = 'none';
-      grid.innerHTML = favItems.map(it => createImmoCardHtml(it)).join('');
+      grid.innerHTML = savedItems.map(it =>
+        it.universe === 'voyage' ? createVoyageCardHtml(it, true) : createImmoCardHtml(it, true)
+      ).join('');
       attachSwipeListeners();
     }
 
@@ -4054,24 +4949,31 @@
     function testPushNotification() {
       fetch('https://ntfy.sh/sxm-immo-alert-97150-x9q4m2', {
         method: 'POST',
-        headers: { 'Title': '🛰️ Test Nexus Radar V7', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
-        body: 'Veille V7 opérationnelle ! Alertes Immo et Voyage certifiées temps réel.'
-      }).then(() => showToast('🔔 Notification V7 envoyée !'))
+        headers: { 'Title': '🛰️ Test Nexus Radar V8', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
+        body: 'Veille V8 opérationnelle ! Alertes Immo (sans viager) et Voyage temps réel.'
+      }).then(() => showToast('🔔 Notification V8 envoyée !'))
         .catch(() => showToast('Erreur envoi ntfy'));
     }
 
-    function showToast(msg) {
+    function showToast(msg, durationMs = 2600, isHtml = false) {
       const t = document.getElementById('toast');
-      t.textContent = msg;
+      if (!t) return;
+      if (toastHideTimer) clearTimeout(toastHideTimer);
+      if (isHtml) {
+        t.innerHTML = msg;
+      } else {
+        t.textContent = msg;
+      }
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2600);
+      toastHideTimer = setTimeout(() => t.classList.remove('show'), durationMs);
     }
 
-    // Initialisation + Service Worker V7 (Network-First + Purge Ancien Cache)
+    // Initialisation + Service Worker V8 (Network-First + Purge Ancien Cache)
     window.addEventListener('DOMContentLoaded', () => {
       initPinLock();
       renderBottomNav('immo');
       initDefaultCalendarDates();
+      updateSavedCounters();
 
       const savedToken = localStorage.getItem('nexus_gh_token');
       if (savedToken) document.getElementById('ghToken').value = savedToken;
@@ -4083,11 +4985,11 @@
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'nexus-v7-clean') caches.delete(n);
+              if (n !== 'nexus-v8-clean') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=7').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=8').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 
