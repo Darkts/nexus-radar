@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Nexus Radar V8 | Immobilier Mondial & Planificateur Voyage Intelligent</title>
-  <meta name="description" content="Hub personnel autonome V8 : Vraies photos, Filtres Anti-Viager, Swipe verrouillé & Moteur Voyage Réactif aux Dates" />
+  <title>Nexus Radar V9 | Immobilier Mondial & Planificateur Voyage Synchronisé</title>
+  <meta name="description" content="Hub personnel autonome V9 : Moteur Voyage code couleur strict Train/Avion/Package, vrais prix croisés Transport+Hôtel & deep links vérifiés" />
   
   <!-- PWA & Apple Meta -->
   <link rel="manifest" href="manifest.json" />
@@ -12,7 +12,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Nexus Radar V8" />
+  <meta name="apple-mobile-web-app-title" content="Nexus Radar V9" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icon.svg" />
 
@@ -1370,9 +1370,153 @@
       object-fit: cover;
       display: block;
     }
-    .carousel-btn, .btn-card-fav, .card-actions-bar button, .card-actions-bar a {
+    .carousel-btn, .btn-card-fav, .card-actions-bar button, .card-actions-bar a, .voyage-sync-links button, .voyage-sync-links a {
       touch-action: manipulation;
     }
+
+    /* V9 CODE COULEUR STRICT VOYAGE : TRAIN (#10b981) | VOL (#06b6d4) | PACKAGE (#8b5cf6 / #f59e0b) */
+    .card-voyage.voy-cat-train { border-top: 4px solid #10b981; }
+    .card-voyage.voy-cat-train:hover { border-color: #10b981; }
+    .card-voyage.voy-cat-flight { border-top: 4px solid #06b6d4; }
+    .card-voyage.voy-cat-flight:hover { border-color: #06b6d4; }
+    .card-voyage.voy-cat-package {
+      border-top: 4px solid #8b5cf6;
+      box-shadow: 0 6px 22px rgba(139, 92, 246, 0.14);
+    }
+    .card-voyage.voy-cat-package:hover { border-color: #f59e0b; }
+
+    .card-badge.badge-voy-train {
+      background: rgba(16, 185, 129, 0.94);
+      color: #022c22;
+      border-color: #34d399;
+    }
+    .card-badge.badge-voy-flight {
+      background: rgba(6, 182, 212, 0.94);
+      color: #042f2e;
+      border-color: #22d3ee;
+    }
+    .card-badge.badge-voy-package {
+      background: linear-gradient(135deg, #7c3aed, #d97706);
+      color: #fff;
+      border-color: #fbbf24;
+    }
+
+    .voyage-cat-filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+    .voyage-cat-pill {
+      background: #0f172a;
+      border: 1px solid var(--card-border);
+      color: #cbd5e1;
+      border-radius: 10px;
+      padding: 8px 13px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+    .voyage-cat-pill.active {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
+      color: #fff;
+    }
+    .voyage-cat-pill.pill-package.active {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(245, 158, 11, 0.25));
+      border-color: #f59e0b;
+      color: #fde68a;
+    }
+    .voyage-cat-pill.pill-flight.active {
+      background: rgba(6, 182, 212, 0.22);
+      border-color: #06b6d4;
+      color: #67e8f9;
+    }
+    .voyage-cat-pill.pill-train.active {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: #10b981;
+      color: #6ee7b7;
+    }
+
+    .voyage-breakdown-box {
+      background: rgba(9, 14, 26, 0.92);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 0.72rem;
+      color: #e2e8f0;
+      margin: 4px 0 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      line-height: 1.48;
+    }
+    .voyage-breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .voyage-breakdown-sep {
+      border-top: 1px dashed rgba(245, 158, 11, 0.45);
+      margin: 4px 0;
+    }
+    .voyage-breakdown-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+      color: #fbbf24;
+      font-size: 0.77rem;
+    }
+
+    .voyage-sync-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+    .btn-sync-action {
+      border-radius: 8px;
+      padding: 8px 5px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      border: 1px solid transparent;
+      line-height: 1.15;
+    }
+    .btn-sync-action.sync-flight {
+      background: rgba(6, 182, 212, 0.16);
+      border-color: rgba(6, 182, 212, 0.55);
+      color: #67e8f9;
+    }
+    .btn-sync-action.sync-flight:hover { background: #06b6d4; color: #042f2e; }
+    .btn-sync-action.sync-hotel {
+      background: rgba(59, 130, 246, 0.16);
+      border-color: rgba(59, 130, 246, 0.55);
+      color: #93c5fd;
+    }
+    .btn-sync-action.sync-hotel:hover { background: #2563eb; color: #fff; }
+    .btn-sync-action.sync-package {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.28), rgba(245, 158, 11, 0.26));
+      border-color: #f59e0b;
+      color: #fde68a;
+    }
+    .btn-sync-action.sync-package:hover { background: linear-gradient(135deg, #7c3aed, #d97706); color: #fff; }
+    .btn-sync-action.sync-train {
+      background: rgba(16, 185, 129, 0.18);
+      border-color: rgba(16, 185, 129, 0.6);
+      color: #6ee7b7;
+    }
+    .btn-sync-action.sync-train:hover { background: #10b981; color: #022c22; }
 
     .empty-state {
       text-align: center;
@@ -1489,7 +1633,7 @@
   <div class="pin-modal-overlay" id="pinLockOverlay">
     <div class="pin-box">
       <div style="font-size: 2.2rem;">🔒</div>
-      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V8</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V9</h2>
       <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code PIN à 4 chiffres</p>
       
       <div class="pin-dots">
@@ -1524,7 +1668,7 @@
           <img src="assets/icon.svg" alt="Nexus Logo" />
         </div>
         <div>
-          <div class="brand-title">NEXUS RADAR V8</div>
+          <div class="brand-title">NEXUS RADAR V9</div>
           <div class="brand-sub">
             <span class="live-dot"></span>
             <span id="headerLiveStatus">Scraping Direct Temps Réel • Double Univers</span>
@@ -1710,7 +1854,7 @@
 
 
     <!-- ========================================================= -->
-    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (V8 RÉACTIF)        -->
+    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (V9 SYNCHRONISÉ)    -->
     <!-- ========================================================= -->
     <section id="pane-voyage-feed" class="tab-pane">
 
@@ -1726,13 +1870,13 @@
         <div class="voyage-inspi-track" id="voyageInspirationsTrack"></div>
       </div>
 
-      <!-- MOTEUR DE RECHERCHE VOYAGE UNIVERSEL V8 -->
+      <!-- MOTEUR DE RECHERCHE VOYAGE UNIVERSEL V9 -->
       <div class="funnel-search-box" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.04);">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap:wrap; gap:6px; margin-bottom: 4px;">
           <div style="font-size: 0.95rem; font-weight: 800; color: #fff;">✈️ Planificateur Voyage Universel</div>
           <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
             <button class="btn-reset-dislikes" onclick="resetDislikes()">↺ Reset Dislikes (<span id="voyageDislikesCount">0</span>)</button>
-            <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.15); padding: 3px 8px; border-radius: 6px;">Comparateurs Directs V8</span>
+            <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.15); padding: 3px 8px; border-radius: 6px;">Comparateurs Directs V9</span>
           </div>
         </div>
 
@@ -1779,12 +1923,12 @@
         <!-- 4. Budget Max Tout Compris (€) -->
         <div class="voyage-funnel-step">
           <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div class="step-header-label" style="color: #38bdf8;">💰 4. Budget Max (€)</div>
-            <span id="voyageBudgetDisplay" style="font-size: 0.84rem; font-weight: 800; color: #38bdf8;">≤ 800 €</span>
+            <div class="step-header-label" style="color: #38bdf8;">💰 4. Budget Max Tout Compris (€)</div>
+            <span id="voyageBudgetDisplay" style="font-size: 0.84rem; font-weight: 800; color: #38bdf8;">≤ 1800 €</span>
           </div>
           <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
-            <input type="range" id="voyageBudgetRange" min="20" max="2000" step="10" value="800" style="flex: 1; accent-color: #38bdf8;" oninput="onVoyageBudgetRange(this.value)" />
-            <input type="number" id="voyageBudgetInput" value="800" style="width: 80px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 6px; color: #fff; font-size: 0.8rem; text-align: center;" oninput="onVoyageBudgetInput(this.value)" />
+            <input type="range" id="voyageBudgetRange" min="50" max="4000" step="50" value="1800" style="flex: 1; accent-color: #38bdf8;" oninput="onVoyageBudgetRange(this.value)" />
+            <input type="number" id="voyageBudgetInput" value="1800" style="width: 84px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 6px; color: #fff; font-size: 0.8rem; text-align: center;" oninput="onVoyageBudgetInput(this.value)" />
           </div>
         </div>
 
@@ -1857,19 +2001,31 @@
         <div id="voyageSearchSummaryMeta" style="font-size: 0.74rem; font-weight: 800; color: #38bdf8;"></div>
       </div>
 
-      <!-- SECTION 1 : 🔥 Billets Express & Trains aux Dates Exactes (OUIGO vs TGV INOUI) -->
-      <div class="section-title-wrap" style="margin-top: 14px;">
-        <h3 class="section-title" style="color: #f43f5e;">🚄 Section 1 : Trains (OUIGO vs INOUI) &amp; Billets Express</h3>
-        <span style="font-size: 0.72rem; color: #f43f5e; font-weight: 800;" id="voyageSec1Count"></span>
+      <!-- FILTRES RAPIDES CODE COULEUR V9 (TOUT / PACKAGES / VOLS / TRAINS) -->
+      <div class="voyage-cat-filter-bar">
+        <button class="voyage-cat-pill active" id="voyFilterAll" onclick="setVoyageCatFilter('all')">Tout voir</button>
+        <button class="voyage-cat-pill pill-package" id="voyFilterPackage" onclick="setVoyageCatFilter('package')">🏨 Packages Vol+Hôtel</button>
+        <button class="voyage-cat-pill pill-flight" id="voyFilterFlight" onclick="setVoyageCatFilter('flight')">✈️ Vols seuls</button>
+        <button class="voyage-cat-pill pill-train" id="voyFilterTrain" onclick="setVoyageCatFilter('train')">🚄 Trains seuls</button>
       </div>
-      <div class="items-grid" id="voyageSection1"></div>
 
-      <!-- SECTION 2 : 🎯 Vols & Séjours recalculés sur vos dates exactes -->
-      <div class="section-title-wrap" style="margin-top: 26px;">
-        <h3 class="section-title" style="color: #38bdf8;">🌍 Section 2 : Séjours &amp; Vols adaptés à votre durée</h3>
-        <span style="font-size: 0.72rem; color: var(--text-muted);" id="voyageSec2Count">Recalcul en temps réel</span>
+      <!-- SECTION 1 : Trains (Vert Émeraude #10b981) & Vols secs (Bleu Cyan #06b6d4) -->
+      <div id="voyageSec1Wrap">
+        <div class="section-title-wrap" style="margin-top: 14px;">
+          <h3 class="section-title" style="color: #10b981;">🚄 Transports Directs : Trains (OUIGO vs INOUI) &amp; Vols A/R</h3>
+          <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 800;" id="voyageSec1Count"></span>
+        </div>
+        <div class="items-grid" id="voyageSection1"></div>
       </div>
-      <div class="items-grid" id="voyageSection2"></div>
+
+      <!-- SECTION 2 : Packages Croisés Transport + Hôtel (Violet & Or #8b5cf6 / #f59e0b) -->
+      <div id="voyageSec2Wrap">
+        <div class="section-title-wrap" style="margin-top: 26px;">
+          <h3 class="section-title" style="color: #c4b5fd;">🏨 Packages Tout Compris (Pré-acheminement + Vol + Hôtel ≥ 8/10)</h3>
+          <span style="font-size: 0.72rem; color: #fbbf24; font-weight: 800;" id="voyageSec2Count">Recalcul temps réel</span>
+        </div>
+        <div class="items-grid" id="voyageSection2"></div>
+      </div>
     </section>
 
     <!-- ========================================================= -->
@@ -2100,6 +2256,53 @@
       <a class="btn-cta-official" id="modalOfficialLink" href="#" target="_blank" rel="noopener">
         🔗 Consulter l'annonce officielle sur l'agence
       </a>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- MODALE SYNCHRONISÉE V9 : DÉTAIL PACKAGE (VOL + HÔTEL)     -->
+  <!-- ========================================================= -->
+  <div class="detail-modal-overlay" id="voyagePackageModal" style="display:none; z-index:9998;">
+    <div class="detail-modal-header" style="border-bottom: 1px solid rgba(139, 92, 246, 0.45);">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="btn-icon" onclick="closeVoyagePackageModal()" style="width:32px; height:32px; border-radius:50%;">←</button>
+        <div>
+          <div style="font-size: 0.96rem; font-weight: 800; color: #fff;" id="pkgModalTitle">Séjour Tout Compris Synchronisé</div>
+          <div style="font-size: 0.72rem; color: #fbbf24; font-weight: 700;" id="pkgModalSubtitle">Dates synchronisées</div>
+        </div>
+      </div>
+      <button class="btn-close-detail" onclick="closeVoyagePackageModal()">✕</button>
+    </div>
+    <div class="detail-hero-gallery" style="max-height:220px;">
+      <img id="pkgModalImg" src="" alt="Destination séjour" />
+    </div>
+    <div class="detail-body">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; border-bottom: 1px solid var(--card-border); padding-bottom: 12px;">
+        <div>
+          <span class="card-badge badge-voy-package" style="position:static; display:inline-block;" id="pkgModalBadge">🏨 SÉJOUR TOUT COMPRIS</span>
+          <div style="font-size: 1.55rem; font-weight: 800; color: #fbbf24; font-family: 'Space Grotesk', sans-serif; margin-top: 6px;" id="pkgModalTotal">0 €</div>
+        </div>
+        <div style="font-size: 0.76rem; color: #a78bfa; font-weight: 700;" id="pkgModalHorizonBadge">Tarif réaliste J+14</div>
+      </div>
+
+      <div id="pkgModalBreakdownBox" class="voyage-breakdown-box"></div>
+
+      <p id="pkgModalDesc" style="font-size:0.8rem; color:#cbd5e1; line-height:1.48;"></p>
+
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+        <a id="pkgModalFlightBtn" class="btn-sync-action sync-flight" style="padding:13px; font-size:0.85rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
+          ✈️ 1. Ouvrir le Vol A/R aux dates exactes (Google Flights) ↗
+        </a>
+        <a id="pkgModalHotelBtn" class="btn-sync-action sync-hotel" style="padding:13px; font-size:0.85rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
+          🏨 2. Ouvrir Hôtels ≥ 8/10 aux mêmes dates (Booking.com) ↗
+        </a>
+        <a id="pkgModalTrainBtn" class="btn-sync-action sync-train" style="padding:13px; font-size:0.85rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
+          🚄 3. Ouvrir le Pré-acheminement Rail (Trainline / Transit) ↗
+        </a>
+        <a id="pkgModalComboBtn" class="btn-sync-action sync-package" style="padding:13px; font-size:0.85rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
+          📦 Ouvrir le Comparateur Combiné Google Travel (Vol + Hôtel) ↗
+        </a>
+      </div>
     </div>
   </div>
 
@@ -3884,31 +4087,37 @@
     // =========================================================
     const VOYAGE_HUBS = [
       { label: 'Nancy (Lorraine Hub)', sub: 'Grand Est • Gare TGV & Aéroport ETZ', val: 'Nancy' },
-      { label: 'Paris (CDG / ORY / Gare de l\'Est)', sub: 'Île-de-France • Hub Principal', val: 'Paris' },
+      { label: 'Paris CDG (Roissy)', sub: 'Île-de-France • Vols Long-Courriers', val: 'Paris CDG' },
+      { label: 'Paris Orly (ORY)', sub: 'Île-de-France • Antilles / Europe / Afrique du Nord', val: 'Paris ORY' },
       { label: 'Luxembourg (LUX)', sub: 'Aéroport International Findel', val: 'Luxembourg' },
-      { label: 'Bâle-Mulhouse (BSL / EAP)', sub: 'EuroAirport • Alsace / Suisse', val: 'Bâle' },
-      { label: 'Metz / Lorraine TGV (ETZ)', sub: 'Moselle • Aéroport & TGV', val: 'Metz' },
+      { label: 'Bâle-Mulhouse (BSL)', sub: 'EuroAirport • Alsace / Suisse', val: 'Bâle' },
+      { label: 'Metz / Lorraine TGV (ETZ)', sub: 'Moselle • OUIGO & Aéroport', val: 'Metz' },
       { label: 'Strasbourg (SXB)', sub: 'Alsace • Gare & Aéroport', val: 'Strasbourg' },
       { label: 'Lyon (LYS)', sub: 'Auvergne-Rhône-Alpes • Part-Dieu / St-Exupéry', val: 'Lyon' },
-      { label: 'Rome (FCO / CIA)', sub: 'Italie • Capitale', val: 'Rome' },
+      { label: 'Rome (FCO)', sub: 'Italie • Fiumicino', val: 'Rome' },
       { label: 'Bologne (BLQ)', sub: 'Italie • Émilie-Romagne', val: 'Bologne' },
-      { label: 'Milan (MXP / BGY)', sub: 'Italie • Lombardie', val: 'Milan' },
+      { label: 'Milan (MXP)', sub: 'Italie • Lombardie', val: 'Milan' },
       { label: 'Palerme (PMO)', sub: 'Italie • Sicile', val: 'Palerme' },
-      { label: 'Venise (VCE)', sub: 'Italie • Vénétie', val: 'Venise' },
       { label: 'Barcelone (BCN)', sub: 'Espagne • Catalogne', val: 'Barcelone' },
-      { label: 'Madrid (MAD)', sub: 'Espagne • Capitale', val: 'Madrid' },
+      { label: 'Palma de Majorque (PMI)', sub: 'Espagne • Baléares', val: 'Palma de Majorque' },
       { label: 'Lisbonne (LIS)', sub: 'Portugal', val: 'Lisbonne' },
-      { label: 'Londres (LON / LHR)', sub: 'Royaume-Uni • Eurostar & Vols', val: 'Londres' },
+      { label: 'Londres (LHR)', sub: 'Royaume-Uni • Eurostar & Vols', val: 'Londres' },
       { label: 'Bruxelles (BRU)', sub: 'Belgique • Eurostar', val: 'Bruxelles' },
       { label: 'Amsterdam (AMS)', sub: 'Pays-Bas • Schiphol', val: 'Amsterdam' },
       { label: 'Saint-Martin (SXM)', sub: 'Caraïbes • Princess Juliana', val: 'Saint-Martin' },
-      { label: 'New York (NYC / JFK)', sub: 'États-Unis', val: 'New York' },
+      { label: 'Guadeloupe (PTP)', sub: 'Antilles • Pointe-à-Pitre', val: 'Guadeloupe' },
+      { label: 'Martinique (FDF)', sub: 'Antilles • Fort-de-France', val: 'Martinique' },
+      { label: 'New York (JFK)', sub: 'États-Unis • Manhattan', val: 'New York' },
+      { label: 'Montréal (YUL)', sub: 'Canada • Québec', val: 'Montréal' },
+      { label: 'Tokyo (TYO)', sub: 'Japon • Haneda / Narita', val: 'Tokyo' },
       { label: 'Nice (NCE)', sub: 'Côte d\'Azur', val: 'Nice' },
       { label: 'Marseille (MRS)', sub: 'Provence', val: 'Marseille' }
     ];
 
     const TRAINLINE_URNS = {
       'nancy': 'urn:trainline:generic:loc:2312',
+      'lorraine tgv': 'urn:trainline:generic:loc:2094',
+      'louvigny': 'urn:trainline:generic:loc:2094',
       'paris': 'urn:trainline:generic:loc:4916',
       'luxembourg': 'urn:trainline:generic:loc:8604',
       'bale': 'urn:trainline:generic:loc:5878',
@@ -3929,6 +4138,10 @@
       'londres': 'urn:trainline:generic:loc:182gb',
       'london': 'urn:trainline:generic:loc:182gb',
       'milan': 'urn:trainline:generic:loc:8483',
+      'rome': 'urn:trainline:generic:loc:8542',
+      'roma': 'urn:trainline:generic:loc:8542',
+      'bologne': 'urn:trainline:generic:loc:10456',
+      'bologna': 'urn:trainline:generic:loc:10456',
       'barcelone': 'urn:trainline:generic:loc:6617',
       'barcelona': 'urn:trainline:generic:loc:6617',
       'francfort': 'urn:trainline:generic:loc:7602',
@@ -3938,18 +4151,20 @@
     };
 
     const IATA_CODES = {
-      'paris': 'PAR', 'nancy': 'ETZ', 'metz': 'ETZ', 'luxembourg': 'LUX',
+      'paris ory': 'ORY', 'orly': 'ORY', 'paris cdg': 'CDG', 'roissy': 'CDG', 'paris': 'CDG',
+      'nancy': 'ETZ', 'metz': 'ETZ', 'luxembourg': 'LUX', 'findel': 'LUX',
       'bale': 'BSL', 'basel': 'BSL', 'strasbourg': 'SXB', 'lyon': 'LYS',
       'marseille': 'MRS', 'nice': 'NCE', 'bordeaux': 'BOD', 'toulouse': 'TLS',
       'lille': 'LIL', 'nantes': 'NTE', 'montpellier': 'MPL', 'bruxelles': 'BRU',
-      'brussels': 'BRU', 'geneve': 'GVA', 'londres': 'LON', 'london': 'LON',
-      'rome': 'ROM', 'roma': 'ROM', 'milan': 'MIL', 'bologne': 'BLQ',
+      'brussels': 'BRU', 'geneve': 'GVA', 'londres': 'LHR', 'london': 'LHR',
+      'rome': 'FCO', 'roma': 'FCO', 'milan': 'MXP', 'bologne': 'BLQ',
       'palerme': 'PMO', 'venise': 'VCE', 'naples': 'NAP', 'barcelone': 'BCN',
       'barcelona': 'BCN', 'madrid': 'MAD', 'palma': 'PMI', 'majorque': 'PMI',
       'lisbonne': 'LIS', 'porto': 'OPO', 'athenes': 'ATH', 'amsterdam': 'AMS',
-      'francfort': 'FRA', 'marrakech': 'RAK', 'new york': 'NYC',
+      'francfort': 'FRA', 'marrakech': 'RAK', 'new york': 'JFK', 'manhattan': 'JFK',
+      'montreal': 'YUL', 'tokyo': 'TYO',
       'saint-martin': 'SXM', 'saint martin': 'SXM', 'sxm': 'SXM',
-      'guadeloupe': 'PTP', 'martinique': 'FDF'
+      'guadeloupe': 'PTP', 'pointe-a-pitre': 'PTP', 'martinique': 'FDF', 'fort-de-france': 'FDF'
     };
 
     function normalizeGeoKey(str) {
@@ -4391,7 +4606,7 @@
       const nights = Math.max(1, Math.round((dRet - dDep) / 86400000));
       const daysOut = Math.max(0, Math.round((dDep - todayMid) / 86400000));
       const depMonth = dDep.getMonth() + 1;
-      return { depIso, retIso, nights, daysOut, depMonth };
+      return { depIso, retIso, nights, daysOut, depMonth, depDateObj: dDep };
     }
 
     function computeClientTrainPricing(daysOut) {
@@ -4433,26 +4648,101 @@
       };
     }
 
-    function buildVoyageBookingLinks(depClean, destClean, depIso, retIso) {
-      const flightsUrl = `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights to ${destClean} from ${depClean} on ${depIso} through ${retIso}`)}&curr=EUR&hl=fr`;
-      const origIata = lookupGeoCode(IATA_CODES, depClean);
-      const destIata = lookupGeoCode(IATA_CODES, destClean);
-      const kayakUrl = (origIata && destIata)
-        ? `https://www.kayak.fr/flights/${origIata}-${destIata}/${depIso}/${retIso}?sort=price_a`
-        : `https://www.kayak.fr/flights?fs=origin=${encodeURIComponent(depClean)};destination=${encodeURIComponent(destClean)}`;
+    let currentVoyageCatFilter = 'all';
 
-      const origUrn = lookupGeoCode(TRAINLINE_URNS, depClean);
-      const destUrn = lookupGeoCode(TRAINLINE_URNS, destClean);
-      const trainUrl = (origUrn && destUrn)
-        ? `https://www.thetrainline.com/book/results?origin=${encodeURIComponent(origUrn)}&destination=${encodeURIComponent(destUrn)}&outwardDate=${depIso}T08%3A00%3A00&outwardDateType=departAfter&journeySearchType=return&inwardDate=${retIso}T18%3A00%3A00&inwardDateType=departAfter&lang=fr`
-        : `https://www.thetrainline.com/fr/resultats?origin=${encodeURIComponent(depClean)}&destination=${encodeURIComponent(destClean)}`;
-
-      const bookingUrl = `https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(destClean)}&checkin=${depIso}&checkout=${retIso}&nflt=review_score%3D80`;
-      const ouigoUrl = 'https://www.ouigo.com/';
-      return { flightsUrl, kayakUrl, trainUrl, bookingUrl, ouigoUrl, origIata, destIata };
+    function setVoyageCatFilter(cat) {
+      currentVoyageCatFilter = cat || 'all';
+      const map = {
+        all: 'voyFilterAll',
+        package: 'voyFilterPackage',
+        flight: 'voyFilterFlight',
+        train: 'voyFilterTrain'
+      };
+      Object.entries(map).forEach(([k, id]) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('active', k === currentVoyageCatFilter);
+      });
+      applyVoyageCalendar(false);
     }
 
-    function buildDynamicVoyageOffers(depClean, destRaw, depIso, retIso, nights, daysOut, depMonth) {
+    function computeClientFlightPricing(baseFlight, daysOut, depDateObj, isLongHaul = false) {
+      let delayMult = 1.0;
+      let delayTag = 'Normal';
+      if (daysOut <= 3) {
+        delayMult = 2.05; delayTag = `+105% Dernière min (J+${daysOut})`;
+      } else if (daysOut <= 7) {
+        delayMult = 1.85; delayTag = `+85% Très proche (J+${daysOut})`;
+      } else if (daysOut <= 14) {
+        delayMult = 1.65; delayTag = `+65% Court délai (J+${daysOut})`;
+      } else if (daysOut <= 28) {
+        delayMult = 1.30; delayTag = `+30% Standard (J+${daysOut})`;
+      } else if (daysOut <= 44) {
+        delayMult = 1.10; delayTag = `Tarif moyen (J+${daysOut})`;
+      } else {
+        delayMult = 0.88; delayTag = `Promo anticipée (J+${daysOut})`;
+      }
+
+      const dow = depDateObj ? depDateObj.getDay() : 3;
+      const isWeekend = (dow === 5 || dow === 6 || dow === 0);
+      const weekendMult = isWeekend ? 1.25 : 1.0;
+
+      const m = depDateObj ? (depDateObj.getMonth() + 1) : 6;
+      const isPeak = (m === 7 || m === 8 || m === 12) || (isLongHaul && m >= 12 || (isLongHaul && m >= 1 && m <= 4));
+      const peakMult = isPeak ? 1.15 : 1.0;
+
+      let est = Math.round(baseFlight * delayMult * weekendMult * peakMult);
+      if (isLongHaul) {
+        if (daysOut >= 45) {
+          est = Math.max(465, Math.min(555, est));
+        } else if (daysOut <= 14) {
+          est = Math.max(680, est);
+        } else {
+          est = Math.max(585, Math.min(850, est));
+        }
+      } else {
+        est = Math.max(65, est);
+      }
+
+      const tags = [delayTag];
+      if (isWeekend) tags.push('+25% départ Ven/Sam/Dim');
+      return { price: est, isWeekend, horizonNote: tags.join(' • ') };
+    }
+
+    function buildVoyageBookingLinks(depClean, destClean, depIso, retIso, hubIataOverride = null, trainOrigOverride = null) {
+      const depKey = normalizeGeoKey(depClean);
+      const lookedOrig = lookupGeoCode(IATA_CODES, depClean);
+      const origIata = (hubIataOverride && (depKey.includes('nancy') || depKey.includes('metz') || !lookedOrig))
+        ? hubIataOverride
+        : (lookedOrig || 'CDG');
+      const destIata = lookupGeoCode(IATA_CODES, destClean) || destClean.replace(/[^a-zA-Z]/g, '').slice(0, 3).toUpperCase() || 'PAR';
+
+      // Format Google Flights universel vérifié (IATA 3 lettres + dates exactes)
+      const qFlights = `Flights from ${origIata} to ${destIata} on ${depIso} through ${retIso}`;
+      const flightsUrl = `https://www.google.com/travel/flights?hl=fr&curr=EUR&q=${encodeURIComponent(qFlights)}`;
+
+      // Format Kayak Flights vérifié
+      const kayakUrl = `https://www.kayak.fr/flights/${origIata}-${destIata}/${depIso}/${retIso}?sort=price_a`;
+
+      // Format Booking.com vérifié (>= 8/10 & trié par rapport qualité/prix)
+      const bookingUrl = `https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(destClean)}&checkin=${depIso}&checkout=${retIso}&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price`;
+
+      // Trainline avec URN vérifiés + paramètre obligatoire passengers[]=1996-01-01, sinon Google Maps Transit (jamais de 404 /fr/resultats)
+      const trainOrigKey = trainOrigOverride || depClean;
+      const origUrn = lookupGeoCode(TRAINLINE_URNS, trainOrigKey);
+      const destUrn = lookupGeoCode(TRAINLINE_URNS, destClean);
+      const transitUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(trainOrigKey)}&destination=${encodeURIComponent(destClean)}&travelmode=transit`;
+      const trainUrl = (origUrn && destUrn)
+        ? `https://www.thetrainline.com/book/results?origin=${encodeURIComponent(origUrn)}&destination=${encodeURIComponent(destUrn)}&outwardDate=${depIso}T08%3A00%3A00&outwardDateType=departAfter&journeySearchType=return&inwardDate=${retIso}T18%3A00%3A00&inwardDateType=departAfter&passengers%5B%5D=1996-01-01&lang=fr`
+        : transitUrl;
+
+      // Package combiné Google Travel (200 OK)
+      const packageUrl = `https://www.google.com/travel/search?hl=fr&curr=EUR&q=${encodeURIComponent(`Vol hotel ${destClean} depuis ${depClean} du ${depIso} au ${retIso}`)}`;
+      const ouigoUrl = 'https://www.ouigo.com/';
+
+      return { flightsUrl, kayakUrl, trainUrl, transitUrl, bookingUrl, packageUrl, ouigoUrl, origIata, destIata };
+    }
+
+    function buildDynamicVoyageOffers(depClean, destRaw, depIso, retIso, nights, daysOut, depMonth, depDateObj) {
       const offers = [];
       const destTrim = (destRaw || '').trim();
       const destNorm = normalizeGeoKey(destTrim);
@@ -4460,17 +4750,12 @@
       const dateSpanLabel = `${formatFrDateShort(depIso)} ➔ ${formatFrDateShort(retIso)} (${nights}n)`;
       const trains = computeClientTrainPricing(daysOut);
 
-      // Multiplicateur saison/échéance réaliste sur les vols
-      let urgencyMult = 1.0;
-      if (daysOut <= 5) urgencyMult = 1.38;
-      else if (daysOut <= 12) urgencyMult = 1.18;
-      else if (daysOut >= 28) urgencyMult = 0.88;
-      if (depMonth === 7 || depMonth === 8 || depMonth === 12) urgencyMult += 0.14;
-
-      // 1. Offres Train différenciées (OUIGO Lorraine TGV vs TGV INOUI Nancy Centre)
+      // 1. TRAINS DIRECTS (OUIGO Lorraine TGV vs TGV INOUI Nancy Ville)
       const destHasRail = !isGenericDest && !!lookupGeoCode(TRAINLINE_URNS, destTrim);
       const railTarget = destHasRail ? destTrim : 'Paris';
-      const parisLinks = buildVoyageBookingLinks(depClean, railTarget, depIso, retIso);
+      const ouigoLinks = buildVoyageBookingLinks('Nancy', railTarget, depIso, retIso, null, 'lorraine tgv');
+      const inouiLinks = buildVoyageBookingLinks(depClean, railTarget, depIso, retIso, null, null);
+      const railHotelEst = Math.round(nights * 128);
 
       if (isGenericDest || destNorm.includes('paris')) {
         offers.push({
@@ -4478,15 +4763,23 @@
           universe: 'voyage',
           category: 'train',
           section_type: 'flash_deals',
-          badge: trains.ouigo.badge,
+          badge: '🚄 TRAIN DIRECT • OUIGO Lorraine TGV',
           title: `OUIGO Lorraine TGV ⇄ Paris Est (${dateSpanLabel})`,
           location: 'Gare Lorraine TGV (Louvigny) ➔ Paris Est',
           destination: 'Paris',
-          departure_hub: 'Nancy / Lorraine TGV',
+          departure_hub: 'Lorraine TGV',
           price: trains.ouigo.rt,
-          price_str: `~${trains.ouigo.singleMin}–${trains.ouigo.singleMax}€/trajet (${trains.ouigo.rt}€ A/R)`,
+          price_str: `${trains.ouigo.rt} € A/R (~${trains.ouigo.singleMin}–${trains.ouigo.singleMax}€/trajet)`,
           description: `${trains.ouigo.note} Navette directe depuis Gare de Nancy possible (~9€).`,
-          url: parisLinks.ouigoUrl,
+          url: ouigoLinks.ouigoUrl,
+          train_url: ouigoLinks.ouigoUrl,
+          transit_url: ouigoLinks.transitUrl,
+          hotel_url: ouigoLinks.bookingUrl,
+          package_url: ouigoLinks.packageUrl,
+          hotel_est: railHotelEst,
+          dep_iso: depIso,
+          ret_iso: retIso,
+          nights,
           images: ['https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80']
         });
       }
@@ -4501,70 +4794,108 @@
           universe: 'voyage',
           category: 'train',
           section_type: 'flash_deals',
-          badge: isParisRail ? trains.inoui.badge : `🚅 TGV INOUI / Rail Direct (J+${daysOut})`,
+          badge: `🚄 TRAIN DIRECT • TGV INOUI (J+${daysOut})`,
           title: `TGV INOUI Direct ${depClean} ⇄ ${railTarget} (${dateSpanLabel})`,
           location: `${depClean} Ville Centre ➔ ${railTarget}`,
           destination: railTarget,
           departure_hub: depClean,
           price: inouiRt,
-          price_str: `~${inouiSingleMin}–${inouiSingleMax}€/trajet (${inouiRt}€ A/R)`,
+          price_str: `${inouiRt} € A/R (~${inouiSingleMin}–${inouiSingleMax}€/trajet)`,
           description: isParisRail
             ? trains.inoui.note
             : `Liaison rail directe pour vos dates (${depIso} ➔ ${retIso}) calculée à J+${daysOut} du départ.`,
-          url: parisLinks.trainUrl,
+          url: inouiLinks.trainUrl,
+          train_url: inouiLinks.trainUrl,
+          transit_url: inouiLinks.transitUrl,
+          hotel_url: inouiLinks.bookingUrl,
+          package_url: inouiLinks.packageUrl,
+          hotel_est: railHotelEst,
+          dep_iso: depIso,
+          ret_iso: retIso,
+          nights,
           images: ['https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80']
         });
       }
 
-      // 2. Catalogue dynamique d'offres vols + séjours adaptés à la durée (nights) & mois (depMonth)
+      // 2. CATALOGUE VOLS SEULS & PACKAGES TOUT COMPRIS (PRIX RÉALISTES + CROISEMENT HÔTEL)
       const CATALOG = [
         {
-          slug: 'rome', name: 'Rome (Italie)', dest: 'Rome', idealRange: [2, 5],
-          hub: 'Luxembourg (LUX) / Bâle (BSL)', badge: '🇮🇹 City Break Vol + Hôtel',
-          flightBase: 76, hotelNight: 84, shuttle: 22,
+          slug: 'rome', name: 'Rome (Italie)', dest: 'Rome', idealRange: [2, 5], longHaul: false,
+          hub: 'Luxembourg (LUX) / Bâle (BSL)', hubShort: 'Luxembourg LUX', hubIata: 'LUX',
+          flightBase: 92, hotelNight: 112, shuttle: 28,
           img: 'https://images.unsplash.com/photo-1552832231-c57dc443043c?auto=format&fit=crop&w=800&q=80'
         },
         {
-          slug: 'bologne', name: 'Bologne & Toscane', dest: 'Bologne', idealRange: [2, 4],
-          hub: 'Luxembourg (LUX) / Bâle (BSL)', badge: '🍝 Escapade Express',
-          flightBase: 48, hotelNight: 74, shuttle: 20,
+          slug: 'bologne', name: 'Bologne & Toscane', dest: 'Bologne', idealRange: [2, 4], longHaul: false,
+          hub: 'Luxembourg (LUX) / Bâle (BSL)', hubShort: 'Luxembourg LUX', hubIata: 'LUX',
+          flightBase: 76, hotelNight: 92, shuttle: 28,
           img: 'https://images.unsplash.com/photo-1534445867742-43195f401b6c?auto=format&fit=crop&w=800&q=80'
         },
         {
-          slug: 'barcelone', name: 'Barcelone (Espagne)', dest: 'Barcelone', idealRange: [2, 5],
-          hub: 'Bâle-Mulhouse (BSL) / LUX', badge: '☀️ Architecture & Plage',
-          flightBase: 64, hotelNight: 88, shuttle: 24,
+          slug: 'barcelone', name: 'Barcelone (Espagne)', dest: 'Barcelone', idealRange: [2, 5], longHaul: false,
+          hub: 'Bâle-Mulhouse (BSL) / LUX', hubShort: 'Bâle BSL', hubIata: 'BSL',
+          flightBase: 86, hotelNight: 118, shuttle: 54,
           img: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80'
         },
         {
-          slug: 'lisbonne', name: 'Lisbonne (Portugal)', dest: 'Lisbonne', idealRange: [3, 6],
-          hub: 'Luxembourg (LUX) / Paris ORY', badge: '🌊 City & Océan',
-          flightBase: 86, hotelNight: 80, shuttle: 28,
+          slug: 'majorque', name: 'Palma de Majorque', dest: 'Palma de Majorque', idealRange: [2, 6], longHaul: false,
+          hub: 'EuroAirport Bâle (BSL)', hubShort: 'Bâle BSL', hubIata: 'BSL',
+          flightBase: 82, hotelNight: 95, shuttle: 54,
+          img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'lisbonne', name: 'Lisbonne (Portugal)', dest: 'Lisbonne', idealRange: [3, 6], longHaul: false,
+          hub: 'Luxembourg (LUX) / Paris ORY', hubShort: 'Luxembourg LUX', hubIata: 'LUX',
+          flightBase: 114, hotelNight: 105, shuttle: 28,
           img: 'https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&fit=crop&w=800&q=80'
         },
         {
-          slug: 'palerme', name: 'Palerme & Sicile', dest: 'Palerme', idealRange: [4, 10],
-          hub: 'Luxembourg (LUX) / Bâle (BSL)', badge: '🍋 Séjour Soleil Italie',
-          flightBase: 92, hotelNight: 66, shuttle: 24,
+          slug: 'palerme', name: 'Palerme & Sicile', dest: 'Palerme', idealRange: [4, 10], longHaul: false,
+          hub: 'Luxembourg (LUX) / Bâle (BSL)', hubShort: 'Bâle BSL', hubIata: 'BSL',
+          flightBase: 118, hotelNight: 85, shuttle: 54,
           img: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=800&q=80'
         },
         {
-          slug: 'marrakech', name: 'Marrakech (Maroc)', dest: 'Marrakech', idealRange: [4, 10],
-          hub: 'Bâle (BSL) / Paris ORY', badge: '🌴 Riad & Soleil Garanti',
-          flightBase: 108, hotelNight: 60, shuttle: 26,
+          slug: 'marrakech', name: 'Marrakech (Maroc)', dest: 'Marrakech', idealRange: [4, 10], longHaul: false,
+          hub: 'Bâle (BSL) / Paris ORY', hubShort: 'Bâle BSL', hubIata: 'BSL',
+          flightBase: 132, hotelNight: 78, shuttle: 54,
           img: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=80'
         },
         {
-          slug: 'saint_martin', name: 'Saint-Martin (Caraïbes SXM)', dest: 'Saint-Martin', idealRange: [5, 21],
-          hub: 'Paris ORY / CDG (Air Caraïbes / AF)', badge: '🏝️ Long-Courrier Caraïbes',
-          flightBase: 470, hotelNight: 112, shuttle: trains.inoui.rt,
+          slug: 'saint_martin', name: 'Saint-Martin (Caraïbes SXM)', dest: 'Saint-Martin', idealRange: [5, 21], longHaul: true,
+          hub: 'Paris ORY / CDG (Air Caraïbes / AF)', hubShort: 'Paris ORY/CDG', hubIata: 'ORY',
+          flightBase: 540, hotelNight: 135, shuttle: trains.inoui.rt,
           img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
         },
         {
-          slug: 'new_york', name: 'New York (Manhattan JFK)', dest: 'New York', idealRange: [5, 14],
-          hub: 'Luxembourg (LUX) / Paris CDG', badge: '🗽 Grand Séjour USA',
-          flightBase: 410, hotelNight: 142, shuttle: trains.inoui.rt,
+          slug: 'guadeloupe', name: 'Guadeloupe (Antilles PTP)', dest: 'Guadeloupe', idealRange: [6, 21], longHaul: true,
+          hub: 'Paris ORY (Air Caraïbes / Corsair)', hubShort: 'Paris ORY', hubIata: 'ORY',
+          flightBase: 510, hotelNight: 115, shuttle: trains.inoui.rt,
+          img: 'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'martinique', name: 'Martinique (Antilles FDF)', dest: 'Martinique', idealRange: [6, 21], longHaul: true,
+          hub: 'Paris ORY (Air France / Corsair)', hubShort: 'Paris ORY', hubIata: 'ORY',
+          flightBase: 515, hotelNight: 118, shuttle: trains.inoui.rt,
+          img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'new_york', name: 'New York (Manhattan JFK)', dest: 'New York', idealRange: [5, 14], longHaul: true,
+          hub: 'Paris CDG / Luxembourg (LUX)', hubShort: 'Paris CDG', hubIata: 'CDG',
+          flightBase: 485, hotelNight: 175, shuttle: trains.inoui.rt,
           img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'montreal', name: 'Montréal (Canada YUL)', dest: 'Montréal', idealRange: [5, 21], longHaul: true,
+          hub: 'Paris CDG (Air Transat / Air Canada)', hubShort: 'Paris CDG', hubIata: 'CDG',
+          flightBase: 470, hotelNight: 125, shuttle: trains.inoui.rt,
+          img: 'https://images.unsplash.com/photo-1519178614-68673b201f36?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          slug: 'tokyo', name: 'Tokyo (Japon TYO)', dest: 'Tokyo', idealRange: [7, 25], longHaul: true,
+          hub: 'Paris CDG / Francfort (FRA)', hubShort: 'Paris CDG', hubIata: 'CDG',
+          flightBase: 650, hotelNight: 118, shuttle: trains.inoui.rt,
+          img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80'
         }
       ];
 
@@ -4575,65 +4906,110 @@
         return nights >= c.idealRange[0] && nights <= c.idealRange[1];
       });
 
-      // Si l'utilisateur tape une destination hors du catalogue (ex: "Madrid", "Venise", "Tokyo")
+      // Destination saisie manuellement hors catalogue (ex: "Madrid", "Venise", "Athènes")
       if (!isGenericDest && matchedCatalog.length === 0) {
         matchedCatalog = [{
           slug: destNorm.replace(/[^a-z0-9]+/g, '_'),
           name: destTrim,
           dest: destTrim,
           idealRange: [1, 30],
-          hub: `${depClean} / Hubs Internationaux`,
-          badge: `✈️ Recherche Directe • ${nights} nuits`,
+          longHaul: false,
+          hub: `${depClean} / Paris CDG`,
+          hubShort: 'Paris CDG',
+          hubIata: 'CDG',
           flightBase: 145,
-          hotelNight: 82,
-          shuttle: 25,
+          hotelNight: 98,
+          shuttle: trains.inoui.rt,
           img: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80'
         }];
       }
 
       matchedCatalog.forEach(c => {
-        const flightDyn = Math.round(c.flightBase * urgencyMult);
+        const flightRes = computeClientFlightPricing(c.flightBase, daysOut, depDateObj, c.longHaul);
+        const flightDyn = flightRes.price;
+        const depKey = normalizeGeoKey(depClean);
+        const shuttleCost = (depKey.includes('paris') || depKey.includes('luxembourg') || depKey.includes('bale')) ? 0 : c.shuttle;
         const hotelTotal = Math.round(nights * c.hotelNight);
-        const totalEst = flightDyn + hotelTotal + c.shuttle;
-        const links = buildVoyageBookingLinks(depClean, c.dest, depIso, retIso);
+        const totalEst = flightDyn + hotelTotal + shuttleCost;
+        const links = buildVoyageBookingLinks(depClean, c.dest, depIso, retIso, c.hubIata, null);
+        const trainAirportUrl = shuttleCost > 0
+          ? buildVoyageBookingLinks(depClean, c.hubIata === 'LUX' ? 'Luxembourg' : (c.hubIata === 'BSL' ? 'Bâle' : 'Paris'), depIso, retIso, null, null).trainUrl
+          : links.transitUrl;
 
-        // Carte Vol Flash ou Liaison Aérienne
+        // Carte 1 : VOL SEUL (Bleu Cyan #06b6d4)
         offers.push({
           id: `dyn_voy_flight_${c.slug}`,
           universe: 'voyage',
           category: 'flight',
           section_type: 'flash_deals',
-          badge: c.flightBase <= 95 ? `⚡ Vol Direct (${nights}n)` : `✈️ Vol A/R (${daysOut <= 10 ? 'Last-Min' : 'Éco'})`,
+          badge: `✈️ VOL A/R • ${links.origIata} ➔ ${links.destIata}`,
           title: `Vol ${c.name} • ${dateSpanLabel}`,
           location: `Départ ${c.hub} ➔ ${c.dest}`,
           destination: c.dest,
           departure_hub: depClean,
           price: flightDyn,
-          price_str: `~${flightDyn} € Vol A/R`,
-          description: `Tarif estimé pour vos dates exactes (${depIso} au ${retIso}, J+${daysOut}). Cliquez pour vérifier les prix temps réel.`,
-          url: links.kayakUrl,
+          price_str: `${flightDyn} € Vol A/R`,
+          description: `Tarif aérien réaliste (${flightRes.horizonNote}) aux dates exactes ${depIso} ➔ ${retIso}.`,
+          url: links.flightsUrl,
+          flight_url: links.flightsUrl,
+          hotel_url: links.bookingUrl,
+          package_url: links.packageUrl,
+          kayak_url: links.kayakUrl,
+          train_url: trainAirportUrl,
+          hotel_est: hotelTotal,
+          dep_iso: depIso,
+          ret_iso: retIso,
+          nights,
+          days_out: daysOut,
+          true_cost: {
+            shuttle_cost: shuttleCost,
+            shuttle_label: shuttleCost > 0 ? `Liaison ${depClean} ➔ ${c.hubShort} A/R` : `Départ direct ${c.hubShort}`,
+            flight_cost: flightDyn,
+            hotel_per_night: c.hotelNight,
+            hotel_total: hotelTotal,
+            nights,
+            total_per_person: totalEst,
+            horizon_note: flightRes.horizonNote,
+            breakdown: `${shuttleCost > 0 ? `Rail ${shuttleCost}€ + ` : ''}Vol ${flightDyn}€ + Hôtel ${nights}n ${hotelTotal}€`
+          },
           images: [c.img]
         });
 
-        // Carte Séjour Tout Compris (Transport + Hôtel ≥ 8/10 recalculé sur exact `nights`)
+        // Carte 2 : PACKAGE CROISÉ VOL + HÔTEL (Violet Royal & Or #8b5cf6 / #f59e0b)
         offers.push({
           id: `dyn_voy_stay_${c.slug}`,
           universe: 'voyage',
           category: 'package',
           section_type: 'best_offers',
-          badge: c.badge,
-          title: `Séjour ${c.name} • ${nights} nuit(s) Tout Calculé`,
+          badge: '🏨 SÉJOUR TOUT COMPRIS (TRANSPORT + HÔTEL)',
+          title: `Séjour ${c.name} • ${nights} nuit(s) Tout Compris`,
           location: `${depClean} ➔ ${c.dest} (${depIso} au ${retIso})`,
           destination: c.dest,
           departure_hub: depClean,
           price: totalEst,
-          price_str: `~${totalEst} € Tout Compris`,
-          description: `Séjour ${nights} nuits (hébergement note ≥ 8/10 + vol A/R) recalculé selon votre calendrier et pré-acheminement depuis ${depClean}.`,
+          price_str: `${totalEst} € Tout Compris`,
+          description: `Calcul honnête (${flightRes.horizonNote}) croisant transport réel + hébergement Booking ≥ 8/10 sur ${nights} nuits.`,
+          url: links.packageUrl,
+          flight_url: links.flightsUrl,
+          hotel_url: links.bookingUrl,
+          package_url: links.packageUrl,
+          kayak_url: links.kayakUrl,
+          train_url: trainAirportUrl,
+          dep_iso: depIso,
+          ret_iso: retIso,
+          nights,
+          days_out: daysOut,
           true_cost: {
+            shuttle_cost: shuttleCost,
+            shuttle_label: shuttleCost > 0 ? `Liaison ${depClean} ➔ ${c.hubShort} A/R` : `Départ sur place (${c.hubShort})`,
+            flight_cost: flightDyn,
+            hotel_per_night: c.hotelNight,
+            hotel_total: hotelTotal,
+            nights,
             total_per_person: totalEst,
-            breakdown: `Pré-acheminement (~${c.shuttle}€) + Vol A/R (~${flightDyn}€) + ${nights} nuits hôtel (~${hotelTotal}€)`
+            horizon_note: flightRes.horizonNote,
+            breakdown: `${shuttleCost > 0 ? `Rail (${shuttleCost}€) + ` : ''}Vol (${flightDyn}€) + Hôtel ≥8/10 ${nights}n (${hotelTotal}€)`
           },
-          url: links.bookingUrl,
           images: [c.img]
         });
       });
@@ -4648,11 +5024,12 @@
       const links = buildVoyageBookingLinks(depClean, destClean, depIso, retIso);
       const dateSpanLabel = `${depIso} ➔ ${retIso}${calFlexMode === 'flex3' ? ' (±3j)' : ''}`;
       container.innerHTML = `
-        <a class="portal-link-btn" href="${links.flightsUrl}" target="_blank" rel="noopener">✈️ Google Flights (${dateSpanLabel})</a>
-        <a class="portal-link-btn" href="${links.kayakUrl}" target="_blank" rel="noopener">🛫 Kayak Vols${links.origIata && links.destIata ? ` (${links.origIata}➔${links.destIata})` : ''}</a>
-        <a class="portal-link-btn" href="${links.trainUrl}" target="_blank" rel="noopener">🚄 TheTrainline (${depClean} ➔ ${destClean})</a>
-        <a class="portal-link-btn" href="${links.ouigoUrl}" target="_blank" rel="noopener">🔴 OUIGO (Lorraine TGV)</a>
-        <a class="portal-link-btn" href="${links.bookingUrl}" target="_blank" rel="noopener">🏨 Booking ≥ 8/10 (${depIso})</a>
+        <a class="portal-link-btn" href="${links.flightsUrl}" target="_blank" rel="noopener">✈️ Google Flights (${links.origIata}➔${links.destIata})</a>
+        <a class="portal-link-btn" href="${links.bookingUrl}" target="_blank" rel="noopener">🏨 Booking ≥ 8/10 (${dateSpanLabel})</a>
+        <a class="portal-link-btn" href="${links.packageUrl}" target="_blank" rel="noopener">📦 Package Google Travel</a>
+        <a class="portal-link-btn" href="${links.trainUrl}" target="_blank" rel="noopener">🚄 Trains (${depClean} ➔ ${destClean})</a>
+        <a class="portal-link-btn" href="${links.ouigoUrl}" target="_blank" rel="noopener">🔴 OUIGO Lorraine TGV</a>
+        <a class="portal-link-btn" href="${links.kayakUrl}" target="_blank" rel="noopener">🛫 Kayak Vols</a>
       `;
       if (bar && !calLabelOnly) bar.style.display = 'block';
     }
@@ -4660,32 +5037,32 @@
     function applyVoyageCalendar(showLinksBar = false) {
       const departRaw = (document.getElementById('voyageDepartInput')?.value || 'Nancy').trim();
       const destRaw = (document.getElementById('searchVoyageDest')?.value || '').trim();
-      const budgetMax = parseFloat(document.getElementById('voyageBudgetInput')?.value) || 2000;
+      const budgetMax = parseFloat(document.getElementById('voyageBudgetInput')?.value) || 4000;
       const depClean = departRaw.replace(/\(.*?\)/g, '').trim() || 'Nancy';
       const destClean = (destRaw && destRaw.toLowerCase() !== 'partout') ? destRaw.replace(/\(.*?\)/g, '').trim() : 'Rome';
 
-      const { depIso, retIso, nights, daysOut, depMonth } = getEffectiveVoyageDates();
-      dynamicVoyageOffers = buildDynamicVoyageOffers(depClean, destRaw, depIso, retIso, nights, daysOut, depMonth);
+      const { depIso, retIso, nights, daysOut, depMonth, depDateObj } = getEffectiveVoyageDates();
+      dynamicVoyageOffers = buildDynamicVoyageOffers(depClean, destRaw, depIso, retIso, nights, daysOut, depMonth, depDateObj);
 
-      // Si le bandeau de portails est déjà visible ou demandé, synchroniser ses URLs aux nouvelles dates
       const bar = document.getElementById('voyageDirectPortalsBar');
       if (showLinksBar || (bar && bar.style.display === 'block')) {
         updateVoyageDirectPortals(depClean, destClean, depIso, retIso, !showLinksBar && bar.style.display !== 'block');
       }
 
-      // En-tête résumé strictement séparé de la bannière Inspirations
       const summaryMeta = document.getElementById('voyageSearchSummaryMeta');
       if (summaryMeta) {
         const destLabel = destRaw && destRaw.toLowerCase() !== 'partout' ? destRaw : (nights <= 4 ? 'City-breaks Europe & Trains (2–4 nuits)' : 'Séjours Soleil & Long-Courriers');
-        summaryMeta.textContent = `${formatFrDateShort(depIso)} ➔ ${formatFrDateShort(retIso)} • ${nights} nuit(s) (J+${daysOut}) • ${depClean} ➔ ${destLabel} • Budget ≤ ${budgetMax} €`;
+        const filterTag = currentVoyageCatFilter === 'all' ? '' : ` • Filtre: ${currentVoyageCatFilter.toUpperCase()}`;
+        summaryMeta.textContent = `${formatFrDateShort(depIso)} ➔ ${formatFrDateShort(retIso)} • ${nights} nuit(s) (J+${daysOut}) • ${depClean} ➔ ${destLabel} • ≤ ${budgetMax} €${filterTag}`;
       }
 
       const destQ = destRaw.toLowerCase();
-      // Compléter éventuellement avec des pépites backend non-ferroviaires hors doublon
+      // Backend alerts uniquement si hors doublon des offres dynamiques synchronisées
       const dynIds = new Set(dynamicVoyageOffers.map(x => x.id));
       const backendExtras = (allData || []).filter(it =>
         it.universe === 'voyage' &&
         !String(it.id || '').startsWith('real_train_') &&
+        !String(it.id || '').startsWith('real_package_') &&
         !dynIds.has(it.id)
       );
 
@@ -4696,11 +5073,18 @@
           const matchText = `${it.title || ''} ${it.location || ''} ${it.destination || ''} ${it.description || ''}`.toLowerCase();
           if (!matchText.includes(destQ)) return false;
         }
+        const catType = it.category === 'train' ? 'train' : (it.category === 'package' || !!it.true_cost && it.section_type === 'best_offers' ? 'package' : 'flight');
+        if (currentVoyageCatFilter !== 'all' && catType !== currentVoyageCatFilter) return false;
         return true;
       });
 
-      const sec1Items = combined.filter(x => x.section_type === 'flash_deals' || x.category === 'train' || x.category === 'flight');
-      const sec2Items = combined.filter(x => x.section_type === 'best_offers' || x.category === 'package' || !!x.true_cost);
+      const sec1Items = combined.filter(x => x.category === 'train' || x.category === 'flight');
+      const sec2Items = combined.filter(x => x.category === 'package' || x.section_type === 'best_offers');
+
+      const sec1Wrap = document.getElementById('voyageSec1Wrap');
+      const sec2Wrap = document.getElementById('voyageSec2Wrap');
+      if (sec1Wrap) sec1Wrap.style.display = (currentVoyageCatFilter === 'package') ? 'none' : 'block';
+      if (sec2Wrap) sec2Wrap.style.display = (currentVoyageCatFilter === 'train' || currentVoyageCatFilter === 'flight') ? 'none' : 'block';
 
       const sec1Container = document.getElementById('voyageSection1');
       const sec2Container = document.getElementById('voyageSection2');
@@ -4708,18 +5092,18 @@
       const count2 = document.getElementById('voyageSec2Count');
 
       if (count1) count1.textContent = `${sec1Items.length} liaison(s) à J+${daysOut}`;
-      if (count2) count2.textContent = `${sec2Items.length} séjour(s) • ${nights} nuits`;
+      if (count2) count2.textContent = `${sec2Items.length} package(s) • ${nights} nuits`;
 
       if (sec1Container) {
         sec1Container.innerHTML = sec1Items.length > 0 ?
           sec1Items.map(it => createVoyageCardHtml(it, false)).join('') :
-          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucune liaison ferroviaire/vol à ce budget. Élargissez le plafond € ou changez les dates.</div>';
+          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucune liaison train/vol dans ce filtre ou budget.</div>';
       }
 
       if (sec2Container) {
         sec2Container.innerHTML = sec2Items.length > 0 ?
           sec2Items.map(it => createVoyageCardHtml(it, false)).join('') :
-          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun séjour tout compris correspondant pour cette durée et ce budget.</div>';
+          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun package tout compris dans ce plafond €. Augmentez le curseur Budget Max pour afficher les longs-courriers.</div>';
       }
 
       const track = document.getElementById('voyageInspirationsTrack');
@@ -4739,15 +5123,14 @@
       const destRaw = (document.getElementById('searchVoyageDest')?.value || '').trim();
       const destClean = (destRaw && destRaw.toLowerCase() !== 'partout') ? destRaw.replace(/\(.*?\)/g, '').trim() : 'Rome';
       const depClean = depart.replace(/\(.*?\)/g, '').trim() || 'Nancy';
-      const budget = document.getElementById('voyageBudgetInput')?.value || '800';
+      const budget = document.getElementById('voyageBudgetInput')?.value || '1800';
       const { depIso, retIso, nights } = getEffectiveVoyageDates();
 
-      updateVoyageScanProgress(25, `🛫 Calcul dynamique des tarifs (${depClean} ➔ ${destClean} • ${nights} nuits)...`);
+      updateVoyageScanProgress(25, `🛫 Calcul réaliste des vols, trains et hôtels (${depClean} ➔ ${destClean} • ${nights}n)...`);
       applyVoyageCalendar(true);
 
-      updateVoyageScanProgress(65, `🔗 Génération des liens exacts Google Flights / Kayak / Trainline / OUIGO / Booking...`);
+      updateVoyageScanProgress(65, `🔗 Synchronisation Google Flights / Booking / Trainline / Google Travel...`);
 
-      // Déclenchement GitHub Actions si token présent
       const token = localStorage.getItem('nexus_gh_token');
       const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
@@ -4777,24 +5160,154 @@
       }
 
       const dateSpanLabel = `${depIso} ➔ ${retIso}${calFlexMode === 'flex3' ? ' (±3j)' : ''}`;
-      updateVoyageScanProgress(100, `✅ Résultats et comparateurs actualisés : ${depClean} ➔ ${destClean} (${nights} nuits)`);
-      showToast(`✅ Comparateurs et tarifs calculés pour ${destClean} (${dateSpanLabel}) !`, 2600);
+      updateVoyageScanProgress(100, `✅ Résultats et liens synchronisés prêts (${depClean} ➔ ${destClean} • ${nights}n)`);
+      showToast(`✅ Tarifs croisés et liens vérifiés prêts pour ${destClean} (${dateSpanLabel}) !`, 2600);
       hideVoyageScanProgress(2200);
+    }
+
+    function openVoyagePackageModal(id) {
+      const it = findItemById(id);
+      if (!it) return;
+      const modal = document.getElementById('voyagePackageModal');
+      if (!modal) return;
+
+      const tc = it.true_cost;
+      const depIso = it.dep_iso || getEffectiveVoyageDates().depIso;
+      const retIso = it.ret_iso || getEffectiveVoyageDates().retIso;
+      const nights = it.nights || getEffectiveVoyageDates().nights;
+      const destClean = (it.destination || it.location || 'Rome').replace(/\(.*?\)/g, '').trim();
+      const depClean = (it.departure_hub || 'Nancy').replace(/\(.*?\)/g, '').trim();
+      const fallbackLinks = buildVoyageBookingLinks(depClean, destClean, depIso, retIso);
+
+      const flightUrl = it.flight_url || fallbackLinks.flightsUrl;
+      const hotelUrl = it.hotel_url || fallbackLinks.bookingUrl;
+      const trainUrl = it.train_url || fallbackLinks.trainUrl;
+      const pkgUrl = it.package_url || fallbackLinks.packageUrl;
+
+      document.getElementById('pkgModalTitle').textContent = it.title || 'Séjour Tout Compris';
+      document.getElementById('pkgModalSubtitle').textContent = `📅 Dates synchronisées : ${depIso} ➔ ${retIso} (${nights} nuit(s))`;
+      const imgEl = document.getElementById('pkgModalImg');
+      if (imgEl) {
+        imgEl.onerror = () => handleImgError(imgEl, 'voyage');
+        imgEl.src = getItemPhotos(it)[0];
+      }
+
+      const totalVal = tc ? tc.total_per_person : (it.price || 0);
+      document.getElementById('pkgModalTotal').textContent = `${totalVal} € Tout Compris / pers.`;
+      document.getElementById('pkgModalHorizonBadge').textContent = (tc && tc.horizon_note) ? tc.horizon_note : `J+${it.days_out || 14}`;
+      document.getElementById('pkgModalDesc').textContent = it.description || '';
+
+      const box = document.getElementById('pkgModalBreakdownBox');
+      if (box) {
+        if (tc) {
+          box.innerHTML = `
+            <div class="voyage-breakdown-row"><span>🚄 ${tc.shuttle_label || 'Liaison Aéroport A/R'}</span><strong>${tc.shuttle_cost || 0} €</strong></div>
+            <div class="voyage-breakdown-row"><span>✈️ Vol A/R aux dates exactes</span><strong>${tc.flight_cost || 0} €</strong></div>
+            <div class="voyage-breakdown-row"><span>🏨 Hôtel 8.5★ (${tc.nights || nights} nuits × ${tc.hotel_per_night || 90}€)</span><strong>${tc.hotel_total || 0} €</strong></div>
+            <div class="voyage-breakdown-sep"></div>
+            <div class="voyage-breakdown-total"><span>💰 TOTAL TOUT COMPRIS</span><span>${tc.total_per_person} € / pers.</span></div>
+          `;
+        } else {
+          box.innerHTML = `<div class="voyage-breakdown-total"><span>💰 ESTIMATION TOTALE</span><span>${it.price_str}</span></div>`;
+        }
+      }
+
+      const bFlight = document.getElementById('pkgModalFlightBtn');
+      const bHotel = document.getElementById('pkgModalHotelBtn');
+      const bTrain = document.getElementById('pkgModalTrainBtn');
+      const bCombo = document.getElementById('pkgModalComboBtn');
+      if (bFlight) {
+        bFlight.href = flightUrl;
+        bFlight.textContent = tc ? `✈️ 1. Ouvrir le Vol A/R (${tc.flight_cost}€) — Google Flights ↗` : `✈️ 1. Ouvrir le Vol A/R (${depIso} ➔ ${retIso}) ↗`;
+      }
+      if (bHotel) {
+        bHotel.href = hotelUrl;
+        bHotel.textContent = tc ? `🏨 2. Ouvrir Hôtels ≥ 8/10 (${tc.hotel_total}€ / ${tc.nights || nights} nuits) — Booking ↗` : `🏨 2. Ouvrir Hôtels ≥ 8/10 (${depIso} ➔ ${retIso}) ↗`;
+      }
+      if (bTrain) {
+        bTrain.href = trainUrl;
+        bTrain.style.display = (tc && tc.shuttle_cost === 0) ? 'none' : 'inline-flex';
+        bTrain.textContent = tc ? `🚄 3. Ouvrir le Pré-acheminement Rail (${tc.shuttle_cost}€ A/R) ↗` : `🚄 3. Ouvrir l'itinéraire Rail ↗`;
+      }
+      if (bCombo) bCombo.href = pkgUrl;
+
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVoyagePackageModal() {
+      const modal = document.getElementById('voyagePackageModal');
+      if (modal) modal.style.display = 'none';
+      document.body.style.overflow = '';
     }
 
     function createVoyageCardHtml(it, inCatalogue = false) {
       const isFav = favorites.includes(it.id);
-      const isFlash = it.section_type === 'flash_deals';
+      const catType = it.category === 'train'
+        ? 'train'
+        : (it.category === 'package' ? 'package' : 'flight');
+
+      const catClass = `voy-cat-${catType}`;
+      const badgeClass = `badge-voy-${catType}`;
+      const badgeLabel = catType === 'train'
+        ? (it.badge && it.badge.includes('TRAIN') ? it.badge : '🚄 TRAIN DIRECT')
+        : (catType === 'package'
+          ? '🏨 SÉJOUR TOUT COMPRIS (TRANSPORT + HÔTEL)'
+          : (it.badge && it.badge.includes('VOL') ? it.badge : '✈️ VOL A/R'));
+      const priceColor = catType === 'train' ? '#34d399' : (catType === 'package' ? '#fbbf24' : '#22d3ee');
+
       const photos = getItemPhotos(it);
       const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
       const safeTitle = (it.title || 'Offre Voyage').replace(/"/g, '&quot;');
-      const safeHref = (it.url && String(it.url).startsWith('http')) ? it.url : 'https://www.kayak.fr/';
+
+      const eff = getEffectiveVoyageDates();
+      const depIso = it.dep_iso || eff.depIso;
+      const retIso = it.ret_iso || eff.retIso;
+      const nights = it.nights || eff.nights;
+      const fallbackLinks = buildVoyageBookingLinks(it.departure_hub || 'Nancy', it.destination || 'Paris', depIso, retIso);
+
+      const flightUrl = (it.flight_url && it.flight_url.startsWith('http')) ? it.flight_url : fallbackLinks.flightsUrl;
+      const hotelUrl = (it.hotel_url && it.hotel_url.startsWith('http')) ? it.hotel_url : fallbackLinks.bookingUrl;
+      const trainUrl = (it.train_url && it.train_url.startsWith('http')) ? it.train_url : ((it.url && it.url.startsWith('http')) ? it.url : fallbackLinks.trainUrl);
+      const transitUrl = (it.transit_url && it.transit_url.startsWith('http')) ? it.transit_url : fallbackLinks.transitUrl;
+
+      const tc = it.true_cost;
+      const breakdownHtml = (catType === 'package' && tc) ? `
+        <div class="voyage-breakdown-box">
+          ${tc.shuttle_cost > 0 ? `<div class="voyage-breakdown-row"><span>🚄 ${tc.shuttle_label || 'Liaison Nancy ➔ Aéroport A/R'}</span><span>${tc.shuttle_cost} €</span></div>` : ''}
+          <div class="voyage-breakdown-row"><span>✈️ Vol A/R aux dates exactes</span><span>${tc.flight_cost} €</span></div>
+          <div class="voyage-breakdown-row"><span>🏨 Hôtel 8.5★ (${tc.nights} nuits mêmes dates)</span><span>${tc.hotel_total} €</span></div>
+          <div class="voyage-breakdown-sep"></div>
+          <div class="voyage-breakdown-total"><span>💰 TOTAL TOUT COMPRIS</span><span>${tc.total_per_person} € / pers.</span></div>
+        </div>
+      ` : '';
+
+      let syncButtonsHtml = '';
+      if (catType === 'train') {
+        syncButtonsHtml = `
+          <div class="voyage-sync-links" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
+            <a class="btn-sync-action sync-train" href="${trainUrl}" target="_blank" rel="noopener">🚄 Billets (${it.price}€)</a>
+            <a class="btn-sync-action sync-flight" href="${transitUrl}" target="_blank" rel="noopener">🗺️ Trajet Direct</a>
+            <a class="btn-sync-action sync-hotel" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Hôtel (${it.hotel_est || nights * 120}€)</a>
+          </div>
+        `;
+      } else {
+        const fCost = tc ? tc.flight_cost : it.price;
+        const hCost = tc ? tc.hotel_total : (it.hotel_est || nights * 95);
+        syncButtonsHtml = `
+          <div class="voyage-sync-links" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
+            <a class="btn-sync-action sync-flight" href="${flightUrl}" target="_blank" rel="noopener">✈️ Vol (${fCost}€)</a>
+            <a class="btn-sync-action sync-hotel" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Hôtel (${hCost}€)</a>
+            <button type="button" class="btn-sync-action sync-package" onclick="openVoyagePackageModal('${it.id}')">📦 Vol + Hôtel</button>
+          </div>
+        `;
+      }
 
       return `
-        <div class="card card-voyage" id="card_${it.id}" data-id="${it.id}">
-          <div class="card-img-wrap">
+        <div class="card card-voyage ${catClass}" id="card_${it.id}" data-id="${it.id}">
+          <div class="card-img-wrap" onclick="openVoyagePackageModal('${it.id}')">
             <img id="card_img_${it.id}" class="card-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
-            <span class="card-badge ${isFlash ? 'badge-flash' : 'badge-package'}">${it.badge || '✈️ Évasion'}</span>
+            <span class="card-badge ${badgeClass}">${badgeLabel}</span>
             <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Sauvegarder en Favori" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="event.stopPropagation(); toggleFavorite('${it.id}')">
               ★
             </button>
@@ -4806,8 +5319,9 @@
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-price" style="color: ${isFlash ? '#f43f5e' : '#38bdf8'};">${it.price_str}</span>
-              ${it.true_cost ? `<span class="spec-pill">Coût Total: ${it.true_cost.total_per_person}€/pers</span>` : ''}
+              <span class="card-price" style="color: ${priceColor};">${it.price_str}</span>
+              ${tc && catType === 'flight' ? `<span class="spec-pill" style="border-color:rgba(139,92,246,0.45); color:#c4b5fd;">Séjour complet ~${tc.total_per_person}€</span>` : ''}
+              ${catType === 'package' ? `<span class="spec-pill" style="border-color:rgba(245,158,11,0.5); color:#fde68a;">📅 ${depIso.slice(5)} ➔ ${retIso.slice(5)}</span>` : ''}
             </div>
             <h3 class="card-title">${it.title}</h3>
             <div class="card-loc">
@@ -4816,22 +5330,19 @@
               </svg>
               <span>${it.location}</span>
             </div>
-            <p style="font-size:0.75rem; color:#94a3b8; line-height:1.35; margin-bottom:4px;">${it.description || ''}</p>
+            <p style="font-size:0.74rem; color:#94a3b8; line-height:1.35; margin-bottom:2px;">${it.description || ''}</p>
 
-            ${it.true_cost ? `
-              <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 10px; font-size: 0.72rem; color: #cbd5e1; margin-bottom: 4px;">
-                🔍 <strong>Vrai Coût calculé :</strong> ${it.true_cost.breakdown}
-              </div>
-            ` : ''}
+            ${breakdownHtml}
+            ${syncButtonsHtml}
 
             ${inCatalogue ? `
               <div class="card-actions-bar" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
                 <button class="btn-swipe-dislike" onclick="removeFromSaved('${it.id}')">
                   🗑️ Retirer
                 </button>
-                <a class="btn-open-detail" style="text-decoration: none;" href="${safeHref}" target="_blank" rel="noopener">
-                  🔍 Ouvrir ↗
-                </a>
+                <button class="btn-open-detail" onclick="openVoyagePackageModal('${it.id}')">
+                  📦 Comparateur
+                </button>
                 <button class="btn-swipe-like" style="background: rgba(234,179,8,0.16); border-color: rgba(234,179,8,0.45); color: #fde047;" onclick="toggleFavorite('${it.id}')">
                   ${isFav ? '★ Favori' : '☆ Favori'}
                 </button>
@@ -4841,9 +5352,9 @@
                 <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
                   ❌ Écarter
                 </button>
-                <a class="btn-open-detail" style="text-decoration: none;" href="${safeHref}" target="_blank" rel="noopener">
-                  🔍 Voir l'offre ↗
-                </a>
+                <button class="btn-open-detail" onclick="openVoyagePackageModal('${it.id}')">
+                  📋 Détails
+                </button>
                 <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
                   ❤️ J'aime
                 </button>
@@ -4949,9 +5460,9 @@
     function testPushNotification() {
       fetch('https://ntfy.sh/sxm-immo-alert-97150-x9q4m2', {
         method: 'POST',
-        headers: { 'Title': '🛰️ Test Nexus Radar V8', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
-        body: 'Veille V8 opérationnelle ! Alertes Immo (sans viager) et Voyage temps réel.'
-      }).then(() => showToast('🔔 Notification V8 envoyée !'))
+        headers: { 'Title': '🛰️ Test Nexus Radar V9', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
+        body: 'Veille V9 opérationnelle ! Alertes Immo (sans viager) et Packages Voyage croisés.'
+      }).then(() => showToast('🔔 Notification V9 envoyée !'))
         .catch(() => showToast('Erreur envoi ntfy'));
     }
 
@@ -4968,7 +5479,7 @@
       toastHideTimer = setTimeout(() => t.classList.remove('show'), durationMs);
     }
 
-    // Initialisation + Service Worker V8 (Network-First + Purge Ancien Cache)
+    // Initialisation + Service Worker V9 (Network-First + Purge Ancien Cache)
     window.addEventListener('DOMContentLoaded', () => {
       initPinLock();
       renderBottomNav('immo');
@@ -4985,11 +5496,11 @@
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'nexus-v8-clean') caches.delete(n);
+              if (n !== 'nexus-v9-clean') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=8').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=9').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 

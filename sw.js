@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nexus-v8-clean';
+const CACHE_NAME = 'nexus-v9-clean';
 const ASSETS_TO_CACHE = [
   './manifest.json',
   './assets/icon.svg'
@@ -48,7 +48,7 @@ self.addEventListener('fetch', (event) => {
 
 self.addEventListener('push', (event) => {
   const data = event.data ? event.data.json() : {};
-  const title = data.title || '⚡ Nexus Radar V8 : Nouvelle Pépite !';
+  const title = data.title || '⚡ Nexus Radar V9 : Nouvelle Pépite !';
   const options = {
     body: data.message || "Une nouvelle offre vient d'être détectée.",
     icon: './assets/icon.svg',
