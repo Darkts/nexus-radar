@@ -1,4 +1,4 @@
-const CACHE_NAME = 'horizons-v10';
+const CACHE_NAME = 'horizons-v11-light';
 const ASSETS_TO_CACHE = [
   './manifest.json',
   './assets/icon.svg'

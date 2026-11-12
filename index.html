@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="fr" class="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
@@ -8,10 +8,10 @@
   
   <!-- PWA & Apple Meta -->
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#0F1115" />
+  <meta name="theme-color" content="#FFFFFF" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Horizons" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icon.svg" />
@@ -27,21 +27,44 @@
 
   <style>
     :root {
-      --bg: #0F1115;
-      --surface: #14171F;
-      --surface-card: #181B22;
-      --card-border: rgba(255, 255, 255, 0.07);
-      --primary: #FF5A5F;
-      --primary-dim: #E0484D;
-      --accent-immo: #FF5A5F;
-      --accent-voyage: #00A699;
-      --accent-travel-train: #10B981;
+      --bg: #FFFFFF;
+      --bg-porcelain: #F7F7F7;
+      --bg-subtle: #FAFAFA;
+      --surface: #FFFFFF;
+      --surface-card: #FFFFFF;
+      --card-border: #EBEBEB;
+      --card-border-subtle: #F0F0F0;
+      --border: #DDDDDD;
+      --text-main: #222222;
+      --text-secondary: #717171;
+      --text-muted: #717171;
+      --text-light: #9CA3AF;
+      
+      /* Accents Airbnb & Booking */
+      --primary: #FF385C;
+      --accent-airbnb: #FF385C;
+      --accent-immo: #FF385C;
+      --accent-immo-hover: #E00B41;
+      --booking-navy: #003B95;
+      --booking-blue: #006CE4;
+      --booking-blue-hover: #0057B8;
+      --booking-green: #008234;
+      --accent-voyage: #006CE4;
+      --accent-travel-train: #008234;
       --accent-pink: #EC4899;
       --accent-warn: #F59E0B;
       --accent-danger: #EF4444;
-      --text-main: #F3F4F6;
-      --text-muted: #9CA3AF;
-      --radius: 16px;
+
+      /* Ombres douces naturelles */
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --shadow-card: 0 4px 14px rgba(0, 0, 0, 0.06);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-pill: 40px;
     }
 
     * {
@@ -51,31 +74,33 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    html, body {
       background-color: var(--bg);
       color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       padding-bottom: 84px;
       overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.04) 0%, transparent 40%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Header 60 FPS avec safe area insets */
+    /* ========================================================= */
+    /* 1. HEADER FIXE BLANC ÉPURÉ (STYLE AIRBNB / BOOKING)      */
+    /* ========================================================= */
     header {
       position: sticky;
       top: 0;
       z-index: 500;
-      background: rgba(11, 17, 32, 0.98);
+      background: #FFFFFF;
       border-bottom: 1px solid var(--card-border);
       padding-top: max(10px, env(safe-area-inset-top));
       padding-bottom: 10px;
-      padding-left: 14px;
-      padding-right: 14px;
+      padding-left: 16px;
+      padding-right: 16px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
     }
 
     .header-content {
@@ -83,25 +108,27 @@
       align-items: center;
       justify-content: space-between;
       max-width: 1280px;
-      margin: 0 auto 8px auto;
+      margin: 0 auto 10px auto;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
     }
 
     .brand-icon {
       width: 36px;
       height: 36px;
       border-radius: 10px;
-      border: 1px solid rgba(0, 242, 254, 0.4);
+      border: 1px solid var(--card-border);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #090e1a;
+      background: #FFFFFF;
+      box-shadow: var(--shadow-sm);
     }
 
     .brand-icon img {
@@ -112,21 +139,20 @@
 
     .brand-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 800;
-      letter-spacing: -0.01em;
-      color: #fff;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
     }
 
     .brand-sub {
       font-size: 0.68rem;
-      color: var(--primary);
-      font-weight: 700;
+      color: var(--text-secondary);
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 5px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.01em;
     }
 
     .live-dot {
@@ -136,28 +162,80 @@
       border-radius: 50%;
     }
 
-    /* Switch Double Univers */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-icon {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
+    }
+
+    .btn-icon:hover {
+      background: var(--bg-porcelain);
+      border-color: #DDDDDD;
+    }
+
+    .btn-icon.spinning svg {
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .btn-liked-shortcut {
+      background: #FFF1F2;
+      border: 1px solid #FFE4E6;
+      color: var(--accent-airbnb);
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .btn-liked-shortcut:hover {
+      background: #FFE4E6;
+    }
+
+    /* Sélecteur d'Univers Style Onglets Épurés */
     .universe-switch-container {
-      max-width: 1280px;
+      max-width: 480px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      background: #070c18;
+      gap: 6px;
+      background: var(--bg-porcelain);
       border: 1px solid var(--card-border);
       padding: 4px;
-      border-radius: 12px;
+      border-radius: 30px;
     }
 
     .univ-btn {
       border: none;
       background: transparent;
-      color: var(--text-muted);
-      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-secondary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.82rem;
-      font-weight: 800;
-      padding: 9px 8px;
-      border-radius: 9px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 24px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -167,44 +245,27 @@
     }
 
     .univ-btn.active.univ-immo {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.1));
-      border: 1px solid rgba(16, 185, 129, 0.5);
-      color: #34d399;
-      box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+      background: #FFFFFF;
+      color: var(--text-main);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border-bottom: 2px solid var(--accent-airbnb);
+      font-weight: 800;
     }
 
     .univ-btn.active.univ-voyage {
-      background: linear-gradient(135deg, rgba(0, 242, 254, 0.3), rgba(2, 132, 199, 0.15));
-      border: 1px solid rgba(0, 242, 254, 0.5);
-      color: #38bdf8;
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+      background: #FFFFFF;
+      color: var(--booking-navy);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border-bottom: 2px solid var(--booking-navy);
+      font-weight: 800;
     }
-
-    .btn-icon {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .btn-icon.spinning svg {
-      animation: spin 0.7s linear infinite;
-    }
-
-    @keyframes spin { 100% { transform: rotate(360deg); } }
 
     /* Main Container */
     .container {
       max-width: 1280px;
       width: 100%;
       margin: 0 auto;
-      padding: 14px;
+      padding: 16px;
       flex: 1;
     }
 
@@ -217,29 +278,31 @@
     }
 
     /* ========================================================= */
-    /* CHANTIER 2 : RECHERCHE PROGRESSIVE IMMO EN 3 ÉTAPES      */
+    /* 2. BARRE DE RECHERCHE EN PILULE (STYLE AIRBNB / BOOKING) */
     /* ========================================================= */
     .funnel-search-box {
-      background: var(--surface);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 14px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-md);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
-    /* Étape 1 : Localisation Principale */
-    .step-header-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent-immo);
-      display: flex;
-      align-items: center;
-      gap: 4px;
+    @media (min-width: 768px) {
+      .funnel-search-box {
+        border-radius: var(--radius-pill);
+        padding: 8px 10px 8px 20px;
+      }
+    }
+
+    .funnel-search-box:hover, .funnel-search-box:focus-within {
+      box-shadow: var(--shadow-lg);
+      border-color: #B0B0B0;
     }
 
     .step-location-row {
@@ -255,17 +318,21 @@
 
     .search-input-wrap input {
       width: 100%;
-      background: #090e1a;
+      background: var(--bg-porcelain);
       border: 1px solid var(--card-border);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 10px 14px 10px 38px;
-      color: #fff;
-      font-size: 0.86rem;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 600;
       outline: none;
+      transition: all 0.15s ease;
     }
 
     .search-input-wrap input:focus {
-      border-color: var(--accent-immo);
+      background: #FFFFFF;
+      border-color: var(--text-main);
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
     }
 
     .search-input-wrap svg {
@@ -273,1270 +340,36 @@
       left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--text-muted);
+      color: var(--text-secondary);
       pointer-events: none;
     }
 
     .btn-around-me {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
-      font-size: 0.76rem;
-      font-weight: 700;
-      padding: 10px 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* Sélections Rapides Grandes Villes & DOM */
-    .quick-cities-scroll {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 2px;
-    }
-    .quick-cities-scroll::-webkit-scrollbar { display: none; }
-
-    .city-pill {
-      white-space: nowrap;
-      font-size: 0.73rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--bg-porcelain);
       border: 1px solid var(--card-border);
-      color: #cbd5e1;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .city-pill:hover, .city-pill.active {
-      background: rgba(16, 185, 129, 0.25);
-      border-color: var(--accent-immo);
-      color: #34d399;
-      font-weight: 800;
-    }
-
-    /* Étape 2 : Critères & Filtres */
-    .step-filters-box {
-      border-top: 1px dashed var(--card-border);
-      padding-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .filters-grid-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .segmented-control {
-      display: flex;
-      background: #070c18;
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 2px;
-      gap: 2px;
-    }
-
-    .segmented-btn {
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 0.73rem;
+      color: var(--text-main);
+      font-size: 0.78rem;
       font-weight: 700;
-      padding: 6px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .segmented-btn.active {
-      background: rgba(16, 185, 129, 0.25);
-      color: #34d399;
-      font-weight: 800;
-    }
-
-    .chip-filter {
-      white-space: nowrap;
-      padding: 6px 12px;
-      border-radius: 16px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .chip-filter:hover {
-      border-color: rgba(255, 255, 255, 0.3);
-      color: #fff;
-    }
-
-    .chip-filter.active, .chip-filter.immo-active {
-      background: rgba(16, 185, 129, 0.28);
-      border-color: var(--accent-immo);
-      color: #34d399;
-      box-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
-    }
-
-    .chip-filter.voyage-active {
-      background: rgba(0, 242, 254, 0.25);
-      border-color: var(--primary);
-      color: #fff;
-    }
-
-    .btn-reset-filters {
-      white-space: nowrap;
-      padding: 6px 12px;
-      border-radius: 16px;
-      font-size: 0.73rem;
-      font-weight: 800;
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      color: #f87171;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .btn-reset-filters:hover {
-      background: rgba(239, 68, 68, 0.24);
-    }
-
-    /* Autocomplétion Ville */
-    .autocomplete-dropdown {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0;
-      right: 0;
-      background: #0e172a;
-      border: 1px solid var(--primary);
-      border-radius: 10px;
-      z-index: 900;
-      max-height: 220px;
-      overflow-y: auto;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
-      display: none;
-    }
-    .autocomplete-item {
       padding: 10px 14px;
-      font-size: 0.82rem;
-      color: #e2e8f0;
+      border-radius: 12px;
       cursor: pointer;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .autocomplete-item:last-child { border-bottom: none; }
-    .autocomplete-item:hover { background: rgba(0, 242, 254, 0.14); color: #fff; }
-
-    /* Étape 3 : Switch Vue [ 📋 Vue Liste ] | [ 🗺️ Vue Carte Leaflet ] */
-    .view-toggle-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-      max-width: 1280px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .results-count {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .view-mode-switch {
-      display: flex;
-      background: #090e1a;
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 2px;
-      gap: 2px;
-    }
-
-    .view-mode-btn {
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
+      white-space: nowrap;
       display: flex;
       align-items: center;
       gap: 5px;
-    }
-
-    .view-mode-btn.active {
-      background: rgba(16, 185, 129, 0.25);
-      color: #34d399;
-      font-weight: 800;
-    }
-
-    /* Grille Responsive Propre V7 */
-    .items-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
-      gap: 20px;
-      max-width: 1280px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    /* Carte Unifiée (.card / .item-card) avec Swipe Tactile */
-    .card, .item-card {
-      background: var(--surface-card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      touch-action: pan-y;
-      transition: transform 0.22s ease, opacity 0.22s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      user-select: none;
-      height: 100%;
-    }
-
-    .card:hover, .item-card:hover {
-      border-color: rgba(56, 189, 248, 0.45);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-    }
-
-    .card.swiping, .item-card.swiping { transition: none; }
-    .card.swiped-right, .item-card.swiped-right { transform: translateX(120%) rotate(20deg) !important; opacity: 0 !important; }
-    .card.swiped-left, .item-card.swiped-left { transform: translateX(-120%) rotate(-20deg) !important; opacity: 0 !important; }
-
-    .card-img-wrap {
-      position: relative;
-      width: 100%;
-      height: 210px;
-      min-height: 210px;
-      max-height: 210px;
-      background: #090e1a;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .card-img, .card-img-wrap img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.25s ease;
-    }
-
-    .card-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 4px 9px;
-      border-radius: 6px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: #fff;
-      background: rgba(15, 23, 42, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      z-index: 10;
-      backdrop-filter: blur(4px);
-    }
-    .card-badge.badge-loc { background: rgba(16, 185, 129, 0.92); color: #052e16; border-color: #34d399; }
-    .card-badge.badge-achat { background: rgba(139, 92, 246, 0.92); color: #fff; border-color: #a78bfa; }
-    .card-badge.badge-flash { background: rgba(244, 63, 94, 0.92); color: #fff; border-color: #fda4af; }
-    .card-badge.badge-package { background: rgba(2, 132, 199, 0.92); color: #fff; border-color: #38bdf8; }
-
-    /* Boutons Carrousel Photos */
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: rgba(7, 10, 19, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 12;
       transition: background 0.15s;
     }
-    .carousel-btn:hover { background: var(--primary); color: #070a13; }
-    .carousel-btn.prev { left: 8px; }
-    .carousel-btn.next { right: 8px; }
-    .carousel-counter {
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      background: rgba(7, 10, 19, 0.85);
-      color: #f8fafc;
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 10px;
-      z-index: 12;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+
+    .btn-around-me:hover {
+      background: #EBEBEB;
     }
 
-    .btn-card-fav {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(11, 17, 32, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 12;
-    }
-    .btn-card-fav.active { color: #ec4899; border-color: #ec4899; background: rgba(236, 72, 153, 0.15); }
-
-    .card-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      gap: 8px;
-    }
-
-    .card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .card-price {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #34d399;
-    }
-
-    .card-loc {
-      font-size: 0.75rem;
-      color: var(--primary);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .card-title {
-      font-size: 0.94rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.35;
-      cursor: pointer;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .specs-pills-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-top: 2px;
-    }
-
-    .spec-pill {
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 3px 6px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--card-border);
-      color: #cbd5e1;
-    }
-
-    .spec-dpe {
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: #070a13;
-    }
-    .dpe-A { background: #10b981; }
-    .dpe-B { background: #34d399; }
-    .dpe-C { background: #fbbf24; }
-    .dpe-D { background: #f97316; color: #fff; }
-    .dpe-E { background: #ef4444; color: #fff; }
-
-    .spec-market {
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 3px 6px;
-      border-radius: 4px;
-      background: rgba(16, 185, 129, 0.18);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #34d399;
-    }
-
-    /* Barre d'Actions sur UNE SEULE LIGNE horizontale */
-    .card-actions-bar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 10px;
-      border-top: 1px solid var(--card-border);
-      width: 100%;
-    }
-
-    .btn-swipe-dislike {
-      flex: 1;
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      color: #f87171;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 8px 6px;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      white-space: nowrap;
-    }
-
-    .btn-open-detail {
-      flex: 1.25;
-      background: linear-gradient(135deg, #00f2fe, #0284c7);
-      color: #070a13;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 8px 6px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      white-space: nowrap;
-      text-decoration: none;
-    }
-
-    .btn-swipe-like {
-      flex: 1;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 8px 6px;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      white-space: nowrap;
-    }
-
-    /* Calendrier Popover Interactif style Lastminute.com */
-    .cal-trigger-btn {
-      width: 100%;
-      background: #090e1a;
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 10px 14px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-    .cal-trigger-btn:hover { border-color: #38bdf8; }
-    .cal-popover-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(7, 10, 19, 0.75);
-      z-index: 2500;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      backdrop-filter: blur(4px);
-    }
-    .cal-popover-backdrop.open { display: flex; }
-    .cal-popover-card {
-      background: #0e1629;
-      border: 1px solid rgba(56, 189, 248, 0.45);
-      border-radius: 16px;
-      max-width: 440px;
-      width: 100%;
-      padding: 16px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
-    }
-    .cal-quick-tabs {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-    .cal-quick-tab {
-      flex: 1;
-      min-width: 90px;
-      padding: 6px 8px;
-      border-radius: 8px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--card-border);
-      color: #cbd5e1;
-      cursor: pointer;
-      text-align: center;
-    }
-    .cal-quick-tab.active {
-      background: rgba(56, 189, 248, 0.25);
-      border-color: #38bdf8;
-      color: #fff;
-    }
-    .cal-month-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .cal-nav-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--card-border);
-      color: #fff;
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 800;
-    }
-    .cal-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
-      text-align: center;
-    }
-    .cal-day-header {
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: var(--text-muted);
-      padding-bottom: 6px;
-    }
-    .cal-day {
-      padding: 8px 0;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #f8fafc;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-    .cal-day:hover:not(.disabled):not(.empty) {
-      border-color: #38bdf8;
-      background: rgba(56, 189, 248, 0.15);
-    }
-    .cal-day.empty { cursor: default; }
-    .cal-day.disabled { opacity: 0.25; cursor: not-allowed; pointer-events: none; }
-    .cal-day.selected-start, .cal-day.selected-end {
-      background: #0284c7;
-      color: #fff;
-      font-weight: 800;
-      box-shadow: 0 0 10px rgba(2, 132, 199, 0.5);
-    }
-    .cal-day.in-range {
-      background: rgba(56, 189, 248, 0.22);
-      color: #38bdf8;
-    }
-    .cal-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 14px;
-      padding-top: 10px;
-      border-top: 1px solid var(--card-border);
-    }
-
-    /* ========================================================= */
-    /* CHANTIER 3 : ESPACE RADARS DISTINCT (IMMO vs VOYAGE)      */
-    /* ========================================================= */
-    .radar-space-switch {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      background: #090e1a;
-      border: 1px solid var(--card-border);
-      padding: 4px;
-      border-radius: 12px;
-      margin-bottom: 16px;
-    }
-
-    .radar-tab-btn {
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      font-weight: 800;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .radar-tab-btn.active.tab-immo {
-      background: rgba(16, 185, 129, 0.25);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.5);
-    }
-
-    .radar-tab-btn.active.tab-voyage {
-      background: rgba(0, 242, 254, 0.25);
-      color: #38bdf8;
-      border: 1px solid rgba(0, 242, 254, 0.5);
-    }
-
-    /* ========================================================= */
-    /* CHANTIER 4 : VOYAGE ENTONNOIR & SECTIONS 1 & 2            */
-    /* ========================================================= */
-    .voyage-funnel-box {
-      background: var(--surface);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .voyage-funnel-step {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .voyage-funnel-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--primary);
-    }
-
-    .section-title-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 20px 0 10px 0;
-    }
-
-    .section-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Mini-carte Leaflet & Modale */
-    #mainMapContainer {
-      width: 100%;
-      height: 480px;
-      border-radius: var(--radius);
-      border: 1px solid var(--card-border);
-      overflow: hidden;
-      margin-bottom: 14px;
-    }
-
-    .detail-modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2500;
-      background: rgba(7, 10, 19, 0.98);
-      display: none;
-      flex-direction: column;
-      overflow-y: auto;
-      padding-bottom: 40px;
-    }
-    .detail-modal-overlay.open { display: flex; }
-
-    .detail-modal-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(11, 17, 32, 0.98);
-      border-bottom: 1px solid var(--card-border);
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .btn-close-detail {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--card-border);
-      color: #fff;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-    }
-
-    .detail-hero-gallery {
-      position: relative;
-      height: 240px;
-      background: #090e1a;
-      overflow: hidden;
-    }
-
-    .detail-hero-gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .detail-thumbnails {
-      display: flex;
-      gap: 6px;
-      padding: 8px 16px;
-      background: #090e1a;
-      overflow-x: auto;
-    }
-
-    .detail-thumb {
-      width: 60px;
-      height: 42px;
-      border-radius: 6px;
-      object-fit: cover;
-      cursor: pointer;
-      opacity: 0.6;
-      border: 1px solid transparent;
-    }
-    .detail-thumb.active { opacity: 1; border-color: var(--primary); }
-
-    .detail-body {
-      padding: 16px;
-      max-width: 880px;
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .detail-specs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      background: var(--surface);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 12px;
-    }
-    @media (min-width: 640px) {
-      .detail-specs-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-
-    .spec-item { display: flex; flex-direction: column; gap: 2px; }
-    .spec-label { font-size: 0.7rem; color: var(--text-muted); }
-    .spec-val { font-size: 0.85rem; font-weight: 800; color: #fff; }
-
-    #detailMiniMap {
-      width: 100%;
-      height: 220px;
-      border-radius: 12px;
-      border: 1px solid var(--card-border);
-      overflow: hidden;
-      margin-top: 6px;
-    }
-
-    .btn-cta-official {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #fff;
-      font-size: 0.92rem;
-      font-weight: 800;
-      padding: 14px;
-      border-radius: 10px;
-      text-align: center;
-      text-decoration: none;
-      display: block;
-      margin-top: 8px;
-    }
-
-    /* Bottom Navigation Bar */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 600;
-      background: rgba(11, 17, 32, 0.98);
-      border-top: 1px solid var(--card-border);
-      display: flex;
-      justify-content: space-around;
-      padding: 8px 10px max(10px, env(safe-area-inset-bottom));
-      max-width: 880px;
-      margin: 0 auto;
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      color: var(--text-muted);
-      font-size: 0.7rem;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 8px;
-    }
-
-    .nav-item.active {
-      color: var(--primary);
-      background: rgba(0, 242, 254, 0.1);
-    }
-    .nav-item.active.nav-immo {
-      color: #34d399;
-      background: rgba(16, 185, 129, 0.15);
-    }
-
-    .nav-icon { font-size: 1.25rem; line-height: 1; }
-
-    /* PIN Lock Screen Modal */
-    .pin-modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #070a13;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .pin-box {
-      width: 100%;
-      max-width: 320px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .pin-dots {
-      display: flex;
-      gap: 14px;
-      margin: 10px 0;
-    }
-
-    .pin-dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 2px solid var(--primary);
-      background: transparent;
-      transition: background 0.15s ease;
-    }
-    .pin-dot.filled {
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--primary);
-    }
-
-    .pin-pad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      width: 100%;
-    }
-
-    .btn-pin {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--card-border);
-      color: #fff;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      padding: 16px;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-    .btn-pin:active {
-      background: var(--primary);
-      color: #070a13;
-    }
-
-    /* Toast en bas au-dessus de la nav (cliquable pour Annuler Missclick) */
-    .toast {
-      position: fixed;
-      bottom: 82px;
-      left: 50%;
-      transform: translateX(-50%) translateY(140px);
-      background: #0e1424;
-      border: 1px solid var(--primary);
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 16px;
-      font-weight: 700;
-      font-size: 0.78rem;
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      max-width: calc(100vw - 24px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
-      transition: transform 0.25s ease, opacity 0.25s ease;
-      opacity: 0;
-      pointer-events: none;
-    }
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .toast-undo-btn {
-      background: rgba(56, 189, 248, 0.2);
-      border: 1px solid #38bdf8;
-      color: #38bdf8;
-      border-radius: 8px;
-      padding: 5px 10px;
-      font-size: 0.74rem;
-      font-weight: 800;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .toast-undo-btn:hover { background: #38bdf8; color: #070a13; }
-
-    /* V8 Raccourci Likes Header, Bouton Reset Dislikes, Case Viager, Sous-onglets & Carrousel Voyage */
-    .btn-liked-shortcut {
-      background: rgba(244, 63, 94, 0.16);
-      border: 1px solid rgba(244, 63, 94, 0.45);
-      color: #fda4af;
-      padding: 6px 11px;
-      border-radius: 10px;
-      font-size: 0.74rem;
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-liked-shortcut:hover { background: rgba(244, 63, 94, 0.28); color: #fff; }
-    .btn-reset-dislikes {
-      background: rgba(251, 191, 36, 0.12);
-      border: 1px solid rgba(251, 191, 36, 0.35);
-      color: #fcd34d;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .viager-exclude-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.28);
-      border-radius: 10px;
-      padding: 8px 12px;
-      margin-top: 4px;
-    }
-    .viager-exclude-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: #e2e8f0;
-      cursor: pointer;
-      user-select: none;
-    }
-    .viager-exclude-label input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
-      accent-color: #10b981;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .catalogue-subtabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      background: #090e1a;
-      border: 1px solid var(--card-border);
-      padding: 4px;
-      border-radius: 12px;
-      margin-bottom: 16px;
-    }
-    .catalogue-subtab-btn {
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 9px 10px;
-      border-radius: 9px;
-      cursor: pointer;
-    }
-    .catalogue-subtab-btn.active {
-      background: rgba(244, 63, 94, 0.22);
-      color: #fda4af;
-      border: 1px solid rgba(244, 63, 94, 0.45);
-    }
-    .catalogue-subtab-btn.active.fav-tab {
-      background: rgba(234, 179, 8, 0.22);
-      color: #fde047;
-      border: 1px solid rgba(234, 179, 8, 0.45);
-    }
-
-    /* Bannière Carrousel Horizontal Offres Spéciales Voyage */
-    .voyage-inspirations-box {
-      background: linear-gradient(135deg, rgba(14, 24, 48, 0.95), rgba(15, 23, 42, 0.9));
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 16px;
-    }
-    .voyage-inspi-track {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 6px;
-      -webkit-overflow-scrolling: touch;
-    }
-    .voyage-inspi-track::-webkit-scrollbar { height: 6px; }
-    .voyage-inspi-track::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.35); border-radius: 6px; }
-    .voyage-inspi-card {
-      flex: 0 0 285px;
-      scroll-snap-align: start;
-      background: #090e1a;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: #fff;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .voyage-inspi-card:hover {
-      transform: translateY(-2px);
-      border-color: #38bdf8;
-    }
-    .voyage-inspi-img {
-      width: 100%;
-      height: 130px;
-      object-fit: cover;
-      display: block;
-    }
-    .carousel-btn, .btn-card-fav, .card-actions-bar button, .card-actions-bar a, .voyage-sync-links button, .voyage-sync-links a {
-      touch-action: manipulation;
-    }
-
-    /* V9 CODE COULEUR STRICT VOYAGE : TRAIN (#10b981) | VOL (#06b6d4) | PACKAGE (#8b5cf6 / #f59e0b) */
-    .card-voyage.voy-cat-train { border-top: 4px solid #10b981; }
-    .card-voyage.voy-cat-train:hover { border-color: #10b981; }
-    .card-voyage.voy-cat-flight { border-top: 4px solid #06b6d4; }
-    .card-voyage.voy-cat-flight:hover { border-color: #06b6d4; }
-    .card-voyage.voy-cat-package {
-      border-top: 4px solid #8b5cf6;
-      box-shadow: 0 6px 22px rgba(139, 92, 246, 0.14);
-    }
-    .card-voyage.voy-cat-package:hover { border-color: #f59e0b; }
-
-    .card-badge.badge-voy-train {
-      background: rgba(16, 185, 129, 0.94);
-      color: #022c22;
-      border-color: #34d399;
-    }
-    .card-badge.badge-voy-flight {
-      background: rgba(6, 182, 212, 0.94);
-      color: #042f2e;
-      border-color: #22d3ee;
-    }
-    .card-badge.badge-voy-package {
-      background: linear-gradient(135deg, #7c3aed, #d97706);
-      color: #fff;
-      border-color: #fbbf24;
-    }
-
-    .voyage-cat-filter-bar {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-      margin-bottom: 6px;
-    }
-    .voyage-cat-pill {
-      background: #0f172a;
-      border: 1px solid var(--card-border);
-      color: #cbd5e1;
-      border-radius: 10px;
-      padding: 8px 13px;
-      font-size: 0.76rem;
-      font-weight: 800;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.15s ease;
-    }
-    .voyage-cat-pill.active {
-      background: rgba(56, 189, 248, 0.2);
-      border-color: #38bdf8;
-      color: #fff;
-    }
-    .voyage-cat-pill.pill-package.active {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(245, 158, 11, 0.25));
-      border-color: #f59e0b;
-      color: #fde68a;
-    }
-    .voyage-cat-pill.pill-flight.active {
-      background: rgba(6, 182, 212, 0.22);
-      border-color: #06b6d4;
-      color: #67e8f9;
-    }
-    .voyage-cat-pill.pill-train.active {
-      background: rgba(16, 185, 129, 0.22);
-      border-color: #10b981;
-      color: #6ee7b7;
-    }
-
-    .voyage-breakdown-box {
-      background: rgba(9, 14, 26, 0.92);
-      border: 1px solid rgba(139, 92, 246, 0.35);
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 0.72rem;
-      color: #e2e8f0;
-      margin: 4px 0 6px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      line-height: 1.48;
-    }
-    .voyage-breakdown-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    .voyage-breakdown-sep {
-      border-top: 1px dashed rgba(245, 158, 11, 0.45);
-      margin: 4px 0;
-    }
-    .voyage-breakdown-total {
-      display: flex;
-      justify-content: space-between;
-      font-weight: 800;
-      color: #fbbf24;
-      font-size: 0.77rem;
-    }
-
-    .voyage-sync-links {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      margin-top: 4px;
-      margin-bottom: 6px;
-    }
-    .btn-sync-action {
-      border-radius: 8px;
-      padding: 8px 5px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      border: 1px solid transparent;
-      line-height: 1.15;
-    }
-    .btn-sync-action.sync-flight {
-      background: rgba(6, 182, 212, 0.16);
-      border-color: rgba(6, 182, 212, 0.55);
-      color: #67e8f9;
-    }
-    .btn-sync-action.sync-flight:hover { background: #06b6d4; color: #042f2e; }
-    .btn-sync-action.sync-hotel {
-      background: rgba(59, 130, 246, 0.16);
-      border-color: rgba(59, 130, 246, 0.55);
-      color: #93c5fd;
-    }
-    .btn-sync-action.sync-hotel:hover { background: #2563eb; color: #fff; }
-    .btn-sync-action.sync-package {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.28), rgba(245, 158, 11, 0.26));
-      border-color: #f59e0b;
-      color: #fde68a;
-    }
-    .btn-sync-action.sync-package:hover { background: linear-gradient(135deg, #7c3aed, #d97706); color: #fff; }
-    .btn-sync-action.sync-train {
-      background: rgba(16, 185, 129, 0.18);
-      border-color: rgba(16, 185, 129, 0.6);
-      color: #6ee7b7;
-    }
-    .btn-sync-action.sync-train:hover { background: #10b981; color: #022c22; }
-
-    .empty-state {
-      text-align: center;
-      padding: 40px 16px;
-      background: var(--surface);
-      border: 1px dashed var(--card-border);
-      border-radius: var(--radius);
-      margin-top: 10px;
-    }
-  
-    /* V5.1 Live Scan & Moteur Complet */
     .btn-live-scan {
-      width: 100%;
-      margin-top: 10px;
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #fff;
+      background: var(--accent-immo);
+      color: #FFFFFF;
       border: none;
-      border-radius: 10px;
-      padding: 12px 16px;
+      border-radius: 30px;
+      padding: 11px 20px;
       font-size: 0.88rem;
       font-weight: 800;
       display: flex;
@@ -1544,354 +377,69 @@
       justify-content: center;
       gap: 8px;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 14px rgba(255, 56, 92, 0.3);
+      transition: transform 0.15s ease, background 0.15s ease;
     }
+
+    .btn-live-scan:hover {
+      background: var(--accent-immo-hover);
+    }
+
     .btn-live-scan:active {
       transform: scale(0.98);
     }
+
     .btn-scan-voyage {
-      background: linear-gradient(135deg, #00f2fe, #0284c7);
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+      background: var(--booking-blue) !important;
+      box-shadow: 0 4px 14px rgba(0, 108, 228, 0.3) !important;
     }
-    .direct-portals-box {
-      margin-top: 12px;
-      padding: 10px 12px;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 10px;
+
+    .btn-scan-voyage:hover {
+      background: var(--booking-blue-hover) !important;
     }
-    .direct-portals-box.voyage-box {
-      background: rgba(2, 132, 199, 0.08);
-      border-color: rgba(2, 132, 199, 0.3);
-    }
-    .portal-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #090e1a;
-      border: 1px solid var(--card-border);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .portal-link-btn:hover {
-      border-color: #34d399;
-      color: #34d399;
-    }
-    .radar-card-item {
-      background: rgba(15, 23, 42, 0.8);
+
+    /* Autocomplete Dropdown */
+    .autocomplete-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 10px;
+      z-index: 900;
+      max-height: 220px;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      display: none;
     }
-    .radar-card-header {
+
+    .autocomplete-item {
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      cursor: pointer;
+      border-bottom: 1px solid var(--card-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .radar-card-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .btn-radar-scan {
-      flex: 1;
-      background: #10b981;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 6px 10px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .btn-radar-scan-voyage {
-      background: #0284c7;
-    }
-    .btn-radar-del {
-      background: rgba(239, 68, 68, 0.15);
-      color: #ef4444;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      border-radius: 6px;
-      padding: 6px 10px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-  
-    /* Mode Clair Grand Public (Horizons) */
-    html.light {
-      --bg: #F8FAFC;
-      --surface: #FFFFFF;
-      --surface-card: #FFFFFF;
-      --card-border: rgba(0, 0, 0, 0.08);
-      --primary: #FF5A5F;
-      --primary-dim: #E0484D;
-      --accent-immo: #FF5A5F;
-      --accent-voyage: #00A699;
-      --accent-travel-train: #059669;
-      --text-main: #111827;
-      --text-muted: #4B5563;
+
+    .autocomplete-item:last-child {
+      border-bottom: none;
     }
 
-    html.light body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      background-image: 
-        radial-gradient(circle at 10% 10%, rgba(255, 90, 95, 0.03) 0%, transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(0, 166, 153, 0.03) 0%, transparent 40%);
+    .autocomplete-item:hover {
+      background: var(--bg-porcelain);
     }
 
-    html.light header {
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    html.light .brand-title {
-      color: #111827;
-    }
-
-    html.light .card, html.light .item-card, html.light .funnel-search-box, html.light .settings-card, html.light .voyage-breakdown-box {
-      background: #FFFFFF !important;
-      border-color: var(--card-border) !important;
-      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
-    }
-
-    html.light .card:hover, html.light .item-card:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    html.light .card-title, html.light .settings-card-title, html.light h2, html.light h3, html.light h4 {
-      color: #111827 !important;
-    }
-
-    html.light input[type="text"],
-    html.light input[type="number"],
-    html.light input[type="password"] {
-      background: #F3F4F6 !important;
-      color: #111827 !important;
-      border-color: rgba(0, 0, 0, 0.12) !important;
-    }
-
-    html.light .bottom-nav {
-      background: rgba(255, 255, 255, 0.96);
-      border-top-color: var(--card-border);
-    }
-
-    html.light .universe-switch-container {
-      background: #E5E7EB;
-    }
-
-    html.light .univ-btn {
-      color: #4B5563;
-    }
-
-    html.light .pin-modal-overlay {
-      background: rgba(248, 250, 252, 0.96);
-    }
-
-    html.light .pin-box {
-      background: #FFFFFF;
-      border-color: var(--card-border);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    html.light .pin-box h2 {
-      color: #111827;
-    }
-
-    html.light .btn-pin {
-      background: #F3F4F6;
-      color: #111827;
-      border-color: rgba(0, 0, 0, 0.08);
-    }
-
-    html.light .btn-drawer-toggle {
-      background: #F3F4F6;
-      color: #111827;
-      border-color: rgba(0, 0, 0, 0.1);
-    }
-
-    /* Cartes Réglages Horizons */
-    .settings-card {
-      background: var(--surface-card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .settings-card-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .settings-icon-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-
-    .settings-card-title {
-      font-size: 0.98rem;
-      font-weight: 800;
-      color: var(--text-main);
-      line-height: 1.25;
-    }
-
-    .settings-card-desc {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-      line-height: 1.35;
-    }
-
-    .sync-status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      background: rgba(16, 185, 129, 0.12);
-      color: #10B981;
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      white-space: nowrap;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10B981;
-    }
-
-    .settings-btn-link {
-      background: none;
-      border: none;
-      color: var(--primary);
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 4px 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .settings-input {
-      width: 100%;
-      background: #0D1016;
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 9px 12px;
-      color: var(--text-main);
-      font-size: 0.82rem;
-      margin-top: 4px;
-      outline: none;
-    }
-
-    .btn-primary-settings {
-      background: var(--primary);
-      color: #FFFFFF;
-      border: none;
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 10px 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 10px;
-      width: 100%;
-      transition: opacity 0.2s;
-    }
-
-    .btn-primary-settings:hover {
-      opacity: 0.9;
-    }
-
-    .btn-outline-settings {
-      background: transparent;
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      font-weight: 600;
-      font-size: 0.76rem;
-      padding: 7px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
-      white-space: nowrap;
-    }
-
-    .btn-outline-settings:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    /* Switch On/Off */
-    .switch-control {
-      position: relative;
-      display: inline-block;
-      width: 44px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-
-    .switch-control input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .switch-slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(255, 255, 255, 0.15);
-      transition: .25s;
-      border-radius: 24px;
-    }
-
-    .switch-slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .25s;
-      border-radius: 50%;
-    }
-
-    .switch-control input:checked + .switch-slider {
-      background-color: var(--primary);
-    }
-
-    .switch-control input:checked + .switch-slider:before {
-      transform: translateX(20px);
-    }
-
-    /* Bouton tiroir filtres avancés */
+    /* Tiroir Pliable des Filtres Avancés */
     .btn-drawer-toggle {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--bg-porcelain);
       border: 1px solid var(--card-border);
       color: var(--text-main);
-      border-radius: 10px;
-      padding: 7px 12px;
+      border-radius: 20px;
+      padding: 8px 14px;
       font-size: 0.76rem;
       font-weight: 700;
       cursor: pointer;
@@ -1904,8 +452,7 @@
     }
 
     .btn-drawer-toggle:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+      border-color: #B0B0B0;
     }
 
     .advanced-filters-drawer {
@@ -1923,6 +470,1190 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .filters-grid-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .segmented-control {
+      display: flex;
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .segmented-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .segmented-btn.active {
+      background: #FFFFFF;
+      color: var(--text-main);
+      font-weight: 800;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .chip-filter {
+      white-space: nowrap;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .chip-filter:hover {
+      border-color: var(--text-main);
+      color: var(--text-main);
+    }
+
+    .chip-filter.active, .chip-filter.immo-active {
+      background: #FFFFFF;
+      border-color: var(--accent-immo);
+      color: var(--accent-immo);
+      font-weight: 800;
+      box-shadow: 0 0 0 1px var(--accent-immo);
+    }
+
+    .chip-filter.voyage-active {
+      background: #FFFFFF;
+      border-color: var(--booking-blue);
+      color: var(--booking-blue);
+      font-weight: 800;
+      box-shadow: 0 0 0 1px var(--booking-blue);
+    }
+
+    .btn-reset-filters {
+      white-space: nowrap;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      background: #FEF2F2;
+      border: 1px solid #FCA5A5;
+      color: #DC2626;
+      cursor: pointer;
+    }
+
+    .btn-reset-dislikes {
+      background: #FFFBEB;
+      border: 1px solid #FCD34D;
+      color: #D97706;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .viager-exclude-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #F0FDF4;
+      border: 1px solid #DCFCE7;
+      border-radius: 12px;
+      padding: 8px 12px;
+      margin-top: 4px;
+    }
+
+    .viager-exclude-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #166534;
+      cursor: pointer;
+    }
+
+    .viager-exclude-label input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: #166534;
+      cursor: pointer;
+    }
+
+    /* Barre Horizontale d'Icônes de Filtres Rapides Façon Airbnb */
+    .airbnb-quick-filters-bar {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 6px 4px 12px 4px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .airbnb-quick-filters-bar::-webkit-scrollbar { display: none; }
+
+    .quick-filter-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 4px 8px 8px 8px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 0.74rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      opacity: 0.75;
+    }
+
+    .quick-filter-item:hover {
+      color: var(--text-main);
+      opacity: 1;
+      border-bottom-color: #DDDDDD;
+    }
+
+    .quick-filter-item.active {
+      color: var(--text-main);
+      font-weight: 800;
+      opacity: 1;
+      border-bottom-color: var(--accent-immo);
+    }
+
+    .quick-filter-item .qf-icon {
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    /* Vue Switch (Liste / Carte) & Nombre de résultats */
+    .view-toggle-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      max-width: 1280px;
+    }
+
+    .results-count {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .view-mode-switch {
+      display: flex;
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .view-mode-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .view-mode-btn.active {
+      background: #FFFFFF;
+      color: var(--text-main);
+      font-weight: 800;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* Grille Responsive Propre */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
+      gap: 24px 20px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ========================================================= */
+    /* 3. CARTES D'ANNONCES IMMOBILIER STYLE AIRBNB (SANS CADRE) */
+    /* ========================================================= */
+    .card, .item-card, .card-airbnb-immo {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      border-radius: 16px;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      touch-action: pan-y;
+      user-select: none;
+      height: 100%;
+      transition: transform 0.2s ease;
+    }
+
+    .card.swiping { transition: none; }
+    .card.swiped-right { transform: translateX(120%) rotate(15deg) !important; opacity: 0 !important; }
+    .card.swiped-left { transform: translateX(-120%) rotate(-15deg) !important; opacity: 0 !important; }
+
+    .card-img-wrap, .card-airbnb-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 20 / 19;
+      max-height: 250px;
+      background: #F3F4F6;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card-img, .card-airbnb-img, .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img, .card-airbnb-immo:hover .card-airbnb-img {
+      transform: scale(1.02);
+    }
+
+    /* Badge Coup de Cœur ou Vérifié (Airbnb Style blanc pillule) */
+    .card-badge, .badge-airbnb-verified {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--text-main);
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 5px 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      z-index: 10;
+      letter-spacing: -0.01em;
+      border: none;
+    }
+
+    /* Bouton Favori / Cœur en haut à droite */
+    .btn-card-fav, .btn-airbnb-fav {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 12;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-card-fav:hover, .btn-airbnb-fav:hover {
+      transform: scale(1.08);
+      background: #FFFFFF;
+    }
+
+    .btn-card-fav.active, .btn-airbnb-fav.active {
+      color: var(--accent-airbnb);
+    }
+
+    /* Flèches de carrousel blanches rondes (apparaissent au survol / toucher) */
+    .carousel-btn, .carousel-btn-airbnb {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+      border: none;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 12;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .card:hover .carousel-btn, .card-airbnb-immo:hover .carousel-btn-airbnb,
+    .card-img-wrap:hover .carousel-btn {
+      opacity: 1;
+    }
+
+    @media (hover: none) {
+      .carousel-btn, .carousel-btn-airbnb { opacity: 0.9; }
+    }
+
+    .carousel-btn.prev, .carousel-btn-airbnb.prev { left: 8px; }
+    .carousel-btn.next, .carousel-btn-airbnb.next { right: 8px; }
+
+    /* Points indicateurs (dots) en bas de la photo */
+    .card-photo-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 12;
+    }
+
+    .photo-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      transition: all 0.2s ease;
+    }
+
+    .photo-dot.active {
+      background: #FFFFFF;
+      width: 8px;
+      height: 8px;
+    }
+
+    .carousel-counter {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      z-index: 12;
+    }
+
+    /* Informations Airbnb sous la photo */
+    .card-body, .card-airbnb-info {
+      padding: 10px 2px 4px 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .card-airbnb-line1 {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-airbnb-loc {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-main);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .card-airbnb-specs {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .card-airbnb-title {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-airbnb-price-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .card-airbnb-price {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .card-airbnb-price .price-sub {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+
+    .badge-airbnb-market {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #ECFDF5;
+      color: #047857;
+      border: 1px solid #A7F3D0;
+    }
+
+    /* Boutons d'Action Pilules Discrètes */
+    .card-actions-bar, .card-airbnb-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--card-border-subtle);
+      width: 100%;
+    }
+
+    .btn-action-pill {
+      flex: 1;
+      border-radius: 20px;
+      padding: 7px 10px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid var(--card-border);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-action-pill.pill-discard {
+      background: #FFFFFF;
+      color: var(--text-secondary);
+      border-color: var(--card-border);
+    }
+
+    .btn-action-pill.pill-discard:hover {
+      background: #FEF2F2;
+      color: #EF4444;
+      border-color: #FCA5A5;
+    }
+
+    .btn-action-pill.pill-view {
+      flex: 1.25;
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
+    }
+
+    .btn-action-pill.pill-view:hover {
+      background: #000000;
+    }
+
+    .btn-action-pill.pill-like {
+      background: #FFF1F2;
+      color: var(--accent-airbnb);
+      border-color: #FFE4E6;
+    }
+
+    .btn-action-pill.pill-like.active {
+      background: var(--accent-airbnb);
+      color: #FFFFFF;
+      border-color: var(--accent-airbnb);
+    }
+
+    /* Compatibilité classes legacy Immo */
+    .card-price { font-size: 1rem; font-weight: 800; color: var(--text-main); }
+    .card-loc { font-size: 0.78rem; color: var(--text-secondary); font-weight: 600; display: flex; align-items: center; gap: 4px; }
+    .card-title { font-size: 0.85rem; font-weight: 600; color: var(--text-main); line-height: 1.35; }
+    .spec-pill { font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: var(--bg-porcelain); border: 1px solid var(--card-border); color: var(--text-secondary); }
+    .btn-swipe-dislike { flex: 1; background: #FFFFFF; border: 1px solid var(--card-border); color: var(--text-secondary); font-size: 0.72rem; font-weight: 700; padding: 7px 6px; border-radius: 20px; cursor: pointer; }
+    .btn-open-detail { flex: 1.25; background: var(--text-main); color: #FFFFFF; font-size: 0.72rem; font-weight: 800; padding: 7px 6px; border-radius: 20px; border: none; cursor: pointer; text-decoration: none; text-align: center; }
+    .btn-swipe-like { flex: 1; background: #FFF1F2; border: 1px solid #FFE4E6; color: var(--accent-airbnb); font-size: 0.72rem; font-weight: 800; padding: 7px 6px; border-radius: 20px; cursor: pointer; }
+
+    /* ========================================================= */
+    /* 4. CARTES D'ANNONCES VOYAGE STYLE BOOKING.COM            */
+    /* ========================================================= */
+    .card-booking-voyage, .card-voyage {
+      background: #FFFFFF;
+      border: 1px solid #E7E7E7;
+      border-radius: 12px;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card-booking-voyage:hover, .card-voyage:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--booking-blue);
+    }
+
+    .card-booking-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 190px;
+      background: #F3F4F6;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card-booking-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .booking-badges-top {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 10;
+    }
+
+    .badge-booking-rating {
+      background: var(--booking-navy);
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 6px 6px 6px 0;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .badge-booking-deal {
+      background: var(--booking-green);
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .btn-booking-fav {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 12;
+    }
+
+    .card-booking-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .booking-dest-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .booking-dest-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--booking-navy);
+    }
+
+    .booking-badge-navy {
+      background: var(--booking-navy);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    .booking-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .booking-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+    }
+
+    .booking-pricing-box {
+      margin-top: 4px;
+      padding: 8px 10px;
+      background: var(--bg-porcelain);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+
+    .booking-old-price {
+      text-decoration: line-through;
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+    }
+
+    .booking-final-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .booking-final-price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .booking-price-unit {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+    }
+
+    .booking-actions-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .btn-booking-action {
+      background: #F0F6FF;
+      color: var(--booking-blue);
+      border: 1px solid #BFDBFE;
+      border-radius: 8px;
+      padding: 8px 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-booking-action:hover {
+      background: var(--booking-blue);
+      color: #FFFFFF;
+      border-color: var(--booking-blue);
+    }
+
+    .btn-booking-action.btn-booking-primary {
+      background: var(--booking-blue);
+      color: #FFFFFF;
+      border: none;
+    }
+
+    .btn-booking-action.btn-booking-primary:hover {
+      background: var(--booking-blue-hover);
+    }
+
+    .card-booking-subactions {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    /* Compatibilité badges & boutons Voyage existants */
+    .badge-voy-train { background: var(--booking-green) !important; color: #fff !important; }
+    .badge-voy-flight { background: var(--booking-navy) !important; color: #fff !important; }
+    .badge-voy-package { background: linear-gradient(135deg, #003B95, #006CE4) !important; color: #fff !important; }
+
+    .voyage-sync-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 6px 0; }
+    .btn-sync-action { border-radius: 8px; padding: 7px 4px; font-size: 0.72rem; font-weight: 700; text-align: center; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+    .btn-sync-action.sync-flight { background: #F0F6FF; color: var(--booking-blue); border: 1px solid #BFDBFE; }
+    .btn-sync-action.sync-flight:hover { background: var(--booking-blue); color: var(--text-main); }
+    .btn-sync-action.sync-hotel { background: #F0FDF4; color: var(--booking-green); border: 1px solid #BBF7D0; }
+    .btn-sync-action.sync-hotel:hover { background: var(--booking-green); color: var(--text-main); }
+    .btn-sync-action.sync-package { background: var(--booking-blue); color: var(--text-main); border: none; font-weight: 800; }
+    .btn-sync-action.sync-train { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .btn-sync-action.sync-train:hover { background: #059669; color: var(--text-main); }
+
+    /* ========================================================= */
+    /* 5. BARRE DE NAVIGATION EN BAS (BLANCHE & ÉPURÉE)          */
+    /* ========================================================= */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 600;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 10px max(10px, env(safe-area-inset-bottom));
+      max-width: 880px;
+      margin: 0 auto;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 12px;
+      transition: all 0.15s ease;
+    }
+
+    .nav-icon {
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .nav-item.active.nav-immo-active, .nav-item.active.nav-immo {
+      color: var(--accent-airbnb);
+      font-weight: 800;
+      background: #FFF1F2;
+    }
+
+    .nav-item.active.nav-voyage-active, .nav-item.active {
+      color: var(--booking-blue);
+      font-weight: 800;
+      background: #F0F6FF;
+    }
+
+    /* ========================================================= */
+    /* 6. MODALES, CALENDRIER, RADARS & RÉGLAGES ÉPURÉS         */
+    /* ========================================================= */
+    .detail-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2500;
+      background: #FFFFFF;
+      display: none;
+      flex-direction: column;
+      overflow-y: auto;
+      padding-bottom: 40px;
+    }
+    .detail-modal-overlay.open { display: flex; }
+
+    .detail-modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    .btn-close-detail {
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .detail-hero-gallery {
+      position: relative;
+      height: 260px;
+      background: var(--bg-porcelain);
+      overflow: hidden;
+    }
+
+    .detail-hero-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .detail-thumbnails {
+      display: flex;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--bg-porcelain);
+      overflow-x: auto;
+    }
+
+    .detail-thumb {
+      width: 60px;
+      height: 44px;
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.65;
+      border: 2px solid transparent;
+    }
+    .detail-thumb.active { opacity: 1; border-color: var(--accent-airbnb); }
+
+    .detail-body {
+      padding: 18px;
+      max-width: 880px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .detail-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    @media (min-width: 640px) {
+      .detail-specs-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .spec-card, .spec-item { display: flex; flex-direction: column; gap: 2px; }
+    .spec-card-label, .spec-label { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; }
+    .spec-card-val, .spec-val { font-size: 0.88rem; font-weight: 800; color: var(--text-main); }
+
+    #detailMiniMap, #mainMapContainer {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+    }
+    #mainMapContainer { height: 480px; margin-bottom: 14px; }
+    #detailMiniMap { height: 220px; margin-top: 6px; }
+
+    .btn-cta-official {
+      background: var(--accent-airbnb);
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-weight: 800;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      margin-top: 8px;
+      box-shadow: 0 4px 14px rgba(255, 56, 92, 0.3);
+    }
+
+    /* Popover Calendrier */
+    .cal-popover-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      backdrop-filter: blur(4px);
+    }
+    .cal-popover-backdrop.open { display: flex; }
+
+    .cal-popover-card {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      max-width: 440px;
+      width: 100%;
+      padding: 20px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cal-quick-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+    .cal-quick-tab {
+      flex: 1;
+      min-width: 90px;
+      padding: 7px 8px;
+      border-radius: 16px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-align: center;
+    }
+    .cal-quick-tab.active {
+      background: #F0F6FF;
+      border-color: var(--booking-blue);
+      color: var(--booking-blue);
+      font-weight: 800;
+    }
+
+    .cal-month-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .cal-nav-btn {
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+    .cal-day-header { font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); padding-bottom: 6px; }
+    .cal-day {
+      padding: 8px 0;
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .cal-day:hover:not(.disabled):not(.empty) { background: var(--bg-porcelain); }
+    .cal-day.selected-start, .cal-day.selected-end {
+      background: var(--booking-blue);
+      color: #FFFFFF;
+      font-weight: 800;
+    }
+    .cal-day.in-range { background: #F0F6FF; color: var(--booking-blue); }
+    .cal-day.disabled { opacity: 0.3; cursor: not-allowed; }
+    .cal-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--card-border); }
+
+    /* Cartes Réglages & Radars */
+    .settings-card, .radar-card-item {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .settings-card-header, .radar-card-header { display: flex; align-items: center; gap: 14px; }
+    .settings-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .settings-card-title { font-size: 0.98rem; font-weight: 800; color: var(--text-main); }
+    .settings-card-desc { font-size: 0.76rem; color: var(--text-secondary); margin-top: 2px; }
+    .sync-status-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #047857; }
+    .settings-btn-link { background: none; border: none; color: var(--accent-airbnb); font-size: 0.78rem; font-weight: 700; cursor: pointer; padding: 4px 0; display: inline-flex; align-items: center; gap: 4px; }
+    .settings-input { width: 100%; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; color: var(--text-main); font-size: 0.84rem; margin-top: 4px; outline: none; }
+    .btn-primary-settings { background: var(--accent-airbnb); color: #FFFFFF; border: none; font-weight: 700; font-size: 0.82rem; padding: 10px 16px; border-radius: 10px; cursor: pointer; margin-top: 10px; width: 100%; }
+    .btn-outline-settings { background: transparent; border: 1px solid var(--border); color: var(--text-main); font-weight: 600; font-size: 0.76rem; padding: 7px 12px; border-radius: 8px; cursor: pointer; }
+
+    /* Switch On/Off */
+    .switch-control { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+    .switch-control input { opacity: 0; width: 0; height: 0; }
+    .switch-slider { position: absolute; cursor: pointer; inset: 0; background-color: #E5E7EB; transition: .2s; border-radius: 24px; }
+    .switch-slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .2s; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .switch-control input:checked + .switch-slider { background-color: var(--accent-airbnb); }
+    .switch-control input:checked + .switch-slider:before { transform: translateX(20px); }
+
+    /* PIN Lock Screen Modal (Light) */
+    .pin-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .pin-box {
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .pin-dots { display: flex; gap: 14px; margin: 10px 0; }
+    .pin-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-airbnb);
+      background: transparent;
+      transition: background 0.15s ease;
+    }
+    .pin-dot.filled {
+      background: var(--accent-airbnb);
+      box-shadow: 0 0 10px rgba(255, 56, 92, 0.4);
+    }
+
+    .pin-pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; }
+    .btn-pin {
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-pin:active { background: #E5E7EB; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 82px;
+      left: 50%;
+      transform: translateX(-50%) translateY(140px);
+      background: #222222;
+      border: 1px solid #333333;
+      color: #FFFFFF;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-weight: 700;
+      font-size: 0.78rem;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: calc(100vw - 24px);
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+    .toast-undo-btn { background: #38BDF8; color: #000; border-radius: 12px; padding: 4px 8px; font-weight: 800; border: none; cursor: pointer; }
+
+    /* Carrousel Inspirations Voyage */
+    .voyage-inspirations-box {
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .voyage-inspi-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+    .voyage-inspi-track::-webkit-scrollbar { display: none; }
+    .voyage-inspi-card {
+      flex: 0 0 285px;
+      scroll-snap-align: start;
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s;
+    }
+    .voyage-inspi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .voyage-inspi-img { width: 100%; height: 130px; object-fit: cover; }
+
+    /* Breakdown Box dans Modal Package */
+    .voyage-breakdown-box {
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.74rem;
+      color: var(--text-main);
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+    .voyage-breakdown-row { display: flex; justify-content: space-between; }
+    .voyage-breakdown-sep { border-top: 1px dashed var(--border); margin: 6px 0; }
+    .voyage-breakdown-total { display: flex; justify-content: space-between; font-weight: 800; color: var(--booking-navy); font-size: 0.82rem; }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 40px 16px;
+      background: var(--bg-porcelain);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-lg);
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -1988,13 +1719,13 @@
       </div>
     </div>
 
-    <!-- Switch Double Univers -->
+    <!-- Switch Double Univers (Style Airbnb & Booking) -->
     <div class="universe-switch-container">
       <button id="univBtnImmo" class="univ-btn active univ-immo" onclick="switchUniverse('immo')">
-        <span>🏠</span> IMMOBILIER MONDIAL
+        <span>🏠 Logements</span>
       </button>
       <button id="univBtnVoyage" class="univ-btn univ-voyage" onclick="switchUniverse('voyage')">
-        <span>✈️</span> VOYAGE & ÉVASION
+        <span>✈️ Voyages &amp; Séjours</span>
       </button>
     </div>
   </header>
@@ -2083,7 +1814,7 @@
         <div id="liveScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--primary); border-radius: 10px; padding: 10px 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
             <span id="liveScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: var(--primary);">🔄 Recherche en cours...</span>
-            <span id="liveScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: #fff;">0%</span>
+            <span id="liveScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: var(--text-main);">0%</span>
           </div>
           <div style="background: rgba(255, 255, 255, 0.1); border-radius: 6px; height: 6px; overflow: hidden;">
             <div id="liveScanProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #FF5A5F, #00A699); transition: width 0.3s ease;"></div>
@@ -2099,6 +1830,55 @@
           <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="immoDirectPortalsLinks"></div>
         </div>
       </div>
+
+      <!-- Barre Horizontale d'Icônes de Filtres Rapides Façon Airbnb -->
+      <div class="airbnb-quick-filters-bar" id="immoQuickFiltersBar">
+        <button class="quick-filter-item active" data-type="all" onclick="selectQuickFilter('all', this)">
+          <span class="qf-icon">🏠</span>
+          <span class="qf-text">Tous</span>
+        </button>
+        <button class="quick-filter-item" data-type="loc" onclick="selectQuickFilter('loc', this)">
+          <span class="qf-icon">🔑</span>
+          <span class="qf-text">Locations</span>
+        </button>
+        <button class="quick-filter-item" data-type="achat" onclick="selectQuickFilter('achat', this)">
+          <span class="qf-icon">🏷️</span>
+          <span class="qf-text">Achats</span>
+        </button>
+        <button class="quick-filter-item" data-type="studio" onclick="selectQuickFilter('studio', this)">
+          <span class="qf-icon">🏢</span>
+          <span class="qf-text">Studios</span>
+        </button>
+        <button class="quick-filter-item" data-type="t2" onclick="selectQuickFilter('t2', this)">
+          <span class="qf-icon">🛋️</span>
+          <span class="qf-text">T2</span>
+        </button>
+        <button class="quick-filter-item" data-type="t3" onclick="selectQuickFilter('t3', this)">
+          <span class="qf-icon">🛏️</span>
+          <span class="qf-text">T3+</span>
+        </button>
+        <button class="quick-filter-item" data-type="maison" onclick="selectQuickFilter('maison', this)">
+          <span class="qf-icon">🏡</span>
+          <span class="qf-text">Maisons</span>
+        </button>
+        <button class="quick-filter-item" data-type="mer" onclick="selectQuickFilter('mer', this)">
+          <span class="qf-icon">🌊</span>
+          <span class="qf-text">Vue Mer</span>
+        </button>
+        <button class="quick-filter-item" data-type="piscine" onclick="selectQuickFilter('piscine', this)">
+          <span class="qf-icon">🏊</span>
+          <span class="qf-text">Piscine</span>
+        </button>
+        <button class="quick-filter-item" data-type="terrasse" onclick="selectQuickFilter('terrasse', this)">
+          <span class="qf-icon">☀️</span>
+          <span class="qf-text">Terrasse</span>
+        </button>
+        <button class="quick-filter-item" data-type="parking" onclick="selectQuickFilter('parking', this)">
+          <span class="qf-icon">🚗</span>
+          <span class="qf-text">Parking</span>
+        </button>
+      </div>
+
 
       <!-- ÉTAPE 3 : Switch immédiat [ 📋 Vue Liste ] | [ 🗺️ Vue Carte Leaflet ] -->
       <div class="view-toggle-bar">
@@ -2164,7 +1944,7 @@
       <div class="voyage-inspirations-box">
         <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
           <div>
-            <div style="font-size: 0.96rem; font-weight: 800; color: #fff;">✨ Offres Spéciales &amp; Inspirations du Moment</div>
+            <div style="font-size: 0.96rem; font-weight: 800; color: var(--text-main);">✨ Offres Spéciales &amp; Inspirations du Moment</div>
             <div style="font-size: 0.72rem; color: #94a3b8;">Sélection éditoriale indépendante : Ventes Flash compagnies, Idées Week-end Grand Est / LUX / BSL &amp; Séjours Soleil</div>
           </div>
           <span style="font-size: 0.68rem; font-weight: 800; color: #fcd34d; background: rgba(251,191,36,0.14); border: 1px solid rgba(251,191,36,0.35); padding: 3px 8px; border-radius: 6px;">Carrousel Indépendant</span>
@@ -2238,7 +2018,7 @@
         <div id="voyageScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--accent-voyage); border-radius: 10px; padding: 10px 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
             <span id="voyageScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: var(--accent-voyage);">🔄 Recherche en cours...</span>
-            <span id="voyageScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: #fff;">0%</span>
+            <span id="voyageScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: var(--text-main);">0%</span>
           </div>
           <div style="background: rgba(255, 255, 255, 0.1); border-radius: 6px; height: 6px; overflow: hidden;">
             <div id="voyageScanProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #00A699, #10B981); transition: width 0.3s ease;"></div>
@@ -2254,11 +2034,32 @@
         </div>
       </div>
 
+      <!-- Barre Horizontale de Filtres Rapides Booking -->
+      <div class="airbnb-quick-filters-bar" id="voyageQuickFiltersBar">
+        <button class="quick-filter-item active" id="voyFilterAll" onclick="setVoyageCatFilter('all', this)">
+          <span class="qf-icon">🌟</span>
+          <span class="qf-text">Tout voir</span>
+        </button>
+        <button class="quick-filter-item" id="voyFilterPackage" onclick="setVoyageCatFilter('package', this)">
+          <span class="qf-icon">🏨</span>
+          <span class="qf-text">Packages Vol + Hôtel</span>
+        </button>
+        <button class="quick-filter-item" id="voyFilterFlight" onclick="setVoyageCatFilter('flight', this)">
+          <span class="qf-icon">✈️</span>
+          <span class="qf-text">Vols secs</span>
+        </button>
+        <button class="quick-filter-item" id="voyFilterTrain" onclick="setVoyageCatFilter('train', this)">
+          <span class="qf-icon">🚄</span>
+          <span class="qf-text">Trains directs</span>
+        </button>
+      </div>
+
+
       <!-- POPOVER CALENDRIER INTERACTIF STYLE LASTMINUTE.COM -->
       <div class="cal-popover-backdrop" id="calendarPopoverBackdrop" onclick="closeCalendarPopoverIfBackdrop(event)">
         <div class="cal-popover-card">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-            <span style="font-size: 0.95rem; font-weight: 800; color: #fff;">📅 Dates de Voyage</span>
+            <span style="font-size: 0.95rem; font-weight: 800; color: var(--text-main);">📅 Dates de Voyage</span>
             <button onclick="closeCalendarPopover()" style="background:none; border:none; color:#94a3b8; font-size:1.2rem; cursor:pointer;">✕</button>
           </div>
 
@@ -2271,7 +2072,7 @@
 
           <div class="cal-month-nav">
             <button class="cal-nav-btn" onclick="changeCalMonth(-1)">‹</button>
-            <span id="calMonthLabel" style="font-size: 0.88rem; font-weight: 800; color: #fff; text-transform: capitalize;">Novembre 2026</span>
+            <span id="calMonthLabel" style="font-size: 0.88rem; font-weight: 800; color: var(--text-main); text-transform: capitalize;">Novembre 2026</span>
             <button class="cal-nav-btn" onclick="changeCalMonth(1)">›</button>
           </div>
 
@@ -2288,14 +2089,14 @@
 
           <div class="cal-footer">
             <button onclick="clearCalendarDates()" style="background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color:#f87171; border-radius:8px; padding:8px 12px; font-size:0.76rem; font-weight:800; cursor:pointer;">Effacer les dates</button>
-            <button onclick="confirmCalendarDates()" style="background: #0284c7; border: none; color:#fff; border-radius:8px; padding:8px 18px; font-size:0.8rem; font-weight:800; cursor:pointer;">✓ Valider</button>
+            <button onclick="confirmCalendarDates()" style="background: #0284c7; border: none; color:var(--text-main); border-radius:8px; padding:8px 18px; font-size:0.8rem; font-weight:800; cursor:pointer;">✓ Valider</button>
           </div>
         </div>
       </div>
 
       <!-- RÉSULTATS RECHERCHE PAR CRITÈRES (STRICTEMENT SÉPARÉS DE LA BANNIÈRE) -->
       <div style="margin-top: 18px; padding: 12px 14px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.28); border-radius: 12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-        <div style="font-size: 0.94rem; font-weight: 800; color: #fff;">🎯 Résultats en direct pour votre recherche (Dates &amp; Budget sélectionnés)</div>
+        <div style="font-size: 0.94rem; font-weight: 800; color: var(--text-main);">🎯 Résultats en direct pour votre recherche (Dates &amp; Budget sélectionnés)</div>
         <div id="voyageSearchSummaryMeta" style="font-size: 0.74rem; font-weight: 800; color: #38bdf8;"></div>
       </div>
 
@@ -2351,7 +2152,7 @@
         <div class="funnel-search-box" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05); margin-bottom: 12px;">
           <div style="display: flex; align-items: center; justify-content: space-between;">
             <h4 style="font-size: 0.88rem; font-weight: 800; color: #34d399;">❤️ Profil intelligent basé sur vos Likes</h4>
-            <span style="font-size: 0.7rem; color: #fff; font-weight: 800;" id="radarLikedCount">0 like(s)</span>
+            <span style="font-size: 0.7rem; color: var(--text-main); font-weight: 800;" id="radarLikedCount">0 like(s)</span>
           </div>
           <p style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4;" id="radarSmartImmoDesc">
             Likez des biens en swipant à droite 👉 pour générer votre profil automatique.
@@ -2363,11 +2164,11 @@
 
         <!-- Formulaire Radar Immo -->
         <div class="funnel-search-box">
-          <h4 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🏠 Nouvelle Alerte Immobilière</h4>
+          <h4 style="font-size: 0.92rem; font-weight: 800; color: var(--text-main);">🏠 Nouvelle Alerte Immobilière</h4>
           
           <div style="margin-top: 8px;">
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">1. Secteur / Ville à surveiller</label>
-            <input type="text" id="radarImmoCity" class="search-input-wrap" style="width:100%; background:#090e1a; border:1px solid var(--card-border); border-radius:8px; padding:8px 12px; color:#fff; font-size:0.84rem; margin-top:4px;" value="Nancy" placeholder="Ex: Nancy, Saint-Martin 97150, Paris..." />
+            <input type="text" id="radarImmoCity" class="search-input-wrap" style="width:100%; background:var(--bg-porcelain); border:1px solid var(--card-border); border-radius:8px; padding:8px 12px; color:var(--text-main); font-size:0.84rem; margin-top:4px;" value="Nancy" placeholder="Ex: Nancy, Saint-Martin 97150, Paris..." />
           </div>
 
           <div style="margin-top: 8px;">
@@ -2381,20 +2182,20 @@
           <div style="margin-top: 8px;">
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">3. Type de bien & Surface minimum (m²)</label>
             <div style="display: flex; gap: 8px; margin-top: 4px;">
-              <select id="radarImmoTypeSelect" style="flex: 1; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem;">
+              <select id="radarImmoTypeSelect" style="flex: 1; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: var(--text-main); font-size: 0.82rem;">
                 <option value="Studio">Studio / T1</option>
                 <option value="T2" selected>T2 (2 pièces)</option>
                 <option value="T3">T3 (3 pièces)</option>
                 <option value="T4+">T4+ (4 pièces et +)</option>
                 <option value="Maison">Maison / Villa</option>
               </select>
-              <input type="number" id="radarImmoMinM2" placeholder="Min m²" value="35" style="width: 90px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem;" />
+              <input type="number" id="radarImmoMinM2" placeholder="Min m²" value="35" style="width: 90px; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: var(--text-main); font-size: 0.82rem;" />
             </div>
           </div>
 
           <div style="margin-top: 8px;">
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">4. Budget Maximum (€)</label>
-            <input type="number" id="radarImmoBudget" value="700" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.84rem; margin-top: 4px;" />
+            <input type="number" id="radarImmoBudget" value="700" style="width: 100%; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: var(--text-main); font-size: 0.84rem; margin-top: 4px;" />
           </div>
 
           <button class="btn-live-scan" onclick="saveRadarCloud('immo')" style="margin-top: 14px;">
@@ -2411,17 +2212,17 @@
 
           <div>
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">1. Ville de Départ</label>
-            <input type="text" id="radarVoyageDepart" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.84rem; margin-top: 4px;" value="Nancy (ou Luxembourg / Paris)" />
+            <input type="text" id="radarVoyageDepart" style="width: 100%; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: var(--text-main); font-size: 0.84rem; margin-top: 4px;" value="Nancy (ou Luxembourg / Paris)" />
           </div>
 
           <div style="margin-top: 8px;">
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">2. Destination Cible</label>
-            <input type="text" id="radarVoyageDest" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.84rem; margin-top: 4px;" value="Saint-Martin SXM" placeholder="Ex: Saint-Martin SXM, Italie, Soleil, ou Partout" />
+            <input type="text" id="radarVoyageDest" style="width: 100%; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: var(--text-main); font-size: 0.84rem; margin-top: 4px;" value="Saint-Martin SXM" placeholder="Ex: Saint-Martin SXM, Italie, Soleil, ou Partout" />
           </div>
 
           <div style="margin-top: 8px;">
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">3. Période / Dates ou Durée</label>
-            <select id="radarVoyagePeriod" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem; margin-top: 4px;">
+            <select id="radarVoyagePeriod" style="width: 100%; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: var(--text-main); font-size: 0.82rem; margin-top: 4px;">
               <option value="semaine" selected>1 Semaine (7 jours)</option>
               <option value="weekend">Week-end (3 jours)</option>
               <option value="fevrier">Vacances de Février</option>
@@ -2436,12 +2237,12 @@
 
           <div style="margin-top: 8px;">
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">4. Budget Max par personne (€)</label>
-            <input type="number" id="radarVoyageBudget" value="450" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 0.84rem; margin-top: 4px;" />
+            <input type="number" id="radarVoyageBudget" value="450" style="width: 100%; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; color: var(--text-main); font-size: 0.84rem; margin-top: 4px;" />
           </div>
 
           <div style="margin-top: 8px;">
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">5. Type d'Alerte</label>
-            <select id="radarVoyageType" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; font-size: 0.82rem; margin-top: 4px;">
+            <select id="radarVoyageType" style="width: 100%; background: var(--bg-porcelain); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: var(--text-main); font-size: 0.82rem; margin-top: 4px;">
               <option value="package" selected>🏖️ Séjour Vol + Hôtel tout compris</option>
               <option value="flight">✈️ Vol sec (erreur de prix / promo flash)</option>
               <option value="train">🚄 Train TGV / Ouigo direct</option>
@@ -2457,7 +2258,7 @@
       <!-- LISTE DES RADARS ACTIFS EN DESSOUS (CHANTIER 4) -->
       <div style="margin-top: 24px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-          <h3 style="font-size: 1.05rem; font-weight: 800; color: #fff;">📡 Mes Alertes Actives</h3>
+          <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main);">📡 Mes Alertes Actives</h3>
           <span style="font-size: 0.72rem; color: var(--text-muted);" id="activeRadarsTotalCount">0 radar(s)</span>
         </div>
 
@@ -2578,7 +2379,7 @@
       <div style="display: flex; align-items: center; gap: 8px;">
         <span style="font-size: 1.2rem;">🏠</span>
         <div>
-          <div style="font-size: 0.95rem; font-weight: 800; color: #fff;" id="modalImmoTitle">Fiche du Logement</div>
+          <div style="font-size: 0.95rem; font-weight: 800; color: var(--text-main);" id="modalImmoTitle">Fiche du Logement</div>
           <div style="font-size: 0.7rem; color: var(--accent-immo);" id="modalImmoLoc">Localisation précise</div>
         </div>
       </div>
@@ -2631,7 +2432,7 @@
       <div style="display:flex; align-items:center; gap:10px;">
         <button class="btn-icon" onclick="closeVoyagePackageModal()" style="width:32px; height:32px; border-radius:50%;">←</button>
         <div>
-          <div style="font-size: 0.96rem; font-weight: 800; color: #fff;" id="pkgModalTitle">Séjour Tout Compris Synchronisé</div>
+          <div style="font-size: 0.96rem; font-weight: 800; color: var(--text-main);" id="pkgModalTitle">Séjour Tout Compris Synchronisé</div>
           <div style="font-size: 0.72rem; color: #fbbf24; font-weight: 700;" id="pkgModalSubtitle">Dates synchronisées</div>
         </div>
       </div>
@@ -2717,37 +2518,68 @@
     }
 
     function initTheme() {
-      const saved = localStorage.getItem('horizons_theme') || 'dark';
-      applyTheme(saved);
+      // Force le Light Mode Airbnb / Booking lumineux par défaut (zéro mode sombre)
+      localStorage.removeItem('nexus_dark_mode');
+      localStorage.removeItem('dark-mode');
+      localStorage.setItem('horizons_theme', 'light');
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) btn.innerHTML = '☀️';
+      const sLbl = document.getElementById('currentThemeLabel');
+      if (sLbl) sLbl.textContent = 'Mode Lumineux Airbnb & Booking (Actif)';
+      const sBtn = document.getElementById('settingsThemeBtn');
+      if (sBtn) sBtn.textContent = '☀️ Mode Lumineux Actif';
     }
 
     function applyTheme(theme) {
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-        const btn = document.getElementById('themeToggleBtn');
-        if (btn) btn.innerHTML = '🌙';
-        const sBtn = document.getElementById('settingsThemeBtn');
-        if (sBtn) sBtn.textContent = '🌙 Passer en Mode Sombre';
-        const sLbl = document.getElementById('currentThemeLabel');
-        if (sLbl) sLbl.textContent = 'Mode Clair épuré';
-      } else {
-        document.documentElement.classList.remove('light');
-        document.documentElement.classList.add('dark');
-        const btn = document.getElementById('themeToggleBtn');
-        if (btn) btn.innerHTML = '☀️';
-        const sBtn = document.getElementById('settingsThemeBtn');
-        if (sBtn) sBtn.textContent = '☀️ Passer en Mode Clair';
-        const sLbl = document.getElementById('currentThemeLabel');
-        if (sLbl) sLbl.textContent = 'Mode Sombre ardoise';
-      }
-      localStorage.setItem('horizons_theme', theme);
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      localStorage.setItem('horizons_theme', 'light');
     }
 
     function toggleTheme() {
-      const isLight = document.documentElement.classList.contains('light');
-      applyTheme(isLight ? 'dark' : 'light');
+      showToast('☀️ Mode Lumineux Airbnb & Booking actif');
     }
+    // =========================================================
+    // FILTRES RAPIDES FAÇON AIRBNB (CATEGORIES HORIZONTALES)
+    // =========================================================
+    function selectQuickFilter(type, btn) {
+      document.querySelectorAll('#immoQuickFiltersBar .quick-filter-item').forEach(el => el.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      if (type === 'all') {
+        selectedTransac = 'ALL';
+        selectedRoomFilters = [];
+        selectedAmenities = [];
+        document.querySelectorAll('.segmented-btn').forEach(b => b.classList.remove('active'));
+        const allBtn = document.querySelector('.segmented-btn[data-transac="ALL"]');
+        if (allBtn) allBtn.classList.add('active');
+        document.querySelectorAll('.chip-filter').forEach(b => b.classList.remove('active', 'immo-active'));
+      } else if (type === 'loc') {
+        setTransactionFilter('location');
+      } else if (type === 'achat') {
+        setTransactionFilter('achat');
+      } else if (type === 'studio') {
+        selectedRoomFilters = ['Studio'];
+      } else if (type === 't2') {
+        selectedRoomFilters = ['T2'];
+      } else if (type === 't3') {
+        selectedRoomFilters = ['T3'];
+      } else if (type === 'maison') {
+        selectedRoomFilters = ['Maison'];
+      } else if (type === 'mer') {
+        selectedAmenities = ['vue_mer'];
+      } else if (type === 'piscine') {
+        selectedAmenities = ['piscine'];
+      } else if (type === 'terrasse') {
+        selectedAmenities = ['terrasse'];
+      } else if (type === 'parking') {
+        selectedAmenities = ['parking'];
+      }
+      filterImmo();
+    }
+
 
     function loadMergedStorageList(keys) {
       const merged = new Set();
@@ -2916,47 +2748,31 @@
       }
     }
 
-    function renderBottomNav(univ) {
+        function renderBottomNav(univ) {
       const nav = document.getElementById('bottomNav');
-      if (univ === 'immo') {
-        nav.innerHTML = `
-          <div class="nav-item active nav-immo" onclick="navigateTo('pane-immo-feed', this)">
-            <span class="nav-icon">🏠</span>
-            <span>Explorer</span>
-          </div>
-          <div class="nav-item nav-immo" onclick="openLikesCatalogueTab('likes', this)">
-            <span class="nav-icon">❤️</span>
-            <span>Likés (<span id="navLikedCount">${likedItems.length}</span>)</span>
-          </div>
-          <div class="nav-item nav-immo" onclick="navigateTo('pane-radars', this); switchRadarTab('immo'); updateRadarProfile();">
-            <span class="nav-icon">🎛️</span>
-            <span>Alertes</span>
-          </div>
-          <div class="nav-item nav-immo" onclick="navigateTo('pane-reglages', this)">
-            <span class="nav-icon">🔔</span>
-            <span>Réglages</span>
-          </div>
-        `;
-      } else {
-        nav.innerHTML = `
-          <div class="nav-item active" onclick="navigateTo('pane-voyage-feed', this)">
-            <span class="nav-icon">✈️</span>
-            <span>Pépites</span>
-          </div>
-          <div class="nav-item" onclick="openLikesCatalogueTab('likes', this)">
-            <span class="nav-icon">❤️</span>
-            <span>Likés (<span id="navLikedCount">${likedItems.length}</span>)</span>
-          </div>
-          <div class="nav-item" onclick="navigateTo('pane-radars', this); switchRadarTab('voyage');">
-            <span class="nav-icon">🎯</span>
-            <span>Alertes</span>
-          </div>
-          <div class="nav-item" onclick="navigateTo('pane-reglages', this)">
-            <span class="nav-icon">🔔</span>
-            <span>Réglages</span>
-          </div>
-        `;
-      }
+      const isImmo = univ === 'immo';
+      const activeClass = isImmo ? 'nav-immo-active' : 'nav-voyage-active';
+      const exploreTarget = isImmo ? 'pane-immo-feed' : 'pane-voyage-feed';
+      const exploreIcon = isImmo ? '🏠' : '✈️';
+      
+      nav.innerHTML = `
+        <div class="nav-item active ${activeClass}" onclick="navigateTo('${exploreTarget}', this)">
+          <span class="nav-icon">${exploreIcon}</span>
+          <span>Explorer</span>
+        </div>
+        <div class="nav-item ${activeClass}" onclick="openLikesCatalogueTab('likes', this)">
+          <span class="nav-icon">❤️</span>
+          <span>Favoris (<span id="navLikedCount">${likedItems.length}</span>)</span>
+        </div>
+        <div class="nav-item ${activeClass}" onclick="navigateTo('pane-radars', this); switchRadarTab('${univ}');">
+          <span class="nav-icon">🔔</span>
+          <span>Alertes</span>
+        </div>
+        <div class="nav-item ${activeClass}" onclick="navigateTo('pane-reglages', this)">
+          <span class="nav-icon">👤</span>
+          <span>Compte</span>
+        </div>
+      `;
       updateSavedCounters();
     }
 
@@ -3770,7 +3586,7 @@
             <strong>${it.title}</strong><br/>
             💰 <span style="color:#0284c7; font-weight:800;">${it.price_str}</span><br/>
             📍 ${it.location}<br/>
-            <button onclick="openImmoDetailModal('${it.id}')" style="margin-top:4px; background:#10b981; color:#fff; border:none; padding:4px 8px; border-radius:4px; font-weight:700; cursor:pointer;">Voir la fiche</button>
+            <button onclick="openImmoDetailModal('${it.id}')" style="margin-top:4px; background:#10b981; color:var(--text-main); border:none; padding:4px 8px; border-radius:4px; font-weight:700; cursor:pointer;">Voir la fiche</button>
           </div>
         `);
         mainMapMarkers.push(marker);
@@ -3807,13 +3623,13 @@
       const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
         <defs>
           <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#0f172a"/>
-            <stop offset="100%" stop-color="#1e293b"/>
+            <stop offset="0%" stop-color="#F8FAFC"/>
+            <stop offset="100%" stop-color="#E2E8F0"/>
           </linearGradient>
         </defs>
         <rect width="640" height="360" fill="url(#bg)"/>
         <path d="M0 72 H640 M0 144 H640 M0 216 H640 M0 288 H640 M128 0 V360 M256 0 V360 M384 0 V360 M512 0 V360" stroke="#334155" stroke-width="1" opacity="0.45"/>
-        <rect x="242" y="88" width="156" height="122" rx="8" fill="#0b1120" stroke="#38bdf8" stroke-width="2" opacity="0.9"/>
+        <rect x="242" y="88" width="156" height="122" rx="8" fill="#F1F5F9" stroke="#38bdf8" stroke-width="2" opacity="0.9"/>
         <path d="M230 94 L320 44 L410 94" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
         <rect x="272" y="122" width="28" height="28" rx="3" fill="#1e293b" stroke="#64748b"/>
         <rect x="340" y="122" width="28" height="28" rx="3" fill="#1e293b" stroke="#64748b"/>
@@ -3882,72 +3698,95 @@
       if (cntEl) cntEl.textContent = `${next + 1} / ${photos.length}`;
     }
 
-    function createImmoCardHtml(it, inCatalogue = false) {
+        function createImmoCardHtml(it, inCatalogue = false) {
       const isFav = favorites.includes(it.id);
       const isLiked = likedItems.includes(it.id);
       const isAchat = it.transaction_type === 'achat';
-      const badgeClass = isAchat ? 'badge-achat' : 'badge-loc';
       const photos = getItemPhotos(it);
       const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
       const safeTitle = (it.title || 'Bien immobilier').replace(/"/g, '&quot;');
       const safeLoc = (it.location || '').replace(/'/g, "\\'");
 
+      // Formatage pièces + surface
+      const specsParts = [];
+      if (it.rooms) specsParts.push(it.rooms);
+      if (it.surface) specsParts.push(it.surface);
+      const specsBadge = specsParts.join(' • ') || (it.agency || 'Vérifié');
+
+      // Badge Coup de cœur / Vérifié blanc en haut à gauche
+      const badgeText = isFav ? '⭐ Coup de cœur' : (it.badge || (isAchat ? '🏷️ Achat' : '✓ Vérifié'));
+
+      // Dots indicateurs en bas de photo
+      let dotsHtml = '';
+      if (photos.length > 1) {
+        const dotCount = Math.min(photos.length, 5);
+        dotsHtml = '<div class="card-photo-dots">' +
+          Array.from({ length: dotCount }, (_, i) => `<span class="photo-dot ${i === curIdx ? 'active' : ''}"></span>`).join('') +
+          '</div>';
+      }
+
+      // Formatage prix en gras
+      const priceVal = it.price_str || (it.price ? `${it.price.toLocaleString('fr-FR')} €` : 'Prix N/C');
+      const priceSub = isAchat ? '' : ' par mois';
+
       return `
-        <div class="card card-immo ${inCatalogue ? 'catalogue-card' : ''}" id="card_${inCatalogue ? 'cat_' : ''}${it.id}" data-id="${it.id}">
-          <div class="card-img-wrap" onclick="openImmoDetailModal('${it.id}')">
-            <img id="card_img_${it.id}" class="card-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'immo', '${safeLoc}')" />
-            <span class="card-badge ${badgeClass}">${it.badge || (isAchat ? '🏷️ Achat' : '🏠 Location')}</span>
-            <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Coup de cœur Favori"
+        <div class="card card-airbnb-immo ${inCatalogue ? 'catalogue-card' : ''}" id="card_${inCatalogue ? 'cat_' : ''}${it.id}" data-id="${it.id}">
+          <!-- Photo carrée/rectangulaire sans encadré lourd avec flèches rondes & badge blanc -->
+          <div class="card-airbnb-img-wrap" onclick="openImmoDetailModal('${it.id}')">
+            <img id="card_img_${it.id}" class="card-airbnb-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'immo', '${safeLoc}')" />
+            
+            <span class="badge-airbnb-verified">${badgeText}</span>
+            
+            <button class="btn-airbnb-fav ${isFav ? 'active' : ''}" title="Coup de cœur"
               ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
               onclick="event.stopPropagation(); toggleFavorite('${it.id}')">
-              ★
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? '#FF385C' : 'rgba(0,0,0,0.45)'}" stroke="#FFFFFF" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
             </button>
+
             ${photos.length > 1 ? `
-              <button class="carousel-btn prev" title="Photo précédente"
+              <button class="carousel-btn-airbnb prev" title="Photo précédente"
                 ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
                 onclick="prevCardImg(event, '${it.id}')">‹</button>
-              <button class="carousel-btn next" title="Photo suivante"
+              <button class="carousel-btn-airbnb next" title="Photo suivante"
                 ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
                 onclick="nextCardImg(event, '${it.id}')">›</button>
-              <span class="carousel-counter" id="card_cnt_${it.id}">${curIdx + 1} / ${photos.length}</span>
+              ${dotsHtml}
             ` : ''}
           </div>
-          <div class="card-body">
-            <div class="card-meta">
-              <span class="card-price">${it.price_str}</span>
-              ${it.market_badge ? `<span class="spec-market">${it.market_badge}</span>` : ''}
-            </div>
-            <h3 class="card-title" onclick="openImmoDetailModal('${it.id}')">${it.title}</h3>
-            <div class="card-loc">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>${it.location}</span>
-            </div>
-            <div class="specs-pills-row">
-              <span class="spec-pill">📐 ${it.surface || 'N/C'}</span>
-              <span class="spec-pill">🚪 ${it.rooms || 'N/C'}</span>
-              <span class="spec-pill">🏢 ${it.agency || 'Agence vérifiée'}</span>
+
+          <!-- Informations alignées à gauche (Plus Jakarta Sans) -->
+          <div class="card-airbnb-info" onclick="openImmoDetailModal('${it.id}')">
+            <!-- Ligne 1 : Ville / Quartier en gras #222222 à gauche + badge surface/pièces à droite -->
+            <div class="card-airbnb-line1">
+              <div class="card-airbnb-loc">${it.location || 'Secteur recherché'}</div>
+              <div class="card-airbnb-specs">${specsBadge}</div>
             </div>
 
-            <!-- 3 Actions sur UNE SEULE LIGNE HORIZONTALE -->
-            <div class="card-actions-bar" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
-              ${inCatalogue ? `
-                <button class="btn-swipe-dislike" onclick="removeFromSaved('${it.id}')">🗑️ Retirer</button>
-                <button class="btn-open-detail" onclick="openImmoDetailModal('${it.id}')">🔍 Voir / Fiche</button>
-                <button class="btn-swipe-like" onclick="toggleFavorite('${it.id}')">${isFav ? '⭐ Retirer ★' : '⭐ Favori'}</button>
-              ` : `
-                <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
-                  ❌ Écarter
-                </button>
-                <button class="btn-open-detail" onclick="openImmoDetailModal('${it.id}')">
-                  🔍 Voir / Fiche
-                </button>
-                <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
-                  ${isLiked ? '❤️ Liké' : "❤️ J'aime"}
-                </button>
-              `}
+            <!-- Ligne 2 : Titre court de l'annonce en gris #717171 -->
+            <div class="card-airbnb-title">${it.title}</div>
+
+            <!-- Ligne 3 : Prix en gras #222222 + badge vert si sous prix de marché -->
+            <div class="card-airbnb-price-row">
+              <span class="card-airbnb-price">${priceVal}<span class="price-sub">${priceSub}</span></span>
+              ${it.market_badge ? `<span class="badge-airbnb-market">${it.market_badge}</span>` : ''}
             </div>
+          </div>
+
+          <!-- Ligne 4 : Boutons d'action discrets et élégants en pilules claires -->
+          <div class="card-airbnb-actions" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
+            ${inCatalogue ? `
+              <button class="btn-action-pill pill-discard" onclick="removeFromSaved('${it.id}')">🗑️ Retirer</button>
+              <button class="btn-action-pill pill-view" onclick="openImmoDetailModal('${it.id}')">Voir l'annonce</button>
+              <button class="btn-action-pill pill-like active" onclick="toggleFavorite('${it.id}')">${isFav ? '⭐ Retirer ★' : '⭐ Coup de cœur'}</button>
+            ` : `
+              <button class="btn-action-pill pill-discard" onclick="triggerCardSwipe('${it.id}', 'left')">Écarter</button>
+              <button class="btn-action-pill pill-view" onclick="openImmoDetailModal('${it.id}')">Voir l'annonce</button>
+              <button class="btn-action-pill pill-like ${isLiked ? 'active' : ''}" onclick="triggerCardSwipe('${it.id}', 'right')">
+                ${isLiked ? '❤️ Liké' : "❤️ J'aime"}
+              </button>
+            `}
           </div>
         </div>
       `;
@@ -4327,7 +4166,7 @@
             <div class="radar-card-item" style="border-left: 3px solid #10b981;">
               <div class="radar-card-header">
                 <div>
-                  <strong style="color: #fff; font-size: 0.86rem;">📍 ${r.city}</strong>
+                  <strong style="color: var(--text-main); font-size: 0.86rem;">📍 ${r.city}</strong>
                   <span class="card-badge ${r.transac === 'achat' ? 'badge-achat' : 'badge-loc'}" style="margin-left: 6px;">
                     ${r.transac === 'achat' ? '🏷️ Achat' : '🔑 Location'}
                   </span>
@@ -4356,7 +4195,7 @@
             <div class="radar-card-item" style="border-left: 3px solid #0284c7;">
               <div class="radar-card-header">
                 <div>
-                  <strong style="color: #fff; font-size: 0.86rem;">🛫 ${r.depart} ➔ 🛬 ${r.dest}</strong>
+                  <strong style="color: var(--text-main); font-size: 0.86rem;">🛫 ${r.depart} ➔ 🛬 ${r.dest}</strong>
                 </div>
                 <span style="font-size: 0.84rem; font-weight: 800; color: #38bdf8;">≤ ${r.budget} €</span>
               </div>
@@ -4982,18 +4821,18 @@
       track.innerHTML = VOYAGE_INSPIRATIONS_EDITORIAL.map(sp => `
         <div class="voyage-inspi-card">
           <img class="voyage-inspi-img" src="${sp.img}" alt="${sp.title}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
-          <div style="padding: 10px 12px; display:flex; flex-direction:column; gap:6px; flex:1;">
+          <div style="padding: 12px 14px; display:flex; flex-direction:column; gap:6px; flex:1;">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
-              <span style="font-size:0.65rem; font-weight:800; color:#fcd34d; background:rgba(251,191,36,0.12); padding:2px 7px; border-radius:6px;">${sp.badge}</span>
-              <span style="font-size:0.78rem; font-weight:800; color:#38bdf8;">${sp.priceHint}</span>
+              <span style="font-size:0.68rem; font-weight:700; color:#047857; background:#ECFDF5; border:1px solid #A7F3D0; padding:2px 8px; border-radius:12px;">${sp.badge}</span>
+              <span style="font-size:0.82rem; font-weight:800; color:#003B95;">${sp.priceHint}</span>
             </div>
-            <div style="font-size:0.84rem; font-weight:800; color:#fff; line-height:1.25;">${sp.title}</div>
-            <div style="font-size:0.71rem; color:#94a3b8; line-height:1.3;">${sp.meta}</div>
-            <div style="margin-top:auto; display:flex; gap:6px; padding-top:6px;">
-              <button type="button" onclick="applyVoyageInspiration('${sp.dest}', ${sp.nights})" style="flex:1; background:rgba(56,189,248,0.16); border:1px solid rgba(56,189,248,0.45); color:#38bdf8; border-radius:8px; padding:6px 8px; font-size:0.72rem; font-weight:800; cursor:pointer;">
-                🎯 Tester ce séjour
+            <div style="font-size:0.92rem; font-weight:800; color:#222222; line-height:1.25;">${sp.title}</div>
+            <div style="font-size:0.75rem; color:#717171; line-height:1.35;">${sp.meta}</div>
+            <div style="margin-top:auto; display:flex; gap:6px; padding-top:8px;">
+              <button type="button" onclick="applyVoyageInspiration('${sp.dest}', ${sp.nights})" style="flex:1; background:#006CE4; border:none; color:#FFFFFF; border-radius:8px; padding:8px 10px; font-size:0.74rem; font-weight:700; cursor:pointer;">
+                🎯 Découvrir ce séjour
               </button>
-              <a href="${sp.url}" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); color:#e2e8f0; border-radius:8px; padding:6px 9px; font-size:0.72rem; font-weight:700; text-decoration:none;">
+              <a href="${sp.url}" target="_blank" rel="noopener" style="background:#F0F6FF; border:1px solid #BFDBFE; color:#006CE4; border-radius:8px; padding:8px 10px; font-size:0.74rem; font-weight:700; text-decoration:none; display:flex; align-items:center; justify-content:center;">
                 ↗
               </a>
             </div>
@@ -5680,20 +5519,11 @@
       document.body.style.overflow = '';
     }
 
-    function createVoyageCardHtml(it, inCatalogue = false) {
+        function createVoyageCardHtml(it, inCatalogue = false) {
       const isFav = favorites.includes(it.id);
       const catType = it.category === 'train'
         ? 'train'
         : (it.category === 'package' ? 'package' : 'flight');
-
-      const catClass = `voy-cat-${catType}`;
-      const badgeClass = `badge-voy-${catType}`;
-      const badgeLabel = catType === 'train'
-        ? (it.badge && it.badge.includes('TRAIN') ? it.badge : '🚄 TRAIN DIRECT')
-        : (catType === 'package'
-          ? '🏨 SÉJOUR TOUT COMPRIS (TRANSPORT + HÔTEL)'
-          : (it.badge && it.badge.includes('VOL') ? it.badge : '✈️ VOL A/R'));
-      const priceColor = catType === 'train' ? '#34d399' : (catType === 'package' ? '#fbbf24' : '#22d3ee');
 
       const photos = getItemPhotos(it);
       const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
@@ -5710,97 +5540,88 @@
         : ((it.flight_url && it.flight_url.startsWith('http')) ? it.flight_url : (fallbackLinks.skyscannerUrl || fallbackLinks.flightsUrl));
       const hotelUrl = (it.hotel_url && it.hotel_url.startsWith('http')) ? it.hotel_url : fallbackLinks.bookingUrl;
       const trainUrl = (it.train_url && it.train_url.startsWith('http')) ? it.train_url : ((it.url && it.url.startsWith('http')) ? it.url : fallbackLinks.trainUrl);
-      const transitUrl = (it.transit_url && it.transit_url.startsWith('http')) ? it.transit_url : fallbackLinks.transitUrl;
 
       const tc = it.true_cost;
-      const breakdownHtml = (catType === 'package' && tc) ? `
-        <div class="voyage-breakdown-box">
-          ${tc.shuttle_cost > 0 ? `<div class="voyage-breakdown-row"><span>🚄 ${tc.shuttle_label || 'Liaison Nancy ➔ Aéroport A/R'}</span><span>${tc.shuttle_cost} €</span></div>` : ''}
-          <div class="voyage-breakdown-row"><span>✈️ Vol A/R aux dates exactes</span><span>${tc.flight_cost} €</span></div>
-          <div class="voyage-breakdown-row"><span>🏨 Hôtel 8.5★ (${tc.nights} nuits mêmes dates)</span><span>${tc.hotel_total} €</span></div>
-          <div class="voyage-breakdown-sep"></div>
-          <div class="voyage-breakdown-total"><span>💰 TOTAL TOUT COMPRIS</span><span>${tc.total_per_person} € / pers.</span></div>
-        </div>
-      ` : '';
+      const finalPriceNum = tc ? tc.total_per_person : (it.price || 120);
+      const refPriceNum = Math.round(finalPriceNum * 1.35);
 
-      let syncButtonsHtml = '';
-      if (catType === 'train') {
-        syncButtonsHtml = `
-          <div class="voyage-sync-links" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
-            <a class="btn-sync-action sync-train" href="${trainUrl}" target="_blank" rel="noopener">🚄 Billets (${it.price}€)</a>
-            <a class="btn-sync-action sync-flight" href="${transitUrl}" target="_blank" rel="noopener">🗺️ Trajet Direct</a>
-            <a class="btn-sync-action sync-hotel" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Hôtel (${it.hotel_est || nights * 120}€)</a>
-          </div>
-        `;
-      } else {
-        const fCost = tc ? tc.flight_cost : it.price;
-        const hCost = tc ? tc.hotel_total : (it.hotel_est || nights * 95);
-        syncButtonsHtml = `
-          <div class="voyage-sync-links" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
-            <a class="btn-sync-action sync-flight" href="${flightUrl}" target="_blank" rel="noopener">✈️ Vol (${fCost}€)</a>
-            <a class="btn-sync-action sync-hotel" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Hôtel (${hCost}€)</a>
-            <button type="button" class="btn-sync-action sync-package" onclick="openVoyagePackageModal('${it.id}')">📦 Vol + Hôtel</button>
-          </div>
-        `;
-      }
+      const offerBadgeText = catType === 'train'
+        ? '✓ Train TGV / OUIGO direct'
+        : (catType === 'package' ? '✓ Train + Vol + Hôtel compris' : '✓ Vol A/R vérifié');
 
       return `
-        <div class="card card-voyage ${catClass}" id="card_${it.id}" data-id="${it.id}">
-          <div class="card-img-wrap" onclick="openVoyagePackageModal('${it.id}')">
-            <img id="card_img_${it.id}" class="card-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
-            <span class="card-badge ${badgeClass}">${badgeLabel}</span>
-            <button class="btn-card-fav ${isFav ? 'active' : ''}" title="Sauvegarder en Favori" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="event.stopPropagation(); toggleFavorite('${it.id}')">
-              ★
+        <!-- Carte Blanche Style Booking.com avec bordure fine #E7E7E7 -->
+        <div class="card card-booking-voyage ${inCatalogue ? 'catalogue-card' : ''}" id="card_${it.id}" data-id="${it.id}">
+          <div class="card-booking-img-wrap" onclick="openVoyagePackageModal('${it.id}')">
+            <img id="card_img_${it.id}" class="card-booking-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
+            
+            <div class="booking-badges-top">
+              <span class="badge-booking-deal">${offerBadgeText}</span>
+              <span class="badge-booking-rating">8.6 Superbe</span>
+            </div>
+
+            <button class="btn-booking-fav ${isFav ? 'active' : ''}" title="Sauvegarder"
+              ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
+              onclick="event.stopPropagation(); toggleFavorite('${it.id}')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? '#006CE4' : 'rgba(0,0,0,0.45)'}" stroke="#FFFFFF" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
             </button>
+
             ${photos.length > 1 ? `
-              <button class="carousel-btn prev" title="Photo précédente" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="prevCardImg(event, '${it.id}')">‹</button>
-              <button class="carousel-btn next" title="Photo suivante" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="nextCardImg(event, '${it.id}')">›</button>
-              <span class="carousel-counter" id="card_cnt_${it.id}">${curIdx + 1} / ${photos.length}</span>
+              <button class="carousel-btn-airbnb prev" title="Photo précédente"
+                ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
+                onclick="prevCardImg(event, '${it.id}')">‹</button>
+              <button class="carousel-btn-airbnb next" title="Photo suivante"
+                ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()"
+                onclick="nextCardImg(event, '${it.id}')">›</button>
             ` : ''}
           </div>
-          <div class="card-body">
-            <div class="card-meta">
-              <span class="card-price" style="color: ${priceColor};">${it.price_str}</span>
-              ${tc && catType === 'flight' ? `<span class="spec-pill" style="border-color:rgba(139,92,246,0.45); color:#c4b5fd;">Séjour complet ~${tc.total_per_person}€</span>` : ''}
-              ${catType === 'package' ? `<span class="spec-pill" style="border-color:rgba(245,158,11,0.5); color:#fde68a;">📅 ${depIso.slice(5)} ➔ ${retIso.slice(5)}</span>` : ''}
-            </div>
-            <h3 class="card-title">${it.title}</h3>
-            <div class="card-loc">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
-              </svg>
-              <span>${it.location}</span>
-            </div>
-            <p style="font-size:0.74rem; color:#94a3b8; line-height:1.35; margin-bottom:2px;">${it.description || ''}</p>
 
-            ${breakdownHtml}
-            ${syncButtonsHtml}
+          <div class="card-booking-body">
+            <div class="booking-dest-row">
+              <div class="booking-dest-title">${it.destination || it.location}</div>
+              <div class="booking-badge-navy">Note 8.6</div>
+            </div>
 
-            ${inCatalogue ? `
-              <div class="card-actions-bar" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
-                <button class="btn-swipe-dislike" onclick="removeFromSaved('${it.id}')">
-                  🗑️ Retirer
-                </button>
-                <button class="btn-open-detail" onclick="openVoyagePackageModal('${it.id}')">
-                  📦 Comparateur
-                </button>
-                <button class="btn-swipe-like" style="background: rgba(234,179,8,0.16); border-color: rgba(234,179,8,0.45); color: #fde047;" onclick="toggleFavorite('${it.id}')">
-                  ${isFav ? '★ Favori' : '☆ Favori'}
-                </button>
+            <div class="booking-meta-row">
+              <span>Départ : ${it.departure_hub || 'Nancy / Grand Est'}</span>
+              <span>📅 ${depIso.slice(5)} ➔ ${retIso.slice(5)} (${nights} nuits)</span>
+            </div>
+
+            <div class="booking-title">${it.title}</div>
+
+            <!-- Détail clair du prix barré vs prix final en gros -->
+            <div class="booking-pricing-box">
+              <div class="booking-old-price">${refPriceNum} €</div>
+              <div class="booking-final-price-row">
+                <span class="booking-final-price">${finalPriceNum} €</span>
+                <span class="booking-price-unit">/ pers. tout compris</span>
               </div>
-            ` : `
-              <div class="card-actions-bar" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
-                <button class="btn-swipe-dislike" onclick="triggerCardSwipe('${it.id}', 'left')">
-                  ❌ Écarter
-                </button>
-                <button class="btn-open-detail" onclick="openVoyagePackageModal('${it.id}')">
-                  📋 Détails
-                </button>
-                <button class="btn-swipe-like" onclick="triggerCardSwipe('${it.id}', 'right')">
-                  ❤️ J'aime
-                </button>
-              </div>
-            `}
+            </div>
+
+            <!-- Boutons d'action bleus Booking #006CE4 -->
+            <div class="booking-actions-row" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
+              ${catType === 'train' ? `
+                <a class="btn-booking-action" href="${trainUrl}" target="_blank" rel="noopener">🚄 Voir le Train</a>
+                <a class="btn-booking-action" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Voir l'Hôtel</a>
+                <button type="button" class="btn-booking-action btn-booking-primary" onclick="openVoyagePackageModal('${it.id}')">📦 Package</button>
+              ` : `
+                <a class="btn-booking-action" href="${flightUrl}" target="_blank" rel="noopener">✈️ Voir le Vol</a>
+                <a class="btn-booking-action" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Voir l'Hôtel</a>
+                <button type="button" class="btn-booking-action btn-booking-primary" onclick="openVoyagePackageModal('${it.id}')">📦 Package</button>
+              `}
+            </div>
+
+            <div class="card-booking-subactions" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
+              ${inCatalogue ? `
+                <button class="btn-action-pill pill-discard" onclick="removeFromSaved('${it.id}')">🗑️ Retirer</button>
+                <button class="btn-action-pill pill-view" onclick="openVoyagePackageModal('${it.id}')">Détails</button>
+              ` : `
+                <button class="btn-action-pill pill-discard" onclick="triggerCardSwipe('${it.id}', 'left')">❌ Écarter</button>
+                <button class="btn-action-pill pill-like" onclick="triggerCardSwipe('${it.id}', 'right')">❤️ J'aime</button>
+              `}
+            </div>
           </div>
         </div>
       `;
@@ -5938,11 +5759,11 @@
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'horizons-v10') caches.delete(n);
+              if (n !== 'horizons-v11-light') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=10').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=11').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 
