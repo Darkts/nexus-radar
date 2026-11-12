@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Nexus Radar V9 | Immobilier Mondial & Planificateur Voyage Synchronisé</title>
-  <meta name="description" content="Hub personnel autonome V9 : Moteur Voyage code couleur strict Train/Avion/Package, vrais prix croisés Transport+Hôtel & deep links vérifiés" />
+  <title>Horizons | Immobilier &amp; Voyages sur-mesure</title>
+  <meta name="description" content="Horizons : Curateur personnel d'exception. Immobilier sélectionné &amp; Voyages sur-mesure." />
   
   <!-- PWA & Apple Meta -->
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#070a13" />
+  <meta name="theme-color" content="#0F1115" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Nexus Radar V9" />
+  <meta name="apple-mobile-web-app-title" content="Horizons" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icon.svg" />
 
@@ -27,20 +27,21 @@
 
   <style>
     :root {
-      --bg: #070a13;
-      --surface: #0e1424;
-      --surface-card: #121a2d;
-      --card-border: rgba(0, 242, 254, 0.15);
-      --primary: #00f2fe;
-      --primary-dim: #0284c7;
-      --accent-immo: #10b981;
-      --accent-voyage: #00f2fe;
-      --accent-pink: #ec4899;
-      --accent-warn: #f59e0b;
-      --accent-danger: #ef4444;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --radius: 14px;
+      --bg: #0F1115;
+      --surface: #14171F;
+      --surface-card: #181B22;
+      --card-border: rgba(255, 255, 255, 0.07);
+      --primary: #FF5A5F;
+      --primary-dim: #E0484D;
+      --accent-immo: #FF5A5F;
+      --accent-voyage: #00A699;
+      --accent-travel-train: #10B981;
+      --accent-pink: #EC4899;
+      --accent-warn: #F59E0B;
+      --accent-danger: #EF4444;
+      --text-main: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --radius: 16px;
     }
 
     * {
@@ -613,7 +614,7 @@
     .btn-card-fav.active { color: #ec4899; border-color: #ec4899; background: rgba(236, 72, 153, 0.15); }
 
     .card-body {
-      padding: 14px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -1623,6 +1624,305 @@
       font-weight: 700;
       cursor: pointer;
     }
+  
+    /* Mode Clair Grand Public (Horizons) */
+    html.light {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-card: #FFFFFF;
+      --card-border: rgba(0, 0, 0, 0.08);
+      --primary: #FF5A5F;
+      --primary-dim: #E0484D;
+      --accent-immo: #FF5A5F;
+      --accent-voyage: #00A699;
+      --accent-travel-train: #059669;
+      --text-main: #111827;
+      --text-muted: #4B5563;
+    }
+
+    html.light body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(255, 90, 95, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(0, 166, 153, 0.03) 0%, transparent 40%);
+    }
+
+    html.light header {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    html.light .brand-title {
+      color: #111827;
+    }
+
+    html.light .card, html.light .item-card, html.light .funnel-search-box, html.light .settings-card, html.light .voyage-breakdown-box {
+      background: #FFFFFF !important;
+      border-color: var(--card-border) !important;
+      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+    }
+
+    html.light .card:hover, html.light .item-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    html.light .card-title, html.light .settings-card-title, html.light h2, html.light h3, html.light h4 {
+      color: #111827 !important;
+    }
+
+    html.light input[type="text"],
+    html.light input[type="number"],
+    html.light input[type="password"] {
+      background: #F3F4F6 !important;
+      color: #111827 !important;
+      border-color: rgba(0, 0, 0, 0.12) !important;
+    }
+
+    html.light .bottom-nav {
+      background: rgba(255, 255, 255, 0.96);
+      border-top-color: var(--card-border);
+    }
+
+    html.light .universe-switch-container {
+      background: #E5E7EB;
+    }
+
+    html.light .univ-btn {
+      color: #4B5563;
+    }
+
+    html.light .pin-modal-overlay {
+      background: rgba(248, 250, 252, 0.96);
+    }
+
+    html.light .pin-box {
+      background: #FFFFFF;
+      border-color: var(--card-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    html.light .pin-box h2 {
+      color: #111827;
+    }
+
+    html.light .btn-pin {
+      background: #F3F4F6;
+      color: #111827;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    html.light .btn-drawer-toggle {
+      background: #F3F4F6;
+      color: #111827;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Cartes Réglages Horizons */
+    .settings-card {
+      background: var(--surface-card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .settings-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .settings-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .settings-card-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .settings-card-desc {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.35;
+    }
+
+    .sync-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+
+    .settings-btn-link {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .settings-input {
+      width: 100%;
+      background: #0D1016;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 9px 12px;
+      color: var(--text-main);
+      font-size: 0.82rem;
+      margin-top: 4px;
+      outline: none;
+    }
+
+    .btn-primary-settings {
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary-settings:hover {
+      opacity: 0.9;
+    }
+
+    .btn-outline-settings {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.76rem;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-outline-settings:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Switch On/Off */
+    .switch-control {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .switch-control input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(255, 255, 255, 0.15);
+      transition: .25s;
+      border-radius: 24px;
+    }
+
+    .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .25s;
+      border-radius: 50%;
+    }
+
+    .switch-control input:checked + .switch-slider {
+      background-color: var(--primary);
+    }
+
+    .switch-control input:checked + .switch-slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Bouton tiroir filtres avancés */
+    .btn-drawer-toggle {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      width: 100%;
+    }
+
+    .btn-drawer-toggle:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .advanced-filters-drawer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--card-border);
+      animation: fadeInDrawer 0.2s ease;
+    }
+
+    @keyframes fadeInDrawer {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
   </style>
 </head>
 <body>
@@ -1633,8 +1933,8 @@
   <div class="pin-modal-overlay" id="pinLockOverlay">
     <div class="pin-box">
       <div style="font-size: 2.2rem;">🔒</div>
-      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Nexus Radar V9</h2>
-      <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code PIN à 4 chiffres</p>
+      <h2 style="font-size: 1.25rem; font-weight: 800;" id="pinTitle">Horizons</h2>
+      <p style="font-size: 0.78rem; color: var(--text-muted);" id="pinSubtitle">Entrez votre code secret à 4 chiffres</p>
       
       <div class="pin-dots">
         <div class="pin-dot" id="dot0"></div>
@@ -1665,19 +1965,20 @@
     <div class="header-content">
       <div class="brand">
         <div class="brand-icon">
-          <img src="assets/icon.svg" alt="Nexus Logo" />
+          <img src="assets/icon.svg" alt="Horizons Logo" />
         </div>
         <div>
-          <div class="brand-title">NEXUS RADAR V9</div>
+          <div class="brand-title">HORIZONS</div>
           <div class="brand-sub">
             <span class="live-dot"></span>
-            <span id="headerLiveStatus">Scraping Direct Temps Réel • Double Univers</span>
+            <span id="headerLiveStatus">Immobilier &amp; Voyages sur-mesure</span>
           </div>
         </div>
       </div>
       <div class="header-actions" style="display:flex; align-items:center; gap:8px;">
-        <button id="headerLikesBtn" class="btn-liked-shortcut" title="Voir mes biens likés & favoris" onclick="openLikesCatalogueTab('likes')">
-          ❤️ Mes Biens Likés (<span id="headerLikedCount">0</span>)
+        <button id="themeToggleBtn" class="btn-icon" title="Basculer Mode Clair / Sombre" onclick="toggleTheme()">☀️</button>
+        <button id="headerLikesBtn" class="btn-liked-shortcut" title="Voir mes favoris" onclick="openLikesCatalogueTab('likes')">
+          ❤️ Mes Favoris (<span id="headerLikedCount">0</span>)
         </button>
         <button id="refreshBtn" class="btn-icon" title="Actualiser" onclick="loadData(true)">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1706,57 +2007,44 @@
     <!-- ========================================================= -->
     <section id="pane-immo-feed" class="tab-pane active">
       
-      <!-- Entonnoir Immobilier Logique Universel -->
+      <!-- Barre de Recherche Immobilière Épurée Horizons -->
       <div class="funnel-search-box">
-        <!-- Étape 1 : Barre de recherche universelle avec Autocomplétion -->
-        <div class="step-header-label">📍 Étape 1 : Choisissez la ville ou le secteur (Monde / France / DOM)</div>
         <div class="step-location-row">
           <div class="search-input-wrap">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" id="searchLocationInput" autocomplete="off" placeholder="Tapez n'importe quelle ville (Paris, Nancy, Saint-Martin 97150, Lyon, Nice...)" oninput="onImmoCityTyping()" />
+            <input type="text" id="searchLocationInput" autocomplete="off" placeholder="Ville ou secteur (ex: Nancy, Paris, Saint-Martin...)" oninput="onImmoCityTyping()" />
             <div class="autocomplete-dropdown" id="cityAutocompleteList"></div>
           </div>
-          <button class="btn-around-me" onclick="locateAroundMe()">
+          <button class="btn-around-me" onclick="locateAroundMe()" title="Localiser autour de moi">
             <span>📍 Autour de moi</span>
           </button>
         </div>
 
-        <!-- Barre de progression Scan Live -->
-        <div id="liveScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid #10b981; border-radius: 10px; padding: 10px 14px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-            <span id="liveScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: #34d399;">🔄 Scan en cours...</span>
-            <span id="liveScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: #fff;">0%</span>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 140px;">
+            <input type="number" id="immoMaxBudgetInput" placeholder="Budget Max (€)" style="width:100%; background:var(--surface); border:1px solid var(--card-border); border-radius:10px; padding:10px 14px; color:var(--text-main); font-size:0.86rem;" oninput="triggerAutoRefreshImmo()" />
           </div>
-          <div style="background: rgba(255, 255, 255, 0.1); border-radius: 6px; height: 6px; overflow: hidden;">
-            <div id="liveScanProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10b981, #00f2fe); transition: width 0.3s ease;"></div>
-          </div>
+          <button class="btn-live-scan" id="btnLaunchLiveScanImmo" onclick="launchLiveScanImmo(false)" style="flex: 1.5; min-width: 180px; margin: 0;">
+            <span>🔍 Explorer les biens</span>
+          </button>
         </div>
 
-        <button class="btn-live-scan" id="btnLaunchLiveScanImmo" onclick="launchLiveScanImmo(false)">
-          <span>⚡ Rechercher & Scraper en direct</span>
+        <!-- Tiroir Pliable des Filtres Avancés -->
+        <button class="btn-drawer-toggle" id="btnToggleImmoFilters" type="button" onclick="toggleImmoAdvancedFilters()">
+          <span>⚙️ Filtres avancés</span> <span id="immoFiltersArrow">▾</span>
         </button>
 
-        <!-- Portails Directs Officiels pour cette recherche -->
-        <div id="immoDirectPortalsBar" class="direct-portals-box" style="display: none;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-            <span style="font-size: 0.78rem; font-weight: 800; color: #34d399;">🌐 Portails Officiels Directs :</span>
-            <span style="font-size: 0.68rem; color: #94a3b8;" id="immoDirectPortalsMeta"></span>
-          </div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="immoDirectPortalsLinks"></div>
-        </div>
-
-        <!-- Étape 2 : Critères de filtrage Toggle On/Off + Réinitialiser -->
-        <div class="step-filters-box" style="margin-top: 10px;">
+        <div id="immoAdvancedFiltersDrawer" class="advanced-filters-drawer" style="display: none;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-            <div class="step-header-label">⚙️ Étape 2 : Vos critères (cliquez pour cocher / décocher)</div>
+            <div style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Précisez vos critères :</div>
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
-              <button class="btn-reset-dislikes" id="btnResetDislikesImmo" onclick="resetDislikes()">↺ Réinitialiser mes Dislikes (<span id="immoDislikesCount">0</span>)</button>
-              <button class="btn-reset-filters" onclick="resetAllImmoFilters()">↺ Tout décocher / Réinitialiser</button>
+              <button class="btn-reset-dislikes" id="btnResetDislikesImmo" onclick="resetDislikes()">↺ Écartées (<span id="immoDislikesCount">0</span>)</button>
+              <button class="btn-reset-filters" onclick="resetAllImmoFilters()">↺ Tout réinitialiser</button>
             </div>
           </div>
-          
+
           <div class="filters-grid-row">
             <div class="segmented-control">
               <button class="segmented-btn active" data-transac="ALL" onclick="setTransactionFilter('ALL', this)">Tous</button>
@@ -1764,25 +2052,19 @@
               <button class="segmented-btn" data-transac="achat" onclick="setTransactionFilter('achat', this)">🏷️ Acheter</button>
             </div>
 
-            <button class="chip-filter" data-room="Studio" onclick="toggleRoomFilter('Studio', this)">Studio / T1</button>
+            <button class="chip-filter" data-room="Studio" onclick="toggleRoomFilter('Studio', this)">Studio</button>
             <button class="chip-filter" data-room="T2" onclick="toggleRoomFilter('T2', this)">T2</button>
             <button class="chip-filter" data-room="T3" onclick="toggleRoomFilter('T3', this)">T3+</button>
             <button class="chip-filter" data-room="Maison" onclick="toggleRoomFilter('Maison', this)">Maison / Villa</button>
           </div>
 
-          <!-- Champs Budget Max et Surface min -->
-          <div style="display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 140px;">
-              <label style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">💰 Budget Max (€)</label>
-              <input type="number" id="immoMaxBudgetInput" placeholder="Ex: 800" style="width:100%; background:#090e1a; border:1px solid var(--card-border); border-radius:8px; padding:7px 10px; color:#fff; font-size:0.82rem; margin-top:2px;" oninput="triggerAutoRefreshImmo()" />
-            </div>
-            <div style="flex: 1; min-width: 140px;">
-              <label style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">📐 Surface min (m²)</label>
-              <input type="number" id="immoMinSurfaceInput" placeholder="Ex: 35" style="width:100%; background:#090e1a; border:1px solid var(--card-border); border-radius:8px; padding:7px 10px; color:#fff; font-size:0.82rem; margin-top:2px;" oninput="triggerAutoRefreshImmo()" />
+              <input type="number" id="immoMinSurfaceInput" placeholder="Surface minimale (m²)" style="width:100%; background:var(--surface); border:1px solid var(--card-border); border-radius:10px; padding:8px 12px; color:var(--text-main); font-size:0.82rem;" oninput="triggerAutoRefreshImmo()" />
             </div>
           </div>
 
-          <div class="filters-grid-row" style="margin-top: 4px;">
+          <div class="filters-grid-row">
             <button class="chip-filter" id="chipAmenityMer" onclick="toggleAmenity('vue_mer', this)">🌊 Vue Mer</button>
             <button class="chip-filter" id="chipAmenityTerrasse" onclick="toggleAmenity('terrasse', this)">☀️ Terrasse / Balcon</button>
             <button class="chip-filter" id="chipAmenityPiscine" onclick="toggleAmenity('piscine', this)">🏊 Piscine</button>
@@ -1792,9 +2074,29 @@
           <div class="viager-exclude-bar">
             <label class="viager-exclude-label">
               <input type="checkbox" id="immoExcludeViager" checked onchange="triggerAutoRefreshImmo(true)" />
-              <span>🚫 Exclure Viager / Nue-propriété / Résidences seniors &amp; étudiantes privées</span>
+              <span>🚫 Exclure Viager / Nue-propriété / Résidences privées</span>
             </label>
           </div>
+        </div>
+
+        <!-- Barre de progression Recherche Live -->
+        <div id="liveScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--primary); border-radius: 10px; padding: 10px 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span id="liveScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: var(--primary);">🔄 Recherche en cours...</span>
+            <span id="liveScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: #fff;">0%</span>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.1); border-radius: 6px; height: 6px; overflow: hidden;">
+            <div id="liveScanProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #FF5A5F, #00A699); transition: width 0.3s ease;"></div>
+          </div>
+        </div>
+
+        <!-- Portails Directs Officiels pour cette recherche -->
+        <div id="immoDirectPortalsBar" class="direct-portals-box" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: var(--primary);">🌐 Portails Officiels Directs :</span>
+            <span style="font-size: 0.68rem; color: var(--text-muted);" id="immoDirectPortalsMeta"></span>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="immoDirectPortalsLinks"></div>
         </div>
       </div>
 
@@ -1870,86 +2172,82 @@
         <div class="voyage-inspi-track" id="voyageInspirationsTrack"></div>
       </div>
 
-      <!-- MOTEUR DE RECHERCHE VOYAGE UNIVERSEL V9 -->
-      <div class="funnel-search-box" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.04);">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap:wrap; gap:6px; margin-bottom: 4px;">
-          <div style="font-size: 0.95rem; font-weight: 800; color: #fff;">✈️ Planificateur Voyage Universel</div>
-          <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-            <button class="btn-reset-dislikes" onclick="resetDislikes()">↺ Reset Dislikes (<span id="voyageDislikesCount">0</span>)</button>
-            <span style="font-size: 0.7rem; color: #38bdf8; font-weight: 800; background: rgba(56, 189, 248, 0.15); padding: 3px 8px; border-radius: 6px;">Comparateurs Directs V9</span>
-          </div>
-        </div>
-
-        <!-- 1. Ville de Départ & Destination côte à côte sur desktop -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+      <!-- Moteur de Recherche Voyage Épuré Horizons -->
+      <div class="funnel-search-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">
           <div class="voyage-funnel-step">
-            <div class="step-header-label" style="color: #38bdf8; margin-bottom: 4px;">🛫 1. Ville / Gare / Aéroport de Départ</div>
             <div class="search-input-wrap">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
               </svg>
-              <input type="text" id="voyageDepartInput" autocomplete="off" value="Nancy" placeholder="Tapez une ville ou aéroport (Paris, Nancy, Luxembourg, Lyon...)" oninput="onVoyageCityTyping('depart')" />
+              <input type="text" id="voyageDepartInput" autocomplete="off" value="Nancy" placeholder="Départ (Nancy, Paris, LUX...)" oninput="onVoyageCityTyping('depart')" />
               <div class="autocomplete-dropdown" id="voyageDepartAutocomplete"></div>
             </div>
           </div>
 
           <div class="voyage-funnel-step">
-            <div class="step-header-label" style="color: #38bdf8; margin-bottom: 4px;">🛬 2. Destination d'Arrivée</div>
             <div class="search-input-wrap">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line>
               </svg>
-              <input type="text" id="searchVoyageDest" autocomplete="off" placeholder="Ville, Île ou Pays (Rome, New York, Saint-Martin, Paris...)" oninput="onVoyageCityTyping('dest')" />
+              <input type="text" id="searchVoyageDest" autocomplete="off" placeholder="Destination (Rome, Palma, SXM...)" oninput="onVoyageCityTyping('dest')" />
               <div class="autocomplete-dropdown" id="voyageDestAutocomplete"></div>
             </div>
           </div>
         </div>
 
-        <!-- 3. Vrai Calendrier Visuel Interactif style Lastminute.com -->
-        <div class="voyage-funnel-step">
-          <div class="step-header-label" style="color: #38bdf8; margin-bottom: 4px;">📅 3. Dates de Voyage (Calendrier Aller - Retour)</div>
-          <div class="cal-trigger-btn" id="calendarTriggerBtn" onclick="openCalendarPopover()">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <span style="font-size: 1.25rem;">📅</span>
+        <!-- Dates de Voyage & Budget Max -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; align-items: center;">
+          <div class="cal-trigger-btn" id="calendarTriggerBtn" onclick="openCalendarPopover()" style="padding: 9px 12px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.15rem;">📅</span>
               <div>
-                <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">Départ ➔ Retour</div>
-                <div style="font-size: 0.86rem; font-weight: 800; color: #fff;" id="calendarDisplayValue">Choisir mes dates (Aller - Retour)</div>
+                <div style="font-size: 0.68rem; color: var(--text-muted); font-weight: 700;">Dates A/R</div>
+                <div style="font-size: 0.82rem; font-weight: 800; color: var(--text-main);" id="calendarDisplayValue">Choisir mes dates</div>
               </div>
             </div>
-            <span id="calendarFlexBadge" style="font-size: 0.72rem; font-weight: 800; padding: 4px 8px; border-radius: 6px; background: rgba(56, 189, 248, 0.18); color: #38bdf8;">Dates exactes</span>
+            <span id="calendarFlexBadge" style="font-size: 0.68rem; font-weight: 800; padding: 3px 6px; border-radius: 6px; background: rgba(0, 166, 153, 0.15); color: var(--accent-voyage);">Exactes</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <input type="range" id="voyageBudgetRange" min="50" max="4000" step="50" value="1800" style="flex: 1; accent-color: var(--accent-voyage);" oninput="onVoyageBudgetRange(this.value)" />
+            <input type="number" id="voyageBudgetInput" value="1800" style="width: 78px; background: var(--surface); border: 1px solid var(--card-border); border-radius: 8px; padding: 6px; color: var(--text-main); font-size: 0.8rem; text-align: center;" oninput="onVoyageBudgetInput(this.value)" />
           </div>
         </div>
 
-        <!-- 4. Budget Max Tout Compris (€) -->
-        <div class="voyage-funnel-step">
-          <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div class="step-header-label" style="color: #38bdf8;">💰 4. Budget Max Tout Compris (€)</div>
-            <span id="voyageBudgetDisplay" style="font-size: 0.84rem; font-weight: 800; color: #38bdf8;">≤ 1800 €</span>
+        <button class="btn-live-scan btn-scan-voyage" id="btnLaunchLiveScanVoyage" onclick="launchLiveScanVoyage()" style="background: var(--accent-voyage); margin: 0;">
+          <span>🔍 Trouver mes séjours &amp; liaisons</span>
+        </button>
+
+        <!-- Tiroir Options Avancées Voyage -->
+        <button class="btn-drawer-toggle" id="btnToggleVoyageFilters" type="button" onclick="toggleVoyageAdvancedFilters()">
+          <span>⚙️ Options avancées</span> <span id="voyageFiltersArrow">▾</span>
+        </button>
+
+        <div id="voyageAdvancedFiltersDrawer" class="advanced-filters-drawer" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Préférences de recherche :</div>
+            <button class="btn-reset-dislikes" onclick="resetDislikes()">↺ Offres écartées (<span id="voyageDislikesCount">0</span>)</button>
           </div>
-          <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
-            <input type="range" id="voyageBudgetRange" min="50" max="4000" step="50" value="1800" style="flex: 1; accent-color: #38bdf8;" oninput="onVoyageBudgetRange(this.value)" />
-            <input type="number" id="voyageBudgetInput" value="1800" style="width: 84px; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 6px; color: #fff; font-size: 0.8rem; text-align: center;" oninput="onVoyageBudgetInput(this.value)" />
+          <div style="font-size: 0.74rem; color: var(--text-muted); line-height: 1.4;">
+            💡 <strong>Départs optimisés Grand Est :</strong> Liaison TGV directe depuis Nancy &amp; Lorraine TGV vers Paris et Roissy CDG, navette TER vers Luxembourg (LUX) et EuroAirport Bâle (BSL).
           </div>
         </div>
 
-        <!-- Barre de progression Scan Voyage -->
-        <div id="voyageScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid #38bdf8; border-radius: 10px; padding: 10px 14px;">
+        <!-- Progression Scan Voyage -->
+        <div id="voyageScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--accent-voyage); border-radius: 10px; padding: 10px 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-            <span id="voyageScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: #38bdf8;">🔄 Scan des vols & liaisons en cours...</span>
+            <span id="voyageScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: var(--accent-voyage);">🔄 Recherche en cours...</span>
             <span id="voyageScanProgressPct" style="font-size: 0.76rem; font-weight: 800; color: #fff;">0%</span>
           </div>
           <div style="background: rgba(255, 255, 255, 0.1); border-radius: 6px; height: 6px; overflow: hidden;">
-            <div id="voyageScanProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #00f2fe, #38bdf8); transition: width 0.3s ease;"></div>
+            <div id="voyageScanProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #00A699, #10B981); transition: width 0.3s ease;"></div>
           </div>
         </div>
 
-        <button class="btn-live-scan btn-scan-voyage" id="btnLaunchLiveScanVoyage" onclick="launchLiveScanVoyage()">
-          <span>🔍 Rechercher & Ouvrir les Moteurs aux Dates Exactes</span>
-        </button>
-
         <!-- Box Portails Directs Voyage -->
         <div id="voyageDirectPortalsBar" class="direct-portals-box voyage-box" style="display: none; margin-top: 10px;">
-          <div style="font-size: 0.78rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">
+          <div style="font-size: 0.78rem; font-weight: 800; color: var(--accent-voyage); margin-bottom: 6px;">
             🌐 Redirections Directes Pré-Paramétrées (Trajet + Dates Exactes) :
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="voyageDirectPortalsLinks"></div>
@@ -2033,17 +2331,17 @@
     <!-- ========================================================= -->
     <section id="pane-radars" class="tab-pane">
       <div style="margin-bottom: 14px;">
-        <h2 style="font-size: 1.15rem; font-weight: 800;">🎛️ Espace Radars Cloud H24</h2>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Vos robots de veille autonome actifs dans le Cloud GitHub Actions.</p>
+        <h2 style="font-size: 1.15rem; font-weight: 800;">🔔 Alertes &amp; Recherches Programmées</h2>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Vos alertes automatiques programmées pour ne manquer aucune opportunité.</p>
       </div>
 
       <!-- Switch Immo / Voyage -->
       <div class="radar-space-switch">
         <button class="radar-tab-btn active tab-immo" id="radarTabBtnImmo" onclick="switchRadarTab('immo')">
-          🏠 Créer un Radar Immo
+          🏠 Alerte Immobilière
         </button>
         <button class="radar-tab-btn tab-voyage" id="radarTabBtnVoyage" onclick="switchRadarTab('voyage')">
-          ✈️ Créer un Radar Voyage
+          ✈️ Alerte Voyage
         </button>
       </div>
 
@@ -2065,7 +2363,7 @@
 
         <!-- Formulaire Radar Immo -->
         <div class="funnel-search-box">
-          <h4 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🏠 Nouveau Radar Immobilier Cloud</h4>
+          <h4 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🏠 Nouvelle Alerte Immobilière</h4>
           
           <div style="margin-top: 8px;">
             <label style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">1. Secteur / Ville à surveiller</label>
@@ -2108,7 +2406,7 @@
       <!-- SOUS-ONGLET 2 : FORMULAIRE RADAR VOYAGE -->
       <div id="radarSectionVoyage" style="display: none;">
         <div class="funnel-search-box" style="border-color: rgba(56, 189, 248, 0.4);">
-          <h4 style="font-size: 0.92rem; font-weight: 800; color: #38bdf8;">✈️ Nouveau Radar Voyage Cloud</h4>
+          <h4 style="font-size: 0.92rem; font-weight: 800; color: #38bdf8;">✈️ Nouvelle Alerte Voyage</h4>
           <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px;">Le robot surveille H24 les baisses de tarifs et erreurs de prix pour vous avertir en push.</p>
 
           <div>
@@ -2159,7 +2457,7 @@
       <!-- LISTE DES RADARS ACTIFS EN DESSOUS (CHANTIER 4) -->
       <div style="margin-top: 24px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-          <h3 style="font-size: 1.05rem; font-weight: 800; color: #fff;">📡 Mes Radars Actifs Cloud H24</h3>
+          <h3 style="font-size: 1.05rem; font-weight: 800; color: #fff;">📡 Mes Alertes Actives</h3>
           <span style="font-size: 0.72rem; color: var(--text-muted);" id="activeRadarsTotalCount">0 radar(s)</span>
         </div>
 
@@ -2177,30 +2475,96 @@
       </div>
     </section>
 
-    <!-- ONGLET RÉGLAGES -->
+    <!-- ONGLET RÉGLAGES (HORIZONS GRAND PUBLIC) -->
     <section id="pane-reglages" class="tab-pane">
-      <div style="margin-bottom: 14px;">
-        <h2 style="font-size: 1.15rem; font-weight: 800;">🔔 Réglages & Sécurité</h2>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Code PIN, Token GitHub et Notifications Push mobiles.</p>
+      <div style="margin-bottom: 16px;">
+        <h2 style="font-size: 1.25rem; font-weight: 800;">Préférences &amp; Sécurité</h2>
+        <p style="font-size: 0.78rem; color: var(--text-muted);">Gérez votre synchronisation, vos alertes et la protection de vos données.</p>
       </div>
 
-      <div class="funnel-search-box">
-        <h3 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🔑 Code PIN de Sécurité</h3>
-        <p style="font-size: 0.72rem; color: var(--text-muted);">Votre code secret à 4 chiffres enregistré sur ce smartphone.</p>
-        <button class="btn-open-detail" onclick="resetPinCode()" style="margin-top: 6px;">Changer mon code PIN</button>
+      <!-- CARTE 1 : 🔄 Synchronisation Automatique -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-icon-circle" style="background: rgba(16, 185, 129, 0.12); color: #10B981;">🔄</div>
+          <div style="flex: 1;">
+            <div class="settings-card-title">Synchronisation Automatique</div>
+            <div class="settings-card-desc">Vos critères et favoris sont protégés et synchronisés.</div>
+          </div>
+          <div id="syncStatusBadge" class="sync-status-badge">
+            <span class="status-dot"></span> Active
+          </div>
+        </div>
+        <div style="margin-top: 14px; border-top: 1px solid var(--card-border); padding-top: 10px;">
+          <button class="settings-btn-link" type="button" onclick="toggleSyncAccordion()">
+            <span>⚙️ Modifier la connexion au compte</span> <span id="syncArrow">▾</span>
+          </button>
+          <div id="syncAccordionContent" style="display: none; margin-top: 10px;">
+            <label style="font-size: 0.74rem; color: var(--text-muted); font-weight: 600;">Dépôt distant (optionnel)</label>
+            <input type="text" id="ghRepo" placeholder="ex: Darkts/nexus-radar" value="Darkts/nexus-radar" class="settings-input" />
+            <label style="font-size: 0.74rem; color: var(--text-muted); font-weight: 600; margin-top: 8px; display: block;">Clé d'accès personnelle</label>
+            <input type="password" id="ghToken" placeholder="Clé d'accès privée (ghp_...)" class="settings-input" />
+            <button class="btn-primary-settings" onclick="saveCredentials()">Enregistrer les paramètres</button>
+          </div>
+        </div>
       </div>
 
-      <div class="funnel-search-box">
-        <h3 style="font-size: 0.92rem; font-weight: 800; color: #fff;">🐙 Accès GitHub API (Cloud Sync)</h3>
-        <input type="text" id="ghRepo" placeholder="Dépôt (ex: Darkts/nexus-radar)" value="Darkts/nexus-radar" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; margin-top: 6px;" />
-        <input type="password" id="ghToken" placeholder="Token GitHub (ghp_...)" style="width: 100%; background: #090e1a; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; color: #fff; margin-top: 6px;" />
-        <button class="btn-open-detail" onclick="saveCredentials()" style="margin-top: 8px;">Enregistrer mes accès GitHub</button>
+      <!-- CARTE 2 : 🔔 Alertes & Notifications -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-icon-circle" style="background: rgba(255, 90, 95, 0.12); color: #FF5A5F;">🔔</div>
+          <div style="flex: 1;">
+            <div class="settings-card-title">Alertes &amp; Notifications</div>
+            <div class="settings-card-desc">Recevez une alerte mobile dès qu'une opportunité correspond à vos critères.</div>
+          </div>
+          <label class="switch-control">
+            <input type="checkbox" id="toggleAlertsNotification" checked onchange="onToggleAlerts(this.checked)" />
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+        <div style="margin-top: 14px; border-top: 1px solid var(--card-border); padding-top: 12px;">
+          <p style="font-size: 0.76rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4;">
+            Abonnez-vous sur l'application mobile gratuite <strong>ntfy</strong> avec votre code d'accès : <code style="color: var(--primary); font-weight: 700;">sxm-immo-alert-97150-x9q4m2</code>
+          </p>
+          <button class="btn-outline-settings" onclick="testPushNotification()">
+            🔔 Tester une alerte sonore &amp; vibration
+          </button>
+        </div>
       </div>
 
-      <div class="funnel-search-box">
-        <h3 style="font-size: 0.92rem; font-weight: 800; color: #fff;">📲 Notifications ntfy.sh</h3>
-        <p style="font-size: 0.75rem; color: var(--text-muted);">Canal : <strong style="color: var(--primary);">sxm-immo-alert-97150-x9q4m2</strong></p>
-        <button class="btn-open-detail" onclick="testPushNotification()" style="margin-top: 6px;">Tester une notification</button>
+      <!-- CARTE 3 : 🛡️ Confidentialité & Préférences -->
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <div class="settings-icon-circle" style="background: rgba(0, 166, 153, 0.12); color: #00A699;">🛡️</div>
+          <div style="flex: 1;">
+            <div class="settings-card-title">Confidentialité &amp; Préférences</div>
+            <div class="settings-card-desc">Accès sécurisé par code secret et personnalisation d'affichage.</div>
+          </div>
+        </div>
+        <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--card-border); padding-top: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.84rem; font-weight: 700;">Code PIN de verrouillage</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Protection à 4 chiffres à l'ouverture</div>
+            </div>
+            <button class="btn-outline-settings" onclick="resetPinCode()">Modifier le PIN</button>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.84rem; font-weight: 700;">Offres masquées</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);"><span id="settingsDislikesCount">0</span> offre(s) écartée(s)</div>
+            </div>
+            <button class="btn-outline-settings" onclick="resetDislikes()">Réinitialiser</button>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.84rem; font-weight: 700;">Thème d'affichage</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);" id="currentThemeLabel">Mode Sombre ardoise</div>
+            </div>
+            <button class="btn-outline-settings" id="settingsThemeBtn" onclick="toggleTheme()">☀️ Passer en Mode Clair</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2316,6 +2680,75 @@
   <!-- JAVASCRIPT DU HUB V5                                      -->
   <!-- ========================================================= -->
   <script>
+    
+    // =========================================================
+    // HORIZONS V10 : GESTION DES TIROIRS, THÈMES & RÉGLAGES
+    // =========================================================
+    function toggleImmoAdvancedFilters() {
+      const drawer = document.getElementById('immoAdvancedFiltersDrawer');
+      const arrow = document.getElementById('immoFiltersArrow');
+      if (!drawer) return;
+      const isOpen = drawer.style.display !== 'none';
+      drawer.style.display = isOpen ? 'none' : 'flex';
+      if (arrow) arrow.textContent = isOpen ? '▾' : '▴';
+    }
+
+    function toggleVoyageAdvancedFilters() {
+      const drawer = document.getElementById('voyageAdvancedFiltersDrawer');
+      const arrow = document.getElementById('voyageFiltersArrow');
+      if (!drawer) return;
+      const isOpen = drawer.style.display !== 'none';
+      drawer.style.display = isOpen ? 'none' : 'flex';
+      if (arrow) arrow.textContent = isOpen ? '▾' : '▴';
+    }
+
+    function toggleSyncAccordion() {
+      const content = document.getElementById('syncAccordionContent');
+      const arrow = document.getElementById('syncArrow');
+      if (!content) return;
+      const isOpen = content.style.display !== 'none';
+      content.style.display = isOpen ? 'none' : 'block';
+      if (arrow) arrow.textContent = isOpen ? '▾' : '▴';
+    }
+
+    function onToggleAlerts(enabled) {
+      localStorage.setItem('horizons_alerts_enabled', enabled ? '1' : '0');
+      showToast(enabled ? '🔔 Alertes sonores activées' : '🔕 Alertes désactivées', 2000);
+    }
+
+    function initTheme() {
+      const saved = localStorage.getItem('horizons_theme') || 'dark';
+      applyTheme(saved);
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) btn.innerHTML = '🌙';
+        const sBtn = document.getElementById('settingsThemeBtn');
+        if (sBtn) sBtn.textContent = '🌙 Passer en Mode Sombre';
+        const sLbl = document.getElementById('currentThemeLabel');
+        if (sLbl) sLbl.textContent = 'Mode Clair épuré';
+      } else {
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) btn.innerHTML = '☀️';
+        const sBtn = document.getElementById('settingsThemeBtn');
+        if (sBtn) sBtn.textContent = '☀️ Passer en Mode Clair';
+        const sLbl = document.getElementById('currentThemeLabel');
+        if (sLbl) sLbl.textContent = 'Mode Sombre ardoise';
+      }
+      localStorage.setItem('horizons_theme', theme);
+    }
+
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.contains('light');
+      applyTheme(isLight ? 'dark' : 'light');
+    }
+
     function loadMergedStorageList(keys) {
       const merged = new Set();
       keys.forEach(k => {
@@ -2403,7 +2836,7 @@
       const savedPin = localStorage.getItem(PIN_KEY);
       if (!savedPin) {
         document.getElementById('pinTitle').textContent = 'Créer votre code PIN';
-        document.getElementById('pinSubtitle').textContent = 'Définissez 4 chiffres pour sécuriser le Hub';
+        document.getElementById('pinSubtitle').textContent = 'Définissez 4 chiffres pour sécuriser Horizons';
       }
     }
 
@@ -2477,7 +2910,7 @@
       } else {
         btnVoyage.classList.add('active');
         btnImmo.classList.remove('active');
-        document.getElementById('headerLiveStatus').textContent = 'Veille Active • Nancy Hub';
+        document.getElementById('headerLiveStatus').textContent = 'Immobilier & Voyages sur-mesure';
         renderBottomNav('voyage');
         navigateTo('pane-voyage-feed');
       }
@@ -2497,7 +2930,7 @@
           </div>
           <div class="nav-item nav-immo" onclick="navigateTo('pane-radars', this); switchRadarTab('immo'); updateRadarProfile();">
             <span class="nav-icon">🎛️</span>
-            <span>Radars</span>
+            <span>Alertes</span>
           </div>
           <div class="nav-item nav-immo" onclick="navigateTo('pane-reglages', this)">
             <span class="nav-icon">🔔</span>
@@ -2516,7 +2949,7 @@
           </div>
           <div class="nav-item" onclick="navigateTo('pane-radars', this); switchRadarTab('voyage');">
             <span class="nav-icon">🎯</span>
-            <span>Radars</span>
+            <span>Alertes</span>
           </div>
           <div class="nav-item" onclick="navigateTo('pane-reglages', this)">
             <span class="nav-icon">🔔</span>
@@ -2997,7 +3430,7 @@
       try {
         if (isSXM) {
           // --- SCRAPER RÉEL CLIENT SAINT-MARTIN (97150 ≠ 38400) VIA DOMIMMO DIRECT REST API ---
-          if (!silent) updateImmoScanProgress(45, `🏝️ Scraping réel en direct sur DOMimmo Saint-Martin (97150)...`);
+          if (!silent) updateImmoScanProgress(45, `🏝️ Recherche en direct sur DOMimmo Saint-Martin (97150)...`);
           const catCode = transac === 'achat' ? 1 : 6;
           const domUrl = `https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat=${catCode}&limit=100`;
 
@@ -3091,7 +3524,7 @@
                 const defaultLat = bbox.south && bbox.north ? (bbox.south + bbox.north) / 2 : 48.6921;
                 const defaultLon = bbox.west && bbox.east ? (bbox.west + bbox.east) / 2 : 6.1844;
 
-                if (!silent) updateImmoScanProgress(55, `🏢 Scraping multi-pages (120 max) pour ${cityName} sur Bien'ici...`);
+                if (!silent) updateImmoScanProgress(55, `🏢 Recherche multi-pages (120 max) pour ${cityName} sur Bien'ici...`);
 
                 for (const pageNum of [1, 2]) {
                   const filterObj = {
@@ -3189,7 +3622,7 @@
           }
         }
       } catch (err) {
-        console.warn('Erreur lors du live scraping client:', err);
+        console.warn('Note recherche en direct client:', err);
       }
 
       if (!silent) {
@@ -3902,7 +4335,7 @@
                 <span style="font-size: 0.84rem; font-weight: 800; color: #10b981;">≤ ${r.budget} €</span>
               </div>
               <div style="font-size: 0.74rem; color: #94a3b8; margin-top: 4px;">
-                🚪 ${r.type} • 📐 Min ${r.minM2} m² • Veille Cloud H24
+                🚪 ${r.type} • 📐 Min ${r.minM2} m² • Alerte active
               </div>
               <div class="radar-card-actions">
                 <button class="btn-radar-scan" onclick="triggerRadarScan('immo', '${r.id}')">⚡ Lancer le Scan</button>
@@ -4506,7 +4939,7 @@
         dest: 'Bologne',
         nights: 3,
         img: 'https://images.unsplash.com/photo-1534445867742-43195f401b6c?auto=format&fit=crop&w=700&q=80',
-        url: 'https://www.kayak.fr/flights/LUX-BLQ?sort=price_a'
+        url: 'https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Bologne'
       },
       {
         id: 'inspi_bcn_bsl',
@@ -4517,7 +4950,7 @@
         dest: 'Barcelone',
         nights: 4,
         img: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=700&q=80',
-        url: 'https://www.kayak.fr/flights/BSL-BCN?sort=price_a'
+        url: 'https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Bale%20vers%20Barcelone'
       },
       {
         id: 'inspi_ouigo_paris',
@@ -4539,7 +4972,7 @@
         dest: 'Lisbonne',
         nights: 5,
         img: 'https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&fit=crop&w=700&q=80',
-        url: 'https://www.kayak.fr/flights/LUX-LIS?sort=price_a'
+        url: 'https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Lisbonne'
       }
     ];
 
@@ -4708,6 +5141,12 @@
       return { price: est, isWeekend, horizonNote: tags.join(' • ') };
     }
 
+    function toYymmdd(isoStr) {
+      if (!isoStr) return '';
+      const parts = isoStr.split('-');
+      return parts.length === 3 ? (parts[0].slice(2) + parts[1] + parts[2]) : isoStr;
+    }
+
     function buildVoyageBookingLinks(depClean, destClean, depIso, retIso, hubIataOverride = null, trainOrigOverride = null) {
       const depKey = normalizeGeoKey(depClean);
       const lookedOrig = lookupGeoCode(IATA_CODES, depClean);
@@ -4716,30 +5155,30 @@
         : (lookedOrig || 'CDG');
       const destIata = lookupGeoCode(IATA_CODES, destClean) || destClean.replace(/[^a-zA-Z]/g, '').slice(0, 3).toUpperCase() || 'PAR';
 
-      // Format Google Flights universel vérifié (IATA 3 lettres + dates exactes)
-      const qFlights = `Flights from ${origIata} to ${destIata} on ${depIso} through ${retIso}`;
+      const yymmddDep = toYymmdd(depIso);
+      const yymmddRet = toYymmdd(retIso);
+
+      // 1. Format Officiel Skyscanner YYMMDD
+      const skyscannerUrl = `https://www.skyscanner.fr/transport/vols/${origIata.toLowerCase()}/${destIata.toLowerCase()}/${yymmddDep}/${yymmddRet}/?adultsv2=1&cabinclass=economy`;
+
+      // 2. Format Officiel Google Flights propre
+      const qFlights = `Vols de ${depClean} vers ${destClean} du ${depIso} au ${retIso}`;
       const flightsUrl = `https://www.google.com/travel/flights?hl=fr&curr=EUR&q=${encodeURIComponent(qFlights)}`;
 
-      // Format Kayak Flights vérifié
-      const kayakUrl = `https://www.kayak.fr/flights/${origIata}-${destIata}/${depIso}/${retIso}?sort=price_a`;
-
-      // Format Booking.com vérifié (>= 8/10 & trié par rapport qualité/prix)
+      // 3. Format Officiel Booking.com synchronisé avec note >= 8/10
       const bookingUrl = `https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(destClean)}&checkin=${depIso}&checkout=${retIso}&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price`;
 
-      // Trainline avec URN vérifiés + paramètre obligatoire passengers[]=1996-01-01, sinon Google Maps Transit (jamais de 404 /fr/resultats)
-      const trainOrigKey = trainOrigOverride || depClean;
-      const origUrn = lookupGeoCode(TRAINLINE_URNS, trainOrigKey);
-      const destUrn = lookupGeoCode(TRAINLINE_URNS, destClean);
-      const transitUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(trainOrigKey)}&destination=${encodeURIComponent(destClean)}&travelmode=transit`;
-      const trainUrl = (origUrn && destUrn)
-        ? `https://www.thetrainline.com/book/results?origin=${encodeURIComponent(origUrn)}&destination=${encodeURIComponent(destUrn)}&outwardDate=${depIso}T08%3A00%3A00&outwardDateType=departAfter&journeySearchType=return&inwardDate=${retIso}T18%3A00%3A00&inwardDateType=departAfter&passengers%5B%5D=1996-01-01&lang=fr`
-        : transitUrl;
-
-      // Package combiné Google Travel (200 OK)
-      const packageUrl = `https://www.google.com/travel/search?hl=fr&curr=EUR&q=${encodeURIComponent(`Vol hotel ${destClean} depuis ${depClean} du ${depIso} au ${retIso}`)}`;
+      // 4. Format Officiel Trains : SNCF Connect + OUIGO + Google Transit (ZÉRO thetrainline !)
+      const trainOrig = trainOrigOverride || depClean;
+      const sncfConnectUrl = `https://www.sncf-connect.com/app/home/search?origin=${encodeURIComponent(trainOrig)}&destination=${encodeURIComponent(destClean)}&outwardDate=${depIso}`;
+      const transitUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(trainOrig)}&destination=${encodeURIComponent(destClean)}&travelmode=transit`;
+      const trainUrl = sncfConnectUrl;
       const ouigoUrl = 'https://www.ouigo.com/';
 
-      return { flightsUrl, kayakUrl, trainUrl, transitUrl, bookingUrl, packageUrl, ouigoUrl, origIata, destIata };
+      // 5. Package combiné Google Travel
+      const packageUrl = `https://www.google.com/travel/search?hl=fr&curr=EUR&q=${encodeURIComponent(`Vol hotel ${destClean} depuis ${depClean} du ${depIso} au ${retIso}`)}`;
+
+      return { skyscannerUrl, flightsUrl, trainUrl, sncfConnectUrl, transitUrl, bookingUrl, packageUrl, ouigoUrl, origIata, destIata };
     }
 
     function buildDynamicVoyageOffers(depClean, destRaw, depIso, retIso, nights, daysOut, depMonth, depDateObj) {
@@ -5135,7 +5574,7 @@
       const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
       if (token) {
-        updateVoyageScanProgress(85, `🚀 Envoi de la mission Cloud H24...`);
+        updateVoyageScanProgress(85, `🚀 Enregistrement de l'alerte...`);
         try {
           await fetch(`https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`, {
             method: 'POST',
@@ -5266,7 +5705,9 @@
       const nights = it.nights || eff.nights;
       const fallbackLinks = buildVoyageBookingLinks(it.departure_hub || 'Nancy', it.destination || 'Paris', depIso, retIso);
 
-      const flightUrl = (it.flight_url && it.flight_url.startsWith('http')) ? it.flight_url : fallbackLinks.flightsUrl;
+      const flightUrl = (it.skyscanner_url && it.skyscanner_url.startsWith('http'))
+        ? it.skyscanner_url
+        : ((it.flight_url && it.flight_url.startsWith('http')) ? it.flight_url : (fallbackLinks.skyscannerUrl || fallbackLinks.flightsUrl));
       const hotelUrl = (it.hotel_url && it.hotel_url.startsWith('http')) ? it.hotel_url : fallbackLinks.bookingUrl;
       const trainUrl = (it.train_url && it.train_url.startsWith('http')) ? it.train_url : ((it.url && it.url.startsWith('http')) ? it.url : fallbackLinks.trainUrl);
       const transitUrl = (it.transit_url && it.transit_url.startsWith('http')) ? it.transit_url : fallbackLinks.transitUrl;
@@ -5460,7 +5901,7 @@
     function testPushNotification() {
       fetch('https://ntfy.sh/sxm-immo-alert-97150-x9q4m2', {
         method: 'POST',
-        headers: { 'Title': '🛰️ Test Nexus Radar V9', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
+        headers: { 'Title': 'Horizons : Test d\'Alerte', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
         body: 'Veille V9 opérationnelle ! Alertes Immo (sans viager) et Packages Voyage croisés.'
       }).then(() => showToast('🔔 Notification V9 envoyée !'))
         .catch(() => showToast('Erreur envoi ntfy'));
@@ -5481,6 +5922,7 @@
 
     // Initialisation + Service Worker V9 (Network-First + Purge Ancien Cache)
     window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
       initPinLock();
       renderBottomNav('immo');
       initDefaultCalendarDates();
@@ -5496,11 +5938,11 @@
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'nexus-v9-clean') caches.delete(n);
+              if (n !== 'horizons-v10') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=9').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=10').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 

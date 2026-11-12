@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nexus-v9-clean';
+const CACHE_NAME = 'horizons-v10';
 const ASSETS_TO_CACHE = [
   './manifest.json',
   './assets/icon.svg'
@@ -21,7 +21,7 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const reqUrl = event.request.url;
-  // Network-First pour HTML, JSON et données dynamiques afin d'éviter tout cache figé
+  // Network-First pour HTML, JSON et donnees dynamiques afin d'eviter tout cache fige
   if (
     event.request.mode === 'navigate' ||
     reqUrl.endsWith('.html') ||
@@ -48,9 +48,9 @@ self.addEventListener('fetch', (event) => {
 
 self.addEventListener('push', (event) => {
   const data = event.data ? event.data.json() : {};
-  const title = data.title || '⚡ Nexus Radar V9 : Nouvelle Pépite !';
+  const title = data.title || 'Horizons : Nouvelle Découverte !';
   const options = {
-    body: data.message || "Une nouvelle offre vient d'être détectée.",
+    body: data.message || "Une nouvelle opportunité sur-mesure vient d'être sélectionnée.",
     icon: './assets/icon.svg',
     badge: './assets/icon.svg',
     data: { url: data.click || './index.html' },

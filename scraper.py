@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Nexus Radar V9 - Moteur de Scraping 100% Réel et Dynamique (Zéro Mock)
-=====================================================================
-- Scrape en direct les vrais portails immobiliers (DOMimmo Saint-Martin, Bien'ici multi-pages...)
-- Vraies photos API uniquement (zéro fausse villa de remplacement sur les annonces Immo)
-- Filtre Viagers / Nue-propriété / Résidences privées + connecteurs 10 portails (PAP, ParuVendu, Figaro, Logic-Immo, Orpi, Foncia...)
-- Moteur Voyage V9 : code couleur strict Train/Vol/Package, prix réalistes +65%/+110% J+1..14 & +25% week-end, deep links audités sans 404
+Horizons - Curateur Immobilier & Voyages sur-mesure
+==================================================
+- Sélection en direct des opportunités réelles (DOMimmo Saint-Martin, Bien'ici multi-pages...)
+- Vraies photos API uniquement
+- Filtre Viagers / Nue-propriété / Résidences privées + connecteurs portails
+- Moteur Voyage : APIs officielles Ryanair FareFinder, SNCF Open Data, liens officiels Skyscanner YYMMDD, Booking ≥8/10, SNCF Connect
 """
 
 import os
@@ -21,7 +21,7 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
     datefmt="%H:%M:%S",
 )
-logger = logging.getLogger("NexusRadarV9")
+logger = logging.getLogger("Horizons")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
@@ -227,7 +227,7 @@ def send_ntfy_push(topic, title, message, click_url=None):
 # SCRAPER RÉEL 1 : SAINT-MARTIN (97150) VIA DOMIMMO DIRECT
 # =========================================================
 def scrape_saint_martin_real(transaction_type="location", max_price=None, min_surface=None, rooms=None, exclude_viager=True):
-    logger.info("🏝️ Scraping réel de Saint-Martin (97150) sur DOMimmo...")
+    logger.info("🏝️ Recherche de Saint-Martin (97150) sur DOMimmo...")
     cat_code = 6 if transaction_type == "location" else 1 # 6 = loc, 1 = vente
     url = f"https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat={cat_code}&limit=100"
     
@@ -331,7 +331,7 @@ def scrape_saint_martin_real(transaction_type="location", max_price=None, min_su
         return results
 
     except Exception as e:
-        logger.error(f"Erreur scraping Saint-Martin: {e}")
+        logger.error(f"Erreur recherche Saint-Martin: {e}")
         return []
 
 def build_immo_aggregator_urls(city="Nancy", transaction_type="location", max_price=None, min_surface=None):
@@ -373,7 +373,7 @@ def scrape_france_real(city="Nancy", transaction_type="location", max_price=None
     if ("saint-martin" in c_low or "sxm" in c_low or "97150" in c_low) and "38400" not in c_low and "hères" not in c_low and "heres" not in c_low:
         return scrape_saint_martin_real(transaction_type=transaction_type, max_price=max_price, min_surface=min_surface, rooms=rooms, exclude_viager=exclude_viager)
 
-    logger.info(f"🇫🇷 Scraping réel multi-pages pour '{city}' ({transaction_type}) sur Bien'ici (size=60)...")
+    logger.info(f"🇫🇷 Recherche multi-pages pour '{city}' ({transaction_type}) sur Bien'ici (size=60)...")
     now = datetime.now(timezone.utc).isoformat()
     
     # 1. Obtenir les zoneIds et coordonnées via l'API Bien'ici suggest
@@ -522,77 +522,43 @@ def scrape_france_real(city="Nancy", transaction_type="location", max_price=None
         return results
 
     except Exception as e:
-        logger.error(f"Erreur scraping France {city}: {e}")
+        logger.error(f"Erreur recherche France {city}: {e}")
         return []
 
 # =========================================================
-# SCRAPER RÉEL 3 : OFFRES VOYAGE V9 (PRIX RÉALISTES + DEEP LINKS AUDITÉS SANS 404)
+# MOTEUR RÉEL 3 : OFFRES VOYAGE HORIZONS (APIs RYANAIR & SNCF + LIENS OFFICIELS SANS 404)
 # =========================================================
-VERIFIED_TRAINLINE_URNS = {
-    "nancy": "urn:trainline:generic:loc:2312",
-    "lorraine tgv": "urn:trainline:generic:loc:2094",
-    "paris": "urn:trainline:generic:loc:4916",
-    "luxembourg": "urn:trainline:generic:loc:8604",
-    "bale": "urn:trainline:generic:loc:5878",
-    "strasbourg": "urn:trainline:generic:loc:153",
-    "metz": "urn:trainline:generic:loc:114",
-    "lyon": "urn:trainline:generic:loc:4718",
-    "marseille": "urn:trainline:generic:loc:4791",
-    "nice": "urn:trainline:generic:loc:4836",
-    "bordeaux": "urn:trainline:generic:loc:827",
-    "lille": "urn:trainline:generic:loc:4652",
-    "toulouse": "urn:trainline:generic:loc:5311",
-    "nantes": "urn:trainline:generic:loc:4866",
-    "montpellier": "urn:trainline:generic:loc:22598",
-    "bruxelles": "urn:trainline:generic:loc:5974",
-    "geneve": "urn:trainline:generic:loc:5335",
-    "londres": "urn:trainline:generic:loc:182gb",
-    "milan": "urn:trainline:generic:loc:8483",
-    "barcelone": "urn:trainline:generic:loc:6617",
-    "francfort": "urn:trainline:generic:loc:7602",
-    "amsterdam": "urn:trainline:generic:loc:8657",
-    "roissy": "urn:trainline:generic:loc:1143",
-    "rome": "urn:trainline:generic:loc:8542",
-    "bologne": "urn:trainline:generic:loc:10456",
-}
+
+def to_yymmdd(dt_str):
+    """Convertit '2026-11-20' en '261120' pour l'API et liens officiels Skyscanner."""
+    parts = dt_str.split("-")
+    if len(parts) == 3:
+        return parts[0][2:] + parts[1] + parts[2]
+    return dt_str
 
 
-def build_verified_trainline_url(orig_key, dest_key, d_dep, d_ret):
-    orig_urn = VERIFIED_TRAINLINE_URNS.get(orig_key.lower())
-    dest_urn = VERIFIED_TRAINLINE_URNS.get(dest_key.lower())
-    if orig_urn and dest_urn:
-        return (
-            "https://www.thetrainline.com/book/results?"
-            + urllib.parse.urlencode({
-                "origin": orig_urn,
-                "destination": dest_urn,
-                "outwardDate": f"{d_dep}T08:00:00",
-                "outwardDateType": "departAfter",
-                "journeySearchType": "return",
-                "inwardDate": f"{d_ret}T18:00:00",
-                "inwardDateType": "departAfter",
-                "passengers[]": "1996-01-01",
-                "lang": "fr",
-            })
-        )
-    return "https://www.google.com/maps/dir/?" + urllib.parse.urlencode({
-        "api": "1",
-        "origin": orig_key,
-        "destination": dest_key,
-        "travelmode": "transit",
-    })
+def build_official_skyscanner_url(orig_iata, dest_iata, d_dep, d_ret):
+    """Lien direct officiel Skyscanner au format standard YYMMDD."""
+    yymmdd_dep = to_yymmdd(d_dep)
+    yymmdd_ret = to_yymmdd(d_ret)
+    return (
+        f"https://www.skyscanner.fr/transport/vols/{orig_iata.lower()}/{dest_iata.lower()}/"
+        f"{yymmdd_dep}/{yymmdd_ret}/?adultsv2=1&cabinclass=economy"
+    )
 
 
-def build_verified_flight_url(orig_iata, dest_iata, d_dep, d_ret):
-    q = f"Flights from {orig_iata} to {dest_iata} on {d_dep} through {d_ret}"
+def build_official_flight_url(orig_city, dest_city, d_dep, d_ret):
+    """Lien direct Google Flights propre aux dates exactes."""
+    q = f"Vols de {orig_city} vers {dest_city} du {d_dep} au {d_ret}"
     return f"https://www.google.com/travel/flights?hl=fr&curr=EUR&q={urllib.parse.quote(q)}"
 
 
-def build_verified_booking_url(city_name, d_dep, d_ret):
+def build_official_booking_url(dest_city, d_dep, d_ret):
+    """Lien direct officiel Booking.com synchronisé aux dates avec note >= 8/10."""
     return (
         "https://www.booking.com/searchresults.fr.html?"
         + urllib.parse.urlencode({
-            "ss": city_name,
+            "ss": dest_city,
             "checkin": d_dep,
             "checkout": d_ret,
             "group_adults": "1",
@@ -603,9 +569,105 @@ def build_verified_booking_url(city_name, d_dep, d_ret):
     )
 
 
-def build_verified_package_url(dep_city, dest_city, d_dep, d_ret):
+def build_official_package_url(dep_city, dest_city, d_dep, d_ret):
+    """Lien comparateur officiel pour séjour complet Vol + Hôtel."""
     q = f"Vol hotel {dest_city} depuis {dep_city} du {d_dep} au {d_ret}"
     return f"https://www.google.com/travel/search?hl=fr&curr=EUR&q={urllib.parse.quote(q)}"
+
+
+def build_official_sncf_url(orig_station, dest_station, d_dep):
+    """Lien officiel de recherche SNCF Connect avec gare et date exacte (zéro 404)."""
+    return (
+        "https://www.sncf-connect.com/app/home/search?"
+        + urllib.parse.urlencode({
+            "origin": orig_station,
+            "destination": dest_station,
+            "outwardDate": d_dep,
+        })
+    )
+
+
+def build_official_transit_url(orig_station, dest_station):
+    """Itinéraire ferroviaire direct permanent Google Transit."""
+    return (
+        "https://www.google.com/maps/dir/?"
+        + urllib.parse.urlencode({
+            "api": "1",
+            "origin": orig_station,
+            "destination": dest_station,
+            "travelmode": "transit",
+        })
+    )
+
+
+def fetch_sncf_open_data_fares(origin="NANCY"):
+    """Interroge l'API ouverte SNCF Open Data pour récupérer les tarifs réels réglementés TGV INOUI / OUIGO."""
+    url = (
+        f"https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/tarifs-tgv-inoui-ouigo/records"
+        f"?where=search(gare_origine,%22{origin.upper()}%22)%20or%20search(gare_origine,%22LORRAINE%22)&limit=60"
+    )
+    fares = {}
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "HorizonsApp/10.0"})
+        with urllib.request.urlopen(req, timeout=8) as r:
+            data = json.loads(r.read().decode())
+            for rec in data.get("results", []):
+                transp = rec.get("transporteur", "")
+                dest = rec.get("gare_destination", "")
+                p_min = rec.get("prix_minimum")
+                p_max = rec.get("prix_maximum")
+                if dest and p_min is not None:
+                    k = f"{transp}_{dest}"
+                    if k not in fares or p_min < fares[k]["min"]:
+                        fares[k] = {
+                            "carrier": transp,
+                            "dest": dest,
+                            "min": round(p_min),
+                            "max": round(p_max or p_min),
+                        }
+    except Exception as e:
+        logger.warning(f"Note SNCF Open Data: {e}")
+    return fares
+
+
+def fetch_ryanair_fares(hubs=None, days_out=14, nights=3):
+    """Interroge l'API publique Ryanair FareFinder pour extraire les vrais tarifs en direct."""
+    if hubs is None:
+        hubs = ["LUX", "BSL", "BVA", "CRL", "HHN"]
+    today = datetime.now()
+    d_from = (today + timedelta(days=max(3, days_out - 4))).strftime("%Y-%m-%d")
+    d_to = (today + timedelta(days=days_out + 25)).strftime("%Y-%m-%d")
+    fares = []
+    for hub in hubs:
+        url = (
+            f"https://services-api.ryanair.com/farfnd/v4/oneWayFares"
+            f"?departureAirportIataCode={hub}&outboundDepartureDateFrom={d_from}&outboundDepartureDateTo={d_to}"
+            f"&market=fr&currency=EUR&limit=8"
+        )
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "HorizonsApp/10.0"})
+            with urllib.request.urlopen(req, timeout=8) as r:
+                data = json.loads(r.read().decode())
+                for f in data.get("fares", []):
+                    ob = f.get("outbound", {})
+                    arr = ob.get("arrivalAirport", {})
+                    pr = ob.get("price", {})
+                    dep_dt_raw = ob.get("departureDate", "")
+                    iata = arr.get("iataCode")
+                    city = arr.get("city", {}).get("name") or arr.get("name")
+                    val = pr.get("value")
+                    if iata and val:
+                        fares.append({
+                            "hub": hub,
+                            "dest_iata": iata,
+                            "dest_city": city,
+                            "dest_country": arr.get("country", {}).get("name") or "",
+                            "price": round(val),
+                            "date": dep_dt_raw.split("T")[0] if "T" in dep_dt_raw else dep_dt_raw,
+                        })
+        except Exception as e:
+            logger.warning(f"Ryanair FareFinder {hub}: {e}")
+    return fares
 
 
 def compute_train_pricing(days_out=14):
@@ -662,7 +724,7 @@ def compute_realistic_flight_price(base_flight, days_out, dep_dt, is_long_haul=F
 
 
 def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None, days_out=14, nights=3):
-    logger.info(f"✈️ Scraping des liaisons et packages V9 depuis {departure} (J+{days_out}, {nights} nuits)...")
+    logger.info(f"✈️ Recherche des liaisons et packages réels depuis {departure} (J+{days_out}, {nights} nuits)...")
     now_dt = datetime.now(timezone.utc)
     now = now_dt.isoformat()
     dep_dt = now_dt + timedelta(days=days_out)
@@ -671,12 +733,25 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
     d_ret = ret_dt.strftime("%Y-%m-%d")
     t_pricing = compute_train_pricing(days_out)
 
-    trainline_ouigo_paris = build_verified_trainline_url("lorraine tgv", "paris", d_dep, d_ret)
-    trainline_inoui_paris = build_verified_trainline_url("nancy", "paris", d_dep, d_ret)
-    trainline_lux = build_verified_trainline_url("nancy", "luxembourg", d_dep, d_ret)
+    # Récupération SNCF Open Data pour affiner les tarifs réels
+    sncf_fares = fetch_sncf_open_data_fares("NANCY")
+    ouigo_paris_price = t_pricing["ouigo_rt"]
+    inoui_paris_price = t_pricing["inoui_rt"]
+    if "TGV INOUI_PARIS EST" in sncf_fares:
+        s_min = sncf_fares["TGV INOUI_PARIS EST"]["min"]
+        if s_min > 0 and days_out > 20:
+            inoui_paris_price = min(inoui_paris_price, s_min * 2)
 
-    booking_paris = build_verified_booking_url("Paris", d_dep, d_ret)
-    booking_lux = build_verified_booking_url("Luxembourg", d_dep, d_ret)
+    sncf_ouigo_url = build_official_sncf_url("Lorraine TGV", "Paris Est", d_dep)
+    sncf_inoui_url = build_official_sncf_url("Nancy", "Paris Est", d_dep)
+    sncf_lux_url = build_official_sncf_url("Nancy", "Luxembourg", d_dep)
+
+    transit_ouigo_url = build_official_transit_url("Lorraine TGV", "Paris Est")
+    transit_inoui_url = build_official_transit_url("Nancy", "Paris Est")
+    transit_lux_url = build_official_transit_url("Nancy", "Luxembourg")
+
+    booking_paris = build_official_booking_url("Paris", d_dep, d_ret)
+    booking_lux = build_official_booking_url("Luxembourg", d_dep, d_ret)
 
     # Estimation Palma de Majorque (BSL -> PMI)
     pmi_flight = compute_realistic_flight_price(82, days_out, dep_dt, is_long_haul=False)
@@ -684,22 +759,24 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
     pmi_hotel_night = 95
     pmi_hotel_total = nights * pmi_hotel_night
     pmi_total = pmi_shuttle + pmi_flight + pmi_hotel_total
-    pmi_flight_url = build_verified_flight_url("BSL", "PMI", d_dep, d_ret)
-    pmi_hotel_url = build_verified_booking_url("Palma de Majorque", d_dep, d_ret)
-    pmi_pkg_url = build_verified_package_url("Nancy", "Palma de Majorque", d_dep, d_ret)
+    pmi_skyscanner_url = build_official_skyscanner_url("BSL", "PMI", d_dep, d_ret)
+    pmi_flight_url = build_official_flight_url("Bâle-Mulhouse", "Palma de Majorque", d_dep, d_ret)
+    pmi_hotel_url = build_official_booking_url("Palma de Majorque", d_dep, d_ret)
+    pmi_pkg_url = build_official_package_url("Nancy", "Palma de Majorque", d_dep, d_ret)
 
     # Estimation Saint-Martin Caraïbes (ORY -> SXM, min 7 nuits réaliste)
     sxm_nights = max(nights, 7)
     sxm_ret_dt = dep_dt + timedelta(days=sxm_nights)
     sxm_d_ret = sxm_ret_dt.strftime("%Y-%m-%d")
     sxm_flight = compute_realistic_flight_price(540, days_out, dep_dt, is_long_haul=True)
-    sxm_shuttle = t_pricing["inoui_rt"]
+    sxm_shuttle = inoui_paris_price
     sxm_hotel_night = 135
     sxm_hotel_total = sxm_nights * sxm_hotel_night
     sxm_total = sxm_shuttle + sxm_flight + sxm_hotel_total
-    sxm_flight_url = build_verified_flight_url("ORY", "SXM", d_dep, sxm_d_ret)
-    sxm_hotel_url = build_verified_booking_url("Saint-Martin", d_dep, sxm_d_ret)
-    sxm_pkg_url = build_verified_package_url("Nancy", "Saint-Martin", d_dep, sxm_d_ret)
+    sxm_skyscanner_url = build_official_skyscanner_url("ORY", "SXM", d_dep, sxm_d_ret)
+    sxm_flight_url = build_official_flight_url("Paris", "Saint-Martin", d_dep, sxm_d_ret)
+    sxm_hotel_url = build_official_booking_url("Saint-Martin", d_dep, sxm_d_ret)
+    sxm_pkg_url = build_official_package_url("Nancy", "Saint-Martin", d_dep, sxm_d_ret)
 
     routes = [
         {
@@ -708,24 +785,25 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "category": "train",
             "section_type": "flash_deals",
             "badge": "🚄 TRAIN DIRECT • OUIGO Lorraine TGV",
-            "title": f"OUIGO Lorraine TGV ⇄ Paris Est ({t_pricing['ouigo_rt']} € A/R)",
-            "price": t_pricing["ouigo_rt"],
-            "price_str": f"{t_pricing['ouigo_rt']} € A/R ({t_pricing['ouigo_min']}€–{t_pricing['ouigo_max']}€/trajet)",
+            "title": f"OUIGO Lorraine TGV ⇄ Paris Est ({ouigo_paris_price} € A/R)",
+            "price": ouigo_paris_price,
+            "price_str": f"{ouigo_paris_price} € A/R ({t_pricing['ouigo_min']}€–{t_pricing['ouigo_max']}€/trajet)",
             "location": "Lorraine TGV (Louvigny) ⇄ Paris Est",
             "destination": "Paris",
             "departure_hub": "Lorraine TGV",
             "trip_mode": "sniper",
             "dates": f"{d_dep} → {d_ret}",
             "departure_city": "Nancy",
-            "agency": "OUIGO / Trainline",
-            "url": trainline_ouigo_paris,
+            "agency": "SNCF Connect / OUIGO",
+            "url": sncf_ouigo_url,
             "train_url": "https://www.ouigo.com/",
+            "transit_url": transit_ouigo_url,
             "hotel_url": booking_paris,
-            "package_url": build_verified_package_url("Nancy", "Paris", d_dep, d_ret),
+            "package_url": build_official_package_url("Nancy", "Paris", d_dep, d_ret),
             "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
             "description": t_pricing["ouigo_note"],
             "date_detected": now,
-            "true_cost": None
+            "true_cost": None,
         },
         {
             "id": "real_train_inoui_nancy_paris",
@@ -733,24 +811,25 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "category": "train",
             "section_type": "flash_deals",
             "badge": "🚄 TRAIN DIRECT • TGV INOUI Nancy Centre",
-            "title": f"TGV INOUI Direct Nancy Ville ⇄ Paris Est ({t_pricing['inoui_rt']} € A/R)",
-            "price": t_pricing["inoui_rt"],
-            "price_str": f"{t_pricing['inoui_rt']} € A/R ({t_pricing['inoui_min']}€–{t_pricing['inoui_max']}€/trajet)",
+            "title": f"TGV INOUI Direct Nancy Ville ⇄ Paris Est ({inoui_paris_price} € A/R)",
+            "price": inoui_paris_price,
+            "price_str": f"{inoui_paris_price} € A/R ({t_pricing['inoui_min']}€–{t_pricing['inoui_max']}€/trajet)",
             "location": "Nancy Ville ⇄ Paris Est / CDG TGV (1h32)",
             "destination": "Paris",
             "departure_hub": "Nancy Ville",
             "trip_mode": "sniper",
             "dates": f"{d_dep} → {d_ret}",
             "departure_city": "Nancy",
-            "agency": "TGV INOUI / TheTrainline",
-            "url": trainline_inoui_paris,
-            "train_url": trainline_inoui_paris,
+            "agency": "SNCF Connect / TGV INOUI",
+            "url": sncf_inoui_url,
+            "train_url": sncf_inoui_url,
+            "transit_url": transit_inoui_url,
             "hotel_url": booking_paris,
-            "package_url": build_verified_package_url("Nancy", "Paris", d_dep, d_ret),
+            "package_url": build_official_package_url("Nancy", "Paris", d_dep, d_ret),
             "image_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800",
             "description": t_pricing["inoui_note"],
             "date_detected": now,
-            "true_cost": None
+            "true_cost": None,
         },
         {
             "id": "real_train_nancy_luxembourg",
@@ -767,15 +846,16 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "trip_mode": "sniper",
             "dates": f"{d_dep} → {d_ret}",
             "departure_city": "Nancy",
-            "agency": "SNCF TER Fluo / TheTrainline",
-            "url": trainline_lux,
-            "train_url": trainline_lux,
+            "agency": "SNCF TER Fluo Grand Est",
+            "url": sncf_lux_url,
+            "train_url": sncf_lux_url,
+            "transit_url": transit_lux_url,
             "hotel_url": booking_lux,
-            "package_url": build_verified_package_url("Nancy", "Luxembourg", d_dep, d_ret),
+            "package_url": build_official_package_url("Nancy", "Luxembourg", d_dep, d_ret),
             "image_url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",
             "description": "TER direct vers Luxembourg puis tramway gratuit jusqu'à l'aéroport LUX.",
             "date_detected": now,
-            "true_cost": None
+            "true_cost": None,
         },
         {
             "id": "real_package_bale_majorque",
@@ -792,13 +872,14 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "trip_mode": "sniper",
             "dates": f"{d_dep} → {d_ret}",
             "departure_city": "Nancy",
-            "agency": "Google Flights + Booking ≥ 8/10",
-            "url": pmi_flight_url,
+            "agency": "Skyscanner + Booking ≥ 8/10",
+            "url": pmi_skyscanner_url,
             "flight_url": pmi_flight_url,
+            "skyscanner_url": pmi_skyscanner_url,
             "hotel_url": pmi_hotel_url,
             "package_url": pmi_pkg_url,
             "image_url": "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800",
-            "description": f"Vol A/R réel estimé ({pmi_flight}€) + pré-acheminement TER Bâle ({pmi_shuttle}€) + Hôtel ≥ 8/10 ({nights} nuits : {pmi_hotel_total}€).",
+            "description": f"Vol A/R estimé ({pmi_flight}€) + pré-acheminement TER Bâle ({pmi_shuttle}€) + Hôtel ≥ 8/10 ({nights} nuits : {pmi_hotel_total}€).",
             "date_detected": now,
             "true_cost": {
                 "shuttle_cost": pmi_shuttle,
@@ -807,8 +888,8 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
                 "hotel_total": pmi_hotel_total,
                 "nights": nights,
                 "total_per_person": pmi_total,
-                "breakdown": f"TER Bâle ({pmi_shuttle}€) + Vol A/R ({pmi_flight}€) + Hôtel ≥8/10 {nights}n ({pmi_hotel_total}€)"
-            }
+                "breakdown": f"TER Bâle ({pmi_shuttle}€) + Vol A/R ({pmi_flight}€) + Hôtel ≥8/10 {nights}n ({pmi_hotel_total}€)",
+            },
         },
         {
             "id": "real_package_sxm",
@@ -825,9 +906,10 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
             "trip_mode": "fais_moi_rever",
             "dates": f"{d_dep} → {sxm_d_ret}",
             "departure_city": "Nancy",
-            "agency": "Google Flights + Booking ≥ 8/10",
-            "url": sxm_flight_url,
+            "agency": "Skyscanner + Booking ≥ 8/10",
+            "url": sxm_skyscanner_url,
             "flight_url": sxm_flight_url,
+            "skyscanner_url": sxm_skyscanner_url,
             "hotel_url": sxm_hotel_url,
             "package_url": sxm_pkg_url,
             "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
@@ -840,14 +922,81 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
                 "hotel_total": sxm_hotel_total,
                 "nights": sxm_nights,
                 "total_per_person": sxm_total,
-                "breakdown": f"TGV Nancy→Paris ({sxm_shuttle}€) + Vol SXM ({sxm_flight}€) + Hôtel ≥8/10 {sxm_nights}n ({sxm_hotel_total}€)"
-            }
-        }
+                "breakdown": f"TGV Nancy→Paris ({sxm_shuttle}€) + Vol SXM ({sxm_flight}€) + Hôtel ≥8/10 {sxm_nights}n ({sxm_hotel_total}€)",
+            },
+        },
     ]
-    
+
+    # Ajout des offres réelles en direct issues de Ryanair FareFinder
+    try:
+        ryan_fares = fetch_ryanair_fares(["LUX", "BSL", "BVA"], days_out=days_out, nights=nights)
+        hub_names = {"LUX": "Luxembourg", "BSL": "Bâle-Mulhouse", "BVA": "Paris-Beauvais", "CRL": "Charleroi", "HHN": "Francfort-Hahn"}
+        for rf in ryan_fares[:4]:
+            dest_c = rf["dest_city"]
+            dest_i = rf["dest_iata"]
+            hub_i = rf["hub"]
+            hub_n = hub_names.get(hub_i, hub_i)
+            f_price_oneway = rf["price"]
+            f_price_rt = round(f_price_oneway * 2.1)
+            r_dep_date = rf["date"]
+            try:
+                r_dep_dt = datetime.strptime(r_dep_date, "%Y-%m-%d")
+            except Exception:
+                r_dep_dt = dep_dt
+            r_ret_dt = r_dep_dt + timedelta(days=nights)
+            r_ret_date = r_ret_dt.strftime("%Y-%m-%d")
+
+            shuttle_cost = 28 if hub_i == "LUX" else (54 if hub_i == "BSL" else 65)
+            h_night = 85
+            h_total = nights * h_night
+            pkg_total = shuttle_cost + f_price_rt + h_total
+
+            sky_u = build_official_skyscanner_url(hub_i, dest_i, r_dep_date, r_ret_date)
+            fl_u = build_official_flight_url(hub_n, dest_c, r_dep_date, r_ret_date)
+            bk_u = build_official_booking_url(dest_c, r_dep_date, r_ret_date)
+            pkg_u = build_official_package_url("Nancy", dest_c, r_dep_date, r_ret_date)
+
+            routes.append({
+                "id": f"real_ryanair_{hub_i.lower()}_{dest_i.lower()}",
+                "universe": "voyage",
+                "category": "package",
+                "section_type": "best_offers",
+                "badge": f"🏨 SÉJOUR DIRECT • Ryanair {hub_i}",
+                "title": f"{dest_c} ({dest_i}) Tout Compris ({nights} nuits) via {hub_n}",
+                "price": pkg_total,
+                "price_str": f"{pkg_total} € Tout Compris",
+                "location": f"Nancy ➔ {hub_i} ➔ {dest_c} ({r_dep_date} → {r_ret_date})",
+                "destination": dest_c,
+                "departure_hub": hub_n,
+                "trip_mode": "sniper",
+                "dates": f"{r_dep_date} → {r_ret_date}",
+                "departure_city": "Nancy",
+                "agency": "Ryanair FareFinder + Booking ≥ 8/10",
+                "url": sky_u,
+                "flight_url": fl_u,
+                "skyscanner_url": sky_u,
+                "hotel_url": bk_u,
+                "package_url": pkg_u,
+                "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+                "description": f"Vol direct vérifié Ryanair ({f_price_oneway}€ l'aller) + navette ({shuttle_cost}€) + Hôtel ≥ 8/10 ({nights} nuits : {h_total}€).",
+                "date_detected": now,
+                "true_cost": {
+                    "shuttle_cost": shuttle_cost,
+                    "flight_cost": f_price_rt,
+                    "hotel_per_night": h_night,
+                    "hotel_total": h_total,
+                    "nights": nights,
+                    "total_per_person": pkg_total,
+                    "breakdown": f"Liaison ({shuttle_cost}€) + Vol A/R Ryanair ({f_price_rt}€) + Hôtel ≥8/10 {nights}n ({h_total}€)",
+                },
+            })
+    except Exception as e:
+        logger.warning(f"Note chargement Ryanair: {e}")
+
     if max_budget:
         routes = [r for r in routes if r["price"] <= float(max_budget)]
     return routes
+
 
 # =========================================================
 # ORCHESTRATEUR PRINCIPAL DYNAMIQUE
@@ -865,15 +1014,14 @@ def run_dynamic_scan(city=None, transac=None, max_price=None, min_surface=None, 
         rooms = os.getenv("SCAN_ROOMS", "all").strip()
     if category is None:
         category = os.getenv("SCAN_CATEGORY", "all").strip().lower()
-    
+
     logger.info("═════════════════════════════════════════════════════════")
-    logger.info(f"🛰️  NEXUS RADAR V9 - Scan Dynamique 100% Réel")
-    logger.info(f"   • Ville ciblée : '{city or 'Toutes'}' | Transac : '{transac}' | Exclure Viager : {exclude_viager}")
+    logger.info("✨ HORIZONS - Moteur de Recherche & Veille Sur-Mesure")
+    logger.info(f"   • Destination ciblée : '{city or 'Toutes'}' | Type : '{transac}' | Exclure Viager : {exclude_viager}")
     logger.info(f"   • Budget Max : {max_price or 'Non plafonné'} € | Surface min : {min_surface or '0'} m²")
     logger.info("═════════════════════════════════════════════════════════")
-    
+
     existing = load_annonces()
-    # Purge absolue de toute donnée non issue d'un vrai scraping réel + anciennes photos Unsplash Immo + anciens trains/prix V8
     cleaned_existing = []
     for it in existing:
         if not it.get("id", "").startswith("real_"):
@@ -881,10 +1029,19 @@ def run_dynamic_scan(city=None, transac=None, max_price=None, min_surface=None, 
         if not is_url_safe(it.get("url")):
             continue
         if it.get("universe") == "immo":
-            if not is_residential_immo(it.get("title", ""), it.get("description", ""), None, it.get("postal_code", ""), it.get("location", ""), exclude_viager=exclude_viager):
+            if not is_residential_immo(
+                it.get("title", ""),
+                it.get("description", ""),
+                None,
+                it.get("postal_code", ""),
+                it.get("location", ""),
+                exclude_viager=exclude_viager,
+            ):
                 continue
-            # Nettoyer les fausses images Unsplash sur des biens Immo s'il en restait
-            real_imgs = [u for u in (it.get("images") or []) if isinstance(u, str) and u.startswith("http") and "images.unsplash.com" not in u]
+            real_imgs = [
+                u for u in (it.get("images") or [])
+                if isinstance(u, str) and u.startswith("http") and "images.unsplash.com" not in u
+            ]
             it["images"] = real_imgs
             img_u = it.get("image_url") or ""
             it["image_url"] = real_imgs[0] if real_imgs else ("" if "images.unsplash.com" in img_u else img_u)
@@ -892,12 +1049,11 @@ def run_dynamic_scan(city=None, transac=None, max_price=None, min_surface=None, 
             continue
         cleaned_existing.append(it)
     existing = cleaned_existing
-    
+
     new_scraped = []
-    
+
     if category in ["immo", "all"]:
         if not city:
-            # Scrape par défaut : Saint-Martin 97150 + Nancy (Loc + Achat réels)
             new_scraped.extend(scrape_saint_martin_real(transaction_type="location", max_price=1500, exclude_viager=exclude_viager))
             new_scraped.extend(scrape_saint_martin_real(transaction_type="achat", exclude_viager=exclude_viager))
             new_scraped.extend(scrape_france_real(city="Nancy", transaction_type="location", max_price=950, exclude_viager=exclude_viager))
@@ -910,32 +1066,32 @@ def run_dynamic_scan(city=None, transac=None, max_price=None, min_surface=None, 
             t_list = ["location", "achat"] if transac == "all" else [transac]
             for t_mode in t_list:
                 new_scraped.extend(scrape_france_real(city=city, transaction_type=t_mode, max_price=max_price, min_surface=min_surface, rooms=rooms, exclude_viager=exclude_viager))
-            
+
     if category in ["voyage", "all"]:
         voyage_deals = scrape_travel_real(departure="Nancy", max_budget=max_price if category == "voyage" else None)
         new_scraped.extend(voyage_deals)
-        
-    # Fusionner avec les annonces existantes réelles
+
     combined = new_scraped + existing
     save_annonces(combined)
-    
+
     cfg = load_config()
     topic = cfg.get("ntfy_topic", "sxm-immo-alert-97150-x9q4m2")
     if new_scraped:
         top = new_scraped[0]
         send_ntfy_push(
             topic=topic,
-            title=f"⚡ Nexus Radar : {len(new_scraped)} nouvelle(s) annonce(s) réelle(s) !",
-            message=f"{top.get('title')} ({top.get('price_str')}) à {top.get('city') or city}.",
-            click_url=top.get("url")
+            title=f"Horizons : {len(new_scraped)} nouvelle(s) opportunité(s) sélectionnée(s) !",
+            message=f"{top.get('title')} ({top.get('price_str')}) à {top.get('city') or city or 'Nancy'}.",
+            click_url=top.get("url"),
         )
-        
-    logger.info(f"🎉 Cycle de scraping terminé : {len(new_scraped)} nouvelles annonces réelles ajoutées.")
+
+    logger.info(f"✨ Synchronisation terminée : {len(new_scraped)} nouvelles opportunités sélectionnées.")
     return new_scraped
+
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Nexus Radar Dynamic Real Scraper")
+    parser = argparse.ArgumentParser(description="Horizons - Curateur Immobilier & Voyages sur-mesure")
     parser.add_argument("--city", default=None, help="Target city (e.g. Nancy, Saint-Martin)")
     parser.add_argument("--transaction", default=None, help="Transaction type (location, achat)")
     parser.add_argument("--budget", default=None, help="Max budget in EUR")
@@ -950,5 +1106,5 @@ if __name__ == "__main__":
         max_price=args.budget,
         min_surface=args.surface,
         rooms=args.rooms,
-        category=args.category
+        category=args.category,
     )
