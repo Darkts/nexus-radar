@@ -12,17 +12,17 @@
     "destination": "Paris",
     "departure_hub": "Lorraine TGV",
     "trip_mode": "sniper",
-    "dates": "2026-11-27 → 2026-11-30",
+    "dates": "2026-11-28 → 2026-12-01",
     "departure_city": "Nancy",
     "agency": "SNCF Connect / OUIGO",
-    "url": "https://www.sncf-connect.com/app/home/search?origin=Lorraine+TGV&destination=Paris+Est&outwardDate=2026-11-27",
+    "url": "https://www.sncf-connect.com/app/home/search?origin=Lorraine+TGV&destination=Paris+Est&outwardDate=2026-11-28",
     "train_url": "https://www.ouigo.com/",
     "transit_url": "https://www.google.com/maps/dir/?api=1&origin=Lorraine+TGV&destination=Paris+Est&travelmode=transit",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Paris&checkin=2026-11-27&checkout=2026-11-30&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Paris%20depuis%20Nancy%20du%202026-11-27%20au%202026-11-30",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Paris&checkin=2026-11-28&checkout=2026-12-01&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Paris%20depuis%20Nancy%20du%202026-11-28%20au%202026-12-01",
     "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
     "description": "Tarif intermédiaire OUIGO à J+14 (Gare Lorraine TGV ⇄ Paris Est)",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": null
   },
   {
@@ -38,17 +38,17 @@
     "destination": "Paris",
     "departure_hub": "Nancy Ville",
     "trip_mode": "sniper",
-    "dates": "2026-11-27 → 2026-11-30",
+    "dates": "2026-11-28 → 2026-12-01",
     "departure_city": "Nancy",
     "agency": "SNCF Connect / TGV INOUI",
-    "url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Paris+Est&outwardDate=2026-11-27",
-    "train_url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Paris+Est&outwardDate=2026-11-27",
+    "url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Paris+Est&outwardDate=2026-11-28",
+    "train_url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Paris+Est&outwardDate=2026-11-28",
     "transit_url": "https://www.google.com/maps/dir/?api=1&origin=Nancy&destination=Paris+Est&travelmode=transit",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Paris&checkin=2026-11-27&checkout=2026-11-30&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Paris%20depuis%20Nancy%20du%202026-11-27%20au%202026-11-30",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Paris&checkin=2026-11-28&checkout=2026-12-01&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Paris%20depuis%20Nancy%20du%202026-11-28%20au%202026-12-01",
     "image_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800",
     "description": "Tarif Prems / Standard J+14 (39€-59€/trajet Nancy Ville ⇄ Paris Est)",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": null
   },
   {
@@ -64,17 +64,17 @@
     "destination": "Luxembourg",
     "departure_hub": "Nancy Ville",
     "trip_mode": "sniper",
-    "dates": "2026-11-27 → 2026-11-30",
+    "dates": "2026-11-28 → 2026-12-01",
     "departure_city": "Nancy",
     "agency": "SNCF TER Fluo Grand Est",
-    "url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Luxembourg&outwardDate=2026-11-27",
-    "train_url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Luxembourg&outwardDate=2026-11-27",
+    "url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Luxembourg&outwardDate=2026-11-28",
+    "train_url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Luxembourg&outwardDate=2026-11-28",
     "transit_url": "https://www.google.com/maps/dir/?api=1&origin=Nancy&destination=Luxembourg&travelmode=transit",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Luxembourg&checkin=2026-11-27&checkout=2026-11-30&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Luxembourg%20depuis%20Nancy%20du%202026-11-27%20au%202026-11-30",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Luxembourg&checkin=2026-11-28&checkout=2026-12-01&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Luxembourg%20depuis%20Nancy%20du%202026-11-28%20au%202026-12-01",
     "image_url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800",
     "description": "TER direct vers Luxembourg puis tramway gratuit jusqu'à l'aéroport LUX.",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": null
   },
   {
@@ -86,21 +86,21 @@
     "title": "Majorque Tout Compris (3 nuits) via EuroAirport BSL",
     "price": 508,
     "price_str": "508 € Tout Compris",
-    "location": "Nancy ➔ BSL ➔ Palma de Majorque (2026-11-27 → 2026-11-30)",
+    "location": "Nancy ➔ BSL ➔ Palma de Majorque (2026-11-28 → 2026-12-01)",
     "destination": "Palma de Majorque",
     "departure_hub": "Bâle-Mulhouse (BSL)",
     "trip_mode": "sniper",
-    "dates": "2026-11-27 → 2026-11-30",
+    "dates": "2026-11-28 → 2026-12-01",
     "departure_city": "Nancy",
     "agency": "Skyscanner + Booking ≥ 8/10",
-    "url": "https://www.skyscanner.fr/transport/vols/bsl/pmi/261127/261130/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20B%C3%A2le-Mulhouse%20vers%20Palma%20de%20Majorque%20du%202026-11-27%20au%202026-11-30",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bsl/pmi/261127/261130/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Palma+de+Majorque&checkin=2026-11-27&checkout=2026-11-30&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Palma%20de%20Majorque%20depuis%20Nancy%20du%202026-11-27%20au%202026-11-30",
+    "url": "https://www.skyscanner.fr/transport/vols/bsl/pmi/261128/261201/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20B%C3%A2le-Mulhouse%20vers%20Palma%20de%20Majorque%20du%202026-11-28%20au%202026-12-01",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bsl/pmi/261128/261201/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Palma+de+Majorque&checkin=2026-11-28&checkout=2026-12-01&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Palma%20de%20Majorque%20depuis%20Nancy%20du%202026-11-28%20au%202026-12-01",
     "image_url": "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800",
     "description": "Vol A/R estimé (169€) + pré-acheminement TER Bâle (54€) + Hôtel ≥ 8/10 (3 nuits : 285€).",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": {
       "shuttle_cost": 54,
       "flight_cost": 169,
@@ -120,21 +120,21 @@
     "title": "Saint-Martin Caraïbes Tout Compris (7 nuits)",
     "price": 2147,
     "price_str": "2147 € Tout Compris",
-    "location": "Nancy ➔ Paris ORY ➔ Saint-Martin SXM (2026-11-27 → 2026-12-04)",
+    "location": "Nancy ➔ Paris ORY ➔ Saint-Martin SXM (2026-11-28 → 2026-12-05)",
     "destination": "Saint-Martin (SXM)",
     "departure_hub": "Paris ORY/CDG",
     "trip_mode": "fais_moi_rever",
-    "dates": "2026-11-27 → 2026-12-04",
+    "dates": "2026-11-28 → 2026-12-05",
     "departure_city": "Nancy",
     "agency": "Skyscanner + Booking ≥ 8/10",
-    "url": "https://www.skyscanner.fr/transport/vols/ory/sxm/261127/261204/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris%20vers%20Saint-Martin%20du%202026-11-27%20au%202026-12-04",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/ory/sxm/261127/261204/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Saint-Martin&checkin=2026-11-27&checkout=2026-12-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Saint-Martin%20depuis%20Nancy%20du%202026-11-27%20au%202026-12-04",
+    "url": "https://www.skyscanner.fr/transport/vols/ory/sxm/261128/261205/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris%20vers%20Saint-Martin%20du%202026-11-28%20au%202026-12-05",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/ory/sxm/261128/261205/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Saint-Martin&checkin=2026-11-28&checkout=2026-12-05&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Saint-Martin%20depuis%20Nancy%20du%202026-11-28%20au%202026-12-05",
     "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
     "description": "TGV Nancy→Paris (88€ A/R) + Vol SXM réalisme J+14 (1114€) + Hôtel ≥ 8/10 (7 nuits : 945€).",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": {
       "shuttle_cost": 88,
       "flight_cost": 1114,
@@ -168,7 +168,7 @@
     "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Bergamo%20depuis%20Nancy%20du%202026-12-05%20au%202026-12-08",
     "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
     "description": "Vol direct vérifié Ryanair (15€ l'aller) + navette (28€) + Hôtel ≥ 8/10 (3 nuits : 255€).",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": {
       "shuttle_cost": 28,
       "flight_cost": 32,
@@ -186,8 +186,8 @@
     "section_type": "best_offers",
     "badge": "🏨 SÉJOUR DIRECT • Ryanair LUX",
     "title": "Dublin (DUB) Tout Compris (3 nuits) via Luxembourg",
-    "price": 317,
-    "price_str": "317 € Tout Compris",
+    "price": 315,
+    "price_str": "315 € Tout Compris",
     "location": "Nancy ➔ LUX ➔ Dublin (2026-12-05 → 2026-12-08)",
     "destination": "Dublin",
     "departure_hub": "Luxembourg",
@@ -201,16 +201,16 @@
     "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Dublin&checkin=2026-12-05&checkout=2026-12-08&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
     "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Dublin%20depuis%20Nancy%20du%202026-12-05%20au%202026-12-08",
     "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Vol direct vérifié Ryanair (16€ l'aller) + navette (28€) + Hôtel ≥ 8/10 (3 nuits : 255€).",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "description": "Vol direct vérifié Ryanair (15€ l'aller) + navette (28€) + Hôtel ≥ 8/10 (3 nuits : 255€).",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": {
       "shuttle_cost": 28,
-      "flight_cost": 34,
+      "flight_cost": 32,
       "hotel_per_night": 85,
       "hotel_total": 255,
       "nights": 3,
-      "total_per_person": 317,
-      "breakdown": "Liaison (28€) + Vol A/R Ryanair (34€) + Hôtel ≥8/10 3n (255€)"
+      "total_per_person": 315,
+      "breakdown": "Liaison (28€) + Vol A/R Ryanair (32€) + Hôtel ≥8/10 3n (255€)"
     }
   },
   {
@@ -236,7 +236,7 @@
     "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Madrid%20depuis%20Nancy%20du%202026-12-04%20au%202026-12-07",
     "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
     "description": "Vol direct vérifié Ryanair (18€ l'aller) + navette (28€) + Hôtel ≥ 8/10 (3 nuits : 255€).",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": {
       "shuttle_cost": 28,
       "flight_cost": 38,
@@ -270,7 +270,7 @@
     "package_url": "https://www.google.com/travel/search?hl=fr&curr=EUR&q=Vol%20hotel%20Malte%20depuis%20Nancy%20du%202026-12-05%20au%202026-12-08",
     "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
     "description": "Vol direct vérifié Ryanair (19€ l'aller) + navette (28€) + Hôtel ≥ 8/10 (3 nuits : 255€).",
-    "date_detected": "2026-11-13T20:02:15.998078+00:00",
+    "date_detected": "2026-11-14T00:52:36.567639+00:00",
     "true_cost": {
       "shuttle_cost": 28,
       "flight_cost": 40,
@@ -327,7 +327,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2752",
@@ -375,7 +375,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2753",
@@ -423,7 +423,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2746",
@@ -471,7 +471,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2740",
@@ -519,7 +519,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2656",
@@ -567,7 +567,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2652",
@@ -613,7 +613,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99939581350",
@@ -661,7 +661,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2632",
@@ -710,7 +710,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2585",
@@ -758,7 +758,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2565",
@@ -806,7 +806,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2775",
@@ -854,7 +854,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2052770",
@@ -900,7 +900,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2621",
@@ -948,7 +948,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99937616755",
@@ -997,7 +997,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-60782193",
@@ -1045,7 +1045,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-59339352",
@@ -1090,7 +1090,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99939103750",
@@ -1136,7 +1136,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2102944",
@@ -1181,7 +1181,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2134345",
@@ -1230,7 +1230,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag540018-555527069",
@@ -1279,7 +1279,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-61630952",
@@ -1327,7 +1327,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_safti-1-1710556",
@@ -1375,7 +1375,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-61508320",
@@ -1421,7 +1421,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag540909-548379020",
@@ -1467,7 +1467,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag060811-537486932",
@@ -1516,7 +1516,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-59800296",
@@ -1562,7 +1562,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-59940110",
@@ -1610,7 +1610,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-60005209",
@@ -1658,7 +1658,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-laregieimmobiliere-415",
@@ -1707,7 +1707,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99939107900",
@@ -1755,7 +1755,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-lhotelimmo54-1025",
@@ -1801,7 +1801,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_48_122249",
@@ -1851,7 +1851,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2108590",
@@ -1897,7 +1897,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2077036",
@@ -1946,7 +1946,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2117114",
@@ -1994,7 +1994,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2143564",
@@ -2040,7 +2040,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2118346",
@@ -2088,7 +2088,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2767",
@@ -2136,7 +2136,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-61592156",
@@ -2182,7 +2182,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99939782706",
@@ -2230,7 +2230,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_2389_40595",
@@ -2279,7 +2279,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3776_391",
@@ -2325,7 +2325,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag540909-553905110",
@@ -2374,7 +2374,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag757558-553758539",
@@ -2422,7 +2422,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag540018-553486181",
@@ -2471,7 +2471,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-lhotelimmo54-1008",
@@ -2517,7 +2517,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3669_6859",
@@ -2566,7 +2566,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_2389_40886",
@@ -2615,7 +2615,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_safti-1-1711505",
@@ -2664,7 +2664,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-61276485",
@@ -2713,7 +2713,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag060811-548412698",
@@ -2762,7 +2762,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_laforet-immo-facile-52876942",
@@ -2811,7 +2811,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_laforet-immo-facile-52896944",
@@ -2859,7 +2859,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_laforet-immo-facile-52895837",
@@ -2905,7 +2905,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3776_432",
@@ -2951,7 +2951,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag750949-546783221",
@@ -2999,7 +2999,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_safti-1-1699046",
@@ -3045,7 +3045,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_48_122019",
@@ -3091,7 +3091,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-61273851",
@@ -3139,7 +3139,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag540909-544928360",
@@ -3186,7 +3186,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3669_6455",
@@ -3232,7 +3232,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-60788309",
@@ -3278,7 +3278,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag540909-540496958",
@@ -3324,7 +3324,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-60691175",
@@ -3373,7 +3373,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-CABINETBLIQUE-2651",
@@ -3422,7 +3422,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag540909-538343723",
@@ -3467,7 +3467,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag750949-537917162",
@@ -3516,7 +3516,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3776_356",
@@ -3565,7 +3565,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_2389_40706",
@@ -3613,7 +3613,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3776_348",
@@ -3661,7 +3661,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-lhotelimmo54-970",
@@ -3709,7 +3709,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2040423",
@@ -3757,7 +3757,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99939432614",
@@ -3803,7 +3803,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_visiteonline-p_6182660",
@@ -3847,7 +3847,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-1978844",
@@ -3893,7 +3893,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_apimo-85941548",
@@ -3941,7 +3941,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-58109122",
@@ -3987,7 +3987,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_safti-1-1739954",
@@ -4036,7 +4036,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_apimo-87595753",
@@ -4085,7 +4085,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_apimo-87593125",
@@ -4131,7 +4131,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_mgc-BPNCYDOAR281474977557178",
@@ -4174,7 +4174,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_mgc-BPNCYDOAR281474977557172",
@@ -4214,7 +4214,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_mgc-BPNCYDOAR281474977557185",
@@ -4257,7 +4257,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_mgc-BPNCYDOAR281474977557167",
@@ -4300,7 +4300,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_mgc-BPNCYDOAR281474977557174",
@@ -4344,7 +4344,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_mgc-BPNCYDOAR281474977557182",
@@ -4388,7 +4388,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_mgc-BPNCYDOAR281474977557184",
@@ -4431,7 +4431,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_netty-company39529gin-appt-2357",
@@ -4480,7 +4480,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2150144",
@@ -4527,7 +4527,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_48_122228",
@@ -4573,7 +4573,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_laforet-immo-facile-52703327",
@@ -4619,7 +4619,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_safti-1-1738779",
@@ -4664,7 +4664,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-bouko-immobilier-4425",
@@ -4707,7 +4707,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_netty-company53666edp-appt-7562",
@@ -4749,7 +4749,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2137606",
@@ -4797,7 +4797,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2140397",
@@ -4845,7 +4845,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2147422",
@@ -4893,7 +4893,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2049321",
@@ -4942,7 +4942,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2080414",
@@ -4990,7 +4990,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2087042",
@@ -5034,7 +5034,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2101282",
@@ -5081,7 +5081,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2042678",
@@ -5130,7 +5130,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2105270",
@@ -5178,7 +5178,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2058768",
@@ -5224,7 +5224,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2073763",
@@ -5272,7 +5272,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2083024",
@@ -5321,7 +5321,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_iad-france-2067450",
@@ -5367,7 +5367,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-61616730",
@@ -5415,7 +5415,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-61440630",
@@ -5464,7 +5464,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_safti-1-1721349",
@@ -5514,7 +5514,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_hektor-bouko-immobilier-4416",
@@ -5560,7 +5560,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag540909-556489388",
@@ -5609,7 +5609,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_immo-facile-61683278",
@@ -5655,7 +5655,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_ag060811-556078520",
@@ -5699,7 +5699,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3641_339",
@@ -5743,7 +5743,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3641_514",
@@ -5789,7 +5789,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_century-21-202_3641_507",
@@ -5834,7 +5834,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:14.597902+00:00"
+    "date_detected": "2026-11-14T00:52:35.450687+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99939701622",
@@ -5880,7 +5880,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-61667846",
@@ -5928,7 +5928,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag752345-552785756",
@@ -5974,7 +5974,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20592103-541",
@@ -6022,7 +6022,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-550733591",
@@ -6065,7 +6065,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES02040006-541",
@@ -6110,7 +6110,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES13500016-541",
@@ -6160,7 +6160,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES21100005-541",
@@ -6206,7 +6206,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES01140004-541",
@@ -6252,7 +6252,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES11020007-541",
@@ -6297,7 +6297,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20181000-541",
@@ -6343,7 +6343,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20000001-541",
@@ -6388,7 +6388,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES12510746-541",
@@ -6436,7 +6436,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20220119-541",
@@ -6484,7 +6484,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20010003-541",
@@ -6529,7 +6529,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES12660016-541",
@@ -6573,7 +6573,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20300003-541",
@@ -6621,7 +6621,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES01670049-541",
@@ -6670,7 +6670,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES02460003-541",
@@ -6716,7 +6716,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES02380008-541",
@@ -6760,7 +6760,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES11740018-541",
@@ -6806,7 +6806,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES01850002-541",
@@ -6852,7 +6852,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES00470070-541",
@@ -6901,7 +6901,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES00470053-541",
@@ -6948,7 +6948,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES00470028-541",
@@ -6995,7 +6995,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES00470027-541",
@@ -7044,7 +7044,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES00470048-541",
@@ -7091,7 +7091,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_iad-france-2136246",
@@ -7137,7 +7137,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-55156535",
@@ -7182,7 +7182,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-556704458",
@@ -7226,7 +7226,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-556704512",
@@ -7273,7 +7273,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-556704530",
@@ -7322,7 +7322,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-61607431",
@@ -7368,7 +7368,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-555402944",
@@ -7416,7 +7416,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_century-21-202_48_122215",
@@ -7465,7 +7465,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-554533664",
@@ -7512,7 +7512,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-61631379",
@@ -7559,7 +7559,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-552958478",
@@ -7603,7 +7603,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-552110984",
@@ -7642,7 +7642,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-550325075",
@@ -7683,7 +7683,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20180003-541",
@@ -7726,7 +7726,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99937571073",
@@ -7772,7 +7772,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541586-546520952",
@@ -7818,7 +7818,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541282-543872582",
@@ -7864,7 +7864,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20620009-541",
@@ -7905,7 +7905,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-536709119",
@@ -7952,7 +7952,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-60571739",
@@ -7998,7 +7998,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-LAPP5113566",
@@ -8044,7 +8044,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-58348198",
@@ -8090,7 +8090,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES20700002-541",
@@ -8131,7 +8131,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-56252392",
@@ -8177,7 +8177,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES02300004-541",
@@ -8220,7 +8220,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES21040004-541",
@@ -8262,7 +8262,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES12720018-541",
@@ -8305,7 +8305,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES21240001-541",
@@ -8348,7 +8348,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES00470009-541",
@@ -8392,7 +8392,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES21590004-541",
@@ -8435,7 +8435,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES01760003-541",
@@ -8480,7 +8480,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES21310003-541",
@@ -8522,7 +8522,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES01410012-541",
@@ -8564,7 +8564,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-immo-debever-5122",
@@ -8610,7 +8610,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-immo-debever-1281",
@@ -8656,7 +8656,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-17517893",
@@ -8705,7 +8705,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES00470033-541",
@@ -8750,7 +8750,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-boufflers-2539",
@@ -8797,7 +8797,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_iad-france-2158090",
@@ -8843,7 +8843,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-61707658",
@@ -8888,7 +8888,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_iad-france-2092865",
@@ -8934,7 +8934,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_iad-france-2081812",
@@ -8981,7 +8981,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_mgc-ancien-SNI_0000_324510",
@@ -9028,7 +9028,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-557385767",
@@ -9074,7 +9074,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-61508581",
@@ -9117,7 +9117,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-556704479",
@@ -9161,7 +9161,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-boufflers-2535",
@@ -9205,7 +9205,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-555235754",
@@ -9249,7 +9249,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-57372939",
@@ -9297,7 +9297,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-554459714",
@@ -9342,7 +9342,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-554274323",
@@ -9384,7 +9384,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag210198-554118908",
@@ -9431,7 +9431,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-553416815",
@@ -9474,7 +9474,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-553090028",
@@ -9517,7 +9517,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-552409889",
@@ -9561,7 +9561,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-552361526",
@@ -9605,7 +9605,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-61574242",
@@ -9648,7 +9648,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_nestenn-1-99935657544",
@@ -9696,7 +9696,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_century-21-202_2389_40778",
@@ -9741,7 +9741,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541282-549757577",
@@ -9788,7 +9788,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540089-548604719",
@@ -9831,7 +9831,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_century-21-202_48_122072",
@@ -9880,7 +9880,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-546793565",
@@ -9923,7 +9923,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541282-546715634",
@@ -9964,7 +9964,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-La-Ravinelle-931",
@@ -10008,7 +10008,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541282-546247346",
@@ -10050,7 +10050,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-immo-debever-20238",
@@ -10097,7 +10097,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-546006374",
@@ -10139,7 +10139,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-IMMOVERDEAUX-1235",
@@ -10183,7 +10183,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-SCARPONAISE2022-5968",
@@ -10227,7 +10227,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-boufflers-2519",
@@ -10273,7 +10273,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540018-543760901",
@@ -10321,7 +10321,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-542773763",
@@ -10361,7 +10361,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_hektor-boufflers-2510",
@@ -10407,7 +10407,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_citya-immobilier-03-GES12710004-541",
@@ -10446,7 +10446,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-60698095",
@@ -10491,7 +10491,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-502697891",
@@ -10533,7 +10533,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-518424341",
@@ -10574,7 +10574,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-503198702",
@@ -10616,7 +10616,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag541526-508455464",
@@ -10656,7 +10656,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-60684123",
@@ -10702,7 +10702,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag540018-529708157",
@@ -10747,7 +10747,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_ag210198-529191659",
@@ -10793,7 +10793,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_bi_immo-facile-60014366",
@@ -10837,7 +10837,7 @@
     "market_avg_m2": 13.8,
     "market_delta_pct": 0,
     "market_badge": "🟢 Vraie annonce vérifiée",
-    "date_detected": "2026-11-13T20:02:12.467061+00:00"
+    "date_detected": "2026-11-14T00:52:33.577914+00:00"
   },
   {
     "id": "real_sxm_269275261526800",
@@ -10887,7 +10887,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_263209649733000",
@@ -10936,7 +10936,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261026444830800",
@@ -10980,7 +10980,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261205226586900",
@@ -11027,7 +11027,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269164132942900",
@@ -11064,7 +11064,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_241212411724700",
@@ -11101,7 +11101,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267184288388301",
@@ -11142,7 +11142,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261095992875301",
@@ -11192,7 +11192,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265415348092201",
@@ -11242,7 +11242,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_241112512115401",
@@ -11291,7 +11291,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267295417857402",
@@ -11337,7 +11337,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261205226586903",
@@ -11388,7 +11388,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_241212411724703",
@@ -11427,7 +11427,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264295111634603",
@@ -11464,7 +11464,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264345744703903",
@@ -11513,7 +11513,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261026444830803",
@@ -11558,7 +11558,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265225322058304",
@@ -11603,7 +11603,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_268142059558604",
@@ -11651,7 +11651,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_268142316718104",
@@ -11693,7 +11693,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261205226587104",
@@ -11744,7 +11744,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_241212411724604",
@@ -11795,7 +11795,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269745136491004",
@@ -11844,7 +11844,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269234314378005",
@@ -11887,7 +11887,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_241211549380405",
@@ -11929,7 +11929,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264164266230805",
@@ -11976,7 +11976,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267295417857405",
@@ -12024,7 +12024,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269174199563806",
@@ -12062,7 +12062,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_221154349185406",
@@ -12105,7 +12105,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261164245113706",
@@ -12151,7 +12151,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_262104456683606",
@@ -12197,7 +12197,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261134321441006",
@@ -12247,7 +12247,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_241212411724607",
@@ -12291,7 +12291,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261111444528808",
@@ -12336,7 +12336,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_263855826036808",
@@ -12386,7 +12386,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265415348092108",
@@ -12436,7 +12436,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264144415217408",
@@ -12476,7 +12476,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_251304429275909",
@@ -12525,7 +12525,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265214318617409",
@@ -12575,7 +12575,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265234562808709",
@@ -12625,7 +12625,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269305146216010",
@@ -12674,7 +12674,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_212134417488010",
@@ -12715,7 +12715,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265415348092111",
@@ -12764,7 +12764,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_256284348970111",
@@ -12812,7 +12812,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_254295186500711",
@@ -12852,7 +12852,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267251174430911",
@@ -12891,7 +12891,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264345494458912",
@@ -12935,7 +12935,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_241212411724712",
@@ -12983,7 +12983,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265415348092312",
@@ -13033,7 +13033,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_225274356626412",
@@ -13084,7 +13084,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261029428362312",
@@ -13135,7 +13135,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261025125341312",
@@ -13184,7 +13184,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265857832975012",
@@ -13235,7 +13235,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264200529678013",
@@ -13285,7 +13285,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_243184265247313",
@@ -13329,7 +13329,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264294367701213",
@@ -13374,7 +13374,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269124202466113",
@@ -13422,7 +13422,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269144403062513",
@@ -13459,7 +13459,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265415348092114",
@@ -13509,7 +13509,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_262651567543414",
@@ -13559,7 +13559,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264304241714914",
@@ -13608,7 +13608,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269345980112714",
@@ -13659,7 +13659,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261020444286914",
@@ -13709,7 +13709,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267284402657015",
@@ -13757,7 +13757,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265651431084015",
@@ -13801,7 +13801,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_266134241936215",
@@ -13847,7 +13847,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265415348092315",
@@ -13893,7 +13893,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_223184439135315",
@@ -13933,7 +13933,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_268314503532615",
@@ -13970,7 +13970,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_251211445135916",
@@ -14010,7 +14010,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_266290132369916",
@@ -14059,7 +14059,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267234245681216",
@@ -14110,7 +14110,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_264242984467617",
@@ -14161,7 +14161,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267244582784917",
@@ -14206,7 +14206,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261205226587017",
@@ -14247,7 +14247,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_258154523605517",
@@ -14288,7 +14288,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267295695874918",
@@ -14338,7 +14338,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261294354176818",
@@ -14383,7 +14383,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261026223977619",
@@ -14431,7 +14431,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_251752597683319",
@@ -14480,7 +14480,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_251224426534519",
@@ -14529,7 +14529,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_241125836991520",
@@ -14579,7 +14579,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_231024419911720",
@@ -14628,7 +14628,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261205226587020",
@@ -14678,7 +14678,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_265853390325120",
@@ -14726,7 +14726,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_262114458410721",
@@ -14776,7 +14776,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_223184439135321",
@@ -14816,7 +14816,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_251235118421621",
@@ -14866,7 +14866,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_269843574998221",
@@ -14907,7 +14907,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_251219448247022",
@@ -14957,7 +14957,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261026223977622",
@@ -15005,7 +15005,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_266290132369922",
@@ -15053,7 +15053,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_261064444624023",
@@ -15102,7 +15102,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:11.283591+00:00"
+    "date_detected": "2026-11-14T00:52:32.385094+00:00"
   },
   {
     "id": "real_sxm_267742956570042",
@@ -15148,7 +15148,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:10.386799+00:00"
+    "date_detected": "2026-11-14T00:52:31.574755+00:00"
   },
   {
     "id": "real_sxm_261025143976347",
@@ -15197,7 +15197,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:10.386799+00:00"
+    "date_detected": "2026-11-14T00:52:31.574755+00:00"
   },
   {
     "id": "real_sxm_261029413904681",
@@ -15239,7 +15239,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:10.386799+00:00"
+    "date_detected": "2026-11-14T00:52:31.574755+00:00"
   },
   {
     "id": "real_sxm_261017419567583",
@@ -15284,7 +15284,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:10.386799+00:00"
+    "date_detected": "2026-11-14T00:52:31.574755+00:00"
   },
   {
     "id": "real_sxm_269164294760993",
@@ -15332,7 +15332,7 @@
     "market_avg_m2": 24.5,
     "market_delta_pct": 0,
     "market_badge": "🟢 Offre réelle vérifiée",
-    "date_detected": "2026-11-13T20:02:10.386799+00:00"
+    "date_detected": "2026-11-14T00:52:31.574755+00:00"
   },
   {
     "id": "real_bi_bouygues-immobilier-030-254C95",
