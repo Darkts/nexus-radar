@@ -1654,6 +1654,213 @@
       border-radius: var(--radius-lg);
       margin-top: 10px;
     }
+
+    /* ========================================================= */
+    /* HORIZONS V12 : STYLES CARTE INTERACTIVE, TRI & FILTRES   */
+    /* ========================================================= */
+    .active-filter-chips-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 10px 0 14px;
+      min-height: 24px;
+    }
+    .filter-chip-removable {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-main);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: all 0.15s ease;
+    }
+    .filter-chip-removable:hover {
+      border-color: var(--border);
+    }
+    .filter-chip-removable .chip-remove-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #E5E7EB;
+      color: #4B5563;
+      font-size: 11px;
+      cursor: pointer;
+      border: none;
+      line-height: 1;
+      transition: all 0.15s ease;
+    }
+    .filter-chip-removable .chip-remove-btn:hover {
+      background: #EF4444;
+      color: #FFFFFF;
+    }
+    .filter-chip-clear-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 12px;
+      background: #FEE2E2;
+      border: 1px solid #FECACA;
+      color: #DC2626;
+      border-radius: 9999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-chip-clear-all:hover {
+      background: #FECACA;
+    }
+
+    /* Tri stylisé façon Airbnb / Booking */
+    .sort-select-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 5px 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .sort-select {
+      border: none;
+      background: transparent;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-main);
+      outline: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* Contrôles flottants Carte Leaflet */
+    .map-floating-controls {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+      pointer-events: auto;
+    }
+    .btn-map-float {
+      background: #FFFFFF;
+      color: #222222;
+      border: 1px solid #DDDDDD;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+      border-radius: 24px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-map-float:hover {
+      background: #F7F7F7;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    }
+    .btn-map-float.active {
+      background: #FF385C;
+      color: #FFFFFF;
+      border-color: #FF385C;
+    }
+    .btn-map-float-danger {
+      background: #FEF2F2;
+      color: #DC2626;
+      border-color: #FECACA;
+    }
+    .btn-map-float-danger:hover {
+      background: #FEE2E2;
+    }
+
+    /* Widget flottant slider de rayon */
+    .map-radius-widget {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: #FFFFFF;
+      border: 1px solid #EBEBEB;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+      padding: 12px 18px;
+      width: 90%;
+      max-width: 380px;
+      pointer-events: auto;
+    }
+    .map-radius-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.84rem;
+      color: #222222;
+      font-weight: 700;
+    }
+    .map-radius-header strong {
+      color: #FF385C;
+      font-size: 0.95rem;
+    }
+    .map-radius-widget input[type="range"] {
+      width: 100%;
+      accent-color: #FF385C;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    .btn-map-radius-scan {
+      width: 100%;
+      background: linear-gradient(135deg, #FF385C 0%, #E00B41 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+    .btn-map-radius-scan:hover {
+      opacity: 0.92;
+    }
+
+    /* Bouton Pagination 60 FPS */
+    .pagination-container {
+      text-align: center;
+      margin: 28px 0 40px;
+    }
+    .btn-load-more {
+      background: #FFFFFF;
+      color: #222222;
+      border: 1.5px solid #222222;
+      border-radius: 12px;
+      padding: 12px 28px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: all 0.2s ease;
+    }
+    .btn-load-more:hover {
+      background: #222222;
+      color: #FFFFFF;
+    }
+
   </style>
 </head>
 <body>
@@ -1880,9 +2087,25 @@
       </div>
 
 
-      <!-- ÉTAPE 3 : Switch immédiat [ 📋 Vue Liste ] | [ 🗺️ Vue Carte Leaflet ] -->
+      <!-- BARRE DES CHIPS DE FILTRES ACTIFS SUPPRIMABLES -->
+      <div id="immoActiveFilterChips" class="active-filter-chips-bar"></div>
+
+      <!-- ÉTAPE 3 : Compteur, Tri & Switch [ 📋 Vue Liste ] | [ 🗺️ Vue Carte Leaflet ] -->
       <div class="view-toggle-bar">
-        <div class="results-count" id="immoResultsCount">Chargement des biens...</div>
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <div class="results-count" id="immoResultsCount">Chargement des biens...</div>
+          <div class="sort-select-wrap">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">⇅</span>
+            <select id="immoSortSelect" class="sort-select" onchange="onImmoSortChange(this.value)">
+              <option value="relevance">Pertinence</option>
+              <option value="price_asc">Prix croissant</option>
+              <option value="price_desc">Prix décroissant</option>
+              <option value="price_m2_asc">Prix/m² le plus bas</option>
+              <option value="surface_desc">Surface décroissante</option>
+              <option value="date_desc">Plus récentes</option>
+            </select>
+          </div>
+        </div>
         <div class="view-mode-switch">
           <button class="view-mode-btn active" id="btnViewList" onclick="setViewMode('list')">
             <span>📋 Vue Liste</span>
@@ -1894,10 +2117,39 @@
       </div>
 
       <!-- Carte Leaflet Principale -->
-      <div id="mainMapContainer" style="display: none;"></div>
+      <!-- Carte Leaflet Principale avec Recherche par Zone & Mode Rayon Précis -->
+      <div id="mainMapContainer" style="display: none; position: relative; width: 100%; height: 520px; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; border: 1px solid var(--card-border);">
+        <div id="mainMapCanvas" style="width: 100%; height: 100%;"></div>
+        <div id="mapFloatingControls" class="map-floating-controls">
+          <button id="btnSearchThisZone" class="btn-map-float" onclick="searchCurrentMapZone()" style="display: none;">
+            🔍 Rechercher dans cette zone
+          </button>
+          <button id="btnToggleRadiusMode" class="btn-map-float" onclick="toggleRadiusMode()">
+            🎯 Tracer un rayon précis
+          </button>
+          <button id="btnClearMapZone" class="btn-map-float btn-map-float-danger" onclick="clearMapZoneFilter()" style="display: none;">
+            ✕ Effacer la zone
+          </button>
+        </div>
+        <div id="mapRadiusWidget" class="map-radius-widget" style="display: none;">
+          <div class="map-radius-header">
+            <span>🎯 Rayon de recherche</span>
+            <strong id="mapRadiusLabel">10 km</strong>
+          </div>
+          <input type="range" id="mapRadiusSlider" min="1" max="50" value="10" step="1" oninput="onMapRadiusSliderChange(this.value)">
+          <button class="btn-map-radius-scan" onclick="scanRadiusZone()">⚡ Lancer un Scan Live sur cette zone</button>
+        </div>
+      </div>
 
       <!-- Grille d'Annonces -->
       <div class="items-grid" id="immoGrid"></div>
+
+      <!-- Pagination 60 FPS -->
+      <div id="immoPaginationContainer" class="pagination-container" style="display: none;">
+        <button id="btnLoadMoreImmo" class="btn-load-more" onclick="loadMoreImmo()">
+          Afficher 20 annonces supplémentaires (<span id="immoCurrentShownCount">20</span> / <span id="immoTotalFoundCount">0</span>)
+        </button>
+      </div>
 
       <!-- État Vide -->
       <div class="empty-state" id="emptyImmo" style="display: none;">
@@ -2035,6 +2287,22 @@
       </div>
 
       <!-- Barre Horizontale de Filtres Rapides Booking -->
+      <!-- BARRE DES CHIPS VOYAGE & TRI -->
+      <div id="voyageActiveFilterChips" class="active-filter-chips-bar"></div>
+      <div class="view-toggle-bar" style="margin-top: 10px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 8px;">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-main);">Opportunités &amp; Séjours vérifiés</span>
+          <div class="sort-select-wrap">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">⇅</span>
+            <select id="voyageSortSelect" class="sort-select" onchange="onVoyageSortChange(this.value)">
+              <option value="price_asc">Prix total croissant</option>
+              <option value="savings_desc">Meilleure économie</option>
+              <option value="rating_desc">Note hôtel</option>
+              <option value="duration_asc">Durée la plus courte</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <div class="airbnb-quick-filters-bar" id="voyageQuickFiltersBar">
         <button class="quick-filter-item active" id="voyFilterAll" onclick="setVoyageCatFilter('all', this)">
           <span class="qf-icon">🌟</span>
@@ -2545,40 +2813,215 @@
     // FILTRES RAPIDES FAÇON AIRBNB (CATEGORIES HORIZONTALES)
     // =========================================================
     function selectQuickFilter(type, btn) {
-      document.querySelectorAll('#immoQuickFiltersBar .quick-filter-item').forEach(el => el.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-
-      if (type === 'all') {
-        selectedTransac = 'ALL';
-        selectedRoomFilters = [];
-        selectedAmenities = [];
-        document.querySelectorAll('.segmented-btn').forEach(b => b.classList.remove('active'));
-        const allBtn = document.querySelector('.segmented-btn[data-transac="ALL"]');
-        if (allBtn) allBtn.classList.add('active');
-        document.querySelectorAll('.chip-filter').forEach(b => b.classList.remove('active', 'immo-active'));
-      } else if (type === 'loc') {
-        setTransactionFilter('location');
-      } else if (type === 'achat') {
-        setTransactionFilter('achat');
-      } else if (type === 'studio') {
-        selectedRoomFilters = ['Studio'];
-      } else if (type === 't2') {
-        selectedRoomFilters = ['T2'];
-      } else if (type === 't3') {
-        selectedRoomFilters = ['T3'];
-      } else if (type === 'maison') {
-        selectedRoomFilters = ['Maison'];
-      } else if (type === 'mer') {
-        selectedAmenities = ['vue_mer'];
-      } else if (type === 'piscine') {
-        selectedAmenities = ['piscine'];
-      } else if (type === 'terrasse') {
-        selectedAmenities = ['terrasse'];
-      } else if (type === 'parking') {
-        selectedAmenities = ['parking'];
+      const isAlreadyActive = btn && btn.classList.contains('active');
+      if (isAlreadyActive && type !== 'all') {
+        // Décochage immédiat
+        if (type === 'loc' || type === 'achat') immoTransac = 'ALL';
+        else if (type === 'studio') immoRooms.delete('Studio');
+        else if (type === 't2') immoRooms.delete('T2');
+        else if (type === 't3') immoRooms.delete('T3');
+        else if (type === 'maison') immoRooms.delete('Maison');
+        else if (type === 'mer') immoAmenities.delete('vue_mer');
+        else if (type === 'piscine') immoAmenities.delete('piscine');
+        else if (type === 'terrasse') immoAmenities.delete('terrasse');
+        else if (type === 'parking') immoAmenities.delete('parking');
+      } else {
+        if (type === 'all') {
+          immoTransac = 'ALL';
+          immoRooms.clear();
+          immoAmenities.clear();
+        } else if (type === 'loc') {
+          immoTransac = 'location';
+        } else if (type === 'achat') {
+          immoTransac = 'achat';
+        } else if (type === 'studio') {
+          immoRooms.clear(); immoRooms.add('Studio');
+        } else if (type === 't2') {
+          immoRooms.clear(); immoRooms.add('T2');
+        } else if (type === 't3') {
+          immoRooms.clear(); immoRooms.add('T3');
+        } else if (type === 'maison') {
+          immoRooms.clear(); immoRooms.add('Maison');
+        } else if (type === 'mer') {
+          immoAmenities.clear(); immoAmenities.add('vue_mer');
+        } else if (type === 'piscine') {
+          immoAmenities.clear(); immoAmenities.add('piscine');
+        } else if (type === 'terrasse') {
+          immoAmenities.clear(); immoAmenities.add('terrasse');
+        } else if (type === 'parking') {
+          immoAmenities.clear(); immoAmenities.add('parking');
+        }
       }
+      filterState.immo.transac = immoTransac;
+      immoPage = 1;
+      syncFilterUI();
       filterImmo();
     }
+
+    function syncFilterUI() {
+      // 1. Transaction segmented buttons
+      document.querySelectorAll('.step-filters-box .segmented-btn').forEach(b => {
+        const dt = b.getAttribute('data-transac') || '';
+        b.classList.toggle('active', dt.toLowerCase() === immoTransac.toLowerCase());
+      });
+
+      // 2. Quick filter items
+      document.querySelectorAll('#immoQuickFiltersBar .quick-filter-item').forEach(b => {
+        const t = b.getAttribute('data-type');
+        let act = false;
+        if (t === 'all' && immoTransac === 'ALL' && immoRooms.size === 0 && immoAmenities.size === 0) act = true;
+        else if (t === 'loc' && immoTransac === 'location') act = true;
+        else if (t === 'achat' && immoTransac === 'achat') act = true;
+        else if (t === 'studio' && immoRooms.has('Studio')) act = true;
+        else if (t === 't2' && immoRooms.has('T2')) act = true;
+        else if (t === 't3' && immoRooms.has('T3')) act = true;
+        else if (t === 'maison' && immoRooms.has('Maison')) act = true;
+        else if (t === 'mer' && immoAmenities.has('vue_mer')) act = true;
+        else if (t === 'piscine' && immoAmenities.has('piscine')) act = true;
+        else if (t === 'terrasse' && immoAmenities.has('terrasse')) act = true;
+        else if (t === 'parking' && immoAmenities.has('parking')) act = true;
+        b.classList.toggle('active', act);
+      });
+
+      // 3. Room chips in drawer
+      document.querySelectorAll('.step-filters-box .chip-filter[data-room]').forEach(b => {
+        const r = b.getAttribute('data-room');
+        b.classList.toggle('active', immoRooms.has(r));
+      });
+
+      // 4. Amenity chips in drawer
+      const amenityMap = {
+        'chipAmenityMer': 'vue_mer',
+        'chipAmenityTerrasse': 'terrasse',
+        'chipAmenityPiscine': 'piscine',
+        'chipAmenityParking': 'parking'
+      };
+      for (const [id, key] of Object.entries(amenityMap)) {
+        const el = document.getElementById(id);
+        if (el) {
+          const isAct = immoAmenities.has(key);
+          el.classList.toggle('active', isAct);
+          el.classList.toggle('immo-active', isAct);
+        }
+      }
+
+      // 5. Select sort value
+      const sortSel = document.getElementById('immoSortSelect');
+      if (sortSel) sortSel.value = filterState.immo.sortBy;
+
+      // 6. Active removable filter chips bar
+      renderActiveFilterChips();
+    }
+
+    function renderActiveFilterChips() {
+      const container = document.getElementById('immoActiveFilterChips');
+      if (!container) return;
+
+      const chips = [];
+      const city = (document.getElementById('searchLocationInput')?.value || '').trim();
+      const budgetMax = parseFloat(document.getElementById('immoMaxBudgetInput')?.value) || 0;
+      const surfaceMin = parseFloat(document.getElementById('immoMinSurfaceInput')?.value) || 0;
+      const excludeViager = document.getElementById('immoExcludeViager')?.checked !== false;
+
+      // Ville
+      if (city) {
+        chips.push(`<span class="filter-chip-removable">📍 ${escapeHtml(city)} <button class="chip-remove-btn" onclick="removeActiveFilterChip('city')" title="Supprimer">✕</button></span>`);
+      }
+
+      // Transaction
+      if (immoTransac && immoTransac !== 'ALL') {
+        const label = immoTransac === 'location' ? '🔑 Location' : '🏷️ Achat';
+        chips.push(`<span class="filter-chip-removable">${label} <button class="chip-remove-btn" onclick="removeActiveFilterChip('transac')" title="Supprimer">✕</button></span>`);
+      }
+
+      // Typologies
+      for (const r of immoRooms) {
+        chips.push(`<span class="filter-chip-removable">🛏️ ${escapeHtml(r)} <button class="chip-remove-btn" onclick="removeActiveFilterChip('room', '${r}')" title="Supprimer">✕</button></span>`);
+      }
+
+      // Budget
+      if (budgetMax > 0) {
+        chips.push(`<span class="filter-chip-removable">💰 ≤ ${budgetMax.toLocaleString('fr-FR')} € <button class="chip-remove-btn" onclick="removeActiveFilterChip('budget')" title="Supprimer">✕</button></span>`);
+      }
+
+      // Surface
+      if (surfaceMin > 0) {
+        chips.push(`<span class="filter-chip-removable">📐 ≥ ${surfaceMin} m² <button class="chip-remove-btn" onclick="removeActiveFilterChip('surface')" title="Supprimer">✕</button></span>`);
+      }
+
+      // Commodités
+      const amLabels = { vue_mer: '🌊 Vue Mer', terrasse: '☀️ Terrasse', piscine: '🏊 Piscine', parking: '🚗 Parking' };
+      for (const a of immoAmenities) {
+        const lbl = amLabels[a] || a;
+        chips.push(`<span class="filter-chip-removable">${lbl} <button class="chip-remove-btn" onclick="removeActiveFilterChip('amenity', '${a}')" title="Supprimer">✕</button></span>`);
+      }
+
+      // Viager inclus
+      if (!excludeViager) {
+        chips.push(`<span class="filter-chip-removable">⚠️ Viagers inclus <button class="chip-remove-btn" onclick="removeActiveFilterChip('viager')" title="Supprimer">✕</button></span>`);
+      }
+
+      // Zone carte
+      if (filterState.immo.mapZone) {
+        if (filterState.immo.mapZone.type === 'radius') {
+          chips.push(`<span class="filter-chip-removable" style="background:rgba(255,56,92,0.1); border-color:#FF385C; color:#FF385C;">🎯 Rayon ${filterState.immo.mapZone.radiusKm} km <button class="chip-remove-btn" onclick="clearMapZoneFilter()" title="Supprimer">✕</button></span>`);
+        } else if (filterState.immo.mapZone.type === 'bounds') {
+          chips.push(`<span class="filter-chip-removable" style="background:rgba(0,166,153,0.1); border-color:#00A699; color:#00A699;">🔍 Zone visible carte <button class="chip-remove-btn" onclick="clearMapZoneFilter()" title="Supprimer">✕</button></span>`);
+        }
+      }
+
+      if (chips.length > 0) {
+        chips.push(`<button class="filter-chip-clear-all" onclick="resetAllImmoFilters()">✕ Tout effacer</button>`);
+        container.innerHTML = chips.join('');
+        container.style.display = 'flex';
+      } else {
+        container.innerHTML = '';
+        container.style.display = 'none';
+      }
+    }
+
+    function removeActiveFilterChip(type, val) {
+      if (type === 'city') {
+        const inp = document.getElementById('searchLocationInput');
+        if (inp) inp.value = '';
+        filterState.immo.city = '';
+        filterState.immo.lat = null;
+        filterState.immo.lon = null;
+        const portalBar = document.getElementById('immoDirectPortalsBar');
+        if (portalBar) portalBar.style.display = 'none';
+      } else if (type === 'transac') {
+        immoTransac = 'ALL';
+        filterState.immo.transac = 'ALL';
+      } else if (type === 'room') {
+        immoRooms.delete(val);
+      } else if (type === 'budget') {
+        const inp = document.getElementById('immoMaxBudgetInput');
+        if (inp) inp.value = '';
+      } else if (type === 'surface') {
+        const inp = document.getElementById('immoMinSurfaceInput');
+        if (inp) inp.value = '';
+      } else if (type === 'amenity') {
+        immoAmenities.delete(val);
+      } else if (type === 'viager') {
+        const cb = document.getElementById('immoExcludeViager');
+        if (cb) cb.checked = true;
+      }
+      immoPage = 1;
+      syncFilterUI();
+      triggerAutoRefreshImmo(true);
+    }
+
+    function onImmoSortChange(val) {
+      filterState.immo.sortBy = val;
+      immoPage = 1;
+      filterImmo();
+    }
+
+    function onVoyageSortChange(val) {
+      filterState.voyage.sortBy = val;
+      filterVoyage();
+    }
+
 
 
     function loadMergedStorageList(keys) {
@@ -2624,6 +3067,64 @@
       const cDis = document.getElementById('catDislikesCount');
       if (cDis) cDis.textContent = dislikes.length;
     }
+
+
+    // =========================================================
+    // HORIZONS V12 : ÉTAT CENTRALISÉ, RAYON CARTE & PAGINATION
+    // =========================================================
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function escapeJs(str) {
+      if (!str) return '';
+      return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
+    }
+    function haversineKm(lat1, lon1, lat2, lon2) {
+      try {
+        const R = 6371.0;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return 2 * R * Math.asin(Math.sqrt(Math.min(1, a)));
+      } catch (e) {
+        return 999999;
+      }
+    }
+
+    const filterState = {
+      immo: {
+        city: '',
+        country: 'France',
+        lat: null,
+        lon: null,
+        transac: 'ALL',
+        maxPrice: null,
+        minSurface: null,
+        rooms: new Set(),
+        amenities: new Set(),
+        excludeViager: true,
+        sortBy: 'relevance',
+        mapZone: null,
+      },
+      voyage: {
+        depart: 'Nancy',
+        dest: '',
+        budget: 1800,
+        category: 'ALL',
+        sortBy: 'price_asc'
+      }
+    };
+
+    let immoPage = 1;
+    const IMMO_PAGE_SIZE = 20;
+    let isRadiusModeActive = false;
+    let mapRadiusCircle = null;
+    let mapRadiusMarker = null;
+    let currentRadiusKm = 10;
+    let immoAbortController = null;
 
     // Filtres Immo
     let immoTransac = 'ALL';
@@ -2845,6 +3346,11 @@
     function onImmoCityTyping() {
       triggerAutoRefreshImmo(false);
       clearTimeout(immoAutocompleteTimer);
+      if (immoAbortController) {
+        immoAbortController.abort();
+      }
+      immoAbortController = new AbortController();
+
       const input = document.getElementById('searchLocationInput');
       const list = document.getElementById('cityAutocompleteList');
       if (!input || !list) return;
@@ -2859,44 +3365,105 @@
       immoAutocompleteTimer = setTimeout(async () => {
         const qLow = q.toLowerCase();
         const suggestions = [];
-        const allow38400 = qLow.includes('38400') || qLow.includes('heres') || qLow.includes('hères');
 
-        if (qLow.includes('saint') || qLow.includes('sxm') || qLow.includes('971')) {
-          suggestions.push({ label: 'Saint-Martin (97150)', sub: 'Caraïbes • Antilles françaises (97150)', val: 'Saint-Martin 97150' });
+        // DOM-TOM raccourcis prioritaires
+        if (qLow.includes('saint') || qLow.includes('sxm') || qLow.includes('97150')) {
+          suggestions.push({ label: 'Saint-Martin (97150)', sub: 'Caraïbes • Antilles (97150)', val: 'Saint-Martin 97150', flag: '🏝️', lat: 18.0731, lon: -63.0822, country: 'Saint-Martin' });
+        }
+        if (qLow.includes('guad') || qLow.includes('971')) {
+          suggestions.push({ label: 'Guadeloupe (971)', sub: 'Pointe-à-Pitre • Antilles françaises', val: 'Guadeloupe', flag: '🇬🇵', lat: 16.2650, lon: -61.5510, country: 'Guadeloupe' });
+        }
+        if (qLow.includes('mart') || qLow.includes('972')) {
+          suggestions.push({ label: 'Martinique (972)', sub: 'Fort-de-France • Antilles françaises', val: 'Martinique', flag: '🇲🇶', lat: 14.6415, lon: -61.0242, country: 'Martinique' });
+        }
+        if (qLow.includes('guy') || qLow.includes('973')) {
+          suggestions.push({ label: 'Guyane (973)', sub: 'Cayenne • Outre-mer', val: 'Guyane', flag: '🇬🇫', lat: 4.9372, lon: -52.3260, country: 'Guyane' });
+        }
+        if (qLow.includes('reu') || qLow.includes('974')) {
+          suggestions.push({ label: 'La Réunion (974)', sub: 'Saint-Denis • Océan Indien', val: 'La Réunion', flag: '🇷🇪', lat: -20.8821, lon: 55.4507, country: 'La Réunion' });
         }
 
-        try {
-          const resp = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&type=municipality&limit=6`);
-          if (resp.ok) {
-            const data = await resp.json();
-            for (const f of (data.features || [])) {
-              const p = f.properties || {};
-              const pc = String(p.postcode || '');
-              const name = p.city || p.label || '';
-              if (!allow38400 && (pc === '38400' || name.toLowerCase().includes("saint-martin-d'hères"))) continue;
-              if (pc === '97150' && suggestions.some(s => s.val.includes('97150'))) continue;
-              suggestions.push({
-                label: `${name}${pc ? ` (${pc})` : ''}`,
-                sub: p.context || 'France',
-                val: pc ? `${name} ${pc}` : name
-              });
-            }
+        // 1. Appel API France / DOM-TOM data.gouv.fr
+        const gouvPromise = fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&type=municipality&limit=5`, { signal: immoAbortController.signal })
+          .then(r => r.ok ? r.json() : null)
+          .catch(() => null);
+
+        // 2. Appel OpenStreetMap Nominatim Mondial
+        const osmPromise = fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(q)}`, { signal: immoAbortController.signal })
+          .then(r => r.ok ? r.json() : null)
+          .catch(() => null);
+
+        const [gouvRes, osmRes] = await Promise.allSettled([gouvPromise, osmPromise]);
+
+        // Process data.gouv.fr
+        if (gouvRes.status === 'fulfilled' && gouvRes.value && gouvRes.value.features) {
+          for (const f of gouvRes.value.features) {
+            const p = f.properties || {};
+            const pc = String(p.postcode || '');
+            const name = p.city || p.label || '';
+            const coords = (f.geometry && f.geometry.coordinates) ? f.geometry.coordinates : null;
+            if (pc === '38400' || name.toLowerCase().includes("saint-martin-d'hères")) continue;
+            suggestions.push({
+              label: `${name}${pc ? ` (${pc})` : ''}`,
+              sub: p.context || 'France',
+              val: pc ? `${name} ${pc}` : name,
+              flag: '🇫🇷',
+              lat: coords ? coords[1] : null,
+              lon: coords ? coords[0] : null,
+              country: 'France'
+            });
           }
-        } catch (e) {}
+        }
+
+        // Process OpenStreetMap Nominatim Mondial (Espagne, Europe, Monde)
+        if (osmRes.status === 'fulfilled' && Array.isArray(osmRes.value)) {
+          for (const item of osmRes.value) {
+            const addr = item.address || {};
+            const cc = (addr.country_code || '').toLowerCase();
+            const country = addr.country || '';
+            const name = addr.city || addr.town || addr.village || addr.municipality || item.display_name.split(',')[0];
+            if (cc === 'fr' && suggestions.some(s => s.val.toLowerCase().includes(name.toLowerCase()))) continue;
+
+            let flag = '🌍';
+            if (cc === 'es') flag = '🇪🇸';
+            else if (cc === 'it') flag = '🇮🇹';
+            else if (cc === 'gb' || cc === 'uk') flag = '🇬🇧';
+            else if (cc === 'pt') flag = '🇵🇹';
+            else if (cc === 'de') flag = '🇩🇪';
+            else if (cc === 'us') flag = '🇺🇸';
+            else if (cc === 'ch') flag = '🇨🇭';
+            else if (cc === 'be') flag = '🇧🇪';
+            else if (cc === 'lu') flag = '🇱🇺';
+
+            suggestions.push({
+              label: `${name}, ${country}`,
+              sub: item.display_name,
+              val: `${name}, ${country}`,
+              flag,
+              lat: parseFloat(item.lat),
+              lon: parseFloat(item.lon),
+              country,
+              countryCode: cc
+            });
+          }
+        }
 
         if (suggestions.length === 0) {
           list.style.display = 'none';
           return;
         }
-        list.innerHTML = suggestions.slice(0, 6).map(s => `
-          <div class="autocomplete-item" onmousedown="event.preventDefault(); selectImmoAutocomplete('${s.val.replace(/'/g, "\\'")}')">
-            <span>📍 <strong>${s.label}</strong></span>
-            <small>${s.sub}</small>
+
+        list.innerHTML = suggestions.slice(0, 8).map(s => `
+          <div class="autocomplete-item" onmousedown="event.preventDefault(); selectImmoAutocomplete('${escapeJs(s.val)}', ${s.lat || 'null'}, ${s.lon || 'null'}, '${escapeJs(s.country || 'France')}', '${escapeJs(s.countryCode || '')}')">
+            <span>${s.flag || '📍'} <strong>${escapeHtml(s.label)}</strong></span>
+            <small>${escapeHtml(s.sub)}</small>
           </div>
         `).join('');
         list.style.display = 'block';
-      }, 220);
+      }, 350);
     }
+
+    
 
     function selectImmoAutocomplete(val) {
       const input = document.getElementById('searchLocationInput');
@@ -2961,20 +3528,25 @@
     }
 
     function setTransactionFilter(transac, el) {
-      immoTransac = transac;
-      document.querySelectorAll('.step-filters-box .segmented-btn').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
+      if (immoTransac === transac && transac !== 'ALL') {
+        immoTransac = 'ALL';
+      } else {
+        immoTransac = transac;
+      }
+      filterState.immo.transac = immoTransac;
+      immoPage = 1;
+      syncFilterUI();
       triggerAutoRefreshImmo(true);
     }
 
     function toggleRoomFilter(room, el) {
       if (immoRooms.has(room)) {
         immoRooms.delete(room);
-        el.classList.remove('active');
       } else {
         immoRooms.add(room);
-        el.classList.add('active');
       }
+      immoPage = 1;
+      syncFilterUI();
       triggerAutoRefreshImmo(true);
     }
 
@@ -2982,18 +3554,25 @@
       const key = amenity.toLowerCase();
       if (immoAmenities.has(key)) {
         immoAmenities.delete(key);
-        el.classList.remove('active', 'immo-active');
       } else {
         immoAmenities.add(key);
-        el.classList.add('active', 'immo-active');
       }
+      immoPage = 1;
+      syncFilterUI();
       triggerAutoRefreshImmo(false);
     }
 
     function resetAllImmoFilters() {
       immoTransac = 'ALL';
+      filterState.immo.transac = 'ALL';
       immoRooms.clear();
       immoAmenities.clear();
+      filterState.immo.mapZone = null;
+      isRadiusModeActive = false;
+      if (mapRadiusCircle && mainLeafletMap) mainLeafletMap.removeLayer(mapRadiusCircle);
+      if (mapRadiusMarker && mainLeafletMap) mainLeafletMap.removeLayer(mapRadiusMarker);
+      mapRadiusCircle = null; mapRadiusMarker = null;
+
       const locInput = document.getElementById('searchLocationInput');
       if (locInput) locInput.value = '';
       const budgetInput = document.getElementById('immoMaxBudgetInput');
@@ -3002,20 +3581,23 @@
       if (surfaceInput) surfaceInput.value = '';
       const acList = document.getElementById('cityAutocompleteList');
       if (acList) acList.style.display = 'none';
-
-      document.querySelectorAll('.step-filters-box .segmented-btn').forEach((b, idx) => {
-        b.classList.toggle('active', idx === 0);
-      });
-      document.querySelectorAll('.step-filters-box .chip-filter').forEach(c => {
-        c.classList.remove('active', 'immo-active');
-      });
       const portalBar = document.getElementById('immoDirectPortalsBar');
       if (portalBar) portalBar.style.display = 'none';
       const viagerCb = document.getElementById('immoExcludeViager');
       if (viagerCb) viagerCb.checked = true;
 
+      const widget = document.getElementById('mapRadiusWidget');
+      if (widget) widget.style.display = 'none';
+      const btnClear = document.getElementById('btnClearMapZone');
+      if (btnClear) btnClear.style.display = 'none';
+      const btnZone = document.getElementById('btnSearchThisZone');
+      if (btnZone) btnZone.style.display = 'none';
+      const btnRadius = document.getElementById('btnToggleRadiusMode');
+      if (btnRadius) btnRadius.classList.remove('active');
+
+      immoPage = 1;
+      syncFilterUI();
       filterImmo();
-      showToast('↺ Tous les filtres réinitialisés');
     }
 
     function triggerAutoRefreshImmo(immediate = false) {
@@ -3078,8 +3660,9 @@
                          && !q.includes('38400') && !q.includes('hères') && !q.includes('heres');
 
       const excludeViager = document.getElementById('immoExcludeViager')?.checked !== false;
+      const mapZone = filterState.immo.mapZone;
 
-      return allData.filter(it => {
+      const filtered = (allData || []).filter(it => {
         if (it.universe !== 'immo' && it.category !== 'immo') return false;
         if (dislikes.includes(it.id)) return false;
         if (likedItems.includes(it.id)) return false;
@@ -3114,8 +3697,23 @@
           }
         }
 
-        // Recherche Lieu
-        if (q) {
+        // Filtrage Zone Carte / Rayon GPS
+        if (mapZone) {
+          if (mapZone.type === 'radius') {
+            if (!it.lat || !it.lon) return false;
+            const dist = haversineKm(mapZone.lat, mapZone.lon, it.lat, it.lon);
+            if (dist > mapZone.radiusKm) return false;
+          } else if (mapZone.type === 'bounds' && mapZone.bounds) {
+            if (!it.lat || !it.lon) return false;
+            const b = mapZone.bounds;
+            if (it.lat < b.getSouth() || it.lat > b.getNorth() || it.lon < b.getWest() || it.lon > b.getEast()) {
+              return false;
+            }
+          }
+        }
+
+        // Recherche Lieu textuelle
+        if (q && !mapZone) {
           const pc = String(it.postal_code || '').toLowerCase();
           const matchText = `${it.title || ''} ${it.location || ''} ${it.city || ''} ${pc} ${it.description || ''}`.toLowerCase();
           if (isSxmQuery) {
@@ -3137,6 +3735,19 @@
 
         return true;
       });
+
+      // Tri complet Immo V12
+      filtered.sort((a, b) => {
+        const sortBy = filterState.immo.sortBy;
+        if (sortBy === 'price_asc') return (a.price || 0) - (b.price || 0);
+        if (sortBy === 'price_desc') return (b.price || 0) - (a.price || 0);
+        if (sortBy === 'price_m2_asc') return (a.price_per_m2 || 999999) - (b.price_per_m2 || 999999);
+        if (sortBy === 'surface_desc') return (b.surface_val || 0) - (a.surface_val || 0);
+        if (sortBy === 'date_desc') return (b.date_detected || '').localeCompare(a.date_detected || '');
+        return (b.date_detected || '').localeCompare(a.date_detected || '');
+      });
+
+      return filtered;
     }
 
     function filterImmo() {
@@ -3144,23 +3755,39 @@
       const grid = document.getElementById('immoGrid');
       const empty = document.getElementById('emptyImmo');
       const countLabel = document.getElementById('immoResultsCount');
+      const paginBox = document.getElementById('immoPaginationContainer');
+      const curShown = document.getElementById('immoCurrentShownCount');
+      const totalCount = document.getElementById('immoTotalFoundCount');
 
       countLabel.textContent = `${items.length} bien(s) vérifié(s) disponible(s)`;
+      if (totalCount) totalCount.textContent = items.length;
 
       if (items.length === 0) {
         grid.innerHTML = '';
         empty.style.display = 'block';
+        if (paginBox) paginBox.style.display = 'none';
         if (immoViewMode === 'map') initOrUpdateMainMap();
         return;
       }
       empty.style.display = 'none';
 
-      grid.innerHTML = items.map(it => createImmoCardHtml(it)).join('');
+      const visible = items.slice(0, immoPage * IMMO_PAGE_SIZE);
+      grid.innerHTML = visible.map(it => createImmoCardHtml(it)).join('');
       attachSwipeListeners();
+
+      if (curShown) curShown.textContent = visible.length;
+      if (paginBox) {
+        paginBox.style.display = visible.length < items.length ? 'block' : 'none';
+      }
 
       if (immoViewMode === 'map') {
         initOrUpdateMainMap();
       }
+    }
+
+    function loadMoreImmo() {
+      immoPage++;
+      filterImmo();
     }
 
     // =========================================================
@@ -3219,334 +3846,112 @@
     // =========================================================
     // SCAN LIVE IMMO 100% RÉEL & DYNAMIQUE (ZÉRO DONNÉE FICTIVE)
     // =========================================================
-    async function launchLiveScanImmo(silent = false) {
-      const cityInput = (document.getElementById('searchLocationInput')?.value || '').trim();
-      const city = cityInput || 'Nancy';
-      const cLow = city.toLowerCase();
+    async function launchLiveScanImmo(silent = false, lat = null, lon = null, radius = null) {
+      const city = (document.getElementById('searchLocationInput')?.value || 'Nancy').trim();
+      const transac = immoTransac === 'ALL' ? 'location' : immoTransac;
       const budget = document.getElementById('immoMaxBudgetInput')?.value || '';
       const surface = document.getElementById('immoMinSurfaceInput')?.value || '';
-      const transac = immoTransac === 'ALL' ? 'location' : immoTransac;
-      const roomsArr = Array.from(immoRooms);
-      const roomSummary = roomsArr.join(',');
-      const excludeViager = document.getElementById('immoExcludeViager')?.checked !== false;
+      const rooms = Array.from(immoRooms).join(',') || 'all';
 
-      if (!silent) {
-        updateImmoScanProgress(15, `🔄 Résolution & géocodage pour '${city}'...`);
-      }
+      updateImmoScanProgress(15, `Connexion aux portails (Nancy, DOMimmo, Kyero, Bien'ici)...`);
+      renderImmoPortalLinks(city, transac, budget, surface, rooms);
 
-      // 1. Générer et afficher les liens directs vers les 10 portails & agrégateurs officiels
-      renderImmoPortalLinks(city, transac, budget, surface, roomSummary);
+      const token = localStorage.getItem('nexus_gh_token');
+      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
-      const isSXM = (cLow.includes('saint-martin') || cLow.includes('saint martin') || cLow.includes('sxm') || cLow.includes('97150'))
-                    && !cLow.includes('38400') && !cLow.includes('hères') && !cLow.includes('heres');
-      let realScrapedItems = [];
-
-      const firstNum = (v) => Array.isArray(v) ? Number(v[0] || 0) : Number(v || 0);
-
-      try {
-        if (isSXM) {
-          // --- SCRAPER RÉEL CLIENT SAINT-MARTIN (97150 ≠ 38400) VIA DOMIMMO DIRECT REST API ---
-          if (!silent) updateImmoScanProgress(45, `🏝️ Recherche en direct sur DOMimmo Saint-Martin (97150)...`);
-          const catCode = transac === 'achat' ? 1 : 6;
-          const domUrl = `https://www.domimmo.com/api/domimmo/offers?id_com_pays=SMT&id_di_ad_cat=${catCode}&limit=100`;
-
-          const resp = await fetch(domUrl);
-          if (resp.ok) {
-            const items = await resp.json();
-            if (Array.isArray(items)) {
-              items.forEach(it => {
-                if (it.id_di_ad_type === 4 || String(it.id_di_ad_type) === '4') return;
-                const p = it.price || 0;
-                const s = parseFloat(it.surface_habitable || 0);
-                if (budget && p > Number(budget)) return;
-                if (surface && s > 0 && s < Number(surface)) return;
-
-                const pcs = it.pieces;
-                const adId = String(it.id);
-                const adUrl = `https://www.domimmo.com/saint-martin/immobilier/${adId}`;
-                const rawPhotos = Array.isArray(it.photos) ? it.photos : [];
-                const cleanPhotos = rawPhotos.filter(u => typeof u === 'string' && u.startsWith('http'));
-                if (it.imageSrc && typeof it.imageSrc === 'string' && it.imageSrc.startsWith('http') && !cleanPhotos.includes(it.imageSrc)) {
-                  cleanPhotos.unshift(it.imageSrc);
-                }
-                const heroImg = cleanPhotos.length > 0 ? cleanPhotos[0] : '';
-                const roomsStr = pcs && pcs > 1 ? `T${pcs}` : (pcs === 1 ? 'Studio' : 'Appartement');
-                const priceFormatted = transac === 'achat' ? `${p.toLocaleString('fr-FR')} €` : `${p.toLocaleString('fr-FR')} € / mois`;
-
-                const normalized = {
-                  id: `real_live_sxm_${adId}`,
-                  universe: 'immo',
-                  category: 'immo',
-                  id_di_ad_type: it.id_di_ad_type,
-                  transaction_type: transac,
-                  category_label: 'Immobilier Saint-Martin',
-                  badge: `🏝️ ${transac === 'achat' ? 'Achat' : 'Location'} • Saint-Martin 97150`,
-                  title: it.title || `${roomsStr} Saint-Martin`,
-                  price: p,
-                  price_str: priceFormatted,
-                  location: 'Saint-Martin (97150)',
-                  city: 'Saint-Martin',
-                  postal_code: '97150',
-                  lat: 18.0731,
-                  lon: -63.0822,
-                  agency: it.company || 'DOMimmo Saint-Martin',
-                  is_verified_agency: true,
-                  url: adUrl,
-                  image_url: heroImg,
-                  images: cleanPhotos.slice(0, 10),
-                  description: it.description || 'Annonce résidentielle réelle extraite en direct de DOMimmo Saint-Martin.',
-                  surface: s > 0 ? `${Math.round(s)} m²` : 'N/C',
-                  surface_val: s,
-                  rooms: roomsStr,
-                  bedrooms: it.chambres || 1,
-                  floor: it.etage ? `Étage ${it.etage}` : 'RDC',
-                  dpe: 'C',
-                  charges: it.quote_part_charges ? `${it.quote_part_charges} €/an` : 'N/C',
-                  amenities: extractClientAmenities(it.title, it.description),
-                  price_per_m2: s > 0 ? Math.round(p / s) : 25,
-                  market_avg_m2: 24.5,
-                  market_delta_pct: 0,
-                  market_badge: '🟢 Vraie annonce vérifiée',
-                  date_detected: new Date().toISOString()
-                };
-
-                if (isNonResidentialItem(normalized)) return;
-                if (excludeViager && isExcludedSpecialProduct(normalized)) return;
-                if (roomsArr.length > 0 && !roomsArr.some(rq => matchesRoomReq(normalized, rq))) return;
-                realScrapedItems.push(normalized);
-              });
+      if (token) {
+        updateImmoScanProgress(60, `Déclenchement du scan en arrière-plan GitHub Actions...`);
+        try {
+          const payload = {
+            ref: 'main',
+            inputs: {
+              category: 'immo',
+              city,
+              transaction_type: transac,
+              max_budget: String(budget),
+              min_surface: String(surface),
+              rooms,
+              lat: lat ? String(lat) : '',
+              lon: lon ? String(lon) : '',
+              radius: radius ? String(radius) : '',
             }
-          }
-        } else {
-          // --- SCRAPER RÉEL CLIENT FRANCE MULTI-PAGES (SIZE=60 x 2 PAGES) VIA BIEN'ICI REST API ---
-          if (!silent) updateImmoScanProgress(35, `🔍 Résolution des zones pour '${city}' sur Bien'ici...`);
-          const sugResp = await fetch(`https://res.bienici.com/suggest.json?q=${encodeURIComponent(city)}`);
-          if (sugResp.ok) {
-            const sugData = await sugResp.json();
-            if (Array.isArray(sugData) && sugData.length > 0) {
-              const allow38400 = cLow.includes('38400') || cLow.includes('hères') || cLow.includes('heres');
-              const cityInfo = sugData.find(s => {
-                if (allow38400) return true;
-                const pcs = (s.postalCodes || []).join(' ');
-                const nm = (s.name || '').toLowerCase();
-                return !pcs.includes('38400') && !nm.includes("saint-martin-d'hères");
-              }) || null;
-
-              if (cityInfo) {
-                const zoneIds = cityInfo.zoneIds || [];
-                const cityName = cityInfo.name || city;
-                const postal = (cityInfo.postalCodes && cityInfo.postalCodes[0]) || '54000';
-                const bbox = cityInfo.boundingBox || {};
-                const defaultLat = bbox.south && bbox.north ? (bbox.south + bbox.north) / 2 : 48.6921;
-                const defaultLon = bbox.west && bbox.east ? (bbox.west + bbox.east) / 2 : 6.1844;
-
-                if (!silent) updateImmoScanProgress(55, `🏢 Recherche multi-pages (120 max) pour ${cityName} sur Bien'ici...`);
-
-                for (const pageNum of [1, 2]) {
-                  const filterObj = {
-                    size: 60,
-                    from: (pageNum - 1) * 60,
-                    filterType: transac === 'achat' ? 'buy' : 'rent',
-                    propertyType: ['flat', 'house'],
-                    page: pageNum,
-                    sortBy: 'relevance',
-                    sortOrder: 'desc',
-                    onTheMarket: [true],
-                    zoneIdsByTypes: { zoneIds: zoneIds }
-                  };
-                  if (excludeViager) filterObj.isLifeAnnuitySale = false;
-                  if (budget) filterObj.maxPrice = Number(budget);
-                  if (surface) filterObj.minSurfaceArea = Number(surface);
-                  if (roomsArr.length > 0) {
-                    const rqSet = new Set();
-                    roomsArr.forEach(r => {
-                      if (r === 'Studio' || r === 'T1') rqSet.add(1);
-                      else if (r === 'T2') rqSet.add(2);
-                      else if (r === 'T3' || r === 'T3+') { rqSet.add(3); rqSet.add(4); rqSet.add(5); rqSet.add(6); }
-                      else if (r === 'T4' || r === 'Maison') { rqSet.add(4); rqSet.add(5); rqSet.add(6); }
-                    });
-                    if (rqSet.size > 0) filterObj.roomsQuantity = Array.from(rqSet);
-                  }
-
-                  const adsResp = await fetch(`https://www.bienici.com/realEstateAds.json?filters=${encodeURIComponent(JSON.stringify(filterObj))}`);
-                  if (!adsResp.ok) break;
-                  const adsData = await adsResp.json();
-                  const ads = adsData.realEstateAds || [];
-                  if (ads.length === 0) break;
-
-                  ads.forEach(a => {
-                    if (!a.id) return;
-                    const p = firstNum(a.price);
-                    const s = firstNum(a.surfaceArea);
-                    const pcs = firstNum(a.roomsQuantity);
-                    const isHouse = a.propertyType === 'house';
-                    const roomsStr = isHouse ? `Maison ${pcs || 4}P` : (pcs && pcs > 1 ? `T${pcs}` : (pcs === 1 ? 'Studio' : 'Appartement'));
-                    const photos = (a.photos || [])
-                      .map(po => po.url_photo || po.url || po.photo)
-                      .filter(u => typeof u === 'string' && u.startsWith('http'));
-                    const heroImg = photos.length > 0 ? photos[0] : '';
-                    const adLat = a.blurInfo?.position?.lat || a.blurInfo?.centroid?.lat || defaultLat;
-                    const adLon = a.blurInfo?.position?.lon || a.blurInfo?.centroid?.lon || defaultLon;
-                    const title = a.title || `${roomsStr} ${Math.round(s)} m² ${cityName}`;
-                    const priceFormatted = transac === 'achat' ? `${p.toLocaleString('fr-FR')} € FAI` : `${p.toLocaleString('fr-FR')} € / mois CC`;
-
-                    const normalized = {
-                      id: `real_live_bi_${a.id}`,
-                      universe: 'immo',
-                      category: 'immo',
-                      transaction_type: transac,
-                      category_label: `Immobilier ${cityName}`,
-                      badge: `🏢 ${transac === 'achat' ? 'Achat' : 'Location'} • ${cityName}`,
-                      title: title,
-                      price: p,
-                      price_str: priceFormatted,
-                      location: `${cityName} (${a.postalCode || postal})`,
-                      city: cityName,
-                      postal_code: a.postalCode || postal,
-                      lat: adLat,
-                      lon: adLon,
-                      agency: `Bien'ici / ${a.accountType || 'Agence'}`,
-                      is_verified_agency: true,
-                      url: `https://www.bienici.com/annonce/${a.id}`,
-                      image_url: heroImg,
-                      images: photos.slice(0, 10),
-                      description: a.description || 'Annonce réelle extraite en direct de Bien\'ici.',
-                      surface: s > 0 ? `${Math.round(s)} m²` : 'N/C',
-                      surface_val: s,
-                      rooms: roomsStr,
-                      bedrooms: firstNum(a.bedroomsQuantity) || 1,
-                      floor: a.floor ? `Étage ${firstNum(a.floor)}` : 'RDC',
-                      dpe: a.energyClassification || 'D',
-                      charges: 'Charges comprises',
-                      amenities: extractClientAmenities(title, `${a.description || ''} ${a.hasTerrace || a.hasBalcony ? 'terrasse' : ''} ${a.hasPool ? 'piscine' : ''}`),
-                      price_per_m2: s > 0 ? Math.round(p / s) : 14.0,
-                      market_avg_m2: 13.8,
-                      market_delta_pct: 0,
-                      market_badge: '🟢 Vraie annonce vérifiée',
-                      date_detected: new Date().toISOString()
-                    };
-
-                    if (isNonResidentialItem(normalized)) return;
-                    if (excludeViager && isExcludedSpecialProduct(normalized)) return;
-                    realScrapedItems.push(normalized);
-                  });
-
-                  if (ads.length < 60) break;
-                }
-              }
-            }
-          }
+          };
+          await fetch(`https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+        } catch (e) {
+          console.warn('Erreur dispatch GitHub Actions:', e);
         }
-      } catch (err) {
-        console.warn('Note recherche en direct client:', err);
       }
 
-      if (!silent) {
-        updateImmoScanProgress(85, `⚡ Intégration de ${realScrapedItems.length} annonces réelles...`);
-      }
-
-      // 2. Fusionner les annonces réelles sans doublons
-      if (realScrapedItems.length > 0) {
-        const seenUrls = new Set(allData.map(x => x.url || x.id));
-        const newUniques = realScrapedItems.filter(x => !seenUrls.has(x.url) && !seenUrls.has(x.id));
-        allData = newUniques.concat(allData);
-      }
-
-      // 3. Rafraîchir l'affichage
+      updateImmoScanProgress(100, `Résultats synchronisés pour ${city} !`);
+      immoPage = 1;
       filterImmo();
-
-      // 4. Action Cloud GitHub Actions uniquement lors d'un clic manuel (pas en auto-refresh silencieux)
-      if (!silent) {
-        const token = localStorage.getItem('nexus_gh_token');
-        const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
-
-        if (token) {
-          updateImmoScanProgress(92, `🚀 Lancement du scan Cloud Playwright sur GitHub Actions...`);
-          try {
-            await fetch(`https://api.github.com/repos/${repo}/actions/workflows/scan.yml/dispatches`, {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${token}`,
-                'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                ref: 'main',
-                inputs: {
-                  category: 'immo',
-                  city: city,
-                  transaction_type: transac,
-                  max_budget: String(budget),
-                  rooms: roomSummary || 'all',
-                  min_surface: String(surface)
-                }
-              })
-            });
-          } catch (e) {
-            console.warn('Erreur dispatch GitHub :', e);
-          }
-        }
-
-        const countFound = realScrapedItems.length;
-        updateImmoScanProgress(100, `✅ Scan terminé : ${countFound} annonces réelles trouvées pour ${city} !`);
-        showToast(`✅ ${countFound} annonce(s) réelle(s) récupérée(s) pour ${city} !`);
-        hideImmoScanProgress(2000);
-      }
+      if (!silent) showToast(`⚡ Scan live et portails officiels synchronisés pour ${city} !`, 2600);
+      hideImmoScanProgress(2000);
     }
 
-    function renderImmoPortalLinks(city, transac, budget, surface, room) {
+    function renderImmoPortalLinks(city, transac, budget, surface, room, countryCode = '') {
       const bar = document.getElementById('immoDirectPortalsBar');
       const container = document.getElementById('immoDirectPortalsLinks');
       const meta = document.getElementById('immoDirectPortalsMeta');
-      if (!bar || !container || !meta) return;
+      if (!bar || !container) return;
 
-      const cLow = city.toLowerCase();
-      const isSXM = (cLow.includes('saint-martin') || cLow.includes('saint martin') || cLow.includes('sxm') || cLow.includes('97150'))
-                    && !cLow.includes('38400') && !cLow.includes('hères') && !cLow.includes('heres');
-      const catCode = transac === 'achat' ? '9' : '10';
+      const cClean = (city || 'Nancy').replace(/\(.*?\)/g, '').trim();
+      const cSlug = encodeURIComponent(cClean.toLowerCase().replace(/\s+/g, '-'));
+      const isAchat = transac === 'achat';
       const bParam = budget ? `&price=min-${budget}` : '';
       const sParam = surface ? `&square=min-${surface}` : '';
+      const cc = (countryCode || '').toLowerCase();
 
-      meta.textContent = `${city} • ${transac === 'achat' ? 'Achat' : 'Location'} ${budget ? '≤ ' + budget + '€' : ''}`;
+      let links = [];
 
-      let linksHtml = '';
-      if (isSXM) {
-        const domUrl = transac === 'achat' ? 'https://www.domimmo.com/saint-martin/immobilier/ventes' : 'https://www.domimmo.com/saint-martin/immobilier/locations';
-        const emotionUrl = transac === 'achat' ? 'https://www.emotion-realestate.com/fr/ventes/saint-martin' : 'https://www.emotion-realestate.com/fr/locations/saint-martin';
-        const lbcUrl = `https://www.leboncoin.fr/recherche?category=${catCode}&locations=Saint-Martin_97150${bParam}${sParam}`;
-
-        linksHtml = `
-          <a class="portal-link-btn" href="${domUrl}" target="_blank" rel="noopener">🏝️ DOMimmo SXM (${transac})</a>
-          <a class="portal-link-btn" href="${emotionUrl}" target="_blank" rel="noopener">🌴 Emotion SXM</a>
-          <a class="portal-link-btn" href="${lbcUrl}" target="_blank" rel="noopener">🛒 Leboncoin 97150</a>
-        `;
+      // Détection Espagne / International
+      if (cc === 'es' || cClean.toLowerCase().includes('madrid') || cClean.toLowerCase().includes('barcelon') || cClean.toLowerCase().includes('espagne')) {
+        links = [
+          { name: 'Idealista', url: `https://www.idealista.com/fr/${isAchat ? 'venta' : 'alquiler'}-viviendas/${cSlug}/`, icon: '🇪🇸', desc: 'N°1 Immobilier Espagne' },
+          { name: 'Fotocasa', url: `https://www.fotocasa.es/es/${isAchat ? 'comprar' : 'alquiler'}/viviendas/${cSlug}/t`, icon: '🇪🇸', desc: 'Portail Espagnol' },
+          { name: 'Habitaclia', url: `https://www.habitaclia.com/${isAchat ? 'comprar' : 'alquiler'}-vivienda-en-${cSlug}/buscador.htm`, icon: '🇪🇸', desc: 'Catalogue Méditerranée' },
+          { name: 'Properstar', url: `https://www.properstar.fr/${isAchat ? 'achat' : 'location'}/espagne/${cSlug}`, icon: '🌍', desc: 'International' },
+        ];
+      } else if (cc === 'gb' || cc === 'uk' || cClean.toLowerCase().includes('london')) {
+        links = [
+          { name: 'Rightmove', url: `https://www.rightmove.co.uk/property-${isAchat ? 'for-sale' : 'to-rent'}/search.html?searchLocation=${cSlug}`, icon: '🇬🇧', desc: 'N°1 UK Property' },
+          { name: 'Properstar UK', url: `https://www.properstar.fr/${isAchat ? 'achat' : 'location'}/royaume-uni/${cSlug}`, icon: '🌍', desc: 'Portail Global' }
+        ];
+      } else if (cc === 'it' || cClean.toLowerCase().includes('rome') || cClean.toLowerCase().includes('roma')) {
+        links = [
+          { name: 'Immobiliare.it', url: `https://www.immobiliare.it/${isAchat ? 'vendita' : 'affitto'}-case/${cSlug}/`, icon: '🇮🇹', desc: 'N°1 Immobilier Italie' },
+          { name: 'Properstar Italie', url: `https://www.properstar.fr/${isAchat ? 'achat' : 'location'}/italie/${cSlug}`, icon: '🌍', desc: 'Portail Global' }
+        ];
+      } else if (cClean.toLowerCase().includes('saint-martin') || cClean.toLowerCase().includes('sxm') || cClean.toLowerCase().includes('97150')) {
+        links = [
+          { name: 'DOMimmo Saint-Martin', url: `https://www.domimmo.com/saint-martin/immobilier/`, icon: '🏝️', desc: 'Offres officielles SXM' },
+          { name: 'SeLoger Outre-Mer', url: `https://www.seloger.com/list.htm?projects=${isAchat ? '2' : '1'}&types=1,2&places=[{ci:971028}]`, icon: '🏢', desc: 'Portail SXM' },
+          { name: 'Leboncoin SXM', url: `https://www.leboncoin.fr/recherche?category=${isAchat ? '9' : '10'}&locations=Saint-Martin_97150`, icon: '🔍', desc: 'Particuliers & Pros' },
+        ];
       } else {
-        const cleanCity = city.replace(/\s+\d{5}/g, '').trim();
-        const citySlug = encodeURIComponent(cleanCity.toLowerCase().replace(/\s+/g, '-'));
-        const lbcUrl = `https://www.leboncoin.fr/recherche?category=${catCode}&locations=${encodeURIComponent(cleanCity)}${bParam}${sParam}`;
-        const bieniciUrl = `https://www.bienici.com/recherche/${transac}/${citySlug}`;
-        const selogerUrl = `https://www.seloger.com/list.htm?projects=${transac === 'achat' ? '2' : '1'}&types=1,2`;
-        const papUrl = `https://www.pap.fr/annonce/${transac === 'achat' ? 'vente-appartements' : 'locations-appartement'}`;
-        const paruUrl = `https://www.paruvendu.fr/immobilier/annonceimmofo/liste/listeAnnonces?tt=${transac === 'achat' ? '1' : '5'}&at=APP,MAI&pa=FR&lo=${encodeURIComponent(cleanCity)}`;
-        const figaroUrl = `https://immobilier.lefigaro.fr/annonces/immobilier-${transac === 'achat' ? 'vente' : 'location'}-bien-${citySlug}.html`;
-        const logicUrl = `https://www.logic-immo.com/${transac === 'achat' ? 'vente' : 'location'}-immobilier-${citySlug}/options/groupprptypesids=1,2`;
-        const orpiUrl = `https://www.orpi.com/recherche/${transac === 'achat' ? 'buy' : 'rent'}?locations[0][value]=${encodeURIComponent(cleanCity.toLowerCase())}`;
-        const fonciaUrl = `https://fr.foncia.com/${transac === 'achat' ? 'acheter' : 'louer'}`;
-
-        linksHtml = `
-          <a class="portal-link-btn" href="${bieniciUrl}" target="_blank" rel="noopener">🏢 Bien'ici ${cleanCity}</a>
-          <a class="portal-link-btn" href="${lbcUrl}" target="_blank" rel="noopener">🛒 Leboncoin ${cleanCity}</a>
-          <a class="portal-link-btn" href="${selogerUrl}" target="_blank" rel="noopener">🔍 SeLoger</a>
-          <a class="portal-link-btn" href="${papUrl}" target="_blank" rel="noopener">🤝 PAP.fr</a>
-          <a class="portal-link-btn" href="${paruUrl}" target="_blank" rel="noopener">📰 ParuVendu ${cleanCity}</a>
-          <a class="portal-link-btn" href="${figaroUrl}" target="_blank" rel="noopener">🏛️ Figaro Immo</a>
-          <a class="portal-link-btn" href="${logicUrl}" target="_blank" rel="noopener">📐 Logic-Immo</a>
-          <a class="portal-link-btn" href="${orpiUrl}" target="_blank" rel="noopener">🏡 Orpi ${cleanCity}</a>
-          <a class="portal-link-btn" href="${fonciaUrl}" target="_blank" rel="noopener">🔑 Foncia</a>
-        `;
+        links = [
+          { name: "Bien'ici", url: `https://www.bienici.com/recherche/${isAchat ? 'achat' : 'location'}/${cSlug}`, icon: '🏢', desc: 'Multi-agences officiel' },
+          { name: 'SeLoger', url: `https://www.seloger.com/list.htm?projects=${isAchat ? '2' : '1'}&types=1,2`, icon: '🏠', desc: 'Portail de référence' },
+          { name: 'Leboncoin', url: `https://www.leboncoin.fr/recherche?category=${isAchat ? '9' : '10'}&locations=${cSlug}${bParam}${sParam}`, icon: '🔍', desc: 'Particuliers & Pros' },
+          { name: 'PAP', url: `https://www.pap.fr/annonce/${isAchat ? 'vente-appartements' : 'locations-appartement'}`, icon: '🤝', desc: 'Entre particuliers' },
+          { name: 'Le Figaro Immo', url: `https://immobilier.lefigaro.fr/annonces/immobilier-${isAchat ? 'vente' : 'location'}-bien-${cSlug}.html`, icon: '📰', desc: 'Sélection nationale' },
+        ];
       }
 
-      container.innerHTML = linksHtml;
+      if (meta) meta.textContent = `${cClean} • ${isAchat ? 'Achat' : 'Location'}`;
+      container.innerHTML = links.map(l => `
+        <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="direct-portal-link" style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; background:var(--bg-porcelain); border:1px solid var(--card-border); border-radius:8px; font-size:0.75rem; font-weight:700; color:var(--text-main); text-decoration:none; transition:all 0.15s ease;">
+          <span>${l.icon}</span> <span>${l.name}</span> <small style="color:var(--text-muted); font-size:0.65rem;">(${l.desc})</small> ↗
+        </a>
+      `).join('');
       bar.style.display = 'block';
     }
 
@@ -3555,15 +3960,25 @@
     // =========================================================
     function initOrUpdateMainMap() {
       const items = getFilteredImmoItems().filter(x => x.lat && x.lon);
+      const mapBox = document.getElementById('mainMapCanvas') || document.getElementById('mainMapContainer');
+      if (!mapBox) return;
+
       if (!mainLeafletMap) {
-        mainLeafletMap = L.map('mainMapContainer').setView([48.6921, 6.1844], 12);
+        mainLeafletMap = L.map(mapBox, { preferCanvas: true }).setView([48.6921, 6.1844], 12);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '© OpenStreetMap contributors',
           maxZoom: 18
         }).addTo(mainLeafletMap);
+
+        mainLeafletMap.on('moveend zoomend', () => {
+          if (!isRadiusModeActive && !filterState.immo.mapZone) {
+            const btnZone = document.getElementById('btnSearchThisZone');
+            if (btnZone) btnZone.style.display = 'inline-flex';
+          }
+        });
       }
 
-      setTimeout(() => mainLeafletMap.invalidateSize(), 120);
+      setTimeout(() => mainLeafletMap.invalidateSize(), 150);
 
       mainMapMarkers.forEach(m => mainLeafletMap.removeLayer(m));
       mainMapMarkers = [];
@@ -3574,7 +3989,7 @@
       items.forEach(it => {
         const marker = L.circleMarker([it.lat, it.lon], {
           radius: 8,
-          fillColor: it.transaction_type === 'achat' ? '#8b5cf6' : '#10b981',
+          fillColor: it.transaction_type === 'achat' ? '#8b5cf6' : '#FF385C',
           color: '#ffffff',
           weight: 2,
           opacity: 1,
@@ -3583,19 +3998,136 @@
 
         marker.bindPopup(`
           <div style="font-family: inherit; font-size: 0.78rem;">
-            <strong>${it.title}</strong><br/>
-            💰 <span style="color:#0284c7; font-weight:800;">${it.price_str}</span><br/>
-            📍 ${it.location}<br/>
-            <button onclick="openImmoDetailModal('${it.id}')" style="margin-top:4px; background:#10b981; color:var(--text-main); border:none; padding:4px 8px; border-radius:4px; font-weight:700; cursor:pointer;">Voir la fiche</button>
+            <strong>${escapeHtml(it.title)}</strong><br/>
+            💰 <span style="color:#FF385C; font-weight:800;">${escapeHtml(it.price_str)}</span><br/>
+            📍 ${escapeHtml(it.location)}<br/>
+            <button onclick="openImmoDetailModal('${it.id}')" style="margin-top:6px; background:#FF385C; color:#FFFFFF; border:none; padding:5px 10px; border-radius:6px; font-weight:700; cursor:pointer;">Voir la fiche</button>
           </div>
         `);
         mainMapMarkers.push(marker);
         group.push([it.lat, it.lon]);
       });
 
-      if (group.length > 0) {
+      if (!filterState.immo.mapZone && group.length > 0) {
         mainLeafletMap.fitBounds(group, { padding: [30, 30], maxZoom: 14 });
       }
+    }
+
+    function searchCurrentMapZone() {
+      if (!mainLeafletMap) return;
+      const b = mainLeafletMap.getBounds();
+      filterState.immo.mapZone = { type: 'bounds', bounds: b };
+      const btnZone = document.getElementById('btnSearchThisZone');
+      if (btnZone) btnZone.style.display = 'none';
+      const btnClear = document.getElementById('btnClearMapZone');
+      if (btnClear) btnClear.style.display = 'inline-flex';
+      immoPage = 1;
+      syncFilterUI();
+      filterImmo();
+      showToast('🔍 Recherche appliquée à la zone visible de la carte !', 2200);
+    }
+
+    function toggleRadiusMode() {
+      if (!mainLeafletMap) {
+        setViewMode('map');
+      }
+      isRadiusModeActive = !isRadiusModeActive;
+      const btn = document.getElementById('btnToggleRadiusMode');
+      if (btn) btn.classList.toggle('active', isRadiusModeActive);
+
+      if (isRadiusModeActive) {
+        showToast('🎯 Cliquez sur la carte pour définir le centre de votre rayon', 3000);
+        mainLeafletMap.on('click', onMapRadiusCenterClick);
+      } else {
+        mainLeafletMap.off('click', onMapRadiusCenterClick);
+      }
+    }
+
+    function onMapRadiusCenterClick(e) {
+      if (!isRadiusModeActive) return;
+      const lat = e.latlng.lat;
+      const lon = e.latlng.lng;
+
+      if (mapRadiusCircle && mainLeafletMap) mainLeafletMap.removeLayer(mapRadiusCircle);
+      if (mapRadiusMarker && mainLeafletMap) mainLeafletMap.removeLayer(mapRadiusMarker);
+
+      mapRadiusCircle = L.circle([lat, lon], {
+        radius: currentRadiusKm * 1000,
+        color: '#FF385C',
+        fillColor: '#FF385C',
+        fillOpacity: 0.15,
+        weight: 2
+      }).addTo(mainLeafletMap);
+
+      mapRadiusMarker = L.marker([lat, lon], { draggable: true }).addTo(mainLeafletMap);
+      mapRadiusMarker.on('drag', (ev) => {
+        const pos = ev.target.getLatLng();
+        mapRadiusCircle.setLatLng(pos);
+        filterState.immo.mapZone.lat = pos.lat;
+        filterState.immo.mapZone.lon = pos.lng;
+        immoPage = 1;
+        filterImmo();
+      });
+
+      filterState.immo.mapZone = { type: 'radius', lat, lon, radiusKm: currentRadiusKm };
+
+      const widget = document.getElementById('mapRadiusWidget');
+      if (widget) widget.style.display = 'block';
+      const btnClear = document.getElementById('btnClearMapZone');
+      if (btnClear) btnClear.style.display = 'inline-flex';
+      const btnZone = document.getElementById('btnSearchThisZone');
+      if (btnZone) btnZone.style.display = 'none';
+
+      immoPage = 1;
+      syncFilterUI();
+      filterImmo();
+    }
+
+    function onMapRadiusSliderChange(val) {
+      currentRadiusKm = parseInt(val, 10);
+      const lbl = document.getElementById('mapRadiusLabel');
+      if (lbl) lbl.textContent = `${currentRadiusKm} km`;
+      if (mapRadiusCircle) {
+        mapRadiusCircle.setRadius(currentRadiusKm * 1000);
+      }
+      if (filterState.immo.mapZone && filterState.immo.mapZone.type === 'radius') {
+        filterState.immo.mapZone.radiusKm = currentRadiusKm;
+      }
+      immoPage = 1;
+      syncFilterUI();
+      filterImmo();
+    }
+
+    function clearMapZoneFilter() {
+      if (mapRadiusCircle && mainLeafletMap) mainLeafletMap.removeLayer(mapRadiusCircle);
+      if (mapRadiusMarker && mainLeafletMap) mainLeafletMap.removeLayer(mapRadiusMarker);
+      mapRadiusCircle = null;
+      mapRadiusMarker = null;
+
+      filterState.immo.mapZone = null;
+      isRadiusModeActive = false;
+      if (mainLeafletMap) mainLeafletMap.off('click', onMapRadiusCenterClick);
+
+      const btnRadius = document.getElementById('btnToggleRadiusMode');
+      if (btnRadius) btnRadius.classList.remove('active');
+      const widget = document.getElementById('mapRadiusWidget');
+      if (widget) widget.style.display = 'none';
+      const btnClear = document.getElementById('btnClearMapZone');
+      if (btnClear) btnClear.style.display = 'none';
+      const btnZone = document.getElementById('btnSearchThisZone');
+      if (btnZone) btnZone.style.display = 'none';
+
+      immoPage = 1;
+      syncFilterUI();
+      filterImmo();
+      showToast('✕ Zone de carte effacée (vue libre)', 2000);
+    }
+
+    async function scanRadiusZone() {
+      if (!filterState.immo.mapZone || filterState.immo.mapZone.type !== 'radius') return;
+      const { lat, lon, radiusKm } = filterState.immo.mapZone;
+      showToast(`🎯 Lancement du Scan Live sur le rayon de ${radiusKm} km...`, 2600);
+      launchLiveScanImmo(false, lat, lon, radiusKm);
     }
 
     // =========================================================
@@ -3616,30 +4148,11 @@
     }
 
     function buildImmoPlaceholderSvg(it) {
-      const locText = ((it && (it.location || it.city)) || 'Secteur vérifié').replace(/[<>&"']/g, '').slice(0, 34);
-      const gpsText = (it && it.lat && it.lon)
-        ? `GPS ${Number(it.lat).toFixed(3)}, ${Number(it.lon).toFixed(3)}`
-        : 'Carte & localisation sur fiche';
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
-        <defs>
-          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#F8FAFC"/>
-            <stop offset="100%" stop-color="#E2E8F0"/>
-          </linearGradient>
-        </defs>
-        <rect width="640" height="360" fill="url(#bg)"/>
-        <path d="M0 72 H640 M0 144 H640 M0 216 H640 M0 288 H640 M128 0 V360 M256 0 V360 M384 0 V360 M512 0 V360" stroke="#334155" stroke-width="1" opacity="0.45"/>
-        <rect x="242" y="88" width="156" height="122" rx="8" fill="#F1F5F9" stroke="#38bdf8" stroke-width="2" opacity="0.9"/>
-        <path d="M230 94 L320 44 L410 94" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
-        <rect x="272" y="122" width="28" height="28" rx="3" fill="#1e293b" stroke="#64748b"/>
-        <rect x="340" y="122" width="28" height="28" rx="3" fill="#1e293b" stroke="#64748b"/>
-        <rect x="304" y="162" width="32" height="48" rx="3" fill="#0f766e" opacity="0.8"/>
-        <text x="320" y="252" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="16" font-weight="bold">📐 Visuel architectural neutre (Sans photo agence)</text>
-        <text x="320" y="280" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="14" font-weight="bold">📍 ${locText}</text>
-        <text x="320" y="305" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="12">${gpsText}</text>
-      </svg>`;
-      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+      const city = escapeHtml(it.city || it.location || 'Bien immobilier');
+      return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"><rect width="100%" height="100%" fill="%23F7F7F7"/><g fill="%239CA3AF" transform="translate(250, 130)"><path d="M50 0 L100 40 L100 100 L0 100 L0 40 Z" fill="none" stroke="%239CA3AF" stroke-width="4"/><circle cx="50" cy="50" r="14" fill="%239CA3AF"/><path d="M20 90 L40 60 L60 80 L75 65 L95 90 Z" fill="%23D1D5DB"/></g><text x="50%" y="270" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="14" fill="%236B7280" text-anchor="middle" font-weight="600">${encodeURIComponent(city)}</text><text x="50%" y="295" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="12" fill="%239CA3AF" text-anchor="middle">Photo non fournie par l'agence</text></svg>`;
     }
+
+    
 
     function handleImgError(imgEl, universe, locLabel) {
       if (!imgEl || imgEl.dataset.fallbackApplied === '1') return;
@@ -5334,8 +5847,31 @@
         summaryMeta.textContent = `${formatFrDateShort(depIso)} ➔ ${formatFrDateShort(retIso)} • ${nights} nuit(s) (J+${daysOut}) • ${depClean} ➔ ${destLabel} • ≤ ${budgetMax} €${filterTag}`;
       }
 
+      // Active chips bar pour Voyage
+      const voyChipsContainer = document.getElementById('voyageActiveFilterChips');
+      if (voyChipsContainer) {
+        const vChips = [];
+        if (destRaw && destRaw.toLowerCase() !== 'partout') {
+          vChips.push(`<span class="filter-chip-removable">📍 ${escapeHtml(destRaw)} <button class="chip-remove-btn" onclick="clearVoyageDestChip()">✕</button></span>`);
+        }
+        if (currentVoyageCatFilter !== 'all') {
+          const catLbl = currentVoyageCatFilter === 'package' ? '🏨 Packages' : (currentVoyageCatFilter === 'flight' ? '✈️ Vols' : '🚄 Trains');
+          vChips.push(`<span class="filter-chip-removable">${catLbl} <button class="chip-remove-btn" onclick="setVoyageCatFilter('all', document.getElementById('voyFilterAll'))">✕</button></span>`);
+        }
+        if (budgetMax < 4000) {
+          vChips.push(`<span class="filter-chip-removable">💰 ≤ ${budgetMax} € <button class="chip-remove-btn" onclick="resetVoyageBudgetChip()">✕</button></span>`);
+        }
+        if (vChips.length > 0) {
+          vChips.push(`<button class="filter-chip-clear-all" onclick="resetAllVoyageFilters()">✕ Tout effacer</button>`);
+          voyChipsContainer.innerHTML = vChips.join('');
+          voyChipsContainer.style.display = 'flex';
+        } else {
+          voyChipsContainer.innerHTML = '';
+          voyChipsContainer.style.display = 'none';
+        }
+      }
+
       const destQ = destRaw.toLowerCase();
-      // Backend alerts uniquement si hors doublon des offres dynamiques synchronisées
       const dynIds = new Set(dynamicVoyageOffers.map(x => x.id));
       const backendExtras = (allData || []).filter(it =>
         it.universe === 'voyage' &&
@@ -5351,37 +5887,58 @@
           const matchText = `${it.title || ''} ${it.location || ''} ${it.destination || ''} ${it.description || ''}`.toLowerCase();
           if (!matchText.includes(destQ)) return false;
         }
-        const catType = it.category === 'train' ? 'train' : (it.category === 'package' || !!it.true_cost && it.section_type === 'best_offers' ? 'package' : 'flight');
-        if (currentVoyageCatFilter !== 'all' && catType !== currentVoyageCatFilter) return false;
+        const catType = it.category === 'train' ? 'train' : (it.category === 'package' || (!!it.true_cost && it.section_type === 'best_offers') ? 'package' : (it.category === 'deal' ? 'deal' : 'flight'));
+        if (currentVoyageCatFilter !== 'all' && catType !== currentVoyageCatFilter && !(currentVoyageCatFilter === 'flight' && catType === 'deal')) return false;
         return true;
       });
 
-      const sec1Items = combined.filter(x => x.category === 'train' || x.category === 'flight');
+      // Tri VOYAGE V12
+      const sortFn = (a, b) => {
+        const sb = filterState.voyage.sortBy;
+        if (sb === 'price_asc') return (a.price || 0) - (b.price || 0);
+        if (sb === 'savings_desc') {
+          return (a.market_delta_pct || 0) - (b.market_delta_pct || 0);
+        }
+        if (sb === 'rating_desc') {
+          return (parseFloat(b.rating) || 8.5) - (parseFloat(a.rating) || 8.5);
+        }
+        return (a.price || 0) - (b.price || 0);
+      };
+
+      const sec1Items = combined.filter(x => x.category === 'train' || x.category === 'flight' || x.category === 'deal' || x.section_type === 'flash_deals');
       const sec2Items = combined.filter(x => x.category === 'package' || x.section_type === 'best_offers');
+
+      sec1Items.sort(sortFn);
+      sec2Items.sort(sortFn);
+
+      const resultsCountEl = document.getElementById('voyageResultsCount');
+      if (resultsCountEl) {
+        resultsCountEl.textContent = `${sec1Items.length + sec2Items.length} opportunité(s) vérifiée(s)`;
+      }
 
       const sec1Wrap = document.getElementById('voyageSec1Wrap');
       const sec2Wrap = document.getElementById('voyageSec2Wrap');
       if (sec1Wrap) sec1Wrap.style.display = (currentVoyageCatFilter === 'package') ? 'none' : 'block';
-      if (sec2Wrap) sec2Wrap.style.display = (currentVoyageCatFilter === 'train' || currentVoyageCatFilter === 'flight') ? 'none' : 'block';
+      if (sec2Wrap) sec2Wrap.style.display = (currentVoyageCatFilter === 'train' || currentVoyageCatFilter === 'flight' || currentVoyageCatFilter === 'deal') ? 'none' : 'block';
 
       const sec1Container = document.getElementById('voyageSection1');
       const sec2Container = document.getElementById('voyageSection2');
       const count1 = document.getElementById('voyageSec1Count');
       const count2 = document.getElementById('voyageSec2Count');
 
-      if (count1) count1.textContent = `${sec1Items.length} liaison(s) à J+${daysOut}`;
+      if (count1) count1.textContent = `${sec1Items.length} bon(s) plan(s) en direct (J+${daysOut})`;
       if (count2) count2.textContent = `${sec2Items.length} package(s) • ${nights} nuits`;
 
       if (sec1Container) {
         sec1Container.innerHTML = sec1Items.length > 0 ?
           sec1Items.map(it => createVoyageCardHtml(it, false)).join('') :
-          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucune liaison train/vol dans ce filtre ou budget.</div>';
+          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun bon plan dans ce filtre ou budget.</div>';
       }
 
       if (sec2Container) {
         sec2Container.innerHTML = sec2Items.length > 0 ?
           sec2Items.map(it => createVoyageCardHtml(it, false)).join('') :
-          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun package tout compris dans ce plafond €. Augmentez le curseur Budget Max pour afficher les longs-courriers.</div>';
+          '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun package sur-mesure dans ce plafond €.</div>';
       }
 
       const track = document.getElementById('voyageInspirationsTrack');
@@ -5390,6 +5947,26 @@
       }
       updateSavedCounters();
       attachSwipeListeners();
+    }
+
+    function clearVoyageDestChip() {
+      const inp = document.getElementById('searchVoyageDest');
+      if (inp) inp.value = '';
+      applyVoyageCalendar(false);
+    }
+
+    function resetVoyageBudgetChip() {
+      const r = document.getElementById('voyageBudgetRange');
+      const inp = document.getElementById('voyageBudgetInput');
+      if (r) r.value = 4000;
+      if (inp) inp.value = 4000;
+      applyVoyageCalendar(false);
+    }
+
+    function resetAllVoyageFilters() {
+      clearVoyageDestChip();
+      resetVoyageBudgetChip();
+      setVoyageCatFilter('all', document.getElementById('voyFilterAll'));
     }
 
     function filterVoyage() {
@@ -5759,11 +6336,11 @@
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'horizons-v11-light') caches.delete(n);
+              if (n !== 'horizons-v12') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=11').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=12').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 

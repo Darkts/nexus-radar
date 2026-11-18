@@ -11,7 +11,7 @@ on:
         required: false
         default: 'all'
       city:
-        description: 'Ville ou secteur cible (ex: Nancy, Saint-Martin 97150, Paris...)'
+        description: 'Ville ou secteur cible (ex: Nancy, Saint-Martin 97150, Guadeloupe, Madrid...)'
         required: false
         default: ''
       transaction_type:
@@ -28,6 +28,18 @@ on:
         default: 'all'
       min_surface:
         description: 'Surface minimum en m²'
+        required: false
+        default: ''
+      lat:
+        description: 'Latitude GPS pour scan par rayon'
+        required: false
+        default: ''
+      lon:
+        description: 'Longitude GPS pour scan par rayon'
+        required: false
+        default: ''
+      radius:
+        description: 'Rayon en km autour des coordonnées'
         required: false
         default: ''
       departure_city:
@@ -86,6 +98,9 @@ jobs:
           SCAN_MAX_BUDGET: ${{ inputs.max_budget || '' }}
           SCAN_ROOMS: ${{ inputs.rooms || 'all' }}
           SCAN_MIN_SURFACE: ${{ inputs.min_surface || '' }}
+          SCAN_LAT: ${{ inputs.lat || '' }}
+          SCAN_LON: ${{ inputs.lon || '' }}
+          SCAN_RADIUS: ${{ inputs.radius || '' }}
           SCAN_DEPARTURE: ${{ inputs.departure_city || '' }}
           SCAN_DESTINATION: ${{ inputs.destination || '' }}
         run: |
