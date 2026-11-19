@@ -3465,11 +3465,20 @@
 
     
 
-    function selectImmoAutocomplete(val) {
+    let selectedLocation = { val: 'Nancy', lat: 48.6921, lon: 6.1844, country: 'France', countryCode: 'fr' };
+
+    function selectImmoAutocomplete(val, lat = null, lon = null, country = 'France', countryCode = '') {
       const input = document.getElementById('searchLocationInput');
       const list = document.getElementById('cityAutocompleteList');
       if (input) input.value = val;
       if (list) list.style.display = 'none';
+      selectedLocation = {
+        val,
+        lat: lat !== null ? parseFloat(lat) : null,
+        lon: lon !== null ? parseFloat(lon) : null,
+        country: country || 'France',
+        countryCode: (countryCode || '').toLowerCase()
+      };
       triggerAutoRefreshImmo(true);
     }
 
@@ -3715,7 +3724,7 @@
         // Recherche Lieu textuelle
         if (q && !mapZone) {
           const pc = String(it.postal_code || '').toLowerCase();
-          const matchText = `${it.title || ''} ${it.location || ''} ${it.city || ''} ${pc} ${it.description || ''}`.toLowerCase();
+          const matchText = `${it.title || ''} ${it.location || ''} ${it.city || ''} ${pc} ${it.category_label || ''} ${it.badge || ''} ${it.description || ''}`.toLowerCase();
           if (isSxmQuery) {
             if (pc.includes('38400') || matchText.includes('38400') || matchText.includes('hères')) return false;
             const sxmHit = pc.includes('97150') || matchText.includes('saint-martin') || matchText.includes('saint martin')
@@ -3724,10 +3733,14 @@
               || matchText.includes('hope estate') || matchText.includes('baie nettlé') || matchText.includes('97150');
             if (!sxmHit) return false;
           } else {
-            const tokens = q.split(/[\s,()]+/).filter(tk => tk.length >= 2);
-            if (tokens.length > 1) {
-              if (!tokens.every(tk => matchText.includes(tk))) return false;
-            } else if (!matchText.includes(q)) {
+            // Extraction de la ville principale (ex: "New York" dans "New York, États-Unis")
+            const mainCity = q.split(',')[0].trim();
+            const mainTokens = mainCity.split(/[\s-]+/).filter(tk => tk.length >= 2);
+            if (mainTokens.length > 0 && mainTokens.every(tk => matchText.includes(tk))) {
+              // Match réussi sur la ville principale
+            } else if (matchText.includes(mainCity) || matchText.includes(q)) {
+              // Match direct
+            } else {
               return false;
             }
           }
@@ -3844,8 +3857,10 @@
     }
 
     // =========================================================
-    // SCAN LIVE IMMO 100% RÉEL & DYNAMIQUE (ZÉRO DONNÉE FICTIVE)
+    // SCAN LIVE IMMO 100% RÉEL & DYNAMIQUE (MONDIAL V13)
     // =========================================================
+    let immoWorkflowPollTimer = null;
+
     async function launchLiveScanImmo(silent = false, lat = null, lon = null, radius = null) {
       const city = (document.getElementById('searchLocationInput')?.value || 'Nancy').trim();
       const transac = immoTransac === 'ALL' ? 'location' : immoTransac;
@@ -3853,26 +3868,57 @@
       const surface = document.getElementById('immoMinSurfaceInput')?.value || '';
       const rooms = Array.from(immoRooms).join(',') || 'all';
 
-      updateImmoScanProgress(15, `Connexion aux portails (Nancy, DOMimmo, Kyero, Bien'ici)...`);
-      renderImmoPortalLinks(city, transac, budget, surface, rooms);
+      // Détection précise du pays
+      let cc = (selectedLocation.countryCode || '').toLowerCase();
+      const cLow = city.toLowerCase();
+      if (!cc) {
+        if (cLow.includes('new york') || cLow.includes('miami') || cLow.includes('los angeles') || cLow.includes('chicago') || cLow.includes('san francisco') || cLow.includes('états-unis') || cLow.includes('etats-unis') || cLow.includes('usa')) cc = 'us';
+        else if (cLow.includes('madrid') || cLow.includes('barcelon') || cLow.includes('valenc') || cLow.includes('sevill') || cLow.includes('espagne')) cc = 'es';
+        else if (cLow.includes('london') || cLow.includes('londres') || cLow.includes('manchester') || cLow.includes('edinburgh') || cLow.includes('royaume-uni') || cLow.includes('uk')) cc = 'gb';
+        else if (cLow.includes('rome') || cLow.includes('roma') || cLow.includes('milan') || cLow.includes('firenze') || cLow.includes('italie')) cc = 'it';
+        else if (cLow.includes('lisbon') || cLow.includes('lisbonne') || cLow.includes('porto') || cLow.includes('portugal')) cc = 'pt';
+        else if (cLow.includes('berlin') || cLow.includes('munich') || cLow.includes('allemagne')) cc = 'de';
+        else if (cLow.includes('montreal') || cLow.includes('toronto') || cLow.includes('quebec') || cLow.includes('canada')) cc = 'ca';
+        else if (cLow.includes('saint-martin') || cLow.includes('sxm') || cLow.includes('97150')) cc = 'smt';
+        else if (cLow.includes('guadeloupe') || cLow.includes('971')) cc = 'glp';
+        else if (cLow.includes('martinique') || cLow.includes('972')) cc = 'mtq';
+        else if (cLow.includes('guyane') || cLow.includes('973')) cc = 'guf';
+        else if (cLow.includes('reunion') || cLow.includes('réunion') || cLow.includes('974')) cc = 'reu';
+        else cc = 'fr';
+      }
+
+      updateImmoScanProgress(20, `Synchronisation des portails officiels directs pour ${city}...`);
+      renderImmoPortalLinks(city, transac, budget, surface, rooms, cc);
+
+      // Vérification du nombre d'annonces en cache local pour cette destination
+      const mainCity = cLow.split(',')[0].trim();
+      const localMatches = (allData || []).filter(a => {
+        if (a.universe !== 'immo' && a.category !== 'immo') return false;
+        const aLoc = ((a.city || '') + ' ' + (a.location || '') + ' ' + (a.title || '')).toLowerCase();
+        return aLoc.includes(mainCity);
+      });
+
+      const isForeign = cc && cc !== 'fr' && !['smt', 'glp', 'mtq', 'guf', 'reu'].includes(cc);
+      const shouldTriggerCloudScan = isForeign || localMatches.length < 5;
 
       const token = localStorage.getItem('nexus_gh_token');
       const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
 
-      if (token) {
-        updateImmoScanProgress(60, `Déclenchement du scan en arrière-plan GitHub Actions...`);
+      if (shouldTriggerCloudScan && token) {
+        updateImmoScanProgress(45, `☁️ Scan mondial en cours (Properstar / HousingAnywhere / Spotahome) pour ${city}... (~35s)`);
         try {
           const payload = {
             ref: 'main',
             inputs: {
               category: 'immo',
               city,
+              country_code: cc,
               transaction_type: transac,
               max_budget: String(budget),
               min_surface: String(surface),
               rooms,
-              lat: lat ? String(lat) : '',
-              lon: lon ? String(lon) : '',
+              lat: lat ? String(lat) : (selectedLocation.lat ? String(selectedLocation.lat) : ''),
+              lon: lon ? String(lon) : (selectedLocation.lon ? String(selectedLocation.lon) : ''),
               radius: radius ? String(radius) : '',
             }
           };
@@ -3885,16 +3931,65 @@
             },
             body: JSON.stringify(payload)
           });
+
+          // Démarrage du polling toutes les 7s
+          clearInterval(immoWorkflowPollTimer);
+          let pollAttempts = 0;
+          immoWorkflowPollTimer = setInterval(async () => {
+            pollAttempts++;
+            try {
+              const runRes = await fetch(`https://api.github.com/repos/${repo}/actions/runs?event=workflow_dispatch&per_page=1`, {
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Accept': 'application/vnd.github.v3+json'
+                }
+              });
+              if (runRes.ok) {
+                const rData = await runRes.json();
+                const latestRun = (rData.workflow_runs || [])[0];
+                if (latestRun) {
+                  const s = latestRun.status;
+                  const concl = latestRun.conclusion;
+                  if (s === 'in_progress' || s === 'queued') {
+                    updateImmoScanProgress(Math.min(94, 45 + pollAttempts * 8), `☁️ Scan cloud en cours (${s})...`);
+                  } else if (s === 'completed') {
+                    clearInterval(immoWorkflowPollTimer);
+                    updateImmoScanProgress(100, `✨ Annonces mondiales actualisées !`);
+                    await loadData();
+                    filterImmo();
+                    showToast(`✨ Scan mondial achevé avec succès (${concl}) pour ${city} !`, 3500);
+                    hideImmoScanProgress(2500);
+                    return;
+                  }
+                }
+              }
+            } catch (err) {
+              console.warn('Erreur polling scan:', err);
+            }
+            if (pollAttempts >= 11) {
+              clearInterval(immoWorkflowPollTimer);
+              hideImmoScanProgress(1500);
+            }
+          }, 7000);
+
         } catch (e) {
           console.warn('Erreur dispatch GitHub Actions:', e);
         }
+      } else if (shouldTriggerCloudScan && !token) {
+        if (!silent) {
+          showToast(`💡 Entrez votre Token GitHub dans l'onglet Compte pour activer le scan mondial automatique. Les portails directs ci-dessus sont immédiatement consultables !`, 4500);
+        }
       }
 
-      updateImmoScanProgress(100, `Résultats synchronisés pour ${city} !`);
       immoPage = 1;
       filterImmo();
-      if (!silent) showToast(`⚡ Scan live et portails officiels synchronisés pour ${city} !`, 2600);
-      hideImmoScanProgress(2000);
+      if (!silent && !shouldTriggerCloudScan) {
+        showToast(`⚡ Portails officiels et annonces synchronisés pour ${city} !`, 2400);
+      }
+      if (!shouldTriggerCloudScan) {
+        updateImmoScanProgress(100, `Résultats synchronisés pour ${city} !`);
+        hideImmoScanProgress(2000);
+      }
     }
 
     function renderImmoPortalLinks(city, transac, budget, surface, room, countryCode = '') {
@@ -3908,41 +4003,95 @@
       const isAchat = transac === 'achat';
       const bParam = budget ? `&price=min-${budget}` : '';
       const sParam = surface ? `&square=min-${surface}` : '';
-      const cc = (countryCode || '').toLowerCase();
+      const cLow = cClean.toLowerCase();
+
+      let cc = (countryCode || selectedLocation.countryCode || '').toLowerCase();
+      if (!cc) {
+        if (cLow.includes('new york') || cLow.includes('miami') || cLow.includes('los angeles') || cLow.includes('chicago') || cLow.includes('san francisco') || cLow.includes('états-unis') || cLow.includes('etats-unis') || cLow.includes('usa')) cc = 'us';
+        else if (cLow.includes('madrid') || cLow.includes('barcelon') || cLow.includes('valenc') || cLow.includes('sevill') || cLow.includes('espagne')) cc = 'es';
+        else if (cLow.includes('london') || cLow.includes('londres') || cLow.includes('manchester') || cLow.includes('edinburgh') || cLow.includes('royaume-uni') || cLow.includes('uk')) cc = 'gb';
+        else if (cLow.includes('rome') || cLow.includes('roma') || cLow.includes('milan') || cLow.includes('firenze') || cLow.includes('italie')) cc = 'it';
+        else if (cLow.includes('lisbon') || cLow.includes('lisbonne') || cLow.includes('porto') || cLow.includes('portugal')) cc = 'pt';
+        else if (cLow.includes('berlin') || cLow.includes('munich') || cLow.includes('allemagne')) cc = 'de';
+        else if (cLow.includes('montreal') || cLow.includes('toronto') || cLow.includes('quebec') || cLow.includes('canada')) cc = 'ca';
+        else if (cLow.includes('saint-martin') || cLow.includes('sxm') || cLow.includes('97150')) cc = 'smt';
+        else if (cLow.includes('guadeloupe') || cLow.includes('971')) cc = 'glp';
+        else if (cLow.includes('martinique') || cLow.includes('972')) cc = 'mtq';
+        else if (cLow.includes('guyane') || cLow.includes('973')) cc = 'guf';
+        else if (cLow.includes('reunion') || cLow.includes('réunion') || cLow.includes('974')) cc = 'reu';
+        else cc = 'fr';
+      }
 
       let links = [];
 
-      // Détection Espagne / International
-      if (cc === 'es' || cClean.toLowerCase().includes('madrid') || cClean.toLowerCase().includes('barcelon') || cClean.toLowerCase().includes('espagne')) {
+      // Routeur strict par pays
+      if (cc === 'us') {
+        links = [
+          { name: 'Zillow', url: `https://www.zillow.com/homes/${isAchat ? 'for_sale' : 'for_rent'}/${cSlug}_rb/`, icon: '🇺🇸', desc: 'N°1 Immobilier USA' },
+          ...(cLow.includes('new york') || cLow.includes('nyc') ? [{ name: 'StreetEasy', url: `https://streeteasy.com/${isAchat ? 'for-sale' : 'for-rent'}/nyc`, icon: '🗽', desc: 'Spécialiste NYC' }] : []),
+          { name: 'Apartments.com', url: `https://www.apartments.com/${cSlug}/`, icon: '🏢', desc: 'Portail Référence US' },
+          { name: 'Realtor.com', url: `https://www.realtor.com/realestateandhomes-search/${cSlug}`, icon: '🏠', desc: 'Fédération US' },
+          { name: 'Properstar US', url: `https://www.properstar.fr/etats-unis/${cSlug}/${isAchat ? 'acheter' : 'louer'}/appartement-maison`, icon: '🌍', desc: 'Méta-agrégateur' },
+        ];
+      } else if (cc === 'es') {
         links = [
           { name: 'Idealista', url: `https://www.idealista.com/fr/${isAchat ? 'venta' : 'alquiler'}-viviendas/${cSlug}/`, icon: '🇪🇸', desc: 'N°1 Immobilier Espagne' },
           { name: 'Fotocasa', url: `https://www.fotocasa.es/es/${isAchat ? 'comprar' : 'alquiler'}/viviendas/${cSlug}/t`, icon: '🇪🇸', desc: 'Portail Espagnol' },
           { name: 'Habitaclia', url: `https://www.habitaclia.com/${isAchat ? 'comprar' : 'alquiler'}-vivienda-en-${cSlug}/buscador.htm`, icon: '🇪🇸', desc: 'Catalogue Méditerranée' },
-          { name: 'Properstar', url: `https://www.properstar.fr/${isAchat ? 'achat' : 'location'}/espagne/${cSlug}`, icon: '🌍', desc: 'International' },
+          { name: 'Spotahome', url: `https://www.spotahome.com/fr/${cSlug}`, icon: '🇪🇺', desc: 'Locations vérifiées' },
+          { name: 'Properstar ES', url: `https://www.properstar.fr/espagne/${cSlug}/${isAchat ? 'acheter' : 'louer'}/appartement-maison`, icon: '🌍', desc: 'Méta-agrégateur' },
         ];
-      } else if (cc === 'gb' || cc === 'uk' || cClean.toLowerCase().includes('london')) {
+      } else if (cc === 'gb' || cc === 'uk') {
         links = [
           { name: 'Rightmove', url: `https://www.rightmove.co.uk/property-${isAchat ? 'for-sale' : 'to-rent'}/search.html?searchLocation=${cSlug}`, icon: '🇬🇧', desc: 'N°1 UK Property' },
-          { name: 'Properstar UK', url: `https://www.properstar.fr/${isAchat ? 'achat' : 'location'}/royaume-uni/${cSlug}`, icon: '🌍', desc: 'Portail Global' }
+          { name: 'Zoopla', url: `https://www.zoopla.co.uk/${isAchat ? 'for-sale' : 'to-rent'}/property/${cSlug}/`, icon: '🇬🇧', desc: 'Portail Majeur UK' },
+          { name: 'OnTheMarket', url: `https://www.onthemarket.com/${isAchat ? 'for-sale' : 'to-rent'}/property/${cSlug}/`, icon: '🇬🇧', desc: 'Portail Agents UK' },
+          { name: 'Spotahome UK', url: `https://www.spotahome.com/fr/${cSlug}`, icon: '🇪🇺', desc: 'Locations vérifiées' },
+          { name: 'Properstar UK', url: `https://www.properstar.fr/royaume-uni/${cSlug}/${isAchat ? 'acheter' : 'louer'}/appartement-maison`, icon: '🌍', desc: 'Méta-agrégateur' },
         ];
-      } else if (cc === 'it' || cClean.toLowerCase().includes('rome') || cClean.toLowerCase().includes('roma')) {
+      } else if (cc === 'it') {
         links = [
           { name: 'Immobiliare.it', url: `https://www.immobiliare.it/${isAchat ? 'vendita' : 'affitto'}-case/${cSlug}/`, icon: '🇮🇹', desc: 'N°1 Immobilier Italie' },
-          { name: 'Properstar Italie', url: `https://www.properstar.fr/${isAchat ? 'achat' : 'location'}/italie/${cSlug}`, icon: '🌍', desc: 'Portail Global' }
+          { name: 'Idealista IT', url: `https://www.idealista.it/${isAchat ? 'vendita' : 'affitto'}-case/${cSlug}/`, icon: '🇮🇹', desc: 'Portail Italien' },
+          { name: 'Spotahome IT', url: `https://www.spotahome.com/fr/${cSlug}`, icon: '🇪🇺', desc: 'Locations vérifiées' },
+          { name: 'Properstar IT', url: `https://www.properstar.fr/italie/${cSlug}/${isAchat ? 'acheter' : 'louer'}/appartement-maison`, icon: '🌍', desc: 'Méta-agrégateur' },
         ];
-      } else if (cClean.toLowerCase().includes('saint-martin') || cClean.toLowerCase().includes('sxm') || cClean.toLowerCase().includes('97150')) {
+      } else if (cc === 'pt') {
         links = [
-          { name: 'DOMimmo Saint-Martin', url: `https://www.domimmo.com/saint-martin/immobilier/`, icon: '🏝️', desc: 'Offres officielles SXM' },
-          { name: 'SeLoger Outre-Mer', url: `https://www.seloger.com/list.htm?projects=${isAchat ? '2' : '1'}&types=1,2&places=[{ci:971028}]`, icon: '🏢', desc: 'Portail SXM' },
-          { name: 'Leboncoin SXM', url: `https://www.leboncoin.fr/recherche?category=${isAchat ? '9' : '10'}&locations=Saint-Martin_97150`, icon: '🔍', desc: 'Particuliers & Pros' },
+          { name: 'Idealista PT', url: `https://www.idealista.pt/${isAchat ? 'comprar' : 'arrendar'}-casas/${cSlug}/`, icon: '🇵🇹', desc: 'N°1 Immobilier Portugal' },
+          { name: 'Imovirtual', url: `https://www.imovirtual.com/${isAchat ? 'comprar' : 'arrendar'}/${cSlug}/`, icon: '🇵🇹', desc: 'Portail Portugais' },
+          { name: 'Spotahome PT', url: `https://www.spotahome.com/fr/${cSlug}`, icon: '🇪🇺', desc: 'Locations vérifiées' },
+          { name: 'Properstar PT', url: `https://www.properstar.fr/portugal/${cSlug}/${isAchat ? 'acheter' : 'louer'}/appartement-maison`, icon: '🌍', desc: 'Méta-agrégateur' },
         ];
-      } else {
+      } else if (cc === 'ca') {
         links = [
-          { name: "Bien'ici", url: `https://www.bienici.com/recherche/${isAchat ? 'achat' : 'location'}/${cSlug}`, icon: '🏢', desc: 'Multi-agences officiel' },
+          { name: 'Realtor.ca', url: `https://www.realtor.ca/`, icon: '🇨🇦', desc: 'N°1 Immobilier Canada' },
+          { name: 'Centris', url: `https://www.centris.ca/fr/${isAchat ? 'propriete' : 'appartement'}-a-${isAchat ? 'vendre' : 'louer'}~${cSlug}`, icon: '🇨🇦', desc: 'Spécialiste Québec' },
+          { name: 'Rentals.ca', url: `https://rentals.ca/${cSlug}`, icon: '🇨🇦', desc: 'Locations Canada' },
+          { name: 'Properstar CA', url: `https://www.properstar.fr/canada/${cSlug}/${isAchat ? 'acheter' : 'louer'}/appartement-maison`, icon: '🌍', desc: 'Méta-agrégateur' },
+        ];
+      } else if (['smt', 'glp', 'mtq', 'guf', 'reu'].includes(cc)) {
+        const domNames = { smt: 'Saint-Martin', glp: 'Guadeloupe', mtq: 'Martinique', guf: 'Guyane', reu: 'La Réunion' };
+        const domTerrSlug = { smt: 'saint-martin', glp: 'guadeloupe', mtq: 'martinique', guf: 'guyane', reu: 'la-reunion' }[cc] || 'saint-martin';
+        links = [
+          { name: `DOMimmo ${domNames[cc] || 'Outre-Mer'}`, url: `https://www.domimmo.com/${domTerrSlug}/immobilier/`, icon: '🏝️', desc: 'Catalogue officiel DOM' },
+          { name: 'SeLoger Outre-Mer', url: `https://www.seloger.com/list.htm?projects=${isAchat ? '2' : '1'}&types=1,2`, icon: '🏢', desc: 'Sélection DOM-TOM' },
+          { name: 'Leboncoin DOM', url: `https://www.leboncoin.fr/recherche?category=${isAchat ? '9' : '10'}&locations=${cSlug}`, icon: '🔍', desc: 'Particuliers & Pros' },
+        ];
+      } else if (cc === 'fr') {
+        links = [
+          { name: "Bien'ici", url: `https://www.bienici.com/recherche/${isAchat ? 'achat' : 'location'}/${cSlug}${bParam}${sParam}`, icon: '🏢', desc: 'Multi-agences officiel' },
           { name: 'SeLoger', url: `https://www.seloger.com/list.htm?projects=${isAchat ? '2' : '1'}&types=1,2`, icon: '🏠', desc: 'Portail de référence' },
           { name: 'Leboncoin', url: `https://www.leboncoin.fr/recherche?category=${isAchat ? '9' : '10'}&locations=${cSlug}${bParam}${sParam}`, icon: '🔍', desc: 'Particuliers & Pros' },
           { name: 'PAP', url: `https://www.pap.fr/annonce/${isAchat ? 'vente-appartements' : 'locations-appartement'}`, icon: '🤝', desc: 'Entre particuliers' },
           { name: 'Le Figaro Immo', url: `https://immobilier.lefigaro.fr/annonces/immobilier-${isAchat ? 'vente' : 'location'}-bien-${cSlug}.html`, icon: '📰', desc: 'Sélection nationale' },
+        ];
+      } else {
+        links = [
+          { name: 'Properstar', url: `https://www.properstar.fr/search?q=${encodeURIComponent(cClean)}`, icon: '🌍', desc: 'Méta-agrégateur 60+ pays' },
+          { name: 'HousingAnywhere', url: `https://housinganywhere.com/fr/s/${cSlug}`, icon: '🌍', desc: 'Locations internationales' },
+          { name: 'Spotahome', url: `https://www.spotahome.com/fr/${cSlug}`, icon: '🇪🇺', desc: 'Locations vérifiées' },
+          { name: 'Realtor International', url: `https://www.realtor.com/international/`, icon: '🌐', desc: 'Réseau mondial' },
         ];
       }
 
@@ -4283,6 +4432,7 @@
             <!-- Ligne 3 : Prix en gras #222222 + badge vert si sous prix de marché -->
             <div class="card-airbnb-price-row">
               <span class="card-airbnb-price">${priceVal}<span class="price-sub">${priceSub}</span></span>
+              ${it.price_original_str ? `<span style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">(${escapeHtml(it.price_original_str)})</span>` : ''}
               ${it.market_badge ? `<span class="badge-airbnb-market">${it.market_badge}</span>` : ''}
             </div>
           </div>
@@ -4488,7 +4638,7 @@
       document.getElementById('modalImmoLoc').textContent = `${it.location || ''} • ${it.agency || 'Agence vérifiée'}`;
       const badgeEl = document.getElementById('modalTransacBadge');
       if (badgeEl) badgeEl.textContent = it.transaction_type === 'achat' ? 'Achat' : 'Location';
-      document.getElementById('modalPrice').textContent = it.price_str || 'Prix N/C';
+      document.getElementById('modalPrice').textContent = it.price_original_str ? `${it.price_str || 'Prix N/C'} (${it.price_original_str})` : (it.price_str || 'Prix N/C');
       document.getElementById('modalMarketBadge').textContent = it.market_badge || 'Annonce réelle vérifiée';
       document.getElementById('modalDescription').textContent = it.description || 'Pas de description détaillée.';
       document.getElementById('modalOfficialLink').href = it.url || '#';
@@ -6336,11 +6486,11 @@
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'horizons-v12') caches.delete(n);
+              if (n !== 'horizons-v13-global') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=12').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=13').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 

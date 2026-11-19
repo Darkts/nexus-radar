@@ -14,6 +14,10 @@ on:
         description: 'Ville ou secteur cible (ex: Nancy, Saint-Martin 97150, Guadeloupe, Madrid...)'
         required: false
         default: ''
+      country_code:
+        description: 'Code pays ISO (ex: fr, us, es, gb, it, pt, ca...)'
+        required: false
+        default: ''
       transaction_type:
         description: 'Type de transaction (location, achat, all)'
         required: false
@@ -94,6 +98,7 @@ jobs:
         env:
           SCAN_CATEGORY: ${{ inputs.category || 'all' }}
           SCAN_CITY: ${{ inputs.city || '' }}
+          SCAN_COUNTRY: ${{ inputs.country_code || '' }}
           SCAN_TRANSACTION: ${{ inputs.transaction_type || 'all' }}
           SCAN_MAX_BUDGET: ${{ inputs.max_budget || '' }}
           SCAN_ROOMS: ${{ inputs.rooms || 'all' }}
