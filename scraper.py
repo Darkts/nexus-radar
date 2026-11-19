@@ -1197,26 +1197,51 @@ def parse_housinganywhere_rooms(soup, city, c_pays, max_price=None, min_surface=
         seen_urls.add(href)
 
         raw_text = a.get_text(" | ", strip=True)
-        p_m = re.search(r"([\d\s\xa0]+)\s*€", raw_text)
-        if not p_m:
+        p_eur = 0
+        curr = "EUR"
+        p_orig_str = None
+        p_m_eur = re.search(r"([\d\s\xa0]+)\s*€", raw_text)
+        p_m_usd = re.search(r"\$\s*([\d,]+)", raw_text) or re.search(r"([\d,]+)\s*\$", raw_text)
+        p_m_gbp = re.search(r"£\s*([\d,]+)", raw_text)
+
+        if p_m_eur:
+            p_eur = int(re.sub(r"[^\d]", "", p_m_eur.group(1)))
+        elif p_m_usd:
+            raw_usd = int(re.sub(r"[^\d]", "", p_m_usd.group(1)))
+            p_eur = convert_to_eur(raw_usd, "USD")
+            curr = "USD"
+            p_orig_str = f"${raw_usd:,} (~{p_eur:,} €)".replace(",", " ")
+        elif p_m_gbp:
+            raw_gbp = int(re.sub(r"[^\d]", "", p_m_gbp.group(1)))
+            p_eur = convert_to_eur(raw_gbp, "GBP")
+            curr = "GBP"
+            p_orig_str = f"£{raw_gbp:,} (~{p_eur:,} €)".replace(",", " ")
+        else:
             continue
-        raw_p = int(re.sub(r"[^\d]", "", p_m.group(1)))
-        if max_price and raw_p > float(max_price):
+
+        if max_price and p_eur > float(max_price):
             continue
 
         s_val = 0
         s_m = re.search(r"(\d+)\s*m²", raw_text)
+        s_sqft = re.search(r"(\d+)\s*sqft", raw_text, re.IGNORECASE)
         if s_m:
             s_val = float(s_m.group(1))
+        elif s_sqft:
+            s_val = round(float(s_sqft.group(1)) * 0.092903, 1)
 
         if min_surface and s_val > 0 and s_val < float(min_surface):
             continue
 
-        imgs = [img.get("src") for img in a.find_all("img") if img.get("src") and "housinganywhere.imgix.net" in img.get("src")]
+        imgs = [img.get("src") for img in a.find_all("img") if img.get("src") and ("housinganywhere.imgix.net" in img.get("src") or "imgix" in img.get("src"))]
         hero_img = imgs[0] if imgs else ""
 
-        title_parts = [p.strip() for p in raw_text.split("|") if len(p.strip()) > 8 and "€" not in p]
-        title = title_parts[0] if title_parts else f"Chambre / Logement {city}"
+        title_parts = [p.strip() for p in raw_text.split("|") if len(p.strip()) > 6 and not any(sym in p for sym in ["€", "$", "£", "•", "deposit", "Available", "cancellation", "Verified", "utilities", "people", "person"])]
+        title = title_parts[0] if title_parts else f"Logement vérifié {city}"
+
+        bed_m = re.search(r"(\d+)\s*bed", raw_text, re.IGNORECASE)
+        n_bed = int(bed_m.group(1)) if bed_m else 1
+        r_str = "Studio" if "studio" in raw_text.lower() or n_bed == 0 else f"T{n_bed + 1}"
 
         jitter_lat = c_lat + ((idx % 5) - 2) * 0.006
         jitter_lon = c_lon + (((idx * 3) % 5) - 2) * 0.006
@@ -1229,10 +1254,10 @@ def parse_housinganywhere_rooms(soup, city, c_pays, max_price=None, min_surface=
             "category_label": f"Location {city} (HousingAnywhere)",
             "badge": f"🌍 Location • {city}",
             "title": title,
-            "price": raw_p,
-            "price_str": f"{raw_p:,} € / mois".replace(",", " "),
-            "price_original_str": None,
-            "currency": "EUR",
+            "price": p_eur,
+            "price_str": f"{p_eur:,} € / mois".replace(",", " "),
+            "price_original_str": p_orig_str,
+            "currency": curr,
             "location": f"{city}, {c_pays}",
             "city": city,
             "postal_code": "",
@@ -1246,13 +1271,13 @@ def parse_housinganywhere_rooms(soup, city, c_pays, max_price=None, min_surface=
             "description": f"{title}. Logement vérifié disponible à {city}.",
             "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
             "surface_val": s_val,
-            "rooms": "Chambre / Studio",
-            "bedrooms": 1,
+            "rooms": r_str,
+            "bedrooms": n_bed,
             "floor": "N/C",
             "dpe": "C",
             "charges": "Charges comprises",
             "amenities": extract_amenities(f"{title} {raw_text}"),
-            "price_per_m2": round(raw_p / s_val, 1) if s_val > 0 else 0,
+            "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
             "market_avg_m2": 0,
             "market_delta_pct": 0,
             "market_badge": "🟢 Logement Vérifié",
@@ -1345,7 +1370,7 @@ def scrape_international_cascade(city="Madrid", country_code="es", transaction_t
         sp_items = scrape_spotahome(city_name, max_price, min_surface, rooms, geo)
         combined.extend(sp_items)
 
-    if (transaction_type in ("location", "all") or len(combined) < 10) and len(combined) < 15:
+    if transaction_type in ("location", "all") or len(combined) < 15:
         ha_items = scrape_housinganywhere(city_name, country_name, max_price, min_surface, rooms, geo)
         combined.extend(ha_items)
 
