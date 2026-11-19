@@ -3733,15 +3733,26 @@
               || matchText.includes('hope estate') || matchText.includes('baie nettlé') || matchText.includes('97150');
             if (!sxmHit) return false;
           } else {
-            // Extraction de la ville principale (ex: "New York" dans "New York, États-Unis")
-            const mainCity = q.split(',')[0].trim();
-            const mainTokens = mainCity.split(/[\s-]+/).filter(tk => tk.length >= 2);
-            if (mainTokens.length > 0 && mainTokens.every(tk => matchText.includes(tk))) {
-              // Match réussi sur la ville principale
-            } else if (matchText.includes(mainCity) || matchText.includes(q)) {
-              // Match direct
-            } else {
-              return false;
+            // 1. Proximité GPS prioritaire (rayon 35 km) si coordonnées disponibles
+            let gpsHit = false;
+            if (selectedLocation && selectedLocation.lat && selectedLocation.lon && it.lat && it.lon) {
+              const dist = haversineKm(selectedLocation.lat, selectedLocation.lon, it.lat, it.lon);
+              if (dist <= 35) {
+                gpsHit = true;
+              }
+            }
+
+            if (!gpsHit) {
+              // 2. Extraction de la ville principale (ex: "Miami" dans "Miami, États-Unis d'Amérique")
+              const mainCity = q.split(',')[0].trim();
+              const mainTokens = mainCity.split(/[\s-]+/).filter(tk => tk.length >= 2);
+              if (mainTokens.length > 0 && mainTokens.every(tk => matchText.includes(tk))) {
+                // Match réussi sur la ville principale
+              } else if (matchText.includes(mainCity) || matchText.includes(q)) {
+                // Match direct
+              } else {
+                return false;
+              }
             }
           }
         }
@@ -3954,8 +3965,26 @@
                     updateImmoScanProgress(Math.min(94, 45 + pollAttempts * 8), `☁️ Scan cloud en cours (${s})...`);
                   } else if (s === 'completed') {
                     clearInterval(immoWorkflowPollTimer);
-                    updateImmoScanProgress(100, `✨ Annonces mondiales actualisées !`);
-                    await loadData();
+                    updateImmoScanProgress(100, `✨ Nouvelles annonces mondiales disponibles !`);
+                    // Lecture instantanée via GitHub API (sans attendre le rebuild lent de GitHub Pages)
+                    try {
+                      const rawUrl = `https://api.github.com/repos/${repo}/contents/data/annonces.json?ref=main`;
+                      const rawRes = await fetch(rawUrl, {
+                        headers: {
+                          'Authorization': `Bearer ${token}`,
+                          'Accept': 'application/vnd.github.raw',
+                          'Cache-Control': 'no-cache'
+                        }
+                      });
+                      if (rawRes.ok) {
+                        allData = await rawRes.json();
+                        console.log(`Données chargées en direct depuis GitHub API : ${allData.length} annonces`);
+                      } else {
+                        await loadData();
+                      }
+                    } catch (e) {
+                      await loadData();
+                    }
                     filterImmo();
                     showToast(`✨ Scan mondial achevé avec succès (${concl}) pour ${city} !`, 3500);
                     hideImmoScanProgress(2500);
@@ -3966,7 +3995,7 @@
             } catch (err) {
               console.warn('Erreur polling scan:', err);
             }
-            if (pollAttempts >= 11) {
+            if (pollAttempts >= 18) { // 18 * 7s ~ 126s (timeout 120s pour run complet GitHub Actions)
               clearInterval(immoWorkflowPollTimer);
               hideImmoScanProgress(1500);
             }

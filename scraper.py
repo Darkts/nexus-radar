@@ -763,181 +763,300 @@ def clean_slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
 
 
+def is_blocked_or_cf(html):
+    if not html:
+        return True
+    h = html.lower()
+    return any(k in h for k in [
+        "cloudflare", "turnstile", "just a moment", "attention required",
+        "cf-chl-bypass", "challenge-running", "access denied", "ray id"
+    ])
+
+
+def run_playwright_scraper(url, wait_selector=None, timeout_ms=25000):
+    """
+    Moteur Playwright headless furtif avec interception des réponses JSON
+    et contournement des protections navigateur.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.warning("[PLAYWRIGHT] Playwright n'est pas installé dans cet environnement.")
+        return None
+
+    intercepted_json = []
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=[
+                    "--disable-blink-features=AutomationControlled",
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage"
+                ]
+            )
+            context = browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                locale="fr-FR",
+                viewport={"width": 1280, "height": 800}
+            )
+            context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+            page = context.new_page()
+            page.set_extra_http_headers({
+                "Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
+                "Sec-Ch-Ua": '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                "Sec-Ch-Ua-Mobile": "?0",
+                "Sec-Ch-Ua-Platform": '"Windows"',
+                "Sec-Fetch-Dest": "document",
+                "Sec-Fetch-Mode": "navigate",
+                "Sec-Fetch-Site": "none",
+                "Sec-Fetch-User": "?1",
+                "Upgrade-Insecure-Requests": "1"
+            })
+
+            def on_response(response):
+                try:
+                    ct = response.headers.get("content-type", "")
+                    if "application/json" in ct:
+                        resp_url = response.url
+                        if any(k in resp_url.lower() for k in ["listing", "search", "offer", "annonce", "graphql", "api"]):
+                            text = response.text()
+                            intercepted_json.append({"url": resp_url, "text": text})
+                except Exception:
+                    pass
+
+            page.on("response", on_response)
+
+            resp = page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
+            status = resp.status if resp else 0
+            if wait_selector:
+                try:
+                    page.wait_for_selector(wait_selector, timeout=7000)
+                except Exception:
+                    pass
+
+            content = page.content()
+            title = page.title()
+            browser.close()
+
+            is_cf = is_blocked_or_cf(content)
+            return {
+                "status": status,
+                "content": content,
+                "title": title,
+                "is_cf": is_cf,
+                "intercepted_json": intercepted_json
+            }
+    except Exception as e:
+        logger.warning(f"[PLAYWRIGHT] Erreur exécution Playwright pour {url}: {e}")
+        return None
+
+
+def parse_properstar_articles(soup, city, country_name, transaction_type, max_price=None, min_surface=None, rooms=None, exclude_viager=True, c_lat=40.4168, c_lon=-3.7038):
+    articles = soup.find_all("article")
+    seen_ad_ids = set()
+    results = []
+    now = datetime.now(timezone.utc).isoformat()
+
+    for idx, art in enumerate(articles[:30]):
+        a_link = art.find("a", href=lambda h: h and "/annonce/" in h)
+        if not a_link:
+            continue
+        href = a_link["href"]
+        if href.startswith("/"):
+            href = "https://www.properstar.fr" + href
+
+        if not is_url_safe(href):
+            continue
+
+        id_m = re.search(r"/annonce/(\d+)", href)
+        ad_id = id_m.group(1) if id_m else str(abs(hash(href)) % 10000000)
+        if ad_id in seen_ad_ids:
+            continue
+        seen_ad_ids.add(ad_id)
+
+        lines = [l.strip() for l in art.get_text('\n', strip=True).split('\n') if l.strip()]
+        raw_text = " ".join(lines)
+
+        if not is_residential_immo(raw_text, raw_text, None, "", city, exclude_viager=exclude_viager):
+            continue
+
+        price_eur = 0
+        price_str = "Prix sur demande"
+        price_orig_str = None
+        currency_code = "EUR"
+
+        p_m_eur = re.search(r"([\d\s\u202f\xa0]+)\s*€", raw_text)
+        p_m_usd = re.search(r"\$\s*([\d,]+)", raw_text) or re.search(r"([\d,]+)\s*\$", raw_text)
+        p_m_gbp = re.search(r"£\s*([\d,]+)", raw_text)
+
+        if p_m_eur:
+            raw_p = int(re.sub(r"[^\d]", "", p_m_eur.group(1)))
+            price_eur = raw_p
+            currency_code = "EUR"
+            price_str = f"{price_eur:,} € / mois".replace(",", " ") if transaction_type == "location" else f"{price_eur:,} €".replace(",", " ")
+        elif p_m_usd:
+            raw_usd = int(re.sub(r"[^\d]", "", p_m_usd.group(1)))
+            price_eur = convert_to_eur(raw_usd, "USD")
+            currency_code = "USD"
+            price_orig_str = f"${raw_usd:,} (~{price_eur:,} €)".replace(",", " ")
+            price_str = f"{price_eur:,} € / mois".replace(",", " ") if transaction_type == "location" else f"{price_eur:,} €".replace(",", " ")
+        elif p_m_gbp:
+            raw_gbp = int(re.sub(r"[^\d]", "", p_m_gbp.group(1)))
+            price_eur = convert_to_eur(raw_gbp, "GBP")
+            currency_code = "GBP"
+            price_orig_str = f"£{raw_gbp:,} (~{price_eur:,} €)".replace(",", " ")
+            price_str = f"{price_eur:,} € / mois".replace(",", " ") if transaction_type == "location" else f"{price_eur:,} €".replace(",", " ")
+
+        if max_price and price_eur > float(max_price):
+            continue
+
+        title = ""
+        specs_line = ""
+        loc_line = f"{city}, {country_name}"
+
+        for line in lines:
+            if any(k in line.lower() for k in ["appartement", "maison", "villa", "studio", "propriété", "chambre"]) and "•" not in line:
+                if not title:
+                    title = line
+            elif "•" in line:
+                specs_line = line
+            elif city.lower() in line.lower() and not loc_line:
+                loc_line = line
+
+        title = title or f"{'Location' if transaction_type == 'location' else 'Vente'} {city}"
+
+        s_val = 0
+        s_m = re.search(r"(\d+)\s*m²", specs_line or raw_text)
+        if s_m:
+            s_val = float(s_m.group(1))
+
+        if min_surface and s_val > 0 and s_val < float(min_surface):
+            continue
+
+        pcs_val = 0
+        pcs_m = re.search(r"(\d+)\s*pce", specs_line or raw_text, re.I)
+        if pcs_m:
+            pcs_val = int(pcs_m.group(1))
+
+        chambres_m = re.search(r"(\d+)\s*chambre", specs_line or raw_text, re.I)
+        chambres_val = int(chambres_m.group(1)) if chambres_m else max(1, pcs_val - 1 if pcs_val > 1 else 1)
+
+        r_str = f"T{pcs_val}" if pcs_val > 1 else ("Studio" if pcs_val == 1 else "Logement")
+
+        photos = []
+        for img in art.find_all("img"):
+            src = img.get("src") or img.get("data-src") or ""
+            if src and ("files-api.properstar.com" in src or "res.properstar.com" in src) and "/users/" not in src and "/accounts/" not in src:
+                if src not in photos:
+                    photos.append(src)
+        hero_img = photos[0] if photos else ""
+
+        agency = "Properstar International"
+        if len(lines) > 0 and not re.match(r"^\d+[jhdsm]", lines[0], re.I) and "€" not in lines[0] and "$" not in lines[0]:
+            agency = lines[0]
+
+        jitter_lat = c_lat + ((idx % 7) - 3) * 0.007
+        jitter_lon = c_lon + (((idx * 4) % 7) - 3) * 0.007
+
+        results.append({
+            "id": f"real_properstar_{ad_id}",
+            "universe": "immo",
+            "category": "immo",
+            "transaction_type": transaction_type,
+            "category_label": f"Immobilier {city} ({country_name})",
+            "badge": f"🌍 {transaction_type.capitalize()} • {city}",
+            "title": title,
+            "price": price_eur,
+            "price_str": price_str,
+            "price_original_str": price_orig_str,
+            "currency": currency_code,
+            "location": loc_line,
+            "city": city,
+            "postal_code": "",
+            "lat": jitter_lat,
+            "lon": jitter_lon,
+            "agency": agency,
+            "is_verified_agency": True,
+            "url": href,
+            "image_url": hero_img,
+            "images": photos[:10],
+            "description": f"{title}. Annonce réelle répertoriée à {loc_line} sur Properstar.",
+            "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+            "surface_val": s_val,
+            "rooms": r_str,
+            "bedrooms": chambres_val,
+            "floor": "N/C",
+            "dpe": "C",
+            "charges": "N/C",
+            "amenities": extract_amenities(f"{title} {specs_line} {raw_text}"),
+            "price_per_m2": round(price_eur / s_val, 1) if s_val > 0 else 0,
+            "market_avg_m2": 0,
+            "market_delta_pct": 0,
+            "market_badge": "🌍 Offre Internationale vérifiée",
+            "date_detected": now,
+        })
+    return results
+
+
 def scrape_properstar(city, country_code="es", transaction_type="location", max_price=None, min_surface=None, rooms=None, exclude_viager=True, geo=None):
     """
     Connecteur mondial Properstar (60+ pays, Achat & Location).
-    Extrait les vraies annonces avec photos réelles, prix convertis en EUR,
-    surface et coordonnées.
+    Avec diagnostic HTTP strict et fallback Playwright headless.
     """
+    city_clean = city.split(",")[0].strip()
     cc = (country_code or "es").lower().strip()
     c_pays = PROPERSTAR_COUNTRIES.get(cc, clean_slug(geo.get("country", "espagne") if geo else "espagne"))
     c_action = "louer" if transaction_type == "location" else "acheter"
-    c_city = clean_slug(city)
+    c_city = clean_slug(city_clean)
 
     target_url = f"https://www.properstar.fr/{c_pays}/{c_city}/{c_action}/appartement-maison"
     logger.info(f"🌐 Scraping Properstar ({c_pays} / {c_city} / {c_action}) : {target_url}")
-
-    now = datetime.now(timezone.utc).isoformat()
-    results = []
 
     c_lat = geo["lat"] if geo else 40.4168
     c_lon = geo["lon"] if geo else -3.7038
     country_name = geo["country"] if geo else c_pays.capitalize()
 
+    results = []
+    used_playwright = False
+
+    # 1. Tentative avec curl_cffi
     try:
+        from bs4 import BeautifulSoup
         r = curl_requests.get(target_url, impersonate="chrome", timeout=15)
-        if r.status_code != 200:
-            search_url = f"https://www.properstar.fr/search?q={urllib.parse.quote(city)}"
-            r = curl_requests.get(search_url, impersonate="chrome", timeout=15)
+        soup = BeautifulSoup(r.text, "html.parser")
+        page_title = soup.title.get_text(strip=True) if soup.title else "NO_TITLE"
+        is_cf = is_blocked_or_cf(r.text)
+        logger.info(f"[DEBUG] Properstar (curl_cffi) -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"{page_title}\" | blocked={is_cf}")
 
-        if r.status_code == 200:
-            from bs4 import BeautifulSoup
-            soup = BeautifulSoup(r.text, "html.parser")
-            articles = soup.find_all("article")
-            seen_ad_ids = set()
-
-            for idx, art in enumerate(articles[:30]):
-                a_link = art.find("a", href=lambda h: h and "/annonce/" in h)
-                if not a_link:
-                    continue
-                href = a_link["href"]
-                if href.startswith("/"):
-                    href = "https://www.properstar.fr" + href
-
-                if not is_url_safe(href):
-                    continue
-
-                id_m = re.search(r"/annonce/(\d+)", href)
-                ad_id = id_m.group(1) if id_m else str(abs(hash(href)) % 10000000)
-                if ad_id in seen_ad_ids:
-                    continue
-                seen_ad_ids.add(ad_id)
-
-                lines = [l.strip() for l in art.get_text('\n', strip=True).split('\n') if l.strip()]
-                raw_text = " ".join(lines)
-
-                if not is_residential_immo(raw_text, raw_text, None, "", city, exclude_viager=exclude_viager):
-                    continue
-
-                price_eur = 0
-                price_str = "Prix sur demande"
-                price_orig_str = None
-                currency_code = "EUR"
-
-                p_m_eur = re.search(r"([\d\s  ]+)\s*€", raw_text)
-                p_m_usd = re.search(r"\$\s*([\d,]+)", raw_text) or re.search(r"([\d,]+)\s*\$", raw_text)
-                p_m_gbp = re.search(r"£\s*([\d,]+)", raw_text)
-
-                if p_m_eur:
-                    raw_p = int(re.sub(r"[^\d]", "", p_m_eur.group(1)))
-                    price_eur = raw_p
-                    currency_code = "EUR"
-                    price_str = f"{price_eur:,} € / mois".replace(",", " ") if transaction_type == "location" else f"{price_eur:,} €".replace(",", " ")
-                elif p_m_usd:
-                    raw_usd = int(re.sub(r"[^\d]", "", p_m_usd.group(1)))
-                    price_eur = convert_to_eur(raw_usd, "USD")
-                    currency_code = "USD"
-                    price_orig_str = f"${raw_usd:,} (~{price_eur:,} €)".replace(",", " ")
-                    price_str = f"{price_eur:,} € / mois".replace(",", " ") if transaction_type == "location" else f"{price_eur:,} €".replace(",", " ")
-                elif p_m_gbp:
-                    raw_gbp = int(re.sub(r"[^\d]", "", p_m_gbp.group(1)))
-                    price_eur = convert_to_eur(raw_gbp, "GBP")
-                    currency_code = "GBP"
-                    price_orig_str = f"£{raw_gbp:,} (~{price_eur:,} €)".replace(",", " ")
-                    price_str = f"{price_eur:,} € / mois".replace(",", " ") if transaction_type == "location" else f"{price_eur:,} €".replace(",", " ")
-
-                if max_price and price_eur > float(max_price):
-                    continue
-
-                title = ""
-                specs_line = ""
-                loc_line = f"{city}, {country_name}"
-
-                for line in lines:
-                    if any(k in line.lower() for k in ["appartement", "maison", "villa", "studio", "propriété", "chambre"]) and "•" not in line:
-                        if not title:
-                            title = line
-                    elif "•" in line:
-                        specs_line = line
-                    elif city.lower() in line.lower() and not loc_line:
-                        loc_line = line
-
-                title = title or f"{'Location' if transaction_type == 'location' else 'Vente'} {city}"
-
-                s_val = 0
-                s_m = re.search(r"(\d+)\s*m²", specs_line or raw_text)
-                if s_m:
-                    s_val = float(s_m.group(1))
-
-                if min_surface and s_val > 0 and s_val < float(min_surface):
-                    continue
-
-                pcs_val = 0
-                pcs_m = re.search(r"(\d+)\s*pce", specs_line or raw_text, re.I)
-                if pcs_m:
-                    pcs_val = int(pcs_m.group(1))
-
-                chambres_m = re.search(r"(\d+)\s*chambre", specs_line or raw_text, re.I)
-                chambres_val = int(chambres_m.group(1)) if chambres_m else max(1, pcs_val - 1 if pcs_val > 1 else 1)
-
-                r_str = f"T{pcs_val}" if pcs_val > 1 else ("Studio" if pcs_val == 1 else "Logement")
-
-                # Photos réelles
-                photos = []
-                for img in art.find_all("img"):
-                    src = img.get("src") or img.get("data-src") or ""
-                    if src and ("files-api.properstar.com" in src or "res.properstar.com" in src) and "/users/" not in src and "/accounts/" not in src:
-                        if src not in photos:
-                            photos.append(src)
-                hero_img = photos[0] if photos else ""
-
-                agency = "Properstar International"
-                if len(lines) > 0 and not re.match(r"^\d+[jhdsm]", lines[0], re.I) and "€" not in lines[0] and "$" not in lines[0]:
-                    agency = lines[0]
-
-                jitter_lat = c_lat + ((idx % 7) - 3) * 0.007
-                jitter_lon = c_lon + (((idx * 4) % 7) - 3) * 0.007
-
-                results.append({
-                    "id": f"real_properstar_{ad_id}",
-                    "universe": "immo",
-                    "category": "immo",
-                    "transaction_type": transaction_type,
-                    "category_label": f"Immobilier {city} ({country_name})",
-                    "badge": f"🌍 {transaction_type.capitalize()} • {city}",
-                    "title": title,
-                    "price": price_eur,
-                    "price_str": price_str,
-                    "price_original_str": price_orig_str,
-                    "currency": currency_code,
-                    "location": loc_line,
-                    "city": city,
-                    "postal_code": "",
-                    "lat": jitter_lat,
-                    "lon": jitter_lon,
-                    "agency": agency,
-                    "is_verified_agency": True,
-                    "url": href,
-                    "image_url": hero_img,
-                    "images": photos[:10],
-                    "description": f"{title}. Annonce réelle répertoriée à {loc_line} sur Properstar.",
-                    "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
-                    "surface_val": s_val,
-                    "rooms": r_str,
-                    "bedrooms": chambres_val,
-                    "floor": "N/C",
-                    "dpe": "C",
-                    "charges": "N/C",
-                    "amenities": extract_amenities(f"{title} {specs_line} {raw_text}"),
-                    "price_per_m2": round(price_eur / s_val, 1) if s_val > 0 else 0,
-                    "market_avg_m2": 0,
-                    "market_delta_pct": 0,
-                    "market_badge": "🌍 Offre Internationale vérifiée",
-                    "date_detected": now,
-                })
-        logger.info(f"✅ {len(results)} annonces extraites de Properstar pour {city}")
+        if r.status_code == 200 and not is_cf:
+            results = parse_properstar_articles(soup, city_clean, country_name, transaction_type, max_price, min_surface, rooms, exclude_viager, c_lat, c_lon)
+            if results:
+                logger.info(f"✅ {len(results)} annonces extraites de Properstar via curl_cffi pour {city_clean}")
+                return results
+            else:
+                logger.info(f"ℹ️ curl_cffi : 0 annonce trouvée dans le DOM ({len(soup.find_all('article'))} <article>). Déclenchement Playwright...")
+        else:
+            logger.warning(f"⚠️ Échec curl_cffi Properstar : HTTP {r.status_code} (blocked={is_cf})")
     except Exception as e:
-        logger.warning(f"Properstar scraping {city}: {e}")
+        logger.warning(f"⚠️ Erreur curl_cffi Properstar : {e}")
+
+    # 2. Vrai Fallback Playwright headless furtif
+    logger.info(f"🎭 Lancement du fallback Playwright headless pour Properstar ({city_clean})...")
+    used_playwright = True
+    pw_res = run_playwright_scraper(target_url, wait_selector="article, [class*='listing'], [class*='item-card']")
+    if pw_res:
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(pw_res["content"], "html.parser")
+        logger.info(f"[DEBUG] Properstar (Playwright) -> HTTP {pw_res['status']} | {len(pw_res['content'])} bytes | title=\"{pw_res['title']}\" | blocked={pw_res['is_cf']}")
+        if not pw_res["is_cf"]:
+            results = parse_properstar_articles(soup, city_clean, country_name, transaction_type, max_price, min_surface, rooms, exclude_viager, c_lat, c_lon)
+
+    if results:
+        logger.info(f"✅ {len(results)} annonces extraites de Properstar via Playwright pour {city_clean}")
+    else:
+        logger.warning(f"⚠️ 0 annonce Properstar pour '{city_clean}' (URL={target_url}, fallback_playwright={used_playwright})")
 
     return results
 
@@ -946,7 +1065,8 @@ def scrape_spotahome(city, max_price=None, min_surface=None, rooms=None, geo=Non
     """
     Connecteur API officiel Spotahome (locations meublées européennes vérifiées).
     """
-    c_slug = clean_slug(city)
+    city_clean = city.split(",")[0].strip()
+    c_slug = clean_slug(city_clean)
     url = f"https://www.spotahome.com/api/public/listings/search/homecards_ids?city={c_slug}"
     logger.info(f"🇪🇺 Scraping Spotahome API ({c_slug}) : {url}")
     results = []
@@ -956,11 +1076,13 @@ def scrape_spotahome(city, max_price=None, min_surface=None, rooms=None, geo=Non
 
     try:
         r = curl_requests.get(url, impersonate="chrome", timeout=12)
-        if r.status_code == 200:
+        is_cf = is_blocked_or_cf(r.text)
+        logger.info(f"[DEBUG] Spotahome -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"API JSON\" | blocked={is_cf}")
+
+        if r.status_code == 200 and not is_cf:
             data = r.json()
             homecards = data.get("data", {}).get("homecards", [])
             for idx, hc in enumerate(homecards[:30]):
-                # Vérifier que le résultat appartient bien à la ville demandée
                 hc_city = clean_slug(hc.get("city") or "")
                 if c_slug not in hc_city and hc_city not in c_slug:
                     continue
@@ -983,7 +1105,7 @@ def scrape_spotahome(city, max_price=None, min_surface=None, rooms=None, geo=Non
                 if not is_url_safe(ad_url):
                     continue
 
-                title = hc.get("title") or f"Logement vérifié {city}"
+                title = hc.get("title") or f"Logement vérifié {city_clean}"
                 desc = hc.get("description") or hc.get("homecardDescription") or ""
 
                 photos = [p.get("src") for p in hc.get("photos", []) if isinstance(p, dict) and p.get("src")]
@@ -1008,22 +1130,22 @@ def scrape_spotahome(city, max_price=None, min_surface=None, rooms=None, geo=Non
                 if curr != "EUR":
                     price_orig_str = f"{p_raw:,} {curr} (~{p_eur:,} €)".replace(",", " ")
 
-                loc_str = f"{hc.get('location', {}).get('street', city)}, {city}"
+                loc_str = f"{hc.get('location', {}).get('street', city_clean)}, {city_clean}"
 
                 results.append({
                     "id": f"real_spotahome_{ad_id}",
                     "universe": "immo",
                     "category": "immo",
                     "transaction_type": "location",
-                    "category_label": f"Location {city} (Spotahome)",
-                    "badge": f"🇪🇺 Location • {city}",
+                    "category_label": f"Location {city_clean} (Spotahome)",
+                    "badge": f"🇪🇺 Location • {city_clean}",
                     "title": title,
                     "price": p_eur,
                     "price_str": price_str,
                     "price_original_str": price_orig_str,
                     "currency": curr,
                     "location": loc_str,
-                    "city": city,
+                    "city": city_clean,
                     "postal_code": hc.get("location", {}).get("postalCode", ""),
                     "lat": lat_val,
                     "lon": lon_val,
@@ -1047,110 +1169,154 @@ def scrape_spotahome(city, max_price=None, min_surface=None, rooms=None, geo=Non
                     "market_badge": "🟢 Vérifié par Spotahome",
                     "date_detected": now,
                 })
-        logger.info(f"✅ {len(results)} annonces extraites de Spotahome pour {city}")
+        else:
+            logger.warning(f"⚠️ Échec Spotahome : HTTP {r.status_code} (blocked={is_cf})")
     except Exception as e:
-        logger.warning(f"Spotahome error {city}: {e}")
+        logger.warning(f"Spotahome error {city_clean}: {e}")
 
+    if results:
+        logger.info(f"✅ {len(results)} annonces extraites de Spotahome pour {city_clean}")
+    else:
+        logger.info(f"ℹ️ 0 annonce Spotahome pour '{city_clean}' (ville non desservie ou aucun bien)")
+
+    return results
+
+
+def parse_housinganywhere_rooms(soup, city, c_pays, max_price=None, min_surface=None, rooms=None, c_lat=40.4168, c_lon=-3.7038):
+    room_links = soup.find_all("a", href=lambda h: h and "/room/" in h)
+    seen_urls = set()
+    results = []
+    now = datetime.now(timezone.utc).isoformat()
+
+    for idx, a in enumerate(room_links[:20]):
+        href = a["href"]
+        if href.startswith("/"):
+            href = "https://housinganywhere.com" + href
+        if href in seen_urls or not is_url_safe(href):
+            continue
+        seen_urls.add(href)
+
+        raw_text = a.get_text(" | ", strip=True)
+        p_m = re.search(r"([\d\s\xa0]+)\s*€", raw_text)
+        if not p_m:
+            continue
+        raw_p = int(re.sub(r"[^\d]", "", p_m.group(1)))
+        if max_price and raw_p > float(max_price):
+            continue
+
+        s_val = 0
+        s_m = re.search(r"(\d+)\s*m²", raw_text)
+        if s_m:
+            s_val = float(s_m.group(1))
+
+        if min_surface and s_val > 0 and s_val < float(min_surface):
+            continue
+
+        imgs = [img.get("src") for img in a.find_all("img") if img.get("src") and "housinganywhere.imgix.net" in img.get("src")]
+        hero_img = imgs[0] if imgs else ""
+
+        title_parts = [p.strip() for p in raw_text.split("|") if len(p.strip()) > 8 and "€" not in p]
+        title = title_parts[0] if title_parts else f"Chambre / Logement {city}"
+
+        jitter_lat = c_lat + ((idx % 5) - 2) * 0.006
+        jitter_lon = c_lon + (((idx * 3) % 5) - 2) * 0.006
+
+        results.append({
+            "id": f"real_ha_{abs(hash(href)) % 10000000}",
+            "universe": "immo",
+            "category": "immo",
+            "transaction_type": "location",
+            "category_label": f"Location {city} (HousingAnywhere)",
+            "badge": f"🌍 Location • {city}",
+            "title": title,
+            "price": raw_p,
+            "price_str": f"{raw_p:,} € / mois".replace(",", " "),
+            "price_original_str": None,
+            "currency": "EUR",
+            "location": f"{city}, {c_pays}",
+            "city": city,
+            "postal_code": "",
+            "lat": jitter_lat,
+            "lon": jitter_lon,
+            "agency": "HousingAnywhere Verified",
+            "is_verified_agency": True,
+            "url": href,
+            "image_url": hero_img,
+            "images": imgs[:8],
+            "description": f"{title}. Logement vérifié disponible à {city}.",
+            "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+            "surface_val": s_val,
+            "rooms": "Chambre / Studio",
+            "bedrooms": 1,
+            "floor": "N/C",
+            "dpe": "C",
+            "charges": "Charges comprises",
+            "amenities": extract_amenities(f"{title} {raw_text}"),
+            "price_per_m2": round(raw_p / s_val, 1) if s_val > 0 else 0,
+            "market_avg_m2": 0,
+            "market_delta_pct": 0,
+            "market_badge": "🟢 Logement Vérifié",
+            "date_detected": now,
+        })
     return results
 
 
 def scrape_housinganywhere(city, country_name="", max_price=None, min_surface=None, rooms=None, geo=None):
     """
     Connecteur HousingAnywhere pour locations internationales.
+    Utilise l'URL canonique propre https://housinganywhere.com/s/{City}--{Country}
+    avec diagnostic HTTP strict et fallback Playwright.
     """
-    c_city = clean_slug(city).title()
-    c_pays = clean_slug(country_name or (geo.get("country") if geo else "Monde")).title()
-    url = f"https://housinganywhere.com/fr/s/{c_city}--{c_pays}"
+    city_clean = city.split(",")[0].strip()
+    c_city = clean_slug(city_clean).title()
+    c_pays = clean_slug(country_name or (geo.get("country") if geo else "United States")).title()
+    url = f"https://housinganywhere.com/s/{c_city}--{c_pays}"
     logger.info(f"🌍 Scraping HousingAnywhere : {url}")
-    results = []
-    now = datetime.now(timezone.utc).isoformat()
+
     c_lat = geo["lat"] if geo else 40.4168
     c_lon = geo["lon"] if geo else -3.7038
 
+    results = []
+    used_playwright = False
+
+    # 1. Tentative avec curl_cffi
     try:
-        r = curl_requests.get(url, impersonate="chrome", timeout=12)
-        if r.status_code == 200:
-            from bs4 import BeautifulSoup
-            soup = BeautifulSoup(r.text, "html.parser")
-            room_links = soup.find_all("a", href=lambda h: h and "/room/" in h)
-            seen_urls = set()
+        from bs4 import BeautifulSoup
+        r = curl_requests.get(url, impersonate="chrome", timeout=15)
+        soup = BeautifulSoup(r.text, "html.parser")
+        page_title = soup.title.get_text(strip=True) if soup.title else "NO_TITLE"
+        is_cf = is_blocked_or_cf(r.text)
+        logger.info(f"[DEBUG] HousingAnywhere (curl_cffi) -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"{page_title}\" | blocked={is_cf}")
 
-            for idx, a in enumerate(room_links[:20]):
-                href = a["href"]
-                if href.startswith("/"):
-                    href = "https://housinganywhere.com" + href
-                if href in seen_urls or not is_url_safe(href):
-                    continue
-                seen_urls.add(href)
-
-                raw_text = a.get_text(" | ", strip=True)
-                p_m = re.search(r"([\d\s ]+)\s*€", raw_text)
-                if not p_m:
-                    continue
-                raw_p = int(re.sub(r"[^\d]", "", p_m.group(1)))
-                if max_price and raw_p > float(max_price):
-                    continue
-
-                s_val = 0
-                s_m = re.search(r"(\d+)\s*m²", raw_text)
-                if s_m:
-                    s_val = float(s_m.group(1))
-
-                if min_surface and s_val > 0 and s_val < float(min_surface):
-                    continue
-
-                imgs = [img.get("src") for img in a.find_all("img") if img.get("src") and "housinganywhere.imgix.net" in img.get("src")]
-                hero_img = imgs[0] if imgs else ""
-
-                title_parts = [p.strip() for p in raw_text.split("|") if len(p.strip()) > 8 and "€" not in p]
-                title = title_parts[0] if title_parts else f"Chambre / Logement {city}"
-
-                jitter_lat = c_lat + ((idx % 5) - 2) * 0.006
-                jitter_lon = c_lon + (((idx * 3) % 5) - 2) * 0.006
-
-                results.append({
-                    "id": f"real_ha_{abs(hash(href)) % 10000000}",
-                    "universe": "immo",
-                    "category": "immo",
-                    "transaction_type": "location",
-                    "category_label": f"Location {city} (HousingAnywhere)",
-                    "badge": f"🌍 Location • {city}",
-                    "title": title,
-                    "price": raw_p,
-                    "price_str": f"{raw_p:,} € / mois".replace(",", " "),
-                    "price_original_str": None,
-                    "currency": "EUR",
-                    "location": f"{city}, {c_pays}",
-                    "city": city,
-                    "postal_code": "",
-                    "lat": jitter_lat,
-                    "lon": jitter_lon,
-                    "agency": "HousingAnywhere Verified",
-                    "is_verified_agency": True,
-                    "url": href,
-                    "image_url": hero_img,
-                    "images": imgs[:8],
-                    "description": f"{title}. Logement vérifié disponible à {city}.",
-                    "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
-                    "surface_val": s_val,
-                    "rooms": "Chambre / Studio",
-                    "bedrooms": 1,
-                    "floor": "N/C",
-                    "dpe": "C",
-                    "charges": "Charges comprises",
-                    "amenities": extract_amenities(f"{title} {raw_text}"),
-                    "price_per_m2": round(raw_p / s_val, 1) if s_val > 0 else 0,
-                    "market_avg_m2": 0,
-                    "market_delta_pct": 0,
-                    "market_badge": "🟢 Logement Vérifié",
-                    "date_detected": now,
-                })
-        logger.info(f"✅ {len(results)} annonces extraites de HousingAnywhere pour {city}")
+        if r.status_code == 200 and not is_cf:
+            results = parse_housinganywhere_rooms(soup, city_clean, c_pays, max_price, min_surface, rooms, c_lat, c_lon)
+            if results:
+                logger.info(f"✅ {len(results)} annonces extraites de HousingAnywhere via curl_cffi pour {city_clean}")
+                return results
+            else:
+                logger.info(f"ℹ️ curl_cffi : 0 /room/ trouvé dans le DOM HousingAnywhere ({len(soup.find_all('a'))} <a>). Déclenchement Playwright...")
+        else:
+            logger.warning(f"⚠️ Échec curl_cffi HousingAnywhere : HTTP {r.status_code} (blocked={is_cf})")
     except Exception as e:
-        logger.warning(f"HousingAnywhere error {city}: {e}")
+        logger.warning(f"⚠️ Erreur curl_cffi HousingAnywhere : {e}")
+
+    # 2. Vrai Fallback Playwright headless furtif
+    logger.info(f"🎭 Lancement du fallback Playwright headless pour HousingAnywhere ({city_clean})...")
+    used_playwright = True
+    pw_res = run_playwright_scraper(url, wait_selector="a[href*='/room/']")
+    if pw_res:
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(pw_res["content"], "html.parser")
+        logger.info(f"[DEBUG] HousingAnywhere (Playwright) -> HTTP {pw_res['status']} | {len(pw_res['content'])} bytes | title=\"{pw_res['title']}\" | blocked={pw_res['is_cf']}")
+        if not pw_res["is_cf"]:
+            results = parse_housinganywhere_rooms(soup, city_clean, c_pays, max_price, min_surface, rooms, c_lat, c_lon)
+
+    if results:
+        logger.info(f"✅ {len(results)} annonces extraites de HousingAnywhere via Playwright pour {city_clean}")
+    else:
+        logger.warning(f"⚠️ 0 annonce HousingAnywhere pour '{city_clean}' (URL={url}, fallback_playwright={used_playwright})")
 
     return results
-
 
 def scrape_international_cascade(city="Madrid", country_code="es", transaction_type="location", max_price=None, min_surface=None, rooms=None, exclude_viager=True, geo=None):
     """
