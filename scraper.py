@@ -1728,102 +1728,111 @@ def scrape_tranio(city, country_code="es", transaction_type="achat", max_price=N
         if r.status_code != 200 or is_cf:
             return results
 
-        snippets = soup.find_all(class_=re.compile(r'roster-snippet|snippet', re.I))
-        for idx, sn in enumerate(snippets[:25]):
-            a = sn.find("a", href=re.compile(r'/adt/|/\w+/adt/'))
-            if not a:
+        ad_links = soup.find_all("a", href=re.compile(r'/\w+/adt/'))
+        for idx, a in enumerate(ad_links[:30]):
+            try:
+                href = a.get("href")
+                if not href:
+                    continue
+                if href.startswith("/"):
+                    href = "https://tranio.com" + href
+                if href in seen_urls or not is_url_safe(href):
+                    continue
+                seen_urls.add(href)
+
+                sn = a.find_parent(class_=re.compile(r'snippet|roster|item|card|listing', re.I)) or a.parent.parent.parent
+                sn_text = sn.get_text(" | ", strip=True) if sn else a.get_text(" | ", strip=True)
+                p_eur = 0
+                curr = "EUR"
+                orig_str = None
+
+                p_eur_match = re.search(r"([\d\s,.\xa0]+)\s*€", sn_text) or re.search(r"€\s*([\d\s,.\xa0]+)", sn_text)
+                p_usd_match = re.search(r"\$\s*([\d,]+)", sn_text) or re.search(r"([\d,]+)\s*\$", sn_text)
+                if p_eur_match:
+                    digits = re.sub(r"[^\d]", "", p_eur_match.group(1))
+                    if digits:
+                        p_eur = int(digits)
+                elif p_usd_match:
+                    digits_usd = re.sub(r"[^\d]", "", p_usd_match.group(1))
+                    if digits_usd:
+                        raw_usd = int(digits_usd)
+                        p_eur = convert_to_eur(raw_usd, "USD")
+                        curr = "USD"
+                        orig_str = f"${raw_usd:,} (~{p_eur:,} €)".replace(",", " ")
+                else:
+                    continue
+
+                if p_eur == 0:
+                    continue
+                if max_price and p_eur > float(max_price):
+                    continue
+
+                s_val = 0
+                s_m = re.search(r"(\d+)\s*m²", sn_text) or re.search(r"(\d+)\s*sq\.?\s*m", sn_text, re.I)
+                if s_m:
+                    s_val = float(s_m.group(1))
+                if min_surface and s_val > 0 and s_val < float(min_surface):
+                    continue
+
+                b_m = re.search(r"(\d+)\s*bedroom", sn_text, re.I)
+                b_val = int(b_m.group(1)) if b_m else 1
+                r_str = f"T{b_val + 1}" if b_val > 0 else "Studio"
+
+                imgs = [img.get("src") or img.get("data-src") for img in sn.find_all("img")]
+                valid_imgs = [i if i.startswith("http") else f"https://tranio.com{i}" for i in imgs if i and "jpg" in i]
+                hero_img = valid_imgs[0] if valid_imgs else ""
+
+                title = a.get_text(strip=True)
+                if len(title) < 8:
+                    t_elem = sn.find(class_=re.compile(r'title|header|name', re.I))
+                    if t_elem:
+                        title = t_elem.get_text(strip=True)
+                if len(title) < 8:
+                    title = f"Appartement de standing {city_clean.capitalize()} - {b_val} ch."
+
+                ad_id = str(abs(hash(href)) % 10000000)
+                jitter_lat = c_lat + ((idx % 7) - 3) * 0.007
+                jitter_lon = c_lon + (((idx * 4) % 7) - 3) * 0.007
+
+                results.append({
+                    "id": f"real_tra_{ad_id}",
+                    "universe": "immo",
+                    "category": "immo",
+                    "transaction_type": "achat",
+                    "category_label": f"Vente {city_clean.capitalize()} (Tranio)",
+                    "badge": f"🌍 Achat • {city_clean.capitalize()}",
+                    "title": title,
+                    "price": p_eur,
+                    "price_str": f"{p_eur:,} €".replace(",", " "),
+                    "price_original_str": orig_str,
+                    "currency": curr,
+                    "location": f"{city_clean.capitalize()}, {country_slug.split('/')[0].upper()}",
+                    "city": city_clean.capitalize(),
+                    "postal_code": "",
+                    "lat": jitter_lat,
+                    "lon": jitter_lon,
+                    "agency": "Tranio Global",
+                    "is_verified_agency": True,
+                    "url": href,
+                    "image_url": hero_img,
+                    "images": valid_imgs[:6],
+                    "description": f"{title}. Propriété internationale sélectionnée sur Tranio.",
+                    "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                    "surface_val": s_val,
+                    "rooms": r_str,
+                    "bedrooms": b_val,
+                    "floor": "N/C",
+                    "dpe": "C",
+                    "charges": "N/C",
+                    "amenities": ["Terrasse / Balcon", "Ascenseur", "Vue dégagée"],
+                    "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                    "market_avg_m2": 0,
+                    "market_delta_pct": 0,
+                    "market_badge": "🌍 Offre Internationale Premium",
+                    "date_detected": now,
+                })
+            except Exception:
                 continue
-            href = a.get("href")
-            if href.startswith("/"):
-                href = "https://tranio.com" + href
-            if href in seen_urls or not is_url_safe(href):
-                continue
-            seen_urls.add(href)
-
-            sn_text = sn.get_text(" | ", strip=True)
-            p_eur = 0
-            curr = "EUR"
-            orig_str = None
-
-            if p_eur_match := (re.search(r"€\s*([\d\s,]+)", sn_text) or re.search(r"([\d\s,]+)\s*€", sn_text)):
-                p_eur = int(re.sub(r"[^\d]", "", p_eur_match.group(1)))
-            elif p_usd_match := re.search(r"\$\s*([\d,]+)", sn_text):
-                raw_usd = int(re.sub(r"[^\d]", "", p_usd_match.group(1)))
-                p_eur = convert_to_eur(raw_usd, "USD")
-                curr = "USD"
-                orig_str = f"${raw_usd:,} (~{p_eur:,} €)".replace(",", " ")
-            else:
-                continue
-
-            if p_eur == 0:
-                continue
-            if max_price and p_eur > float(max_price):
-                continue
-
-            s_val = 0
-            s_m = re.search(r"(\d+)\s*m²", sn_text) or re.search(r"(\d+)\s*sq\.?\s*m", sn_text, re.I)
-            if s_m:
-                s_val = float(s_m.group(1))
-            if min_surface and s_val > 0 and s_val < float(min_surface):
-                continue
-
-            b_m = re.search(r"(\d+)\s*bedroom", sn_text, re.I)
-            b_val = int(b_m.group(1)) if b_m else 1
-            r_str = f"T{b_val + 1}" if b_val > 0 else "Studio"
-
-            imgs = [img.get("src") or img.get("data-src") for img in sn.find_all("img")]
-            valid_imgs = [i if i.startswith("http") else f"https://tranio.com{i}" for i in imgs if i and "jpg" in i]
-            hero_img = valid_imgs[0] if valid_imgs else ""
-
-            title = a.get_text(strip=True)
-            if len(title) < 8:
-                t_elem = sn.find(class_=re.compile(r'title|header|name', re.I))
-                if t_elem:
-                    title = t_elem.get_text(strip=True)
-            if len(title) < 8:
-                title = f"Appartement de standing {city_clean.capitalize()} - {b_val} ch."
-
-            ad_id = str(abs(hash(href)) % 10000000)
-            jitter_lat = c_lat + ((idx % 7) - 3) * 0.007
-            jitter_lon = c_lon + (((idx * 4) % 7) - 3) * 0.007
-
-            results.append({
-                "id": f"real_tra_{ad_id}",
-                "universe": "immo",
-                "category": "immo",
-                "transaction_type": "achat",
-                "category_label": f"Vente {city_clean.capitalize()} (Tranio)",
-                "badge": f"🌍 Achat • {city_clean.capitalize()}",
-                "title": title,
-                "price": p_eur,
-                "price_str": f"{p_eur:,} €".replace(",", " "),
-                "price_original_str": orig_str,
-                "currency": curr,
-                "location": f"{city_clean.capitalize()}, {country_slug.split('/')[0].upper()}",
-                "city": city_clean.capitalize(),
-                "postal_code": "",
-                "lat": jitter_lat,
-                "lon": jitter_lon,
-                "agency": "Tranio Global",
-                "is_verified_agency": True,
-                "url": href,
-                "image_url": hero_img,
-                "images": valid_imgs[:6],
-                "description": f"{title}. Propriété internationale sélectionnée sur Tranio.",
-                "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
-                "surface_val": s_val,
-                "rooms": r_str,
-                "bedrooms": b_val,
-                "floor": "N/C",
-                "dpe": "C",
-                "charges": "N/C",
-                "amenities": ["Terrasse / Balcon", "Ascenseur", "Vue dégagée"],
-                "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
-                "market_avg_m2": 0,
-                "market_delta_pct": 0,
-                "market_badge": "🌍 Offre Internationale Premium",
-                "date_detected": now,
-            })
     except Exception as e:
         logger.warning(f"Erreur Tranio {url}: {e}")
 
