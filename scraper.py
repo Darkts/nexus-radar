@@ -1152,122 +1152,276 @@ def scrape_properstar(city, country_code="es", transaction_type="location", max_
 
 def scrape_spotahome(city, max_price=None, min_surface=None, rooms=None, geo=None):
     """
-    Connecteur API officiel Spotahome (locations meublées européennes vérifiées).
+    Connecteur API officiel Spotahome (Europe : Madrid, Barcelone, Rome, Lisbonne, Londres, Berlin, Milan, Bruxelles...).
+    Architecture en 2 étapes ultra-rapide (markers -> homecards_ids).
     """
     city_clean = city.split(",")[0].strip()
     c_slug = clean_slug(city_clean)
-    url = f"https://www.spotahome.com/api/public/listings/search/homecards_ids?city={c_slug}"
-    logger.info(f"🇪🇺 Scraping Spotahome API ({c_slug}) : {url}")
     results = []
+    seen_ids = set()
     now = datetime.now(timezone.utc).isoformat()
     c_lat = geo["lat"] if geo else 40.4168
     c_lon = geo["lon"] if geo else -3.7038
 
     try:
-        r = curl_requests.get(url, impersonate="chrome", timeout=12)
-        is_cf = is_blocked_or_cf(r.text)
-        logger.info(f"[DEBUG] Spotahome -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"API JSON\" | blocked={is_cf}")
+        # Étape 1 : Récupération des IDs de biens réels pour la ville demandée
+        url_markers = f"https://www.spotahome.com/api/public/listings/search/markers/{c_slug}"
+        logger.info(f"🇪🇺 Scraping Spotahome markers ({c_slug}) : {url_markers}")
+        r_m = curl_requests.get(url_markers, impersonate="chrome", timeout=12)
+        is_cf = is_blocked_or_cf(r_m.text)
+        logger.info(f"[DEBUG] Spotahome markers -> HTTP {r_m.status_code} | {len(r_m.text)} bytes | blocked={is_cf}")
 
-        if r.status_code == 200 and not is_cf:
-            data = r.json()
-            homecards = data.get("data", {}).get("homecards", [])
-            for idx, hc in enumerate(homecards[:30]):
-                hc_city = clean_slug(hc.get("city") or "")
-                if c_slug not in hc_city and hc_city not in c_slug:
-                    continue
+        marker_ids = []
+        if r_m.status_code == 200 and not is_cf:
+            try:
+                data_m = r_m.json()
+                m_list = data_m.get("data", [])
+                if isinstance(m_list, list):
+                    marker_ids = [m["id"] for m in m_list if isinstance(m, dict) and "id" in m][:35]
+            except Exception:
+                pass
 
-                p_raw = hc.get("pricePerMonth") or 0
-                curr = hc.get("currencyIsoCode") or "EUR"
-                p_eur = convert_to_eur(p_raw, curr)
+        homecards = []
+        # Étape 2 : Récupération des homecards complètes par lot d'IDs
+        if marker_ids:
+            q_params = "&".join(f"ids[]={i}" for i in marker_ids)
+            url_hc = f"https://www.spotahome.com/api/public/listings/search/homecards_ids?{q_params}"
+            r_hc = curl_requests.get(url_hc, impersonate="chrome", timeout=12)
+            if r_hc.status_code == 200:
+                data_hc = r_hc.json()
+                homecards = data_hc.get("data", {}).get("homecards", [])
 
-                if max_price and p_eur > float(max_price):
-                    continue
+        # Fallback direct par city si markers vide
+        if not homecards:
+            url_fb = f"https://www.spotahome.com/api/public/listings/search/homecards_ids?city={c_slug}"
+            r_fb = curl_requests.get(url_fb, impersonate="chrome", timeout=12)
+            if r_fb.status_code == 200:
+                data_fb = r_fb.json()
+                homecards = data_fb.get("data", {}).get("homecards", [])
 
-                s_val = float(hc.get("area") or 0)
-                if min_surface and s_val > 0 and s_val < float(min_surface):
-                    continue
+        for idx, hc in enumerate(homecards[:35]):
+            p_raw = hc.get("pricePerMonth") or hc.get("monthlyPrice") or 0
+            curr = hc.get("currencyIsoCode") or "EUR"
+            p_eur = convert_to_eur(p_raw, curr)
 
-                ad_id = str(hc.get("id") or hc.get("adId") or idx)
-                path = hc.get("url") or f"/for-rent/{ad_id}"
-                ad_url = f"https://www.spotahome.com/fr{path}" if not path.startswith("http") else path
+            if p_eur <= 0:
+                continue
+            if max_price and p_eur > float(max_price):
+                continue
 
-                if not is_url_safe(ad_url):
-                    continue
+            s_val = float(hc.get("area") or hc.get("roomArea") or 0)
+            if min_surface and s_val > 0 and s_val < float(min_surface):
+                continue
 
-                title = hc.get("title") or f"Logement vérifié {city_clean}"
-                desc = hc.get("description") or hc.get("homecardDescription") or ""
+            ad_id = str(hc.get("id") or hc.get("adId") or idx)
+            if ad_id in seen_ids:
+                continue
+            seen_ids.add(ad_id)
 
-                photos = [p.get("src") for p in hc.get("photos", []) if isinstance(p, dict) and p.get("src")]
-                main_img = hc.get("mainPhotoUrl") or (photos[0] if photos else "")
-                if main_img and main_img not in photos:
-                    photos.insert(0, main_img)
+            path = hc.get("url") or f"/{c_slug}/for-rent:apartments/{ad_id}"
+            ad_url = f"https://www.spotahome.com{path}" if not path.startswith("http") else path
 
-                coord = hc.get("location", {}).get("coord")
-                if coord and len(coord) == 2:
-                    lat_val = float(coord[1])
-                    lon_val = float(coord[0])
-                else:
-                    lat_val = c_lat + ((idx % 7) - 3) * 0.007
-                    lon_val = c_lon + (((idx * 4) % 7) - 3) * 0.007
+            if not is_url_safe(ad_url):
+                continue
 
-                n_bed = hc.get("numberOfBedrooms") or 1
-                prop_type = hc.get("type") or "Appartement"
-                r_str = f"Studio" if prop_type == "studio" or n_bed == 0 else f"T{n_bed + 1}"
+            title = hc.get("title") or f"Logement vérifié {city_clean}"
+            desc = hc.get("description") or hc.get("homecardDescription") or ""
 
-                price_str = f"{p_eur:,} € / mois".replace(",", " ")
-                price_orig_str = None
-                if curr != "EUR":
-                    price_orig_str = f"{p_raw:,} {curr} (~{p_eur:,} €)".replace(",", " ")
+            photos = []
+            if isinstance(hc.get("photos"), list):
+                for p in hc["photos"]:
+                    if isinstance(p, dict) and p.get("src"):
+                        photos.append(p["src"])
+                    elif isinstance(p, str) and p.startswith("http"):
+                        photos.append(p)
+            main_img = hc.get("mainPhotoUrl") or (photos[0] if photos else "")
+            if main_img and main_img not in photos:
+                photos.insert(0, main_img)
 
-                loc_str = f"{hc.get('location', {}).get('street', city_clean)}, {city_clean}"
+            coord = hc.get("location", {}).get("coord") if isinstance(hc.get("location"), dict) else None
+            if coord and len(coord) == 2:
+                lat_val = float(coord[1])
+                lon_val = float(coord[0])
+            else:
+                lat_val = c_lat + ((idx % 7) - 3) * 0.007
+                lon_val = c_lon + (((idx * 4) % 7) - 3) * 0.007
 
-                results.append({
-                    "id": f"real_spotahome_{ad_id}",
-                    "universe": "immo",
-                    "category": "immo",
-                    "transaction_type": "location",
-                    "category_label": f"Location {city_clean} (Spotahome)",
-                    "badge": f"🇪🇺 Location • {city_clean}",
-                    "title": title,
-                    "price": p_eur,
-                    "price_str": price_str,
-                    "price_original_str": price_orig_str,
-                    "currency": curr,
-                    "location": loc_str,
-                    "city": city_clean,
-                    "postal_code": hc.get("location", {}).get("postalCode", ""),
-                    "lat": lat_val,
-                    "lon": lon_val,
-                    "agency": "Spotahome Verified",
-                    "is_verified_agency": True,
-                    "url": ad_url,
-                    "image_url": main_img,
-                    "images": photos[:10],
-                    "description": desc or f"Logement meublé vérifié par l'équipe Spotahome à {loc_str}.",
-                    "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
-                    "surface_val": s_val,
-                    "rooms": r_str,
-                    "bedrooms": n_bed,
-                    "floor": "N/C",
-                    "dpe": "B",
-                    "charges": "Charges comprises" if hc.get("billsState") == "ALL" else "N/C",
-                    "amenities": extract_amenities(f"{title} {desc}"),
-                    "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
-                    "market_avg_m2": 0,
-                    "market_delta_pct": 0,
-                    "market_badge": "🟢 Vérifié par Spotahome",
-                    "date_detected": now,
-                })
-        else:
-            logger.warning(f"⚠️ Échec Spotahome : HTTP {r.status_code} (blocked={is_cf})")
+            n_bed = hc.get("numberOfBedrooms") or 1
+            prop_type = hc.get("type") or "Appartement"
+            r_str = "Studio" if prop_type == "studio" or n_bed == 0 else f"T{n_bed + 1}"
+
+            price_str = f"{p_eur:,} € / mois".replace(",", " ")
+            price_orig_str = None
+            if curr != "EUR":
+                price_orig_str = f"{p_raw:,} {curr} (~{p_eur:,} €)".replace(",", " ")
+
+            street_loc = hc.get("location", {}).get("street") if isinstance(hc.get("location"), dict) else ""
+            loc_str = f"{street_loc}, {city_clean}" if street_loc else city_clean
+
+            results.append({
+                "id": f"real_spotahome_{ad_id}",
+                "universe": "immo",
+                "category": "immo",
+                "transaction_type": "location",
+                "category_label": f"Location {city_clean} (Spotahome)",
+                "badge": f"🇪🇺 Location • {city_clean}",
+                "title": title,
+                "price": p_eur,
+                "price_str": price_str,
+                "price_original_str": price_orig_str,
+                "currency": curr,
+                "location": loc_str,
+                "city": city_clean,
+                "postal_code": hc.get("location", {}).get("postalCode", "") if isinstance(hc.get("location"), dict) else "",
+                "lat": lat_val,
+                "lon": lon_val,
+                "agency": "Spotahome Verified",
+                "is_verified_agency": True,
+                "url": ad_url,
+                "image_url": main_img,
+                "images": photos[:10],
+                "description": desc or f"Logement meublé vérifié par l'équipe Spotahome à {loc_str}.",
+                "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                "surface_val": s_val,
+                "rooms": r_str,
+                "bedrooms": n_bed,
+                "floor": "N/C",
+                "dpe": "B",
+                "charges": "Charges comprises" if hc.get("billsState") == "ALL" else "N/C",
+                "amenities": extract_amenities(f"{title} {desc}"),
+                "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                "market_avg_m2": 0,
+                "market_delta_pct": 0,
+                "market_badge": "🟢 Vérifié par Spotahome",
+                "date_detected": now,
+            })
     except Exception as e:
         logger.warning(f"Spotahome error {city_clean}: {e}")
 
     if results:
         logger.info(f"✅ {len(results)} annonces extraites de Spotahome pour {city_clean}")
     else:
-        logger.info(f"ℹ️ 0 annonce Spotahome pour '{city_clean}' (ville non desservie ou aucun bien)")
+        logger.info(f"ℹ️ 0 annonce Spotahome pour '{city_clean}'")
 
+    return results
+
+
+def parse_housinganywhere_hydration(raw_html, city, c_pays, max_price=None, min_surface=None, rooms=None, c_lat=40.4168, c_lon=-3.7038):
+    """
+    Extrait le payload de réhydratation React window.__staticRouterHydrationData (20+ annonces complètes).
+    """
+    m_hyd = re.search(r'window\.__staticRouterHydrationData\s*=\s*JSON\.parse\("(.*?)"\);', raw_html)
+    if not m_hyd:
+        return []
+    results = []
+    seen_urls = set()
+    now = datetime.now(timezone.utc).isoformat()
+    try:
+        raw_escaped = m_hyd.group(1).encode().decode("unicode_escape")
+        d_hyd = json.loads(raw_escaped)
+        loader_data = d_hyd.get("loaderData", {})
+        listings = []
+        for k, v in loader_data.items():
+            if isinstance(v, dict) and "listings" in v and isinstance(v["listings"], list):
+                listings = v["listings"]
+                break
+
+        for idx, item in enumerate(listings[:35]):
+            path = item.get("listingPath") or item.get("unitTypePath") or ""
+            if not path:
+                item_id = item.get("id") or item.get("internalID")
+                path = f"/room/{item_id}"
+            ad_url = f"https://housinganywhere.com{path}" if path.startswith("/") else path
+
+            if ad_url in seen_urls or not is_url_safe(ad_url):
+                continue
+            seen_urls.add(ad_url)
+
+            curr = item.get("currency") or "EUR"
+            raw_p = item.get("price") or 0
+            if raw_p > 10000:
+                raw_p = raw_p / 100
+            p_eur = int(item.get("priceEUR") or (raw_p / 100 if raw_p > 10000 else raw_p))
+            if p_eur <= 0:
+                p_eur = convert_to_eur(int(raw_p), curr)
+            if p_eur <= 0:
+                continue
+
+            if max_price and p_eur > float(max_price):
+                continue
+
+            s_val = float(item.get("facility_total_size") or item.get("facility_bedroom_size") or 0)
+            if min_surface and s_val > 0 and s_val < float(min_surface):
+                continue
+
+            n_bed = int(item.get("facility_bedroom_count") or 1)
+            p_type = (item.get("propertyType") or "").upper()
+            r_str = "Studio" if "STUDIO" in p_type or n_bed == 0 else f"T{n_bed + 1}"
+
+            street = item.get("street") or city
+            prop_title = f"{'Studio' if r_str == 'Studio' else 'Appartement'} {street}, {city}"
+
+            preview = item.get("previewImage") or ""
+            photos = []
+            if preview:
+                photos.append(preview)
+            for p in item.get("photos", []):
+                if isinstance(p, str) and p.startswith("http") and p not in photos:
+                    photos.append(p)
+                elif isinstance(p, dict) and p.get("src") and p["src"] not in photos:
+                    photos.append(p["src"])
+            main_img = preview or (photos[0] if photos else "")
+
+            geo_obj = item.get("_geoloc", {}) if isinstance(item.get("_geoloc"), dict) else {}
+            lat_val = float(geo_obj.get("lat") or (c_lat + ((idx % 5) - 2) * 0.006))
+            lon_val = float(geo_obj.get("lng") or (c_lon + (((idx * 3) % 5) - 2) * 0.006))
+
+            price_str = f"{p_eur:,} € / mois".replace(",", " ")
+            price_orig_str = None
+            if curr != "EUR":
+                price_orig_str = f"{int(raw_p):,} {curr} (~{p_eur:,} €)".replace(",", " ")
+
+            item_id = str(item.get("id") or item.get("internalID") or abs(hash(ad_url)) % 10000000)
+
+            results.append({
+                "id": f"real_ha_{item_id}",
+                "universe": "immo",
+                "category": "immo",
+                "transaction_type": "location",
+                "category_label": f"Location {city} (HousingAnywhere)",
+                "badge": f"🌍 Location • {city}",
+                "title": prop_title,
+                "price": p_eur,
+                "price_str": price_str,
+                "price_original_str": price_orig_str,
+                "currency": curr,
+                "location": f"{street}, {city}, {c_pays}",
+                "city": city,
+                "postal_code": "",
+                "lat": lat_val,
+                "lon": lon_val,
+                "agency": "HousingAnywhere Verified",
+                "is_verified_agency": True,
+                "url": ad_url,
+                "image_url": main_img,
+                "images": photos[:8],
+                "description": f"{prop_title}. Logement vérifié disponible à {city}.",
+                "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                "surface_val": s_val,
+                "rooms": r_str,
+                "bedrooms": n_bed,
+                "floor": "N/C",
+                "dpe": "C",
+                "charges": "Charges comprises" if item.get("utilities") else "N/C",
+                "amenities": ["Logement meublé", "Wifi", "Cuisine équipée"],
+                "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                "market_avg_m2": 0,
+                "market_delta_pct": 0,
+                "market_badge": "🟢 Logement Vérifié",
+                "date_detected": now,
+            })
+    except Exception as e:
+        logger.warning(f"Erreur parsing hydration HousingAnywhere: {e}")
     return results
 
 
@@ -1277,7 +1431,7 @@ def parse_housinganywhere_rooms(soup, city, c_pays, max_price=None, min_surface=
     results = []
     now = datetime.now(timezone.utc).isoformat()
 
-    for idx, a in enumerate(room_links[:20]):
+    for idx, a in enumerate(room_links[:35]):
         href = a["href"]
         if href.startswith("/"):
             href = "https://housinganywhere.com" + href
@@ -1381,9 +1535,50 @@ def scrape_housinganywhere(city, country_name="", max_price=None, min_surface=No
     Utilise l'URL canonique propre https://housinganywhere.com/s/{City}--{Country}
     avec diagnostic HTTP strict et fallback Playwright.
     """
+    HA_COUNTRY_MAP = {
+        "es": "Spain",
+        "espagne": "Spain",
+        "espana": "Spain",
+        "españa": "Spain",
+        "spain": "Spain",
+        "fr": "France",
+        "france": "France",
+        "it": "Italy",
+        "italie": "Italy",
+        "italia": "Italy",
+        "italy": "Italy",
+        "de": "Germany",
+        "allemagne": "Germany",
+        "deutschland": "Germany",
+        "germany": "Germany",
+        "pt": "Portugal",
+        "portugal": "Portugal",
+        "us": "United-States",
+        "usa": "United-States",
+        "états-unis": "United-States",
+        "etats-unis": "United-States",
+        "united states": "United-States",
+        "united-states": "United-States",
+        "gb": "United-Kingdom",
+        "uk": "United-Kingdom",
+        "royaume-uni": "United-Kingdom",
+        "united kingdom": "United-Kingdom",
+        "united-kingdom": "United-Kingdom",
+        "nl": "Netherlands",
+        "pays-bas": "Netherlands",
+        "netherlands": "Netherlands",
+        "be": "Belgium",
+        "belgique": "Belgium",
+        "belgium": "Belgium",
+        "at": "Austria",
+        "autriche": "Austria",
+        "austria": "Austria",
+    }
     city_clean = city.split(",")[0].strip()
     c_city = clean_slug(city_clean).title()
-    c_pays = clean_slug(country_name or (geo.get("country") if geo else "United States")).title()
+    cc = (geo.get("country_code") if geo else "").lower().strip()
+    raw_pays = (country_name or (geo.get("country") if geo else "United States")).lower().strip()
+    c_pays = HA_COUNTRY_MAP.get(cc) or HA_COUNTRY_MAP.get(raw_pays) or HA_COUNTRY_MAP.get(clean_slug(raw_pays)) or clean_slug(raw_pays).title()
     url = f"https://housinganywhere.com/s/{c_city}--{c_pays}"
     logger.info(f"🌍 Scraping HousingAnywhere : {url}")
 
@@ -1403,7 +1598,11 @@ def scrape_housinganywhere(city, country_name="", max_price=None, min_surface=No
         logger.info(f"[DEBUG] HousingAnywhere (curl_cffi) -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"{page_title}\" | blocked={is_cf}")
 
         if r.status_code == 200 and not is_cf:
-            results = parse_housinganywhere_rooms(soup, city_clean, c_pays, max_price, min_surface, rooms, c_lat, c_lon)
+            # 1.1 Tentative via hydration data (20+ annonces riches)
+            results = parse_housinganywhere_hydration(r.text, city_clean, c_pays, max_price, min_surface, rooms, c_lat, c_lon)
+            if not results:
+                # 1.2 Fallback DOM
+                results = parse_housinganywhere_rooms(soup, city_clean, c_pays, max_price, min_surface, rooms, c_lat, c_lon)
             if results:
                 logger.info(f"✅ {len(results)} annonces extraites de HousingAnywhere via curl_cffi pour {city_clean}")
                 return results
@@ -1414,6 +1613,10 @@ def scrape_housinganywhere(city, country_name="", max_price=None, min_surface=No
     except Exception as e:
         logger.warning(f"⚠️ Erreur curl_cffi HousingAnywhere : {e}")
 
+    # Si 404, pas la peine de lancer Playwright sur une URL inexistante
+    if 'r' in locals() and r.status_code == 404:
+        return results
+
     # 2. Vrai Fallback Playwright headless furtif
     logger.info(f"🎭 Lancement du fallback Playwright headless pour HousingAnywhere ({city_clean})...")
     used_playwright = True
@@ -1423,7 +1626,9 @@ def scrape_housinganywhere(city, country_name="", max_price=None, min_surface=No
         soup = BeautifulSoup(pw_res["content"], "html.parser")
         logger.info(f"[DEBUG] HousingAnywhere (Playwright) -> HTTP {pw_res['status']} | {len(pw_res['content'])} bytes | title=\"{pw_res['title']}\" | blocked={pw_res['is_cf']}")
         if not pw_res["is_cf"]:
-            results = parse_housinganywhere_rooms(soup, city_clean, c_pays, max_price, min_surface, rooms, c_lat, c_lon)
+            results = parse_housinganywhere_hydration(pw_res["content"], city_clean, c_pays, max_price, min_surface, rooms, c_lat, c_lon)
+            if not results:
+                results = parse_housinganywhere_rooms(soup, city_clean, c_pays, max_price, min_surface, rooms, c_lat, c_lon)
 
     if results:
         logger.info(f"✅ {len(results)} annonces extraites de HousingAnywhere via Playwright pour {city_clean}")
@@ -1445,7 +1650,7 @@ def scrape_greenacres(city, country_code="es", transaction_type="achat", max_pri
     c_slug = clean_slug(city_clean)
 
     urls = [
-        f"https://www.{domain}/property-for-sale/{c_slug}-province",
+        f"https://www.{domain}/houses-for-sale?search=True&searchQuery=lg-en-cn-{cc}-q-{c_slug}",
         f"https://www.{domain}/property-for-sale/{c_slug}"
     ]
 
@@ -1469,7 +1674,7 @@ def scrape_greenacres(city, country_code="es", transaction_type="achat", max_pri
                 continue
 
             cards = soup.find_all("div", class_="announce-card")
-            for idx, c in enumerate(cards[:30]):
+            for idx, c in enumerate(cards[:35]):
                 raw_b64 = c.get("data-o")
                 if not raw_b64:
                     continue
@@ -1557,7 +1762,7 @@ def scrape_greenacres(city, country_code="es", transaction_type="achat", max_pri
                     "market_badge": "🌍 Offre Internationale Prestige",
                     "date_detected": now,
                 })
-            if len(results) >= 10:
+            if len(results) >= 25:
                 break
         except Exception as e:
             logger.warning(f"Erreur Green-Acres {target_url}: {e}")
@@ -1700,14 +1905,300 @@ def scrape_point2homes(city, country_code="us", transaction_type="location", max
     return results
 
 
+def scrape_flatio(city, country_code="es", max_price=None, min_surface=None, rooms=None, geo=None):
+    """
+    Connecteur Flatio (Locations meublées internationales vérifiées : Europe, Amérique, Asie).
+    Extrait les données structurées ItemList (Schema.org) et les cartes SSR.
+    """
+    city_clean = city.split(",")[0].strip()
+    c_city = clean_slug(city_clean).capitalize()
+    url = f"https://www.flatio.com/s/{c_city}"
+    logger.info(f"🌍 Scraping Flatio : {url}")
+
+    results = []
+    seen_urls = set()
+    now = datetime.now(timezone.utc).isoformat()
+    c_lat = geo["lat"] if geo else 40.4168
+    c_lon = geo["lon"] if geo else -3.7038
+
+    try:
+        from bs4 import BeautifulSoup
+        r = curl_requests.get(url, impersonate="chrome", timeout=12, headers={"Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8"})
+        soup = BeautifulSoup(r.text, "html.parser")
+        page_title = soup.title.get_text(strip=True)[:40] if soup.title else "Flatio"
+        is_cf = is_blocked_or_cf(r.text, page_title, r.status_code)
+        logger.info(f"[DEBUG] Flatio (curl_cffi) -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"{page_title}\" | blocked={is_cf}")
+
+        if r.status_code != 200 or is_cf:
+            return results
+
+        # 1. Extraction via JSON-LD ItemList Schema.org
+        for s in soup.find_all("script", type="application/ld+json"):
+            try:
+                data = json.loads(s.get_text())
+                graph = data.get("@graph", []) if isinstance(data, dict) else ([data] if isinstance(data, dict) else [])
+                for elem in graph:
+                    if elem.get("@type") == "ItemList":
+                        for idx, list_elem in enumerate(elem.get("itemListElement", [])):
+                            item = list_elem.get("item", {})
+                            if not item or not isinstance(item, dict):
+                                continue
+
+                            item_url = item.get("url", "")
+                            if not item_url or item_url in seen_urls or not is_url_safe(item_url):
+                                continue
+                            seen_urls.add(item_url)
+
+                            name = item.get("name") or f"Appartement meublé {city_clean}"
+                            offers = item.get("offers", {})
+                            p_eur = int(offers.get("price") or 0)
+                            if p_eur <= 0:
+                                continue
+                            if max_price and p_eur > float(max_price):
+                                continue
+
+                            floor_size = item.get("floorSize", {})
+                            s_val = float(floor_size.get("value") or 0)
+                            if min_surface and s_val > 0 and s_val < float(min_surface):
+                                continue
+
+                            n_bed = int(item.get("numberOfBedrooms") or 1)
+                            cat = item.get("accommodationCategory", "")
+                            r_str = "Studio" if "studio" in cat.lower() or n_bed == 0 else f"T{n_bed + 1}"
+
+                            hero_img = item.get("image", "")
+                            ad_id = str(abs(hash(item_url)) % 10000000)
+
+                            jitter_lat = c_lat + ((idx % 7) - 3) * 0.007
+                            jitter_lon = c_lon + (((idx * 4) % 7) - 3) * 0.007
+
+                            results.append({
+                                "id": f"real_flatio_{ad_id}",
+                                "universe": "immo",
+                                "category": "immo",
+                                "transaction_type": "location",
+                                "category_label": f"Location {city_clean} (Flatio)",
+                                "badge": f"🌍 Meublé Vérifié • {city_clean}",
+                                "title": name,
+                                "price": p_eur,
+                                "price_str": f"{p_eur:,} € / mois".replace(",", " "),
+                                "price_original_str": None,
+                                "currency": "EUR",
+                                "location": f"{city_clean}, {geo.get('country', 'Europe') if geo else 'Europe'}",
+                                "city": city_clean,
+                                "postal_code": "",
+                                "lat": jitter_lat,
+                                "lon": jitter_lon,
+                                "agency": "Flatio Verified Stay",
+                                "is_verified_agency": True,
+                                "url": item_url,
+                                "image_url": hero_img,
+                                "images": [hero_img] if hero_img else [],
+                                "description": f"{name}. Logement meublé vérifié disponible sur Flatio.",
+                                "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                                "surface_val": s_val,
+                                "rooms": r_str,
+                                "bedrooms": n_bed,
+                                "floor": "N/C",
+                                "dpe": "C",
+                                "charges": "Charges comprises",
+                                "amenities": ["Tout inclus", "Wifi haut débit", "Climatisation"],
+                                "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                                "market_avg_m2": 0,
+                                "market_delta_pct": 0,
+                                "market_badge": "🟢 Vérifié Flatio",
+                                "date_detected": now,
+                            })
+            except Exception:
+                continue
+
+    except Exception as e:
+        logger.warning(f"Erreur Flatio {url}: {e}")
+
+    if results:
+        logger.info(f"✅ {len(results)} annonces extraites de Flatio pour {city_clean}")
+    else:
+        logger.info(f"ℹ️ 0 annonce Flatio pour {city_clean}")
+    return results
+
+
+def scrape_rightmove(city, country_code="gb", transaction_type="achat", max_price=None, min_surface=None, rooms=None, geo=None):
+    """
+    Connecteur Rightmove officiel (UK : Londres, Manchester, Birmingham, etc. - Achat & Location).
+    Extrait le bloc structuré __NEXT_DATA__ / window.PAGE_MODEL avec conversion GBP -> EUR.
+    """
+    city_clean = city.split(",")[0].strip()
+    c_lower = city_clean.lower()
+
+    # Dictionnaire des identifiants régionaux officiels Rightmove
+    uk_regions = {
+        "london": "REGION^87490",
+        "londres": "REGION^87490",
+        "manchester": "REGION^904",
+        "birmingham": "REGION^162",
+        "liverpool": "REGION^813",
+        "edinburgh": "REGION^475",
+        "edimbourg": "REGION^475",
+        "glasgow": "REGION^550",
+        "bristol": "REGION^219",
+        "leeds": "REGION^787",
+        "newcastle": "REGION^984",
+        "sheffield": "REGION^1197",
+        "nottingham": "REGION^1019",
+        "cambridge": "REGION^269",
+        "oxford": "REGION^1036",
+    }
+    loc_id = uk_regions.get(c_lower, "REGION^87490")
+    sub_path = "property-to-rent" if transaction_type == "location" else "property-for-sale"
+    url = f"https://www.rightmove.co.uk/{sub_path}/find.html?locationIdentifier={loc_id}"
+    logger.info(f"🇬🇧 Scraping Rightmove ({transaction_type} {city_clean}) : {url}")
+
+    results = []
+    seen_urls = set()
+    now = datetime.now(timezone.utc).isoformat()
+    c_lat = geo["lat"] if geo else 51.5074
+    c_lon = geo["lon"] if geo else -0.1278
+
+    try:
+        from bs4 import BeautifulSoup
+        r = curl_requests.get(url, impersonate="chrome", timeout=12, headers={"Accept-Language": "fr-FR,fr;q=0.9,en-GB;q=0.8,en;q=0.7"})
+        soup = BeautifulSoup(r.text, "html.parser")
+        page_title = soup.title.get_text(strip=True)[:40] if soup.title else "Rightmove"
+        is_cf = is_blocked_or_cf(r.text, page_title, r.status_code)
+        logger.info(f"[DEBUG] Rightmove (curl_cffi) -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"{page_title}\" | blocked={is_cf}")
+
+        if r.status_code != 200 or is_cf:
+            return results
+
+        props = []
+        # 1. Extraction via Next.js __NEXT_DATA__
+        nd = soup.find("script", id="__NEXT_DATA__")
+        if nd:
+            try:
+                data_nd = json.loads(nd.get_text())
+                props = data_nd.get("props", {}).get("pageProps", {}).get("searchResults", {}).get("properties", [])
+            except Exception:
+                pass
+
+        # 2. Fallback via regex window.PAGE_MODEL
+        if not props:
+            m = re.search(r'"properties"\s*:\s*(\[.*?\])\s*,\s*"resultCount"', r.text, re.DOTALL)
+            if m:
+                try:
+                    props = json.loads(m.group(1))
+                except Exception:
+                    pass
+
+        for idx, p in enumerate(props[:30]):
+            prop_id = str(p.get("id") or idx)
+            rel_url = p.get("propertyUrl") or f"/properties/{prop_id}"
+            ad_url = f"https://www.rightmove.co.uk{rel_url}" if not rel_url.startswith("http") else rel_url
+
+            if ad_url in seen_urls or not is_url_safe(ad_url):
+                continue
+            seen_urls.add(ad_url)
+
+            price_info = p.get("price", {})
+            raw_gbp = int(price_info.get("amount") or 0)
+            if raw_gbp <= 0:
+                continue
+            p_eur = convert_to_eur(raw_gbp, "GBP")
+
+            if max_price and p_eur > float(max_price):
+                continue
+
+            n_bed = int(p.get("bedrooms") or 1)
+            r_str = "Studio" if n_bed == 0 else f"T{n_bed + 1}"
+
+            summary = p.get("summary") or ""
+            disp_addr = p.get("displayAddress") or city_clean
+            title = f"{'Location' if transaction_type == 'location' else 'Vente'} {r_str} {city_clean} - {disp_addr.split(',')[0]}"
+
+            loc = p.get("location", {})
+            lat_val = float(loc.get("latitude") or (c_lat + ((idx % 7) - 3) * 0.007))
+            lon_val = float(loc.get("longitude") or (c_lon + (((idx * 4) % 7) - 3) * 0.007))
+
+            img_obj = p.get("propertyImages", {})
+            hero_img = img_obj.get("mainImageSrc") or ""
+            imgs_list = [img.get("srcUrl") for img in img_obj.get("images", []) if isinstance(img, dict) and img.get("srcUrl")]
+            if hero_img and hero_img not in imgs_list:
+                imgs_list.insert(0, hero_img)
+
+            price_str = f"{p_eur:,} € / mois".replace(",", " ") if transaction_type == "location" else f"{p_eur:,} €".replace(",", " ")
+            orig_str = f"£{raw_gbp:,} (~{p_eur:,} €)".replace(",", " ")
+
+            results.append({
+                "id": f"real_rm_{prop_id}",
+                "universe": "immo",
+                "category": "immo",
+                "transaction_type": transaction_type,
+                "category_label": f"{'Location' if transaction_type == 'location' else 'Vente'} {city_clean} (Rightmove)",
+                "badge": f"🇬🇧 {'Location' if transaction_type == 'location' else 'Achat'} • {city_clean}",
+                "title": title,
+                "price": p_eur,
+                "price_str": price_str,
+                "price_original_str": orig_str,
+                "currency": "GBP",
+                "location": f"{disp_addr}, UK",
+                "city": city_clean,
+                "postal_code": "",
+                "lat": lat_val,
+                "lon": lon_val,
+                "agency": "Rightmove UK",
+                "is_verified_agency": True,
+                "url": ad_url,
+                "image_url": hero_img,
+                "images": imgs_list[:8],
+                "description": summary or f"{title}. Annonce vérifiée au Royaume-Uni sur Rightmove.",
+                "surface": "N/C",
+                "surface_val": 0,
+                "rooms": r_str,
+                "bedrooms": n_bed,
+                "floor": "N/C",
+                "dpe": "C",
+                "charges": "N/C",
+                "amenities": extract_amenities(f"{title} {summary}"),
+                "price_per_m2": 0,
+                "market_avg_m2": 0,
+                "market_delta_pct": 0,
+                "market_badge": "🟢 Vérifié Rightmove",
+                "date_detected": now,
+            })
+    except Exception as e:
+        logger.warning(f"Erreur Rightmove {url}: {e}")
+
+    if results:
+        logger.info(f"✅ {len(results)} annonces extraites de Rightmove pour {city_clean}")
+    else:
+        logger.info(f"ℹ️ 0 annonce Rightmove pour {city_clean}")
+    return results
+
+
 def scrape_tranio(city, country_code="es", transaction_type="achat", max_price=None, min_surface=None, rooms=None, geo=None):
     """
     Connecteur Tranio International (Ventes immobilières dans 50+ pays : Espagne, USA, France, Italie, etc.).
+    Extrait prioritairement le JSON-LD structuré Schema.org (25 annonces) avec fallback DOM.
     """
     city_clean = city.split(",")[0].strip()
     cc = (country_code or "es").lower().strip()
     c_city = clean_slug(city_clean)
-    country_slug = "spain" if cc == "es" else "usa/fl" if cc == "us" else "france" if cc == "fr" else "italy" if cc == "it" else "greece" if cc == "gr" else "spain"
+    tranio_slugs = {
+        "es": "spain",
+        "us": "usa/fl",
+        "fr": "france",
+        "it": "italy",
+        "gr": "greece",
+        "cy": "cyprus",
+        "th": "thailand",
+        "ae": "uae",
+        "tr": "turkey",
+        "pt": "portugal",
+        "de": "germany",
+        "at": "austria",
+    }
+    country_slug = tranio_slugs.get(cc, "spain" if cc in ("es", "") else None)
+    if not country_slug:
+        return []
     url = f"https://tranio.com/{country_slug}/{c_city}/"
     logger.info(f"🌐 Scraping Tranio ({country_slug}/{c_city}) : {url}")
 
@@ -1728,111 +2219,202 @@ def scrape_tranio(city, country_code="es", transaction_type="achat", max_price=N
         if r.status_code != 200 or is_cf:
             return results
 
-        ad_links = soup.find_all("a", href=re.compile(r'/\w+/adt/'))
-        for idx, a in enumerate(ad_links[:30]):
+        # 1. Extraction prioritaire via JSON-LD Schema.org (Offer / Apartment)
+        for s in soup.find_all("script", type="application/ld+json"):
             try:
-                href = a.get("href")
-                if not href:
-                    continue
-                if href.startswith("/"):
-                    href = "https://tranio.com" + href
-                if href in seen_urls or not is_url_safe(href):
-                    continue
-                seen_urls.add(href)
+                data = json.loads(s.get_text())
+                if isinstance(data, list):
+                    for idx, it in enumerate(data):
+                        if not isinstance(it, dict) or not it.get("url"):
+                            continue
+                        href = it.get("url")
+                        if href in seen_urls or not is_url_safe(href):
+                            continue
+                        seen_urls.add(href)
 
-                sn = a.find_parent(class_=re.compile(r'snippet|roster|item|card|listing', re.I)) or a.parent.parent.parent
-                sn_text = sn.get_text(" | ", strip=True) if sn else a.get_text(" | ", strip=True)
-                p_eur = 0
-                curr = "EUR"
-                orig_str = None
+                        raw_price = it.get("price")
+                        p_eur = int(re.sub(r"[^\d]", "", str(raw_price))) if raw_price else 0
+                        curr = it.get("priceCurrency") or "EUR"
+                        orig_str = None
+                        if curr != "EUR" and p_eur > 0:
+                            raw_val = p_eur
+                            p_eur = convert_to_eur(raw_val, curr)
+                            orig_str = f"{raw_val:,} {curr} (~{p_eur:,} €)".replace(",", " ")
 
-                p_eur_match = re.search(r"([\d\s,.\xa0]+)\s*€", sn_text) or re.search(r"€\s*([\d\s,.\xa0]+)", sn_text)
-                p_usd_match = re.search(r"\$\s*([\d,]+)", sn_text) or re.search(r"([\d,]+)\s*\$", sn_text)
-                if p_eur_match:
-                    digits = re.sub(r"[^\d]", "", p_eur_match.group(1))
-                    if digits:
-                        p_eur = int(digits)
-                elif p_usd_match:
-                    digits_usd = re.sub(r"[^\d]", "", p_usd_match.group(1))
-                    if digits_usd:
-                        raw_usd = int(digits_usd)
-                        p_eur = convert_to_eur(raw_usd, "USD")
-                        curr = "USD"
-                        orig_str = f"${raw_usd:,} (~{p_eur:,} €)".replace(",", " ")
-                else:
-                    continue
+                        if p_eur <= 0:
+                            continue
+                        if max_price and p_eur > float(max_price):
+                            continue
 
-                if p_eur == 0:
-                    continue
-                if max_price and p_eur > float(max_price):
-                    continue
+                        floor_info = it.get("floorSize", {})
+                        s_val = float(floor_info.get("value") or 0)
+                        if min_surface and s_val > 0 and s_val < float(min_surface):
+                            continue
 
-                s_val = 0
-                s_m = re.search(r"(\d+)\s*m²", sn_text) or re.search(r"(\d+)\s*sq\.?\s*m", sn_text, re.I)
-                if s_m:
-                    s_val = float(s_m.group(1))
-                if min_surface and s_val > 0 and s_val < float(min_surface):
-                    continue
+                        n_rooms = it.get("numberOfRooms") or 1
+                        try:
+                            b_val = int(n_rooms)
+                        except Exception:
+                            b_val = 1
+                        r_str = f"T{b_val + 1}" if b_val > 0 else "Studio"
 
-                b_m = re.search(r"(\d+)\s*bedroom", sn_text, re.I)
-                b_val = int(b_m.group(1)) if b_m else 1
-                r_str = f"T{b_val + 1}" if b_val > 0 else "Studio"
+                        name = it.get("name") or f"Propriété {city_clean.capitalize()}"
+                        img_url = it.get("image") or ""
+                        # Amélioration résolution miniature
+                        if "77x56" in img_url:
+                            img_url = img_url.replace("77x56", "624x400")
 
-                imgs = [img.get("src") or img.get("data-src") for img in sn.find_all("img")]
-                valid_imgs = [i if i.startswith("http") else f"https://tranio.com{i}" for i in imgs if i and "jpg" in i]
-                hero_img = valid_imgs[0] if valid_imgs else ""
+                        ad_id = str(abs(hash(href)) % 10000000)
+                        jitter_lat = c_lat + ((idx % 7) - 3) * 0.007
+                        jitter_lon = c_lon + (((idx * 4) % 7) - 3) * 0.007
 
-                title = a.get_text(strip=True)
-                if len(title) < 8:
-                    t_elem = sn.find(class_=re.compile(r'title|header|name', re.I))
-                    if t_elem:
-                        title = t_elem.get_text(strip=True)
-                if len(title) < 8:
-                    title = f"Appartement de standing {city_clean.capitalize()} - {b_val} ch."
-
-                ad_id = str(abs(hash(href)) % 10000000)
-                jitter_lat = c_lat + ((idx % 7) - 3) * 0.007
-                jitter_lon = c_lon + (((idx * 4) % 7) - 3) * 0.007
-
-                results.append({
-                    "id": f"real_tra_{ad_id}",
-                    "universe": "immo",
-                    "category": "immo",
-                    "transaction_type": "achat",
-                    "category_label": f"Vente {city_clean.capitalize()} (Tranio)",
-                    "badge": f"🌍 Achat • {city_clean.capitalize()}",
-                    "title": title,
-                    "price": p_eur,
-                    "price_str": f"{p_eur:,} €".replace(",", " "),
-                    "price_original_str": orig_str,
-                    "currency": curr,
-                    "location": f"{city_clean.capitalize()}, {country_slug.split('/')[0].upper()}",
-                    "city": city_clean.capitalize(),
-                    "postal_code": "",
-                    "lat": jitter_lat,
-                    "lon": jitter_lon,
-                    "agency": "Tranio Global",
-                    "is_verified_agency": True,
-                    "url": href,
-                    "image_url": hero_img,
-                    "images": valid_imgs[:6],
-                    "description": f"{title}. Propriété internationale sélectionnée sur Tranio.",
-                    "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
-                    "surface_val": s_val,
-                    "rooms": r_str,
-                    "bedrooms": b_val,
-                    "floor": "N/C",
-                    "dpe": "C",
-                    "charges": "N/C",
-                    "amenities": ["Terrasse / Balcon", "Ascenseur", "Vue dégagée"],
-                    "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
-                    "market_avg_m2": 0,
-                    "market_delta_pct": 0,
-                    "market_badge": "🌍 Offre Internationale Premium",
-                    "date_detected": now,
-                })
+                        results.append({
+                            "id": f"real_tra_{ad_id}",
+                            "universe": "immo",
+                            "category": "immo",
+                            "transaction_type": "achat",
+                            "category_label": f"Vente {city_clean.capitalize()} (Tranio)",
+                            "badge": f"🌍 Achat • {city_clean.capitalize()}",
+                            "title": name,
+                            "price": p_eur,
+                            "price_str": f"{p_eur:,} €".replace(",", " "),
+                            "price_original_str": orig_str,
+                            "currency": curr,
+                            "location": f"{city_clean.capitalize()}, {country_slug.split('/')[0].upper()}",
+                            "city": city_clean.capitalize(),
+                            "postal_code": "",
+                            "lat": jitter_lat,
+                            "lon": jitter_lon,
+                            "agency": "Tranio Global",
+                            "is_verified_agency": True,
+                            "url": href,
+                            "image_url": img_url,
+                            "images": [img_url] if img_url else [],
+                            "description": f"{name}. Propriété internationale sélectionnée sur Tranio.",
+                            "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                            "surface_val": s_val,
+                            "rooms": r_str,
+                            "bedrooms": b_val,
+                            "floor": "N/C",
+                            "dpe": "C",
+                            "charges": "N/C",
+                            "amenities": ["Terrasse / Balcon", "Ascenseur", "Vue dégagée"],
+                            "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                            "market_avg_m2": 0,
+                            "market_delta_pct": 0,
+                            "market_badge": "🌍 Offre Internationale Premium",
+                            "date_detected": now,
+                        })
             except Exception:
                 continue
+
+        # 2. Fallback DOM si JSON-LD n'a rien donné
+        if not results:
+            ad_links = soup.find_all("a", href=re.compile(r'/\w+/adt/'))
+            for idx, a in enumerate(ad_links[:30]):
+                try:
+                    href = a.get("href")
+                    if not href:
+                        continue
+                    if href.startswith("/"):
+                        href = "https://tranio.com" + href
+                    if href in seen_urls or not is_url_safe(href):
+                        continue
+                    seen_urls.add(href)
+
+                    sn = a.find_parent(class_=re.compile(r'snippet|roster|item|card|listing', re.I)) or a.parent.parent.parent
+                    sn_text = sn.get_text(" | ", strip=True) if sn else a.get_text(" | ", strip=True)
+                    p_eur = 0
+                    curr = "EUR"
+                    orig_str = None
+
+                    p_eur_match = re.search(r"([\d\s,.\xa0]+)\s*€", sn_text) or re.search(r"€\s*([\d\s,.\xa0]+)", sn_text)
+                    p_usd_match = re.search(r"\$\s*([\d,]+)", sn_text) or re.search(r"([\d,]+)\s*\$", sn_text)
+                    if p_eur_match:
+                        digits = re.sub(r"[^\d]", "", p_eur_match.group(1))
+                        if digits:
+                            p_eur = int(digits)
+                    elif p_usd_match:
+                        digits_usd = re.sub(r"[^\d]", "", p_usd_match.group(1))
+                        if digits_usd:
+                            raw_usd = int(digits_usd)
+                            p_eur = convert_to_eur(raw_usd, "USD")
+                            curr = "USD"
+                            orig_str = f"${raw_usd:,} (~{p_eur:,} €)".replace(",", " ")
+                    else:
+                        continue
+
+                    if p_eur == 0:
+                        continue
+                    if max_price and p_eur > float(max_price):
+                        continue
+
+                    s_val = 0
+                    s_m = re.search(r"(\d+)\s*m²", sn_text) or re.search(r"(\d+)\s*sq\.?\s*m", sn_text, re.I)
+                    if s_m:
+                        s_val = float(s_m.group(1))
+                    if min_surface and s_val > 0 and s_val < float(min_surface):
+                        continue
+
+                    b_m = re.search(r"(\d+)\s*bedroom", sn_text, re.I)
+                    b_val = int(b_m.group(1)) if b_m else 1
+                    r_str = f"T{b_val + 1}" if b_val > 0 else "Studio"
+
+                    imgs = [img.get("src") or img.get("data-src") for img in sn.find_all("img")]
+                    valid_imgs = [i if i.startswith("http") else f"https://tranio.com{i}" for i in imgs if i and "jpg" in i]
+                    hero_img = valid_imgs[0] if valid_imgs else ""
+
+                    title = a.get_text(strip=True)
+                    if len(title) < 8:
+                        t_elem = sn.find(class_=re.compile(r'title|header|name', re.I))
+                        if t_elem:
+                            title = t_elem.get_text(strip=True)
+                    if len(title) < 8:
+                        title = f"Appartement de standing {city_clean.capitalize()} - {b_val} ch."
+
+                    ad_id = str(abs(hash(href)) % 10000000)
+                    jitter_lat = c_lat + ((idx % 7) - 3) * 0.007
+                    jitter_lon = c_lon + (((idx * 4) % 7) - 3) * 0.007
+
+                    results.append({
+                        "id": f"real_tra_{ad_id}",
+                        "universe": "immo",
+                        "category": "immo",
+                        "transaction_type": "achat",
+                        "category_label": f"Vente {city_clean.capitalize()} (Tranio)",
+                        "badge": f"🌍 Achat • {city_clean.capitalize()}",
+                        "title": title,
+                        "price": p_eur,
+                        "price_str": f"{p_eur:,} €".replace(",", " "),
+                        "price_original_str": orig_str,
+                        "currency": curr,
+                        "location": f"{city_clean.capitalize()}, {country_slug.split('/')[0].upper()}",
+                        "city": city_clean.capitalize(),
+                        "postal_code": "",
+                        "lat": jitter_lat,
+                        "lon": jitter_lon,
+                        "agency": "Tranio Global",
+                        "is_verified_agency": True,
+                        "url": href,
+                        "image_url": hero_img,
+                        "images": valid_imgs[:6],
+                        "description": f"{title}. Propriété internationale sélectionnée sur Tranio.",
+                        "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                        "surface_val": s_val,
+                        "rooms": r_str,
+                        "bedrooms": b_val,
+                        "floor": "N/C",
+                        "dpe": "C",
+                        "charges": "N/C",
+                        "amenities": ["Terrasse / Balcon", "Ascenseur", "Vue dégagée"],
+                        "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                        "market_avg_m2": 0,
+                        "market_delta_pct": 0,
+                        "market_badge": "🌍 Offre Internationale Premium",
+                        "date_detected": now,
+                    })
+                except Exception:
+                    continue
     except Exception as e:
         logger.warning(f"Erreur Tranio {url}: {e}")
 
@@ -1845,9 +2427,9 @@ def scrape_tranio(city, country_code="es", transaction_type="achat", max_price=N
 
 def scrape_international_cascade(city="Madrid", country_code="es", transaction_type="location", max_price=None, min_surface=None, rooms=None, exclude_viager=True, geo=None):
     """
-    Cascade de méta-agrégateurs mondiaux V15 :
-    - ACHAT : Green-Acres (Europe), Tranio (Monde), Point2Homes (US/CA), Properstar (si pas 403 Azure WAF)
-    - LOCATION : HousingAnywhere (Monde), Point2Homes (US/CA), Spotahome (Europe), Properstar (si pas 403)
+    Cascade de méta-agrégateurs mondiaux V16 :
+    - ACHAT : Green-Acres (Europe), Tranio (Monde), Rightmove (UK), Point2Homes (US/CA), Properstar (si pas 403 Azure WAF)
+    - LOCATION : HousingAnywhere (Monde), Spotahome (Europe), Flatio (Monde), Rightmove (UK), Point2Homes (US/CA), Properstar (si pas 403)
     """
     if not geo:
         geo = geocode_nominatim_world(city)
@@ -1877,17 +2459,21 @@ def scrape_international_cascade(city="Madrid", country_code="es", transaction_t
             ga_items = scrape_greenacres(city_name, cc, "achat", max_price, min_surface, rooms, exclude_viager, geo)
             add_unique(ga_items)
 
-        # 2. Tranio (Monde : Espagne, USA, France, etc.)
-        if len(combined) < 20:
-            tra_items = scrape_tranio(city_name, cc, "achat", max_price, min_surface, rooms, geo)
-            add_unique(tra_items)
+        # 2. Tranio (Ventes Monde : Espagne, USA, France, Italie, etc.)
+        tra_items = scrape_tranio(city_name, cc, "achat", max_price, min_surface, rooms, geo)
+        add_unique(tra_items)
 
-        # 3. Point2Homes (USA & Canada)
-        if cc in ("us", "ca") and len(combined) < 20:
+        # 3. Rightmove (Royaume-Uni : Londres, Manchester, etc.)
+        if cc in ("gb", "uk"):
+            rm_items = scrape_rightmove(city_name, cc, "achat", max_price, min_surface, rooms, geo)
+            add_unique(rm_items)
+
+        # 4. Point2Homes (USA & Canada)
+        if cc in ("us", "ca"):
             p2h_items = scrape_point2homes(city_name, cc, "achat", max_price, min_surface, rooms, geo)
             add_unique(p2h_items)
 
-        # 4. Properstar (60+ pays - Achat)
+        # 5. Properstar (60+ pays - Achat)
         if len(combined) < 15:
             ps_items = scrape_properstar(city_name, cc, "achat", max_price, min_surface, rooms, exclude_viager, geo)
             add_unique(ps_items)
@@ -1900,17 +2486,26 @@ def scrape_international_cascade(city="Madrid", country_code="es", transaction_t
         ha_items = scrape_housinganywhere(city_name, country_name, max_price, min_surface, rooms, geo)
         add_unique(ha_items)
 
-        # 2. Point2Homes (USA & Canada : Miami, New York, etc.)
-        if cc in ("us", "ca") and len(combined) < 20:
-            p2h_rent = scrape_point2homes(city_name, cc, "location", max_price, min_surface, rooms, geo)
-            add_unique(p2h_rent)
-
-        # 3. Spotahome (Europe : Madrid, Barcelone, Rome, Milan, Berlin, etc.)
-        if cc in european_cc and len(combined) < 20:
+        # 2. Spotahome (Europe : Madrid, Barcelone, Rome, Milan, Berlin, etc.)
+        if cc in european_cc:
             sp_items = scrape_spotahome(city_name, max_price, min_surface, rooms, geo)
             add_unique(sp_items)
 
-        # 4. Properstar (Location)
+        # 3. Flatio (Locations meublées mondiales)
+        fl_items = scrape_flatio(city_name, cc, max_price, min_surface, rooms, geo)
+        add_unique(fl_items)
+
+        # 4. Rightmove (Royaume-Uni : Londres, Manchester, etc.)
+        if cc in ("gb", "uk"):
+            rm_rent = scrape_rightmove(city_name, cc, "location", max_price, min_surface, rooms, geo)
+            add_unique(rm_rent)
+
+        # 5. Point2Homes (USA & Canada : Miami, New York, etc.)
+        if cc in ("us", "ca"):
+            p2h_rent = scrape_point2homes(city_name, cc, "location", max_price, min_surface, rooms, geo)
+            add_unique(p2h_rent)
+
+        # 6. Properstar (Location)
         if len(combined) < 15:
             ps_rent = scrape_properstar(city_name, cc, "location", max_price, min_surface, rooms, exclude_viager, geo)
             add_unique(ps_rent)
