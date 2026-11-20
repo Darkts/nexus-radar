@@ -1215,10 +1215,47 @@
       margin-top: 6px;
     }
 
-    /* Compatibilité badges & boutons Voyage existants */
-    .badge-voy-train { background: var(--booking-green) !important; color: #fff !important; }
-    .badge-voy-flight { background: var(--booking-navy) !important; color: #fff !important; }
-    .badge-voy-package { background: linear-gradient(135deg, #003B95, #006CE4) !important; color: #fff !important; }
+    /* Code Couleur Strict par Catégorie de Voyage (Cartes, Bordures & Badges) */
+    .card-booking-voyage.voy-train { border-top: 4px solid #10B981 !important; }
+    .card-booking-voyage.voy-flight { border-top: 4px solid #006CE4 !important; }
+    .card-booking-voyage.voy-package { border-top: 4px solid #7C3AED !important; }
+    .card-booking-voyage.voy-deal { border-top: 4px solid #F59E0B !important; }
+
+    .badge-voy-train { background: #ECFDF5 !important; color: #047857 !important; border: 1px solid #A7F3D0 !important; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+    .badge-voy-flight { background: #EFF6FF !important; color: #006CE4 !important; border: 1px solid #BFDBFE !important; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+    .badge-voy-package { background: #F5F3FF !important; color: #7C3AED !important; border: 1px solid #DDD6FE !important; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+    .badge-voy-deal { background: #FFFBEB !important; color: #B45309 !important; border: 1px solid #FDE68A !important; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+    .badge-voy-verified { background: #ECFDF5 !important; color: #047857 !important; border: 1px solid #10B981 !important; font-weight: 800; padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; }
+
+    /* Carnet de Voyage Modal (3 Onglets) */
+    .modal-tabs-header { display: flex; border-bottom: 1px solid #EBEBEB; background: #F8FAFC; padding: 4px 12px 0; gap: 6px; overflow-x: auto; }
+    .modal-tab-pill { padding: 9px 14px; font-size: 0.8rem; font-weight: 700; color: #64748B; border: none; background: none; border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; }
+    .modal-tab-pill.active { color: #006CE4; border-bottom-color: #006CE4; background: #FFFFFF; border-radius: 8px 8px 0 0; }
+    .modal-tab-content { padding: 14px; }
+    .modal-tab-pane { display: none; }
+    .modal-tab-pane.active { display: block; }
+
+    /* Carnet de Voyage - Programme & Spots */
+    .travel-program-banner { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.82rem; font-weight: 800; color: #1E40AF; display: flex; align-items: center; justify-content: space-between; }
+    .travel-spot-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .spot-badge-monument { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+    .spot-badge-restaurant { background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA; }
+    .spot-badge-view { background: #E0E7FF; color: #3730A3; border: 1px solid #C7D2FE; }
+    .spot-badge-cafe { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+    .btn-spot-maps { background: #F8FAFC; border: 1px solid #CBD5E1; color: #0284C7; font-size: 0.74rem; font-weight: 700; padding: 7px 12px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+    .btn-spot-maps:hover { background: #F0F9FF; border-color: #0284C7; }
+    .btn-spot-program { background: #FFF1F2; border: 1px solid #FFE4E6; color: #E11D48; font-size: 0.74rem; font-weight: 800; padding: 7px 12px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s ease; border: 1px solid #FFE4E6; }
+    .btn-spot-program.in-program { background: #E11D48; color: #FFFFFF; border-color: #E11D48; }
+
+    /* Carnet de Voyage - TikTok Cards */
+    .tiktok-search-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: inherit; transition: all 0.2s ease; }
+    .tiktok-search-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: #000000; }
+    .btn-tiktok-pill { background: #000000; color: #FFFFFF; font-weight: 800; font-size: 0.75rem; padding: 8px 14px; border-radius: 20px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+
+    /* Destinations Masquées (Dislike Learning) */
+    .voyage-hidden-dests-banner { background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.78rem; color: #334155; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .btn-unhide-dest { background: #FFFFFF; border: 1px solid #CBD5E1; color: #0284C7; font-weight: 700; font-size: 0.74rem; padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+    .btn-unhide-dest:hover { background: #F0F9FF; border-color: #0284C7; }
 
     .voyage-sync-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 6px 0; }
     .btn-sync-action { border-radius: 8px; padding: 7px 4px; font-size: 0.72rem; font-weight: 700; text-align: center; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
@@ -1226,9 +1263,9 @@
     .btn-sync-action.sync-flight:hover { background: var(--booking-blue); color: var(--text-main); }
     .btn-sync-action.sync-hotel { background: #F0FDF4; color: var(--booking-green); border: 1px solid #BBF7D0; }
     .btn-sync-action.sync-hotel:hover { background: var(--booking-green); color: var(--text-main); }
-    .btn-sync-action.sync-package { background: var(--booking-blue); color: var(--text-main); border: none; font-weight: 800; }
+    .btn-sync-action.sync-package { background: var(--booking-blue); color: #FFFFFF; border: none; font-weight: 800; }
     .btn-sync-action.sync-train { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
-    .btn-sync-action.sync-train:hover { background: #059669; color: var(--text-main); }
+    .btn-sync-action.sync-train:hover { background: #059669; color: #FFFFFF; }
 
     /* ========================================================= */
     /* 5. BARRE DE NAVIGATION EN BAS (BLANCHE & ÉPURÉE)          */
@@ -2188,24 +2225,31 @@
 
 
     <!-- ========================================================= -->
-    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (V9 SYNCHRONISÉ)    -->
+    <!-- UNIVERS 2 : ✈️ VOYAGE & PLANIFICATEUR (V16 SYNCHRONISÉ)   -->
     <!-- ========================================================= -->
     <section id="pane-voyage-feed" class="tab-pane">
 
-      <!-- 0. BANNIÈRE HORS FILTRES : OFFRES SPÉCIALES & INSPIRATIONS DU MOMENT -->
+      <!-- Bandeau d'apprentissage des aversions : Destinations masquées selon vos goûts -->
+      <div id="voyageHiddenDestsBanner" class="voyage-hidden-dests-banner" style="display: none;"></div>
+
+      <!-- ZONE 1 : BONS PLANS & OFFRES SPÉCIALES VÉRIFIÉES (100% DIRECT) -->
       <div class="voyage-inspirations-box">
         <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
           <div>
-            <div style="font-size: 0.96rem; font-weight: 800; color: var(--text-main);">✨ Offres Spéciales &amp; Inspirations du Moment</div>
-            <div style="font-size: 0.72rem; color: #94a3b8;">Sélection éditoriale indépendante : Ventes Flash compagnies, Idées Week-end Grand Est / LUX / BSL &amp; Séjours Soleil</div>
+            <div style="font-size: 0.98rem; font-weight: 800; color: var(--booking-navy);">✨ Bons Plans &amp; Offres Spéciales Vérifiées</div>
+            <div style="font-size: 0.72rem; color: var(--text-secondary);">100% Direct : Vols Ryanair (LUX, BSL, BVA, CRL, HHN) &amp; Flux Dealabs / VoyagesPirates / Fly4Free (&lt; 7j)</div>
           </div>
-          <span style="font-size: 0.68rem; font-weight: 800; color: #fcd34d; background: rgba(251,191,36,0.14); border: 1px solid rgba(251,191,36,0.35); padding: 3px 8px; border-radius: 6px;">Carrousel Indépendant</span>
+          <span class="badge-voy-verified">✅ Données Live Vérifiées</span>
         </div>
         <div class="voyage-inspi-track" id="voyageInspirationsTrack"></div>
       </div>
 
-      <!-- Moteur de Recherche Voyage Épuré Horizons -->
+      <!-- ZONE 2 : PLANIFICATEUR SELON MES DATES, MON DÉPART & MON BUDGET -->
       <div class="funnel-search-box">
+        <div style="margin-bottom: 8px;">
+          <div style="font-size: 0.96rem; font-weight: 800; color: var(--booking-navy);">🎯 Planificateur selon mes dates, mon départ &amp; mon budget</div>
+          <div style="font-size: 0.72rem; color: var(--text-secondary);">Zéro faux prix • Croisement synchronisé Transport + Hôtels Booking ≥ 8/10 aux dates exactes</div>
+        </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">
           <div class="voyage-funnel-step">
             <div class="search-input-wrap">
@@ -2693,48 +2737,80 @@
   </div>
 
   <!-- ========================================================= -->
-  <!-- MODALE SYNCHRONISÉE V9 : DÉTAIL PACKAGE (VOL + HÔTEL)     -->
+  <!-- MODALE VOYAGE V16 : CARNET DE VOYAGE TOUT COMPRIS (3 ONGLETS) -->
   <!-- ========================================================= -->
   <div class="detail-modal-overlay" id="voyagePackageModal" style="display:none; z-index:9998;">
-    <div class="detail-modal-header" style="border-bottom: 1px solid rgba(139, 92, 246, 0.45);">
+    <div class="detail-modal-header" style="border-bottom: 1px solid #EBEBEB; background:#FFFFFF;">
       <div style="display:flex; align-items:center; gap:10px;">
-        <button class="btn-icon" onclick="closeVoyagePackageModal()" style="width:32px; height:32px; border-radius:50%;">←</button>
+        <button class="btn-icon" onclick="closeVoyagePackageModal()" style="width:32px; height:32px; border-radius:50%; background:#F1F5F9; border:none; cursor:pointer;">←</button>
         <div>
-          <div style="font-size: 0.96rem; font-weight: 800; color: var(--text-main);" id="pkgModalTitle">Séjour Tout Compris Synchronisé</div>
-          <div style="font-size: 0.72rem; color: #fbbf24; font-weight: 700;" id="pkgModalSubtitle">Dates synchronisées</div>
+          <div style="font-size: 0.98rem; font-weight: 800; color: var(--booking-navy);" id="pkgModalTitle">Carnet de Voyage Tout Compris</div>
+          <div style="font-size: 0.74rem; color: #64748B; font-weight: 600;" id="pkgModalSubtitle">Itinéraire, Bonnes Adresses &amp; Repérage Vidéo</div>
         </div>
       </div>
       <button class="btn-close-detail" onclick="closeVoyagePackageModal()">✕</button>
     </div>
-    <div class="detail-hero-gallery" style="max-height:220px;">
-      <img id="pkgModalImg" src="" alt="Destination séjour" />
+
+    <!-- Onglets du Carnet de Voyage -->
+    <div class="modal-tabs-header">
+      <button class="modal-tab-pill active" id="pkgTab1Btn" onclick="switchVoyageModalTab(1)">📋 1. Logistique &amp; Coût Réel</button>
+      <button class="modal-tab-pill" id="pkgTab2Btn" onclick="switchVoyageModalTab(2)">🗺️ 2. Activités &amp; Meilleurs Restos</button>
+      <button class="modal-tab-pill" id="pkgTab3Btn" onclick="switchVoyageModalTab(3)">📱 3. Repérage Vidéo TikTok</button>
     </div>
-    <div class="detail-body">
-      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; border-bottom: 1px solid var(--card-border); padding-bottom: 12px;">
-        <div>
-          <span class="card-badge badge-voy-package" style="position:static; display:inline-block;" id="pkgModalBadge">🏨 SÉJOUR TOUT COMPRIS</span>
-          <div style="font-size: 1.55rem; font-weight: 800; color: #fbbf24; font-family: 'Space Grotesk', sans-serif; margin-top: 6px;" id="pkgModalTotal">0 €</div>
+
+    <div class="modal-tab-content">
+      <!-- ONGLET 1 : LOGISTIQUE & COÛT RÉEL -->
+      <div id="pkgTab1Pane" class="modal-tab-pane active">
+        <div class="detail-hero-gallery" style="max-height:220px; border-radius:10px; overflow:hidden; margin-bottom:12px;">
+          <img id="pkgModalImg" src="" alt="Destination séjour" style="width:100%; height:100%; object-fit:cover;" />
         </div>
-        <div style="font-size: 0.76rem; color: #a78bfa; font-weight: 700;" id="pkgModalHorizonBadge">Tarif réaliste J+14</div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; border-bottom: 1px solid var(--card-border); padding-bottom: 12px; margin-bottom:12px;">
+          <div>
+            <span class="card-badge" style="position:static; display:inline-block;" id="pkgModalBadge">🏨 SÉJOUR SYNCHRONISÉ</span>
+            <div style="font-size: 1.45rem; font-weight: 800; color: var(--booking-navy); font-family: 'Space Grotesk', sans-serif; margin-top: 4px;" id="pkgModalTotal">0 €</div>
+          </div>
+          <div style="font-size: 0.74rem; color: #047857; font-weight: 800; background:#ECFDF5; border:1px solid #A7F3D0; padding:4px 10px; border-radius:8px;" id="pkgModalHorizonBadge">Dates synchronisées</div>
+        </div>
+
+        <div id="pkgModalBreakdownBox" class="voyage-breakdown-box" style="margin-bottom:12px;"></div>
+
+        <p id="pkgModalDesc" style="font-size:0.82rem; color:var(--text-secondary); line-height:1.48; margin-bottom:14px;"></p>
+
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a id="pkgModalFlightBtn" class="btn-sync-action sync-flight" style="padding:12px; font-size:0.84rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
+            ✈️ 1. Ouvrir le Vol A/R aux dates exactes (Google Flights) ↗
+          </a>
+          <a id="pkgModalHotelBtn" class="btn-sync-action sync-hotel" style="padding:12px; font-size:0.84rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
+            🏨 2. Ouvrir Hôtels ≥ 8/10 aux mêmes dates (Booking.com) ↗
+          </a>
+          <a id="pkgModalTrainBtn" class="btn-sync-action sync-train" style="padding:12px; font-size:0.84rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
+            🚄 3. Ouvrir le Pré-acheminement Train (SNCF Connect / Transit) ↗
+          </a>
+          <a id="pkgModalComboBtn" class="btn-sync-action sync-package" style="padding:12px; font-size:0.84rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
+            📦 Ouvrir le Comparateur Combiné Google Travel (Vol + Hôtel) ↗
+          </a>
+        </div>
       </div>
 
-      <div id="pkgModalBreakdownBox" class="voyage-breakdown-box"></div>
+      <!-- ONGLET 2 : ACTIVITÉS & MEILLEURS RESTOS -->
+      <div id="pkgTab2Pane" class="modal-tab-pane">
+        <div id="travelProgramSummary" class="travel-program-banner">
+          <span>🎯 Mon programme : <strong id="travelProgramCount">0 lieu(x)</strong> sélectionné(s)</span>
+          <button class="btn-unhide-dest" onclick="clearTravelProgram()">↺ Vider mon programme</button>
+        </div>
+        <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:12px;">
+          Incontournables et tables sélectionnées. Cliquez sur <strong>🗺️ Avis Maps</strong> pour consulter les avis ou sur <strong>❤️ Ajouter</strong> pour composer votre feuille de route.
+        </div>
+        <div id="travelSpotsContainer" class="travel-spots-grid"></div>
+      </div>
 
-      <p id="pkgModalDesc" style="font-size:0.8rem; color:#cbd5e1; line-height:1.48;"></p>
-
-      <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
-        <a id="pkgModalFlightBtn" class="btn-sync-action sync-flight" style="padding:13px; font-size:0.85rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
-          ✈️ 1. Ouvrir le Vol A/R aux dates exactes (Google Flights) ↗
-        </a>
-        <a id="pkgModalHotelBtn" class="btn-sync-action sync-hotel" style="padding:13px; font-size:0.85rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
-          🏨 2. Ouvrir Hôtels ≥ 8/10 aux mêmes dates (Booking.com) ↗
-        </a>
-        <a id="pkgModalTrainBtn" class="btn-sync-action sync-train" style="padding:13px; font-size:0.85rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
-          🚄 3. Ouvrir le Pré-acheminement Rail (Trainline / Transit) ↗
-        </a>
-        <a id="pkgModalComboBtn" class="btn-sync-action sync-package" style="padding:13px; font-size:0.85rem; border-radius:10px;" href="#" target="_blank" rel="noopener">
-          📦 Ouvrir le Comparateur Combiné Google Travel (Vol + Hôtel) ↗
-        </a>
+      <!-- ONGLET 3 : REPÉRAGE VIDÉO TIKTOK -->
+      <div id="pkgTab3Pane" class="modal-tab-pane">
+        <div style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:14px; line-height:1.45;">
+          Visionnez en direct les retours d'expérience, les pépites cachées et la street food locale filmés par les voyageurs sur TikTok :
+        </div>
+        <div id="travelTikTokContainer" style="display:flex; flex-direction:column; gap:10px;"></div>
       </div>
     </div>
   </div>
@@ -3184,6 +3260,16 @@
     let favorites = loadMergedStorageList(['nexus_favorites', 'nexus_v5_favorites']);
     let dislikes = loadMergedStorageList(['nexus_dislikes', 'nexus_v5_dislikes']);
     let likedItems = loadMergedStorageList(['nexus_likes', 'nexus_liked_items', 'nexus_liked_immo', 'nexus_v5_liked_items']);
+    let destDislikes = (function() {
+      try {
+        return JSON.parse(localStorage.getItem('horizons_dest_dislikes') || '{}');
+      } catch (e) { return {}; }
+    })();
+    let travelProgram = (function() {
+      try {
+        return JSON.parse(localStorage.getItem('horizons_travel_program') || '[]');
+      } catch (e) { return []; }
+    })();
     let activeCatalogueSubtab = 'likes'; // 'likes' | 'favs'
     let toastHideTimer = null;
 
@@ -4754,6 +4840,13 @@
         if (!dislikes.includes(id)) {
           dislikes.push(id);
         }
+        if (itemObj && itemObj.universe === 'voyage') {
+          const rawDest = (itemObj.destination || itemObj.location || '').split('➔').pop().replace(/\(.*?\)/g, '').trim();
+          if (rawDest && rawDest.length >= 3) {
+            destDislikes[rawDest] = (destDislikes[rawDest] || 0) + 1;
+            localStorage.setItem('horizons_dest_dislikes', JSON.stringify(destDislikes));
+          }
+        }
         saveUserLists();
 
         if (card) {
@@ -4771,6 +4864,15 @@
     }
 
     function undoDislike(id) {
+      const itemObj = findItemById(id);
+      if (itemObj && itemObj.universe === 'voyage') {
+        const rawDest = (itemObj.destination || itemObj.location || '').split('➔').pop().replace(/\(.*?\)/g, '').trim();
+        if (rawDest && destDislikes[rawDest]) {
+          destDislikes[rawDest] = Math.max(0, destDislikes[rawDest] - 1);
+          if (destDislikes[rawDest] === 0) delete destDislikes[rawDest];
+          localStorage.setItem('horizons_dest_dislikes', JSON.stringify(destDislikes));
+        }
+      }
       dislikes = dislikes.filter(x => x !== id);
       saveUserLists();
       filterImmo();
@@ -4779,9 +4881,25 @@
       showToast('↩️ Annonce restaurée dans le flux !', 2000);
     }
 
+    function unhideVoyageDest(dest) {
+      if (destDislikes[dest]) delete destDislikes[dest];
+      localStorage.setItem('horizons_dest_dislikes', JSON.stringify(destDislikes));
+      applyVoyageCalendar(false);
+      showToast(`↺ Destination réactivée : ${dest} !`, 2200);
+    }
+
+    function resetAllVoyageDislikes() {
+      destDislikes = {};
+      localStorage.setItem('horizons_dest_dislikes', JSON.stringify(destDislikes));
+      applyVoyageCalendar(false);
+      showToast('↺ Toutes les destinations masquées ont été réactivées !', 2200);
+    }
+
     function resetDislikes() {
       const count = dislikes.length;
       dislikes = [];
+      destDislikes = {};
+      localStorage.setItem('horizons_dest_dislikes', JSON.stringify(destDislikes));
       saveUserLists();
       filterImmo();
       applyVoyageCalendar(false);
@@ -5653,27 +5771,44 @@
     function renderVoyageInspirationsCarousel() {
       const track = document.getElementById('voyageInspirationsTrack');
       if (!track) return;
-      track.innerHTML = VOYAGE_INSPIRATIONS_EDITORIAL.map(sp => `
-        <div class="voyage-inspi-card">
-          <img class="voyage-inspi-img" src="${sp.img}" alt="${sp.title}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
-          <div style="padding: 12px 14px; display:flex; flex-direction:column; gap:6px; flex:1;">
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
-              <span style="font-size:0.68rem; font-weight:700; color:#047857; background:#ECFDF5; border:1px solid #A7F3D0; padding:2px 8px; border-radius:12px;">${sp.badge}</span>
-              <span style="font-size:0.82rem; font-weight:800; color:#003B95;">${sp.priceHint}</span>
-            </div>
-            <div style="font-size:0.92rem; font-weight:800; color:#222222; line-height:1.25;">${sp.title}</div>
-            <div style="font-size:0.75rem; color:#717171; line-height:1.35;">${sp.meta}</div>
-            <div style="margin-top:auto; display:flex; gap:6px; padding-top:8px;">
-              <button type="button" onclick="applyVoyageInspiration('${sp.dest}', ${sp.nights})" style="flex:1; background:#006CE4; border:none; color:#FFFFFF; border-radius:8px; padding:8px 10px; font-size:0.74rem; font-weight:700; cursor:pointer;">
-                🎯 Découvrir ce séjour
-              </button>
-              <a href="${sp.url}" target="_blank" rel="noopener" style="background:#F0F6FF; border:1px solid #BFDBFE; color:#006CE4; border-radius:8px; padding:8px 10px; font-size:0.74rem; font-weight:700; text-decoration:none; display:flex; align-items:center; justify-content:center;">
-                ↗
-              </a>
+      const backendDeals = (allData || []).filter(it =>
+        it.universe === 'voyage' &&
+        (it.category === 'deal' || it.category === 'flight' || it.section_type === 'flash_deals') &&
+        !dislikes.includes(it.id)
+      );
+      const dealsToDisplay = backendDeals.length > 0 ? backendDeals.slice(0, 16) : VOYAGE_INSPIRATIONS_EDITORIAL;
+      track.innerHTML = dealsToDisplay.map(sp => {
+        const photos = getItemPhotos(sp);
+        const img = (photos && photos.length > 0) ? photos[0] : (sp.img || sp.image_url || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800');
+        const title = sp.title || 'Offre Voyage';
+        const badge = sp.badge || '✨ BON PLAN VÉRIFIÉ';
+        const priceStr = sp.price_str || (sp.price ? `${sp.price} €` : (sp.priceHint || 'Voir'));
+        const dateNote = sp.date_detected ? `📅 Détecté le ${formatFrDateShort(sp.date_detected)}` : 'Prix live vérifié';
+        const targetDest = (sp.destination || sp.title || 'Rome').replace(/\(.*?\)/g, '').trim();
+        const directUrl = sp.url || sp.flight_url || sp.train_url || '#';
+
+        return `
+          <div class="voyage-inspi-card" onclick="openVoyagePackageModal('${sp.id}')" style="cursor:pointer;">
+            <img class="voyage-inspi-img" src="${img}" alt="${escapeHtml(title)}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
+            <div style="padding: 12px 14px; display:flex; flex-direction:column; gap:6px; flex:1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+                <span style="font-size:0.68rem; font-weight:700; color:#047857; background:#ECFDF5; border:1px solid #A7F3D0; padding:2px 8px; border-radius:12px;">${escapeHtml(badge)}</span>
+                <span style="font-size:0.92rem; font-weight:800; color:#003B95;">${escapeHtml(priceStr)}</span>
+              </div>
+              <div style="font-size:0.88rem; font-weight:800; color:#222222; line-height:1.25;">${escapeHtml(title)}</div>
+              <div style="font-size:0.72rem; color:#047857; font-weight:700;">✅ ${dateNote}</div>
+              <div style="margin-top:auto; display:flex; gap:6px; padding-top:8px;" onclick="event.stopPropagation()">
+                <button type="button" onclick="openVoyagePackageModal('${sp.id}')" style="flex:1; background:#006CE4; border:none; color:#FFFFFF; border-radius:8px; padding:8px 10px; font-size:0.74rem; font-weight:700; cursor:pointer;">
+                  📦 Carnet Voyage
+                </button>
+                <a href="${directUrl}" target="_blank" rel="noopener" style="background:#F0F6FF; border:1px solid #BFDBFE; color:#006CE4; border-radius:8px; padding:8px 10px; font-size:0.74rem; font-weight:700; text-decoration:none; display:flex; align-items:center; justify-content:center;">
+                  ↗
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     function applyVoyageInspiration(dest, recommendedNights) {
@@ -6202,9 +6337,29 @@
         !dynIds.has(it.id)
       );
 
+      // Aversions automatiques (Dislike learning) : masquage des destinations avec >= 2 dislikes
+      const hiddenDests = Object.entries(destDislikes).filter(([d, c]) => c >= 2).map(([d]) => d);
+      const hiddenBanner = document.getElementById('voyageHiddenDestsBanner');
+      if (hiddenBanner) {
+        if (hiddenDests.length > 0) {
+          hiddenBanner.style.display = 'flex';
+          hiddenBanner.innerHTML = `
+            <span>🚫 <strong>Destinations masquées selon vos goûts :</strong> ${hiddenDests.join(', ')}</span>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              ${hiddenDests.map(d => `<button class="btn-unhide-dest" onclick="unhideVoyageDest('${d.replace(/'/g, "\\'")}')">↺ Réactiver ${escapeHtml(d)}</button>`).join('')}
+              <button class="btn-unhide-dest" onclick="resetAllVoyageDislikes()">↺ Tout réactiver</button>
+            </div>
+          `;
+        } else {
+          hiddenBanner.style.display = 'none';
+        }
+      }
+
       const combined = [...dynamicVoyageOffers, ...backendExtras].filter(it => {
         if (dislikes.includes(it.id) || likedItems.includes(it.id)) return false;
         if (it.price && it.price > budgetMax) return false;
+        const itDest = (it.destination || it.location || it.title || '').toLowerCase();
+        if (hiddenDests.some(hd => itDest.includes(hd.toLowerCase()))) return false;
         if (destQ && destQ !== 'partout') {
           const matchText = `${it.title || ''} ${it.location || ''} ${it.destination || ''} ${it.description || ''}`.toLowerCase();
           if (!matchText.includes(destQ)) return false;
@@ -6342,6 +6497,222 @@
       hideVoyageScanProgress(2200);
     }
 
+    // =========================================================
+    // VOYAGE V16 : CURATION DES SPOTS, RESTOS & TIKTOK DISCOVERY
+    // =========================================================
+    const VOYAGE_CURATED_SPOTS = {
+      'rome': [
+        { name: 'Colisée & Forum Romain', type: 'sight', badge: '🏛️ Incontournable', desc: 'Plongez dans 2000 ans d\'histoire impériale au cœur de la Rome antique.', query: 'Colosseo Roma' },
+        { name: 'Osteria da Fortunata', type: 'food', badge: '🍝 Pâtes Fraîches', desc: 'Pâtes faites main sous vos yeux (Cacio e Pepe & Carbonara authentiques).', query: 'Osteria da Fortunata Roma' },
+        { name: 'Trastevere & Piazza Santa Maria', type: 'sight', badge: '🌆 Flânerie Romantique', desc: 'Ruelles médiévales pavées, lierre grimpant et trattorias animées.', query: 'Piazza di Santa Maria in Trastevere Roma' },
+        { name: 'Roscioli Salumeria con Cucina', type: 'food', badge: '🍷 Cave & Charcuterie', desc: 'L\'un des temples gastronomiques de Rome pour la charcuterie et les vins.', query: 'Roscioli Salumeria con Cucina Roma' },
+        { name: 'Gelateria Frigidarium', type: 'food', badge: '🍦 Meilleure Glace', desc: 'Gelato artisanal trempé dans du chocolat chaud croquant.', query: 'Gelateria Frigidarium Roma' }
+      ],
+      'barcelone': [
+        { name: 'Sagrada Família', type: 'sight', badge: '🏛️ Chef-d\'œuvre Gaudí', desc: 'La basilique monumentale emblématique, lumière féerique des vitraux.', query: 'Sagrada Familia Barcelona' },
+        { name: 'El Xampanyet (El Born)', type: 'food', badge: '🍾 Bar à Tapas Cava', desc: 'Ambiance catalane typique depuis les années 1920, tapas et vin pétillant.', query: 'El Xampanyet Barcelona' },
+        { name: 'Parc Güell & Bunkers del Carmel', type: 'sight', badge: '📸 Vue Panoramique', desc: 'Panorama à 360° sur toute la métropole barcelonaise et la mer.', query: 'Bunkers del Carmel Barcelona' },
+        { name: 'Cervecería Catalana', type: 'food', badge: '🍤 Tapas & Montaditos', desc: 'Fruits de mer ultra-frais et montaditos au comptoir.', query: 'Cerveceria Catalana Barcelona' },
+        { name: 'Bar Cañete (Raval)', type: 'food', badge: '🔥 Tapas Gastronomiques', desc: 'Cuisine ouverte survoltée et produits ibériques d\'exception.', query: 'Bar Canete Barcelona' }
+      ],
+      'madrid': [
+        { name: 'Musée National du Prado & Retiro', type: 'sight', badge: '🏛️ Art & Nature', desc: 'Les chefs-d\'œuvre de Velázquez et Goya puis balade au Palais de Cristal.', query: 'Museo Nacional del Prado Madrid' },
+        { name: 'Mercado de San Miguel & La Latina', type: 'food', badge: '🍷 Halles Gourmandes', desc: 'Tapas haut de gamme, jamón ibérico de bellota et vermouth.', query: 'Mercado de San Miguel Madrid' },
+        { name: 'Casa Lucio (Cava Baja)', type: 'food', badge: '🍳 Huevos Rotos', desc: 'L\'institution mythique de Madrid réputée pour ses œufs cassés.', query: 'Casa Lucio Madrid' },
+        { name: 'Chocolatería San Ginés', type: 'food', badge: '☕ Churros Con Chocolate', desc: 'Churros dorés et chocolat noir onctueux servi depuis 1894.', query: 'Chocolateria San Gines Madrid' },
+        { name: 'Templo de Debod & Malasaña', type: 'sight', badge: '🌅 Coucher de Soleil', desc: 'Temple égyptien antique au crépuscule et ruelles bohèmes de Malasaña.', query: 'Templo de Debod Madrid' }
+      ],
+      'palma': [
+        { name: 'Cathédrale La Seu de Palma', type: 'sight', badge: '🏛️ Joyau Gothique', desc: 'Cathédrale monumentale dominant la baie et le front de mer.', query: 'Catedral de Santa Maria de Palma' },
+        { name: 'Bar España (Centre Historique)', type: 'food', badge: '🥖 Pinchos & Tapas', desc: 'Comptoir convivial de pinchos authentiques et bières artisanales.', query: 'Bar Espana Palma' },
+        { name: 'Mercat de l\'Olivar', type: 'food', badge: '🦞 Huîtres & Marché', desc: 'Halles vivantes avec bars à poissons et tapas au cœur de Palma.', query: 'Mercat de l Olivar Palma' },
+        { name: 'Château de Bellver', type: 'sight', badge: '🏰 Panorama Circulaire', desc: 'Rare château forteresse circulaire offrant une vue somptueuse sur la baie.', query: 'Castell de Bellver Palma' },
+        { name: 'Cala Mayor & Portixol', type: 'sight', badge: '🏖️ Balade Bord de Mer', desc: 'Ancien village de pêcheurs avec terrasses pour paella face aux vagues.', query: 'Portixol Palma' }
+      ],
+      'lisbonne': [
+        { name: 'Alfama & Tramway 28', type: 'sight', badge: '🚋 Quartier Historique', desc: 'Ruelles escarpées, chants de fado et belvédères Miradouros.', query: 'Miradouro de Santa Luzia Lisboa' },
+        { name: 'Time Out Market (Mercado da Ribeira)', type: 'food', badge: '🍽️ Food Hall des Chefs', desc: 'Les meilleurs chefs de Lisbonne réunis sous la même halle.', query: 'Time Out Market Lisboa' },
+        { name: 'Pastéis de Belém', type: 'food', badge: '🥧 Pâtisserie Originale', desc: 'La recette secrète originelle des fameux flans tièdes à la cannelle.', query: 'Pasteis de Belem Lisboa' },
+        { name: 'Cervejaria Ramiro', type: 'food', badge: '🦐 Temple des Fruits de Mer', desc: 'Fruits de mer extraordinaires servis à la bonne franquette.', query: 'Cervejaria Ramiro Lisboa' },
+        { name: 'Tour de Belém & Monastère des Hiéronymites', type: 'sight', badge: '🏛️ Art Manuélin', desc: 'Joyaux de l\'époque des grandes découvertes au bord du Tage.', query: 'Torre de Belem Lisboa' }
+      ],
+      'palerme': [
+        { name: 'Marché de Ballarò & Vucciria', type: 'food', badge: '🍢 Street Food Sicilienne', desc: 'Arancini, panelle et ambiance festive digne d\'un souk méditerranéen.', query: 'Mercato di Ballaro Palermo' },
+        { name: 'Cathédrale de Palerme & Chapelle Palatine', type: 'sight', badge: '🏛️ Art Arabo-Normand', desc: 'Mosaïques byzantines dorées d\'une beauté à couper le souffle.', query: 'Cattedrale di Palermo' },
+        { name: 'Pasticceria Cappello', type: 'food', badge: '🍰 Cannoli & Setteveli', desc: 'Les cannoli siciliens les plus croustillants et parfumés de la ville.', query: 'Pasticceria Cappello Palermo' },
+        { name: 'Trattoria da Salvo', type: 'food', badge: '🐟 Poissons du Jour', desc: 'Pâtes aux sardines et grillades de la mer ultra-fraîches.', query: 'Trattoria da Salvo Palermo' },
+        { name: 'Plage de Mondello', type: 'sight', badge: '🏖️ Eau Turquoise & Art Nouveau', desc: 'Bourg balnéaire élégant aux villas Liberty et sable blanc.', query: 'Spiaggia di Mondello Palermo' }
+      ],
+      'marrakech': [
+        { name: 'Jardin Majorelle & Musée YSL', type: 'sight', badge: '🌵 Oasis Botanique', desc: 'Bleu cobalt intense et collection de cactus féerique.', query: 'Jardin Majorelle Marrakech' },
+        { name: 'Place Jemaa el-Fna & Souks', type: 'sight', badge: '🎪 Cœur Vibrant', desc: 'Conteurs, musiciens, étals d\'épices et ambiance unique au monde.', query: 'Place Jemaa el-Fna Marrakech' },
+        { name: 'Nomad Marrakech', type: 'food', badge: '🍲 Rooftop Moderne', desc: 'Cuisine marocaine contemporaine avec vue plongeante sur la médina.', query: 'Nomad Restaurant Marrakech' },
+        { name: 'Café des Épices', type: 'food', badge: '☕ Thé à la Menthe & Pâtisseries', desc: 'Rooftop surplombant la place des épices au coucher du soleil.', query: 'Cafe des Epices Marrakech' },
+        { name: 'Palais Bahia', type: 'sight', badge: '🏛️ Joyau d\'Architecture', desc: 'Plafonds peints en cèdre, cours intérieures et faïences zellige.', query: 'Palais Bahia Marrakech' }
+      ],
+      'saint-martin': [
+        { name: 'Grand Case (Capitale Gastronomique)', type: 'food', badge: '🦞 Lololos & Haute Table', desc: 'Barbecues créoles sur la plage et tables gastronomiques françaises.', query: 'Grand Case Saint Martin' },
+        { name: 'Baie Orientale (Orient Bay)', type: 'sight', badge: '🏖️ Plage & Activités Nautiques', desc: 'Sable blanc, restaurants de plage et ambiance Saint-Tropez des Caraïbes.', query: 'Orient Beach Saint Martin' },
+        { name: 'Pinel Island & Ilet Tintamarre', type: 'sight', badge: '🐢 Escale Nature', desc: 'Navette bateau pour nager avec les tortues marines et déguster des langoustes.', query: 'Pinel Island Saint Martin' },
+        { name: 'Sunset Bar & Grill (Maho Beach)', type: 'drink', badge: '✈️ Atterrissages Rasant', desc: 'Spot mondial légendaire pour voir les avions atterrir au-dessus de l\'eau.', query: 'Sunset Bar and Grill Saint Martin' },
+        { name: 'Marigot & Fort Louis', type: 'sight', badge: '🏰 Panorama Vue Caraïbe', desc: 'Vue panoramique sur la marina et marché aux épices créoles.', query: 'Fort Louis Saint Martin' }
+      ],
+      'guadeloupe': [
+        { name: 'Pointe des Châteaux (Saint-François)', type: 'sight', badge: '🌊 Panorama Nature Sauvage', desc: 'Falaises escarpées battues par l\'Atlantique rappelant la Bretagne créole.', query: 'Pointe des Chateaux Guadeloupe' },
+        { name: 'Plage de Grande Anse (Deshaies)', type: 'sight', badge: '🏖️ Sable Doré & Cocotiers', desc: 'L\'une des plus belles plages des Caraïbes avec vue sur les îles.', query: 'Plage de Grande Anse Deshaies' },
+        { name: 'Distillerie Damoiseau & Bokits Locaux', type: 'food', badge: '🍹 Rhum Agricole & Bokit', desc: 'Dégustation de rhums d\'excellence et bokits chauds traditionnels.', query: 'Distillerie Damoiseau Guadeloupe' },
+        { name: 'Chutes du Carbet & Soufrière', type: 'sight', badge: '🌋 Volcan & Forêt Tropicale', desc: 'Randonnée vivifiante au cœur du parc national de Basse-Terre.', query: 'Chutes du Carbet Guadeloupe' },
+        { name: 'Ilet Gosier', type: 'sight', badge: '🏝️ Lagon Turquoise', desc: 'Traversée en barque locale pour une baignade idyllique.', query: 'Ilet du Gosier' }
+      ],
+      'martinique': [
+        { name: 'Plage des Salines (Sainte-Anne)', type: 'sight', badge: '🏖️ Carte Postale Caraïbes', desc: 'Sable blanc corallien, eau limpide et cocotiers penchés sur l\'eau.', query: 'Plage des Salines Martinique' },
+        { name: 'Anses d\'Arlet & Bourg Créole', type: 'sight', badge: '🐢 Tortues & Église sur l\'Eau', desc: 'Ponton pittoresque face à l\'église et plongée masque-tuba avec tortues.', query: 'Les Anses-d Arlet Martinique' },
+        { name: 'Habitation Clément (Le François)', type: 'sight', badge: '🎨 Rhum & Sculpture Contemporaine', desc: 'Domaine patrimonial magnifique mêlant art moderne et chais historiques.', query: 'Habitation Clement Martinique' },
+        { name: 'Chez Carole (Marché Couvert Fort-de-France)', type: 'food', badge: '🍲 Colombo & Féroce d\'Avocat', desc: 'Cuisine créole généreuse et familiale au cœur du grand marché.', query: 'Marche couvert de Fort-de-France' },
+        { name: 'Montagne Pelée & Jardin de Balata', type: 'sight', badge: '🌿 Végétation luxuriante', desc: 'Ponts suspendus au sommet des arbres et colibris tropicaux.', query: 'Jardin de Balata Martinique' }
+      ],
+      'new york': [
+        { name: 'Central Park & Top of the Rock', type: 'sight', badge: '🌆 Vue New-Yorkaise', desc: 'Vue époustouflante sur l\'Empire State Building et Manhattan.', query: 'Top of the Rock New York' },
+        { name: 'Katz\'s Delicatessen', type: 'food', badge: '🥪 Pastrami Légendaire', desc: 'Le sandwich au pastrami le plus réputé de New York depuis 1888.', query: 'Katz s Delicatessen New York' },
+        { name: 'Pont de Brooklyn & DUMBO', type: 'sight', badge: '🌉 Promenade Iconique', desc: 'Traversée à pied au coucher du soleil vers les rooftops de Brooklyn.', query: 'Brooklyn Bridge New York' },
+        { name: 'Joe\'s Pizza (Greenwich Village)', type: 'food', badge: '🍕 Part de Pizza Classique', desc: 'La tranche de pizza new-yorkaise de référence à déguster sur le trottoir.', query: 'Joe s Pizza Carmine Street New York' },
+        { name: 'High Line & Chelsea Market', type: 'sight', badge: '🌿 Coulée Verte Urbaine', desc: 'Ancienne voie ferrée aérienne végétalisée surplombant les galeries d\'art.', query: 'The High Line New York' }
+      ],
+      'tokyo': [
+        { name: 'Shibuya Crossing & Hachiko', type: 'sight', badge: '🚦 Énergie Urbaine', desc: 'Le carrefour piéton le plus célèbre et vibrant de la planète.', query: 'Shibuya Crossing Tokyo' },
+        { name: 'Temple Senso-ji (Asakusa)', type: 'sight', badge: '🏮 Tokyo Traditionnel', desc: 'Le plus vieux temple bouddhiste de Tokyo avec son immense lanterne rouge.', query: 'Sensō-ji Asakusa Tokyo' },
+        { name: 'Ichiran Ramen (Shinjuku)', type: 'food', badge: '🍜 Cabines Tonkotsu', desc: 'Ramen tonkotsu personnalisé dégusté dans des box individuels.', query: 'Ichiran Ramen Shinjuku Tokyo' },
+        { name: 'Akihabara & Electric Town', type: 'sight', badge: '⚡ Culture Geek & Pop', desc: 'Néons, boutiques de rétro-gaming et univers manga.', query: 'Akihabara Tokyo' },
+        { name: 'Omoide Yokocho & Golden Gai', type: 'food', badge: '🍢 Yakitori & Bars Rétro', desc: 'Allées étroites de minuscules comptoirs au charme des années 50.', query: 'Omoide Yokocho Tokyo' }
+      ],
+      'paris': [
+        { name: 'Montmartre & Sacré-Cœur', type: 'sight', badge: '🎨 Bohème & Panorama', desc: 'Ruelles pavées des peintres et vue majestueuse sur tout Paris.', query: 'Basilique du Sacre-Coeur de Montmartre' },
+        { name: 'Le Bouillon Chartier', type: 'food', badge: '🍷 Tradition Belle Époque', desc: 'Cuisine de bistrot classique sous verrière classée à prix très doux.', query: 'Bouillon Chartier Paris' },
+        { name: 'Musée d\'Orsay & Quais de Seine', type: 'sight', badge: '🏛️ Impressionnistes', desc: 'Ancienne gare somptueuse abritant Monet, Van Gogh et Degas.', query: 'Musee d Orsay Paris' },
+        { name: 'Quartier Latin & Jardin du Luxembourg', type: 'sight', badge: '📚 Esprit Rive Gauche', desc: 'Librairies historiques, fontaine Médicis et cours calmes.', query: 'Jardin du Luxembourg Paris' },
+        { name: 'Du Pain et des Idées', type: 'food', badge: '🥐 Boulangerie d\'Artisan', desc: 'L\'un des meilleurs pains des amis et escargot pistache-chocolat de la capitale.', query: 'Du Pain et des Idees Paris' }
+      ]
+    };
+
+    function getCuratedSpotsForCity(city) {
+      if (!city) city = 'Destination';
+      const clean = city.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      for (const [key, spots] of Object.entries(VOYAGE_CURATED_SPOTS)) {
+        if (clean.includes(key) || key.includes(clean)) {
+          return spots;
+        }
+      }
+      return [
+        { name: `${city} — Centre Historique & Monuments`, type: 'sight', badge: '🏛️ Incontournable', desc: `Découverte architecturale des ruelles et places majeures de ${city}.`, query: `${city} centre ville monuments historiques` },
+        { name: `${city} — Meilleurs Restaurants & Tables Locales`, type: 'food', badge: '🍽️ Table Gourmande', desc: `Sélection des tables réputées et spécialités régionales de ${city}.`, query: `meilleur restaurant cuisine locale ${city}` },
+        { name: `${city} — Marchés Authentiques & Terroir`, type: 'food', badge: '🥖 Produits Frais', desc: `Halles couvertes et étals typiques pour goûter aux produits du cru.`, query: `marche couvert produits locaux ${city}` },
+        { name: `${city} — Points de Vue & Spots Photos`, type: 'sight', badge: '📸 Vue Panoramique', desc: `Belvédère ou hauteur remarquable pour contempler ${city} au coucher du soleil.`, query: `meilleur point de vue belvedere photo ${city}` },
+        { name: `${city} — Cafés & Bars Conviviaux`, type: 'drink', badge: '☕ Pause & Ambiance', desc: `Terrasses animées et adresses emblématiques pour se détendre.`, query: `meilleur bar cafe terrasse ${city}` }
+      ];
+    }
+
+    function toggleTravelProgramSpot(spotName, btnEl) {
+      const idx = travelProgram.indexOf(spotName);
+      if (idx >= 0) {
+        travelProgram.splice(idx, 1);
+        if (btnEl) {
+          btnEl.classList.remove('saved');
+          btnEl.textContent = '🤍 Ajouter';
+        }
+        showToast(`Retiré du programme : ${spotName}`, 1800);
+      } else {
+        travelProgram.push(spotName);
+        if (btnEl) {
+          btnEl.classList.add('saved');
+          btnEl.textContent = '❤️ Ajouté';
+        }
+        showToast(`❤️ Ajouté à votre carnet : ${spotName}`, 2200);
+      }
+      localStorage.setItem('horizons_travel_program', JSON.stringify(travelProgram));
+      updateTravelProgramCounter();
+    }
+
+    function updateTravelProgramCounter() {
+      const el = document.getElementById('travelProgramCount');
+      if (el) el.textContent = `${travelProgram.length} lieu(x)`;
+    }
+
+    function clearTravelProgram() {
+      if (!travelProgram.length) {
+        showToast('Votre programme est déjà vide', 1600);
+        return;
+      }
+      travelProgram = [];
+      localStorage.setItem('horizons_travel_program', JSON.stringify(travelProgram));
+      updateTravelProgramCounter();
+      document.querySelectorAll('.travel-spot-btn.shortlist-btn').forEach(btn => {
+        btn.classList.remove('saved');
+        btn.textContent = '🤍 Ajouter';
+      });
+      showToast('Programme réinitialisé', 2000);
+    }
+
+    function renderTravelSpots(destClean) {
+      const container = document.getElementById('travelSpotsContainer');
+      if (!container) return;
+      const spots = getCuratedSpotsForCity(destClean);
+      container.innerHTML = spots.map(sp => {
+        const isSaved = travelProgram.includes(sp.name);
+        const qMaps = sp.query || `${sp.name} ${destClean}`;
+        const safeName = sp.name.replace(/'/g, "\\'");
+        return `
+          <div class="travel-spot-card">
+            <div class="travel-spot-header">
+              <span class="travel-spot-badge">${escapeHtml(sp.badge)}</span>
+              <span class="travel-spot-type">${sp.type === 'food' ? '🍴 Gastronomie' : (sp.type === 'drink' ? '🍸 Ambiance' : '🏛️ Visite')}</span>
+            </div>
+            <div class="travel-spot-title">${escapeHtml(sp.name)}</div>
+            <div class="travel-spot-desc">${escapeHtml(sp.desc)}</div>
+            <div class="travel-spot-actions">
+              <a class="travel-spot-btn maps-btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(qMaps)}" target="_blank" rel="noopener">🗺️ Avis Google Maps</a>
+              <button class="travel-spot-btn shortlist-btn ${isSaved ? 'saved' : ''}" onclick="toggleTravelProgramSpot('${safeName}', this)">
+                ${isSaved ? '❤️ Ajouté' : '🤍 Ajouter'}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+      updateTravelProgramCounter();
+    }
+
+    function renderTravelTikTok(destClean) {
+      const container = document.getElementById('travelTikTokContainer');
+      if (!container) return;
+      const tiktokQueries = [
+        { title: `Bons plans & adresses secrètes à ${destClean}`, q: `bons plans pepites secrets ${destClean}`, tag: '🔥 Recommandé' },
+        { title: `Que faire à ${destClean} en 3 jours (Itinéraire)`, q: `que faire visiter ${destClean} 3 jours itineraire`, tag: '🗺️ Itinéraire' },
+        { title: `Meilleure Street Food & restos typiques à ${destClean}`, q: `meilleurs restos street food ${destClean}`, tag: '🍕 Foodies' },
+        { title: `Budget, transports & pièges à éviter à ${destClean}`, q: `budget transport pieges a eviter voyage ${destClean}`, tag: '💡 Astuces' }
+      ];
+
+      container.innerHTML = tiktokQueries.map(t => `
+        <div class="travel-tiktok-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="tiktok-badge">${t.tag}</span>
+            <span style="font-size:0.7rem; color:#FE2C55; font-weight:700;">TikTok ↗</span>
+          </div>
+          <div class="tiktok-title">${escapeHtml(t.title)}</div>
+          <a class="tiktok-link-btn" href="https://www.tiktok.com/search?q=${encodeURIComponent(t.q)}" target="_blank" rel="noopener">
+            ▶ Regarder les vidéos en direct sur TikTok
+          </a>
+        </div>
+      `).join('');
+    }
+
+    function switchVoyageModalTab(tabIndex) {
+      [1, 2, 3].forEach(idx => {
+        const btn = document.getElementById(`pkgTab${idx}Btn`);
+        const pane = document.getElementById(`pkgTab${idx}Pane`);
+        if (btn) btn.classList.toggle('active', idx === tabIndex);
+        if (pane) pane.classList.toggle('active', idx === tabIndex);
+      });
+    }
+
     function openVoyagePackageModal(id) {
       const it = findItemById(id);
       if (!it) return;
@@ -6349,9 +6720,10 @@
       if (!modal) return;
 
       const tc = it.true_cost;
-      const depIso = it.dep_iso || getEffectiveVoyageDates().depIso;
-      const retIso = it.ret_iso || getEffectiveVoyageDates().retIso;
-      const nights = it.nights || getEffectiveVoyageDates().nights;
+      const eff = getEffectiveVoyageDates();
+      const depIso = it.dep_iso || eff.depIso;
+      const retIso = it.ret_iso || eff.retIso;
+      const nights = it.nights || eff.nights;
       const destClean = (it.destination || it.location || 'Rome').replace(/\(.*?\)/g, '').trim();
       const depClean = (it.departure_hub || 'Nancy').replace(/\(.*?\)/g, '').trim();
       const fallbackLinks = buildVoyageBookingLinks(depClean, destClean, depIso, retIso);
@@ -6361,31 +6733,63 @@
       const trainUrl = it.train_url || fallbackLinks.trainUrl;
       const pkgUrl = it.package_url || fallbackLinks.packageUrl;
 
-      document.getElementById('pkgModalTitle').textContent = it.title || 'Séjour Tout Compris';
-      document.getElementById('pkgModalSubtitle').textContent = `📅 Dates synchronisées : ${depIso} ➔ ${retIso} (${nights} nuit(s))`;
+      document.getElementById('pkgModalTitle').textContent = it.title || `Séjour Tout Compris : ${destClean}`;
+      document.getElementById('pkgModalSubtitle').textContent = `📅 Dates : ${depIso} ➔ ${retIso} (${nights} nuits) • Départ : ${depClean}`;
       const imgEl = document.getElementById('pkgModalImg');
       if (imgEl) {
         imgEl.onerror = () => handleImgError(imgEl, 'voyage');
         imgEl.src = getItemPhotos(it)[0];
       }
 
-      const totalVal = tc ? tc.total_per_person : (it.price || 0);
-      document.getElementById('pkgModalTotal').textContent = `${totalVal} € Tout Compris / pers.`;
-      document.getElementById('pkgModalHorizonBadge').textContent = (tc && tc.horizon_note) ? tc.horizon_note : `J+${it.days_out || 14}`;
-      document.getElementById('pkgModalDesc').textContent = it.description || '';
+      const isLiveDeal = !!(it.verified_live || it.source_site === 'Ryanair FareFinder' || it.feed_name);
+      const badgeEl = document.getElementById('pkgModalBadge');
+      const totalEl = document.getElementById('pkgModalTotal');
+      const horizonBadgeEl = document.getElementById('pkgModalHorizonBadge');
+
+      if (isLiveDeal) {
+        if (badgeEl) {
+          badgeEl.className = 'card-badge badge-deal';
+          badgeEl.textContent = '✨ BON PLAN VÉRIFIÉ';
+        }
+        if (totalEl) totalEl.textContent = `${it.price || it.price_str} €`;
+        if (horizonBadgeEl) {
+          horizonBadgeEl.textContent = it.date_detected ? `✅ Détecté le ${formatFrDateShort(it.date_detected)}` : '✅ Prix live vérifié';
+        }
+      } else if (it.category === 'train') {
+        if (badgeEl) {
+          badgeEl.className = 'card-badge badge-train';
+          badgeEl.textContent = '🚄 TRAIN DIRECT';
+        }
+        if (totalEl) totalEl.textContent = 'Tarifs en direct';
+        if (horizonBadgeEl) horizonBadgeEl.textContent = `📅 ${nights} nuits • Rail`;
+      } else {
+        if (badgeEl) {
+          badgeEl.className = 'card-badge badge-package';
+          badgeEl.textContent = '🏨 SÉJOUR SYNCHRONISÉ';
+        }
+        if (totalEl) totalEl.textContent = 'Tarifs en direct';
+        if (horizonBadgeEl) horizonBadgeEl.textContent = `📅 ${nights} nuits • Dates synchronisées`;
+      }
+
+      document.getElementById('pkgModalDesc').textContent = it.description || `Séjour tout compris au départ de ${depClean} vers ${destClean} du ${depIso} au ${retIso}.`;
 
       const box = document.getElementById('pkgModalBreakdownBox');
       if (box) {
-        if (tc) {
+        if (isLiveDeal) {
           box.innerHTML = `
-            <div class="voyage-breakdown-row"><span>🚄 ${tc.shuttle_label || 'Liaison Aéroport A/R'}</span><strong>${tc.shuttle_cost || 0} €</strong></div>
-            <div class="voyage-breakdown-row"><span>✈️ Vol A/R aux dates exactes</span><strong>${tc.flight_cost || 0} €</strong></div>
-            <div class="voyage-breakdown-row"><span>🏨 Hôtel 8.5★ (${tc.nights || nights} nuits × ${tc.hotel_per_night || 90}€)</span><strong>${tc.hotel_total || 0} €</strong></div>
+            <div class="voyage-breakdown-row"><span>✈️ Offre vol / voyage direct</span><strong>${it.price || it.price_str} €</strong></div>
+            <div class="voyage-breakdown-row"><span>🏨 Hébergement Booking recommandé</span><strong>≥ 8/10 sélectionné</strong></div>
             <div class="voyage-breakdown-sep"></div>
-            <div class="voyage-breakdown-total"><span>💰 TOTAL TOUT COMPRIS</span><span>${tc.total_per_person} € / pers.</span></div>
+            <div class="voyage-breakdown-total"><span>💰 PRIX DU VOL / SÉJOUR</span><span>${it.price || it.price_str} €</span></div>
           `;
         } else {
-          box.innerHTML = `<div class="voyage-breakdown-total"><span>💰 ESTIMATION TOTALE</span><span>${it.price_str}</span></div>`;
+          box.innerHTML = `
+            <div class="voyage-breakdown-row"><span>🚄 1. Départ Grand Est</span><strong>TGV / Navette vers aéroport hub</strong></div>
+            <div class="voyage-breakdown-row"><span>✈️ 2. Trajet Principal (${depClean} ➔ ${destClean})</span><strong>${nights} nuits aux dates choisies</strong></div>
+            <div class="voyage-breakdown-row"><span>🏨 3. Hébergement Booking.com</span><strong>Filtre note ≥ 8/10 actif</strong></div>
+            <div class="voyage-breakdown-sep"></div>
+            <div class="voyage-breakdown-total"><span>🔍 DISPONIBILITÉS & PRIX</span><span>Vérifiés en direct sur chaque site</span></div>
+          `;
         }
       }
 
@@ -6393,20 +6797,30 @@
       const bHotel = document.getElementById('pkgModalHotelBtn');
       const bTrain = document.getElementById('pkgModalTrainBtn');
       const bCombo = document.getElementById('pkgModalComboBtn');
+
       if (bFlight) {
         bFlight.href = flightUrl;
-        bFlight.textContent = tc ? `✈️ 1. Ouvrir le Vol A/R (${tc.flight_cost}€) — Google Flights ↗` : `✈️ 1. Ouvrir le Vol A/R (${depIso} ➔ ${retIso}) ↗`;
+        bFlight.textContent = `✈️ 1. Ouvrir le Vol A/R (${depClean} ➔ ${destClean}) — Google Flights ↗`;
       }
       if (bHotel) {
         bHotel.href = hotelUrl;
-        bHotel.textContent = tc ? `🏨 2. Ouvrir Hôtels ≥ 8/10 (${tc.hotel_total}€ / ${tc.nights || nights} nuits) — Booking ↗` : `🏨 2. Ouvrir Hôtels ≥ 8/10 (${depIso} ➔ ${retIso}) ↗`;
+        bHotel.textContent = `🏨 2. Ouvrir Hôtels ≥ 8/10 (${depIso} ➔ ${retIso}) — Booking.com ↗`;
       }
       if (bTrain) {
         bTrain.href = trainUrl;
-        bTrain.style.display = (tc && tc.shuttle_cost === 0) ? 'none' : 'inline-flex';
-        bTrain.textContent = tc ? `🚄 3. Ouvrir le Pré-acheminement Rail (${tc.shuttle_cost}€ A/R) ↗` : `🚄 3. Ouvrir l'itinéraire Rail ↗`;
+        bTrain.textContent = `🚄 3. Ouvrir l'itinéraire Rail (${depClean}) — SNCF Connect / Transit ↗`;
       }
-      if (bCombo) bCombo.href = pkgUrl;
+      if (bCombo) {
+        bCombo.href = pkgUrl;
+        bCombo.textContent = `📦 4. Ouvrir le Comparateur Voyage (Vol + Hôtel) ↗`;
+      }
+
+      // Onglet 2 & 3
+      renderTravelSpots(destClean);
+      renderTravelTikTok(destClean);
+
+      // Activer l'onglet 1 par défaut
+      switchVoyageModalTab(1);
 
       modal.style.display = 'block';
       document.body.style.overflow = 'hidden';
@@ -6418,11 +6832,22 @@
       document.body.style.overflow = '';
     }
 
-        function createVoyageCardHtml(it, inCatalogue = false) {
+    function createVoyageCardHtml(it, inCatalogue = false) {
       const isFav = favorites.includes(it.id);
-      const catType = it.category === 'train'
-        ? 'train'
-        : (it.category === 'package' ? 'package' : 'flight');
+      const isLiveDeal = !!(it.verified_live || it.source_site === 'Ryanair FareFinder' || it.feed_name);
+      
+      let catClass = 'voy-flight';
+      let offerBadgeText = '✈️ VOL A/R';
+      if (isLiveDeal) {
+        catClass = 'voy-deal';
+        offerBadgeText = '✨ BON PLAN VÉRIFIÉ';
+      } else if (it.category === 'train') {
+        catClass = 'voy-train';
+        offerBadgeText = '🚄 TRAIN DIRECT';
+      } else if (it.category === 'package') {
+        catClass = 'voy-package';
+        offerBadgeText = '🏨 SÉJOUR SYNCHRONISÉ';
+      }
 
       const photos = getItemPhotos(it);
       const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
@@ -6432,31 +6857,26 @@
       const depIso = it.dep_iso || eff.depIso;
       const retIso = it.ret_iso || eff.retIso;
       const nights = it.nights || eff.nights;
-      const fallbackLinks = buildVoyageBookingLinks(it.departure_hub || 'Nancy', it.destination || 'Paris', depIso, retIso);
+      const destClean = (it.destination || it.location || 'Rome').replace(/\(.*?\)/g, '').trim();
+      const depClean = (it.departure_hub || 'Nancy').replace(/\(.*?\)/g, '').trim();
+      const fallbackLinks = buildVoyageBookingLinks(depClean, destClean, depIso, retIso);
 
       const flightUrl = (it.skyscanner_url && it.skyscanner_url.startsWith('http'))
         ? it.skyscanner_url
-        : ((it.flight_url && it.flight_url.startsWith('http')) ? it.flight_url : (fallbackLinks.skyscannerUrl || fallbackLinks.flightsUrl));
+        : ((it.flight_url && it.flight_url.startsWith('http')) ? it.flight_url : fallbackLinks.flightsUrl);
       const hotelUrl = (it.hotel_url && it.hotel_url.startsWith('http')) ? it.hotel_url : fallbackLinks.bookingUrl;
       const trainUrl = (it.train_url && it.train_url.startsWith('http')) ? it.train_url : ((it.url && it.url.startsWith('http')) ? it.url : fallbackLinks.trainUrl);
-
-      const tc = it.true_cost;
-      const finalPriceNum = tc ? tc.total_per_person : (it.price || 120);
-      const refPriceNum = Math.round(finalPriceNum * 1.35);
-
-      const offerBadgeText = catType === 'train'
-        ? '✓ Train TGV / OUIGO direct'
-        : (catType === 'package' ? '✓ Train + Vol + Hôtel compris' : '✓ Vol A/R vérifié');
+      const directUrl = (it.url && it.url.startsWith('http')) ? it.url : flightUrl;
 
       return `
-        <!-- Carte Blanche Style Booking.com avec bordure fine #E7E7E7 -->
-        <div class="card card-booking-voyage ${inCatalogue ? 'catalogue-card' : ''}" id="card_${it.id}" data-id="${it.id}">
+        <!-- Carte Blanche Style Booking.com avec bordure de catégorie -->
+        <div class="card card-booking-voyage ${catClass} ${inCatalogue ? 'catalogue-card' : ''}" id="card_${it.id}" data-id="${it.id}">
           <div class="card-booking-img-wrap" onclick="openVoyagePackageModal('${it.id}')">
             <img id="card_img_${it.id}" class="card-booking-img" src="${photos[curIdx]}" alt="${safeTitle}" loading="lazy" onerror="handleImgError(this, 'voyage')" />
             
             <div class="booking-badges-top">
               <span class="badge-booking-deal">${offerBadgeText}</span>
-              <span class="badge-booking-rating">8.6 Superbe</span>
+              <span class="badge-booking-rating">★ 8.8 Coup de Cœur</span>
             </div>
 
             <button class="btn-booking-fav ${isFav ? 'active' : ''}" title="Sauvegarder"
@@ -6479,37 +6899,53 @@
 
           <div class="card-booking-body">
             <div class="booking-dest-row">
-              <div class="booking-dest-title">${it.destination || it.location}</div>
-              <div class="booking-badge-navy">Note 8.6</div>
+              <div class="booking-dest-title">${escapeHtml(it.destination || it.location || 'Destination')}</div>
+              <div class="booking-badge-navy">${isLiveDeal ? 'Live Deal' : 'Note 8.8'}</div>
             </div>
 
             <div class="booking-meta-row">
-              <span>Départ : ${it.departure_hub || 'Nancy / Grand Est'}</span>
+              <span>Départ : ${escapeHtml(depClean)}</span>
               <span>📅 ${depIso.slice(5)} ➔ ${retIso.slice(5)} (${nights} nuits)</span>
             </div>
 
-            <div class="booking-title">${it.title}</div>
+            <div class="booking-title">${escapeHtml(it.title || 'Séjour')}</div>
 
-            <!-- Détail clair du prix barré vs prix final en gros -->
+            <!-- Détail tarifaire : VRAI prix live OU Disponibilités directes (0 prix inventé) -->
             <div class="booking-pricing-box">
-              <div class="booking-old-price">${refPriceNum} €</div>
-              <div class="booking-final-price-row">
-                <span class="booking-final-price">${finalPriceNum} €</span>
-                <span class="booking-price-unit">/ pers. tout compris</span>
-              </div>
+              ${isLiveDeal ? `
+                <div class="booking-final-price-row">
+                  <span class="booking-final-price">${it.price || it.price_str} €</span>
+                  <span class="booking-price-unit">${it.category === 'flight' ? '/ vol A/R' : '/ séjour'}</span>
+                </div>
+                <div style="font-size:0.72rem; color:#047857; font-weight:700; margin-top:2px;">
+                  ✅ Prix live vérifié ${it.date_detected ? '• Détecté le ' + formatFrDateShort(it.date_detected) : ''}
+                </div>
+              ` : `
+                <div class="booking-final-price-row">
+                  <span class="booking-final-price" style="font-size:1.12rem; color:#003B95;">Tarifs en direct</span>
+                  <span class="booking-price-unit">${nights} nuits • Synchronisé</span>
+                </div>
+                <div style="font-size:0.72rem; color:#64748B; font-weight:600; margin-top:2px;">
+                  🔍 Disponibilités &amp; tarifs en direct aux dates exactes
+                </div>
+              `}
             </div>
 
-            <!-- Boutons d'action bleus Booking #006CE4 -->
+            <!-- Boutons d'action Booking.com -->
             <div class="booking-actions-row" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">
-              ${catType === 'train' ? `
+              ${it.category === 'train' ? `
                 <a class="btn-booking-action" href="${trainUrl}" target="_blank" rel="noopener">🚄 Voir le Train</a>
                 <a class="btn-booking-action" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Voir l'Hôtel</a>
-                <button type="button" class="btn-booking-action btn-booking-primary" onclick="openVoyagePackageModal('${it.id}')">📦 Package</button>
-              ` : `
-                <a class="btn-booking-action" href="${flightUrl}" target="_blank" rel="noopener">✈️ Voir le Vol</a>
+                <button type="button" class="btn-booking-action btn-booking-primary" onclick="openVoyagePackageModal('${it.id}')">📦 Carnet</button>
+              ` : (isLiveDeal ? `
+                <a class="btn-booking-action" href="${directUrl}" target="_blank" rel="noopener">🔗 Voir l'offre</a>
                 <a class="btn-booking-action" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Voir l'Hôtel</a>
-                <button type="button" class="btn-booking-action btn-booking-primary" onclick="openVoyagePackageModal('${it.id}')">📦 Package</button>
-              `}
+                <button type="button" class="btn-booking-action btn-booking-primary" onclick="openVoyagePackageModal('${it.id}')">📦 Carnet</button>
+              ` : `
+                <a class="btn-booking-action" href="${flightUrl}" target="_blank" rel="noopener">✈️ Voir les Vols</a>
+                <a class="btn-booking-action" href="${hotelUrl}" target="_blank" rel="noopener">🏨 Voir l'Hôtel</a>
+                <button type="button" class="btn-booking-action btn-booking-primary" onclick="openVoyagePackageModal('${it.id}')">📦 Carnet</button>
+              `)}
             </div>
 
             <div class="card-booking-subactions" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()" onmousedown="event.stopPropagation()">

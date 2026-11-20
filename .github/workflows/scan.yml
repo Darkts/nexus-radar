@@ -62,6 +62,10 @@ on:
         description: 'Exécuter la sonde réseau sur les 8 portails internationaux'
         required: false
         default: 'false'
+      probe_voyage:
+        description: 'Exécuter la sonde réseau sur les sources Voyage (Ryanair, SNCF, RSS...)'
+        required: false
+        default: 'false'
 
 # Autorisation d'écriture nécessaire pour commit et push data/annonces.json
 permissions:
@@ -119,6 +123,7 @@ jobs:
           SCAN_DEPARTURE: ${{ inputs.departure_city || '' }}
           SCAN_DESTINATION: ${{ inputs.destination || '' }}
           SCAN_PROBE: ${{ inputs.probe_international || 'false' }}
+          SCAN_PROBE_VOYAGE: ${{ inputs.probe_voyage || 'false' }}
           SCAN_USE_PLAYWRIGHT: ${{ inputs.use_playwright || 'false' }}
         run: |
           python scraper.py
