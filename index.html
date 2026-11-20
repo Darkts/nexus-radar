@@ -2751,6 +2751,149 @@
   <script>
     
     // =========================================================
+    // HORIZONS VAULT V15 : PERSISTANCE DOUBLE LOCALSTORAGE + INDEXEDDB
+    // Anti-perte absolue de Token GitHub (survit aux mises à jour PWA & SW)
+    // =========================================================
+    const HorizonsVault = {
+      DB_NAME: 'horizons_vault',
+      DB_VERSION: 1,
+      STORE_NAME: 'credentials',
+      TOKEN_KEYS: [
+        'horizons_gh_token', 'nexus_gh_token', 'gh_token', 'github_token',
+        'radar_token', 'radar_gh_token', 'ghToken', 'gh_pat', 'pat',
+        'github_pat', 'sxm_gh_token', 'auth_token'
+      ],
+      REPO_KEYS: [
+        'horizons_gh_repo', 'nexus_gh_repo', 'gh_repo', 'github_repo',
+        'radar_repo', 'repo', 'ghRepo'
+      ],
+
+      _openDB() {
+        return new Promise((resolve) => {
+          if (!window.indexedDB) return resolve(null);
+          try {
+            const req = indexedDB.open(this.DB_NAME, this.DB_VERSION);
+            req.onupgradeneeded = (e) => {
+              const db = e.target.result;
+              if (!db.objectStoreNames.contains(this.STORE_NAME)) {
+                db.createObjectStore(this.STORE_NAME, { keyPath: 'id' });
+              }
+            };
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => resolve(null);
+          } catch (e) {
+            resolve(null);
+          }
+        });
+      },
+
+      async readFromIndexedDB() {
+        try {
+          const db = await this._openDB();
+          if (!db) return null;
+          return new Promise((resolve) => {
+            const tx = db.transaction(this.STORE_NAME, 'readonly');
+            const store = tx.objectStore(this.STORE_NAME);
+            const req = store.get('github_auth');
+            req.onsuccess = () => resolve(req.result || null);
+            req.onerror = () => resolve(null);
+          });
+        } catch (e) {
+          return null;
+        }
+      },
+
+      async writeToIndexedDB(token, repo) {
+        try {
+          const db = await this._openDB();
+          if (!db) return;
+          return new Promise((resolve) => {
+            const tx = db.transaction(this.STORE_NAME, 'readwrite');
+            const store = tx.objectStore(this.STORE_NAME);
+            store.put({
+              id: 'github_auth',
+              token: token,
+              repo: repo,
+              updated_at: new Date().toISOString()
+            });
+            tx.oncomplete = () => resolve(true);
+            tx.onerror = () => resolve(false);
+          });
+        } catch (e) {}
+      },
+
+      getToken() {
+        for (const k of this.TOKEN_KEYS) {
+          const val = localStorage.getItem(k);
+          if (val && val.trim()) return val.trim();
+        }
+        return '';
+      },
+
+      getRepo() {
+        for (const k of this.REPO_KEYS) {
+          const val = localStorage.getItem(k);
+          if (val && val.trim()) return val.trim();
+        }
+        return 'Darkts/nexus-radar';
+      },
+
+      async setCredentials(token, repo) {
+        const t = (token || '').trim();
+        const r = (repo || '').trim() || 'Darkts/nexus-radar';
+        if (t) {
+          this.TOKEN_KEYS.forEach(k => {
+            try { localStorage.setItem(k, t); } catch (e) {}
+          });
+        }
+        if (r) {
+          this.REPO_KEYS.forEach(k => {
+            try { localStorage.setItem(k, r); } catch (e) {}
+          });
+        }
+        await this.writeToIndexedDB(t, r);
+      },
+
+      async initAndRestore() {
+        let currentToken = this.getToken();
+        let currentRepo = this.getRepo();
+
+        if (!currentToken) {
+          const idbData = await this.readFromIndexedDB();
+          if (idbData && idbData.token) {
+            currentToken = idbData.token.trim();
+            currentRepo = (idbData.repo || currentRepo).trim();
+            this.TOKEN_KEYS.forEach(k => {
+              try { localStorage.setItem(k, currentToken); } catch (e) {}
+            });
+            this.REPO_KEYS.forEach(k => {
+              try { localStorage.setItem(k, currentRepo); } catch (e) {}
+            });
+            console.log('✅ HorizonsVault : Clé GitHub récupérée et restaurée depuis le coffre IndexedDB !');
+          }
+        } else {
+          // Sauvegarde automatique de secours dans IndexedDB
+          await this.writeToIndexedDB(currentToken, currentRepo);
+        }
+
+        const ghTokenInput = document.getElementById('ghToken');
+        const ghRepoInput = document.getElementById('ghRepo');
+        if (ghTokenInput && currentToken) ghTokenInput.value = currentToken;
+        if (ghRepoInput && currentRepo) ghRepoInput.value = currentRepo;
+
+        return { token: currentToken, repo: currentRepo };
+      }
+    };
+
+    function getStoredGhToken() {
+      return HorizonsVault.getToken();
+    }
+
+    function getStoredGhRepo() {
+      return HorizonsVault.getRepo();
+    }
+
+    // =========================================================
     // HORIZONS V10 : GESTION DES TIROIRS, THÈMES & RÉGLAGES
     // =========================================================
     function toggleImmoAdvancedFilters() {
@@ -3912,8 +4055,8 @@
       const isForeign = cc && cc !== 'fr' && !['smt', 'glp', 'mtq', 'guf', 'reu'].includes(cc);
       const shouldTriggerCloudScan = isForeign || localMatches.length < 5;
 
-      const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
+      const token = getStoredGhToken();
+      const repo = getStoredGhRepo();
 
       if (shouldTriggerCloudScan && token) {
         updateImmoScanProgress(45, `☁️ Scan mondial en cours (Properstar / HousingAnywhere / Spotahome) pour ${city}... (~35s)`);
@@ -4970,8 +5113,8 @@
       const r = list.find(x => x.id === id);
       if (!r) return;
 
-      const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
+      const token = getStoredGhToken();
+      const repo = getStoredGhRepo();
 
       if (!token) {
         showToast(`⚡ Radar sauvegardé en local ! Renseignez votre Token GitHub dans "🔔 Réglages" pour le scan Cloud H24.`);
@@ -5012,8 +5155,8 @@
     }
 
     async function syncRadarsToGitHub() {
-      const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
+      const token = getStoredGhToken();
+      const repo = getStoredGhRepo();
       if (!token) return;
 
       try {
@@ -6165,8 +6308,8 @@
 
       updateVoyageScanProgress(65, `🔗 Synchronisation Google Flights / Booking / Trainline / Google Travel...`);
 
-      const token = localStorage.getItem('nexus_gh_token');
-      const repo = localStorage.getItem('nexus_gh_repo') || 'Darkts/nexus-radar';
+      const token = getStoredGhToken();
+      const repo = getStoredGhRepo();
 
       if (token) {
         updateVoyageScanProgress(85, `🚀 Enregistrement de l'alerte...`);
@@ -6467,20 +6610,23 @@
       attachSwipeListeners();
     }
 
-    function saveCredentials() {
+    async function saveCredentials() {
       const t = document.getElementById('ghToken').value.trim();
-      const r = document.getElementById('ghRepo').value.trim();
-      if (t) localStorage.setItem('nexus_gh_token', t);
-      if (r) localStorage.setItem('nexus_gh_repo', r);
-      showToast('🔑 Accès GitHub enregistrés sur ce téléphone !');
+      const r = document.getElementById('ghRepo').value.trim() || 'Darkts/nexus-radar';
+      if (!t) {
+        showToast('⚠️ Veuillez renseigner votre token GitHub (ghp_...)');
+        return;
+      }
+      await HorizonsVault.setCredentials(t, r);
+      showToast('🔑 Accès GitHub enregistrés (localStorage + coffre IndexedDB) !');
     }
 
     function testPushNotification() {
       fetch('https://ntfy.sh/sxm-immo-alert-97150-x9q4m2', {
         method: 'POST',
         headers: { 'Title': 'Horizons : Test d\'Alerte', 'Priority': 'high', 'Tags': 'sparkles,rocket' },
-        body: 'Veille V9 opérationnelle ! Alertes Immo (sans viager) et Packages Voyage croisés.'
-      }).then(() => showToast('🔔 Notification V9 envoyée !'))
+        body: 'Veille V15 opérationnelle ! Alertes Immo et Packages Voyage synchronisés.'
+      }).then(() => showToast('🔔 Notification V15 envoyée !'))
         .catch(() => showToast('Erreur envoi ntfy'));
     }
 
@@ -6497,29 +6643,27 @@
       toastHideTimer = setTimeout(() => t.classList.remove('show'), durationMs);
     }
 
-    // Initialisation + Service Worker V9 (Network-First + Purge Ancien Cache)
-    window.addEventListener('DOMContentLoaded', () => {
+    // Initialisation + Service Worker V15 (Network-First + Purge Ancien Cache + Coffre Vault)
+    window.addEventListener('DOMContentLoaded', async () => {
       initTheme();
       initPinLock();
       renderBottomNav('immo');
       initDefaultCalendarDates();
       updateSavedCounters();
 
-      const savedToken = localStorage.getItem('nexus_gh_token');
-      if (savedToken) document.getElementById('ghToken').value = savedToken;
-      const savedRepo = localStorage.getItem('nexus_gh_repo');
-      if (savedRepo) document.getElementById('ghRepo').value = savedRepo;
+      // Restauration garantie depuis le coffre HorizonsVault (IndexedDB + localStorage)
+      await HorizonsVault.initAndRestore();
 
       if ('serviceWorker' in navigator) {
         const hadController = !!navigator.serviceWorker.controller;
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'horizons-v13-global') caches.delete(n);
+              if (n !== 'horizons-v15') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=13').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=15').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 

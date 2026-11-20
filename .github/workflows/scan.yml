@@ -54,6 +54,14 @@ on:
         description: 'Destination cible pour Voyage (ex: SXM, Italie, New York, Partout)'
         required: false
         default: ''
+      use_playwright:
+        description: 'Activer Playwright headless (plus lent, faux par défaut)'
+        required: false
+        default: 'false'
+      probe_international:
+        description: 'Exécuter la sonde réseau sur les 8 portails internationaux'
+        required: false
+        default: 'false'
 
 # Autorisation d'écriture nécessaire pour commit et push data/annonces.json
 permissions:
@@ -84,6 +92,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: 🎭 Mettre en cache Playwright Chromium
+        if: ${{ inputs.use_playwright == 'true' }}
         uses: actions/cache@v4
         id: playwright-cache
         with:
@@ -91,6 +100,7 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('requirements.txt') }}
 
       - name: 🌐 Installer Playwright Chromium et dépendances OS
+        if: ${{ inputs.use_playwright == 'true' }}
         run: |
           playwright install chromium --with-deps
 
@@ -108,6 +118,8 @@ jobs:
           SCAN_RADIUS: ${{ inputs.radius || '' }}
           SCAN_DEPARTURE: ${{ inputs.departure_city || '' }}
           SCAN_DESTINATION: ${{ inputs.destination || '' }}
+          SCAN_PROBE: ${{ inputs.probe_international || 'false' }}
+          SCAN_USE_PLAYWRIGHT: ${{ inputs.use_playwright || 'false' }}
         run: |
           python scraper.py
 
