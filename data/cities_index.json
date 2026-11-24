@@ -1,15 +1,15 @@
 {
   "version": "17",
-  "updated_at": "2026-11-24T18:50:16.129233+00:00",
-  "total_immo": 2613,
+  "updated_at": "2026-11-24T18:52:30.902999+00:00",
+  "total_immo": 2615,
   "total_voyage": 458,
   "purge_stats": {
     "tested": 0,
     "removed_dead": 0,
     "removed_stale": 0,
-    "retained_total": 3071,
+    "retained_total": 3073,
     "duration_sec": 0.0,
-    "checked_at": "2026-11-24T18:50:16.208244+00:00"
+    "checked_at": "2026-11-24T18:52:31.004447+00:00"
   },
   "cities": [
     {
@@ -326,6 +326,21 @@
       "rent_count": 6,
       "buy_count": 0,
       "updated_at": "2026-11-24T15:47:01.164398+00:00"
+    },
+    {
+      "slug": "chongqing",
+      "name": "Chongqing",
+      "country_code": "",
+      "country": "",
+      "flag": "🌍",
+      "lat": 30.03418,
+      "lon": 107.8538712,
+      "count": 2,
+      "local_count": 0,
+      "expat_count": 2,
+      "rent_count": 2,
+      "buy_count": 0,
+      "updated_at": "2026-11-24T18:52:29.998002+00:00"
     },
     {
       "slug": "villeneuve-d-ascq",
