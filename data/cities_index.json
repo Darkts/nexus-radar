@@ -1,15 +1,15 @@
 {
   "version": "17",
-  "updated_at": "2026-11-24T18:36:35.993664+00:00",
-  "total_immo": 2552,
+  "updated_at": "2026-11-24T18:50:16.129233+00:00",
+  "total_immo": 2613,
   "total_voyage": 458,
   "purge_stats": {
     "tested": 0,
     "removed_dead": 0,
     "removed_stale": 0,
-    "retained_total": 3010,
+    "retained_total": 3071,
     "duration_sec": 0.0,
-    "checked_at": "2026-11-24T18:36:36.108021+00:00"
+    "checked_at": "2026-11-24T18:50:16.208244+00:00"
   },
   "cities": [
     {
@@ -20,12 +20,12 @@
       "flag": "🇫🇷",
       "lat": 48.6921,
       "lon": 6.1844,
-      "count": 314,
+      "count": 315,
       "local_count": 314,
-      "expat_count": 0,
-      "rent_count": 144,
+      "expat_count": 1,
+      "rent_count": 145,
       "buy_count": 170,
-      "updated_at": "2026-11-24T18:36:26.470763+00:00"
+      "updated_at": "2026-11-24T18:50:11.692377+00:00"
     },
     {
       "slug": "paris",
@@ -35,12 +35,12 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "count": 241,
+      "count": 243,
       "local_count": 238,
-      "expat_count": 3,
-      "rent_count": 123,
+      "expat_count": 5,
+      "rent_count": 125,
       "buy_count": 118,
-      "updated_at": "2026-11-24T15:46:37.093525+00:00"
+      "updated_at": "2026-11-24T18:50:11.692377+00:00"
     },
     {
       "slug": "lyon",
@@ -170,12 +170,12 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "count": 116,
-      "local_count": 50,
-      "expat_count": 66,
-      "rent_count": 91,
-      "buy_count": 25,
-      "updated_at": "2026-11-24T15:46:47.078483+00:00"
+      "count": 174,
+      "local_count": 76,
+      "expat_count": 98,
+      "rent_count": 148,
+      "buy_count": 26,
+      "updated_at": "2026-11-24T18:50:15.538930+00:00"
     },
     {
       "slug": "rome",
