@@ -1,15 +1,15 @@
 {
   "version": "17",
-  "updated_at": "2026-11-24T18:52:30.902999+00:00",
-  "total_immo": 2615,
+  "updated_at": "2026-11-24T19:33:15.219158+00:00",
+  "total_immo": 2734,
   "total_voyage": 458,
   "purge_stats": {
     "tested": 0,
     "removed_dead": 0,
     "removed_stale": 0,
-    "retained_total": 3073,
+    "retained_total": 3192,
     "duration_sec": 0.0,
-    "checked_at": "2026-11-24T18:52:31.004447+00:00"
+    "checked_at": "2026-11-24T19:33:15.321003+00:00"
   },
   "cities": [
     {
@@ -35,12 +35,12 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "count": 243,
-      "local_count": 238,
+      "count": 362,
+      "local_count": 357,
       "expat_count": 5,
-      "rent_count": 125,
-      "buy_count": 118,
-      "updated_at": "2026-11-24T18:50:11.692377+00:00"
+      "rent_count": 155,
+      "buy_count": 207,
+      "updated_at": "2026-11-24T19:33:14.109320+00:00"
     },
     {
       "slug": "lyon",
