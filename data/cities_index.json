@@ -1,11 +1,15 @@
 {
   "version": "17",
-  "updated_at": "2026-11-24T16:27:12.519955+00:00",
-  "total_immo": 2517,
-  "total_voyage": 398,
+  "updated_at": "2026-11-24T16:28:14.019558+00:00",
+  "total_immo": 2526,
+  "total_voyage": 428,
   "purge_stats": {
-    "skipped": true,
-    "kept": 2915
+    "tested": 0,
+    "removed_dead": 0,
+    "removed_stale": 0,
+    "retained_total": 2954,
+    "duration_sec": 0.0,
+    "checked_at": "2026-11-24T16:28:14.092413+00:00"
   },
   "cities": [
     {
@@ -286,12 +290,12 @@
       "flag": "🇯🇵",
       "lat": 35.6762,
       "lon": 139.6503,
-      "count": 98,
-      "local_count": 90,
+      "count": 107,
+      "local_count": 99,
       "expat_count": 8,
-      "rent_count": 65,
+      "rent_count": 74,
       "buy_count": 33,
-      "updated_at": "2026-11-24T15:47:07.539837+00:00"
+      "updated_at": "2026-11-24T16:28:03.023289+00:00"
     },
     {
       "slug": "seoul",
