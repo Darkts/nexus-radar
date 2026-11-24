@@ -66,14 +66,18 @@ on:
         description: 'Exécuter la sonde réseau sur les sources Voyage (Ryanair, SNCF, RSS...)'
         required: false
         default: 'false'
+      probe_local_portals:
+        description: 'Exécuter la sonde réseau des portails locaux Japon & Brésil'
+        required: false
+        default: 'false'
 
-# Autorisation d'écriture nécessaire pour commit et push data/annonces.json
+# Autorisation d'écriture nécessaire pour commit et push data/
 permissions:
   contents: write
 
 concurrency:
   group: sxm-scanner
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   scan:
@@ -124,6 +128,7 @@ jobs:
           SCAN_DESTINATION: ${{ inputs.destination || '' }}
           SCAN_PROBE: ${{ inputs.probe_international || 'false' }}
           SCAN_PROBE_VOYAGE: ${{ inputs.probe_voyage || 'false' }}
+          SCAN_PROBE_LOCAL_PORTALS: ${{ inputs.probe_local_portals || 'false' }}
           SCAN_USE_PLAYWRIGHT: ${{ inputs.use_playwright || 'false' }}
         run: |
           python scraper.py
@@ -132,7 +137,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/annonces.json config.json
+          git add data/ config.json
           if git diff --staged --quiet; then
             echo "Aucune nouvelle annonce détectée lors de ce cycle."
           else

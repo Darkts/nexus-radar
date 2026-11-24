@@ -1,0 +1,66 @@
+name: Horizons Prewarm Worldwide Catalog
+
+on:
+  schedule:
+    # Exécution automatique toutes les 12h pour maintenir le catalogue mondial pré-scrapé et purgé
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+    inputs:
+      probe_local_portals:
+        description: 'Exécuter la sonde réseau des portails locaux Japon & Brésil'
+        required: false
+        default: 'true'
+      hubs_filter:
+        description: 'Filtrer certains slugs de villes séparés par des virgules (vide = tous les 21 hubs)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: horizons-prewarm
+  cancel-in-progress: true
+
+jobs:
+  prewarm:
+    name: Pré-scraping Mondial & Purge Liens Morts
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Cloner le dépôt
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurer Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: 📦 Installer les dépendances Python
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🌍 Lancer le pré-scraping mondial V17 & vérification des liens morts
+        env:
+          SCAN_PREWARM: 'true'
+          SCAN_PROBE_LOCAL_PORTALS: ${{ inputs.probe_local_portals || 'true' }}
+          SCAN_HUBS: ${{ inputs.hubs_filter || '' }}
+        run: |
+          python scraper.py --prewarm
+
+      - name: 💾 Commit & Push des shards villes et de l'index
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ config.json
+          if git diff --staged --quiet; then
+            echo "Aucune mise à jour de catalogue détectée."
+          else
+            git commit -m "Auto-update V17: Catalogue mondial pré-scrapé par ville [skip ci]"
+            git pull --rebase origin main || true
+            git push origin main
+            echo "Catalogue sharded V17 poussé avec succès sur GitHub !"
+          fi

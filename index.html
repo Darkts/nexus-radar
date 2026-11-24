@@ -594,6 +594,200 @@
       cursor: pointer;
     }
 
+    /* V17 : Barre de Villes Pré-scrapées en 1 tap */
+    .prewarm-cities-wrap {
+      margin-bottom: 12px;
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 10px 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .prewarm-cities-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+    .prewarm-cities-header small {
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.68rem;
+    }
+    .prewarm-cities-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .prewarm-cities-bar::-webkit-scrollbar { display: none; }
+    .prewarm-city-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid #DDDDDD;
+      color: #222222;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .prewarm-city-pill:hover {
+      border-color: #222222;
+      background: var(--bg-porcelain);
+    }
+    .prewarm-city-pill.active {
+      background: #222222;
+      color: #FFFFFF;
+      border-color: #222222;
+    }
+    .prewarm-city-pill .pill-count {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #F3F4F6;
+      color: #4B5563;
+    }
+    .prewarm-city-pill.active .pill-count {
+      background: rgba(255,255,255,0.2);
+      color: #FFFFFF;
+    }
+
+    /* V17 : Barre de Filtres Sticky Ultra-Fluide (2 Lignes Séparées) */
+    .sticky-immo-filters {
+      position: sticky;
+      top: 56px;
+      z-index: 95;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 10px 4px 12px;
+      margin: 6px 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sticky-filter-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex-wrap: nowrap;
+    }
+    .sticky-filter-row::-webkit-scrollbar { display: none; }
+    .btn-local-only-toggle {
+      white-space: nowrap;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-local-only-toggle.active {
+      background: #ECFDF5;
+      border-color: #10B981;
+      color: #047857;
+      font-weight: 800;
+    }
+    .sticky-budget-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--bg-porcelain);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+    .sticky-budget-input {
+      width: 78px;
+      border: none;
+      background: transparent;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      outline: none;
+    }
+    .budget-preset-btn {
+      white-space: nowrap;
+      border: 1px solid var(--card-border);
+      background: #FFFFFF;
+      color: var(--text-secondary);
+      border-radius: 16px;
+      padding: 4px 10px;
+      font-size: 0.71rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .budget-preset-btn.active {
+      border-color: var(--accent-immo);
+      color: var(--accent-immo);
+      background: #FFF1F2;
+      font-weight: 800;
+    }
+
+    /* V17 : Badges Marché Local vs Expat & Bouton Discret Cloud */
+    .badge-expat-midterm {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.67rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      white-space: nowrap;
+    }
+    .badge-local-market {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.67rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+      white-space: nowrap;
+    }
+    .btn-refresh-dest-cloud {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      border-radius: 18px;
+      padding: 5px 12px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-refresh-dest-cloud:hover {
+      background: #EFF6FF;
+      border-color: #93C5FD;
+      color: #1D4ED8;
+    }
+
     /* Barre Horizontale d'Icônes de Filtres Rapides Façon Airbnb */
     .airbnb-quick-filters-bar {
       display: flex;
@@ -1981,7 +2175,16 @@
     <!-- UNIVERS 1 : 🏠 IMMOBILIER MONDIAL                         -->
     <!-- ========================================================= -->
     <section id="pane-immo-feed" class="tab-pane active">
-      
+
+      <!-- V17 : Puces des 21 Villes Pré-scrapées Prêtes en 1 Tap (< 100 ms) -->
+      <div id="prewarmedCitiesWrap" class="prewarm-cities-wrap" style="display: none;">
+        <div class="prewarm-cities-header">
+          <span>⚡ Catalogue Mondial Pré-chargé (0 attente)</span>
+          <small id="prewarmUpdatedMeta"></small>
+        </div>
+        <div id="prewarmedCitiesBar" class="prewarm-cities-bar"></div>
+      </div>
+
       <!-- Barre de Recherche Immobilière Épurée Horizons -->
       <div class="funnel-search-box">
         <div class="step-location-row">
@@ -1989,7 +2192,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" id="searchLocationInput" autocomplete="off" placeholder="Ville ou secteur (ex: Nancy, Paris, Saint-Martin...)" oninput="onImmoCityTyping()" />
+            <input type="text" id="searchLocationInput" autocomplete="off" placeholder="Ville ou secteur (ex: Nancy, Paris, Tokyo, Rio, Madrid...)" oninput="onImmoCityTyping()" />
             <div class="autocomplete-dropdown" id="cityAutocompleteList"></div>
           </div>
           <button class="btn-around-me" onclick="locateAroundMe()" title="Localiser autour de moi">
@@ -1999,38 +2202,25 @@
 
         <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
           <div style="flex: 1; min-width: 140px;">
-            <input type="number" id="immoMaxBudgetInput" placeholder="Budget Max (€)" style="width:100%; background:var(--surface); border:1px solid var(--card-border); border-radius:10px; padding:10px 14px; color:var(--text-main); font-size:0.86rem;" oninput="triggerAutoRefreshImmo()" />
+            <input type="number" id="immoMaxBudgetInput" placeholder="Budget Max (€)" style="width:100%; background:var(--surface); border:1px solid var(--card-border); border-radius:10px; padding:10px 14px; color:var(--text-main); font-size:0.86rem;" oninput="onSyncBudgetFromDrawer(this.value)" />
           </div>
-          <button class="btn-live-scan" id="btnLaunchLiveScanImmo" onclick="launchLiveScanImmo(false)" style="flex: 1.5; min-width: 180px; margin: 0;">
+          <button class="btn-live-scan" id="btnExploreImmoCity" onclick="exploreSelectedImmoCity()" style="flex: 1.5; min-width: 180px; margin: 0;">
             <span>🔍 Explorer les biens</span>
           </button>
         </div>
 
         <!-- Tiroir Pliable des Filtres Avancés -->
         <button class="btn-drawer-toggle" id="btnToggleImmoFilters" type="button" onclick="toggleImmoAdvancedFilters()">
-          <span>⚙️ Filtres avancés</span> <span id="immoFiltersArrow">▾</span>
+          <span>⚙️ Filtres avancés (surface, équipements, viager)</span> <span id="immoFiltersArrow">▾</span>
         </button>
 
         <div id="immoAdvancedFiltersDrawer" class="advanced-filters-drawer" style="display: none;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-            <div style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Précisez vos critères :</div>
+            <div style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Critères avancés (filtrage local instantané) :</div>
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
               <button class="btn-reset-dislikes" id="btnResetDislikesImmo" onclick="resetDislikes()">↺ Écartées (<span id="immoDislikesCount">0</span>)</button>
               <button class="btn-reset-filters" onclick="resetAllImmoFilters()">↺ Tout réinitialiser</button>
             </div>
-          </div>
-
-          <div class="filters-grid-row">
-            <div class="segmented-control">
-              <button class="segmented-btn active" data-transac="ALL" onclick="setTransactionFilter('ALL', this)">Tous</button>
-              <button class="segmented-btn" data-transac="location" onclick="setTransactionFilter('location', this)">🔑 Louer</button>
-              <button class="segmented-btn" data-transac="achat" onclick="setTransactionFilter('achat', this)">🏷️ Acheter</button>
-            </div>
-
-            <button class="chip-filter" data-room="Studio" onclick="toggleRoomFilter('Studio', this)">Studio</button>
-            <button class="chip-filter" data-room="T2" onclick="toggleRoomFilter('T2', this)">T2</button>
-            <button class="chip-filter" data-room="T3" onclick="toggleRoomFilter('T3', this)">T3+</button>
-            <button class="chip-filter" data-room="Maison" onclick="toggleRoomFilter('Maison', this)">Maison / Villa</button>
           </div>
 
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
@@ -2054,7 +2244,7 @@
           </div>
         </div>
 
-        <!-- Barre de progression Recherche Live -->
+        <!-- Barre de progression Recherche Live Cloud (non bloquante) -->
         <div id="liveScanProgressBox" style="display: none; margin-top: 6px; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--primary); border-radius: 10px; padding: 10px 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
             <span id="liveScanProgressText" style="font-size: 0.78rem; font-weight: 800; color: var(--primary);">🔄 Recherche en cours...</span>
@@ -2067,7 +2257,7 @@
 
         <!-- Portails Directs Officiels pour cette recherche -->
         <div id="immoDirectPortalsBar" class="direct-portals-box" style="display: none;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
             <span style="font-size: 0.78rem; font-weight: 800; color: var(--primary);">🌐 Portails Officiels Directs :</span>
             <span style="font-size: 0.68rem; color: var(--text-muted);" id="immoDirectPortalsMeta"></span>
           </div>
@@ -2075,66 +2265,51 @@
         </div>
       </div>
 
-      <!-- Barre Horizontale d'Icônes de Filtres Rapides Façon Airbnb -->
-      <div class="airbnb-quick-filters-bar" id="immoQuickFiltersBar">
-        <button class="quick-filter-item active" data-type="all" onclick="selectQuickFilter('all', this)">
-          <span class="qf-icon">🏠</span>
-          <span class="qf-text">Tous</span>
-        </button>
-        <button class="quick-filter-item" data-type="loc" onclick="selectQuickFilter('loc', this)">
-          <span class="qf-icon">🔑</span>
-          <span class="qf-text">Locations</span>
-        </button>
-        <button class="quick-filter-item" data-type="achat" onclick="selectQuickFilter('achat', this)">
-          <span class="qf-icon">🏷️</span>
-          <span class="qf-text">Achats</span>
-        </button>
-        <button class="quick-filter-item" data-type="studio" onclick="selectQuickFilter('studio', this)">
-          <span class="qf-icon">🏢</span>
-          <span class="qf-text">Studios</span>
-        </button>
-        <button class="quick-filter-item" data-type="t2" onclick="selectQuickFilter('t2', this)">
-          <span class="qf-icon">🛋️</span>
-          <span class="qf-text">T2</span>
-        </button>
-        <button class="quick-filter-item" data-type="t3" onclick="selectQuickFilter('t3', this)">
-          <span class="qf-icon">🛏️</span>
-          <span class="qf-text">T3+</span>
-        </button>
-        <button class="quick-filter-item" data-type="maison" onclick="selectQuickFilter('maison', this)">
-          <span class="qf-icon">🏡</span>
-          <span class="qf-text">Maisons</span>
-        </button>
-        <button class="quick-filter-item" data-type="mer" onclick="selectQuickFilter('mer', this)">
-          <span class="qf-icon">🌊</span>
-          <span class="qf-text">Vue Mer</span>
-        </button>
-        <button class="quick-filter-item" data-type="piscine" onclick="selectQuickFilter('piscine', this)">
-          <span class="qf-icon">🏊</span>
-          <span class="qf-text">Piscine</span>
-        </button>
-        <button class="quick-filter-item" data-type="terrasse" onclick="selectQuickFilter('terrasse', this)">
-          <span class="qf-icon">☀️</span>
-          <span class="qf-text">Terrasse</span>
-        </button>
-        <button class="quick-filter-item" data-type="parking" onclick="selectQuickFilter('parking', this)">
-          <span class="qf-icon">🚗</span>
-          <span class="qf-text">Parking</span>
-        </button>
+      <!-- V17 : Barre de Filtres Sticky 2 Lignes Séparées (100% RAM Locale, 0 lag) -->
+      <div class="sticky-immo-filters" id="immoStickyFiltersBar">
+        <!-- Ligne 1 : Transaction (exclusif) + Toggle Marché Local -->
+        <div class="sticky-filter-row">
+          <div class="segmented-control">
+            <button class="segmented-btn active" data-transac="ALL" onclick="setTransactionFilter('ALL', this)">Tous</button>
+            <button class="segmented-btn" data-transac="location" onclick="setTransactionFilter('location', this)">🔑 Locations</button>
+            <button class="segmented-btn" data-transac="achat" onclick="setTransactionFilter('achat', this)">🏷️ Achats</button>
+          </div>
+          <button type="button" id="btnToggleLocalOnly" class="btn-local-only-toggle" onclick="toggleImmoLocalOnly()">
+            🏠 Marché local uniquement
+          </button>
+        </div>
+
+        <!-- Ligne 2 : Pièces (multi-sélection décochable) + Sélecteur Budget Rapide -->
+        <div class="sticky-filter-row">
+          <button class="chip-filter" data-room="Studio" onclick="toggleRoomFilter('Studio', this)">Studio</button>
+          <button class="chip-filter" data-room="T2" onclick="toggleRoomFilter('T2', this)">T2</button>
+          <button class="chip-filter" data-room="T3" onclick="toggleRoomFilter('T3', this)">T3</button>
+          <button class="chip-filter" data-room="T4+" onclick="toggleRoomFilter('T4+', this)">T4+</button>
+          <button class="chip-filter" data-room="Maison" onclick="toggleRoomFilter('Maison', this)">Maison</button>
+
+          <div class="sticky-budget-wrap">
+            <span style="font-size: 0.72rem; color: var(--text-secondary); font-weight: 700;">💰 Max</span>
+            <input type="number" id="immoQuickBudgetInput" class="sticky-budget-input" placeholder="Budget €" oninput="onQuickBudgetInput(this.value)" />
+          </div>
+          <div id="immoQuickBudgetPresets" style="display: inline-flex; gap: 6px; align-items: center;"></div>
+        </div>
       </div>
 
 
       <!-- BARRE DES CHIPS DE FILTRES ACTIFS SUPPRIMABLES -->
       <div id="immoActiveFilterChips" class="active-filter-chips-bar"></div>
 
-      <!-- ÉTAPE 3 : Compteur, Tri & Switch [ 📋 Vue Liste ] | [ 🗺️ Vue Carte Leaflet ] -->
+      <!-- ÉTAPE 3 : Compteur, Tri, Bouton Scan Cloud Discret & Switch Liste/Carte -->
       <div class="view-toggle-bar">
-        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
           <div class="results-count" id="immoResultsCount">Chargement des biens...</div>
+          <button type="button" id="btnLaunchLiveScanImmo" class="btn-refresh-dest-cloud" onclick="launchLiveScanImmo(false)" title="Déclencher un scan Cloud frais pour cette destination">
+            🔄 Actualiser / Scanner cette destination
+          </button>
           <div class="sort-select-wrap">
             <span style="font-size: 0.8rem; color: var(--text-muted);">⇅</span>
             <select id="immoSortSelect" class="sort-select" onchange="onImmoSortChange(this.value)">
-              <option value="relevance">Pertinence</option>
+              <option value="relevance">Pertinence (Local d'abord)</option>
               <option value="price_asc">Prix croissant</option>
               <option value="price_desc">Prix décroissant</option>
               <option value="price_m2_asc">Prix/m² le plus bas</option>
@@ -2436,6 +2611,13 @@
           <span style="font-size: 0.72rem; color: #fbbf24; font-weight: 800;" id="voyageSec2Count">Recalcul temps réel</span>
         </div>
         <div class="items-grid" id="voyageSection2"></div>
+      </div>
+
+      <!-- Pagination Voyage 60 FPS -->
+      <div id="voyagePaginationContainer" class="pagination-container" style="display: none; margin: 18px 0; text-align: center;">
+        <button id="btnLoadMoreVoyage" class="btn-load-more" onclick="loadMoreVoyage()">
+          Afficher 20 offres supplémentaires (<span id="voyageCurrentShownCount">20</span> / <span id="voyageTotalFoundCount">0</span>)
+        </button>
       </div>
     </section>
 
@@ -3078,32 +3260,20 @@
     }
 
     function syncFilterUI() {
-      // 1. Transaction segmented buttons
-      document.querySelectorAll('.step-filters-box .segmented-btn').forEach(b => {
+      // 1. Transaction segmented buttons (barre sticky & tiroir)
+      document.querySelectorAll('.segmented-btn').forEach(b => {
         const dt = b.getAttribute('data-transac') || '';
         b.classList.toggle('active', dt.toLowerCase() === immoTransac.toLowerCase());
       });
 
-      // 2. Quick filter items
-      document.querySelectorAll('#immoQuickFiltersBar .quick-filter-item').forEach(b => {
-        const t = b.getAttribute('data-type');
-        let act = false;
-        if (t === 'all' && immoTransac === 'ALL' && immoRooms.size === 0 && immoAmenities.size === 0) act = true;
-        else if (t === 'loc' && immoTransac === 'location') act = true;
-        else if (t === 'achat' && immoTransac === 'achat') act = true;
-        else if (t === 'studio' && immoRooms.has('Studio')) act = true;
-        else if (t === 't2' && immoRooms.has('T2')) act = true;
-        else if (t === 't3' && immoRooms.has('T3')) act = true;
-        else if (t === 'maison' && immoRooms.has('Maison')) act = true;
-        else if (t === 'mer' && immoAmenities.has('vue_mer')) act = true;
-        else if (t === 'piscine' && immoAmenities.has('piscine')) act = true;
-        else if (t === 'terrasse' && immoAmenities.has('terrasse')) act = true;
-        else if (t === 'parking' && immoAmenities.has('parking')) act = true;
-        b.classList.toggle('active', act);
-      });
+      // 2. Toggle Marché local uniquement
+      const btnLocalOnly = document.getElementById('btnToggleLocalOnly');
+      if (btnLocalOnly) {
+        btnLocalOnly.classList.toggle('active', !!immoLocalOnly);
+      }
 
-      // 3. Room chips in drawer
-      document.querySelectorAll('.step-filters-box .chip-filter[data-room]').forEach(b => {
+      // 3. Room chips (barre sticky & tiroir)
+      document.querySelectorAll('.chip-filter[data-room]').forEach(b => {
         const r = b.getAttribute('data-room');
         b.classList.toggle('active', immoRooms.has(r));
       });
@@ -3124,12 +3294,69 @@
         }
       }
 
-      // 5. Select sort value
+      // 5. Budget rapide + Presets dynamiques selon Location / Achat
+      const budgetVal = (document.getElementById('immoMaxBudgetInput')?.value || '').trim();
+      const quickBInput = document.getElementById('immoQuickBudgetInput');
+      if (quickBInput && quickBInput.value !== budgetVal) {
+        quickBInput.value = budgetVal;
+      }
+      const presetsEl = document.getElementById('immoQuickBudgetPresets');
+      if (presetsEl) {
+        const presets = immoTransac === 'achat'
+          ? [{ v: 250000, lbl: '≤ 250k €' }, { v: 500000, lbl: '≤ 500k €' }, { v: 900000, lbl: '≤ 900k €' }]
+          : [{ v: 800, lbl: '≤ 800 €' }, { v: 1200, lbl: '≤ 1 200 €' }, { v: 2000, lbl: '≤ 2 000 €' }];
+        presetsEl.innerHTML = presets.map(p =>
+          `<button type="button" class="budget-preset-btn ${Number(budgetVal) === p.v ? 'active' : ''}" onclick="applyQuickBudgetPreset(${p.v})">${p.lbl}</button>`
+        ).join('');
+      }
+
+      // 6. Select sort value
       const sortSel = document.getElementById('immoSortSelect');
       if (sortSel) sortSel.value = filterState.immo.sortBy;
 
-      // 6. Active removable filter chips bar
+      // 7. Active removable filter chips bar
       renderActiveFilterChips();
+    }
+
+    function toggleImmoLocalOnly() {
+      immoLocalOnly = !immoLocalOnly;
+      immoPage = 1;
+      syncFilterUI();
+      filterImmo();
+    }
+
+    function onQuickBudgetInput(val) {
+      const mainInput = document.getElementById('immoMaxBudgetInput');
+      if (mainInput) mainInput.value = val;
+      clearTimeout(quickBudgetTimer);
+      quickBudgetTimer = setTimeout(() => {
+        immoPage = 1;
+        syncFilterUI();
+        filterImmo();
+      }, 150);
+    }
+
+    function onSyncBudgetFromDrawer(val) {
+      const quickInput = document.getElementById('immoQuickBudgetInput');
+      if (quickInput) quickInput.value = val;
+      clearTimeout(quickBudgetTimer);
+      quickBudgetTimer = setTimeout(() => {
+        immoPage = 1;
+        syncFilterUI();
+        filterImmo();
+      }, 150);
+    }
+
+    function applyQuickBudgetPreset(amount) {
+      const mainInput = document.getElementById('immoMaxBudgetInput');
+      const quickInput = document.getElementById('immoQuickBudgetInput');
+      const current = parseFloat(mainInput?.value || '0');
+      const nextVal = (current === amount) ? '' : String(amount);
+      if (mainInput) mainInput.value = nextVal;
+      if (quickInput) quickInput.value = nextVal;
+      immoPage = 1;
+      syncFilterUI();
+      filterImmo();
     }
 
     function renderActiveFilterChips() {
@@ -3142,45 +3369,33 @@
       const surfaceMin = parseFloat(document.getElementById('immoMinSurfaceInput')?.value) || 0;
       const excludeViager = document.getElementById('immoExcludeViager')?.checked !== false;
 
-      // Ville
       if (city) {
         chips.push(`<span class="filter-chip-removable">📍 ${escapeHtml(city)} <button class="chip-remove-btn" onclick="removeActiveFilterChip('city')" title="Supprimer">✕</button></span>`);
       }
-
-      // Transaction
       if (immoTransac && immoTransac !== 'ALL') {
         const label = immoTransac === 'location' ? '🔑 Location' : '🏷️ Achat';
         chips.push(`<span class="filter-chip-removable">${label} <button class="chip-remove-btn" onclick="removeActiveFilterChip('transac')" title="Supprimer">✕</button></span>`);
       }
-
-      // Typologies
+      if (immoLocalOnly) {
+        chips.push(`<span class="filter-chip-removable" style="background:#ECFDF5; border-color:#10B981; color:#065F46;">🏠 Marché local uniquement <button class="chip-remove-btn" onclick="removeActiveFilterChip('local_only')" title="Supprimer">✕</button></span>`);
+      }
       for (const r of immoRooms) {
         chips.push(`<span class="filter-chip-removable">🛏️ ${escapeHtml(r)} <button class="chip-remove-btn" onclick="removeActiveFilterChip('room', '${r}')" title="Supprimer">✕</button></span>`);
       }
-
-      // Budget
       if (budgetMax > 0) {
         chips.push(`<span class="filter-chip-removable">💰 ≤ ${budgetMax.toLocaleString('fr-FR')} € <button class="chip-remove-btn" onclick="removeActiveFilterChip('budget')" title="Supprimer">✕</button></span>`);
       }
-
-      // Surface
       if (surfaceMin > 0) {
         chips.push(`<span class="filter-chip-removable">📐 ≥ ${surfaceMin} m² <button class="chip-remove-btn" onclick="removeActiveFilterChip('surface')" title="Supprimer">✕</button></span>`);
       }
-
-      // Commodités
       const amLabels = { vue_mer: '🌊 Vue Mer', terrasse: '☀️ Terrasse', piscine: '🏊 Piscine', parking: '🚗 Parking' };
       for (const a of immoAmenities) {
         const lbl = amLabels[a] || a;
         chips.push(`<span class="filter-chip-removable">${lbl} <button class="chip-remove-btn" onclick="removeActiveFilterChip('amenity', '${a}')" title="Supprimer">✕</button></span>`);
       }
-
-      // Viager inclus
       if (!excludeViager) {
         chips.push(`<span class="filter-chip-removable">⚠️ Viagers inclus <button class="chip-remove-btn" onclick="removeActiveFilterChip('viager')" title="Supprimer">✕</button></span>`);
       }
-
-      // Zone carte
       if (filterState.immo.mapZone) {
         if (filterState.immo.mapZone.type === 'radius') {
           chips.push(`<span class="filter-chip-removable" style="background:rgba(255,56,92,0.1); border-color:#FF385C; color:#FF385C;">🎯 Rayon ${filterState.immo.mapZone.radiusKm} km <button class="chip-remove-btn" onclick="clearMapZoneFilter()" title="Supprimer">✕</button></span>`);
@@ -3203,19 +3418,25 @@
       if (type === 'city') {
         const inp = document.getElementById('searchLocationInput');
         if (inp) inp.value = '';
+        activeCitySlug = '';
         filterState.immo.city = '';
         filterState.immo.lat = null;
         filterState.immo.lon = null;
         const portalBar = document.getElementById('immoDirectPortalsBar');
         if (portalBar) portalBar.style.display = 'none';
+        renderPrewarmedCitiesBar();
       } else if (type === 'transac') {
         immoTransac = 'ALL';
         filterState.immo.transac = 'ALL';
+      } else if (type === 'local_only') {
+        immoLocalOnly = false;
       } else if (type === 'room') {
         immoRooms.delete(val);
       } else if (type === 'budget') {
         const inp = document.getElementById('immoMaxBudgetInput');
+        const qInp = document.getElementById('immoQuickBudgetInput');
         if (inp) inp.value = '';
+        if (qInp) qInp.value = '';
       } else if (type === 'surface') {
         const inp = document.getElementById('immoMinSurfaceInput');
         if (inp) inp.value = '';
@@ -3227,7 +3448,7 @@
       }
       immoPage = 1;
       syncFilterUI();
-      triggerAutoRefreshImmo(true);
+      filterImmo();
     }
 
     function onImmoSortChange(val) {
@@ -3238,6 +3459,7 @@
 
     function onVoyageSortChange(val) {
       filterState.voyage.sortBy = val;
+      voyagePage = 1;
       filterVoyage();
     }
 
@@ -3349,6 +3571,23 @@
 
     let immoPage = 1;
     const IMMO_PAGE_SIZE = 20;
+    let voyagePage = 1;
+    const VOYAGE_PAGE_SIZE = 20;
+
+    // V17 : Catalogue sharded par ville + filtre marché local
+    let citiesIndexData = null;
+    let loadedCityShards = {};
+    let activeCitySlug = '';
+    let voyageData = [];
+    let immoLocalOnly = false;
+    let quickBudgetTimer = null;
+
+    // Verrou strict anti-spam GitHub Actions (cooldown 8s + polling unique)
+    let isCloudScanDispatching = false;
+    let lastCloudScanDispatchTime = 0;
+    const CLOUD_SCAN_COOLDOWN_MS = 8000;
+    let activeCloudPollInterval = null;
+    let isProgrammaticMapMove = false;
     let isRadiusModeActive = false;
     let mapRadiusCircle = null;
     let mapRadiusMarker = null;
@@ -3519,24 +3758,238 @@
     }
 
     // =========================================================
-    // CHARGEMENT DES DONNÉES
+    // CHARGEMENT SHARDED V17 (0 ATTENTE MOBILE) & VILLES PRÊTES
     // =========================================================
-    async function loadData(forceSpin = false) {
-      const btn = document.getElementById('refreshBtn');
-      if (forceSpin) btn.classList.add('spinning');
+    function resolveCitySlugClient(rawName) {
+      const clean = (rawName || '').toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .split(',')[0].replace(/\b97\d{2,3}\b|\b54\d{3}\b/g, '').trim()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const aliases = {
+        barcelona: 'barcelone', barcelone: 'barcelone',
+        london: 'londres', londres: 'londres',
+        lisbon: 'lisbonne', lisboa: 'lisbonne', lisbonne: 'lisbonne',
+        athens: 'athenes', athenes: 'athenes',
+        singapore: 'singapour', singapour: 'singapour',
+        roma: 'rome', rome: 'rome',
+        rio: 'rio-de-janeiro', 'rio-de-janeiro': 'rio-de-janeiro',
+        nyc: 'new-york', manhattan: 'new-york', brooklyn: 'new-york', 'new-york': 'new-york',
+        sxm: 'saint-martin', 'saint-martin': 'saint-martin',
+        reunion: 'la-reunion', 'la-reunion': 'la-reunion',
+        seoul: 'seoul', montreal: 'montreal', tokyo: 'tokyo', miami: 'miami',
+        madrid: 'madrid', limassol: 'limassol', nancy: 'nancy', paris: 'paris', lyon: 'lyon',
+        guadeloupe: 'guadeloupe', martinique: 'martinique'
+      };
+      return aliases[clean] || clean;
+    }
 
+    async function loadCityShard(slug, forceNetwork = false) {
+      if (!slug) return [];
+      if (loadedCityShards[slug] && !forceNetwork) {
+        return loadedCityShards[slug];
+      }
       try {
-        const res = await fetch(`data/annonces.json?t=${Date.now()}`);
-        if (!res.ok) throw new Error('Erreur HTTP ' + res.status);
-        allData = await res.json();
-        console.log(`Données chargées : ${allData.length} annonces certifiées`);
+        const res = await fetch(`data/cities/${encodeURIComponent(slug)}.json?t=${Date.now()}`);
+        if (!res.ok) return [];
+        const items = await res.json();
+        if (Array.isArray(items)) {
+          loadedCityShards[slug] = items;
+          return items;
+        }
       } catch (e) {
-        console.warn('Erreur chargement annonces.json :', e);
-      } finally {
-        if (forceSpin) setTimeout(() => btn.classList.remove('spinning'), 600);
+        console.warn(`Erreur chargement shard ${slug}:`, e);
+      }
+      return [];
+    }
+
+    function getAllLoadedImmoItems() {
+      if (activeCitySlug && loadedCityShards[activeCitySlug]) {
+        return loadedCityShards[activeCitySlug];
+      }
+      const seen = new Set();
+      const merged = [];
+      for (const list of Object.values(loadedCityShards)) {
+        if (!Array.isArray(list)) continue;
+        for (const it of list) {
+          if (it && it.id && !seen.has(it.id)) {
+            seen.add(it.id);
+            merged.push(it);
+          }
+        }
+      }
+      for (const it of (allData || [])) {
+        if (it && (it.universe === 'immo' || it.category === 'immo') && it.id && !seen.has(it.id)) {
+          seen.add(it.id);
+          merged.push(it);
+        }
+      }
+      return merged;
+    }
+
+    function renderPrewarmedCitiesBar() {
+      const wrap = document.getElementById('prewarmedCitiesWrap');
+      const bar = document.getElementById('prewarmedCitiesBar');
+      const meta = document.getElementById('prewarmUpdatedMeta');
+      if (!wrap || !bar) return;
+
+      const cities = (citiesIndexData && Array.isArray(citiesIndexData.cities)) ? citiesIndexData.cities : [];
+      if (cities.length === 0) {
+        wrap.style.display = 'none';
+        return;
       }
 
+      if (meta && citiesIndexData.updated_at) {
+        const dtStr = citiesIndexData.updated_at.slice(0, 16).replace('T', ' ');
+        meta.textContent = `${citiesIndexData.total_immo || 0} biens • MàJ ${dtStr} UTC`;
+      }
+
+      bar.innerHTML = cities.map(c => {
+        const isAct = c.slug === activeCitySlug;
+        const opacity = c.count > 0 ? '1' : '0.65';
+        return `
+          <button type="button" class="prewarm-city-pill ${isAct ? 'active' : ''}" style="opacity:${opacity};" onclick="selectPrewarmedCity('${escapeJs(c.slug)}')" title="${escapeHtml(c.local_count || 0)} local / ${escapeHtml(c.expat_count || 0)} expat">
+            <span>${c.flag || '🌍'} ${escapeHtml(c.name)}</span>
+            <span class="pill-count">${c.count || 0}</span>
+          </button>
+        `;
+      }).join('');
+      wrap.style.display = 'block';
+    }
+
+    async function selectPrewarmedCity(slug) {
+      if (!slug) return;
+      const cityMeta = (citiesIndexData?.cities || []).find(c => c.slug === slug);
+      activeCitySlug = slug;
+      localStorage.setItem('horizons_last_city_slug', slug);
+
+      const inp = document.getElementById('searchLocationInput');
+      if (inp && cityMeta) inp.value = cityMeta.name;
+      if (cityMeta) {
+        selectedLocation = {
+          val: cityMeta.name,
+          lat: cityMeta.lat || null,
+          lon: cityMeta.lon || null,
+          country: cityMeta.country || '',
+          countryCode: (cityMeta.country_code || '').toLowerCase()
+        };
+      }
+      filterState.immo.mapZone = null;
+      immoPage = 1;
+      renderPrewarmedCitiesBar();
+
+      await loadCityShard(slug);
+      const transac = immoTransac === 'ALL' ? 'location' : immoTransac;
+      const budget = document.getElementById('immoMaxBudgetInput')?.value || '';
+      const surface = document.getElementById('immoMinSurfaceInput')?.value || '';
+      renderImmoPortalLinks(cityMeta ? cityMeta.name : slug, transac, budget, surface, 'all', selectedLocation.countryCode);
+
+      syncFilterUI();
       filterImmo();
+    }
+
+    async function exploreSelectedImmoCity() {
+      const inp = document.getElementById('searchLocationInput');
+      const rawCity = (inp?.value || '').trim();
+      const targetSlug = resolveCitySlugClient(rawCity);
+      const indexedCity = (citiesIndexData?.cities || []).find(c => c.slug === targetSlug);
+
+      if (indexedCity && indexedCity.count > 0) {
+        await selectPrewarmedCity(indexedCity.slug);
+        showToast(`⚡ ${indexedCity.count} bien(s) chargé(s) instantanément pour ${indexedCity.name} !`, 1800);
+        return;
+      }
+
+      if (targetSlug) {
+        const shardItems = await loadCityShard(targetSlug);
+        if (shardItems.length > 0) {
+          activeCitySlug = targetSlug;
+          immoPage = 1;
+          renderPrewarmedCitiesBar();
+          syncFilterUI();
+          filterImmo();
+          return;
+        }
+      }
+
+      activeCitySlug = '';
+      immoPage = 1;
+      const transac = immoTransac === 'ALL' ? 'location' : immoTransac;
+      const budget = document.getElementById('immoMaxBudgetInput')?.value || '';
+      const surface = document.getElementById('immoMinSurfaceInput')?.value || '';
+      if (rawCity) {
+        renderImmoPortalLinks(rawCity, transac, budget, surface, 'all', selectedLocation.countryCode || '');
+      }
+      renderPrewarmedCitiesBar();
+      syncFilterUI();
+      filterImmo();
+      if (rawCity && getFilteredImmoItems().length === 0) {
+        showToast(`💡 Ville non pré-scrapée : cliquez sur "🔄 Actualiser / Scanner cette destination" pour lancer un scan Cloud.`, 3200);
+      }
+    }
+
+    async function loadData(forceSpin = false) {
+      const btn = document.getElementById('refreshBtn');
+      if (forceSpin && btn) btn.classList.add('spinning');
+
+      let shardedLoaded = false;
+      try {
+        const idxRes = await fetch(`data/cities_index.json?t=${Date.now()}`);
+        if (idxRes.ok) {
+          citiesIndexData = await idxRes.json();
+          const citiesList = citiesIndexData?.cities || [];
+          const savedSlug = localStorage.getItem('horizons_last_city_slug') || '';
+          const preferred = citiesList.find(c => c.slug === savedSlug && c.count > 0)
+            || citiesList.find(c => c.slug === 'nancy' && c.count > 0)
+            || citiesList.find(c => c.count > 0)
+            || citiesList[0];
+          if (preferred) {
+            activeCitySlug = preferred.slug;
+            const inp = document.getElementById('searchLocationInput');
+            if (inp) inp.value = preferred.name;
+            selectedLocation = {
+              val: preferred.name,
+              lat: preferred.lat || null,
+              lon: preferred.lon || null,
+              country: preferred.country || '',
+              countryCode: (preferred.country_code || '').toLowerCase()
+            };
+            renderPrewarmedCitiesBar();
+            await loadCityShard(preferred.slug, forceSpin);
+            renderImmoPortalLinks(preferred.name, immoTransac === 'ALL' ? 'location' : immoTransac, '', '', 'all', selectedLocation.countryCode);
+            shardedLoaded = true;
+          }
+        }
+      } catch (e) {
+        console.warn('Index V17 indisponible, fallback annonces.json:', e);
+      }
+
+      if (!shardedLoaded) {
+        try {
+          const res = await fetch(`data/annonces.json?t=${Date.now()}`);
+          if (!res.ok) throw new Error('Erreur HTTP ' + res.status);
+          allData = await res.json();
+          console.log(`Fallback annonces.json : ${allData.length} annonces chargées`);
+        } catch (e) {
+          console.warn('Erreur chargement annonces.json :', e);
+        }
+      }
+
+      syncFilterUI();
+      filterImmo();
+
+      // Chargement asynchrone de data/voyage.json (sans bloquer l'affichage Immo instantané)
+      try {
+        const vRes = await fetch(`data/voyage.json?t=${Date.now()}`);
+        if (vRes.ok) {
+          voyageData = await vRes.json();
+          allData = [...(getAllLoadedImmoItems()), ...(Array.isArray(voyageData) ? voyageData : [])];
+        }
+      } catch (e) {
+        console.warn('Erreur chargement voyage.json:', e);
+      } finally {
+        if (forceSpin && btn) setTimeout(() => btn.classList.remove('spinning'), 600);
+      }
+
       renderVoyageInspirationsCarousel();
       applyVoyageCalendar(false);
       updateRadarProfile();
@@ -3660,6 +4113,13 @@
             else if (cc === 'pt') flag = '🇵🇹';
             else if (cc === 'de') flag = '🇩🇪';
             else if (cc === 'us') flag = '🇺🇸';
+            else if (cc === 'br') flag = '🇧🇷';
+            else if (cc === 'jp') flag = '🇯🇵';
+            else if (cc === 'kr') flag = '🇰🇷';
+            else if (cc === 'sg') flag = '🇸🇬';
+            else if (cc === 'gr') flag = '🇬🇷';
+            else if (cc === 'cy') flag = '🇨🇾';
+            else if (cc === 'ca') flag = '🇨🇦';
             else if (cc === 'ch') flag = '🇨🇭';
             else if (cc === 'be') flag = '🇧🇪';
             else if (cc === 'lu') flag = '🇱🇺';
@@ -3803,6 +4263,7 @@
     function resetAllImmoFilters() {
       immoTransac = 'ALL';
       filterState.immo.transac = 'ALL';
+      immoLocalOnly = false;
       immoRooms.clear();
       immoAmenities.clear();
       filterState.immo.mapZone = null;
@@ -3813,8 +4274,11 @@
 
       const locInput = document.getElementById('searchLocationInput');
       if (locInput) locInput.value = '';
+      activeCitySlug = '';
       const budgetInput = document.getElementById('immoMaxBudgetInput');
       if (budgetInput) budgetInput.value = '';
+      const quickBudgetInput = document.getElementById('immoQuickBudgetInput');
+      if (quickBudgetInput) quickBudgetInput.value = '';
       const surfaceInput = document.getElementById('immoMinSurfaceInput');
       if (surfaceInput) surfaceInput.value = '';
       const acList = document.getElementById('cityAutocompleteList');
@@ -3834,18 +4298,21 @@
       if (btnRadius) btnRadius.classList.remove('active');
 
       immoPage = 1;
+      renderPrewarmedCitiesBar();
       syncFilterUI();
       filterImmo();
     }
 
     function triggerAutoRefreshImmo(immediate = false) {
-      filterImmo();
       clearTimeout(autoRefreshTimer);
-      const q = (document.getElementById('searchLocationInput')?.value || '').trim();
-      if (q.length < 2) return;
-      autoRefreshTimer = setTimeout(() => {
-        launchLiveScanImmo(true);
-      }, immediate ? 80 : 400);
+      immoPage = 1;
+      if (immediate) {
+        filterImmo();
+      } else {
+        autoRefreshTimer = setTimeout(() => {
+          filterImmo();
+        }, 120);
+      }
     }
 
     function setViewMode(mode) {
@@ -3869,22 +4336,59 @@
       }
     }
 
+    function getItemMarketSegment(it) {
+      if (it && it.market_segment) return it.market_segment;
+      const blob = `${it?.id || ''} ${it?.agency || ''} ${it?.category_label || ''} ${it?.url || ''}`.toLowerCase();
+      if (blob.includes('flatio') || blob.includes('housinganywhere') || blob.includes('spotahome')) {
+        return 'expat_midterm';
+      }
+      return 'local_residential';
+    }
+
+    function getNormalizedRooms(it) {
+      const rRaw = String(it?.rooms || '').trim();
+      const rLow = rRaw.toLowerCase();
+      const tLow = String(it?.title || '').toLowerCase();
+      const sVal = parseFloat(it?.surface_val || 0) || 0;
+      const beds = (it?.bedrooms !== undefined && it?.bedrooms !== null) ? parseInt(it.bedrooms, 10) : null;
+
+      if (tLow.includes('room in ') || tLow.includes('shared ') || tLow.includes('colocation') || rLow.includes('chambre')) {
+        return 'Chambre';
+      }
+      let numP = null;
+      if (rLow.includes('studio') || rLow === 't1' || rLow === 'f1' || rLow === '1p') {
+        numP = 1;
+      } else {
+        const m = rLow.match(/(?:t|f)?(\d+)/i);
+        if (m) numP = parseInt(m[1], 10);
+      }
+      if (numP !== null && numP >= 3 && sVal > 0 && sVal <= 35 && (beds === null || beds < 2)) {
+        return sVal <= 24 ? 'Studio' : 'T2';
+      }
+      return rRaw || 'Logement';
+    }
+
     function matchesRoomReq(it, reqRoom) {
-      const r = (it.rooms || '').toLowerCase();
+      const normR = getNormalizedRooms(it);
+      const r = normR.toLowerCase();
       const t = (it.title || '').toLowerCase();
       const req = reqRoom.toLowerCase();
-      if (req === 'studio') return r.includes('studio') || r.includes('t1') || r.includes('1 p') || r.includes('f1') || t.includes('studio');
-      if (req === 't2') return r.includes('t2') || r.includes('2 p') || r.includes('f2') || t.includes('t2');
-      if (req === 't3' || req === 't3+') {
+      if (req === 'studio') return r.includes('studio') || r.includes('t1') || r.includes('1 p') || r.includes('f1') || r === 'chambre' || t.includes('studio');
+      if (req === 't2') return r === 't2' || r.includes('2 p') || r.includes('f2');
+      if (req === 't3') {
         const m = r.match(/(?:t|f)?(\d+)/i);
-        return r.includes('t3') || r.includes('t4') || r.includes('t5') || r.includes('3 p') || r.includes('f3') || t.includes('t3') || (m && parseInt(m[1], 10) >= 3);
+        return r === 't3' || r.includes('3 p') || r.includes('f3') || (m && parseInt(m[1], 10) === 3);
+      }
+      if (req === 't3+') {
+        const m = r.match(/(?:t|f)?(\d+)/i);
+        return r.includes('t3') || r.includes('t4') || r.includes('t5') || (m && parseInt(m[1], 10) >= 3);
       }
       if (req === 't4' || req === 't4+') {
-        const m = r.match(/(\d+)\s*p/i);
-        return r.includes('t4') || r.includes('t5') || (m && parseInt(m[1], 10) >= 4);
+        const m = r.match(/(?:t|f)?(\d+)/i);
+        return r.includes('t4') || r.includes('t5') || r.includes('t6') || (m && parseInt(m[1], 10) >= 4);
       }
       if (req === 'maison' || req === 'villa') {
-        return t.includes('maison') || t.includes('villa') || r.includes('maison') || r.includes('villa');
+        return t.includes('maison') || t.includes('villa') || t.includes('house') || t.includes('casa') || r.includes('maison') || r.includes('villa');
       }
       return r.includes(req) || t.includes(req);
     }
@@ -3899,13 +4403,17 @@
 
       const excludeViager = document.getElementById('immoExcludeViager')?.checked !== false;
       const mapZone = filterState.immo.mapZone;
+      const sourcePool = getAllLoadedImmoItems();
 
-      const filtered = (allData || []).filter(it => {
+      const filtered = sourcePool.filter(it => {
         if (it.universe !== 'immo' && it.category !== 'immo') return false;
         if (dislikes.includes(it.id)) return false;
         if (likedItems.includes(it.id)) return false;
         if (isNonResidentialItem(it)) return false;
         if (excludeViager && isExcludedSpecialProduct(it)) return false;
+
+        // V17 : Marché local uniquement (masque Flatio / HousingAnywhere / Spotahome)
+        if (immoLocalOnly && getItemMarketSegment(it) === 'expat_midterm') return false;
 
         // Transaction
         if (immoTransac !== 'ALL' && it.transaction_type !== immoTransac) return false;
@@ -3950,37 +4458,39 @@
           }
         }
 
-        // Recherche Lieu textuelle
+        // Recherche Lieu textuelle (instant sur shard actif, pas de faux rejet sur alias FR/EN)
         if (q && !mapZone) {
-          const pc = String(it.postal_code || '').toLowerCase();
-          const matchText = `${it.title || ''} ${it.location || ''} ${it.city || ''} ${pc} ${it.category_label || ''} ${it.badge || ''} ${it.description || ''}`.toLowerCase();
-          if (isSxmQuery) {
-            if (pc.includes('38400') || matchText.includes('38400') || matchText.includes('hères')) return false;
-            const sxmHit = pc.includes('97150') || matchText.includes('saint-martin') || matchText.includes('saint martin')
-              || matchText.includes('marigot') || matchText.includes('grand-case') || matchText.includes('grand case')
-              || matchText.includes('orient') || matchText.includes('cul-de-sac') || matchText.includes('anse marcel')
-              || matchText.includes('hope estate') || matchText.includes('baie nettlé') || matchText.includes('97150');
-            if (!sxmHit) return false;
+          const typedSlug = resolveCitySlugClient(qRaw);
+          if (activeCitySlug && typedSlug === activeCitySlug && it.city_slug === activeCitySlug) {
+            // Déjà filtré sur le shard exact de la ville
           } else {
-            // 1. Proximité GPS prioritaire (rayon 35 km) si coordonnées disponibles
-            let gpsHit = false;
-            if (selectedLocation && selectedLocation.lat && selectedLocation.lon && it.lat && it.lon) {
-              const dist = haversineKm(selectedLocation.lat, selectedLocation.lon, it.lat, it.lon);
-              if (dist <= 35) {
-                gpsHit = true;
+            const pc = String(it.postal_code || '').toLowerCase();
+            const matchText = `${it.title || ''} ${it.location || ''} ${it.city || ''} ${it.city_slug || ''} ${pc} ${it.category_label || ''} ${it.badge || ''} ${it.description || ''}`.toLowerCase();
+            if (isSxmQuery) {
+              if (pc.includes('38400') || matchText.includes('38400') || matchText.includes('hères')) return false;
+              const sxmHit = pc.includes('97150') || matchText.includes('saint-martin') || matchText.includes('saint martin')
+                || matchText.includes('marigot') || matchText.includes('grand-case') || matchText.includes('grand case')
+                || matchText.includes('orient') || matchText.includes('cul-de-sac') || matchText.includes('anse marcel')
+                || matchText.includes('hope estate') || matchText.includes('baie nettlé') || matchText.includes('97150');
+              if (!sxmHit) return false;
+            } else {
+              let gpsHit = false;
+              if (selectedLocation && selectedLocation.lat && selectedLocation.lon && it.lat && it.lon) {
+                const dist = haversineKm(selectedLocation.lat, selectedLocation.lon, it.lat, it.lon);
+                if (dist <= 35) {
+                  gpsHit = true;
+                }
               }
-            }
-
-            if (!gpsHit) {
-              // 2. Extraction de la ville principale (ex: "Miami" dans "Miami, États-Unis d'Amérique")
-              const mainCity = q.split(',')[0].trim();
-              const mainTokens = mainCity.split(/[\s-]+/).filter(tk => tk.length >= 2);
-              if (mainTokens.length > 0 && mainTokens.every(tk => matchText.includes(tk))) {
-                // Match réussi sur la ville principale
-              } else if (matchText.includes(mainCity) || matchText.includes(q)) {
-                // Match direct
-              } else {
-                return false;
+              if (!gpsHit) {
+                const mainCity = q.split(',')[0].trim();
+                const mainTokens = mainCity.split(/[\s-]+/).filter(tk => tk.length >= 2);
+                if (mainTokens.length > 0 && mainTokens.every(tk => matchText.includes(tk))) {
+                  // Match OK
+                } else if (matchText.includes(mainCity) || matchText.includes(q) || (typedSlug && it.city_slug === typedSlug)) {
+                  // Match OK
+                } else {
+                  return false;
+                }
               }
             }
           }
@@ -3989,7 +4499,7 @@
         return true;
       });
 
-      // Tri complet Immo V12
+      // Tri complet Immo V17 (priorise local_residential sur pertinence)
       filtered.sort((a, b) => {
         const sortBy = filterState.immo.sortBy;
         if (sortBy === 'price_asc') return (a.price || 0) - (b.price || 0);
@@ -3997,6 +4507,9 @@
         if (sortBy === 'price_m2_asc') return (a.price_per_m2 || 999999) - (b.price_per_m2 || 999999);
         if (sortBy === 'surface_desc') return (b.surface_val || 0) - (a.surface_val || 0);
         if (sortBy === 'date_desc') return (b.date_detected || '').localeCompare(a.date_detected || '');
+        const segA = getItemMarketSegment(a) === 'local_residential' ? 1 : 0;
+        const segB = getItemMarketSegment(b) === 'local_residential' ? 1 : 0;
+        if (segA !== segB) return segB - segA;
         return (b.date_detected || '').localeCompare(a.date_detected || '');
       });
 
@@ -4099,26 +4612,38 @@
     // =========================================================
     // SCAN LIVE IMMO 100% RÉEL & DYNAMIQUE (MONDIAL V13)
     // =========================================================
-    let immoWorkflowPollTimer = null;
-
     async function launchLiveScanImmo(silent = false, lat = null, lon = null, radius = null) {
+      // 1. Verrou strict anti-double déclenchement et cooldown de 8 secondes
+      const now = Date.now();
+      if (isCloudScanDispatching || (now - lastCloudScanDispatchTime < CLOUD_SCAN_COOLDOWN_MS)) {
+        const waitSec = Math.max(1, Math.ceil((CLOUD_SCAN_COOLDOWN_MS - (now - lastCloudScanDispatchTime)) / 1000));
+        showToast(`⏳ Scan Cloud en cours. Merci de patienter ${waitSec}s avant une nouvelle requête...`, 2000);
+        return;
+      }
+
       const city = (document.getElementById('searchLocationInput')?.value || 'Nancy').trim();
       const transac = immoTransac === 'ALL' ? 'location' : immoTransac;
       const budget = document.getElementById('immoMaxBudgetInput')?.value || '';
       const surface = document.getElementById('immoMinSurfaceInput')?.value || '';
       const rooms = Array.from(immoRooms).join(',') || 'all';
 
-      // Détection précise du pays
+      // Détection précise du pays (V17 inclut JP, BR, KR, SG, GR, CY)
       let cc = (selectedLocation.countryCode || '').toLowerCase();
       const cLow = city.toLowerCase();
       if (!cc) {
         if (cLow.includes('new york') || cLow.includes('miami') || cLow.includes('los angeles') || cLow.includes('chicago') || cLow.includes('san francisco') || cLow.includes('états-unis') || cLow.includes('etats-unis') || cLow.includes('usa')) cc = 'us';
+        else if (cLow.includes('tokyo') || cLow.includes('osaka') || cLow.includes('kyoto') || cLow.includes('yokohama') || cLow.includes('japon') || cLow.includes('japan')) cc = 'jp';
+        else if (cLow.includes('rio') || cLow.includes('sao paulo') || cLow.includes('são paulo') || cLow.includes('brasil') || cLow.includes('brésil') || cLow.includes('brazil')) cc = 'br';
+        else if (cLow.includes('seoul') || cLow.includes('séoul') || cLow.includes('busan') || cLow.includes('corée') || cLow.includes('korea')) cc = 'kr';
+        else if (cLow.includes('singap') || cLow.includes('singapore')) cc = 'sg';
+        else if (cLow.includes('athen') || cLow.includes('athèn') || cLow.includes('grece') || cLow.includes('grèce') || cLow.includes('greece')) cc = 'gr';
+        else if (cLow.includes('limassol') || cLow.includes('nicosia') || cLow.includes('chypre') || cLow.includes('cyprus')) cc = 'cy';
         else if (cLow.includes('madrid') || cLow.includes('barcelon') || cLow.includes('valenc') || cLow.includes('sevill') || cLow.includes('espagne')) cc = 'es';
         else if (cLow.includes('london') || cLow.includes('londres') || cLow.includes('manchester') || cLow.includes('edinburgh') || cLow.includes('royaume-uni') || cLow.includes('uk')) cc = 'gb';
         else if (cLow.includes('rome') || cLow.includes('roma') || cLow.includes('milan') || cLow.includes('firenze') || cLow.includes('italie')) cc = 'it';
         else if (cLow.includes('lisbon') || cLow.includes('lisbonne') || cLow.includes('porto') || cLow.includes('portugal')) cc = 'pt';
         else if (cLow.includes('berlin') || cLow.includes('munich') || cLow.includes('allemagne')) cc = 'de';
-        else if (cLow.includes('montreal') || cLow.includes('toronto') || cLow.includes('quebec') || cLow.includes('canada')) cc = 'ca';
+        else if (cLow.includes('montreal') || cLow.includes('montréal') || cLow.includes('toronto') || cLow.includes('quebec') || cLow.includes('canada')) cc = 'ca';
         else if (cLow.includes('saint-martin') || cLow.includes('sxm') || cLow.includes('97150')) cc = 'smt';
         else if (cLow.includes('guadeloupe') || cLow.includes('971')) cc = 'glp';
         else if (cLow.includes('martinique') || cLow.includes('972')) cc = 'mtq';
@@ -4127,25 +4652,40 @@
         else cc = 'fr';
       }
 
-      updateImmoScanProgress(20, `Synchronisation des portails officiels directs pour ${city}...`);
+      const isForeign = cc && cc !== 'fr' && !['smt', 'glp', 'mtq', 'guf', 'reu'].includes(cc);
+      const targetSlug = resolveCitySlugClient(city);
+
+      // Verrouillage discret du bouton Cloud uniquement (navigation instantanée jamais bloquée)
+      isCloudScanDispatching = true;
+      lastCloudScanDispatchTime = now;
+      const btnImmo = document.getElementById('btnLaunchLiveScanImmo');
+      if (btnImmo) {
+        btnImmo.disabled = true;
+        btnImmo.style.opacity = '0.55';
+        btnImmo.style.pointerEvents = 'none';
+      }
+      setTimeout(() => {
+        isCloudScanDispatching = false;
+        if (btnImmo) {
+          btnImmo.disabled = false;
+          btnImmo.style.opacity = '1';
+          btnImmo.style.pointerEvents = '';
+        }
+      }, CLOUD_SCAN_COOLDOWN_MS);
+
+      if (isForeign) {
+        updateImmoScanProgress(25, `🌍 Scan Cloud non-bloquant lancé pour ${city} (${cc.toUpperCase()})...`);
+      } else {
+        updateImmoScanProgress(20, `🔄 Actualisation Cloud en arrière-plan pour ${city}...`);
+      }
       renderImmoPortalLinks(city, transac, budget, surface, rooms, cc);
 
-      // Vérification du nombre d'annonces en cache local pour cette destination
-      const mainCity = cLow.split(',')[0].trim();
-      const localMatches = (allData || []).filter(a => {
-        if (a.universe !== 'immo' && a.category !== 'immo') return false;
-        const aLoc = ((a.city || '') + ' ' + (a.location || '') + ' ' + (a.title || '')).toLowerCase();
-        return aLoc.includes(mainCity);
-      });
-
-      const isForeign = cc && cc !== 'fr' && !['smt', 'glp', 'mtq', 'guf', 'reu'].includes(cc);
-      const shouldTriggerCloudScan = isForeign || localMatches.length < 5;
-
+      const shouldTriggerCloudScan = true;
       const token = getStoredGhToken();
       const repo = getStoredGhRepo();
 
       if (shouldTriggerCloudScan && token) {
-        updateImmoScanProgress(45, `☁️ Scan mondial en cours (Properstar / HousingAnywhere / Spotahome) pour ${city}... (~35s)`);
+        updateImmoScanProgress(45, `☁️ Scan Cloud en cours pour ${city}... Vous pouvez continuer à naviguer.`);
         try {
           const payload = {
             ref: 'main',
@@ -4153,7 +4693,7 @@
               category: 'immo',
               city,
               country_code: cc,
-              transaction_type: transac,
+              transaction_type: 'all',
               max_budget: String(budget),
               min_surface: String(surface),
               rooms,
@@ -4172,13 +4712,17 @@
             body: JSON.stringify(payload)
           });
 
-          // Démarrage du polling toutes les 7s
-          clearInterval(immoWorkflowPollTimer);
+          // Nettoyage impératif de tout polling antérieur (un seul polling unique)
+          if (activeCloudPollInterval) {
+            clearInterval(activeCloudPollInterval);
+            activeCloudPollInterval = null;
+          }
+
           let pollAttempts = 0;
-          immoWorkflowPollTimer = setInterval(async () => {
+          activeCloudPollInterval = setInterval(async () => {
             pollAttempts++;
             try {
-              const runRes = await fetch(`https://api.github.com/repos/${repo}/actions/runs?event=workflow_dispatch&per_page=1`, {
+              const runRes = await fetch(`https://api.github.com/repos/${repo}/actions/runs?event=workflow_dispatch&per_page=3`, {
                 headers: {
                   'Authorization': `Bearer ${token}`,
                   'Accept': 'application/vnd.github.v3+json'
@@ -4186,36 +4730,57 @@
               });
               if (runRes.ok) {
                 const rData = await runRes.json();
-                const latestRun = (rData.workflow_runs || [])[0];
-                if (latestRun) {
-                  const s = latestRun.status;
-                  const concl = latestRun.conclusion;
+                const runs = rData.workflow_runs || [];
+                let currentRun = runs.find(r => r.status === 'in_progress' || r.status === 'queued') || runs[0];
+                if (currentRun) {
+                  const s = currentRun.status;
+                  const concl = currentRun.conclusion;
+
+                  if (concl === 'cancelled') {
+                    const activeRun = runs.find(r => r.status === 'in_progress' || r.status === 'queued');
+                    if (activeRun) {
+                      currentRun = activeRun;
+                    } else {
+                      clearInterval(activeCloudPollInterval);
+                      activeCloudPollInterval = null;
+                      hideImmoScanProgress(1200);
+                      return;
+                    }
+                  }
+
                   if (s === 'in_progress' || s === 'queued') {
                     updateImmoScanProgress(Math.min(94, 45 + pollAttempts * 8), `☁️ Scan cloud en cours (${s})...`);
                   } else if (s === 'completed') {
-                    clearInterval(immoWorkflowPollTimer);
-                    updateImmoScanProgress(100, `✨ Nouvelles annonces mondiales disponibles !`);
-                    // Lecture instantanée via GitHub API (sans attendre le rebuild lent de GitHub Pages)
+                    clearInterval(activeCloudPollInterval);
+                    activeCloudPollInterval = null;
+                    updateImmoScanProgress(100, `✨ Nouvelles annonces prêtes pour ${city} !`);
                     try {
-                      const rawUrl = `https://api.github.com/repos/${repo}/contents/data/annonces.json?ref=main`;
-                      const rawRes = await fetch(rawUrl, {
-                        headers: {
-                          'Authorization': `Bearer ${token}`,
-                          'Accept': 'application/vnd.github.raw',
-                          'Cache-Control': 'no-cache'
+                      const idxApi = `https://api.github.com/repos/${repo}/contents/data/cities_index.json?ref=main`;
+                      const shardApi = `https://api.github.com/repos/${repo}/contents/data/cities/${encodeURIComponent(targetSlug)}.json?ref=main`;
+                      const hdrs = {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/vnd.github.raw',
+                        'Cache-Control': 'no-cache'
+                      };
+                      const [idxRes, shardRes] = await Promise.all([fetch(idxApi, { headers: hdrs }), fetch(shardApi, { headers: hdrs })]);
+                      if (idxRes.ok) {
+                        citiesIndexData = await idxRes.json();
+                      }
+                      if (shardRes.ok) {
+                        const freshItems = await shardRes.json();
+                        if (Array.isArray(freshItems)) {
+                          loadedCityShards[targetSlug] = freshItems;
+                          activeCitySlug = targetSlug;
                         }
-                      });
-                      if (rawRes.ok) {
-                        allData = await rawRes.json();
-                        console.log(`Données chargées en direct depuis GitHub API : ${allData.length} annonces`);
                       } else {
                         await loadData();
                       }
                     } catch (e) {
                       await loadData();
                     }
+                    renderPrewarmedCitiesBar();
                     filterImmo();
-                    showToast(`✨ Scan mondial achevé avec succès (${concl}) pour ${city} !`, 3500);
+                    showToast(`✨ Scan Cloud achevé pour ${city} (${concl || 'OK'}) !`, 3500);
                     hideImmoScanProgress(2500);
                     return;
                   }
@@ -4224,8 +4789,9 @@
             } catch (err) {
               console.warn('Erreur polling scan:', err);
             }
-            if (pollAttempts >= 18) { // 18 * 7s ~ 126s (timeout 120s pour run complet GitHub Actions)
-              clearInterval(immoWorkflowPollTimer);
+            if (pollAttempts >= 18) {
+              clearInterval(activeCloudPollInterval);
+              activeCloudPollInterval = null;
               hideImmoScanProgress(1500);
             }
           }, 7000);
@@ -4233,9 +4799,11 @@
         } catch (e) {
           console.warn('Erreur dispatch GitHub Actions:', e);
         }
-      } else if (shouldTriggerCloudScan && !token) {
+      } else if (!token) {
+        updateImmoScanProgress(100, `⚡ Portails locaux directs affichés pour ${city}`);
+        hideImmoScanProgress(1800);
         if (!silent) {
-          showToast(`💡 Entrez votre Token GitHub dans l'onglet Compte pour activer le scan mondial automatique. Les portails directs ci-dessus sont immédiatement consultables !`, 4500);
+          showToast(`💡 Entrez votre Token GitHub dans Compte pour lancer des scans Cloud à la demande. Les portails officiels ci-dessus sont accessibles en 1 tap !`, 4200);
         }
       }
 
@@ -4266,12 +4834,18 @@
       let cc = (countryCode || selectedLocation.countryCode || '').toLowerCase();
       if (!cc) {
         if (cLow.includes('new york') || cLow.includes('miami') || cLow.includes('los angeles') || cLow.includes('chicago') || cLow.includes('san francisco') || cLow.includes('états-unis') || cLow.includes('etats-unis') || cLow.includes('usa')) cc = 'us';
+        else if (cLow.includes('tokyo') || cLow.includes('osaka') || cLow.includes('kyoto') || cLow.includes('yokohama') || cLow.includes('japon') || cLow.includes('japan')) cc = 'jp';
+        else if (cLow.includes('rio') || cLow.includes('sao paulo') || cLow.includes('são paulo') || cLow.includes('brasil') || cLow.includes('brésil') || cLow.includes('brazil')) cc = 'br';
+        else if (cLow.includes('seoul') || cLow.includes('séoul') || cLow.includes('busan') || cLow.includes('corée') || cLow.includes('korea')) cc = 'kr';
+        else if (cLow.includes('singap') || cLow.includes('singapore')) cc = 'sg';
+        else if (cLow.includes('athen') || cLow.includes('athèn') || cLow.includes('grece') || cLow.includes('grèce') || cLow.includes('greece')) cc = 'gr';
+        else if (cLow.includes('limassol') || cLow.includes('nicosia') || cLow.includes('chypre') || cLow.includes('cyprus')) cc = 'cy';
         else if (cLow.includes('madrid') || cLow.includes('barcelon') || cLow.includes('valenc') || cLow.includes('sevill') || cLow.includes('espagne')) cc = 'es';
         else if (cLow.includes('london') || cLow.includes('londres') || cLow.includes('manchester') || cLow.includes('edinburgh') || cLow.includes('royaume-uni') || cLow.includes('uk')) cc = 'gb';
         else if (cLow.includes('rome') || cLow.includes('roma') || cLow.includes('milan') || cLow.includes('firenze') || cLow.includes('italie')) cc = 'it';
         else if (cLow.includes('lisbon') || cLow.includes('lisbonne') || cLow.includes('porto') || cLow.includes('portugal')) cc = 'pt';
         else if (cLow.includes('berlin') || cLow.includes('munich') || cLow.includes('allemagne')) cc = 'de';
-        else if (cLow.includes('montreal') || cLow.includes('toronto') || cLow.includes('quebec') || cLow.includes('canada')) cc = 'ca';
+        else if (cLow.includes('montreal') || cLow.includes('montréal') || cLow.includes('toronto') || cLow.includes('quebec') || cLow.includes('canada')) cc = 'ca';
         else if (cLow.includes('saint-martin') || cLow.includes('sxm') || cLow.includes('97150')) cc = 'smt';
         else if (cLow.includes('guadeloupe') || cLow.includes('971')) cc = 'glp';
         else if (cLow.includes('martinique') || cLow.includes('972')) cc = 'mtq';
@@ -4282,8 +4856,46 @@
 
       let links = [];
 
-      // Routeur strict par pays
-      if (cc === 'us') {
+      // Routeur strict par pays V17 (portails locaux adaptés — jamais Spotahome/Properstar pour Asie/Brésil)
+      if (cc === 'jp') {
+        links = [
+          { name: 'RealEstate.co.jp', url: `https://realestate.co.jp/en/${isAchat ? 'forsale' : 'rent'}/listing?prefecture=JP-13`, icon: '🇯🇵', desc: 'Expat & Local Japon' },
+          { name: 'GaijinPot Apartments', url: `https://apartments.gaijinpot.com/en/rent/listing?prefecture=JP-13`, icon: '🇯🇵', desc: 'Spécialiste Tokyo' },
+          { name: 'SUUMO', url: `https://suumo.jp/chintai/tokyo/city/`, icon: '🏡', desc: 'N°1 Immobilier Japon' },
+          { name: "LIFULL HOME'S", url: `https://www.homes.co.jp/chintai/tokyo/list/`, icon: '🏢', desc: 'Portail National JP' },
+          { name: 'AtHome.co.jp', url: `https://www.athome.co.jp/${isAchat ? 'mansion/chuko' : 'chintai'}/tokyo/list/`, icon: '🔑', desc: 'Agences locales' },
+        ];
+      } else if (cc === 'br') {
+        links = [
+          { name: 'QuintoAndar', url: `https://www.quintoandar.com.br/${isAchat ? 'comprar' : 'alugar'}/imovel/rio-de-janeiro-rj-brasil`, icon: '🇧🇷', desc: 'N°1 Sans Garant Brésil' },
+          { name: 'VivaReal', url: `https://www.vivareal.com.br/${isAchat ? 'venda' : 'aluguel'}/rj/${cSlug}/`, icon: '🇧🇷', desc: 'Référence Nationale' },
+          { name: 'ZAP Imóveis', url: `https://www.zapimoveis.com.br/${isAchat ? 'venda' : 'aluguel'}/imoveis/rj+${cSlug}/`, icon: '🏢', desc: 'Catalogue Agences' },
+          { name: 'OLX Imóveis', url: `https://www.olx.com.br/imoveis/estado-rj`, icon: '🔍', desc: 'Particuliers & Pros' },
+        ];
+      } else if (cc === 'kr') {
+        links = [
+          { name: 'Zigbang', url: `https://www.zigbang.com/`, icon: '🇰🇷', desc: 'N°1 Immobilier Corée' },
+          { name: 'Dabang', url: `https://www.dabangapp.com/`, icon: '🇰🇷', desc: 'Appartements Séoul' },
+          { name: 'Craigslist Seoul', url: `https://seoul.craigslist.org/search/apa`, icon: '🌏', desc: 'Annonces Expat' },
+          { name: 'SeoulHomes', url: `https://seoulhomes.kr/`, icon: '🏠', desc: 'Agences en anglais' },
+        ];
+      } else if (cc === 'sg') {
+        links = [
+          { name: 'PropertyGuru SG', url: `https://www.propertyguru.com.sg/property-for-${isAchat ? 'sale' : 'rent'}`, icon: '🇸🇬', desc: 'N°1 Singapour' },
+          { name: '99.co', url: `https://www.99.co/singapore/${isAchat ? 'sale' : 'rent'}`, icon: '🏢', desc: 'Portail Majeur SG' },
+        ];
+      } else if (cc === 'gr') {
+        links = [
+          { name: 'Spitogatos', url: `https://en.spitogatos.gr/${isAchat ? 'for_sale' : 'to_rent'}-homes/${cSlug}`, icon: '🇬🇷', desc: 'N°1 Grèce' },
+          { name: 'Green-Acres GR', url: `https://www.green-acres.gr/property-for-sale/${cSlug}`, icon: '🏡', desc: 'Villas & Apparts' },
+          { name: 'Spotahome GR', url: `https://www.spotahome.com/fr/${cSlug}`, icon: '🇪🇺', desc: 'Moyen séjour' },
+        ];
+      } else if (cc === 'cy') {
+        links = [
+          { name: 'Bazaraki Cyprus', url: `https://www.bazaraki.com/real-estate-${isAchat ? 'to-buy' : 'to-rent'}/${cSlug}/`, icon: '🇨🇾', desc: 'N°1 Chypre' },
+          { name: 'Tranio Cyprus', url: `https://tranio.com/cyprus/${cSlug}/`, icon: '🌍', desc: 'Investissement & Vente' },
+        ];
+      } else if (cc === 'us') {
         links = [
           { name: 'Zillow', url: `https://www.zillow.com/homes/${isAchat ? 'for_sale' : 'for_rent'}/${cSlug}_rb/`, icon: '🇺🇸', desc: 'N°1 Immobilier USA' },
           ...(cLow.includes('new york') || cLow.includes('nyc') ? [{ name: 'StreetEasy', url: `https://streeteasy.com/${isAchat ? 'for-sale' : 'for-rent'}/nyc`, icon: '🗽', desc: 'Spécialiste NYC' }] : []),
@@ -4371,13 +4983,17 @@
       if (!mapBox) return;
 
       if (!mainLeafletMap) {
+        isProgrammaticMapMove = true;
         mainLeafletMap = L.map(mapBox, { preferCanvas: true }).setView([48.6921, 6.1844], 12);
+        setTimeout(() => { isProgrammaticMapMove = false; }, 350);
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '© OpenStreetMap contributors',
           maxZoom: 18
         }).addTo(mainLeafletMap);
 
         mainLeafletMap.on('moveend zoomend', () => {
+          if (isProgrammaticMapMove) return;
           if (!isRadiusModeActive && !filterState.immo.mapZone) {
             const btnZone = document.getElementById('btnSearchThisZone');
             if (btnZone) btnZone.style.display = 'inline-flex';
@@ -4416,7 +5032,9 @@
       });
 
       if (!filterState.immo.mapZone && group.length > 0) {
+        isProgrammaticMapMove = true;
         mainLeafletMap.fitBounds(group, { padding: [30, 30], maxZoom: 14 });
+        setTimeout(() => { isProgrammaticMapMove = false; }, 350);
       }
     }
 
@@ -4548,7 +5166,14 @@
     } catch (e) { likedSnapshots = {}; }
 
     function findItemById(id) {
-      return allData.find(x => x.id === id)
+      for (const list of Object.values(loadedCityShards)) {
+        if (Array.isArray(list)) {
+          const hit = list.find(x => x && x.id === id);
+          if (hit) return hit;
+        }
+      }
+      return (voyageData || []).find(x => x.id === id)
+        || (allData || []).find(x => x.id === id)
         || dynamicVoyageOffers.find(x => x.id === id)
         || likedSnapshots[id]
         || null;
@@ -4618,23 +5243,28 @@
       if (cntEl) cntEl.textContent = `${next + 1} / ${photos.length}`;
     }
 
-        function createImmoCardHtml(it, inCatalogue = false) {
+    function createImmoCardHtml(it, inCatalogue = false) {
       const isFav = favorites.includes(it.id);
       const isLiked = likedItems.includes(it.id);
       const isAchat = it.transaction_type === 'achat';
+      const seg = getItemMarketSegment(it);
+      const isExpat = seg === 'expat_midterm';
+      const normRooms = getNormalizedRooms(it);
       const photos = getItemPhotos(it);
       const curIdx = Math.min(cardImgIdx[it.id] || 0, photos.length - 1);
       const safeTitle = (it.title || 'Bien immobilier').replace(/"/g, '&quot;');
       const safeLoc = (it.location || '').replace(/'/g, "\\'");
 
-      // Formatage pièces + surface
+      // Formatage pièces normalisé + surface (zéro T3 sur 30 m²)
       const specsParts = [];
-      if (it.rooms) specsParts.push(it.rooms);
-      if (it.surface) specsParts.push(it.surface);
+      if (normRooms && normRooms !== 'Logement') specsParts.push(normRooms);
+      if (it.surface && it.surface !== 'N/C') specsParts.push(it.surface);
       const specsBadge = specsParts.join(' • ') || (it.agency || 'Vérifié');
 
-      // Badge Coup de cœur / Vérifié blanc en haut à gauche
-      const badgeText = isFav ? '⭐ Coup de cœur' : (it.badge || (isAchat ? '🏷️ Achat' : '✓ Vérifié'));
+      // Badge Coup de cœur / Expat / Vérifié blanc en haut à gauche
+      const badgeText = isFav
+        ? '⭐ Coup de cœur'
+        : (isExpat ? '🌍 Expat / Moyen séjour' : (it.badge || (isAchat ? '🏷️ Achat' : '✓ Vérifié')));
 
       // Dots indicateurs en bas de photo
       let dotsHtml = '';
@@ -4645,9 +5275,13 @@
           '</div>';
       }
 
-      // Formatage prix en gras
-      const priceVal = it.price_str || (it.price ? `${it.price.toLocaleString('fr-FR')} €` : 'Prix N/C');
-      const priceSub = isAchat ? '' : ' par mois';
+      // Formatage prix strict sans doublon ("1 850 € / mois" jamais "/ mois par mois")
+      const rawPriceStr = it.price_str || (it.price ? `${Number(it.price).toLocaleString('fr-FR')} €` : 'Prix N/C');
+      const cleanPriceBase = rawPriceStr.replace(/\s*(?:\/\s*mois|par\s+mois|\/\s*month)\s*(?:CC|HC)?/gi, '').trim();
+      const priceSub = (!isAchat && cleanPriceBase !== 'Prix N/C') ? ' / mois' : '';
+      const segmentBadgeHtml = isExpat
+        ? `<span class="badge-expat-midterm">🌍 Meublé Expat / Moyen séjour</span>`
+        : `<span class="badge-local-market">🏠 Marché local</span>`;
 
       return `
         <div class="card card-airbnb-immo ${inCatalogue ? 'catalogue-card' : ''}" id="card_${inCatalogue ? 'cat_' : ''}${it.id}" data-id="${it.id}">
@@ -4687,11 +5321,11 @@
             <!-- Ligne 2 : Titre court de l'annonce en gris #717171 -->
             <div class="card-airbnb-title">${it.title}</div>
 
-            <!-- Ligne 3 : Prix en gras #222222 + badge vert si sous prix de marché -->
-            <div class="card-airbnb-price-row">
-              <span class="card-airbnb-price">${priceVal}<span class="price-sub">${priceSub}</span></span>
+            <!-- Ligne 3 : Prix propre (/ mois unique) + Badge Marché Local vs Expat -->
+            <div class="card-airbnb-price-row" style="flex-wrap:wrap; row-gap:4px;">
+              <span class="card-airbnb-price">${cleanPriceBase}<span class="price-sub">${priceSub}</span></span>
               ${it.price_original_str ? `<span style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">(${escapeHtml(it.price_original_str)})</span>` : ''}
-              ${it.market_badge ? `<span class="badge-airbnb-market">${it.market_badge}</span>` : ''}
+              ${segmentBadgeHtml}
             </div>
           </div>
 
@@ -4946,7 +5580,7 @@
         </div>
         <div class="spec-card">
           <div class="spec-card-label">Pièces</div>
-          <div class="spec-card-val">${it.rooms || 'N/C'}</div>
+          <div class="spec-card-val">${getNormalizedRooms(it) || 'N/C'}</div>
         </div>
         <div class="spec-card">
           <div class="spec-card-label">Étage</div>
@@ -5894,6 +6528,7 @@
 
     function setVoyageCatFilter(cat) {
       currentVoyageCatFilter = cat || 'all';
+      voyagePage = 1;
       const map = {
         all: 'voyFilterAll',
         package: 'voyFilterPackage',
@@ -6330,7 +6965,8 @@
 
       const destQ = destRaw.toLowerCase();
       const dynIds = new Set(dynamicVoyageOffers.map(x => x.id));
-      const backendExtras = (allData || []).filter(it =>
+      const voyageSourcePool = (typeof voyageData !== 'undefined' && Array.isArray(voyageData) && voyageData.length > 0) ? voyageData : (allData || []);
+      const backendExtras = voyageSourcePool.filter(it =>
         it.universe === 'voyage' &&
         !String(it.id || '').startsWith('real_train_') &&
         !String(it.id || '').startsWith('real_package_') &&
@@ -6406,16 +7042,30 @@
       if (count1) count1.textContent = `${sec1Items.length} bon(s) plan(s) en direct (J+${daysOut})`;
       if (count2) count2.textContent = `${sec2Items.length} package(s) • ${nights} nuits`;
 
+      const visibleSec1 = sec1Items.slice(0, voyagePage * VOYAGE_PAGE_SIZE);
+      const visibleSec2 = sec2Items.slice(0, voyagePage * VOYAGE_PAGE_SIZE);
+
       if (sec1Container) {
-        sec1Container.innerHTML = sec1Items.length > 0 ?
-          sec1Items.map(it => createVoyageCardHtml(it, false)).join('') :
+        sec1Container.innerHTML = visibleSec1.length > 0 ?
+          visibleSec1.map(it => createVoyageCardHtml(it, false)).join('') :
           '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun bon plan dans ce filtre ou budget.</div>';
       }
 
       if (sec2Container) {
-        sec2Container.innerHTML = sec2Items.length > 0 ?
-          sec2Items.map(it => createVoyageCardHtml(it, false)).join('') :
+        sec2Container.innerHTML = visibleSec2.length > 0 ?
+          visibleSec2.map(it => createVoyageCardHtml(it, false)).join('') :
           '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 16px;">Aucun package sur-mesure dans ce plafond €.</div>';
+      }
+
+      const totalVoyItems = sec1Items.length + sec2Items.length;
+      const totalVoyShown = visibleSec1.length + visibleSec2.length;
+      const paginVoyBox = document.getElementById('voyagePaginationContainer');
+      const curVoyShown = document.getElementById('voyageCurrentShownCount');
+      const totVoyFound = document.getElementById('voyageTotalFoundCount');
+      if (curVoyShown) curVoyShown.textContent = totalVoyShown;
+      if (totVoyFound) totVoyFound.textContent = totalVoyItems;
+      if (paginVoyBox) {
+        paginVoyBox.style.display = totalVoyShown < totalVoyItems ? 'block' : 'none';
       }
 
       const track = document.getElementById('voyageInspirationsTrack');
@@ -6426,9 +7076,15 @@
       attachSwipeListeners();
     }
 
+    function loadMoreVoyage() {
+      voyagePage++;
+      applyVoyageCalendar(false);
+    }
+
     function clearVoyageDestChip() {
       const inp = document.getElementById('searchVoyageDest');
       if (inp) inp.value = '';
+      voyagePage = 1;
       applyVoyageCalendar(false);
     }
 
@@ -6437,6 +7093,7 @@
       const inp = document.getElementById('voyageBudgetInput');
       if (r) r.value = 4000;
       if (inp) inp.value = 4000;
+      voyagePage = 1;
       applyVoyageCalendar(false);
     }
 
@@ -6447,10 +7104,18 @@
     }
 
     function filterVoyage() {
+      voyagePage = 1;
       applyVoyageCalendar(false);
     }
 
     async function launchLiveScanVoyage() {
+      const now = Date.now();
+      if (isCloudScanDispatching || (now - lastCloudScanDispatchTime < CLOUD_SCAN_COOLDOWN_MS)) {
+        const waitSec = Math.max(1, Math.ceil((CLOUD_SCAN_COOLDOWN_MS - (now - lastCloudScanDispatchTime)) / 1000));
+        showToast(`⏳ Scan Voyage déjà en cours. Patientez ${waitSec}s...`, 2000);
+        return;
+      }
+
       const depart = (document.getElementById('voyageDepartInput')?.value || 'Nancy').trim();
       const destRaw = (document.getElementById('searchVoyageDest')?.value || '').trim();
       const destClean = (destRaw && destRaw.toLowerCase() !== 'partout') ? destRaw.replace(/\(.*?\)/g, '').trim() : 'Rome';
@@ -6458,7 +7123,25 @@
       const budget = document.getElementById('voyageBudgetInput')?.value || '1800';
       const { depIso, retIso, nights } = getEffectiveVoyageDates();
 
+      isCloudScanDispatching = true;
+      lastCloudScanDispatchTime = now;
+      const btnVoyage = document.getElementById('btnLaunchLiveScanVoyage');
+      if (btnVoyage) {
+        btnVoyage.disabled = true;
+        btnVoyage.style.opacity = '0.55';
+        btnVoyage.style.pointerEvents = 'none';
+      }
+      setTimeout(() => {
+        isCloudScanDispatching = false;
+        if (btnVoyage) {
+          btnVoyage.disabled = false;
+          btnVoyage.style.opacity = '1';
+          btnVoyage.style.pointerEvents = '';
+        }
+      }, CLOUD_SCAN_COOLDOWN_MS);
+
       updateVoyageScanProgress(25, `🛫 Calcul réaliste des vols, trains et hôtels (${depClean} ➔ ${destClean} • ${nights}n)...`);
+      voyagePage = 1;
       applyVoyageCalendar(true);
 
       updateVoyageScanProgress(65, `🔗 Synchronisation Google Flights / Booking / Trainline / Google Travel...`);
@@ -7095,11 +7778,11 @@
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'horizons-v15') caches.delete(n);
+              if (n !== 'horizons-v17-preloaded') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=15').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=17').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 

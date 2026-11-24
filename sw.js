@@ -1,4 +1,4 @@
-const CACHE_NAME = 'horizons-v16-voyage';
+const CACHE_NAME = 'horizons-v17-preloaded';
 const ASSETS_TO_CACHE = [
   './manifest.json',
   './assets/icon.svg'
@@ -21,11 +21,14 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const reqUrl = event.request.url;
-  // Network-First pour HTML, JSON et donnees dynamiques afin d'eviter tout cache fige
+  // Network-First pour HTML, shards villes, index et donnees dynamiques afin d'eviter tout cache fige
   if (
     event.request.mode === 'navigate' ||
     reqUrl.endsWith('.html') ||
     reqUrl.endsWith('/') ||
+    reqUrl.includes('cities_index.json') ||
+    reqUrl.includes('/data/cities/') ||
+    reqUrl.includes('voyage.json') ||
     reqUrl.includes('annonces.json') ||
     reqUrl.includes('config.json')
   ) {

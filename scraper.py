@@ -66,6 +66,8 @@ def fetch_exchange_rates():
         "AUD": 1.67,
         "MXN": 21.0,
         "BRL": 6.1,
+        "KRW": 1480.0,
+        "SGD": 1.44,
     }
     return _EXCHANGE_RATES_CACHE
 
@@ -86,7 +88,206 @@ def convert_to_eur(amount, currency="EUR"):
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
-DATA_PATH = os.path.join(BASE_DIR, "data", "annonces.json")
+DATA_DIR = os.path.join(BASE_DIR, "data")
+CITIES_DIR = os.path.join(DATA_DIR, "cities")
+CITIES_INDEX_PATH = os.path.join(DATA_DIR, "cities_index.json")
+VOYAGE_PATH = os.path.join(DATA_DIR, "voyage.json")
+DATA_PATH = os.path.join(DATA_DIR, "annonces.json")
+
+# Catalogue des 21 hubs mondiaux pré-scrapés toutes les 12h (V17)
+PREWARM_HUBS = [
+    # France & DOM-TOM (7)
+    {"slug": "nancy", "name": "Nancy", "country_code": "fr", "country": "France", "flag": "🇫🇷", "lat": 48.6921, "lon": 6.1844, "type": "france"},
+    {"slug": "paris", "name": "Paris", "country_code": "fr", "country": "France", "flag": "🇫🇷", "lat": 48.8566, "lon": 2.3522, "type": "france"},
+    {"slug": "lyon", "name": "Lyon", "country_code": "fr", "country": "France", "flag": "🇫🇷", "lat": 45.7640, "lon": 4.8357, "type": "france"},
+    {"slug": "saint-martin", "name": "Saint-Martin", "country_code": "smt", "country": "Saint-Martin", "flag": "🏝️", "lat": 18.0731, "lon": -63.0822, "type": "dom", "dom_code": "SMT"},
+    {"slug": "guadeloupe", "name": "Guadeloupe", "country_code": "glp", "country": "Guadeloupe", "flag": "🇬🇵", "lat": 16.2650, "lon": -61.5510, "type": "dom", "dom_code": "GLP"},
+    {"slug": "martinique", "name": "Martinique", "country_code": "mtq", "country": "Martinique", "flag": "🇲🇶", "lat": 14.6415, "lon": -61.0242, "type": "dom", "dom_code": "MTQ"},
+    {"slug": "la-reunion", "name": "La Réunion", "country_code": "reu", "country": "La Réunion", "flag": "🇷🇪", "lat": -20.8821, "lon": 55.4507, "type": "dom", "dom_code": "REU"},
+    # Europe (7)
+    {"slug": "madrid", "name": "Madrid", "country_code": "es", "country": "Espagne", "flag": "🇪🇸", "lat": 40.4168, "lon": -3.7038, "type": "intl", "query_en": "Madrid"},
+    {"slug": "barcelone", "name": "Barcelone", "country_code": "es", "country": "Espagne", "flag": "🇪🇸", "lat": 41.3874, "lon": 2.1686, "type": "intl", "query_en": "Barcelona"},
+    {"slug": "lisbonne", "name": "Lisbonne", "country_code": "pt", "country": "Portugal", "flag": "🇵🇹", "lat": 38.7223, "lon": -9.1393, "type": "intl", "query_en": "Lisbon"},
+    {"slug": "londres", "name": "Londres", "country_code": "gb", "country": "Royaume-Uni", "flag": "🇬🇧", "lat": 51.5074, "lon": -0.1278, "type": "intl", "query_en": "London"},
+    {"slug": "rome", "name": "Rome", "country_code": "it", "country": "Italie", "flag": "🇮🇹", "lat": 41.9028, "lon": 12.4964, "type": "intl", "query_en": "Rome"},
+    {"slug": "athenes", "name": "Athènes", "country_code": "gr", "country": "Grèce", "flag": "🇬🇷", "lat": 37.9838, "lon": 23.7275, "type": "intl", "query_en": "Athens"},
+    {"slug": "limassol", "name": "Limassol", "country_code": "cy", "country": "Chypre", "flag": "🇨🇾", "lat": 34.6786, "lon": 33.0413, "type": "intl", "query_en": "Limassol"},
+    # Monde (7)
+    {"slug": "new-york", "name": "New York", "country_code": "us", "country": "États-Unis", "flag": "🇺🇸", "lat": 40.7128, "lon": -74.0060, "type": "intl", "query_en": "New York"},
+    {"slug": "miami", "name": "Miami", "country_code": "us", "country": "États-Unis", "flag": "🇺🇸", "lat": 25.7617, "lon": -80.1918, "type": "intl", "query_en": "Miami"},
+    {"slug": "montreal", "name": "Montréal", "country_code": "ca", "country": "Canada", "flag": "🇨🇦", "lat": 45.5017, "lon": -73.5673, "type": "intl", "query_en": "Montreal"},
+    {"slug": "rio-de-janeiro", "name": "Rio de Janeiro", "country_code": "br", "country": "Brésil", "flag": "🇧🇷", "lat": -22.9068, "lon": -43.1729, "type": "intl", "query_en": "Rio de Janeiro"},
+    {"slug": "tokyo", "name": "Tokyo", "country_code": "jp", "country": "Japon", "flag": "🇯🇵", "lat": 35.6762, "lon": 139.6503, "type": "intl", "query_en": "Tokyo"},
+    {"slug": "seoul", "name": "Séoul", "country_code": "kr", "country": "Corée du Sud", "flag": "🇰🇷", "lat": 37.5665, "lon": 126.9780, "type": "intl", "query_en": "Seoul"},
+    {"slug": "singapour", "name": "Singapour", "country_code": "sg", "country": "Singapour", "flag": "🇸🇬", "lat": 1.3521, "lon": 103.8198, "type": "intl", "query_en": "Singapore"},
+]
+
+CITY_SLUG_ALIASES = {
+    "barcelona": "barcelone", "barcelone": "barcelone",
+    "london": "londres", "londres": "londres",
+    "lisbon": "lisbonne", "lisboa": "lisbonne", "lisbonne": "lisbonne",
+    "athens": "athenes", "athina": "athenes", "athenes": "athenes",
+    "singapore": "singapour", "singapour": "singapour",
+    "roma": "rome", "rome": "rome",
+    "seoul": "seoul",
+    "montreal": "montreal",
+    "rio": "rio-de-janeiro", "rio-de-janeiro": "rio-de-janeiro",
+    "nyc": "new-york", "manhattan": "new-york", "brooklyn": "new-york", "queens": "new-york", "new-york": "new-york",
+    "miami": "miami", "miami-beach": "miami",
+    "madrid": "madrid", "valdeacederas": "madrid", "chamberi": "madrid", "salamanca": "madrid",
+    "limassol": "limassol",
+    "nancy": "nancy", "vandoeuvre-les-nancy": "nancy", "laxou": "nancy", "villers-les-nancy": "nancy", "maxeville": "nancy",
+    "paris": "paris", "lyon": "lyon", "villeurbanne": "lyon",
+    "saint-martin": "saint-martin", "marigot": "saint-martin", "grand-case": "saint-martin", "baie-nettle": "saint-martin", "orient-bay": "saint-martin", "anse-marcel": "saint-martin", "cul-de-sac": "saint-martin",
+    "guadeloupe": "guadeloupe", "pointe-a-pitre": "guadeloupe", "le-gosier": "guadeloupe", "gosier": "guadeloupe", "baie-mahault": "guadeloupe", "sainte-anne": "guadeloupe",
+    "martinique": "martinique", "fort-de-france": "martinique", "le-lamentin": "martinique", "lamentin": "martinique", "schoelcher": "martinique", "le-marin": "martinique",
+    "la-reunion": "la-reunion", "reunion": "la-reunion", "saint-denis": "la-reunion", "saint-pierre": "la-reunion", "saint-paul": "la-reunion",
+    "tokyo": "tokyo", "shibuya": "tokyo", "shinjuku": "tokyo", "minato": "tokyo", "setagaya": "tokyo", "chiyoda": "tokyo", "meguro": "tokyo", "roppongi": "tokyo",
+}
+
+
+def classify_market_segment(it):
+    """Distingue marché résidentiel local vs meublé expat / moyen séjour (Airbnb-like)."""
+    blob = " ".join(str(it.get(k) or "") for k in ("id", "agency", "category_label", "url")).lower()
+    if any(k in blob for k in ("flatio", "housinganywhere", "spotahome")):
+        return "expat_midterm"
+    return "local_residential"
+
+
+def normalize_rooms(raw_rooms="", bedrooms=None, surface_val=0, title=""):
+    """Normalise le nombre de pièces et empêche les faux T3 sur <= 35 m² sans 2+ chambres."""
+    r_raw = str(raw_rooms or "").strip()
+    r_low = r_raw.lower()
+    t_low = str(title or "").lower()
+    try:
+        s = float(surface_val or 0)
+    except Exception:
+        s = 0.0
+    try:
+        b = int(bedrooms) if bedrooms is not None and str(bedrooms).strip() != "" else None
+    except Exception:
+        b = None
+
+    # Chambres en colocation / shared flat
+    if any(k in t_low for k in ("room in ", "shared ", "chambre en colocation", "colocation", "private room")) or "chambre" in r_low:
+        return "Chambre"
+
+    # Plans japonais (1R, 1K, 1DK, 1LDK, 2LDK...)
+    jp_m = re.search(r"\b([1-6])\s*(R|K|DK|SDK|LDK|SLDK)\b", f"{r_raw} {title}", re.I)
+    if jp_m:
+        cnt = int(jp_m.group(1))
+        layout = jp_m.group(2).upper()
+        if cnt == 1 and layout in ("R", "K"):
+            r_raw = "Studio"
+        elif cnt == 1:
+            r_raw = "T2"
+        elif cnt == 2:
+            r_raw = "T3"
+        else:
+            r_raw = f"T{min(6, cnt + 1)}"
+        r_low = r_raw.lower()
+
+    if any(k in r_low for k in ("maison", "villa", "house", "casa")):
+        return r_raw
+
+    # Extraire un entier T_n / F_n / n pièces
+    num_pieces = None
+    if "studio" in r_low or r_low in ("t1", "f1", "1p", "1 pièce", "1 piece"):
+        num_pieces = 1
+    else:
+        m_num = re.search(r"(?:t|f)?(\d+)", r_low)
+        if m_num:
+            num_pieces = int(m_num.group(1))
+
+    # Garde stricte : un bien <= 35 m² ne peut PAS être classé T3+ sans 2+ chambres vérifiées
+    if num_pieces is not None and num_pieces >= 3 and 0 < s <= 35:
+        if b is None or b < 2:
+            return "Studio" if s <= 24 else "T2"
+
+    # Si rooms vide ou générique, déduire prudemment
+    if num_pieces is None:
+        if 0 < s <= 25 or (b is not None and b == 0):
+            return "Studio"
+        if b is not None and b >= 1:
+            if 0 < s <= 35 and b < 2:
+                return "T2"
+            return f"T{b + 1}"
+        if 25 < s <= 45:
+            return "T2"
+        return r_raw or "Appartement"
+
+    if num_pieces == 1:
+        return "Studio"
+    return f"T{num_pieces}"
+
+
+def normalize_price_str(price_eur, transaction_type="location"):
+    """Formate proprement le prix sans doublon '/ mois par mois'."""
+    try:
+        p = int(round(float(price_eur or 0)))
+    except Exception:
+        p = 0
+    if p <= 0:
+        return "Prix N/C"
+    formatted = f"{p:,}".replace(",", " ")
+    if str(transaction_type).lower() == "achat":
+        return f"{formatted} €"
+    return f"{formatted} € / mois"
+
+
+def resolve_city_slug(it):
+    """Associe de façon déterministe tout bien Immo au slug canonique de sa ville."""
+    preset = clean_slug(it.get("city_slug") or "")
+    if preset in CITY_SLUG_ALIASES:
+        return CITY_SLUG_ALIASES[preset]
+    if preset:
+        return preset
+
+    pc = str(it.get("postal_code") or "").strip()
+    if pc == "97150":
+        return "saint-martin"
+    if pc.startswith("971"):
+        return "guadeloupe"
+    if pc.startswith("972"):
+        return "martinique"
+    if pc.startswith("973"):
+        return "guyane"
+    if pc.startswith("974"):
+        return "la-reunion"
+    if pc.startswith(("540", "541", "545", "546")):
+        return "nancy"
+    if pc.startswith("75"):
+        return "paris"
+    if pc.startswith("690"):
+        return "lyon"
+
+    loc_blob = f"{it.get('city') or ''} {it.get('location') or ''} {it.get('category_label') or ''}".lower()
+    for alias, target_slug in CITY_SLUG_ALIASES.items():
+        if len(alias) >= 4 and alias.replace("-", " ") in loc_blob.replace("-", " "):
+            return target_slug
+
+    raw_city = str(it.get("city") or "").split(",")[0].strip()
+    if not raw_city:
+        raw_loc = re.sub(r"\([^)]*\)", "", str(it.get("location") or "")).split(",")[0].strip()
+        raw_city = raw_loc
+    slug = clean_slug(raw_city)
+    return CITY_SLUG_ALIASES.get(slug, slug) or "autres"
+
+
+def normalize_immo_item(it):
+    """Normalise un item Immo (market_segment, rooms, price_str, city_slug, last_seen_at)."""
+    if not isinstance(it, dict) or it.get("universe") != "immo":
+        return it
+    it["market_segment"] = classify_market_segment(it)
+    it["rooms"] = normalize_rooms(it.get("rooms", ""), it.get("bedrooms"), it.get("surface_val", 0), it.get("title", ""))
+    if it.get("rooms") == "Chambre" and (it.get("bedrooms") or 0) > 1:
+        it["bedrooms"] = 1
+    if it.get("price"):
+        it["price_str"] = normalize_price_str(it.get("price"), it.get("transaction_type", "location"))
+    it["city_slug"] = resolve_city_slug(it)
+    if not it.get("last_seen_at"):
+        it["last_seen_at"] = it.get("date_detected") or datetime.now(timezone.utc).isoformat()
+    return it
 
 # Domaines strictement bannis (parking, morts, frauduleux)
 DEAD_OR_PARKED_DOMAINS = [
@@ -225,26 +426,98 @@ def extract_amenities(text_blob="", flags=None):
     return sorted(list(res))
 
 
-def verify_url_active(url, timeout=3):
-    """Vérifie rapidement qu'une URL d'annonce est joignable (pas de 404, 410, ou redirection parking)."""
+EXPIRED_BODY_MARKERS = (
+    "no longer available",
+    "listing has been removed",
+    "this listing is no longer",
+    "property is no longer available",
+    "this property has been removed",
+    "property has been sold",
+    "annonce désactivée",
+    "annonce desactivee",
+    "cette annonce n'existe plus",
+    "l'annonce n'existe plus",
+    "bien n'est plus disponible",
+    "annonce expirée",
+    "annonce expiree",
+    "expired listing",
+    "ce bien est vendu",
+    "ce bien a été vendu",
+    "anúncio expirado",
+    "imóvel indisponível",
+    "掲載が終了",
+    "お探しの物件は見つかりませんでした",
+)
+
+EXPIRED_TITLE_MARKERS = (
+    "no longer available",
+    "listing has been removed",
+    "n'existe plus",
+    "indisponible",
+    "page not found",
+    "error 404",
+    "404 not found",
+)
+
+HOMEPAGE_REDIRECT_PATHS = {
+    "", "fr", "en", "es", "pt", "it", "de", "jp", "br", "uk", "us",
+    "search", "rent", "buy", "aluguel", "venda", "comprar", "alugar",
+    "properties", "listings", "immobilier", "imoveis",
+}
+
+
+def verify_url_active(url, timeout=6):
+    """
+    Vérifie réellement qu'une URL d'annonce est active via curl_cffi :
+    - Statut 404 / 410 -> mort
+    - Redirection vers la homepage ou domaine parking -> mort
+    - Marqueurs d'annonce expirée dans le HTML / title / h1 -> mort
+    - 403 / 429 / 503 / timeout WAF -> conservé prudemment
+    """
     if not is_url_safe(url):
-        return False
+        return False, "unsafe_url"
     try:
-        r = requests.head(url, headers=HTTP_HEADERS, timeout=timeout, allow_redirects=True)
+        orig_parsed = urllib.parse.urlparse(url)
+        orig_path = orig_parsed.path.strip("/")
+        r = curl_requests.get(
+            url,
+            impersonate="chrome",
+            timeout=timeout,
+            allow_redirects=True,
+            headers={"Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7"},
+        )
         if r.status_code in (404, 410):
-            return False
-        # Si le serveur n'autorise pas HEAD (ex: 405), tente un GET léger
-        if r.status_code == 405:
-            r = requests.get(url, headers=HTTP_HEADERS, timeout=timeout, stream=True, allow_redirects=True)
-            if r.status_code in (404, 410):
-                return False
-        final_u = r.url.lower()
+            return False, f"http_{r.status_code}"
+        if r.status_code in (403, 429, 503):
+            return True, f"waf_{r.status_code}"
+
+        final_u = (r.url or "").lower()
         if any(d in final_u for d in DEAD_OR_PARKED_DOMAINS):
-            return False
-        return True
+            return False, "parked_domain"
+
+        final_parsed = urllib.parse.urlparse(final_u)
+        final_path = final_parsed.path.strip("/")
+        if len(orig_path) > 12 and final_path in HOMEPAGE_REDIRECT_PATHS and final_path != orig_path.lower():
+            return False, "homepage_redirect"
+
+        body_sample = (r.text or "")[:45000].lower()
+        if body_sample and not is_blocked_or_cf(body_sample, "", r.status_code):
+            if any(marker in body_sample for marker in EXPIRED_BODY_MARKERS):
+                return False, "expired_marker"
+            m_title = re.search(r"<title[^>]*>(.*?)</title>", body_sample, re.S)
+            m_h1 = re.search(r"<h1[^>]*>(.*?)</h1>", body_sample, re.S)
+            head_txt = " ".join([
+                re.sub(r"<[^>]+>", " ", m_title.group(1)) if m_title else "",
+                re.sub(r"<[^>]+>", " ", m_h1.group(1)) if m_h1 else "",
+            ]).strip()
+            if any(tm in head_txt for tm in EXPIRED_TITLE_MARKERS):
+                return False, "expired_title"
+            if re.search(r"\b(sold|vendu|indisponible)\b", head_txt):
+                return False, "expired_heading"
+
+        return True, "ok"
     except Exception:
-        # En cas de timeout réseau ponctuel lors du check, ne pas supprimer aveuglément si URL valide
-        return True
+        return True, "network_skip"
 
 
 def load_config():
@@ -258,49 +531,92 @@ def load_config():
 
 
 def load_annonces():
-    if not os.path.exists(DATA_PATH):
-        return []
-    try:
-        with open(DATA_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return data if isinstance(data, list) else []
-    except Exception:
-        return []
+    """
+    Charge en priorité tous les shards par ville (`data/cities/*.json`) + `data/voyage.json`
+    afin qu'un scan sur une ville ne perde jamais les annonces des autres villes.
+    Fallback sur `data/annonces.json` lors de la première migration.
+    """
+    items = []
+    seen_ids = set()
+
+    def _extend_from_file(fpath):
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if isinstance(data, list):
+                for it in data:
+                    if not isinstance(it, dict):
+                        continue
+                    iid = it.get("id")
+                    if iid and iid in seen_ids:
+                        continue
+                    if iid:
+                        seen_ids.add(iid)
+                    items.append(it)
+        except Exception:
+            pass
+
+    if os.path.isdir(CITIES_DIR):
+        city_files = [f for f in sorted(os.listdir(CITIES_DIR)) if f.endswith(".json")]
+        for fn in city_files:
+            _extend_from_file(os.path.join(CITIES_DIR, fn))
+        if os.path.exists(VOYAGE_PATH):
+            _extend_from_file(VOYAGE_PATH)
+
+    if not items and os.path.exists(DATA_PATH):
+        _extend_from_file(DATA_PATH)
+
+    return items
 
 
-def prune_dead_listings(annonces, max_age_days=10, max_check_workers=25):
+def verify_dead_listings_parallel(annonces, max_age_hours=24, max_unseen_days=7, max_workers=20):
     """
-    Pillar 4 : Purge stricte des annonces périmées (> 10 jours) et des liens morts.
-    Supprime également toute fausse image Unsplash injectée sur les annonces Immo.
+    Vérification parallèle réelle (ThreadPoolExecutor max_workers=20) des annonces > 24h
+    et purge stricte de toute annonce non revue depuis > 7 jours.
     """
-    logger.info(f"🧹 Purge des annonces périmées (> {max_age_days} jours) et liens morts...")
+    import time
+    t0 = time.time()
     now_dt = datetime.now(timezone.utc)
-    cutoff_dt = now_dt - timedelta(days=max_age_days)
-    recent_dt = now_dt - timedelta(hours=24)
-    
+    cutoff_unseen_dt = now_dt - timedelta(days=max_unseen_days)
+    recent_dt = now_dt - timedelta(hours=max_age_hours)
+
     retained = []
     items_to_verify = []
+    removed_stale = 0
+
     for it in annonces:
-        date_str = it.get("date_detected")
+        if not isinstance(it, dict):
+            continue
+        last_seen_str = it.get("last_seen_at") or it.get("date_detected")
+        last_verified_str = it.get("last_verified_at") or it.get("date_detected") or last_seen_str
         is_fresh = False
-        if date_str:
+
+        if last_seen_str:
             try:
-                clean_dt_str = date_str.replace("Z", "+00:00")
-                item_dt = datetime.fromisoformat(clean_dt_str)
-                if item_dt.tzinfo is None:
-                    item_dt = item_dt.replace(tzinfo=timezone.utc)
-                if item_dt < cutoff_dt:
-                    continue  # Dépassé > 10 jours
-                if item_dt >= recent_dt:
+                clean_ls = str(last_seen_str).replace("Z", "+00:00")
+                ls_dt = datetime.fromisoformat(clean_ls)
+                if ls_dt.tzinfo is None:
+                    ls_dt = ls_dt.replace(tzinfo=timezone.utc)
+                if ls_dt < cutoff_unseen_dt:
+                    removed_stale += 1
+                    continue
+            except Exception:
+                pass
+
+        if last_verified_str:
+            try:
+                clean_dt = str(last_verified_str).replace("Z", "+00:00")
+                dt_obj = datetime.fromisoformat(clean_dt)
+                if dt_obj.tzinfo is None:
+                    dt_obj = dt_obj.replace(tzinfo=timezone.utc)
+                if dt_obj >= recent_dt:
                     is_fresh = True
             except Exception:
                 pass
-        
-        # Filtre de sécurité sur le domaine
+
         if not is_url_safe(it.get("url")):
             continue
-            
-        # Nettoyage des images pour Immo (aucune photo unsplash de remplacement)
+
         if it.get("universe") == "immo":
             real_imgs = [
                 u for u in (it.get("images") or [])
@@ -310,48 +626,78 @@ def prune_dead_listings(annonces, max_age_days=10, max_check_workers=25):
             hero = it.get("image_url") or ""
             if "images.unsplash.com" in hero or not hero.startswith("http"):
                 it["image_url"] = real_imgs[0] if real_imgs else ""
+            normalize_immo_item(it)
 
         if is_fresh:
             retained.append(it)
         else:
             items_to_verify.append(it)
 
-    # Vérification concurrentielle des URLs actives pour les annonces de plus de 24h
-    def check_item(it):
-        u = it.get("url")
-        if not u or not is_url_safe(u):
-            return None
-        if u.startswith("http://") or u.startswith("https://"):
-            if not verify_url_active(u, timeout=2):
-                return None
-        return it
-
+    removed_dead = 0
+    tested = len(items_to_verify)
     verified = list(retained)
-    if items_to_verify:
-        with ThreadPoolExecutor(max_workers=max_check_workers) as executor:
-            futures = [executor.submit(check_item, it) for it in items_to_verify]
-            for f in futures:
-                res = f.result()
-                if res:
-                    verified.append(res)
+    now_iso = now_dt.isoformat()
 
-    logger.info(f"✨ Pruning terminé : {len(verified)} annonces conservées sur {len(annonces)} initiales.")
+    if items_to_verify:
+        def _check_one(item):
+            u = item.get("url")
+            if not u or not (u.startswith("http://") or u.startswith("https://")):
+                return None, "invalid"
+            active, reason = verify_url_active(u, timeout=6)
+            if active:
+                item["last_verified_at"] = now_iso
+            return (item if active else None), reason
+
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            for kept_item, reason in executor.map(_check_one, items_to_verify):
+                if kept_item is not None:
+                    verified.append(kept_item)
+                else:
+                    removed_dead += 1
+
+    elapsed = time.time() - t0
+    logger.info(
+        f"🧹 Vérification liens morts : {tested} testés -> {removed_dead} supprimés (404/expirés) "
+        f"+ {removed_stale} périmés (>{max_unseen_days}j) en {elapsed:.1f}s"
+    )
+    stats = {
+        "tested": tested,
+        "removed_dead": removed_dead,
+        "removed_stale": removed_stale,
+        "retained_total": len(verified),
+        "duration_sec": round(elapsed, 1),
+        "checked_at": now_dt.isoformat(),
+    }
+    return verified, stats
+
+
+def prune_dead_listings(annonces, max_age_days=7, max_check_workers=20):
+    """Wrapper rétro-compatible vers verify_dead_listings_parallel()."""
+    verified, _stats = verify_dead_listings_parallel(
+        annonces, max_age_hours=24, max_unseen_days=max_age_days, max_workers=max_check_workers
+    )
     return verified
 
 
-def save_annonces(annonces):
-    os.makedirs(os.path.dirname(DATA_PATH), exist_ok=True)
-    
-    # 1. Prune dead listings & stale data (> 10 days)
-    clean_items = prune_dead_listings(annonces, max_age_days=10)
+def save_annonces(annonces, newly_seen_ids=None, newly_seen_urls=None):
+    os.makedirs(DATA_DIR, exist_ok=True)
+    os.makedirs(CITIES_DIR, exist_ok=True)
+    now_iso = datetime.now(timezone.utc).isoformat()
+    seen_now_ids = set(newly_seen_ids or [])
+    seen_now_urls = set(newly_seen_urls or [])
 
-    # 2. Dédoublonnage strict par ID & URL Immo
+    # Mettre à jour last_seen_at sur les items revus dans ce crawl, et dédoublonner avant vérification
     seen_ids = set()
     seen_immo_urls = set()
-    deduped = []
-    for it in clean_items:
+    pre_deduped = []
+    for it in annonces:
+        if not isinstance(it, dict):
+            continue
         item_id = it.get("id")
         item_url = it.get("url")
+        if (item_id and item_id in seen_now_ids) or (item_url and item_url in seen_now_urls):
+            it["last_seen_at"] = now_iso
+            it["last_verified_at"] = now_iso
         if item_id and item_id in seen_ids:
             continue
         if it.get("universe") == "immo" and item_url and item_url in seen_immo_urls:
@@ -360,12 +706,112 @@ def save_annonces(annonces):
             seen_ids.add(item_id)
         if it.get("universe") == "immo" and item_url:
             seen_immo_urls.add(item_url)
-        deduped.append(it)
+        if it.get("universe") == "immo":
+            normalize_immo_item(it)
+        elif not it.get("last_seen_at"):
+            it["last_seen_at"] = it.get("date_detected") or now_iso
+        pre_deduped.append(it)
 
-    deduped.sort(key=lambda x: x.get("date_detected", ""), reverse=True)
+    # 1. Vérification parallèle des annonces mortes (>24h) + purge >7j
+    deduped, purge_stats = verify_dead_listings_parallel(
+        pre_deduped, max_age_hours=24, max_unseen_days=7, max_workers=20
+    )
+
+    immo_items = [x for x in deduped if x.get("universe") == "immo"]
+    voyage_items = [x for x in deduped if x.get("universe") == "voyage"]
+    voyage_items.sort(key=lambda x: x.get("date_detected", ""), reverse=True)
+
+    # 2. Sharding par ville (`data/cities/{slug}.json`)
+    city_groups = {}
+    for it in immo_items:
+        c_slug = it.get("city_slug") or resolve_city_slug(it)
+        it["city_slug"] = c_slug
+        city_groups.setdefault(c_slug, []).append(it)
+
+    # Supprimer les anciens fichiers de villes vides
+    active_filenames = {f"{slug}.json" for slug in city_groups.keys()}
+    for old_fn in os.listdir(CITIES_DIR):
+        if old_fn.endswith(".json") and old_fn not in active_filenames:
+            try:
+                os.remove(os.path.join(CITIES_DIR, old_fn))
+            except Exception:
+                pass
+
+    for c_slug, c_list in city_groups.items():
+        # Prioriser marché résidentiel local puis date récente
+        c_list.sort(
+            key=lambda x: (1 if x.get("market_segment") == "local_residential" else 0, x.get("date_detected", "")),
+            reverse=True,
+        )
+        with open(os.path.join(CITIES_DIR, f"{c_slug}.json"), "w", encoding="utf-8") as cf:
+            json.dump(c_list, cf, ensure_ascii=False)
+
+    # 3. Fichier Voyage dédié (`data/voyage.json`)
+    with open(VOYAGE_PATH, "w", encoding="utf-8") as vf:
+        json.dump(voyage_items, vf, indent=2, ensure_ascii=False)
+
+    # 4. Index léger `data/cities_index.json` (< 20 Ko)
+    hub_by_slug = {h["slug"]: h for h in PREWARM_HUBS}
+    index_cities = []
+    processed_slugs = set()
+
+    def _build_city_entry(slug, hub_meta=None):
+        items_c = city_groups.get(slug, [])
+        local_cnt = sum(1 for x in items_c if x.get("market_segment") == "local_residential")
+        expat_cnt = len(items_c) - local_cnt
+        rent_cnt = sum(1 for x in items_c if x.get("transaction_type") == "location")
+        buy_cnt = sum(1 for x in items_c if x.get("transaction_type") == "achat")
+        first_item = items_c[0] if items_c else {}
+        return {
+            "slug": slug,
+            "name": hub_meta["name"] if hub_meta else (first_item.get("city") or slug.replace("-", " ").title()),
+            "country_code": hub_meta["country_code"] if hub_meta else "",
+            "country": hub_meta["country"] if hub_meta else "",
+            "flag": hub_meta["flag"] if hub_meta else "🌍",
+            "lat": hub_meta["lat"] if hub_meta else first_item.get("lat"),
+            "lon": hub_meta["lon"] if hub_meta else first_item.get("lon"),
+            "count": len(items_c),
+            "local_count": local_cnt,
+            "expat_count": expat_cnt,
+            "rent_count": rent_cnt,
+            "buy_count": buy_cnt,
+            "updated_at": max((x.get("date_detected", "") for x in items_c), default=now_iso),
+        }
+
+    for hub in PREWARM_HUBS:
+        s = hub["slug"]
+        index_cities.append(_build_city_entry(s, hub))
+        processed_slugs.add(s)
+
+    for extra_slug in sorted(city_groups.keys()):
+        if extra_slug not in processed_slugs and city_groups[extra_slug]:
+            index_cities.append(_build_city_entry(extra_slug, None))
+
+    cities_index_payload = {
+        "version": "17",
+        "updated_at": now_iso,
+        "total_immo": len(immo_items),
+        "total_voyage": len(voyage_items),
+        "purge_stats": purge_stats,
+        "cities": index_cities,
+    }
+    with open(CITIES_INDEX_PATH, "w", encoding="utf-8") as ixf:
+        json.dump(cities_index_payload, ixf, indent=2, ensure_ascii=False)
+
+    # 5. Fallback allégé `data/annonces.json` (max 15 items par ville + top 80 voyage)
+    fallback_items = []
+    for c_slug, c_list in city_groups.items():
+        fallback_items.extend(c_list[:15])
+    fallback_items.sort(key=lambda x: x.get("date_detected", ""), reverse=True)
+    fallback_combined = fallback_items[:250] + voyage_items[:80]
     with open(DATA_PATH, "w", encoding="utf-8") as f:
-        json.dump(deduped, f, indent=2, ensure_ascii=False)
-    logger.info(f"💾 {len(deduped)} annonces 100% réelles enregistrées dans {DATA_PATH}")
+        json.dump(fallback_combined, f, indent=2, ensure_ascii=False)
+
+    logger.info(
+        f"💾 Sharding V17 terminé : {len(immo_items)} biens sur {len(city_groups)} villes + "
+        f"{len(voyage_items)} offres Voyage | Index : {CITIES_INDEX_PATH}"
+    )
+    return purge_stats
 
 
 def send_ntfy_push(topic, title, message, click_url=None):
@@ -770,13 +1216,16 @@ def is_blocked_or_cf(html, page_title="", status_code=200):
         return True
     h = html.lower()
     t = (page_title or "").lower()
-    if any(sig in t for sig in ["just a moment", "attention required", "security check", "verify you are human", "access denied", "robot check", "azure waf"]):
+    if any(sig in t for sig in ["just a moment", "attention required", "security check", "verify you are human", "access denied", "robot check", "azure waf", "アクセス集中"]):
         return True
     if any(sig in h for sig in [
         "cf-browser-verification", "cf-please-wait", "cf-turnstile-wrapper",
         "cf-chl-bypass", "challenge-running", "challenge-form", "cf-error-code",
-        "_datadome", "datadome.js", "dd.js", "perimeterx", "px-captcha"
+        "_datadome", "datadome.js", "dd.js", "perimeterx", "px-captcha",
+        "bm-verify", "ak_bmsc", "_incapsula_resource", "incapsula"
     ]):
+        return True
+    if len(html) < 5000 and 'http-equiv="refresh"' in h and ("&nbsp;" in t or "bm-verify" in h):
         return True
     return False
 
@@ -970,6 +1419,70 @@ def run_voyage_probe():
     valid_count = sum(1 for r in results_table if r["exploitable"])
     logger.info(f"✨ Sonde Voyage terminée : {valid_count}/{len(results_table)} sources exploitables en 200 OK sur IP Azure !")
     logger.info("=" * 85 + "\n")
+    return results_table
+
+
+def run_local_portals_probe():
+    """
+    Sonde réseau Azure V17 sur les vrais portails résidentiels locaux (Japon & Brésil).
+    Teste curl_cffi (impersonate='chrome') et affiche le tableau HTTP 200 vs 403/bloqué.
+    """
+    logger.info("=" * 95)
+    logger.info("🗾🇧🇷 SONDE PORTAILS RÉSIDENTIELS LOCAUX JAPON & BRÉSIL (RUNNER GITHUB ACTIONS AZURE)")
+    logger.info("=" * 95)
+
+    targets = [
+        ("Japon", "RealEstate.co.jp (Rent)", "https://realestate.co.jp/en/rent/listing?prefecture=JP-13&city=13100"),
+        ("Japon", "RealEstate.co.jp (Buy)", "https://realestate.co.jp/en/forsale/listing?prefecture=JP-13&city=13100"),
+        ("Japon", "GaijinPot Apartments", "https://apartments.gaijinpot.com/en/rent/listing?prefecture=JP-13"),
+        ("Japon", "AtHome.co.jp (Rent)", "https://www.athome.co.jp/chintai/tokyo/list/"),
+        ("Japon", "AtHome.co.jp (Buy)", "https://www.athome.co.jp/mansion/chuko/tokyo/list/"),
+        ("Japon", "PlazaHomes (Rent)", "https://www.realestate-tokyo.com/rent/"),
+        ("Japon", "PlazaHomes (Buy)", "https://www.realestate-tokyo.com/buy/"),
+        ("Brésil", "QuintoAndar (Rent)", "https://www.quintoandar.com.br/alugar/imovel/rio-de-janeiro-rj-brasil"),
+        ("Brésil", "QuintoAndar (Buy)", "https://www.quintoandar.com.br/comprar/imovel/rio-de-janeiro-rj-brasil"),
+        ("Brésil", "VivaReal (Rent)", "https://www.vivareal.com.br/aluguel/rj/rio-de-janeiro/"),
+        ("Brésil", "ZAP Imóveis (Rent)", "https://www.zapimoveis.com.br/aluguel/imoveis/rj+rio-de-janeiro/"),
+        ("Brésil", "Imovelweb (Rent)", "https://www.imovelweb.com.br/imoveis-aluguel-rio-de-janeiro-rj.html"),
+    ]
+
+    results_table = []
+    print(f"\n{'#':2} | {'Pays':7} | {'Portail Local':24} | {'Code':9} | {'Taille':10} | {'Blocage':8} | {'Extrait / Titre':28} | {'Exploitable':11}")
+    print("-" * 115)
+
+    for idx, (country_lbl, name, target_url) in enumerate(targets, 1):
+        try:
+            r = curl_requests.get(
+                target_url,
+                impersonate="chrome",
+                timeout=12,
+                headers={"Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,ja;q=0.7,pt;q=0.7"},
+            )
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(r.text, "html.parser")
+            raw_title = soup.title.get_text(" ", strip=True) if soup.title else "NO_TITLE"
+            page_title = raw_title[:28] if raw_title else "EMPTY_TITLE"
+            blocked = is_blocked_or_cf(r.text, raw_title, r.status_code)
+            exploitable = (r.status_code == 200 and not blocked and len(r.text) > 15000)
+            status_desc = "200 OK" if (r.status_code == 200 and not blocked) else (f"{r.status_code} BLOCK" if blocked else str(r.status_code))
+            expl_str = "✅ OUI" if exploitable else "❌ NON"
+            results_table.append({
+                "idx": idx, "country": country_lbl, "name": name, "url": target_url,
+                "status_code": r.status_code, "length": len(r.text), "blocked": blocked,
+                "title": raw_title[:60], "exploitable": exploitable,
+            })
+            print(f"{idx:2} | {country_lbl:7} | {name:24} | {status_desc:9} | {len(r.text):8} B | {str(blocked):8} | {page_title:28} | {expl_str:11}")
+        except Exception as e:
+            results_table.append({
+                "idx": idx, "country": country_lbl, "name": name, "url": target_url,
+                "status_code": 0, "length": 0, "blocked": True, "title": str(e)[:40], "exploitable": False,
+            })
+            print(f"{idx:2} | {country_lbl:7} | {name:24} | ERROR     |        0 B | True     | {str(e)[:28]:28} | ❌ NON")
+
+    print("-" * 115)
+    ok_cnt = sum(1 for x in results_table if x["exploitable"])
+    logger.info(f"✨ Sonde Portails Locaux terminée : {ok_cnt}/{len(results_table)} portails exploitables sur IP Azure !")
+    logger.info("=" * 95 + "\n")
     return results_table
 
 
@@ -1361,8 +1874,9 @@ def scrape_spotahome(city, max_price=None, min_surface=None, rooms=None, geo=Non
                 lon_val = c_lon + (((idx * 4) % 7) - 3) * 0.007
 
             n_bed = hc.get("numberOfBedrooms") or 1
-            prop_type = hc.get("type") or "Appartement"
-            r_str = "Studio" if prop_type == "studio" or n_bed == 0 else f"T{n_bed + 1}"
+            prop_type = str(hc.get("type") or "Appartement").lower()
+            raw_r = "Chambre" if prop_type == "room" else ("Studio" if prop_type == "studio" or n_bed == 0 else f"T{int(n_bed) + 1}")
+            r_str = normalize_rooms(raw_r, n_bed, s_val, title)
 
             price_str = f"{p_eur:,} € / mois".replace(",", " ")
             price_orig_str = None
@@ -1687,9 +2201,35 @@ def scrape_housinganywhere(city, country_name="", max_price=None, min_surface=No
         "at": "Austria",
         "autriche": "Austria",
         "austria": "Austria",
+        "br": "Brazil",
+        "bresil": "Brazil",
+        "brésil": "Brazil",
+        "brazil": "Brazil",
+        "brasil": "Brazil",
+        "jp": "Japan",
+        "japon": "Japan",
+        "japan": "Japan",
+        "kr": "South-Korea",
+        "coree-du-sud": "South-Korea",
+        "south-korea": "South-Korea",
+        "sg": "Singapore",
+        "singapour": "Singapore",
+        "singapore": "Singapore",
+        "gr": "Greece",
+        "grece": "Greece",
+        "greece": "Greece",
+        "cy": "Cyprus",
+        "chypre": "Cyprus",
+        "cyprus": "Cyprus",
     }
     city_clean = city.split(",")[0].strip()
-    c_city = clean_slug(city_clean).title()
+    raw_city_slug = clean_slug(city_clean)
+    if raw_city_slug in ("rio-de-janeiro", "rio"):
+        c_city = "Rio-de-Janeiro"
+    elif raw_city_slug in ("new-york", "nyc"):
+        c_city = "New-York"
+    else:
+        c_city = raw_city_slug.title()
     cc = (geo.get("country_code") if geo else "").lower().strip()
     raw_pays = (country_name or (geo.get("country") if geo else "United States")).lower().strip()
     c_pays = HA_COUNTRY_MAP.get(cc) or HA_COUNTRY_MAP.get(raw_pays) or HA_COUNTRY_MAP.get(clean_slug(raw_pays)) or clean_slug(raw_pays).title()
@@ -2025,7 +2565,13 @@ def scrape_flatio(city, country_code="es", max_price=None, min_surface=None, roo
     Extrait les données structurées ItemList (Schema.org) et les cartes SSR.
     """
     city_clean = city.split(",")[0].strip()
-    c_city = clean_slug(city_clean).capitalize()
+    fl_slug = clean_slug(city_clean)
+    if fl_slug in ("rio-de-janeiro", "rio"):
+        c_city = "Rio-de-Janeiro"
+    elif fl_slug in ("new-york", "nyc"):
+        c_city = "New-York"
+    else:
+        c_city = fl_slug.title()
     url = f"https://www.flatio.com/s/{c_city}"
     logger.info(f"🌍 Scraping Flatio : {url}")
 
@@ -2065,7 +2611,9 @@ def scrape_flatio(city, country_code="es", max_price=None, min_surface=None, roo
 
                             name = item.get("name") or f"Appartement meublé {city_clean}"
                             offers = item.get("offers", {})
-                            p_eur = int(offers.get("price") or 0)
+                            raw_p = float(offers.get("price") or 0)
+                            curr = offers.get("priceCurrency") or "EUR"
+                            p_eur = convert_to_eur(raw_p, curr)
                             if p_eur <= 0:
                                 continue
                             if max_price and p_eur > float(max_price):
@@ -2078,7 +2626,8 @@ def scrape_flatio(city, country_code="es", max_price=None, min_surface=None, roo
 
                             n_bed = int(item.get("numberOfBedrooms") or 1)
                             cat = item.get("accommodationCategory", "")
-                            r_str = "Studio" if "studio" in cat.lower() or n_bed == 0 else f"T{n_bed + 1}"
+                            raw_r = "Studio" if "studio" in cat.lower() or n_bed == 0 else f"T{n_bed + 1}"
+                            r_str = normalize_rooms(raw_r, n_bed, s_val, name)
 
                             hero_img = item.get("image", "")
                             ad_id = str(abs(hash(item_url)) % 10000000)
@@ -2296,9 +2845,10 @@ def scrape_tranio(city, country_code="es", transaction_type="achat", max_price=N
     city_clean = city.split(",")[0].strip()
     cc = (country_code or "es").lower().strip()
     c_city = clean_slug(city_clean)
+    us_state = "usa/ny" if c_city in ("new-york", "nyc", "manhattan", "brooklyn") else "usa/fl"
     tranio_slugs = {
         "es": "spain",
-        "us": "usa/fl",
+        "us": us_state,
         "fr": "france",
         "it": "italy",
         "gr": "greece",
@@ -2309,6 +2859,11 @@ def scrape_tranio(city, country_code="es", transaction_type="achat", max_price=N
         "pt": "portugal",
         "de": "germany",
         "at": "austria",
+        "br": "brazil",
+        "jp": "japan",
+        "sg": "singapore",
+        "kr": "south-korea",
+        "ca": "canada",
     }
     country_slug = tranio_slugs.get(cc, "spain" if cc in ("es", "") else None)
     if not country_slug:
@@ -2539,19 +3094,718 @@ def scrape_tranio(city, country_code="es", transaction_type="achat", max_price=N
     return results
 
 
+# =========================================================
+# CONNECTEURS LOCAUX BRÉSIL & JAPON V17 (MARCHÉ RÉSIDENTIEL LOCAL)
+# =========================================================
+def scrape_quintoandar_br(city, transaction_type="location", max_price=None, min_surface=None, rooms=None, geo=None):
+    """Connecteur local QuintoAndar Brésil (__NEXT_DATA__ JSON structuré, Location & Achat)."""
+    city_clean = city.split(",")[0].strip()
+    c_slug = clean_slug(city_clean)
+    qa_city_map = {
+        "rio-de-janeiro": "rio-de-janeiro-rj-brasil",
+        "rio": "rio-de-janeiro-rj-brasil",
+        "sao-paulo": "sao-paulo-sp-brasil",
+        "belo-horizonte": "belo-horizonte-mg-brasil",
+        "curitiba": "curitiba-pr-brasil",
+        "florianopolis": "florianopolis-sc-brasil",
+        "porto-alegre": "porto-alegre-rs-brasil",
+    }
+    qa_slug = qa_city_map.get(c_slug)
+    if not qa_slug:
+        return []
+    is_buy = (transaction_type == "achat")
+    mode_path = "comprar" if is_buy else "alugar"
+    url = f"https://www.quintoandar.com.br/{mode_path}/imovel/{qa_slug}"
+    logger.info(f"🇧🇷 Scraping QuintoAndar ({mode_path}) : {url}")
+
+    results = []
+    now = datetime.now(timezone.utc).isoformat()
+    c_lat = geo["lat"] if geo else -22.9068
+    c_lon = geo["lon"] if geo else -43.1729
+
+    try:
+        r = curl_requests.get(url, impersonate="chrome", timeout=15, headers={"Accept-Language": "pt-BR,pt;q=0.9"})
+        is_cf = is_blocked_or_cf(r.text, "", r.status_code)
+        logger.info(f"[DEBUG] QuintoAndar -> HTTP {r.status_code} | {len(r.text)} bytes | blocked={is_cf}")
+        if r.status_code != 200 or is_cf:
+            return results
+
+        m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', r.text, re.S)
+        if not m:
+            return results
+        nd = json.loads(m.group(1))
+        houses = nd.get("props", {}).get("pageProps", {}).get("initialState", {}).get("houses", {})
+        if not isinstance(houses, dict):
+            return results
+
+        for idx, (hid, h) in enumerate(list(houses.items())[:35]):
+            if not isinstance(h, dict):
+                continue
+            raw_brl = int(h.get("salePrice") or 0) if is_buy else int(h.get("rentPrice") or 0)
+            if raw_brl <= 0:
+                continue
+            p_eur = convert_to_eur(raw_brl, "BRL")
+            if p_eur <= 0 or (max_price and p_eur > float(max_price)):
+                continue
+
+            s_val = float(h.get("area") or 0)
+            if min_surface and s_val > 0 and s_val < float(min_surface):
+                continue
+
+            n_bed = int(h.get("bedrooms") or 1)
+            p_type = str(h.get("type") or "Apartamento")
+            r_str = normalize_rooms(
+                "Casa" if "casa" in p_type.lower() else ("Studio" if "kitnet" in p_type.lower() or n_bed == 0 else f"T{n_bed + 1}"),
+                n_bed,
+                s_val,
+                p_type,
+            )
+
+            addr_obj = h.get("address") if isinstance(h.get("address"), dict) else {}
+            street = addr_obj.get("address") or ""
+            neigh = h.get("neighbourhood") or h.get("regionName") or ""
+            loc_str = f"{neigh}, {city_clean}" if neigh else f"{city_clean}, Brésil"
+            title = f"{p_type} {int(s_val)}m² • {neigh or city_clean}"
+
+            photos = []
+            for ph in (h.get("photos") or [])[:6]:
+                u_p = ph.get("url") if isinstance(ph, dict) else ph
+                if isinstance(u_p, str) and u_p:
+                    photos.append(u_p if u_p.startswith("http") else f"https://www.quintoandar.com.br/img/med/{u_p}")
+            hero_img = photos[0] if photos else ""
+
+            ad_url = f"https://www.quintoandar.com.br/imovel/{hid}/{mode_path}"
+            if not is_url_safe(ad_url):
+                continue
+
+            orig_str = f"R$ {raw_brl:,} (~{p_eur:,} €)".replace(",", " ")
+            jitter_lat = c_lat + ((idx % 7) - 3) * 0.008
+            jitter_lon = c_lon + (((idx * 3) % 7) - 3) * 0.008
+
+            results.append({
+                "id": f"real_qa_{hid}",
+                "universe": "immo",
+                "category": "immo",
+                "transaction_type": transaction_type,
+                "market_segment": "local_residential",
+                "category_label": f"{'Achat' if is_buy else 'Location'} {city_clean} (QuintoAndar Local)",
+                "badge": f"🇧🇷 {'Achat' if is_buy else 'Location'} Local • {neigh or city_clean}",
+                "title": title,
+                "price": p_eur,
+                "price_str": normalize_price_str(p_eur, transaction_type),
+                "price_original_str": orig_str,
+                "currency": "BRL",
+                "location": loc_str,
+                "city": city_clean,
+                "postal_code": "",
+                "lat": jitter_lat,
+                "lon": jitter_lon,
+                "agency": "QuintoAndar Brasil",
+                "is_verified_agency": True,
+                "url": ad_url,
+                "image_url": hero_img,
+                "images": photos,
+                "description": f"{p_type} à {street or neigh}, {city_clean}. Offre résidentielle locale vérifiée sur QuintoAndar (prix affiché R$ {raw_brl:,}).",
+                "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                "surface_val": s_val,
+                "rooms": r_str,
+                "bedrooms": n_bed,
+                "floor": "N/C",
+                "dpe": "C",
+                "charges": f"Condo/IPTU R$ {h.get('condoIptu')}" if h.get("condoIptu") else "N/C",
+                "amenities": extract_amenities(f"{title} {p_type}"),
+                "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                "market_avg_m2": 0,
+                "market_delta_pct": 0,
+                "market_badge": "🏠 Marché local Brésil",
+                "date_detected": now,
+            })
+    except Exception as e:
+        logger.warning(f"Erreur QuintoAndar {url}: {e}")
+
+    logger.info(f"✅ {len(results)} annonces extraites de QuintoAndar ({transaction_type}) pour {city_clean}")
+    return results
+
+
+def scrape_vivareal_zap_br(city, transaction_type="location", portal="vivareal", max_price=None, min_surface=None, rooms=None, geo=None):
+    """Connecteur local VivaReal / ZAP Imóveis Brésil via JSON-LD Schema.org ItemList."""
+    city_clean = city.split(",")[0].strip()
+    c_slug = clean_slug(city_clean)
+    br_map = {
+        "rio-de-janeiro": ("rj", "rio-de-janeiro"),
+        "rio": ("rj", "rio-de-janeiro"),
+        "sao-paulo": ("sp", "sao-paulo"),
+        "belo-horizonte": ("mg", "belo-horizonte"),
+        "curitiba": ("pr", "curitiba"),
+    }
+    uf, slug = br_map.get(c_slug, ("rj", c_slug))
+    is_buy = (transaction_type == "achat")
+    mode_vr = "venda" if is_buy else "aluguel"
+
+    if portal == "zapimoveis":
+        url = f"https://www.zapimoveis.com.br/{mode_vr}/imoveis/{uf}+{slug}/"
+        agency_lbl = "ZAP Imóveis Brasil"
+        id_prefix = "real_zap"
+    else:
+        url = f"https://www.vivareal.com.br/{mode_vr}/{uf}/{slug}/"
+        agency_lbl = "VivaReal Brasil"
+        id_prefix = "real_vr"
+
+    logger.info(f"🇧🇷 Scraping {agency_lbl} ({mode_vr}) : {url}")
+    results = []
+    seen_urls = set()
+    now = datetime.now(timezone.utc).isoformat()
+    c_lat = geo["lat"] if geo else -22.9068
+    c_lon = geo["lon"] if geo else -43.1729
+
+    try:
+        from bs4 import BeautifulSoup
+        r = curl_requests.get(url, impersonate="chrome", timeout=15, headers={"Accept-Language": "pt-BR,pt;q=0.9"})
+        soup = BeautifulSoup(r.text, "html.parser")
+        page_title = soup.title.get_text(strip=True)[:40] if soup.title else agency_lbl
+        is_cf = is_blocked_or_cf(r.text, page_title, r.status_code)
+        logger.info(f"[DEBUG] {agency_lbl} -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"{page_title}\" | blocked={is_cf}")
+        if r.status_code != 200 or is_cf:
+            return results
+
+        for sc in soup.find_all("script", type="application/ld+json"):
+            try:
+                obj = json.loads(sc.get_text())
+                if not isinstance(obj, dict) or obj.get("@type") != "ItemList":
+                    continue
+                for idx, elem in enumerate(obj.get("itemListElement", [])[:35]):
+                    it = elem.get("item") if isinstance(elem, dict) else None
+                    if not isinstance(it, dict):
+                        continue
+                    ad_url = it.get("url") or ""
+                    if not ad_url or ad_url in seen_urls or not is_url_safe(ad_url):
+                        continue
+                    seen_urls.add(ad_url)
+
+                    offers = it.get("offers") if isinstance(it.get("offers"), dict) else {}
+                    raw_brl = int(float(offers.get("price") or 0))
+                    if raw_brl <= 0:
+                        continue
+                    curr = offers.get("priceCurrency") or "BRL"
+                    p_eur = convert_to_eur(raw_brl, curr)
+                    if p_eur <= 0 or (max_price and p_eur > float(max_price)):
+                        continue
+
+                    fs = it.get("floorSize") if isinstance(it.get("floorSize"), dict) else {}
+                    s_val = float(fs.get("value") or 0)
+                    if min_surface and s_val > 0 and s_val < float(min_surface):
+                        continue
+
+                    n_bed = it.get("numberOfBedrooms")
+                    try:
+                        b_val = int(n_bed) if n_bed is not None else 1
+                    except Exception:
+                        b_val = 1
+                    name = (it.get("name") or f"Imóvel {city_clean}")[:110]
+                    r_str = normalize_rooms(
+                        "Maison" if "casa" in name.lower() else ("Studio" if b_val == 0 else f"T{b_val + 1}"),
+                        b_val,
+                        s_val,
+                        name,
+                    )
+
+                    raw_imgs = it.get("image") or []
+                    if isinstance(raw_imgs, str):
+                        raw_imgs = [raw_imgs]
+                    photos = [u for u in raw_imgs if isinstance(u, str) and u.startswith("http")][:8]
+                    hero_img = photos[0] if photos else ""
+
+                    addr = it.get("address") if isinstance(it.get("address"), dict) else {}
+                    neigh = addr.get("streetAddress") or addr.get("addressLocality") or city_clean
+                    ad_id = str(it.get("@id") or (abs(hash(ad_url)) % 10000000))
+                    orig_str = f"R$ {raw_brl:,} (~{p_eur:,} €)".replace(",", " ")
+
+                    results.append({
+                        "id": f"{id_prefix}_{ad_id}",
+                        "universe": "immo",
+                        "category": "immo",
+                        "transaction_type": transaction_type,
+                        "market_segment": "local_residential",
+                        "category_label": f"{'Achat' if is_buy else 'Location'} {city_clean} ({agency_lbl})",
+                        "badge": f"🇧🇷 {'Achat' if is_buy else 'Location'} Local • {city_clean}",
+                        "title": name,
+                        "price": p_eur,
+                        "price_str": normalize_price_str(p_eur, transaction_type),
+                        "price_original_str": orig_str,
+                        "currency": curr,
+                        "location": f"{neigh}, {city_clean}",
+                        "city": city_clean,
+                        "postal_code": addr.get("postalCode", ""),
+                        "lat": c_lat + ((idx % 7) - 3) * 0.008,
+                        "lon": c_lon + (((idx * 5) % 7) - 3) * 0.008,
+                        "agency": agency_lbl,
+                        "is_verified_agency": True,
+                        "url": ad_url,
+                        "image_url": hero_img,
+                        "images": photos,
+                        "description": it.get("description") or name,
+                        "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                        "surface_val": s_val,
+                        "rooms": r_str,
+                        "bedrooms": b_val,
+                        "floor": "N/C",
+                        "dpe": "C",
+                        "charges": "N/C",
+                        "amenities": extract_amenities(f"{name} {it.get('description', '')}"),
+                        "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                        "market_avg_m2": 0,
+                        "market_delta_pct": 0,
+                        "market_badge": "🏠 Marché local Brésil",
+                        "date_detected": now,
+                    })
+            except Exception:
+                continue
+    except Exception as e:
+        logger.warning(f"Erreur {agency_lbl} {url}: {e}")
+
+    logger.info(f"✅ {len(results)} annonces extraites de {agency_lbl} ({transaction_type}) pour {city_clean}")
+    return results
+
+
+def _parse_jp_yen_amount(text_blob):
+    """Parse les montants japonais en yens depuis '7.5 万円', '1億2,500万円', '4,980万円', 'JPY 510,000'."""
+    if not text_blob:
+        return 0
+    txt = str(text_blob).replace(",", "").replace("，", "")
+    m_oku_man = re.search(r"(\d+(?:\.\d+)?)\s*億\s*(?:(\d+(?:\.\d+)?)\s*万)?\s*円", txt)
+    if m_oku_man:
+        oku = float(m_oku_man.group(1))
+        man = float(m_oku_man.group(2) or 0)
+        return int(round(oku * 100_000_000 + man * 10_000))
+    m_man = re.search(r"(\d+(?:\.\d+)?)\s*万円", txt)
+    if m_man:
+        return int(round(float(m_man.group(1)) * 10_000))
+    m_jpy = re.search(r"(?:JPY|¥)\s*(\d{4,10})", txt, re.I)
+    if m_jpy:
+        return int(m_jpy.group(1))
+    return 0
+
+
+def scrape_athome_jp(city, transaction_type="location", max_price=None, min_surface=None, rooms=None, geo=None):
+    """Connecteur résidentiel local japonais AtHome.co.jp (Location /chintai/ & Achat /mansion/)."""
+    city_clean = city.split(",")[0].strip()
+    c_slug = clean_slug(city_clean)
+    pref_map = {
+        "tokyo": "tokyo", "shibuya": "tokyo", "shinjuku": "tokyo", "minato": "tokyo",
+        "osaka": "osaka", "kyoto": "kyoto", "yokohama": "kanagawa", "fukuoka": "fukuoka", "sapporo": "hokkaido",
+    }
+    pref = pref_map.get(c_slug, "tokyo")
+    is_buy = (transaction_type == "achat")
+    urls = [f"https://www.athome.co.jp/mansion/chuko/{pref}/list/", f"https://www.athome.co.jp/mansion/{pref}/list/"] if is_buy else [f"https://www.athome.co.jp/chintai/{pref}/list/"]
+
+    results = []
+    seen_urls = set()
+    now = datetime.now(timezone.utc).isoformat()
+    c_lat = geo["lat"] if geo else 35.6762
+    c_lon = geo["lon"] if geo else 139.6503
+
+    from bs4 import BeautifulSoup
+    for url in urls:
+        if len(results) >= 25:
+            break
+        try:
+            r = curl_requests.get(url, impersonate="chrome", timeout=15, headers={"Accept-Language": "ja,en-US;q=0.9,en;q=0.8"})
+            soup = BeautifulSoup(r.text, "html.parser")
+            page_title = soup.title.get_text(strip=True)[:40] if soup.title else "AtHome JP"
+            is_cf = is_blocked_or_cf(r.text, page_title, r.status_code)
+            logger.info(f"[DEBUG] AtHome.co.jp ({url}) -> HTTP {r.status_code} | {len(r.text)} bytes | blocked={is_cf}")
+            if r.status_code != 200 or is_cf:
+                continue
+
+            if not is_buy:
+                cards = soup.select("div.property-card")
+                for idx, card in enumerate(cards[:30]):
+                    b_title_el = card.select_one("h2, h3, .property-card__title, [class*='title']")
+                    b_title = re.sub(r"\s+", " ", b_title_el.get_text(" ", strip=True)) if b_title_el else f"Appartement {city_clean}"
+                    card_imgs = []
+                    for im in card.find_all("img"):
+                        src = im.get("data-original") or im.get("data-src") or im.get("src") or ""
+                        if "athome.co.jp/image_files/" in src:
+                            clean_im = src.split("?")[0]
+                            if clean_im not in card_imgs:
+                                card_imgs.append(clean_im)
+
+                    unit_links = [a for a in card.find_all("a", href=True) if re.search(r"/chintai/\d+/", a["href"])]
+                    if not unit_links:
+                        continue
+                    # Prendre jusqu'à 2 logements représentatifs par immeuble pour la diversité
+                    picked_in_bld = 0
+                    for a in unit_links:
+                        if picked_in_bld >= 2 or len(results) >= 30:
+                            break
+                        m_id = re.search(r"/chintai/(\d+)/", a["href"])
+                        if not m_id:
+                            continue
+                        ad_id = m_id.group(1)
+                        ad_url = f"https://www.athome.co.jp/chintai/{ad_id}/"
+                        if ad_url in seen_urls or not is_url_safe(ad_url):
+                            continue
+
+                        row_el = a.find_parent(class_=re.compile(r"room|detail|row|unit", re.I)) or a.parent
+                        row_txt = re.sub(r"\s+", " ", row_el.get_text(" ", strip=True))
+                        raw_jpy = _parse_jp_yen_amount(row_txt)
+                        if raw_jpy <= 0:
+                            continue
+                        p_eur = convert_to_eur(raw_jpy, "JPY")
+                        if p_eur <= 0 or (max_price and p_eur > float(max_price)):
+                            continue
+
+                        m_surf = re.search(r"(\d+(?:\.\d+)?)\s*m²", row_txt)
+                        s_val = float(m_surf.group(1)) if m_surf else 0.0
+                        if min_surface and s_val > 0 and s_val < float(min_surface):
+                            continue
+
+                        m_layout = re.search(r"\b([1-6][RLDK]+)\b", row_txt, re.I)
+                        layout_raw = m_layout.group(1).upper() if m_layout else ""
+                        r_str = normalize_rooms(layout_raw, None, s_val, b_title)
+
+                        seen_urls.add(ad_url)
+                        picked_in_bld += 1
+                        orig_str = f"¥{raw_jpy:,} (~{p_eur:,} €)".replace(",", " ")
+                        card_full_txt = re.sub(r"\s+", " ", card.get_text(" ", strip=True))
+                        m_loc = re.search(r"([^\s]+区[^\s]*)", card_full_txt)
+                        ward = m_loc.group(1) if m_loc else city_clean
+
+                        results.append({
+                            "id": f"real_athome_rent_{ad_id}",
+                            "universe": "immo",
+                            "category": "immo",
+                            "transaction_type": "location",
+                            "market_segment": "local_residential",
+                            "category_label": f"Location {city_clean} (AtHome Local)",
+                            "badge": f"🇯🇵 Location Locale • {ward}",
+                            "title": f"{b_title[:55]} ({layout_raw or r_str})",
+                            "price": p_eur,
+                            "price_str": normalize_price_str(p_eur, "location"),
+                            "price_original_str": orig_str,
+                            "currency": "JPY",
+                            "location": f"{ward}, {city_clean}",
+                            "city": city_clean,
+                            "postal_code": "",
+                            "lat": c_lat + ((len(results) % 7) - 3) * 0.01,
+                            "lon": c_lon + (((len(results) * 4) % 7) - 3) * 0.01,
+                            "agency": "AtHome.co.jp (Local)",
+                            "is_verified_agency": True,
+                            "url": ad_url,
+                            "image_url": card_imgs[0] if card_imgs else "",
+                            "images": card_imgs[:5],
+                            "description": f"{b_title} — Plan {layout_raw or r_str}, {int(s_val)} m², loyer local {orig_str} ({ward}).",
+                            "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                            "surface_val": s_val,
+                            "rooms": r_str,
+                            "bedrooms": 2 if r_str in ("T3", "T4") else (1 if r_str == "T2" else 0),
+                            "floor": "N/C",
+                            "dpe": "B",
+                            "charges": "N/C",
+                            "amenities": extract_amenities(f"{b_title} {row_txt}"),
+                            "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                            "market_avg_m2": 0,
+                            "market_delta_pct": 0,
+                            "market_badge": "🏠 Marché local Japon",
+                            "date_detected": now,
+                        })
+            else:
+                buy_cards = soup.select("div.card-box-open, div.property-card")
+                for idx, bc in enumerate(buy_cards[:30]):
+                    txt = re.sub(r"\s+", " ", bc.get_text(" ", strip=True))
+                    a_prop = next((a for a in bc.find_all("a", href=True) if re.search(r"/mansion/(?:shinchiku/)?(\d+)/", a["href"])), None)
+                    if not a_prop:
+                        continue
+                    href = a_prop["href"].split("?")[0]
+                    ad_url = href if href.startswith("http") else f"https://www.athome.co.jp{href}"
+                    if ad_url in seen_urls or not is_url_safe(ad_url):
+                        continue
+                    raw_jpy = _parse_jp_yen_amount(txt)
+                    if raw_jpy < 1_000_000:
+                        continue
+                    p_eur = convert_to_eur(raw_jpy, "JPY")
+                    if p_eur <= 0 or (max_price and p_eur > float(max_price)):
+                        continue
+
+                    m_surf = re.search(r"(\d+(?:\.\d+)?)\s*m²", txt)
+                    s_val = float(m_surf.group(1)) if m_surf else 0.0
+                    if min_surface and s_val > 0 and s_val < float(min_surface):
+                        continue
+
+                    m_layout = re.search(r"\b([1-6]\s*[RLDK]+)\b", txt, re.I)
+                    layout_raw = m_layout.group(1).replace(" ", "").upper() if m_layout else ""
+                    h_el = bc.select_one("h2, h3, [class*='title'], strong")
+                    b_title = h_el.get_text(" ", strip=True)[:60] if h_el else f"Mansion {city_clean}"
+                    r_str = normalize_rooms(layout_raw, None, s_val, b_title)
+
+                    b_imgs = []
+                    for im in bc.find_all("img"):
+                        src = im.get("data-original") or im.get("data-src") or im.get("src") or ""
+                        if "athome.co.jp/image_files/" in src:
+                            clean_im = src.split("?")[0]
+                            if clean_im not in b_imgs:
+                                b_imgs.append(clean_im)
+
+                    seen_urls.add(ad_url)
+                    ad_id = str(abs(hash(ad_url)) % 10000000)
+                    orig_str = f"¥{raw_jpy:,} (~{p_eur:,} €)".replace(",", " ")
+                    results.append({
+                        "id": f"real_athome_buy_{ad_id}",
+                        "universe": "immo",
+                        "category": "immo",
+                        "transaction_type": "achat",
+                        "market_segment": "local_residential",
+                        "category_label": f"Achat {city_clean} (AtHome Local)",
+                        "badge": f"🇯🇵 Achat Local • {city_clean}",
+                        "title": f"{b_title} ({layout_raw or r_str})",
+                        "price": p_eur,
+                        "price_str": normalize_price_str(p_eur, "achat"),
+                        "price_original_str": orig_str,
+                        "currency": "JPY",
+                        "location": f"{city_clean}, Japon",
+                        "city": city_clean,
+                        "postal_code": "",
+                        "lat": c_lat + ((idx % 7) - 3) * 0.01,
+                        "lon": c_lon + (((idx * 3) % 7) - 3) * 0.01,
+                        "agency": "AtHome.co.jp (Local)",
+                        "is_verified_agency": True,
+                        "url": ad_url,
+                        "image_url": b_imgs[0] if b_imgs else "",
+                        "images": b_imgs[:5],
+                        "description": f"{b_title} — {int(s_val)} m², prix local {orig_str}.",
+                        "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                        "surface_val": s_val,
+                        "rooms": r_str,
+                        "bedrooms": 2 if r_str in ("T3", "T4") else (1 if r_str == "T2" else 0),
+                        "floor": "N/C",
+                        "dpe": "B",
+                        "charges": "N/C",
+                        "amenities": extract_amenities(f"{b_title} {txt}"),
+                        "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                        "market_avg_m2": 0,
+                        "market_delta_pct": 0,
+                        "market_badge": "🏠 Marché local Japon",
+                        "date_detected": now,
+                    })
+        except Exception as e:
+            logger.warning(f"Erreur AtHome.co.jp {url}: {e}")
+
+    logger.info(f"✅ {len(results)} annonces extraites de AtHome.co.jp ({transaction_type}) pour {city_clean}")
+    return results
+
+
+def scrape_plazahomes_jp(city, transaction_type="location", max_price=None, min_surface=None, rooms=None, geo=None):
+    """Connecteur local japonais PlazaHomes (realestate-tokyo.com) en anglais (Location & Achat Tokyo)."""
+    city_clean = city.split(",")[0].strip()
+    if "tokyo" not in city_clean.lower() and (geo and geo.get("country_code", "").lower() != "jp"):
+        return []
+    is_buy = (transaction_type == "achat")
+    mode = "buy" if is_buy else "rent"
+    url = f"https://www.realestate-tokyo.com/{mode}/"
+    logger.info(f"🇯🇵 Scraping PlazaHomes Tokyo ({mode}) : {url}")
+
+    results = []
+    seen_urls = set()
+    now = datetime.now(timezone.utc).isoformat()
+    c_lat = geo["lat"] if geo else 35.6762
+    c_lon = geo["lon"] if geo else 139.6503
+
+    try:
+        from bs4 import BeautifulSoup
+        r = curl_requests.get(url, impersonate="chrome", timeout=12)
+        soup = BeautifulSoup(r.text, "html.parser")
+        page_title = soup.title.get_text(strip=True)[:40] if soup.title else "PlazaHomes"
+        is_cf = is_blocked_or_cf(r.text, page_title, r.status_code)
+        logger.info(f"[DEBUG] PlazaHomes ({mode}) -> HTTP {r.status_code} | {len(r.text)} bytes | blocked={is_cf}")
+        if r.status_code != 200 or is_cf:
+            return results
+
+        for idx, card in enumerate(soup.select("div.card.hl")[:25]):
+            a_el = card.find("a", href=True)
+            if not a_el:
+                continue
+            href = a_el["href"]
+            ad_url = href if href.startswith("http") else f"https://www.realestate-tokyo.com{href}"
+            if ad_url in seen_urls or not is_url_safe(ad_url):
+                continue
+            seen_urls.add(ad_url)
+
+            txt = re.sub(r"\s+", " ", card.get_text(" ", strip=True))
+            raw_jpy = _parse_jp_yen_amount(txt)
+            if raw_jpy <= 0:
+                continue
+            p_eur = convert_to_eur(raw_jpy, "JPY")
+            if p_eur <= 0 or (max_price and p_eur > float(max_price)):
+                continue
+
+            h_el = card.select_one("h2, h3, .card-title, a")
+            title = (h_el.get_text(" ", strip=True) if h_el else f"Residence Tokyo")[:85]
+            m_surf = re.search(r"(\d+(?:\.\d+)?)\s*(?:m²|sqm|sq\.?m)", txt, re.I)
+            s_val = float(m_surf.group(1)) if m_surf else 0.0
+            m_bed = re.search(r"(\d+)\s*bed", txt, re.I)
+            b_val = int(m_bed.group(1)) if m_bed else None
+            r_str = normalize_rooms("", b_val, s_val, title)
+
+            imgs = [im.get("data-src") or im.get("src") for im in card.find_all("img")]
+            photos = [i if i.startswith("http") else f"https://www.realestate-tokyo.com{i}" for i in imgs if i and "plazahomes" in i]
+            hero_img = photos[0] if photos else ""
+
+            ad_id = str(abs(hash(ad_url)) % 10000000)
+            orig_str = f"¥{raw_jpy:,} (~{p_eur:,} €)".replace(",", " ")
+            results.append({
+                "id": f"real_plaza_{mode}_{ad_id}",
+                "universe": "immo",
+                "category": "immo",
+                "transaction_type": transaction_type,
+                "market_segment": "local_residential",
+                "category_label": f"{'Achat' if is_buy else 'Location'} {city_clean} (PlazaHomes Tokyo)",
+                "badge": f"🇯🇵 {'Achat' if is_buy else 'Location'} Local • Tokyo",
+                "title": title,
+                "price": p_eur,
+                "price_str": normalize_price_str(p_eur, transaction_type),
+                "price_original_str": orig_str,
+                "currency": "JPY",
+                "location": f"Tokyo, Japon",
+                "city": city_clean,
+                "postal_code": "",
+                "lat": c_lat + ((idx % 7) - 3) * 0.008,
+                "lon": c_lon + (((idx * 3) % 7) - 3) * 0.008,
+                "agency": "PlazaHomes Tokyo",
+                "is_verified_agency": True,
+                "url": ad_url,
+                "image_url": hero_img,
+                "images": photos[:5],
+                "description": txt[:300],
+                "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                "surface_val": s_val,
+                "rooms": r_str,
+                "bedrooms": b_val if b_val is not None else 1,
+                "floor": "N/C",
+                "dpe": "B",
+                "charges": "N/C",
+                "amenities": extract_amenities(txt),
+                "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                "market_avg_m2": 0,
+                "market_delta_pct": 0,
+                "market_badge": "🏠 Marché local Japon",
+                "date_detected": now,
+            })
+    except Exception as e:
+        logger.warning(f"Erreur PlazaHomes {url}: {e}")
+
+    logger.info(f"✅ {len(results)} annonces extraites de PlazaHomes ({mode}) pour {city_clean}")
+    return results
+
+
+def scrape_realestate_jp(city, transaction_type="location", max_price=None, min_surface=None, rooms=None, geo=None):
+    """Connecteur RealEstate.co.jp / GaijinPot avec détection WAF Akamai stricte (sans contournement)."""
+    is_buy = (transaction_type == "achat")
+    targets = [
+        ("RealEstate.co.jp", f"https://realestate.co.jp/en/{'forsale' if is_buy else 'rent'}/listing?prefecture=JP-13&city=13100"),
+    ]
+    if not is_buy:
+        targets.append(("GaijinPot", "https://apartments.gaijinpot.com/en/rent/listing?prefecture=JP-13"))
+
+    results = []
+    now = datetime.now(timezone.utc).isoformat()
+    c_lat = geo["lat"] if geo else 35.6762
+    c_lon = geo["lon"] if geo else 139.6503
+    from bs4 import BeautifulSoup
+
+    for portal_name, url in targets:
+        try:
+            r = curl_requests.get(url, impersonate="chrome", timeout=10)
+            soup = BeautifulSoup(r.text, "html.parser")
+            p_title = soup.title.get_text(" ", strip=True)[:40] if soup.title else ""
+            blocked = is_blocked_or_cf(r.text, p_title, r.status_code)
+            logger.info(f"[DEBUG] {portal_name} -> HTTP {r.status_code} | {len(r.text)} bytes | title=\"{p_title}\" | blocked={blocked}")
+            if r.status_code != 200 or blocked:
+                continue
+
+            for idx, card in enumerate(soup.select(".property-listing, div[data-property-id]")[:25]):
+                a_el = card.find("a", href=True)
+                if not a_el:
+                    continue
+                href = a_el["href"]
+                base = "https://apartments.gaijinpot.com" if "gaijinpot" in url else "https://realestate.co.jp"
+                ad_url = href if href.startswith("http") else f"{base}{href}"
+                if not is_url_safe(ad_url):
+                    continue
+                txt = re.sub(r"\s+", " ", card.get_text(" ", strip=True))
+                raw_jpy = _parse_jp_yen_amount(txt)
+                if raw_jpy <= 0:
+                    continue
+                p_eur = convert_to_eur(raw_jpy, "JPY")
+                if p_eur <= 0 or (max_price and p_eur > float(max_price)):
+                    continue
+                m_surf = re.search(r"(\d+(?:\.\d+)?)\s*(?:m²|m2)", txt, re.I)
+                s_val = float(m_surf.group(1)) if m_surf else 0.0
+                r_str = normalize_rooms("", None, s_val, txt)
+                im = card.find("img")
+                img_u = (im.get("data-src") or im.get("src") or "") if im else ""
+                ad_id = str(abs(hash(ad_url)) % 10000000)
+                results.append({
+                    "id": f"real_rejp_{ad_id}",
+                    "universe": "immo",
+                    "category": "immo",
+                    "transaction_type": transaction_type,
+                    "market_segment": "local_residential",
+                    "category_label": f"{'Achat' if is_buy else 'Location'} {city} ({portal_name})",
+                    "badge": f"🇯🇵 {'Achat' if is_buy else 'Location'} Local • {city}",
+                    "title": a_el.get_text(" ", strip=True)[:80] or f"Logement {city}",
+                    "price": p_eur,
+                    "price_str": normalize_price_str(p_eur, transaction_type),
+                    "price_original_str": f"¥{raw_jpy:,} (~{p_eur:,} €)".replace(",", " "),
+                    "currency": "JPY",
+                    "location": f"{city}, Japon",
+                    "city": city,
+                    "postal_code": "",
+                    "lat": c_lat + ((idx % 7) - 3) * 0.008,
+                    "lon": c_lon + (((idx * 3) % 7) - 3) * 0.008,
+                    "agency": portal_name,
+                    "is_verified_agency": True,
+                    "url": ad_url,
+                    "image_url": img_u if img_u.startswith("http") else "",
+                    "images": [img_u] if img_u.startswith("http") else [],
+                    "description": txt[:280],
+                    "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
+                    "surface_val": s_val,
+                    "rooms": r_str,
+                    "bedrooms": 1,
+                    "floor": "N/C",
+                    "dpe": "B",
+                    "charges": "N/C",
+                    "amenities": extract_amenities(txt),
+                    "price_per_m2": round(p_eur / s_val, 1) if s_val > 0 else 0,
+                    "market_avg_m2": 0,
+                    "market_delta_pct": 0,
+                    "market_badge": "🏠 Marché local Japon",
+                    "date_detected": now,
+                })
+        except Exception as e:
+            logger.warning(f"Erreur {portal_name}: {e}")
+    return results
+
+
 def scrape_international_cascade(city="Madrid", country_code="es", transaction_type="location", max_price=None, min_surface=None, rooms=None, exclude_viager=True, geo=None):
     """
-    Cascade de méta-agrégateurs mondiaux V16 :
-    - ACHAT : Green-Acres (Europe), Tranio (Monde), Rightmove (UK), Point2Homes (US/CA), Properstar (si pas 403 Azure WAF)
-    - LOCATION : HousingAnywhere (Monde), Spotahome (Europe), Flatio (Monde), Rightmove (UK), Point2Homes (US/CA), Properstar (si pas 403)
+    Cascade de méta-agrégateurs & portails résidentiels locaux mondiaux V17 :
+    - Priorité au marché résidentiel local (QuintoAndar, VivaReal, ZAP, AtHome, PlazaHomes, Rightmove, Green-Acres, Tranio)
+    - Complément Expat / Moyen séjour (Spotahome Europe hors Asie, Flatio, HousingAnywhere) marqué expat_midterm
     """
     if not geo:
         geo = geocode_nominatim_world(city)
-    city_name = geo["city"] if geo else city
+    raw_city = geo["city"] if geo else city
+    fr_to_en = {
+        "barcelone": "Barcelona", "lisbonne": "Lisbon", "londres": "London",
+        "athenes": "Athens", "athènes": "Athens", "seoul": "Seoul", "séoul": "Seoul",
+        "singapour": "Singapore", "montreal": "Montreal", "montréal": "Montreal",
+    }
+    city_name = fr_to_en.get(raw_city.split(",")[0].strip().lower(), raw_city)
     cc = (country_code or (geo.get("country_code") if geo else "es")).lower().strip()
     country_name = geo["country"] if geo else "Monde"
 
-    logger.info(f"🌍 Lancement de la cascade internationale pour {city_name} ({country_name}, {cc}) en mode '{transaction_type}'...")
+    logger.info(f"🌍 Lancement de la cascade internationale V17 pour {city_name} ({country_name}, {cc}) en mode '{transaction_type}'...")
     combined = []
     seen_urls = set()
 
@@ -2560,7 +3814,7 @@ def scrape_international_cascade(city="Madrid", country_code="es", transaction_t
             u = it.get("url")
             if u and u not in seen_urls:
                 seen_urls.add(u)
-                combined.append(it)
+                combined.append(normalize_immo_item(it))
 
     european_cc = ("es", "it", "pt", "de", "gb", "uk", "fr", "be", "nl", "at", "ie", "ch", "gr")
 
@@ -2568,63 +3822,70 @@ def scrape_international_cascade(city="Madrid", country_code="es", transaction_t
     # BRANCHE 1 : ACHAT (VENTE)
     # =========================================================
     if transaction_type in ("achat", "all"):
-        # 1. Green-Acres (Prestige Espagne, Portugal, France, Italie, Grèce)
+        if cc == "br":
+            add_unique(scrape_quintoandar_br(city_name, "achat", max_price, min_surface, rooms, geo))
+            add_unique(scrape_vivareal_zap_br(city_name, "achat", "vivareal", max_price, min_surface, rooms, geo))
+
+        if cc == "jp":
+            add_unique(scrape_athome_jp(city_name, "achat", max_price, min_surface, rooms, geo))
+            add_unique(scrape_plazahomes_jp(city_name, "achat", max_price, min_surface, rooms, geo))
+            add_unique(scrape_realestate_jp(city_name, "achat", max_price, min_surface, rooms, geo))
+
+        # Green-Acres (Europe)
         if cc in ("es", "pt", "fr", "it", "gr"):
-            ga_items = scrape_greenacres(city_name, cc, "achat", max_price, min_surface, rooms, exclude_viager, geo)
-            add_unique(ga_items)
+            add_unique(scrape_greenacres(city_name, cc, "achat", max_price, min_surface, rooms, exclude_viager, geo))
 
-        # 2. Tranio (Ventes Monde : Espagne, USA, France, Italie, etc.)
-        tra_items = scrape_tranio(city_name, cc, "achat", max_price, min_surface, rooms, geo)
-        add_unique(tra_items)
+        # Tranio (Monde)
+        add_unique(scrape_tranio(city_name, cc, "achat", max_price, min_surface, rooms, geo))
 
-        # 3. Rightmove (Royaume-Uni : Londres, Manchester, etc.)
+        # Rightmove (UK)
         if cc in ("gb", "uk"):
-            rm_items = scrape_rightmove(city_name, cc, "achat", max_price, min_surface, rooms, geo)
-            add_unique(rm_items)
+            add_unique(scrape_rightmove(city_name, cc, "achat", max_price, min_surface, rooms, geo))
 
-        # 4. Point2Homes (USA & Canada)
+        # Point2Homes (USA & Canada)
         if cc in ("us", "ca"):
-            p2h_items = scrape_point2homes(city_name, cc, "achat", max_price, min_surface, rooms, geo)
-            add_unique(p2h_items)
+            add_unique(scrape_point2homes(city_name, cc, "achat", max_price, min_surface, rooms, geo))
 
-        # 5. Properstar (60+ pays - Achat)
-        if len(combined) < 15:
-            ps_items = scrape_properstar(city_name, cc, "achat", max_price, min_surface, rooms, exclude_viager, geo)
-            add_unique(ps_items)
+        # Properstar (60+ pays hors Japon)
+        if cc != "jp" and len(combined) < 15:
+            add_unique(scrape_properstar(city_name, cc, "achat", max_price, min_surface, rooms, exclude_viager, geo))
 
     # =========================================================
     # BRANCHE 2 : LOCATION
     # =========================================================
     if transaction_type in ("location", "all"):
-        # 1. HousingAnywhere (International : USA, Europe, Monde)
-        ha_items = scrape_housinganywhere(city_name, country_name, max_price, min_surface, rooms, geo)
-        add_unique(ha_items)
+        # 1. Portails résidentiels LOCAUX prioritaires (Brésil & Japon)
+        if cc == "br":
+            add_unique(scrape_quintoandar_br(city_name, "location", max_price, min_surface, rooms, geo))
+            add_unique(scrape_vivareal_zap_br(city_name, "location", "vivareal", max_price, min_surface, rooms, geo))
+            add_unique(scrape_vivareal_zap_br(city_name, "location", "zapimoveis", max_price, min_surface, rooms, geo))
 
-        # 2. Spotahome (Europe : Madrid, Barcelone, Rome, Milan, Berlin, etc.)
-        if cc in european_cc:
-            sp_items = scrape_spotahome(city_name, max_price, min_surface, rooms, geo)
-            add_unique(sp_items)
+        if cc == "jp":
+            add_unique(scrape_athome_jp(city_name, "location", max_price, min_surface, rooms, geo))
+            add_unique(scrape_plazahomes_jp(city_name, "location", max_price, min_surface, rooms, geo))
+            add_unique(scrape_realestate_jp(city_name, "location", max_price, min_surface, rooms, geo))
 
-        # 3. Flatio (Locations meublées mondiales)
-        fl_items = scrape_flatio(city_name, cc, max_price, min_surface, rooms, geo)
-        add_unique(fl_items)
-
-        # 4. Rightmove (Royaume-Uni : Londres, Manchester, etc.)
+        # 2. Rightmove (UK) & Point2Homes (US/CA)
         if cc in ("gb", "uk"):
-            rm_rent = scrape_rightmove(city_name, cc, "location", max_price, min_surface, rooms, geo)
-            add_unique(rm_rent)
+            add_unique(scrape_rightmove(city_name, cc, "location", max_price, min_surface, rooms, geo))
 
-        # 5. Point2Homes (USA & Canada : Miami, New York, etc.)
         if cc in ("us", "ca"):
-            p2h_rent = scrape_point2homes(city_name, cc, "location", max_price, min_surface, rooms, geo)
-            add_unique(p2h_rent)
+            add_unique(scrape_point2homes(city_name, cc, "location", max_price, min_surface, rooms, geo))
 
-        # 6. Properstar (Location)
-        if len(combined) < 15:
-            ps_rent = scrape_properstar(city_name, cc, "location", max_price, min_surface, rooms, exclude_viager, geo)
-            add_unique(ps_rent)
+        # 3. Compléments Expat / Moyen séjour (Spotahome Europe uniquement, HousingAnywhere, Flatio)
+        if cc in european_cc:
+            add_unique(scrape_spotahome(city_name, max_price, min_surface, rooms, geo))
 
-    logger.info(f"✨ Cascade internationale terminée : {len(combined)} annonces retenues pour {city_name}")
+        if cc not in ("br", "jp"):
+            add_unique(scrape_housinganywhere(city_name, country_name, max_price, min_surface, rooms, geo))
+
+        add_unique(scrape_flatio(city_name, cc, max_price, min_surface, rooms, geo))
+
+        # 4. Properstar fallback (jamais sur JP)
+        if cc != "jp" and len(combined) < 15:
+            add_unique(scrape_properstar(city_name, cc, "location", max_price, min_surface, rooms, exclude_viager, geo))
+
+    logger.info(f"✨ Cascade internationale V17 terminée : {len(combined)} annonces retenues pour {city_name}")
     return combined
 
 
@@ -3000,6 +4261,94 @@ def scrape_travel_real(departure="Nancy", destination="Partout", max_budget=None
 # =========================================================
 # ORCHESTRATEUR PRINCIPAL DYNAMIQUE
 # =========================================================
+def run_prewarm_catalog(hubs_filter=None, include_voyage=True, probe_local=False):
+    """
+    Pré-scrape les 21 hubs mondiaux majeurs (Achat + Location) en parallèle contrôlé,
+    exécute la vérification parallèle des liens morts, puis écrit le sharding JSON par ville.
+    """
+    if probe_local or os.getenv("SCAN_PROBE_LOCAL_PORTALS", "false").lower() in ("true", "1", "yes"):
+        run_local_portals_probe()
+
+    raw_filter = hubs_filter if hubs_filter is not None else os.getenv("SCAN_HUBS", "").strip()
+    allowed_slugs = {clean_slug(s) for s in raw_filter.split(",") if s.strip()} if raw_filter else set()
+    target_hubs = [h for h in PREWARM_HUBS if not allowed_slugs or h["slug"] in allowed_slugs]
+
+    logger.info("═════════════════════════════════════════════════════════════")
+    logger.info(f"⚡ HORIZONS V17 PREWARM : Pré-scraping de {len(target_hubs)} hubs mondiaux")
+    logger.info("═════════════════════════════════════════════════════════════")
+
+    existing = load_annonces()
+    new_scraped = []
+
+    def _scrape_one_hub(hub):
+        h_items = []
+        slug = hub["slug"]
+        name = hub["name"]
+        try:
+            if hub["type"] == "france":
+                h_items.extend(scrape_france_real(name, "location", exclude_viager=True))
+                h_items.extend(scrape_france_real(name, "achat", exclude_viager=True))
+            elif hub["type"] == "dom":
+                h_items.extend(scrape_dom_immo_real(hub["dom_code"], "location", exclude_viager=True))
+                h_items.extend(scrape_dom_immo_real(hub["dom_code"], "achat", exclude_viager=True))
+            else:
+                q_city = hub.get("query_en") or name
+                geo_stub = {
+                    "city": q_city,
+                    "country": hub["country"],
+                    "country_code": hub["country_code"],
+                    "lat": hub["lat"],
+                    "lon": hub["lon"],
+                }
+                h_items.extend(
+                    scrape_international_cascade(
+                        city=q_city,
+                        country_code=hub["country_code"],
+                        transaction_type="all",
+                        exclude_viager=True,
+                        geo=geo_stub,
+                    )
+                )
+            for it in h_items:
+                it["city"] = name
+                it["city_slug"] = slug
+                normalize_immo_item(it)
+        except Exception as exc:
+            logger.warning(f"⚠️ Prewarm hub {name} erreur: {exc}")
+        return name, len(h_items), h_items
+
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        for hub_name, cnt, items in executor.map(_scrape_one_hub, target_hubs):
+            logger.info(f"📦 Hub [{hub_name}] -> {cnt} biens frais collectés")
+            new_scraped.extend(items)
+
+    if include_voyage:
+        try:
+            new_scraped.extend(scrape_travel_real(departure="Nancy", destination="Partout"))
+        except Exception as e:
+            logger.warning(f"Erreur Voyage pendant prewarm: {e}")
+
+    seen_ids = [x.get("id") for x in new_scraped if x.get("id")]
+    seen_urls = [x.get("url") for x in new_scraped if x.get("url")]
+    combined = new_scraped + existing
+    purge_stats = save_annonces(combined, newly_seen_ids=seen_ids, newly_seen_urls=seen_urls)
+
+    # Affichage du bilan exact par ville depuis cities_index.json
+    try:
+        with open(CITIES_INDEX_PATH, "r", encoding="utf-8") as f:
+            idx_data = json.load(f)
+        print(f"\n{'Ville':20} | {'Slug':16} | {'Total':6} | {'Local':6} | {'Expat':6} | {'Loc':5} | {'Achat':5}")
+        print("-" * 78)
+        for c in idx_data.get("cities", []):
+            print(f"{c['name'][:20]:20} | {c['slug'][:16]:16} | {c['count']:6d} | {c['local_count']:6d} | {c['expat_count']:6d} | {c['rent_count']:5d} | {c['buy_count']:5d}")
+        print("-" * 78)
+        logger.info(f"📊 Bilan Purge Prewarm : {purge_stats}")
+    except Exception:
+        pass
+
+    return new_scraped
+
+
 def run_dynamic_scan(
     city=None,
     country=None,
@@ -3014,12 +4363,20 @@ def run_dynamic_scan(
     exclude_viager=True,
     probe=False,
     probe_voyage=False,
+    probe_local=False,
+    prewarm=False,
+    hubs=None,
 ):
-    # Si SCAN_PROBE ou SCAN_PROBE_VOYAGE est activé via GitHub Actions ou ligne de commande, exécuter la sonde
+    if prewarm or os.getenv("SCAN_PREWARM", "false").lower() in ("true", "1", "yes"):
+        return run_prewarm_catalog(hubs_filter=hubs, include_voyage=True, probe_local=probe_local)
+
+    # Sondes réseau à la demande
     if probe or os.getenv("SCAN_PROBE", "false").lower() in ("true", "1", "yes"):
         run_international_probe()
     if probe_voyage or os.getenv("SCAN_PROBE_VOYAGE", "false").lower() in ("true", "1", "yes"):
         run_voyage_probe()
+    if probe_local or os.getenv("SCAN_PROBE_LOCAL_PORTALS", "false").lower() in ("true", "1", "yes"):
+        run_local_portals_probe()
 
     if city is None:
         city = os.getenv("SCAN_CITY", "").strip()
@@ -3043,7 +4400,7 @@ def run_dynamic_scan(
         radius = os.getenv("SCAN_RADIUS", "").strip()
 
     logger.info("═════════════════════════════════════════════════════════")
-    logger.info("✨ HORIZONS V15 - Moteur de Veille & Recherche Sur-Mesure")
+    logger.info("✨ HORIZONS V17 - Moteur de Veille & Catalogue Mondial Sharded")
     logger.info(f"   • Destination : '{city or 'Toutes'}' ({country or 'Auto'}) | Type : '{transac}' | Exclure Viager : {exclude_viager}")
     logger.info(f"   • Budget Max : {max_price or 'Non plafonné'} € | Surface min : {min_surface or '0'} m²")
     if lat and lon and radius:
@@ -3094,7 +4451,7 @@ def run_dynamic_scan(
                 for t_mode in t_list:
                     new_scraped.extend(scrape_france_real(city, t_mode, max_price, min_surface, rooms, exclude_viager))
             else:
-                # 3. International mondial (Properstar, Spotahome, HousingAnywhere)
+                # 3. International mondial (Portails locaux + compléments expat)
                 t_list = ["location", "achat"] if transac == "all" else [transac]
                 for t_mode in t_list:
                     new_scraped.extend(scrape_international_cascade(city, cc, t_mode, max_price, min_surface, rooms, exclude_viager, geo))
@@ -3125,8 +4482,10 @@ def run_dynamic_scan(
         except Exception as e:
             logger.warning(f"Erreur calcul rayon GPS : {e}")
 
+    seen_ids = [x.get("id") for x in new_scraped if x.get("id")]
+    seen_urls = [x.get("url") for x in new_scraped if x.get("url")]
     combined = new_scraped + existing
-    save_annonces(combined)
+    save_annonces(combined, newly_seen_ids=seen_ids, newly_seen_urls=seen_urls)
 
     cfg = load_config()
     topic = cfg.get("ntfy_topic", "sxm-immo-alert-97150-x9q4m2")
@@ -3144,9 +4503,9 @@ def run_dynamic_scan(
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Horizons V15 - Curateur Immobilier & Voyages sur-mesure")
+    parser = argparse.ArgumentParser(description="Horizons V17 - Curateur Immobilier & Voyages sur-mesure")
     parser.add_argument("--city", default=None, help="Target city (e.g. Nancy, Saint-Martin, Guadeloupe, Madrid, New York)")
-    parser.add_argument("--country", default=None, help="Country code (e.g. fr, us, es, gb, it, pt, ca)")
+    parser.add_argument("--country", default=None, help="Country code (e.g. fr, us, es, gb, it, pt, ca, jp, br)")
     parser.add_argument("--transaction", default=None, help="Transaction type (location, achat, all)")
     parser.add_argument("--budget", default=None, help="Max budget in EUR")
     parser.add_argument("--surface", default=None, help="Min surface in m2")
@@ -3157,6 +4516,9 @@ if __name__ == "__main__":
     parser.add_argument("--radius", default=None, help="GPS Radius in km")
     parser.add_argument("--probe-international", action="store_true", help="Execute network probe on the 8 international real estate portals")
     parser.add_argument("--probe-voyage", action="store_true", help="Execute network probe on Voyage APIs and RSS feeds")
+    parser.add_argument("--probe-local-portals", action="store_true", help="Execute Azure network probe on Japan & Brazil local portals")
+    parser.add_argument("--prewarm", action="store_true", help="Pre-scrape all 21 global hubs and write sharded city JSON files")
+    parser.add_argument("--hubs", default=None, help="Comma-separated hub slugs to limit --prewarm (e.g. nancy,tokyo,rio-de-janeiro)")
     args = parser.parse_args()
 
     run_dynamic_scan(
@@ -3172,4 +4534,7 @@ if __name__ == "__main__":
         radius=args.radius,
         probe=args.probe_international,
         probe_voyage=args.probe_voyage,
+        probe_local=args.probe_local_portals,
+        prewarm=args.prewarm,
+        hubs=args.hubs,
     )
