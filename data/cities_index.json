@@ -1,15 +1,15 @@
 {
   "version": "17",
-  "updated_at": "2026-11-24T16:28:14.019558+00:00",
-  "total_immo": 2526,
-  "total_voyage": 428,
+  "updated_at": "2026-11-24T18:36:35.993664+00:00",
+  "total_immo": 2552,
+  "total_voyage": 458,
   "purge_stats": {
     "tested": 0,
     "removed_dead": 0,
     "removed_stale": 0,
-    "retained_total": 2954,
+    "retained_total": 3010,
     "duration_sec": 0.0,
-    "checked_at": "2026-11-24T16:28:14.092413+00:00"
+    "checked_at": "2026-11-24T18:36:36.108021+00:00"
   },
   "cities": [
     {
@@ -20,12 +20,12 @@
       "flag": "🇫🇷",
       "lat": 48.6921,
       "lon": 6.1844,
-      "count": 295,
-      "local_count": 295,
+      "count": 314,
+      "local_count": 314,
       "expat_count": 0,
-      "rent_count": 140,
-      "buy_count": 155,
-      "updated_at": "2026-11-24T15:46:37.049109+00:00"
+      "rent_count": 144,
+      "buy_count": 170,
+      "updated_at": "2026-11-24T18:36:26.470763+00:00"
     },
     {
       "slug": "paris",
@@ -70,7 +70,7 @@
       "expat_count": 0,
       "rent_count": 5,
       "buy_count": 96,
-      "updated_at": "2026-11-24T15:46:36.303008+00:00"
+      "updated_at": "2026-11-24T18:36:21.199411+00:00"
     },
     {
       "slug": "guadeloupe",
@@ -85,7 +85,7 @@
       "expat_count": 0,
       "rent_count": 48,
       "buy_count": 108,
-      "updated_at": "2026-11-24T15:46:38.895626+00:00"
+      "updated_at": "2026-11-24T18:36:22.724785+00:00"
     },
     {
       "slug": "martinique",
@@ -125,12 +125,12 @@
       "flag": "🇪🇸",
       "lat": 40.4168,
       "lon": -3.7038,
-      "count": 204,
+      "count": 212,
       "local_count": 88,
-      "expat_count": 116,
-      "rent_count": 128,
+      "expat_count": 124,
+      "rent_count": 136,
       "buy_count": 76,
-      "updated_at": "2026-11-24T15:46:46.561645+00:00"
+      "updated_at": "2026-11-24T18:36:31.637397+00:00"
     },
     {
       "slug": "barcelone",
@@ -290,10 +290,10 @@
       "flag": "🇯🇵",
       "lat": 35.6762,
       "lon": 139.6503,
-      "count": 107,
-      "local_count": 99,
+      "count": 106,
+      "local_count": 98,
       "expat_count": 8,
-      "rent_count": 74,
+      "rent_count": 73,
       "buy_count": 33,
       "updated_at": "2026-11-24T16:28:03.023289+00:00"
     },
