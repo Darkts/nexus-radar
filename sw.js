@@ -1,4 +1,4 @@
-const CACHE_NAME = 'horizons-v17-preloaded';
+const CACHE_NAME = 'horizons-v17-2-i18n-map';
 const ASSETS_TO_CACHE = [
   './manifest.json',
   './assets/icon.svg'

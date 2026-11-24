@@ -2070,6 +2070,77 @@
       opacity: 0.92;
     }
 
+    /* Badge compteur biens filtrés & sélecteur fonds de carte (V17.2) */
+    .map-filtered-badge {
+      position: absolute;
+      top: 14px;
+      left: 54px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      color: #222222;
+      border: 1px solid #DDDDDD;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .map-layer-switcher {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 4px;
+      border-radius: 24px;
+      border: 1px solid #DDDDDD;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+      pointer-events: auto;
+    }
+    .btn-map-layer {
+      padding: 5px 10px;
+      border-radius: 18px;
+      border: none;
+      background: transparent;
+      color: #222222;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .btn-map-layer:hover {
+      background: #F7F7F7;
+    }
+    .btn-map-layer.active {
+      background: #222222;
+      color: #FFFFFF;
+    }
+    @media (max-width: 768px) {
+      .map-filtered-badge {
+        top: 10px;
+        left: 50px;
+        font-size: 0.71rem;
+        padding: 5px 10px;
+      }
+      .map-layer-switcher {
+        top: auto;
+        bottom: 14px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+        overflow-x: auto;
+      }
+      .btn-map-layer {
+        font-size: 0.68rem;
+        padding: 4px 8px;
+      }
+    }
+
     /* Bouton Pagination 60 FPS */
     .pagination-container {
       text-align: center;
@@ -2332,6 +2403,12 @@
       <!-- Carte Leaflet Principale avec Recherche par Zone & Mode Rayon Précis -->
       <div id="mainMapContainer" style="display: none; position: relative; width: 100%; height: 520px; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; border: 1px solid var(--card-border);">
         <div id="mainMapCanvas" style="width: 100%; height: 100%;"></div>
+        <div id="mapFilteredCountBadge" class="map-filtered-badge">📍 0 bien(s) filtré(s) sur la carte</div>
+        <div id="mapLayerSwitcher" class="map-layer-switcher" role="group" aria-label="Fond de carte">
+          <button type="button" class="btn-map-layer active" data-layer="osmfr" onclick="switchImmoMapLayer('osmfr')">🗺️ Français</button>
+          <button type="button" class="btn-map-layer" data-layer="latin" onclick="switchImmoMapLayer('latin')">🌐 Latin / Monde</button>
+          <button type="button" class="btn-map-layer" data-layer="satellite" onclick="switchImmoMapLayer('satellite')">🛰️ Satellite</button>
+        </div>
         <div id="mapFloatingControls" class="map-floating-controls">
           <button id="btnSearchThisZone" class="btn-map-float" onclick="searchCurrentMapZone()" style="display: none;">
             🔍 Rechercher dans cette zone
@@ -3623,7 +3700,10 @@
     // Leaflet Maps
     let mainLeafletMap = null;
     let mainMapMarkers = [];
+    let activeMapTileLayer = null;
+    let currentImmoMapLayer = 'osmfr';
     let detailMiniMap = null;
+    let detailMiniMapInstance = null;
     let detailMarker = null;
 
     // PIN Lock
@@ -4332,7 +4412,7 @@
         btnList.classList.remove('active');
         grid.style.display = 'none';
         mapBox.style.display = 'block';
-        initOrUpdateMainMap();
+        renderImmoMap(getFilteredImmoItems());
       }
     }
 
@@ -4465,7 +4545,7 @@
             // Déjà filtré sur le shard exact de la ville
           } else {
             const pc = String(it.postal_code || '').toLowerCase();
-            const matchText = `${it.title || ''} ${it.location || ''} ${it.city || ''} ${it.city_slug || ''} ${pc} ${it.category_label || ''} ${it.badge || ''} ${it.description || ''}`.toLowerCase();
+            const matchText = `${it.title || ''} ${it.title_original || ''} ${it.district || ''} ${it.neighborhood || ''} ${it.location || ''} ${it.city || ''} ${it.city_slug || ''} ${pc} ${it.category_label || ''} ${it.badge || ''} ${it.description || ''}`.toLowerCase();
             if (isSxmQuery) {
               if (pc.includes('38400') || matchText.includes('38400') || matchText.includes('hères')) return false;
               const sxmHit = pc.includes('97150') || matchText.includes('saint-martin') || matchText.includes('saint martin')
@@ -4524,15 +4604,18 @@
       const paginBox = document.getElementById('immoPaginationContainer');
       const curShown = document.getElementById('immoCurrentShownCount');
       const totalCount = document.getElementById('immoTotalFoundCount');
+      const mapBadge = document.getElementById('mapFilteredCountBadge');
+      const mappableCount = items.filter(x => x && x.lat && x.lon).length;
 
       countLabel.textContent = `${items.length} bien(s) vérifié(s) disponible(s)`;
       if (totalCount) totalCount.textContent = items.length;
+      if (mapBadge) mapBadge.textContent = `📍 ${mappableCount} bien(s) filtré(s) sur la carte`;
 
       if (items.length === 0) {
         grid.innerHTML = '';
         empty.style.display = 'block';
         if (paginBox) paginBox.style.display = 'none';
-        if (immoViewMode === 'map') initOrUpdateMainMap();
+        if (immoViewMode === 'map') renderImmoMap(items);
         return;
       }
       empty.style.display = 'none';
@@ -4547,7 +4630,7 @@
       }
 
       if (immoViewMode === 'map') {
-        initOrUpdateMainMap();
+        renderImmoMap(items);
       }
     }
 
@@ -4975,11 +5058,57 @@
     }
 
     // =========================================================
-    // CARTE LEAFLET PRINCIPALE
+    // CARTE LEAFLET PRINCIPALE (FRANÇAIS / LATIN & SYNCHRO V17.2)
     // =========================================================
+    const IMMO_MAP_TILE_LAYERS = {
+      osmfr: {
+        url: 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+        attribution: '© OpenStreetMap France',
+        maxZoom: 19
+      },
+      latin: {
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+        attribution: '© Esri — World Street Map',
+        maxZoom: 19
+      },
+      satellite: {
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        attribution: '© Esri — World Imagery',
+        maxZoom: 19
+      }
+    };
+
+    function switchImmoMapLayer(layerKey) {
+      const cfg = IMMO_MAP_TILE_LAYERS[layerKey] || IMMO_MAP_TILE_LAYERS.osmfr;
+      currentImmoMapLayer = IMMO_MAP_TILE_LAYERS[layerKey] ? layerKey : 'osmfr';
+
+      document.querySelectorAll('#mapLayerSwitcher .btn-map-layer').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.layer === currentImmoMapLayer);
+      });
+
+      if (mainLeafletMap) {
+        if (activeMapTileLayer) {
+          mainLeafletMap.removeLayer(activeMapTileLayer);
+        }
+        activeMapTileLayer = L.tileLayer(cfg.url, {
+          attribution: cfg.attribution,
+          maxZoom: cfg.maxZoom
+        }).addTo(mainLeafletMap);
+      }
+    }
+
     function initOrUpdateMainMap() {
-      const items = getFilteredImmoItems().filter(x => x.lat && x.lon);
+      renderImmoMap(getFilteredImmoItems());
+    }
+
+    function renderImmoMap(filteredListings) {
+      const sourceList = Array.isArray(filteredListings) ? filteredListings : getFilteredImmoItems();
+      const items = sourceList.filter(x => x && x.lat && x.lon);
       const mapBox = document.getElementById('mainMapCanvas') || document.getElementById('mainMapContainer');
+      const mapBadge = document.getElementById('mapFilteredCountBadge');
+      if (mapBadge) {
+        mapBadge.textContent = `📍 ${items.length} bien(s) filtré(s) sur la carte`;
+      }
       if (!mapBox) return;
 
       if (!mainLeafletMap) {
@@ -4987,9 +5116,10 @@
         mainLeafletMap = L.map(mapBox, { preferCanvas: true }).setView([48.6921, 6.1844], 12);
         setTimeout(() => { isProgrammaticMapMove = false; }, 350);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap contributors',
-          maxZoom: 18
+        const initCfg = IMMO_MAP_TILE_LAYERS[currentImmoMapLayer] || IMMO_MAP_TILE_LAYERS.osmfr;
+        activeMapTileLayer = L.tileLayer(initCfg.url, {
+          attribution: initCfg.attribution,
+          maxZoom: initCfg.maxZoom
         }).addTo(mainLeafletMap);
 
         mainLeafletMap.on('moveend zoomend', () => {
@@ -5019,12 +5149,22 @@
           fillOpacity: 0.95
         }).addTo(mainLeafletMap);
 
+        const isAchat = it.transaction_type === 'achat';
+        const rawP = it.price_str || (it.price ? `${Number(it.price).toLocaleString('fr-FR')} €` : 'Prix N/C');
+        const cleanP = rawP.replace(/\s*(?:\/\s*mois|par\s+mois|\/\s*month)\s*(?:CC|HC)?/gi, '').trim();
+        const priceDisplay = (!isAchat && cleanP !== 'Prix N/C') ? `${cleanP} / mois` : cleanP;
+        const locDisplay = it.district || it.neighborhood || it.location || it.city || 'Secteur recherché';
+        const directUrl = (it.url && /^https?:\/\//i.test(it.url)) ? it.url : '';
+
         marker.bindPopup(`
-          <div style="font-family: inherit; font-size: 0.78rem;">
-            <strong>${escapeHtml(it.title)}</strong><br/>
-            💰 <span style="color:#FF385C; font-weight:800;">${escapeHtml(it.price_str)}</span><br/>
-            📍 ${escapeHtml(it.location)}<br/>
-            <button onclick="openImmoDetailModal('${it.id}')" style="margin-top:6px; background:#FF385C; color:#FFFFFF; border:none; padding:5px 10px; border-radius:6px; font-weight:700; cursor:pointer;">Voir la fiche</button>
+          <div style="font-family: inherit; font-size: 0.78rem; min-width: 205px; max-width: 260px;">
+            <strong style="display:block; color:#222222; margin-bottom:4px; line-height:1.3;">${escapeHtml(it.title || 'Logement')}</strong>
+            <div style="color:#FF385C; font-weight:800; font-size:0.86rem; margin-bottom:3px;">💰 ${escapeHtml(priceDisplay)}</div>
+            <div style="color:#555555; font-size:0.74rem; margin-bottom:8px;">📍 ${escapeHtml(locDisplay)}</div>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button onclick="openImmoDetailModal('${it.id}')" style="background:#FF385C; color:#FFFFFF; border:none; padding:5px 10px; border-radius:6px; font-weight:700; cursor:pointer; font-size:0.74rem;">Voir la fiche</button>
+              ${directUrl ? `<a href="${escapeHtml(directUrl)}" target="_blank" rel="noopener noreferrer" style="background:#F7F7F7; color:#222222; border:1px solid #DDDDDD; padding:5px 9px; border-radius:6px; font-weight:700; text-decoration:none; font-size:0.74rem;">Annonce ↗</a>` : ''}
+            </div>
           </div>
         `);
         mainMapMarkers.push(marker);
@@ -5314,7 +5454,7 @@
           <div class="card-airbnb-info" onclick="openImmoDetailModal('${it.id}')">
             <!-- Ligne 1 : Ville / Quartier en gras #222222 à gauche + badge surface/pièces à droite -->
             <div class="card-airbnb-line1">
-              <div class="card-airbnb-loc">${it.location || 'Secteur recherché'}</div>
+              <div class="card-airbnb-loc">${it.district || it.location || 'Secteur recherché'}</div>
               <div class="card-airbnb-specs">${specsBadge}</div>
             </div>
 
@@ -5559,7 +5699,7 @@
         heroImgEl.src = photos[0];
       }
       document.getElementById('modalImmoTitle').textContent = it.title || 'Fiche du logement';
-      document.getElementById('modalImmoLoc').textContent = `${it.location || ''} • ${it.agency || 'Agence vérifiée'}`;
+      document.getElementById('modalImmoLoc').textContent = `${it.district || it.location || ''} • ${it.agency || 'Agence vérifiée'}`;
       const badgeEl = document.getElementById('modalTransacBadge');
       if (badgeEl) badgeEl.textContent = it.transaction_type === 'achat' ? 'Achat' : 'Location';
       document.getElementById('modalPrice').textContent = it.price_original_str ? `${it.price_str || 'Prix N/C'} (${it.price_original_str})` : (it.price_str || 'Prix N/C');
@@ -5603,18 +5743,31 @@
       modal.style.display = 'block';
       document.body.style.overflow = 'hidden';
 
-      // Mini-carte Leaflet du quartier
+      // Mini-carte Leaflet du quartier (OSM France)
       setTimeout(() => {
+        const mLat = it.lat || 48.6921;
+        const mLon = it.lon || 6.1844;
         if (!detailMiniMapInstance) {
-          detailMiniMapInstance = L.map('detailMiniMap').setView([it.lat || 48.6921, it.lon || 6.1844], 14);
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OSM',
-            maxZoom: 18
+          detailMiniMapInstance = L.map('detailMiniMap').setView([mLat, mLon], 14);
+          L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap France',
+            maxZoom: 19
           }).addTo(detailMiniMapInstance);
         } else {
-          detailMiniMapInstance.setView([it.lat || 48.6921, it.lon || 6.1844], 14);
+          detailMiniMapInstance.setView([mLat, mLon], 14);
           detailMiniMapInstance.invalidateSize();
         }
+        if (detailMarker) {
+          detailMiniMapInstance.removeLayer(detailMarker);
+        }
+        detailMarker = L.circleMarker([mLat, mLon], {
+          radius: 9,
+          fillColor: it.transaction_type === 'achat' ? '#8b5cf6' : '#FF385C',
+          color: '#FFFFFF',
+          weight: 2.5,
+          opacity: 1,
+          fillOpacity: 0.95
+        }).addTo(detailMiniMapInstance);
       }, 150);
     }
 
@@ -7778,11 +7931,11 @@
         if ('caches' in window) {
           caches.keys().then(names => {
             names.forEach(n => {
-              if (n !== 'horizons-v17-preloaded') caches.delete(n);
+              if (n !== 'horizons-v17-2-i18n-map') caches.delete(n);
             });
           });
         }
-        navigator.serviceWorker.register('./sw.js?v=17').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=17-2').then(reg => {
           reg.update();
         }).catch(err => console.warn('SW register err:', err));
 

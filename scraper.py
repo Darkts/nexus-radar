@@ -16,9 +16,12 @@ Horizons V13 - Curateur Immobilier & Voyages sur-mesure (Mondial)
 import os
 import sys
 import json
+import hashlib
 import logging
 import math
 import re
+import threading
+import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -93,6 +96,7 @@ CITIES_DIR = os.path.join(DATA_DIR, "cities")
 CITIES_INDEX_PATH = os.path.join(DATA_DIR, "cities_index.json")
 VOYAGE_PATH = os.path.join(DATA_DIR, "voyage.json")
 DATA_PATH = os.path.join(DATA_DIR, "annonces.json")
+TRANSLATION_CACHE_PATH = os.path.join(DATA_DIR, "translation_cache.json")
 
 # Catalogue des 21 hubs mondiaux pré-scrapés toutes les 12h (V17)
 PREWARM_HUBS = [
@@ -320,6 +324,16 @@ NON_RESIDENTIAL_KEYWORDS = [
     "murs commerciaux",
     "droit au bail",
     "pas de porte",
+    "galpão",
+    "galpao",
+    "depósito",
+    "deposito",
+    "armazém",
+    "armazem",
+    "sala comercial",
+    "sala/conjunto",
+    "ponto comercial",
+    "loja comercial",
 ]
 
 # Exclusions par défaut (Viagers, Nue-propriété, Résidences privées seniors/étudiantes)
@@ -679,7 +693,634 @@ def prune_dead_listings(annonces, max_age_days=7, max_check_workers=20):
     return verified
 
 
-def save_annonces(annonces, newly_seen_ids=None, newly_seen_urls=None):
+# =========================================================
+# GÉOCODAGE QUARTIERS TOKYO & MOTEUR DE TRADUCTION FR V17.2
+# =========================================================
+_TRANSLATION_CACHE = None
+_TRANSLATION_CACHE_LOCK = threading.Lock()
+
+TOKYO_WARD_COORDS = {
+    # Quartiers résidentiels célèbres (prioritaires sur l'arrondissement générique)
+    "roppongi": ("Roppongi, Minato, Tokyo", 35.6628, 139.7315),
+    "六本木": ("Roppongi, Minato, Tokyo", 35.6628, 139.7315),
+    "hiroo": ("Hiroo, Shibuya, Tokyo", 35.6523, 139.7224),
+    "広尾": ("Hiroo, Shibuya, Tokyo", 35.6523, 139.7224),
+    "mita": ("Mita, Minato, Tokyo", 35.6479, 139.7460),
+    "三田": ("Mita, Minato, Tokyo", 35.6479, 139.7460),
+    "ebisu": ("Ebisu, Shibuya, Tokyo", 35.6467, 139.7101),
+    "恵比寿": ("Ebisu, Shibuya, Tokyo", 35.6467, 139.7101),
+    "azabu": ("Azabu, Minato, Tokyo", 35.6553, 139.7368),
+    "麻布": ("Azabu, Minato, Tokyo", 35.6553, 139.7368),
+    "akasaka": ("Akasaka, Minato, Tokyo", 35.6760, 139.7372),
+    "赤坂": ("Akasaka, Minato, Tokyo", 35.6760, 139.7372),
+    "aoyama": ("Aoyama, Minato, Tokyo", 35.6693, 139.7176),
+    "青山": ("Aoyama, Minato, Tokyo", 35.6693, 139.7176),
+    "kamiyacho": ("Toranomon / Kamiyacho, Minato, Tokyo", 35.6632, 139.7449),
+    "神谷町": ("Toranomon / Kamiyacho, Minato, Tokyo", 35.6632, 139.7449),
+    "shiroyama": ("Toranomon / Kamiyacho, Minato, Tokyo", 35.6632, 139.7449),
+    "toranomon": ("Toranomon, Minato, Tokyo", 35.6691, 139.7495),
+    "虎ノ門": ("Toranomon, Minato, Tokyo", 35.6691, 139.7495),
+    "ichibancho": ("Ichibancho, Chiyoda, Tokyo", 35.6869, 139.7420),
+    "一番町": ("Ichibancho, Chiyoda, Tokyo", 35.6869, 139.7420),
+    "daikanyama": ("Daikanyama, Shibuya, Tokyo", 35.6481, 139.7031),
+    "代官山": ("Daikanyama, Shibuya, Tokyo", 35.6481, 139.7031),
+    "nakameguro": ("Nakameguro, Meguro, Tokyo", 35.6443, 139.6991),
+    "中目黒": ("Nakameguro, Meguro, Tokyo", 35.6443, 139.6991),
+    "ginza": ("Ginza, Chuo, Tokyo", 35.6717, 139.7649),
+    "銀座": ("Ginza, Chuo, Tokyo", 35.6717, 139.7649),
+    "tsukiji": ("Tsukiji, Chuo, Tokyo", 35.6655, 139.7707),
+    "築地": ("Tsukiji, Chuo, Tokyo", 35.6655, 139.7707),
+    "ikebukuro": ("Ikebukuro, Toshima, Tokyo", 35.7295, 139.7109),
+    "池袋": ("Ikebukuro, Toshima, Tokyo", 35.7295, 139.7109),
+    "ueno": ("Ueno, Taito, Tokyo", 35.7141, 139.7774),
+    "上野": ("Ueno, Taito, Tokyo", 35.7141, 139.7774),
+    "asakusa": ("Asakusa, Taito, Tokyo", 35.7148, 139.7967),
+    "浅草": ("Asakusa, Taito, Tokyo", 35.7148, 139.7967),
+    "harajuku": ("Harajuku, Shibuya, Tokyo", 35.6702, 139.7027),
+    "原宿": ("Harajuku, Shibuya, Tokyo", 35.6702, 139.7027),
+    "omotesando": ("Omotesando, Shibuya, Tokyo", 35.6652, 139.7123),
+    "表参道": ("Omotesando, Shibuya, Tokyo", 35.6652, 139.7123),
+    "shimokitazawa": ("Shimokitazawa, Setagaya, Tokyo", 35.6616, 139.6682),
+    "下北沢": ("Shimokitazawa, Setagaya, Tokyo", 35.6616, 139.6682),
+    "toyosu": ("Toyosu, Koto, Tokyo", 35.6550, 139.7961),
+    "豊洲": ("Toyosu, Koto, Tokyo", 35.6550, 139.7961),
+    "odaiba": ("Odaiba, Minato, Tokyo", 35.6267, 139.7768),
+    "お台場": ("Odaiba, Minato, Tokyo", 35.6267, 139.7768),
+    "nippori": ("Nippori, Arakawa, Tokyo", 35.7281, 139.7706),
+    "日暮里": ("Nippori, Arakawa, Tokyo", 35.7281, 139.7706),
+    "gotanda": ("Gotanda, Shinagawa, Tokyo", 35.6264, 139.7234),
+    "五反田": ("Gotanda, Shinagawa, Tokyo", 35.6264, 139.7234),
+    "osaki": ("Osaki, Shinagawa, Tokyo", 35.6197, 139.7285),
+    "大崎": ("Osaki, Shinagawa, Tokyo", 35.6197, 139.7285),
+    "yoyogi": ("Yoyogi, Shibuya, Tokyo", 35.6830, 139.7020),
+    "代々木": ("Yoyogi, Shibuya, Tokyo", 35.6830, 139.7020),
+    "kagurazaka": ("Kagurazaka, Shinjuku, Tokyo", 35.7016, 139.7404),
+    "神楽坂": ("Kagurazaka, Shinjuku, Tokyo", 35.7016, 139.7404),
+    "numabukuro": ("Numabukuro, Nakano, Tokyo", 35.7204, 139.6626),
+    "沼袋": ("Numabukuro, Nakano, Tokyo", 35.7204, 139.6626),
+    "kichijoji": ("Kichijoji, Musashino, Tokyo", 35.7031, 139.5798),
+    "吉祥寺": ("Kichijoji, Musashino, Tokyo", 35.7031, 139.5798),
+    "komaba": ("Komaba, Meguro, Tokyo", 35.6589, 139.6832),
+    "駒場": ("Komaba, Meguro, Tokyo", 35.6589, 139.6832),
+    "jiyugaoka": ("Jiyugaoka, Meguro, Tokyo", 35.6075, 139.6687),
+    "自由が丘": ("Jiyugaoka, Meguro, Tokyo", 35.6075, 139.6687),
+    "futako": ("Futako-Tamagawa, Setagaya, Tokyo", 35.6115, 139.6266),
+    "二子玉川": ("Futako-Tamagawa, Setagaya, Tokyo", 35.6115, 139.6266),
+    # 23 Arrondissements Spéciaux (Tokyo)
+    "千代田区": ("Chiyoda, Tokyo", 35.6940, 139.7536),
+    "chiyoda": ("Chiyoda, Tokyo", 35.6940, 139.7536),
+    "中央区": ("Chuo, Tokyo", 35.6707, 139.7720),
+    "chuo": ("Chuo, Tokyo", 35.6707, 139.7720),
+    "港区": ("Minato, Tokyo", 35.6581, 139.7516),
+    "minato": ("Minato, Tokyo", 35.6581, 139.7516),
+    "新宿区": ("Shinjuku, Tokyo", 35.6938, 139.7034),
+    "shinjuku": ("Shinjuku, Tokyo", 35.6938, 139.7034),
+    "文京区": ("Bunkyo, Tokyo", 35.7081, 139.7522),
+    "bunkyo": ("Bunkyo, Tokyo", 35.7081, 139.7522),
+    "台東区": ("Taito, Tokyo", 35.7126, 139.7800),
+    "taito": ("Taito, Tokyo", 35.7126, 139.7800),
+    "墨田区": ("Sumida, Tokyo", 35.7107, 139.8015),
+    "sumida": ("Sumida, Tokyo", 35.7107, 139.8015),
+    "江東区": ("Koto, Tokyo", 35.6728, 139.8174),
+    "koto": ("Koto, Tokyo", 35.6728, 139.8174),
+    "品川区": ("Shinagawa, Tokyo", 35.6092, 139.7302),
+    "shinagawa": ("Shinagawa, Tokyo", 35.6092, 139.7302),
+    "目黒区": ("Meguro, Tokyo", 35.6415, 139.6982),
+    "meguro": ("Meguro, Tokyo", 35.6415, 139.6982),
+    "大田区": ("Ota, Tokyo", 35.5613, 139.7160),
+    "ota": ("Ota, Tokyo", 35.5613, 139.7160),
+    "世田谷区": ("Setagaya, Tokyo", 35.6466, 139.6532),
+    "setagaya": ("Setagaya, Tokyo", 35.6466, 139.6532),
+    "渋谷区": ("Shibuya, Tokyo", 35.6640, 139.6982),
+    "shibuya": ("Shibuya, Tokyo", 35.6640, 139.6982),
+    "中野区": ("Nakano, Tokyo", 35.7074, 139.6638),
+    "nakano": ("Nakano, Tokyo", 35.7074, 139.6638),
+    "杉並区": ("Suginami, Tokyo", 35.6995, 139.6364),
+    "suginami": ("Suginami, Tokyo", 35.6995, 139.6364),
+    "豊島区": ("Toshima, Tokyo", 35.7261, 139.7169),
+    "toshima": ("Toshima, Tokyo", 35.7261, 139.7169),
+    "北区": ("Kita, Tokyo", 35.7528, 139.7335),
+    "kita-ku": ("Kita, Tokyo", 35.7528, 139.7335),
+    "荒川区": ("Arakawa, Tokyo", 35.7361, 139.7834),
+    "arakawa": ("Arakawa, Tokyo", 35.7361, 139.7834),
+    "板橋区": ("Itabashi, Tokyo", 35.7512, 139.7092),
+    "itabashi": ("Itabashi, Tokyo", 35.7512, 139.7092),
+    "練馬区": ("Nerima, Tokyo", 35.7356, 139.6517),
+    "nerima": ("Nerima, Tokyo", 35.7356, 139.6517),
+    "足立区": ("Adachi, Tokyo", 35.7750, 139.8045),
+    "adachi": ("Adachi, Tokyo", 35.7750, 139.8045),
+    "葛飾区": ("Katsushika, Tokyo", 35.7433, 139.8472),
+    "katsushika": ("Katsushika, Tokyo", 35.7433, 139.8472),
+    "江戸川区": ("Edogawa, Tokyo", 35.7067, 139.8683),
+    "edogawa": ("Edogawa, Tokyo", 35.7067, 139.8683),
+    # Villes de Tama (Tokyo Ouest)
+    "小金井市": ("Koganei, Tokyo", 35.6995, 139.5030),
+    "koganei": ("Koganei, Tokyo", 35.6995, 139.5030),
+    "武蔵野市": ("Musashino, Tokyo", 35.7177, 139.5661),
+    "musashino": ("Musashino, Tokyo", 35.7177, 139.5661),
+    "三鷹市": ("Mitaka, Tokyo", 35.6836, 139.5597),
+    "mitaka": ("Mitaka, Tokyo", 35.6836, 139.5597),
+    "調布市": ("Chofu, Tokyo", 35.6506, 139.5407),
+    "chofu": ("Chofu, Tokyo", 35.6506, 139.5407),
+    "府中市": ("Fuchu, Tokyo", 35.6690, 139.4777),
+    "fuchu": ("Fuchu, Tokyo", 35.6690, 139.4777),
+    "町田市": ("Machida, Tokyo", 35.5467, 139.4386),
+    "machida": ("Machida, Tokyo", 35.5467, 139.4386),
+    "八王子市": ("Hachioji, Tokyo", 35.6664, 139.3160),
+    "hachioji": ("Hachioji, Tokyo", 35.6664, 139.3160),
+    "立川市": ("Tachikawa, Tokyo", 35.7140, 139.4079),
+    "tachikawa": ("Tachikawa, Tokyo", 35.7140, 139.4079),
+    "西東京市": ("Nishitokyo, Tokyo", 35.7256, 139.5383),
+    "nishitokyo": ("Nishitokyo, Tokyo", 35.7256, 139.5383),
+    "多摩市": ("Tama, Tokyo", 35.6369, 139.4464),
+    "国分寺市": ("Kokubunji, Tokyo", 35.7104, 139.4632),
+    "国分寺": ("Kokubunji, Tokyo", 35.7104, 139.4632),
+    "kokubunji": ("Kokubunji, Tokyo", 35.7104, 139.4632),
+    "小金井": ("Koganei, Tokyo", 35.6995, 139.5030),
+    "shirokane": ("Shirokane, Minato, Tokyo", 35.6431, 139.7262),
+    "白金": ("Shirokane, Minato, Tokyo", 35.6431, 139.7262),
+    "chitose": ("Chitose-Funabashi, Setagaya, Tokyo", 35.6472, 139.6238),
+    "千歳船橋": ("Chitose-Funabashi, Setagaya, Tokyo", 35.6472, 139.6238),
+    "狛江市": ("Komae, Tokyo", 35.6349, 139.5786),
+    "稲城市": ("Inagi, Tokyo", 35.6379, 139.5045),
+    "東村山市": ("Higashimurayama, Tokyo", 35.7547, 139.4685),
+    "小平市": ("Kodaira, Tokyo", 35.7285, 139.4774),
+    "日野市": ("Hino, Tokyo", 35.6713, 139.3949),
+    "昭島市": ("Akishima, Tokyo", 35.7056, 139.3536),
+    "青梅市": ("Ome, Tokyo", 35.7880, 139.2758),
+}
+
+
+def resolve_tokyo_ward_and_coords(text_blob, fallback_lat=35.6762, fallback_lon=139.6503, seed_key=""):
+    """
+    Résout le nom latin du quartier/arrondissement de Tokyo (ex: 'Shibuya, Tokyo')
+    et renvoie des coordonnées GPS réelles avec micro-jitter déterministe (~300m)
+    pour éviter l'empilement des marqueurs sur la carte Leaflet.
+    """
+    blob = str(text_blob or "")
+    blob_low = blob.lower()
+    matched_label = None
+    b_lat, b_lon = fallback_lat, fallback_lon
+    matched = False
+
+    for key, (label, w_lat, w_lon) in TOKYO_WARD_COORDS.items():
+        if re.search(r"[\u3040-\u30ff\u3400-\u9fff]", key):
+            if key in blob:
+                matched_label, b_lat, b_lon, matched = label, w_lat, w_lon, True
+                break
+        else:
+            if re.search(rf"(?<![a-z]){re.escape(key)}(?![a-z])", blob_low):
+                matched_label, b_lat, b_lon, matched = label, w_lat, w_lon, True
+                break
+
+    if not matched_label:
+        matched_label = "Tokyo, Japon"
+
+    digest = hashlib.md5(str(seed_key or blob).encode("utf-8", errors="ignore")).hexdigest()
+    j_lat = ((int(digest[:4], 16) % 1000) / 1000.0 - 0.5) * 0.0056
+    j_lon = ((int(digest[4:8], 16) % 1000) / 1000.0 - 0.5) * 0.0056
+    return matched_label, round(b_lat + j_lat, 5), round(b_lon + j_lon, 5), matched
+
+
+def load_translation_cache():
+    """Charge le cache persistant `data/translation_cache.json` (thread-safe)."""
+    global _TRANSLATION_CACHE
+    with _TRANSLATION_CACHE_LOCK:
+        if _TRANSLATION_CACHE is not None:
+            return _TRANSLATION_CACHE
+        if os.path.exists(TRANSLATION_CACHE_PATH):
+            try:
+                with open(TRANSLATION_CACHE_PATH, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                if isinstance(data, dict):
+                    _TRANSLATION_CACHE = data
+                    return _TRANSLATION_CACHE
+            except Exception:
+                pass
+        _TRANSLATION_CACHE = {}
+        return _TRANSLATION_CACHE
+
+
+def save_translation_cache(cache=None):
+    """Persiste le cache de traduction dans `data/translation_cache.json`."""
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with _TRANSLATION_CACHE_LOCK:
+        target = cache if isinstance(cache, dict) else (_TRANSLATION_CACHE or {})
+        try:
+            with open(TRANSLATION_CACHE_PATH, "w", encoding="utf-8") as f:
+                json.dump(target, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            logger.warning(f"Sauvegarde translation_cache.json impossible: {e}")
+
+
+def _has_non_latin_script(text):
+    """Détecte la présence de japonais, coréen, grec, cyrillique, arabe ou thaï."""
+    if not text:
+        return False
+    return bool(re.search(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\u0370-\u03ff\u0400-\u04ff\u0600-\u06ff\u0e00-\u0e7f]", str(text)))
+
+
+def apply_jp_real_estate_predictionary(text):
+    """
+    Pré-dictionnaire immobilier japonais (V17.2) appliqué avant traduction automatique :
+    - 1R / 1K -> Studio
+    - 1DK / 1LDK -> T2 (1 ch. + séjour)
+    - 2DK / 2LDK -> T3 (2 ch. + séjour)
+    - 3LDK -> T4 (3 ch. + séjour)
+    - マンション -> Appartement | アパート -> Résidence | 一戸建て -> Maison
+    - 徒歩(\\d+)分 -> à $1 min à pied de la gare
+    """
+    if not text:
+        return ""
+    s = unicodedata.normalize("NFKC", str(text)).replace("㎡", "m²")
+    s = re.sub(r"徒歩\s*(\d+)\s*分", r"à \1 min à pied de la gare", s)
+    s = re.sub(r"\(\s*1(?:R|K)\s*\)", "Studio", s, flags=re.I)
+    s = re.sub(r"\b1(?:R|K)\b", "Studio", s, flags=re.I)
+    s = re.sub(r"\(\s*1(?:DK|LDK|SLDK)\s*\)", "T2 (1 ch. + séjour)", s, flags=re.I)
+    s = re.sub(r"\b1(?:DK|LDK|SLDK)\b", "T2 (1 ch. + séjour)", s, flags=re.I)
+    s = re.sub(r"\(\s*2(?:DK|LDK|SLDK)\s*\)", "T3 (2 ch. + séjour)", s, flags=re.I)
+    s = re.sub(r"\b2(?:DK|LDK|SLDK)\b", "T3 (2 ch. + séjour)", s, flags=re.I)
+    s = re.sub(r"\(\s*3(?:DK|LDK|SLDK)\s*\)", "T4 (3 ch. + séjour)", s, flags=re.I)
+    s = re.sub(r"\b3(?:DK|LDK|SLDK)\b", "T4 (3 ch. + séjour)", s, flags=re.I)
+    s = re.sub(r"\(\s*4(?:DK|LDK|SLDK)\s*\)", "T5 (4 ch. + séjour)", s, flags=re.I)
+    s = re.sub(r"\b4(?:DK|LDK|SLDK)\b", "T5 (4 ch. + séjour)", s, flags=re.I)
+    s = s.replace("マンション", "Appartement ").replace("アパート", "Résidence ").replace("一戸建て", "Maison ")
+    s = re.sub(r"築\s*(\d+)\s*年", r"construit il y a \1 ans", s)
+    s = re.sub(r"(\d+)\s*階建", r"immeuble de \1 étages", s)
+    s = re.sub(r"\s{2,}", " ", s).strip()
+    return s
+
+
+_FRENCH_MARKERS_RE = re.compile(
+    r"(?:à louer|à vendre|appartement|pièces?|chambre|résidence|étage|immeuble|loyer|maison|séjour|min à pied|quartier|meublé|vérifié|centre-ville|vue mer|annonce réelle)",
+    re.I,
+)
+_FOREIGN_IMMO_RE = re.compile(
+    r"\b(?:apartamento|quarto|quartos|vaga|vagas|banheiro|banheiros|su[ií]te|aluguel|venda|cobertura|condom[ií]nio|pr[oó]ximo|piso|[áa]tico|habitaci[oó]n|habitaciones|alquiler|dormitorio|dormitorios|ba[ñn]os?|calle|plaza|edificio|estaci[oó]n|rua|avenida|sobrado|kitnet|apartment|bedroom|bedrooms|bathroom|furnished|unfurnished|available|located|spacious|modern|bright|stunning|charming|for rent|for sale|flat in|room in|house in|studio in|shared room|private room|walking|station|near|with|and|home|penthouse|terrace|mountain|views?|family|welcome|luxury|magical|ocean|beach|street|building|floor|complex|newly|renovated)\b",
+    re.I,
+)
+
+
+_PT_DETECT_RE = re.compile(
+    r"(?:\b(?:apartamento|alugar|aluguel|venda|quarto|quartos|vaga|vagas|banheiro|banheiros|su[ií]te|condom[ií]nio|pr[oó]ximo|cobertura|sobrado|kitnet|moradia|andar|im[oó]vel|excelente)\b|\bcom\s+\d+\s+m[²2])",
+    re.I,
+)
+_ES_DETECT_RE = re.compile(
+    r"\b(?:alquiler|habitaci[oó]n|habitaciones|piso|[áa]tico|dormitorio|dormitorios|ba[ñn]o|ba[ñn]os|calle|vivienda|inmobiliaria|chalet)\b",
+    re.I,
+)
+_IT_DETECT_RE = re.compile(
+    r"\b(?:affitto|vendita|appartamento|bilocale|trilocale|camere?|bagno|piano|terrazzo)\b",
+    re.I,
+)
+_EN_DETECT_RE = re.compile(
+    r"\b(?:bedroom|bedrooms|one-bedroom|two-bedroom|three-bedroom|bathroom|bathrooms|furnished|unfurnished|apartment|flat|house|home|room\s+in|studio\s+in|penthouse|terrace|mountain|views?|family|welcome|new\b|spacious|luxury|magical|lovely|charming|for\s+rent|for\s+sale|near\b|station|study|walking|building|floor|duplex|sky\s+loft|come\s+home)\b",
+    re.I,
+)
+
+
+def _detect_source_lang(text, city_slug="", agency=""):
+    """Détecte avec précision la langue source pour éviter le mélange de langues en batch."""
+    s = str(text or "")
+    if re.search(r"[\u3040-\u30ff\u3400-\u9fff]", s):
+        return "ja"
+    if re.search(r"[\uac00-\ud7af]", s):
+        return "ko"
+    if re.search(r"[\u0370-\u03ff]", s):
+        return "el"
+    if _PT_DETECT_RE.search(s):
+        return "pt"
+    if _ES_DETECT_RE.search(s):
+        return "es"
+    if _IT_DETECT_RE.search(s):
+        return "it"
+    if _EN_DETECT_RE.search(s):
+        return "en"
+    ag_low = str(agency or "").lower()
+    if any(k in ag_low for k in ("zap", "vivareal", "quintoandar")):
+        return "pt"
+    if any(k in ag_low for k in ("flatio", "spotahome", "tranio", "rightmove", "plazahomes")):
+        return "en"
+    return "auto"
+
+
+def _needs_translation_to_fr(text, city_slug=""):
+    """Détermine si un texte doit être traduit vers le français."""
+    s = str(text or "").replace("\xa0", " ").strip()
+    if len(s) < 3 or re.fullmatch(r"[\d\s€$£¥R.,:/-]+", s):
+        return False
+    if _has_non_latin_script(s):
+        return True
+    if _FOREIGN_IMMO_RE.search(s) or _PT_DETECT_RE.search(s) or _ES_DETECT_RE.search(s) or _IT_DETECT_RE.search(s) or _EN_DETECT_RE.search(s):
+        return True
+    fr_hubs = {
+        "nancy", "paris", "lyon", "marseille", "nice", "bordeaux",
+        "saint-martin", "guadeloupe", "martinique", "guyane", "la-reunion",
+    }
+    if city_slug in fr_hubs:
+        return False
+    if _FRENCH_MARKERS_RE.search(s) and not _has_non_latin_script(s):
+        return False
+    return bool(re.search(r"[a-zA-ZÀ-ÿ]{3,}", s))
+
+
+def _translate_google_gtx_single(text, sl="auto"):
+    """Traduit une chaîne unique via translate.googleapis.com (retourne (traduction, ok_bool))."""
+    if not text or not str(text).strip():
+        return text, False
+    import time
+    for attempt in range(2):
+        try:
+            r = curl_requests.post(
+                "https://translate.googleapis.com/translate_a/single",
+                params={"client": "gtx", "sl": sl, "tl": "fr", "dt": "t"},
+                data={"q": text},
+                impersonate="chrome",
+                timeout=10,
+            )
+            if r.status_code == 200:
+                payload = r.json()
+                if isinstance(payload, list) and payload and isinstance(payload[0], list):
+                    tr = "".join(seg[0] for seg in payload[0] if isinstance(seg, list) and seg and seg[0])
+                    if tr.strip():
+                        return re.sub(r"\s{2,}", " ", tr).strip(), True
+                return text, False
+            elif r.status_code == 429 and attempt == 0:
+                time.sleep(1.2)
+                continue
+            else:
+                return text, False
+        except Exception:
+            break
+    return text, False
+
+
+def _translate_texts_to_fr_batch(items_with_sl, cache):
+    """
+    Traduit une liste de tuples (cache_key, text_to_translate, sl) groupés par langue source `sl`
+    via translate.googleapis.com/translate_a/single?client=gtx&sl=...&tl=fr&dt=t.
+    Ne met jamais en cache les échecs HTTP/429.
+    """
+    import time
+    pending = []
+    seen = set()
+    for c_key, txt, sl in items_with_sl:
+        if not c_key or c_key in seen:
+            continue
+        if c_key in cache and cache[c_key]:
+            if sl != "ja" or not _has_non_latin_script(cache[c_key]):
+                continue
+        seen.add(c_key)
+        pending.append((c_key, txt, sl))
+
+    if not pending:
+        return 0
+
+    batches = []
+    distinct_sls = sorted({x[2] for x in pending})
+    for target_sl in distinct_sls:
+        subset = [x for x in pending if x[2] == target_sl]
+        cur_batch = []
+        cur_len = 0
+        for entry in subset:
+            t_len = len(entry[1])
+            if cur_batch and (len(cur_batch) >= 14 or cur_len + t_len > 1500):
+                batches.append((target_sl, cur_batch))
+                cur_batch = []
+                cur_len = 0
+            cur_batch.append(entry)
+            cur_len += t_len + 12
+        if cur_batch:
+            batches.append((target_sl, cur_batch))
+
+    translated_count = 0
+    sep = "\n[[HZSEP]]\n"
+    rate_limited = False
+
+    for b_idx, (sl_code, batch) in enumerate(batches):
+        if rate_limited:
+            break
+        if b_idx > 0:
+            time.sleep(0.35)
+
+        if len(batch) == 1:
+            ck, tx, _ = batch[0]
+            val, ok = _translate_google_gtx_single(tx, sl=sl_code)
+            if ok and val:
+                with _TRANSLATION_CACHE_LOCK:
+                    cache[ck] = val
+                    translated_count += 1
+            else:
+                rate_limited = True
+            continue
+
+        joined = sep.join(x[1] for x in batch)
+        batch_ok = False
+        try:
+            r = curl_requests.post(
+                "https://translate.googleapis.com/translate_a/single",
+                params={"client": "gtx", "sl": sl_code, "tl": "fr", "dt": "t"},
+                data={"q": joined},
+                impersonate="chrome",
+                timeout=12,
+            )
+            if r.status_code == 200:
+                payload = r.json()
+                full_tr = "".join(
+                    seg[0] for seg in (payload[0] if isinstance(payload, list) and payload else [])
+                    if isinstance(seg, list) and seg and seg[0]
+                )
+                parts = re.split(r"\s*\[\[\s*HZSEP\s*\]\]\s*", full_tr, flags=re.I)
+                if len(parts) == len(batch):
+                    with _TRANSLATION_CACHE_LOCK:
+                        for (ck, _tx, _), p in zip(batch, parts):
+                            cleaned_p = re.sub(r"\s{2,}", " ", p).strip()
+                            if cleaned_p:
+                                cache[ck] = cleaned_p
+                                translated_count += 1
+                    batch_ok = True
+            elif r.status_code == 429:
+                logger.warning("⚠️ Google Translate HTTP 429 (rate-limit), arrêt gracieux du lot restant (cache préservé).")
+                rate_limited = True
+        except Exception:
+            pass
+
+        if not batch_ok and not rate_limited:
+            for ck, tx, _ in batch:
+                time.sleep(0.2)
+                val, ok = _translate_google_gtx_single(tx, sl=sl_code)
+                if ok and val:
+                    with _TRANSLATION_CACHE_LOCK:
+                        cache[ck] = val
+                        translated_count += 1
+                else:
+                    rate_limited = True
+                    break
+
+    return translated_count
+
+
+def _repair_legacy_tokyo_item(it):
+    """Répare titre vide PlazaHomes, district latin et coordonnées GPS de quartier sur Tokyo."""
+    city_slug = it.get("city_slug") or resolve_city_slug(it)
+    is_tokyo = (city_slug == "tokyo") or ("tokyo" in f"{it.get('city','')} {it.get('location','')}".lower())
+    if not is_tokyo:
+        return False
+
+    raw_title = str(it.get("title") or "").strip()
+    desc = str(it.get("description") or "").strip()
+    url = str(it.get("url") or "").strip()
+
+    if not raw_title:
+        m_name = re.match(
+            r"^([A-Za-z0-9\-\s'’&]{4,65}?)\s+(?:High-grade|Luxury|Located|Spacious|Modern|Quiet|Renovated|Newly|Well|Convenient|Stylish|A\s+|The\s+|JPY|¥|\d+\s*Bed|Floor|Nearest|Built)",
+            desc,
+        )
+        if m_name:
+            raw_title = m_name.group(1).strip(" -—:")
+        elif url:
+            slug_part = url.rstrip("/").split("/")[-1]
+            slug_words = [w for w in re.split(r"[-_]+", slug_part) if w and not w.isdigit()]
+            if slug_words:
+                raw_title = " ".join(slug_words[:6]).title()
+        if not raw_title and desc:
+            raw_title = desc[:55].strip()
+        if raw_title:
+            it["title"] = raw_title
+            if not it.get("title_original"):
+                it["title_original"] = raw_title
+
+    ward_blob = f"{raw_title} {it.get('location','')} {desc} {url}"
+    dist_latin, new_lat, new_lon, matched = resolve_tokyo_ward_and_coords(
+        ward_blob,
+        fallback_lat=it.get("lat") or 35.6762,
+        fallback_lon=it.get("lon") or 139.6503,
+        seed_key=url or it.get("id") or raw_title,
+    )
+    if matched or not it.get("district") or _has_non_latin_script(it.get("location", "")):
+        it["district"] = dist_latin if matched else (it.get("district") or "Tokyo, Japon")
+        it["neighborhood"] = it["district"]
+        if matched:
+            it["lat"] = new_lat
+            it["lon"] = new_lon
+    return True
+
+
+def translate_immo_listings_to_french(items):
+    """
+    Traduit automatiquement en français les annonces immobilières étrangères (JA/PT/ES/EL/KO/EN)
+    avec pré-dictionnaire japonais, cache persistant `data/translation_cache.json`,
+    et conservation de `title_original` + `district` en alphabet latin.
+    """
+    if not items:
+        return items
+
+    cache = load_translation_cache()
+    batch_requests = []
+    prepared = []
+
+    for it in items:
+        if not isinstance(it, dict) or it.get("universe") != "immo":
+            continue
+
+        _repair_legacy_tokyo_item(it)
+        c_slug = it.get("city_slug") or resolve_city_slug(it)
+        raw_title = str(it.get("title") or "").replace("\xa0", " ").strip()
+        if raw_title and not it.get("title_original"):
+            it["title_original"] = raw_title
+
+        orig_title = str(it.get("title_original") or raw_title).replace("\xa0", " ").strip()
+        orig_loc = str(it.get("location") or it.get("district") or "").replace("\xa0", " ").strip()
+        orig_desc_raw = str(it.get("description") or "").replace("\xa0", " ").strip()
+        orig_desc = re.sub(
+            r"\.\s*(?:Logement meublé vérifié disponible.*|Offre résidentielle locale.*|Bien immobilier européen vérifié.*|Annonce réelle répertoriée.*|Propriété réelle répertoriée.*|Logement vérifié disponible.*)$",
+            "",
+            orig_desc_raw,
+        ).strip()
+
+        is_jp_item = (
+            c_slug == "tokyo"
+            or "tokyo" in orig_loc.lower()
+            or bool(re.search(r"[\u3040-\u30ff\u3400-\u9fff]", f"{orig_title} {orig_loc} {orig_desc}"))
+        )
+
+        pre_title = apply_jp_real_estate_predictionary(orig_title) if (is_jp_item or re.search(r"\b[1-4][RLDK]+\b", orig_title, re.I)) else orig_title
+        pre_desc = apply_jp_real_estate_predictionary(orig_desc[:320]) if (is_jp_item or re.search(r"\b[1-4][RLDK]+\b", orig_desc, re.I)) else orig_desc[:320]
+        pre_loc = orig_loc
+
+        ag = it.get("agency", "")
+        sl_t = _detect_source_lang(pre_title, c_slug, ag)
+        sl_d = _detect_source_lang(pre_desc, c_slug, ag)
+        sl_l = _detect_source_lang(pre_loc, c_slug, ag) if _has_non_latin_script(pre_loc) else "auto"
+
+        need_t = _needs_translation_to_fr(raw_title or pre_title, c_slug) and _needs_translation_to_fr(pre_title, c_slug)
+        need_d = _needs_translation_to_fr(orig_desc_raw or pre_desc, c_slug) and _needs_translation_to_fr(pre_desc, c_slug)
+        need_l = bool(pre_loc) and _has_non_latin_script(pre_loc)
+
+        ck_t = f"{sl_t}:{pre_title}" if pre_title else ""
+        ck_d = f"{sl_d}:{pre_desc}" if pre_desc else ""
+        ck_l = f"{sl_l}:{pre_loc}" if pre_loc else ""
+
+        if need_t and ck_t:
+            batch_requests.append((ck_t, pre_title, sl_t))
+        if need_d and ck_d:
+            batch_requests.append((ck_d, pre_desc, sl_d))
+        if need_l and ck_l:
+            batch_requests.append((ck_l, pre_loc, sl_l))
+
+        prepared.append((it, c_slug, is_jp_item, pre_title, pre_desc, pre_loc, ck_t, ck_d, ck_l, need_t, need_d, need_l))
+
+    newly_translated = _translate_texts_to_fr_batch(batch_requests, cache)
+    if newly_translated > 0 or not os.path.exists(TRANSLATION_CACHE_PATH):
+        save_translation_cache(cache)
+
+    for it, c_slug, is_jp_item, pre_title, pre_desc, pre_loc, ck_t, ck_d, ck_l, need_t, need_d, need_l in prepared:
+        if need_t and ck_t in cache and cache[ck_t]:
+            it["title"] = cache[ck_t]
+        elif is_jp_item and _has_non_latin_script(it.get("title", "")) and pre_title:
+            it["title"] = pre_title
+
+        if need_d and ck_d in cache and cache[ck_d]:
+            it["description"] = cache[ck_d]
+        elif is_jp_item and _has_non_latin_script(it.get("description", "")) and pre_desc:
+            it["description"] = pre_desc
+
+        if need_l and ck_l in cache and cache[ck_l]:
+            loc_latin = re.sub(r"-ku\b", "", cache[ck_l], flags=re.I)
+            loc_latin = re.sub(r"\s*,\s*Japan\b", ", Japon", loc_latin, flags=re.I).strip()
+            loc_latin = re.sub(r"\s{2,}", " ", loc_latin)
+            if _has_non_latin_script(loc_latin) and it.get("district"):
+                loc_latin = it["district"]
+            it["district"] = loc_latin or it.get("district") or "Tokyo, Japon"
+            it["neighborhood"] = it["district"]
+            it["location"] = it["district"]
+        elif is_jp_item and it.get("district") and it["district"] != "Tokyo, Japon" and (it.get("location") in ("", "Tokyo, Japon") or _has_non_latin_script(it.get("location", ""))):
+            it["location"] = it["district"]
+            it["neighborhood"] = it["district"]
+        elif not it.get("district") or (is_jp_item and it.get("district") == "Tokyo, Japon"):
+            clean_loc = re.sub(r"\bSPAIN\b", "Espagne", pre_loc, flags=re.I)
+            clean_loc = re.sub(r"\bGreece\b", "Grèce", clean_loc, flags=re.I)
+            clean_loc = re.sub(r"\bUnited States\b", "États-Unis", clean_loc, flags=re.I)
+            clean_loc = re.sub(r"\bBrazil\b", "Brésil", clean_loc, flags=re.I)
+            it["district"] = (it.get("district") if it.get("district") and it.get("district") != "Tokyo, Japon" else None) or clean_loc or it.get("city") or ""
+            it["neighborhood"] = it["district"]
+            if it["district"] and it.get("location") != it["district"]:
+                it["location"] = it["district"]
+
+        if _has_non_latin_script(it.get("badge", "")) and it.get("district"):
+            short_dist = it["district"].split(",")[0].strip()
+            t_label = "Achat Local" if it.get("transaction_type") == "achat" else "Location Locale"
+            it["badge"] = f"🇯🇵 {t_label} • {short_dist}"
+
+        if not _has_non_latin_script(it.get("title", "")) and not _has_non_latin_script(it.get("district", "")):
+            it["translated_fr"] = True
+
+    if newly_translated > 0:
+        logger.info(f"🌐 Traduction FR automatique V17.2 : {newly_translated} nouvelles chaînes traduites & mises en cache.")
+    return items
+
+
+def save_annonces(annonces, newly_seen_ids=None, newly_seen_urls=None, skip_dead_check=False):
     os.makedirs(DATA_DIR, exist_ok=True)
     os.makedirs(CITIES_DIR, exist_ok=True)
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -692,6 +1333,14 @@ def save_annonces(annonces, newly_seen_ids=None, newly_seen_urls=None):
     pre_deduped = []
     for it in annonces:
         if not isinstance(it, dict):
+            continue
+        if it.get("universe") == "immo" and not is_residential_immo(
+            it.get("title", ""),
+            it.get("description", ""),
+            postal_code=it.get("postal_code", ""),
+            location=it.get("location", ""),
+            exclude_viager=False,
+        ):
             continue
         item_id = it.get("id")
         item_url = it.get("url")
@@ -713,11 +1362,19 @@ def save_annonces(annonces, newly_seen_ids=None, newly_seen_urls=None):
         pre_deduped.append(it)
 
     # 1. Vérification parallèle des annonces mortes (>24h) + purge >7j
-    deduped, purge_stats = verify_dead_listings_parallel(
-        pre_deduped, max_age_hours=24, max_unseen_days=7, max_workers=20
-    )
+    if skip_dead_check:
+        deduped = pre_deduped
+        purge_stats = {"skipped": True, "kept": len(deduped)}
+    else:
+        deduped, purge_stats = verify_dead_listings_parallel(
+            pre_deduped, max_age_hours=24, max_unseen_days=7, max_workers=20
+        )
 
     immo_items = [x for x in deduped if x.get("universe") == "immo"]
+    translate_immo_listings_to_french(immo_items)
+    for it in immo_items:
+        normalize_immo_item(it)
+
     voyage_items = [x for x in deduped if x.get("universe") == "voyage"]
     voyage_items.sort(key=lambda x: x.get("date_detected", ""), reverse=True)
 
@@ -3468,8 +4125,13 @@ def scrape_athome_jp(city, transaction_type="location", max_price=None, min_surf
                         picked_in_bld += 1
                         orig_str = f"¥{raw_jpy:,} (~{p_eur:,} €)".replace(",", " ")
                         card_full_txt = re.sub(r"\s+", " ", card.get_text(" ", strip=True))
-                        m_loc = re.search(r"([^\s]+区[^\s]*)", card_full_txt)
+                        m_loc = re.search(r"([^\s、。]+(?:区|市)[^\s、。]*)", card_full_txt)
                         ward = m_loc.group(1) if m_loc else city_clean
+                        m_walk = re.search(r"徒歩\s*([０-９\d]+)\s*分", card_full_txt)
+                        walk_txt = f" 徒歩{unicodedata.normalize('NFKC', m_walk.group(1))}分" if m_walk else ""
+                        dist_latin, real_lat, real_lon, _ = resolve_tokyo_ward_and_coords(
+                            f"{ward} {b_title} {card_full_txt}", c_lat, c_lon, ad_url
+                        )
 
                         results.append({
                             "id": f"real_athome_rent_{ad_id}",
@@ -3478,23 +4140,26 @@ def scrape_athome_jp(city, transaction_type="location", max_price=None, min_surf
                             "transaction_type": "location",
                             "market_segment": "local_residential",
                             "category_label": f"Location {city_clean} (AtHome Local)",
-                            "badge": f"🇯🇵 Location Locale • {ward}",
+                            "badge": f"🇯🇵 Location Locale • {dist_latin.split(',')[0]}",
                             "title": f"{b_title[:55]} ({layout_raw or r_str})",
+                            "title_original": f"{b_title[:55]} ({layout_raw or r_str})",
                             "price": p_eur,
                             "price_str": normalize_price_str(p_eur, "location"),
                             "price_original_str": orig_str,
                             "currency": "JPY",
-                            "location": f"{ward}, {city_clean}",
+                            "district": dist_latin,
+                            "neighborhood": dist_latin,
+                            "location": dist_latin,
                             "city": city_clean,
                             "postal_code": "",
-                            "lat": c_lat + ((len(results) % 7) - 3) * 0.01,
-                            "lon": c_lon + (((len(results) * 4) % 7) - 3) * 0.01,
+                            "lat": real_lat,
+                            "lon": real_lon,
                             "agency": "AtHome.co.jp (Local)",
                             "is_verified_agency": True,
                             "url": ad_url,
                             "image_url": card_imgs[0] if card_imgs else "",
                             "images": card_imgs[:5],
-                            "description": f"{b_title} — Plan {layout_raw or r_str}, {int(s_val)} m², loyer local {orig_str} ({ward}).",
+                            "description": f"{b_title} — Plan {layout_raw or r_str}, {int(s_val)} m²{walk_txt}, loyer local {orig_str} ({ward}).",
                             "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
                             "surface_val": s_val,
                             "rooms": r_str,
@@ -3549,6 +4214,13 @@ def scrape_athome_jp(city, transaction_type="location", max_price=None, min_surf
                     seen_urls.add(ad_url)
                     ad_id = str(abs(hash(ad_url)) % 10000000)
                     orig_str = f"¥{raw_jpy:,} (~{p_eur:,} €)".replace(",", " ")
+                    m_ward = re.search(r"所在地\s*([^\s、。]+(?:区|市)[^\s、。]*)", txt) or re.search(r"([^\s、。]+(?:区|市)[^\s、。]*)", txt)
+                    ward_raw = m_ward.group(1) if m_ward else city_clean
+                    m_walk = re.search(r"徒歩\s*([０-９\d]+)\s*分", txt)
+                    walk_txt = f" 徒歩{unicodedata.normalize('NFKC', m_walk.group(1))}分" if m_walk else ""
+                    dist_latin, real_lat, real_lon, _ = resolve_tokyo_ward_and_coords(
+                        f"{ward_raw} {b_title} {txt}", c_lat, c_lon, ad_url
+                    )
                     results.append({
                         "id": f"real_athome_buy_{ad_id}",
                         "universe": "immo",
@@ -3556,23 +4228,26 @@ def scrape_athome_jp(city, transaction_type="location", max_price=None, min_surf
                         "transaction_type": "achat",
                         "market_segment": "local_residential",
                         "category_label": f"Achat {city_clean} (AtHome Local)",
-                        "badge": f"🇯🇵 Achat Local • {city_clean}",
+                        "badge": f"🇯🇵 Achat Local • {dist_latin.split(',')[0]}",
                         "title": f"{b_title} ({layout_raw or r_str})",
+                        "title_original": f"{b_title} ({layout_raw or r_str})",
                         "price": p_eur,
                         "price_str": normalize_price_str(p_eur, "achat"),
                         "price_original_str": orig_str,
                         "currency": "JPY",
-                        "location": f"{city_clean}, Japon",
+                        "district": dist_latin,
+                        "neighborhood": dist_latin,
+                        "location": dist_latin,
                         "city": city_clean,
                         "postal_code": "",
-                        "lat": c_lat + ((idx % 7) - 3) * 0.01,
-                        "lon": c_lon + (((idx * 3) % 7) - 3) * 0.01,
+                        "lat": real_lat,
+                        "lon": real_lon,
                         "agency": "AtHome.co.jp (Local)",
                         "is_verified_agency": True,
                         "url": ad_url,
                         "image_url": b_imgs[0] if b_imgs else "",
                         "images": b_imgs[:5],
-                        "description": f"{b_title} — {int(s_val)} m², prix local {orig_str}.",
+                        "description": f"{b_title} — Plan {layout_raw or r_str}, {int(s_val)} m²{walk_txt}, prix local {orig_str} ({ward_raw}).",
                         "surface": f"{int(s_val)} m²" if s_val > 0 else "N/C",
                         "surface_val": s_val,
                         "rooms": r_str,
@@ -3638,8 +4313,31 @@ def scrape_plazahomes_jp(city, transaction_type="location", max_price=None, min_
             if p_eur <= 0 or (max_price and p_eur > float(max_price)):
                 continue
 
-            h_el = card.select_one("h2, h3, .card-title, a")
-            title = (h_el.get_text(" ", strip=True) if h_el else f"Residence Tokyo")[:85]
+            # Extraction robuste du titre (le 1er <a> de la carte enveloppe souvent uniquement l'image)
+            title = ""
+            for h_cand in card.select("h2, h3, h4, .card-title, .property-title, .building-name, h5"):
+                cand_t = re.sub(r"\s+", " ", h_cand.get_text(" ", strip=True))
+                if len(cand_t) >= 4 and not re.match(r"^[¥￥\d,\s]+$", cand_t):
+                    title = cand_t[:85]
+                    break
+            if not title:
+                for a_cand in card.find_all("a", href=True):
+                    cand_t = re.sub(r"\s+", " ", a_cand.get_text(" ", strip=True))
+                    if len(cand_t) >= 4 and "¥" not in cand_t and "JPY" not in cand_t.upper():
+                        title = cand_t[:85]
+                        break
+            if not title:
+                m_lead = re.match(
+                    r"^([A-Za-z0-9\-\s'’&]{4,65}?)\s+(?:High-grade|Luxury|Located|Spacious|Modern|Quiet|Renovated|Newly|Well|Convenient|Stylish|¥|JPY|\d+\s*Bed|Floor|Nearest|Built)",
+                    txt,
+                )
+                if m_lead:
+                    title = m_lead.group(1).strip()
+            if not title:
+                slug_part = ad_url.rstrip("/").split("/")[-1]
+                slug_words = [w for w in re.split(r"[-_]+", slug_part) if w and not w.isdigit()]
+                title = " ".join(slug_words[:6]).title() if slug_words else "Residence Tokyo"
+
             m_surf = re.search(r"(\d+(?:\.\d+)?)\s*(?:m²|sqm|sq\.?m)", txt, re.I)
             s_val = float(m_surf.group(1)) if m_surf else 0.0
             m_bed = re.search(r"(\d+)\s*bed", txt, re.I)
@@ -3650,6 +4348,9 @@ def scrape_plazahomes_jp(city, transaction_type="location", max_price=None, min_
             photos = [i if i.startswith("http") else f"https://www.realestate-tokyo.com{i}" for i in imgs if i and "plazahomes" in i]
             hero_img = photos[0] if photos else ""
 
+            dist_latin, real_lat, real_lon, _ = resolve_tokyo_ward_and_coords(
+                f"{title} {txt} {ad_url}", c_lat, c_lon, ad_url
+            )
             ad_id = str(abs(hash(ad_url)) % 10000000)
             orig_str = f"¥{raw_jpy:,} (~{p_eur:,} €)".replace(",", " ")
             results.append({
@@ -3659,17 +4360,20 @@ def scrape_plazahomes_jp(city, transaction_type="location", max_price=None, min_
                 "transaction_type": transaction_type,
                 "market_segment": "local_residential",
                 "category_label": f"{'Achat' if is_buy else 'Location'} {city_clean} (PlazaHomes Tokyo)",
-                "badge": f"🇯🇵 {'Achat' if is_buy else 'Location'} Local • Tokyo",
+                "badge": f"🇯🇵 {'Achat' if is_buy else 'Location'} Local • {dist_latin.split(',')[0]}",
                 "title": title,
+                "title_original": title,
                 "price": p_eur,
                 "price_str": normalize_price_str(p_eur, transaction_type),
                 "price_original_str": orig_str,
                 "currency": "JPY",
-                "location": f"Tokyo, Japon",
+                "district": dist_latin,
+                "neighborhood": dist_latin,
+                "location": dist_latin,
                 "city": city_clean,
                 "postal_code": "",
-                "lat": c_lat + ((idx % 7) - 3) * 0.008,
-                "lon": c_lon + (((idx * 3) % 7) - 3) * 0.008,
+                "lat": real_lat,
+                "lon": real_lon,
                 "agency": "PlazaHomes Tokyo",
                 "is_verified_agency": True,
                 "url": ad_url,
@@ -4503,7 +5207,7 @@ def run_dynamic_scan(
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Horizons V17 - Curateur Immobilier & Voyages sur-mesure")
+    parser = argparse.ArgumentParser(description="Horizons V17.2 - Curateur Immobilier & Voyages sur-mesure")
     parser.add_argument("--city", default=None, help="Target city (e.g. Nancy, Saint-Martin, Guadeloupe, Madrid, New York)")
     parser.add_argument("--country", default=None, help="Country code (e.g. fr, us, es, gb, it, pt, ca, jp, br)")
     parser.add_argument("--transaction", default=None, help="Transaction type (location, achat, all)")
@@ -4519,22 +5223,28 @@ if __name__ == "__main__":
     parser.add_argument("--probe-local-portals", action="store_true", help="Execute Azure network probe on Japan & Brazil local portals")
     parser.add_argument("--prewarm", action="store_true", help="Pre-scrape all 21 global hubs and write sharded city JSON files")
     parser.add_argument("--hubs", default=None, help="Comma-separated hub slugs to limit --prewarm (e.g. nancy,tokyo,rio-de-janeiro)")
+    parser.add_argument("--translate-existing", action="store_true", help="Translate existing shards to French, enrich Tokyo GPS & update shards without scraping")
     args = parser.parse_args()
 
-    run_dynamic_scan(
-        city=args.city,
-        country=args.country,
-        transac=args.transaction,
-        max_price=args.budget,
-        min_surface=args.surface,
-        rooms=args.rooms,
-        category=args.category,
-        lat=args.lat,
-        lon=args.lon,
-        radius=args.radius,
-        probe=args.probe_international,
-        probe_voyage=args.probe_voyage,
-        probe_local=args.probe_local_portals,
-        prewarm=args.prewarm,
-        hubs=args.hubs,
-    )
+    if args.translate_existing:
+        existing_items = load_annonces()
+        logger.info(f"🌐 Migration V17.2 : traduction FR de {len(existing_items)} items existants...")
+        save_annonces(existing_items, skip_dead_check=True)
+    else:
+        run_dynamic_scan(
+            city=args.city,
+            country=args.country,
+            transac=args.transaction,
+            max_price=args.budget,
+            min_surface=args.surface,
+            rooms=args.rooms,
+            category=args.category,
+            lat=args.lat,
+            lon=args.lon,
+            radius=args.radius,
+            probe=args.probe_international,
+            probe_voyage=args.probe_voyage,
+            probe_local=args.probe_local_portals,
+            prewarm=args.prewarm,
+            hubs=args.hubs,
+        )

@@ -1,15 +1,11 @@
 {
   "version": "17",
-  "updated_at": "2026-11-24T15:47:16.320772+00:00",
-  "total_immo": 2546,
+  "updated_at": "2026-11-24T16:27:12.519955+00:00",
+  "total_immo": 2517,
   "total_voyage": 398,
   "purge_stats": {
-    "tested": 580,
-    "removed_dead": 0,
-    "removed_stale": 0,
-    "retained_total": 2944,
-    "duration_sec": 32.4,
-    "checked_at": "2026-11-24T15:47:16.354417+00:00"
+    "skipped": true,
+    "kept": 2915
   },
   "cities": [
     {
@@ -155,10 +151,10 @@
       "flag": "🇵🇹",
       "lat": 38.7223,
       "lon": -9.1393,
-      "count": 113,
+      "count": 112,
       "local_count": 47,
-      "expat_count": 66,
-      "rent_count": 66,
+      "expat_count": 65,
+      "rent_count": 65,
       "buy_count": 47,
       "updated_at": "2026-11-24T15:46:52.057300+00:00"
     },
@@ -275,11 +271,11 @@
       "flag": "🇧🇷",
       "lat": -22.9068,
       "lon": -43.1729,
-      "count": 171,
-      "local_count": 163,
+      "count": 144,
+      "local_count": 136,
       "expat_count": 8,
-      "rent_count": 97,
-      "buy_count": 74,
+      "rent_count": 72,
+      "buy_count": 72,
       "updated_at": "2026-11-24T15:46:58.742231+00:00"
     },
     {
@@ -290,10 +286,10 @@
       "flag": "🇯🇵",
       "lat": 35.6762,
       "lon": 139.6503,
-      "count": 99,
-      "local_count": 91,
+      "count": 98,
+      "local_count": 90,
       "expat_count": 8,
-      "rent_count": 66,
+      "rent_count": 65,
       "buy_count": 33,
       "updated_at": "2026-11-24T15:47:07.539837+00:00"
     },
