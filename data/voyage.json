@@ -1,5 +1,1307 @@
 [
   {
+    "id": "real_rss_dealabs_191058",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol A/R Porto (Portugal)  Toulouse du 11 au 13 décembre (Autres dates et villes de départs possibles)",
+    "price": 98,
+    "price_str": "Dès 98 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol A/R Porto (Portugal)  Toulouse du 11",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-ar-vers-porto-portugal-des-55-eur-sans-escale-depuis-nantes-bordeaux-toulouse-marseille-paris-beauvais-decembre-3468028",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/cscI3/3468028_1/re/150x150/qt/55/3468028_1.jpg",
+    "description": "58,98€ - easyJetVols aller-retour sans escale vers Porto en décembre, depuis Paris-Beauvais, Bordeaux, Nantes, Toulouse, Marseille – avec Ryanair et easyJet. Ci-dessous des séjours...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_627296",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "-25% sur tous les forfaits (1 fois par client) (gomoworld.com)",
+    "price": 0,
+    "price_str": "Voir l'offre",
+    "location": "Départs France & Hubs",
+    "destination": "-25% sur tous les forfaits (1 fois par c",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/codes-promo/25-sur-tous-les-forfaits-3468303",
+    "image_url": "https://www.dealabs.com/assets/img/default-voucher_ee5e5.svg",
+    "description": "Achète maintenant, voyage plus tardTes forfaits ne démarrent que quand tu les lances ou les programmes. Profite du prix Black Friday pour tes voyages de l'hiver, du printemps ou de...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_903093",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Billet de train OUIGO Grande Vitesse de Paris Marne-la-Vallée Chessy vers Avignon TGV dès 16€ - Plusieurs dates Ex : 4 Janvier 2027",
+    "price": 16,
+    "price_str": "Dès 16 €",
+    "location": "Départs France & Hubs",
+    "destination": "Billet de train OUIGO Grande Vitesse de ",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/billet-de-train-ouigo-grande-vitesse-de-paris-marne-la-vallee-chessy-vers-avignon-tgv-des-16eur-plusieurs-dates-ex-4-janvier-2027-3468069",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/KUk1G/3468069_1/re/150x150/qt/55/3468069_1.jpg",
+    "description": "16€ - SNCF ConnectOffre disponible sur SNCF Connect pour voyager à grande vitesse en TGV low-cost OUIGO Grande Vitesse entre l'Île-de-France (Marne-La-Vallée - Chessy) et la gare d...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_239684",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Billet de Train Mobigo aller-retour vers les Lumières de Noël de Montbéliard à partir de 6€ (2€ pour les enfants de moins de 12 ans)",
+    "price": 6,
+    "price_str": "Dès 6 €",
+    "location": "Départs France & Hubs",
+    "destination": "Billet de Train Mobigo aller-retour vers",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/billets-train-mobigo-aller-retour-vers-les-lumieres-de-noel-de-montbeliard-des-6eur-adulte-2eur-enfant-de-moins-de-12-ans-3467925",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/l6cPn/3467925_1/re/150x150/qt/55/3467925_1.jpg",
+    "description": "6€ - SNCFPour aller aux Lumières de Noël de Montbéliard, le réseau TRAIN Mobigo propose un tarif spécial aller-retour du 21 novembre au 24 décembre 2026 : 6€, 12€ ou 26€ par adulte...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_973851",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Séjour 6J/5N pour 2 à Tossa de Mar (Espagne) - Hotel Don Juan Tossa 4* + Demi-pension + Chambre avec balcon - Du 4 au 9 avril (139€/prs)",
+    "price": 139,
+    "price_str": "Dès 139 €",
+    "location": "Départs France & Hubs",
+    "destination": "Séjour 6J/5N pour 2 à Tossa de Mar (Espa",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/sejour-6j5n-pour-2-a-tossa-de-mar-espagne-hotel-don-juan-tossa-4-demi-pension-chambre-avec-balcon-du-4-au-9-avril-139eurprs-3467907",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/KwcdN/3467907_1/re/150x150/qt/55/3467907_1.jpg",
+    "description": "278€ - Jump2spainEnvie de prendre l'air sur la Costa Brava au printemps ? Direction Tossa de Mar pour 6 jours de détente dans un hôtel 4 étoiles avec demi-pension, à moins de 140 €...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_130322",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol direct Aller Retour Paris CDG  Lanzarote du 5 au 16 janvier 2027",
+    "price": 64,
+    "price_str": "Dès 64 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol direct Aller Retour Paris CDG  Lanza",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-direct-aller-retour-paris-cdg-lanzarote-du-5-au-16-janvier-2027-3467860",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/lggLJ/3467860_1/re/150x150/qt/55/3467860_1.jpg",
+    "description": "44,64€ - easyJet...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_540540",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol aller retour Paris CDG -----> Tokyo Japon du 26 novembre au 9 décembre (1 escale - bagage soute 23 kg)",
+    "price": 629,
+    "price_str": "Dès 629 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol aller retour Paris CDG -----> Tokyo ",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-aller-retour-paris-cdg-tokyo-japon-du-26-novembre-au-9-decembre-avec-bagage-soute-23-kgs-3467818",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/mC8vH/3467818_1/re/150x150/qt/55/3467818_1.jpg",
+    "description": "629€ - Trip.com...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_219518",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Majorque : 6J/5N (1 nuit en ferry) au BLUESEA Anba Romaní 4★ | Ferry A/R de Valence + demi-pension – 187,20 €/p",
+    "price": 20,
+    "price_str": "Dès 20 €",
+    "location": "Départs France & Hubs",
+    "destination": "Majorque : 6J/5N (1 nuit en ferry) au BL",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/malte-5j4n-au-radisson-blu-resort-spa-golden-sands-5-vols-ar-de-paris-petits-dejeuners-piscine-interieure-chauffee-269eurp-3467726",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/S57Ph/3467726_1/re/150x150/qt/55/3467726_1.jpg",
+    "description": "374,40€ - Jump2spain Quatre nuits dans un resort 5★ surplombant l'une des plus belles plages de Malte, avec chambre Supérieure de 40 m², petits-déjeuners et vols aller-retour de Pa...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_673972",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "25% de réductiton sur les Pass Interrail - Pass Global et Pass One Contry. Ex : Pass Global Europe 5 jours sur 1 mois (interrail.com)",
+    "price": 159,
+    "price_str": "Dès 159 €",
+    "location": "Départs France & Hubs",
+    "destination": "25% de réductiton sur les Pass Interrail",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/25-sur-les-pass-interrail-pass-global-et-pass-one-contry-ex-pass-global-europe-5-jours-sur-1-mois-3467530",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/F7eW3/3467530_1/re/150x150/qt/55/3467530_1.jpg",
+    "description": "159€-25% sur tous les Pass Interrail jusqu'au 15 décembre ! Qu'est-ce qu'un Pass Interrail ?Avec le Pass Interrail, tu peux explorer un pays, une région entière ou toute l’Europe e...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_371024",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol direct Aller/Retour Nantes (NTE)  Montréal (YUL) Canada, du 02 Avril au 15 Avril (Petit Sac)",
+    "price": 99,
+    "price_str": "Dès 99 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol direct Aller/Retour Nantes (NTE)  Mo",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-allerretour-nantes-montreal-canada-du-02-avril-au-15-avril-bagage-a-main-inclus-3467449",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/C9Xnk/3467449_1/re/150x150/qt/55/3467449_1.jpg",
+    "description": "373,99€ - Lastminute...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_457464",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol avec escale Aller/Retour Paris (CDG)  Bali (DPS) Indonésie, du 5 au 25 Décembre (Bagage Soute 23 Kg)",
+    "price": 456,
+    "price_str": "Dès 456 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol avec escale Aller/Retour Paris (CDG)",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-ar-paris-cdg-bali-indonesie-du-5-au-25-decembre-avec-bagage-soute-23-kgs-3467485",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/1cX6Y/3467485_1/re/150x150/qt/55/3467485_1.jpg",
+    "description": "456€ - Trip.comBon prix....",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_632246",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol Aller/Retour Lyon > Lisbonne Portugal Du 26 Février au 05 Mars (Bagage à main Inclus)",
+    "price": 60,
+    "price_str": "Dès 60 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol Aller/Retour Lyon > Lisbonne Portuga",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-allerretour-lyon-lisbonne-portugal-du-26-fevrier-au-05-mars-bagage-a-main-inclus-3467443",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/KKAWb/3467443_1/re/150x150/qt/55/3467443_1.jpg",
+    "description": "60€ - easyJet...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_292133",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol direct Aller/Retour Paris Orly (ORY)  Montréal (YUL) Canada Du 3 au 17 février 2027 (Bagage cabine + accessoire 12 kg inclus)",
+    "price": 380,
+    "price_str": "Dès 380 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol direct Aller/Retour Paris Orly (ORY)",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-direct-allerretour-paris-orly-ory-montreal-yul-canada-du-3-au-17-fevrier-2027-bagage-cabine-accessoire-12-kg-inclus-3466849",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/BEFai/3466849_1/re/150x150/qt/55/3466849_1.jpg",
+    "description": "380€ - French BeeBillet d'avion Aller/Retour sans escale avec la compagnie French bee au départ de Paris-Orly (Terminal 4) à destination de Montréal-Trudeau (YUL). Tarif Bee Light ...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_286409",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol A/R Paris CDG ----> Manille Philippines du 22 janvier au 9 février 2027 avec bagage soute 23 kgs",
+    "price": 495,
+    "price_str": "Dès 495 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol A/R Paris CDG ----> Manille Philippi",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-ar-paris-cdg-manille-philippines-du-22-janvier-au-9-fevrier-2027-avec-bagage-soute-23-kgs-3466823",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/8sstf/3466823_1/re/150x150/qt/55/3466823_1.jpg",
+    "description": "495€ - Trip.comBon prix....",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_dealabs_272175",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • Dealabs",
+    "title": "Vol Aller/Retour Paris BVA > Marrakech Maroc Du 14 Janvier au 20 Janvier (Bagage à main Inclus)",
+    "price": 45,
+    "price_str": "Dès 45 €",
+    "location": "Départs France & Hubs",
+    "destination": "Vol Aller/Retour Paris BVA > Marrakech M",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "Dealabs",
+    "url": "https://www.dealabs.com/bons-plans/vol-allerretour-paris-bva-marrakech-maroc-du-14-janvier-au-20-janvierbagage-a-main-inclus-3466747",
+    "image_url": "https://static-pepper.dealabs.com/threads/raw/PFAnG/3466747_1/re/150x150/qt/55/3466747_1.jpg",
+    "description": "45€ - Ryanair...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_316627",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Bangkok : les vols A/R les ⊖ chers vers la Thaïlande  ✈️🌴",
+    "price": 500,
+    "price_str": "Dès 500 €",
+    "location": "Départs France & Hubs",
+    "destination": "Bangkok : les vols A/R les ⊖ chers vers ",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/vols/vols-vers-bangkok-1",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1720597510/mediavault_images/shutterstock_2461072741_yq2pmh.jpg",
+    "description": "Mettez vite votre crochet de pirate sur ces  pour moins de 500€ !Ces vols ne comportent qu'une seule escale et le bagage en soute est inclus dans le prix.Vous trouverez ci-dessous ...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_598830",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Black Friday Best Western : -20% sur 280 hôtels ! ⚡🖤",
+    "price": 0,
+    "price_str": "Voir l'offre",
+    "location": "Départs France & Hubs",
+    "destination": "Black Friday Best Western : -20% sur 280",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/black-friday-best-western",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1794916542/Impressions%20and%20Other%20Assets/BF_jxgt7y.jpg",
+    "description": "Le Black Friday continue de battre son plein pour vos prochaines escapades hivernales ! C’est le moment rêvé de planifier vos week-ends et vos fêtes de fin d’année sans faire explo...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_670423",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Cap sur l'aventure : -30% sur votre van aménagé ! 🚐✨",
+    "price": 55,
+    "price_str": "Dès 55 €",
+    "location": "Départs France & Hubs",
+    "destination": "Cap sur l'aventure : -30% sur votre van ",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/autres/roadsurfer-blackfriday-30",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1795441164/Impressions%20and%20Other%20Assets/BF_n4w4me.jpg",
+    "description": "Envie de liberté totale pour vos prochaines escapades ? À l'occasion du Black Friday, le leader européen de la location de vans aménagés roadsurfer dévoile sa plus grosse remise de...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_969375",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Un pied en Europe, l'autre en Asie : ce séjour Istanbul 🇹🇷",
+    "price": 212,
+    "price_str": "Dès 212 €",
+    "location": "Départs France & Hubs",
+    "destination": "Un pied en Europe, l'autre en Asie : ce ",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/un-pied-en-europe-lautre-en-asie-ce-sejour-istanbul",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1632390196/Impressions%20and%20Other%20Assets/Istanbul_Turkey_shutterstock_587035367_mpzbtu.jpg",
+    "description": "Difficile de trouver terrain de jeu plus dépaysant qu'Istanbul quand on n'a que quatre jours devant soi et 212€ de budget par personne. Dès la sortie de l'Atlantis Royal Hotel, le ...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_694587",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Tout inclus & pieds dans l'eau sur l'île de Djerba ✨",
+    "price": 464,
+    "price_str": "Dès 464 €",
+    "location": "Départs France & Hubs",
+    "destination": "Tout inclus & pieds dans l'eau sur l'île",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/tout-inclus-et-pieds-dans-leau-sur-lile-de-djerba",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1795514428/Impressions%20and%20Other%20Assets/518888_fxang4.webp",
+    "description": "Partez pour une expérience de rêve en Tunisie lors d'un voyage de 6 jours dans un magnifique hôtel 5*. Situé au bord de la mer, cet établissement vous offre une plage privée où vou...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_337919",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "😍 Pour Noël, Londres a l’hôtel magique qu’il vous faut 🎄",
+    "price": 0,
+    "price_str": "Voir l'offre",
+    "location": "Départs France & Hubs",
+    "destination": "😍 Pour Noël, Londres a l’hôtel magique q",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/pour-noel-londres-a-lhotel-magique-quil-vous-faut",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1792594759/Impressions%20and%20Other%20Assets/jamie-davies-a8x39Eo35bE-unsplash_sioza9.jpg",
+    "description": "Londres fait déjà partie des destinations de Noël incontournables, mais cette année, elle passe un cap. Oxford Street s'illuminera de décors inspirés de l'univers Harry Potter pour...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_765042",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Le marché de Noël de Stockholm 🇸🇪 à prix givré 🥶",
+    "price": 0,
+    "price_str": "Voir l'offre",
+    "location": "Départs France & Hubs",
+    "destination": "Le marché de Noël de Stockholm 🇸🇪 à prix",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/magie-des-marches-de-noel-a-stockholm",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1603288994/mediavault_images/odcfxvhesmloiyfa1i72.jpg",
+    "description": "Vos pirates préférés ont repéré un bon plan givré pour découvrir Stockholm sans exploser votre budget !Partez 5 jours au cœur de la capitale suédoise pendant les marchés de Noël.Ce...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_783540",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "🏔️ Alpes : semaine ski tout compris en famille à Samoëns ⛷️❄️",
+    "price": 75,
+    "price_str": "Dès 75 €",
+    "location": "Départs France & Hubs",
+    "destination": "🏔️ Alpes : semaine ski tout compris en f",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/alpes-semaine-ski-tout-compris-en-famille-a-samoens",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1795452030/Impressions%20and%20Other%20Assets/BF_2026_-_Template_Content_Deal_Page_2_jqzb2q.jpg",
+    "description": "Envie d'une semaine au ski où vous n'avez rien à organiser ? Direction Samoëns, village savoyard au cœur du Grand Massif en Haute-Savoie, pour un séjour ski tout compris en famille...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_35884",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "🌏 Petit groupe, grande remise : Black Friday WeRoad 🔥🧳",
+    "price": 500,
+    "price_str": "Dès 500 €",
+    "location": "Départs France & Hubs",
+    "destination": "🌏 Petit groupe, grande remise : Black Fr",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/autres/petit-groupe-grande-remise-black-friday-weroad",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1795431286/Impressions%20and%20Other%20Assets/BF_3_msodux.jpg",
+    "description": "WeRoad, c'est l'art de voyager léger : des groupes de 11 personnes en moyenne, un coordinateur dédié et de nombreuses destinations, de l'Europe du Sud à l'Asie du Sud-Est. Jordanie...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_951768",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "☀️ Hiver au soleil en Tunisie, tout inclus en famille 🏝️",
+    "price": 50,
+    "price_str": "Dès 50 €",
+    "location": "Départs France & Hubs",
+    "destination": "☀️ Hiver au soleil en Tunisie, tout incl",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/hiver-au-soleil-en-tunisie-tout-inclus-en-famille",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1709741466/Impressions%20and%20Other%20Assets/001__woqpmr.webp",
+    "description": "💰 Code exclusif  : 50€ offerts dès 499€ avec le code  / 100€ offerts dès 999€ avec le code  💰Envie de voir vos enfants barboter dans la piscine pendant que la France grelotte ? À S...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_223319",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Bucarest ❤️ Vols, hôtel & accès aux thermes à prix FOU ! 😍",
+    "price": 200,
+    "price_str": "Dès 200 €",
+    "location": "Départs France & Hubs",
+    "destination": "Bucarest ❤️ Vols, hôtel & accès aux ther",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/bucarest-vols-hotel-thermes-prix-fou",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1789989155/Impressions%20and%20Other%20Assets/3_kv89xl.png",
+    "description": "Besoin d'une parenthèse détente ? Mettez le cap sur Bucarest, la capitale roumaine qui s'impose comme l'escapade bien-être la plus abordable d'Europe ! Nous vous avons concocté un ...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_523873",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Vols vers le Chili : cap sur la Patagonie ! 🇨🇱🏔️",
+    "price": 0,
+    "price_str": "Voir l'offre",
+    "location": "Départs France & Hubs",
+    "destination": "Vols vers le Chili : cap sur la Patagoni",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/vols/prix-incroyable-pour-le-chili-a-la-meilleure-periode",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1603282860/mediavault_images/bjkxmuhwfduq3ceag6sr.jpg",
+    "description": "Voici LA bonne trouvaille du jour les pirates ! Vous rêvez des sommets vertigineux de Torres del Paine, des glaciers millénaires, des lacs turquoise et des steppes sauvages du bout...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_233048",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Cabane dans les arbres sur pilotis avec jacuzzi privé 🇫🇷💚",
+    "price": 144,
+    "price_str": "Dès 144 €",
+    "location": "Départs France & Hubs",
+    "destination": "Cabane dans les arbres sur pilotis avec ",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/hotels/cabane-dans-les-arbres-sur-pilotis-avec-jacuzzi-prive",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1795447325/Impressions%20and%20Other%20Assets/536c1ac1-f978-4b53-9faf-34b61088b276_p7mpbr.avif",
+    "description": "Seulement 144€ par personne : c'est tout ce qu'il en coûte pour passer deux jours perché à plusieurs mètres du sol à Raray. Baptisée Cabane duo spa plus sur pilotis, cette adresse ...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_40265",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "✨ Nouveau 5 étoiles à Zanzibar, luxe les pieds dans l'eau",
+    "price": 0,
+    "price_str": "Voir l'offre",
+    "location": "Départs France & Hubs",
+    "destination": "✨ Nouveau 5 étoiles à Zanzibar, luxe les",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/sejours/nouveau-5-etoiles-a-zanzibar-luxe-les-pieds-dans-leau",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1789988651/Impressions%20and%20Other%20Assets/01_Hotel_1_zpbyhh.webp",
+    "description": "🏴‍☠️ Code promo :  jusqu'au 30 novembrePlage de sable blanc qui plonge dans un lagon turquoise, une piscine à débordement de 635 m², et un hôtel 5 étoiles tout neuf rien que pour v...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_rss_voyagespirates_927027",
+    "universe": "voyage",
+    "category": "deal",
+    "section_type": "flash_deals",
+    "badge": "🔥 BON PLAN • VoyagesPirates",
+    "title": "Valmorel : la station familiale des Alpes à 2h de Lyon 🏔️⛷️❄️",
+    "price": 344,
+    "price_str": "Dès 344 €",
+    "location": "Départs France & Hubs",
+    "destination": "Valmorel : la station familiale des Alpe",
+    "departure_hub": "France",
+    "trip_mode": "sniper",
+    "dates": "Dates flexibles",
+    "departure_city": "France",
+    "agency": "VoyagesPirates",
+    "url": "https://www.voyagespirates.fr/hotels/valmorel-la-station-familiale-des-alpes-a-2h-de-lyon",
+    "image_url": "https://image.urlaubspiraten.de/640/image/upload/v1794835234/Impressions%20and%20Other%20Assets/2ni-R9kWvvpqL4s-unsplash_xingks.jpg",
+    "description": "Et si l’une des stations les plus familiales du monde se trouvait à 2h de Lyon ? 🏔️ Valmorel, en Savoie, a déjà été élue meilleure station familiale du monde aux World Snow Awards,...",
+    "date_detected": "2026-11-25T05:49:26.523160+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Bon plan vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_train_ouigo_lorraine_paris",
+    "universe": "voyage",
+    "category": "train",
+    "section_type": "flash_deals",
+    "badge": "🚄 TRAIN DIRECT • OUIGO",
+    "title": "OUIGO Lorraine TGV ⇄ Paris Est (dès 19 €)",
+    "price": 38,
+    "price_str": "38 € A/R (19 €/trajet)",
+    "location": "Lorraine TGV ⇄ Paris Est",
+    "destination": "Paris",
+    "departure_hub": "Lorraine TGV",
+    "trip_mode": "sniper",
+    "dates": "2026-12-09 → 2026-12-12",
+    "departure_city": "Nancy",
+    "agency": "SNCF Connect / OUIGO",
+    "url": "https://www.sncf-connect.com/app/home/search?origin=Lorraine+TGV&destination=Paris+Est&outwardDate=2026-12-09",
+    "train_url": "https://www.ouigo.com/",
+    "transit_url": "https://www.google.com/maps/dir/?api=1&origin=Lorraine+TGV&destination=Paris+Est&travelmode=transit",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Paris&checkin=2026-12-09&checkout=2026-12-12&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
+    "description": "Liaison à grande vitesse vers Paris avec correspondance navette Lorraine TGV.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_train_inoui_nancy_paris",
+    "universe": "voyage",
+    "category": "train",
+    "section_type": "flash_deals",
+    "badge": "🚄 TRAIN DIRECT • TGV INOUI",
+    "title": "TGV INOUI direct Nancy Ville ⇄ Paris Est (dès 17 €)",
+    "price": 34,
+    "price_str": "34 € A/R (17 €/trajet)",
+    "location": "Nancy Ville ⇄ Paris Est (1h32 direct)",
+    "destination": "Paris",
+    "departure_hub": "Nancy Ville",
+    "trip_mode": "sniper",
+    "dates": "2026-12-09 → 2026-12-12",
+    "departure_city": "Nancy",
+    "agency": "SNCF Connect / TGV INOUI",
+    "url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Paris+Est&outwardDate=2026-12-09",
+    "train_url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Paris+Est&outwardDate=2026-12-09",
+    "transit_url": "https://www.google.com/maps/dir/?api=1&origin=Nancy&destination=Paris+Est&travelmode=transit",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Paris&checkin=2026-12-09&checkout=2026-12-12&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800",
+    "description": "Trajet direct de centre à centre en 1 heure 32 minutes depuis Nancy.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_lux_mad_2027-01-01",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair LUX",
+    "title": "Vol Direct Madrid (MAD) depuis Luxembourg",
+    "price": 36,
+    "price_str": "36 € A/R (18 € aller simple)",
+    "location": "Luxembourg (LUX) ➔ Madrid (MAD)",
+    "destination": "Madrid",
+    "departure_hub": "Luxembourg",
+    "trip_mode": "sniper",
+    "dates": "2027-01-01 → 2027-01-04",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/lux/mad/270101/270104/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Madrid%20du%202027-01-01%20au%202027-01-04",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/mad/270101/270104/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Madrid&checkin=2027-01-01&checkout=2027-01-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 18 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_lux_bcn_2027-01-01",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair LUX",
+    "title": "Vol Direct Barcelone (BCN) depuis Luxembourg",
+    "price": 40,
+    "price_str": "40 € A/R (20 € aller simple)",
+    "location": "Luxembourg (LUX) ➔ Barcelone (BCN)",
+    "destination": "Barcelone",
+    "departure_hub": "Luxembourg",
+    "trip_mode": "sniper",
+    "dates": "2027-01-01 → 2027-01-04",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/lux/bcn/270101/270104/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Barcelone%20du%202027-01-01%20au%202027-01-04",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/bcn/270101/270104/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Barcelone&checkin=2027-01-01&checkout=2027-01-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 20 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_lux_lis_2026-12-31",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair LUX",
+    "title": "Vol Direct Lisbonne (LIS) depuis Luxembourg",
+    "price": 46,
+    "price_str": "46 € A/R (23 € aller simple)",
+    "location": "Luxembourg (LUX) ➔ Lisbonne (LIS)",
+    "destination": "Lisbonne",
+    "departure_hub": "Luxembourg",
+    "trip_mode": "sniper",
+    "dates": "2026-12-31 → 2027-01-03",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/lux/lis/261231/270103/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Lisbonne%20du%202026-12-31%20au%202027-01-03",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/lis/261231/270103/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Lisbonne&checkin=2026-12-31&checkout=2027-01-03&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 23 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_lux_bgy_2026-12-31",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair LUX",
+    "title": "Vol Direct Bergamo (BGY) depuis Luxembourg",
+    "price": 46,
+    "price_str": "46 € A/R (23 € aller simple)",
+    "location": "Luxembourg (LUX) ➔ Bergamo (BGY)",
+    "destination": "Bergamo",
+    "departure_hub": "Luxembourg",
+    "trip_mode": "sniper",
+    "dates": "2026-12-31 → 2027-01-03",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/lux/bgy/261231/270103/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Bergamo%20du%202026-12-31%20au%202027-01-03",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/bgy/261231/270103/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Bergamo&checkin=2026-12-31&checkout=2027-01-03&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 23 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_lux_mla_2026-12-14",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair LUX",
+    "title": "Vol Direct Malte (MLA) depuis Luxembourg",
+    "price": 48,
+    "price_str": "48 € A/R (24 € aller simple)",
+    "location": "Luxembourg (LUX) ➔ Malte (MLA)",
+    "destination": "Malte",
+    "departure_hub": "Luxembourg",
+    "trip_mode": "sniper",
+    "dates": "2026-12-14 → 2026-12-17",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/lux/mla/261214/261217/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Malte%20du%202026-12-14%20au%202026-12-17",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/mla/261214/261217/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Malte&checkin=2026-12-14&checkout=2026-12-17&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 24 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_lux_mrs_2026-12-13",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair LUX",
+    "title": "Vol Direct Marseille (MRS) depuis Luxembourg",
+    "price": 72,
+    "price_str": "72 € A/R (36 € aller simple)",
+    "location": "Luxembourg (LUX) ➔ Marseille (MRS)",
+    "destination": "Marseille",
+    "departure_hub": "Luxembourg",
+    "trip_mode": "sniper",
+    "dates": "2026-12-13 → 2026-12-16",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/lux/mrs/261213/261216/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Marseille%20du%202026-12-13%20au%202026-12-16",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/mrs/261213/261216/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Marseille&checkin=2026-12-13&checkout=2026-12-16&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 36 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_lux_opo_2026-12-05",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair LUX",
+    "title": "Vol Direct Porto (OPO) depuis Luxembourg",
+    "price": 84,
+    "price_str": "84 € A/R (42 € aller simple)",
+    "location": "Luxembourg (LUX) ➔ Porto (OPO)",
+    "destination": "Porto",
+    "departure_hub": "Luxembourg",
+    "trip_mode": "sniper",
+    "dates": "2026-12-05 → 2026-12-08",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/lux/opo/261205/261208/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Porto%20du%202026-12-05%20au%202026-12-08",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/opo/261205/261208/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Porto&checkin=2026-12-05&checkout=2026-12-08&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 42 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_lux_dub_2026-12-31",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair LUX",
+    "title": "Vol Direct Dublin (DUB) depuis Luxembourg",
+    "price": 88,
+    "price_str": "88 € A/R (44 € aller simple)",
+    "location": "Luxembourg (LUX) ➔ Dublin (DUB)",
+    "destination": "Dublin",
+    "departure_hub": "Luxembourg",
+    "trip_mode": "sniper",
+    "dates": "2026-12-31 → 2027-01-03",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/lux/dub/261231/270103/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Dublin%20du%202026-12-31%20au%202027-01-03",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/dub/261231/270103/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Dublin&checkin=2026-12-31&checkout=2027-01-03&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 44 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_bsl_zag_2027-01-01",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair BSL",
+    "title": "Vol Direct Zagreb (ZAG) depuis Bâle-Mulhouse",
+    "price": 36,
+    "price_str": "36 € A/R (18 € aller simple)",
+    "location": "Bâle-Mulhouse (BSL) ➔ Zagreb (ZAG)",
+    "destination": "Zagreb",
+    "departure_hub": "Bâle-Mulhouse",
+    "trip_mode": "sniper",
+    "dates": "2027-01-01 → 2027-01-04",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/bsl/zag/270101/270104/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20B%C3%A2le-Mulhouse%20vers%20Zagreb%20du%202027-01-01%20au%202027-01-04",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bsl/zag/270101/270104/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Zagreb&checkin=2027-01-01&checkout=2027-01-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 18 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_bsl_stn_2026-12-16",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair BSL",
+    "title": "Vol Direct Londres (STN) depuis Bâle-Mulhouse",
+    "price": 60,
+    "price_str": "60 € A/R (30 € aller simple)",
+    "location": "Bâle-Mulhouse (BSL) ➔ Londres (STN)",
+    "destination": "Londres",
+    "departure_hub": "Bâle-Mulhouse",
+    "trip_mode": "sniper",
+    "dates": "2026-12-16 → 2026-12-19",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/bsl/stn/261216/261219/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20B%C3%A2le-Mulhouse%20vers%20Londres%20du%202026-12-16%20au%202026-12-19",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bsl/stn/261216/261219/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Londres&checkin=2026-12-16&checkout=2026-12-19&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 30 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_bsl_dub_2026-12-10",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair BSL",
+    "title": "Vol Direct Dublin (DUB) depuis Bâle-Mulhouse",
+    "price": 166,
+    "price_str": "166 € A/R (83 € aller simple)",
+    "location": "Bâle-Mulhouse (BSL) ➔ Dublin (DUB)",
+    "destination": "Dublin",
+    "departure_hub": "Bâle-Mulhouse",
+    "trip_mode": "sniper",
+    "dates": "2026-12-10 → 2026-12-13",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/bsl/dub/261210/261213/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20B%C3%A2le-Mulhouse%20vers%20Dublin%20du%202026-12-10%20au%202026-12-13",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bsl/dub/261210/261213/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Dublin&checkin=2026-12-10&checkout=2026-12-13&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 83 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_bva_bhx_2026-12-11",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair BVA",
+    "title": "Vol Direct Birmingham (BHX) depuis Paris-Beauvais",
+    "price": 34,
+    "price_str": "34 € A/R (17 € aller simple)",
+    "location": "Paris-Beauvais (BVA) ➔ Birmingham (BHX)",
+    "destination": "Birmingham",
+    "departure_hub": "Paris-Beauvais",
+    "trip_mode": "sniper",
+    "dates": "2026-12-11 → 2026-12-14",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/bva/bhx/261211/261214/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Birmingham%20du%202026-12-11%20au%202026-12-14",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/bhx/261211/261214/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Birmingham&checkin=2026-12-11&checkout=2026-12-14&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 17 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_bva_arn_2027-01-01",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair BVA",
+    "title": "Vol Direct Stockholm (ARN) depuis Paris-Beauvais",
+    "price": 38,
+    "price_str": "38 € A/R (19 € aller simple)",
+    "location": "Paris-Beauvais (BVA) ➔ Stockholm (ARN)",
+    "destination": "Stockholm",
+    "departure_hub": "Paris-Beauvais",
+    "trip_mode": "sniper",
+    "dates": "2027-01-01 → 2027-01-04",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/bva/arn/270101/270104/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Stockholm%20du%202027-01-01%20au%202027-01-04",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/arn/270101/270104/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Stockholm&checkin=2027-01-01&checkout=2027-01-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 19 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_bva_alc_2026-12-06",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair BVA",
+    "title": "Vol Direct Alicante (ALC) depuis Paris-Beauvais",
+    "price": 40,
+    "price_str": "40 € A/R (20 € aller simple)",
+    "location": "Paris-Beauvais (BVA) ➔ Alicante (ALC)",
+    "destination": "Alicante",
+    "departure_hub": "Paris-Beauvais",
+    "trip_mode": "sniper",
+    "dates": "2026-12-06 → 2026-12-09",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/bva/alc/261206/261209/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Alicante%20du%202026-12-06%20au%202026-12-09",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/alc/261206/261209/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Alicante&checkin=2026-12-06&checkout=2026-12-09&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 20 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_bva_blq_2026-12-29",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair BVA",
+    "title": "Vol Direct Bologne (BLQ) depuis Paris-Beauvais",
+    "price": 42,
+    "price_str": "42 € A/R (21 € aller simple)",
+    "location": "Paris-Beauvais (BVA) ➔ Bologne (BLQ)",
+    "destination": "Bologne",
+    "departure_hub": "Paris-Beauvais",
+    "trip_mode": "sniper",
+    "dates": "2026-12-29 → 2027-01-01",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/bva/blq/261229/270101/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Bologne%20du%202026-12-29%20au%202027-01-01",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/blq/261229/270101/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Bologne&checkin=2026-12-29&checkout=2027-01-01&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 21 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
+    "id": "real_ryanair_bva_bgy_2026-12-05",
+    "universe": "voyage",
+    "category": "flight",
+    "section_type": "flash_deals",
+    "badge": "✈️ VOL DIRECT • Ryanair BVA",
+    "title": "Vol Direct Bergamo (BGY) depuis Paris-Beauvais",
+    "price": 46,
+    "price_str": "46 € A/R (23 € aller simple)",
+    "location": "Paris-Beauvais (BVA) ➔ Bergamo (BGY)",
+    "destination": "Bergamo",
+    "departure_hub": "Paris-Beauvais",
+    "trip_mode": "sniper",
+    "dates": "2026-12-05 → 2026-12-08",
+    "departure_city": "Nancy",
+    "agency": "Ryanair Direct",
+    "url": "https://www.skyscanner.fr/transport/vols/bva/bgy/261205/261208/?adultsv2=1&cabinclass=economy",
+    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Bergamo%20du%202026-12-05%20au%202026-12-08",
+    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/bgy/261205/261208/?adultsv2=1&cabinclass=economy",
+    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Bergamo&checkin=2026-12-05&checkout=2026-12-08&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
+    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 23 € l'aller simple.",
+    "date_detected": "2026-11-25T05:49:26.523065+00:00",
+    "verified_live": true,
+    "verified_badge": "✅ Prix live vérifié",
+    "true_cost": null,
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
+  },
+  {
     "id": "real_rss_dealabs_475188",
     "universe": "voyage",
     "category": "deal",
@@ -22,8 +1324,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_425909",
@@ -48,8 +1350,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_944897",
@@ -74,8 +1376,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_505984",
@@ -100,8 +1402,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_341849",
@@ -126,8 +1428,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_45976",
@@ -152,8 +1454,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_747661",
@@ -178,8 +1480,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_256400",
@@ -204,8 +1506,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_822371",
@@ -230,8 +1532,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_852204",
@@ -256,8 +1558,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_803754",
@@ -282,8 +1584,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_388822",
@@ -308,8 +1610,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_759349",
@@ -334,8 +1636,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_820412",
@@ -360,8 +1662,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_894227",
@@ -386,8 +1688,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_923138",
@@ -412,8 +1714,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_54797",
@@ -438,8 +1740,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_349977",
@@ -464,8 +1766,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_3978",
@@ -490,8 +1792,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_746230",
@@ -516,8 +1818,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_324010",
@@ -542,8 +1844,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_934414",
@@ -568,8 +1870,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_249961",
@@ -594,8 +1896,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_56023",
@@ -620,8 +1922,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_97277",
@@ -646,8 +1948,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_256356",
@@ -672,8 +1974,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_804912",
@@ -698,8 +2000,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_178006",
@@ -724,8 +2026,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_975635",
@@ -750,8 +2052,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_185963",
@@ -776,530 +2078,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_train_ouigo_lorraine_paris",
-    "universe": "voyage",
-    "category": "train",
-    "section_type": "flash_deals",
-    "badge": "🚄 TRAIN DIRECT • OUIGO",
-    "title": "OUIGO Lorraine TGV ⇄ Paris Est (dès 19 €)",
-    "price": 38,
-    "price_str": "38 € A/R (19 €/trajet)",
-    "location": "Lorraine TGV ⇄ Paris Est",
-    "destination": "Paris",
-    "departure_hub": "Lorraine TGV",
-    "trip_mode": "sniper",
-    "dates": "2026-12-09 → 2026-12-12",
-    "departure_city": "Nancy",
-    "agency": "SNCF Connect / OUIGO",
-    "url": "https://www.sncf-connect.com/app/home/search?origin=Lorraine+TGV&destination=Paris+Est&outwardDate=2026-12-09",
-    "train_url": "https://www.ouigo.com/",
-    "transit_url": "https://www.google.com/maps/dir/?api=1&origin=Lorraine+TGV&destination=Paris+Est&travelmode=transit",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Paris&checkin=2026-12-09&checkout=2026-12-12&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
-    "description": "Liaison à grande vitesse vers Paris avec correspondance navette Lorraine TGV.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_train_inoui_nancy_paris",
-    "universe": "voyage",
-    "category": "train",
-    "section_type": "flash_deals",
-    "badge": "🚄 TRAIN DIRECT • TGV INOUI",
-    "title": "TGV INOUI direct Nancy Ville ⇄ Paris Est (dès 17 €)",
-    "price": 34,
-    "price_str": "34 € A/R (17 €/trajet)",
-    "location": "Nancy Ville ⇄ Paris Est (1h32 direct)",
-    "destination": "Paris",
-    "departure_hub": "Nancy Ville",
-    "trip_mode": "sniper",
-    "dates": "2026-12-09 → 2026-12-12",
-    "departure_city": "Nancy",
-    "agency": "SNCF Connect / TGV INOUI",
-    "url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Paris+Est&outwardDate=2026-12-09",
-    "train_url": "https://www.sncf-connect.com/app/home/search?origin=Nancy&destination=Paris+Est&outwardDate=2026-12-09",
-    "transit_url": "https://www.google.com/maps/dir/?api=1&origin=Nancy&destination=Paris+Est&travelmode=transit",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Paris&checkin=2026-12-09&checkout=2026-12-12&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800",
-    "description": "Trajet direct de centre à centre en 1 heure 32 minutes depuis Nancy.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_lux_mad_2027-01-01",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair LUX",
-    "title": "Vol Direct Madrid (MAD) depuis Luxembourg",
-    "price": 36,
-    "price_str": "36 € A/R (18 € aller simple)",
-    "location": "Luxembourg (LUX) ➔ Madrid (MAD)",
-    "destination": "Madrid",
-    "departure_hub": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "2027-01-01 → 2027-01-04",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/lux/mad/270101/270104/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Madrid%20du%202027-01-01%20au%202027-01-04",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/mad/270101/270104/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Madrid&checkin=2027-01-01&checkout=2027-01-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 18 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_lux_bcn_2027-01-01",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair LUX",
-    "title": "Vol Direct Barcelone (BCN) depuis Luxembourg",
-    "price": 40,
-    "price_str": "40 € A/R (20 € aller simple)",
-    "location": "Luxembourg (LUX) ➔ Barcelone (BCN)",
-    "destination": "Barcelone",
-    "departure_hub": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "2027-01-01 → 2027-01-04",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/lux/bcn/270101/270104/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Barcelone%20du%202027-01-01%20au%202027-01-04",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/bcn/270101/270104/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Barcelone&checkin=2027-01-01&checkout=2027-01-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 20 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_lux_lis_2026-12-31",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair LUX",
-    "title": "Vol Direct Lisbonne (LIS) depuis Luxembourg",
-    "price": 44,
-    "price_str": "44 € A/R (22 € aller simple)",
-    "location": "Luxembourg (LUX) ➔ Lisbonne (LIS)",
-    "destination": "Lisbonne",
-    "departure_hub": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "2026-12-31 → 2027-01-03",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/lux/lis/261231/270103/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Lisbonne%20du%202026-12-31%20au%202027-01-03",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/lis/261231/270103/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Lisbonne&checkin=2026-12-31&checkout=2027-01-03&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 22 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_lux_bgy_2026-12-31",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair LUX",
-    "title": "Vol Direct Bergamo (BGY) depuis Luxembourg",
-    "price": 44,
-    "price_str": "44 € A/R (22 € aller simple)",
-    "location": "Luxembourg (LUX) ➔ Bergamo (BGY)",
-    "destination": "Bergamo",
-    "departure_hub": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "2026-12-31 → 2027-01-03",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/lux/bgy/261231/270103/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Bergamo%20du%202026-12-31%20au%202027-01-03",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/bgy/261231/270103/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Bergamo&checkin=2026-12-31&checkout=2027-01-03&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 22 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_lux_mla_2026-12-14",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair LUX",
-    "title": "Vol Direct Malte (MLA) depuis Luxembourg",
-    "price": 48,
-    "price_str": "48 € A/R (24 € aller simple)",
-    "location": "Luxembourg (LUX) ➔ Malte (MLA)",
-    "destination": "Malte",
-    "departure_hub": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "2026-12-14 → 2026-12-17",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/lux/mla/261214/261217/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Malte%20du%202026-12-14%20au%202026-12-17",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/mla/261214/261217/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Malte&checkin=2026-12-14&checkout=2026-12-17&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 24 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_lux_mrs_2026-12-13",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair LUX",
-    "title": "Vol Direct Marseille (MRS) depuis Luxembourg",
-    "price": 72,
-    "price_str": "72 € A/R (36 € aller simple)",
-    "location": "Luxembourg (LUX) ➔ Marseille (MRS)",
-    "destination": "Marseille",
-    "departure_hub": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "2026-12-13 → 2026-12-16",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/lux/mrs/261213/261216/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Marseille%20du%202026-12-13%20au%202026-12-16",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/mrs/261213/261216/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Marseille&checkin=2026-12-13&checkout=2026-12-16&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 36 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_lux_opo_2026-12-05",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair LUX",
-    "title": "Vol Direct Porto (OPO) depuis Luxembourg",
-    "price": 84,
-    "price_str": "84 € A/R (42 € aller simple)",
-    "location": "Luxembourg (LUX) ➔ Porto (OPO)",
-    "destination": "Porto",
-    "departure_hub": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "2026-12-05 → 2026-12-08",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/lux/opo/261205/261208/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Porto%20du%202026-12-05%20au%202026-12-08",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/opo/261205/261208/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Porto&checkin=2026-12-05&checkout=2026-12-08&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 42 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_lux_dub_2026-12-31",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair LUX",
-    "title": "Vol Direct Dublin (DUB) depuis Luxembourg",
-    "price": 88,
-    "price_str": "88 € A/R (44 € aller simple)",
-    "location": "Luxembourg (LUX) ➔ Dublin (DUB)",
-    "destination": "Dublin",
-    "departure_hub": "Luxembourg",
-    "trip_mode": "sniper",
-    "dates": "2026-12-31 → 2027-01-03",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/lux/dub/261231/270103/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Luxembourg%20vers%20Dublin%20du%202026-12-31%20au%202027-01-03",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/lux/dub/261231/270103/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Dublin&checkin=2026-12-31&checkout=2027-01-03&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 44 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_bsl_zag_2027-01-01",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair BSL",
-    "title": "Vol Direct Zagreb (ZAG) depuis Bâle-Mulhouse",
-    "price": 36,
-    "price_str": "36 € A/R (18 € aller simple)",
-    "location": "Bâle-Mulhouse (BSL) ➔ Zagreb (ZAG)",
-    "destination": "Zagreb",
-    "departure_hub": "Bâle-Mulhouse",
-    "trip_mode": "sniper",
-    "dates": "2027-01-01 → 2027-01-04",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/bsl/zag/270101/270104/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20B%C3%A2le-Mulhouse%20vers%20Zagreb%20du%202027-01-01%20au%202027-01-04",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bsl/zag/270101/270104/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Zagreb&checkin=2027-01-01&checkout=2027-01-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 18 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_bsl_stn_2026-12-16",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair BSL",
-    "title": "Vol Direct Londres (STN) depuis Bâle-Mulhouse",
-    "price": 60,
-    "price_str": "60 € A/R (30 € aller simple)",
-    "location": "Bâle-Mulhouse (BSL) ➔ Londres (STN)",
-    "destination": "Londres",
-    "departure_hub": "Bâle-Mulhouse",
-    "trip_mode": "sniper",
-    "dates": "2026-12-16 → 2026-12-19",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/bsl/stn/261216/261219/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20B%C3%A2le-Mulhouse%20vers%20Londres%20du%202026-12-16%20au%202026-12-19",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bsl/stn/261216/261219/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Londres&checkin=2026-12-16&checkout=2026-12-19&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 30 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_bsl_dub_2026-12-10",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair BSL",
-    "title": "Vol Direct Dublin (DUB) depuis Bâle-Mulhouse",
-    "price": 166,
-    "price_str": "166 € A/R (83 € aller simple)",
-    "location": "Bâle-Mulhouse (BSL) ➔ Dublin (DUB)",
-    "destination": "Dublin",
-    "departure_hub": "Bâle-Mulhouse",
-    "trip_mode": "sniper",
-    "dates": "2026-12-10 → 2026-12-13",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/bsl/dub/261210/261213/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20B%C3%A2le-Mulhouse%20vers%20Dublin%20du%202026-12-10%20au%202026-12-13",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bsl/dub/261210/261213/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Dublin&checkin=2026-12-10&checkout=2026-12-13&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 83 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_bva_bhx_2026-12-11",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair BVA",
-    "title": "Vol Direct Birmingham (BHX) depuis Paris-Beauvais",
-    "price": 34,
-    "price_str": "34 € A/R (17 € aller simple)",
-    "location": "Paris-Beauvais (BVA) ➔ Birmingham (BHX)",
-    "destination": "Birmingham",
-    "departure_hub": "Paris-Beauvais",
-    "trip_mode": "sniper",
-    "dates": "2026-12-11 → 2026-12-14",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/bva/bhx/261211/261214/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Birmingham%20du%202026-12-11%20au%202026-12-14",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/bhx/261211/261214/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Birmingham&checkin=2026-12-11&checkout=2026-12-14&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 17 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_bva_arn_2027-01-01",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair BVA",
-    "title": "Vol Direct Stockholm (ARN) depuis Paris-Beauvais",
-    "price": 38,
-    "price_str": "38 € A/R (19 € aller simple)",
-    "location": "Paris-Beauvais (BVA) ➔ Stockholm (ARN)",
-    "destination": "Stockholm",
-    "departure_hub": "Paris-Beauvais",
-    "trip_mode": "sniper",
-    "dates": "2027-01-01 → 2027-01-04",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/bva/arn/270101/270104/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Stockholm%20du%202027-01-01%20au%202027-01-04",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/arn/270101/270104/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Stockholm&checkin=2027-01-01&checkout=2027-01-04&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 19 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_bva_alc_2026-12-06",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair BVA",
-    "title": "Vol Direct Alicante (ALC) depuis Paris-Beauvais",
-    "price": 40,
-    "price_str": "40 € A/R (20 € aller simple)",
-    "location": "Paris-Beauvais (BVA) ➔ Alicante (ALC)",
-    "destination": "Alicante",
-    "departure_hub": "Paris-Beauvais",
-    "trip_mode": "sniper",
-    "dates": "2026-12-06 → 2026-12-09",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/bva/alc/261206/261209/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Alicante%20du%202026-12-06%20au%202026-12-09",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/alc/261206/261209/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Alicante&checkin=2026-12-06&checkout=2026-12-09&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 20 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_bva_blq_2026-12-29",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair BVA",
-    "title": "Vol Direct Bologne (BLQ) depuis Paris-Beauvais",
-    "price": 42,
-    "price_str": "42 € A/R (21 € aller simple)",
-    "location": "Paris-Beauvais (BVA) ➔ Bologne (BLQ)",
-    "destination": "Bologne",
-    "departure_hub": "Paris-Beauvais",
-    "trip_mode": "sniper",
-    "dates": "2026-12-29 → 2027-01-01",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/bva/blq/261229/270101/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Bologne%20du%202026-12-29%20au%202027-01-01",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/blq/261229/270101/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Bologne&checkin=2026-12-29&checkout=2027-01-01&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 21 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
-  },
-  {
-    "id": "real_ryanair_bva_bgy_2026-12-05",
-    "universe": "voyage",
-    "category": "flight",
-    "section_type": "flash_deals",
-    "badge": "✈️ VOL DIRECT • Ryanair BVA",
-    "title": "Vol Direct Bergamo (BGY) depuis Paris-Beauvais",
-    "price": 46,
-    "price_str": "46 € A/R (23 € aller simple)",
-    "location": "Paris-Beauvais (BVA) ➔ Bergamo (BGY)",
-    "destination": "Bergamo",
-    "departure_hub": "Paris-Beauvais",
-    "trip_mode": "sniper",
-    "dates": "2026-12-05 → 2026-12-08",
-    "departure_city": "Nancy",
-    "agency": "Ryanair Direct",
-    "url": "https://www.skyscanner.fr/transport/vols/bva/bgy/261205/261208/?adultsv2=1&cabinclass=economy",
-    "flight_url": "https://www.google.com/travel/flights?hl=fr&curr=EUR&q=Vols%20de%20Paris-Beauvais%20vers%20Bergamo%20du%202026-12-05%20au%202026-12-08",
-    "skyscanner_url": "https://www.skyscanner.fr/transport/vols/bva/bgy/261205/261208/?adultsv2=1&cabinclass=economy",
-    "hotel_url": "https://www.booking.com/searchresults.fr.html?ss=Bergamo&checkin=2026-12-05&checkout=2026-12-08&group_adults=1&no_rooms=1&nflt=review_score%3D80&order=review_score_and_price",
-    "image_url": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
-    "description": "Tarif officiel extrait en direct de Ryanair FareFinder : 23 € l'aller simple.",
-    "date_detected": "2026-11-25T02:46:33.924164+00:00",
-    "verified_live": true,
-    "verified_badge": "✅ Prix live vérifié",
-    "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_703513",
@@ -1324,8 +2104,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_723154",
@@ -1350,8 +2130,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_23215",
@@ -1376,8 +2156,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_667793",
@@ -1402,8 +2182,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_495607",
@@ -1428,8 +2208,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_624219",
@@ -1454,8 +2234,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_442312",
@@ -1480,8 +2260,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_150237",
@@ -1506,8 +2286,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_387005",
@@ -1532,8 +2312,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_983414",
@@ -1558,8 +2338,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_860953",
@@ -1584,8 +2364,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_926099",
@@ -1610,8 +2390,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_403571",
@@ -1636,8 +2416,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_576943",
@@ -1714,8 +2494,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_735396",
@@ -1740,8 +2520,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_114160",
@@ -1766,8 +2546,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_437552",
@@ -1792,8 +2572,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_999783",
@@ -1818,8 +2598,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_524651",
@@ -1844,8 +2624,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_312352",
@@ -1870,8 +2650,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_963104",
@@ -1896,8 +2676,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_375069",
@@ -1922,8 +2702,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_951602",
@@ -1948,8 +2728,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_779913",
@@ -1974,8 +2754,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_71508",
@@ -2000,8 +2780,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_540178",
@@ -2026,8 +2806,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_649792",
@@ -2052,8 +2832,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_109740",
@@ -2078,8 +2858,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_ryanair_lux_mrs_2026-12-12",
@@ -2162,8 +2942,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_866590",
@@ -2188,8 +2968,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_707277",
@@ -2214,8 +2994,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_895363",
@@ -2240,8 +3020,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_274681",
@@ -2266,8 +3046,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_554275",
@@ -2292,8 +3072,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_999248",
@@ -2318,8 +3098,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_444764",
@@ -2344,8 +3124,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_186582",
@@ -2370,8 +3150,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_332013",
@@ -2396,8 +3176,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_852750",
@@ -2422,8 +3202,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_985170",
@@ -2448,8 +3228,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_392328",
@@ -2552,8 +3332,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_379171",
@@ -2578,8 +3358,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_538456",
@@ -2604,8 +3384,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_382348",
@@ -2630,8 +3410,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_965796",
@@ -2656,8 +3436,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_89727",
@@ -2682,8 +3462,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_18654",
@@ -2708,8 +3488,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_666963",
@@ -2734,8 +3514,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_997981",
@@ -2760,8 +3540,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_30876",
@@ -2786,8 +3566,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_623409",
@@ -2812,8 +3592,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_453363",
@@ -2838,8 +3618,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_431463",
@@ -2864,8 +3644,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_603598",
@@ -2890,8 +3670,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_469537",
@@ -2916,8 +3696,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_942642",
@@ -2942,8 +3722,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_483620",
@@ -2968,8 +3748,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_266480",
@@ -2994,8 +3774,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_974425",
@@ -3020,8 +3800,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_644933",
@@ -3046,8 +3826,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_709734",
@@ -3072,8 +3852,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_238633",
@@ -3098,8 +3878,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_690393",
@@ -3124,8 +3904,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_587642",
@@ -3150,8 +3930,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_535049",
@@ -3176,8 +3956,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_51038",
@@ -3332,8 +4112,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_458169",
@@ -3358,8 +4138,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_32126",
@@ -3384,8 +4164,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_506846",
@@ -3410,8 +4190,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_968819",
@@ -3436,8 +4216,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_732348",
@@ -3462,8 +4242,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_814231",
@@ -3488,8 +4268,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_402820",
@@ -3514,8 +4294,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_991863",
@@ -3540,8 +4320,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_698652",
@@ -3566,8 +4346,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_331145",
@@ -3592,8 +4372,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_658930",
@@ -3618,8 +4398,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_829617",
@@ -3644,8 +4424,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_581945",
@@ -3670,8 +4450,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_195179",
@@ -3696,8 +4476,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_356519",
@@ -3722,8 +4502,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_715764",
@@ -3748,8 +4528,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_177192",
@@ -3774,8 +4554,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_678865",
@@ -3800,8 +4580,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_562271",
@@ -3826,8 +4606,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_410490",
@@ -3852,8 +4632,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_26748",
@@ -3878,8 +4658,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_290450",
@@ -3904,8 +4684,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_449696",
@@ -3930,8 +4710,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_990367",
@@ -3956,8 +4736,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_598595",
@@ -4112,8 +4892,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_942693",
@@ -4138,8 +4918,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_880619",
@@ -4164,8 +4944,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_289116",
@@ -4190,8 +4970,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_940433",
@@ -4216,8 +4996,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_823657",
@@ -4242,8 +5022,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_548741",
@@ -4268,8 +5048,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_671821",
@@ -4294,8 +5074,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_988058",
@@ -4320,8 +5100,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_262329",
@@ -4346,8 +5126,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_323822",
@@ -4372,8 +5152,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_140030",
@@ -4398,8 +5178,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_691605",
@@ -4424,8 +5204,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_391101",
@@ -4450,8 +5230,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_674938",
@@ -4476,8 +5256,8 @@
     "verified_live": true,
     "verified_badge": "✅ Bon plan vérifié",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_dealabs_209661",
@@ -10888,8 +11668,8 @@
     "description": "Le Black Friday débarque en force pour vos prochaines escapades hivernales ! C’est le moment rêvé de planifier vos week-ends et vos fêtes de fin d’année sans faire exploser votre b...",
     "date_detected": "2026-11-19T16:41:25.933620+00:00",
     "true_cost": null,
-    "last_seen_at": "2026-11-25T02:46:38.226465+00:00",
-    "last_verified_at": "2026-11-25T02:46:38.226465+00:00"
+    "last_seen_at": "2026-11-25T05:49:29.364392+00:00",
+    "last_verified_at": "2026-11-25T05:49:29.364392+00:00"
   },
   {
     "id": "real_rss_voyagespirates_84287",
