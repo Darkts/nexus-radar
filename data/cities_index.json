@@ -1,15 +1,15 @@
 {
   "version": "17",
-  "updated_at": "2026-11-25T20:55:03.087679+00:00",
-  "total_immo": 3284,
-  "total_voyage": 615,
+  "updated_at": "2026-11-26T03:19:47.005229+00:00",
+  "total_immo": 3234,
+  "total_voyage": 616,
   "purge_stats": {
-    "tested": 0,
+    "tested": 5,
     "removed_dead": 0,
-    "removed_stale": 0,
-    "retained_total": 3899,
-    "duration_sec": 0.0,
-    "checked_at": "2026-11-25T20:55:03.176880+00:00"
+    "removed_stale": 93,
+    "retained_total": 3850,
+    "duration_sec": 0.6,
+    "checked_at": "2026-11-26T03:19:47.113359+00:00"
   },
   "cities": [
     {
@@ -25,7 +25,7 @@
       "expat_count": 1,
       "rent_count": 153,
       "buy_count": 174,
-      "updated_at": "2026-11-25T20:54:53.513000+00:00"
+      "updated_at": "2026-11-26T03:19:37.314109+00:00"
     },
     {
       "slug": "paris",
@@ -65,12 +65,12 @@
       "flag": "🏝️",
       "lat": 18.0731,
       "lon": -63.0822,
-      "count": 102,
-      "local_count": 102,
+      "count": 101,
+      "local_count": 101,
       "expat_count": 0,
-      "rent_count": 5,
+      "rent_count": 4,
       "buy_count": 97,
-      "updated_at": "2026-11-25T20:54:49.579339+00:00"
+      "updated_at": "2026-11-26T03:19:32.654308+00:00"
     },
     {
       "slug": "guadeloupe",
@@ -80,12 +80,12 @@
       "flag": "🇬🇵",
       "lat": 16.265,
       "lon": -61.551,
-      "count": 158,
-      "local_count": 158,
+      "count": 150,
+      "local_count": 150,
       "expat_count": 0,
-      "rent_count": 49,
-      "buy_count": 109,
-      "updated_at": "2026-11-25T20:54:50.693127+00:00"
+      "rent_count": 44,
+      "buy_count": 106,
+      "updated_at": "2026-11-26T03:19:33.913742+00:00"
     },
     {
       "slug": "martinique",
@@ -125,12 +125,12 @@
       "flag": "🇪🇸",
       "lat": 40.4168,
       "lon": -3.7038,
-      "count": 254,
-      "local_count": 87,
-      "expat_count": 167,
-      "rent_count": 179,
-      "buy_count": 75,
-      "updated_at": "2026-11-25T20:54:58.854302+00:00"
+      "count": 246,
+      "local_count": 67,
+      "expat_count": 179,
+      "rent_count": 191,
+      "buy_count": 55,
+      "updated_at": "2026-11-26T03:19:42.072552+00:00"
     },
     {
       "slug": "barcelone",
@@ -341,21 +341,6 @@
       "rent_count": 2,
       "buy_count": 0,
       "updated_at": "2026-11-24T18:52:29.998002+00:00"
-    },
-    {
-      "slug": "villeneuve-d-ascq",
-      "name": "Villeneuve-d'Ascq",
-      "country_code": "",
-      "country": "",
-      "flag": "🌍",
-      "lat": 50.619572,
-      "lon": 3.1599,
-      "count": 33,
-      "local_count": 33,
-      "expat_count": 0,
-      "rent_count": 33,
-      "buy_count": 0,
-      "updated_at": "2026-11-18T23:16:57.376087+00:00"
     }
   ]
 }
