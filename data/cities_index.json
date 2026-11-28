@@ -1,15 +1,15 @@
 {
   "version": "17",
-  "updated_at": "2026-11-28T05:10:00.106174+00:00",
-  "total_immo": 4194,
-  "total_voyage": 689,
+  "updated_at": "2026-11-28T12:56:15.153463+00:00",
+  "total_immo": 4188,
+  "total_voyage": 721,
   "purge_stats": {
-    "tested": 66,
-    "removed_dead": 0,
+    "tested": 385,
+    "removed_dead": 15,
     "removed_stale": 0,
-    "retained_total": 4883,
-    "duration_sec": 2.6,
-    "checked_at": "2026-11-28T05:10:00.310506+00:00"
+    "retained_total": 4909,
+    "duration_sec": 15.0,
+    "checked_at": "2026-11-28T12:56:15.282885+00:00"
   },
   "cities": [
     {
@@ -20,12 +20,12 @@
       "flag": "🇫🇷",
       "lat": 48.6921,
       "lon": 6.1844,
-      "count": 330,
-      "local_count": 329,
+      "count": 331,
+      "local_count": 330,
       "expat_count": 1,
-      "rent_count": 159,
+      "rent_count": 160,
       "buy_count": 171,
-      "updated_at": "2026-11-28T05:09:34.022869+00:00"
+      "updated_at": "2026-11-28T12:56:05.222331+00:00"
     },
     {
       "slug": "paris",
@@ -70,7 +70,7 @@
       "expat_count": 0,
       "rent_count": 4,
       "buy_count": 106,
-      "updated_at": "2026-11-28T05:09:32.938297+00:00"
+      "updated_at": "2026-11-28T12:56:00.014628+00:00"
     },
     {
       "slug": "guadeloupe",
@@ -85,7 +85,7 @@
       "expat_count": 0,
       "rent_count": 44,
       "buy_count": 229,
-      "updated_at": "2026-11-28T05:09:34.882300+00:00"
+      "updated_at": "2026-11-28T12:56:01.400934+00:00"
     },
     {
       "slug": "martinique",
@@ -110,11 +110,11 @@
       "flag": "🇷🇪",
       "lat": -20.8821,
       "lon": 55.4507,
-      "count": 170,
-      "local_count": 170,
+      "count": 168,
+      "local_count": 168,
       "expat_count": 0,
       "rent_count": 66,
-      "buy_count": 104,
+      "buy_count": 102,
       "updated_at": "2026-11-28T05:09:36.108162+00:00"
     },
     {
@@ -125,12 +125,12 @@
       "flag": "🇪🇸",
       "lat": 40.4168,
       "lon": -3.7038,
-      "count": 267,
+      "count": 276,
       "local_count": 61,
-      "expat_count": 206,
-      "rent_count": 206,
+      "expat_count": 215,
+      "rent_count": 215,
       "buy_count": 61,
-      "updated_at": "2026-11-28T05:09:41.638709+00:00"
+      "updated_at": "2026-11-28T12:56:10.740342+00:00"
     },
     {
       "slug": "barcelone",
@@ -145,7 +145,7 @@
       "expat_count": 166,
       "rent_count": 166,
       "buy_count": 24,
-      "updated_at": "2026-11-28T05:09:40.699719+00:00"
+      "updated_at": "2026-11-28T12:56:07.338660+00:00"
     },
     {
       "slug": "lisbonne",
@@ -170,10 +170,10 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "count": 384,
-      "local_count": 233,
+      "count": 380,
+      "local_count": 229,
       "expat_count": 151,
-      "rent_count": 350,
+      "rent_count": 346,
       "buy_count": 34,
       "updated_at": "2026-11-28T05:09:41.164574+00:00"
     },
@@ -275,11 +275,11 @@
       "flag": "🇧🇷",
       "lat": -22.9068,
       "lon": -43.1729,
-      "count": 640,
-      "local_count": 632,
+      "count": 632,
+      "local_count": 624,
       "expat_count": 8,
-      "rent_count": 325,
-      "buy_count": 315,
+      "rent_count": 319,
+      "buy_count": 313,
       "updated_at": "2026-11-28T05:09:50.948685+00:00"
     },
     {
@@ -290,11 +290,11 @@
       "flag": "🇯🇵",
       "lat": 35.6762,
       "lon": 139.6503,
-      "count": 138,
-      "local_count": 130,
+      "count": 136,
+      "local_count": 128,
       "expat_count": 8,
-      "rent_count": 100,
-      "buy_count": 38,
+      "rent_count": 99,
+      "buy_count": 37,
       "updated_at": "2026-11-28T05:09:56.797020+00:00"
     },
     {
